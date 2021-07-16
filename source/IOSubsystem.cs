@@ -1077,15 +1077,41 @@ namespace tfm
                     } // Flaps are moving.
                 } // Report flaps position.
             } // PMDG 737.
+            else if (PMDG747Detected)
+            {
+                if (Aircraft.Flaps.ValueChanged)
+                {
+                    FlapsMoving = true;
+                } // value changed.
+                else
+                {
+                    if (FlapsMoving)
+                    {
+                        FlapsMoving = false;
+                        var gaugeName = "Flaps";
+                        var gaugeValue = PMDG747Aircraft.CurrentFlapsPosition.ToString();
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge);
+                    } // Flaps are moving.
+                } // Report flaps position.
+            } // PMDG 747
 else              if (PMDG777Detected)
             {
-                if (Aircraft.pmdg777.FCTL_Flaps_Lever.ValueChanged)
+                if (Aircraft.Flaps.ValueChanged)
                 {
-                    var gaugeName = "Flaps";
-                    var gaugeValue = PMDG777Aircraft.CurrentFlapsPosition.ToString();
-                    var isGauge = true;
-                    Output(gaugeName, gaugeValue, isGauge);
-                } // flaps changed.
+                    FlapsMoving = true;
+                } // value changed.
+                else
+                {
+                    if (FlapsMoving)
+                    {
+                        FlapsMoving = false;
+                        var gaugeName = "Flaps";
+                        var gaugeValue = PMDG777Aircraft.CurrentFlapsPosition.ToString();
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge);
+                    } // Flaps are moving.
+                } // Report flaps position.
             } // PMDG 777
             else
             {
@@ -1782,6 +1808,9 @@ else              if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "distanceToDescent":
+                    onTODKey();
+                    break;
                 case "n1monitor":
                     frmAutopilot frmAutopilot = new frmAutopilot("n1Monitor");
                     frmAutopilot.ShowDialog();
@@ -2049,15 +2078,43 @@ else              if (PMDG777Detected)
             var gaugeName = "Flaps";
             if (PMDG737Detected)
             {
-                var gaugeValue = PMDG737Aircraft.CurrentFlapsPosition.ToString();
-                var isGauge = true;
-                Output(gaugeName, gaugeValue, isGauge);
+
+                if (FlapsMoving)
+                {
+                    Output(isGauge: false, output: "Flaps in motion.");
+                }
+                else
+                {
+                    var gaugeValue = PMDG737Aircraft.CurrentFlapsPosition.ToString();
+                    var isGauge = true;
+                    Output(gaugeName, gaugeValue, isGauge);
+                }
             } // PMDG 737.
+            else if (PMDG747Detected)
+            {
+                if (FlapsMoving)
+                {
+                    Output(isGauge: false, output: "Flaps in motion.");
+                }
+                else
+                {
+                    var gaugeValue = PMDG747Aircraft.CurrentFlapsPosition.ToString();
+                    var isGauge = true;
+                    Output(gaugeName, gaugeValue, isGauge);
+                }
+            } // PMDG 747
              else if (PMDG777Detected)
             {
-                var gaugeValue = PMDG777Aircraft.CurrentFlapsPosition.ToString();
-                var isGauge = true;
-                Output(gaugeName, gaugeValue, isGauge);
+                if (FlapsMoving)
+                {
+                    Output(isGauge: false, output: "Flaps in motion.");
+                }
+                else
+                {
+                    var gaugeValue = PMDG777Aircraft.CurrentFlapsPosition.ToString();
+                    var isGauge = true;
+                    Output(gaugeName, gaugeValue, isGauge);
+                }
             } // PMDG 777.
             else
             {
@@ -2618,35 +2675,54 @@ else              if (PMDG777Detected)
 
         private void OnDestinationKey()
         {
-            if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737"))
+            if (PMDG737Detected)
             {
-                var distance = Math.Round(Aircraft.pmdg737.FMC_DistanceToDest.Value, 0);
-                var TOD = Math.Round(Aircraft.pmdg737.FMC_DistanceToTOD.Value, 0);
-                Output(isGauge: false, output: $"E D A: {distance}/T O D: {TOD}");
-            }
-            else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747"))
+                var distanceToDestination = Math.Round(Aircraft.pmdg737.FMC_DistanceToDest.Value);
+                try
+                {
+                    Output(isGauge: false, output: $"Distance to destination: {distanceToDestination}/{PMDG737Aircraft.TimeToDestination.ToString(@"d\:h\:m\:s")}");
+                }
+                catch (DivideByZeroException)
+                {
+                    Output(isGauge: false, output: "The aircraft is not moving.");
+                }
+                                catch (OverflowException)
+                {
+                    Output(isGauge: false, output: "Distance to destination not available.");
+                }
+                            } // PMDG 737
+            else if (PMDG747Detected)
             {
-                var distance = Math.Round(Aircraft.pmdg747.FMC_DistanceToDest.Value, 0);
-                var TOD = Math.Round(Aircraft.pmdg747.FMC_DistanceToTOD.Value, 0);
-                Output(isGauge: false, output: $"E D A: {distance}/T O D: {TOD}");
+                var distanceToDestination = Math.Round(Aircraft.pmdg747.FMC_DistanceToDest.Value);
+                try
+                {
+                    Output(isGauge: false, output: $"Distance to destination: {distanceToDestination}/{PMDG747Aircraft.TimeToDestination.ToString(@"d\:h\:m\:s")}");
+                }
+                catch (DivideByZeroException)
+                {
+                    Output(isGauge: false, output: "The aircraft is not moving.");
+                }
+                catch (OverflowException)
+                {
+                    Output(isGauge: false, output: "Distance to destination not available.");
+                }
             }
             else if (PMDG777Detected)
             {
-                var TOD = Math.Round(Aircraft.pmdg777.FMC_DistanceToTOD.Value, 0);
-
-                if(TOD == 0 || TOD == -1)
+                var distanceToDestination = Math.Round(Aircraft.pmdg777.FMC_DistanceToDest.Value);
+                try
                 {
-                    Output(isGauge: false, output: "Time to TOD not available.");
-                } // no TOD defined.
-                else if(TOD > 0)
+                    Output(isGauge: false, output: $"Distance to destination: {distanceToDestination}/{PMDG777Aircraft.TimeToDestination.ToString(@"d\:h\:m\:s")}");
+                }
+                catch (DivideByZeroException)
                 {
-                    Output(isGauge: false, output: $"TOD: {TOD}/{PMDG777Aircraft.TimeToTOD.ToString(@"d\:h\:m\:s")}");
-                } // Aircraft is currently moving.
-                else if(groundSpeed == 0)
+                    Output(isGauge: false, output: "The aircraft is not moving.");
+                }
+                catch (OverflowException)
                 {
-                    Output(isGauge: false, output: "The aircraft is not in motion.");
-                } // Aircraft is at a standstill.
-            } // End PMDG 777.
+                    Output(isGauge: false, output: "Distance to destination not available.");
+                }
+                            } // End PMDG 777.
             else
             {
 
@@ -2662,6 +2738,62 @@ else              if (PMDG777Detected)
                 }
                 Output(isGauge: false, output: $"Time enroute to destination, {strTime}. ");
 
+            }
+        }
+
+        private void onTODKey()
+        {
+            if (PMDG737Detected)
+            {
+                var tod = Math.Round(Aircraft.pmdg737.FMC_DistanceToTOD.Value);
+                try
+                {
+                    Output(isGauge: false, output: $"Distance to descent: {tod}/{PMDG737Aircraft.TimeToTOD.ToString(@"d\:h\:m\:s")}");
+                }
+                catch (DivideByZeroException)
+                {
+                    Output(isGauge: false, output: "The aircraft is not moving.");
+                }
+                catch (OverflowException)
+                {
+                    Output(isGauge: false, output: "Distance to descent not available.");
+                }
+            } // PMDG 737
+            else if (PMDG747Detected)
+            {
+                var tod = Math.Round(Aircraft.pmdg747.FMC_DistanceToTOD.Value);
+                try
+                {
+                    Output(isGauge: false, output: $"Distance to descent: {tod}/{PMDG747Aircraft.TimeToTOD.ToString(@"d\:h\:m\:s")}");
+                }
+                catch (DivideByZeroException)
+                {
+                    Output(isGauge: false, output: "The aircraft is not moving.");
+                }
+                catch (OverflowException)
+                {
+                    Output(isGauge: false, output: "Distance to descent not available.");
+                }
+            }
+            else if (PMDG777Detected)
+            {
+                var tod = Math.Round(Aircraft.pmdg777.FMC_DistanceToTOD.Value);
+                try
+                {
+                    Output(isGauge: false, output: $"Distance to descent: {tod}/{PMDG777Aircraft.TimeToTOD.ToString(@"d\:h\:m\:s")}");
+                }
+                catch (DivideByZeroException)
+                {
+                    Output(isGauge: false, output: "The aircraft is not moving.");
+                }
+                catch (OverflowException)
+                {
+                    Output(isGauge: false, output: "Distance to descent not available.");
+                }
+            } // End PMDG 777.
+            else
+            {
+                return;
             }
         }
 

@@ -257,5 +257,8 @@
     <Setting Name="ap_FMCMessage" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Shift+1</Value>
     </Setting>
+    <Setting Name="distanceToDescent" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Shift+D</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
