@@ -46,7 +46,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 49);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(306, 37);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // vsFpaTextBox
@@ -54,7 +54,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.vsFpaTextBox.AccessibleName = "Vertical speed";
             this.vsFpaTextBox.Location = new System.Drawing.Point(3, 3);
             this.vsFpaTextBox.Name = "vsFpaTextBox";
-            this.vsFpaTextBox.Size = new System.Drawing.Size(100, 40);
+            this.vsFpaTextBox.Size = new System.Drawing.Size(100, 29);
             this.vsFpaTextBox.TabIndex = 0;
             this.vsFpaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.vsFpaTextBox_KeyDown);
             // 
@@ -65,9 +65,9 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.interveneButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.interveneButton.Location = new System.Drawing.Point(109, 3);
             this.interveneButton.Name = "interveneButton";
-            this.interveneButton.Size = new System.Drawing.Size(126, 43);
+            this.interveneButton.Size = new System.Drawing.Size(124, 31);
             this.interveneButton.TabIndex = 1;
-            this.interveneButton.Text = "&Intervene";
+            this.interveneButton.Text = "&Vertical speed";
             this.interveneButton.UseVisualStyleBackColor = true;
             this.interveneButton.Click += new System.EventHandler(this.interveneButton_Click);
             // 
@@ -76,9 +76,9 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.modeButton.AccessibleName = "mode";
             this.modeButton.AutoSize = true;
             this.modeButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.modeButton.Location = new System.Drawing.Point(241, 3);
+            this.modeButton.Location = new System.Drawing.Point(239, 3);
             this.modeButton.Name = "modeButton";
-            this.modeButton.Size = new System.Drawing.Size(90, 43);
+            this.modeButton.Size = new System.Drawing.Size(64, 31);
             this.modeButton.TabIndex = 2;
             this.modeButton.Text = "&Mode";
             this.modeButton.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             // 
             // VerticalSpeedBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;

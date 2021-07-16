@@ -36,11 +36,11 @@ namespace tfm.PMDG.PMDG777.McpComponents
                 switch (Aircraft.pmdg777.MCP_annunALT_HOLD.Value)
                 {
                     case 0:
-                        altitudeHoldButton.Text = "&Altitude hold off";
+                        altitudeHoldButton.Text = "Altitude &hold off";
                         altitudeHoldButton.AccessibleName = "Altitude hold off";
                         break;
                     case 1:
-                        altitudeHoldButton.Text = "&Altitude hold on";
+                        altitudeHoldButton.Text = "Altitude &hold on";
                         altitudeHoldButton.AccessibleName = "Altitude hold on";
                         break;
                 }

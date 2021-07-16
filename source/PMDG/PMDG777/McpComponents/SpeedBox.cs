@@ -35,7 +35,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             // Only look for changes as to not paralize a screen reader when
             // using the controls.
 
-            if(this._isAirspeedMode)
+            if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
             {
                 if(Aircraft.pmdg777.MCP_IASMach.ValueChanged)
                 {
@@ -44,7 +44,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
                     modeButton.AccessibleName = "mode [IAS]";
                                     }
             } // Airspeed mode.
-            else
+            else if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
             {
                 if(Aircraft.pmdg777.MCP_IASMach.ValueChanged)
                 {
@@ -102,11 +102,11 @@ namespace tfm.PMDG.PMDG777.McpComponents
         {
 
             // Set initial values for the form.
-            if(this._isAirspeedMode)
+            if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
             {
                 speedTextBox.Text = Aircraft.pmdg777.MCP_IASMach.Value.ToString();
             } // End airspeed mode.
-            else
+            else if(Aircraft.pmdg777.MCP_IASMach.Value < 10)
             {
                 speedTextBox.Text = $"{Math.Round(Aircraft.pmdg777.MCP_IASMach.Value, 2)}";
             } // End mach mode.
@@ -158,17 +158,8 @@ namespace tfm.PMDG.PMDG777.McpComponents
 
         private void modeButton_Click(object sender, EventArgs e)
         {
-                        if(Aircraft.pmdg777.MCP_IASMach.Value < 10)
-            {
-                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_IAS_MACH_SWITCH, Aircraft.ClkR);
-                _isAirspeedMode = false;
-            }
-            else
-            {
-                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_IAS_MACH_SWITCH, Aircraft.ClkL);
-                _isAirspeedMode = true;
-            }
-        } // End modeButton click.
+                                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_IAS_MACH_SWITCH, Aircraft.ClkL);
+                        } // End modeButton click.
 
         private void SpeedBox_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -233,7 +224,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
                     float.TryParse(speedTextBox.Text, out float mach);
                     FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_MACH_SET, PMDG777Aircraft.CalculateMachParameter(mach));
                 } // End mach.
-                else
+                else if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
                 {
                     int.TryParse(speedTextBox.Text, out int speed);
                     FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_IAS_SET, speed);

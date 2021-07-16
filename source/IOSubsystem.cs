@@ -1057,20 +1057,51 @@ namespace tfm
 
         private void ReadFlaps()
         {
-            if (Aircraft.Flaps.ValueChanged)
+            if (PMDG737Detected)
             {
-                FlapsMoving = true;
-            }
-            else
-            {
-                if (FlapsMoving)
+                if (Aircraft.pmdg737.MAIN_TEFlapsNeedle[0].ValueChanged)
                 {
-                    FlapsMoving = false;
-                    double FlapsAngle = (double)Aircraft.Flaps.Value / 256d;
+                    FlapsMoving = true;
+                                    } // value changed.
+                else
+                {
+                    if (FlapsMoving)
+                    {
+                        FlapsMoving = false;
+                        var gaugeName = "Flaps";
+                        var gaugeValue = PMDG737Aircraft.CurrentFlapsPosition.ToString();
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge);
+                    } // Flaps are moving.
+                } // Report flaps position.
+            } // PMDG 737.
+else              if (PMDG777Detected)
+            {
+                if (Aircraft.pmdg777.FCTL_Flaps_Lever.ValueChanged)
+                {
                     var gaugeName = "Flaps";
-                    var gaugeValue = FlapsAngle.ToString("f0");
+                    var gaugeValue = PMDG777Aircraft.CurrentFlapsPosition.ToString();
                     var isGauge = true;
                     Output(gaugeName, gaugeValue, isGauge);
+                } // flaps changed.
+            } // PMDG 777
+            else
+            {
+                if (Aircraft.Flaps.ValueChanged)
+                {
+                    FlapsMoving = true;
+                }
+                else
+                {
+                    if (FlapsMoving)
+                    {
+                        FlapsMoving = false;
+                        double FlapsAngle = (double)Aircraft.Flaps.Value / 256d;
+                        var gaugeName = "Flaps";
+                        var gaugeValue = FlapsAngle.ToString("f0");
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge);
+                    }
                 }
 
             }
@@ -2013,16 +2044,30 @@ namespace tfm
 
         private void onFlapsAngleKey()
         {
-            double FlapsAngle = (double)Aircraft.Flaps.Value / 256d;
             var gaugeName = "Flaps";
-            var gaugeValue = FlapsAngle.ToString("f0");
-            var isGauge = true;
-            Output(gaugeName, gaugeValue, isGauge);
+            if (PMDG737Detected)
+            {
+                var gaugeValue = PMDG737Aircraft.CurrentFlapsPosition.ToString();
+                var isGauge = true;
+                Output(gaugeName, gaugeValue, isGauge);
+            } // PMDG 737.
+             else if (PMDG777Detected)
+            {
+                var gaugeValue = PMDG777Aircraft.CurrentFlapsPosition.ToString();
+                var isGauge = true;
+                Output(gaugeName, gaugeValue, isGauge);
+            } // PMDG 777.
+            else
+            {
+
+                double FlapsAngle = (double)Aircraft.Flaps.Value / 256d;
+                var gaugeValue = FlapsAngle.ToString("f0");
+                var isGauge = true;
+                Output(gaugeName, gaugeValue, isGauge);
+            }
         }
 
-
-
-        private void onBrailleOutputKey()
+                       private void onBrailleOutputKey()
         {
             if (Properties.Settings.Default.OutputBraille)
             {
@@ -2583,6 +2628,23 @@ namespace tfm
                 var TOD = Math.Round(Aircraft.pmdg747.FMC_DistanceToTOD.Value, 0);
                 Output(isGauge: false, output: $"E D A: {distance}/T O D: {TOD}");
             }
+            else if (PMDG777Detected)
+            {
+                var TOD = Math.Round(Aircraft.pmdg777.FMC_DistanceToTOD.Value, 0);
+
+                if(TOD == 0 || TOD == -1)
+                {
+                    Output(isGauge: false, output: "Time to TOD not available.");
+                } // no TOD defined.
+                else if(TOD > 0)
+                {
+                    Output(isGauge: false, output: $"TOD: {TOD}/{PMDG777Aircraft.TimeToTOD.ToString(@"d\:h\:m\:s")}");
+                } // Aircraft is currently moving.
+                else if(groundSpeed == 0)
+                {
+                    Output(isGauge: false, output: "The aircraft is not in motion.");
+                } // Aircraft is at a standstill.
+            } // End PMDG 777.
             else
             {
 

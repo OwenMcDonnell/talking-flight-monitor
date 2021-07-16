@@ -12,6 +12,10 @@ namespace tfm
 {
 static class PMDG777Aircraft
     {
+        // Move all PMDG777 offsets to the private versions below.
+        private static PMDG_777X_Offsets _Offsets;
+        private static double groundSpeed = ((double) Aircraft.GroundSpeed.Value* 3600d) / (65536d * 1852d);
+
 
         // The MCP dialogs.
         private static System.Windows.Forms.Form speedBox = new tfm.PMDG.PMDG777.McpComponents.SpeedBox();
@@ -426,5 +430,60 @@ public static int CalculateVerticalSpeedParameter(ushort vs)
         {
             FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_HDG_TRK_SWITCH, Aircraft.ClkL);
         } // End ToggleHeadingTrack.
+
+        public static  TimeSpan TimeToDestination
+        {
+            get
+            {
+                groundSpeed = Math.Round(groundSpeed);
+                double time = Aircraft.pmdg777.FMC_DistanceToDest.Value / groundSpeed;
+                return TimeSpan.FromHours(time);
+            }
+                        } // End TimeToDestination
+
+        public static  TimeSpan TimeToTOD
+        {
+            get
+            {
+                groundSpeed = Math.Round(groundSpeed);
+                double time = Aircraft.pmdg777.FMC_DistanceToTOD.Value / groundSpeed;
+                                                                                    return TimeSpan.FromHours(time);
+                            }
+        } // End TimeToTOD
+
+public static byte CurrentFlapsPosition
+        {
+            get
+            {
+                byte flapPosition = 0;
+
+                switch (Aircraft.pmdg777.FCTL_Flaps_Lever.Value)
+                {
+                    case 0:
+                        flapPosition = 0;
+                        break;
+                    case 1:
+                        flapPosition = 1;
+                        break;
+                    case 2:
+                        flapPosition = 5;
+                        break;
+                    case 3:
+                        flapPosition = 15;
+                        break;
+                    case 4:
+                        flapPosition = 20;
+                        break;
+                    case 5:
+                        flapPosition = 25;
+                        break;
+                    case 6:
+                        flapPosition = 30;
+                        break;
+                }
+
+                return flapPosition;
+            }
+        } // End CurrentFlapsPosition.
     } // End PMDG777 class.
 } // End namespace.

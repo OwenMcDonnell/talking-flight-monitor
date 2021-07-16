@@ -76,8 +76,8 @@
     <Reference Include="BingMapsSDSToolkit, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BingMapsSDSToolkit.1.0.5\lib\net45\BingMapsSDSToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="FSUIPCClient, Version=3.1.27.344, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
-      <HintPath>packages\FSUIPCClientDLL.3.1.27\lib\net40\FSUIPCClient.dll</HintPath>
+    <Reference Include="fsuipcClient, Version=3.2.7.374, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
+      <HintPath>packages\FSUIPCClientDLL.3.2.7\lib\net40\fsuipcClient.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\KdTree.1.4.1\lib\net471\KdTreeLib.dll</HintPath>
@@ -185,7 +185,7 @@
       <HintPath>packages\NHotkey.WindowsForms.2.1.0\lib\net45\NHotkey.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>packages\NLog.4.7.9\lib\net45\NLog.dll</HintPath>
+      <HintPath>packages\NLog.4.7.10\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.4.976, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
@@ -212,6 +212,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -320,6 +321,7 @@
     <Compile Include="PMDG\Enums\PanelObjectType.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
+    <Compile Include="PMDG\PMDG 737\PMDG737Aircraft.cs" />
     <Compile Include="PMDG\PMDG 747\747CDU.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,12 +389,6 @@
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\iPanelsPage.cs" />
-    <Compile Include="PMDG\PMDG 737\frmPMDGCDU - Copy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\frmPMDGCDU - Copy.Designer.cs">
-      <DependentUpon>frmPMDGCDU - Copy.cs</DependentUpon>
-    </Compile>
     <Compile Include="PMDG\PMDG 737\737CDU.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,6 +413,7 @@
     <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.Designer.cs">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 747\PMDG747Aircraft.cs" />
     <Compile Include="PMDG\pmdg.cs" />
     <Compile Include="PMDG\PMDG747.cs" />
     <Compile Include="PMDG\PMDG777\777CDU.cs">
@@ -670,9 +667,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.resx">
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\frmPMDGCDU - Copy.resx">
-      <DependentUpon>frmPMDGCDU - Copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\737CDU.resx">
       <DependentUpon>737CDU.cs</DependentUpon>
