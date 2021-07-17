@@ -30,7 +30,7 @@ deploy:
   username: talkingflightmonitor
   password:
     secure: gsDOGtodux/gAPPDTybI5w==
-  folder: /var/www/html/talkingflightmonitor.com/public_html/snapshots
+  folder: /tfm-snapshots
 notifications:
 - provider: Email
   to:
