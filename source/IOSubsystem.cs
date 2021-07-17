@@ -1519,8 +1519,19 @@ else              if (PMDG777Detected)
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Altitude":
-
-                    if (PMDG777Detected)
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.MCPComponents["altitude"].Visible)
+                        {
+                            Output(isGauge: false, output: "The altitude box is already open!");
+                            PMDG737Aircraft.MCPComponents["altitude"].Focus();
+                        }
+                        else
+                        {
+                            PMDG737Aircraft.ShowAltitudeBox();
+                        }
+                    } // PMDG 737
+else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["altitude"].Visible)
                         {
@@ -1553,8 +1564,18 @@ else              if (PMDG777Detected)
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Heading":
-
-                    if (PMDG777Detected)
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.MCPComponents["heading"].Visible)
+                        {
+                            Output(isGauge: false, output: "The heading box is already open!");
+                        }
+                        else
+                        {
+                            PMDG737Aircraft.ShowHeadingBox();
+                        }
+                    }
+else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["heading"].Visible)
                         {
@@ -1580,7 +1601,18 @@ else              if (PMDG777Detected)
                     break;
 
                 case "ap_Set_Airspeed":
-                    if(PMDG777Detected)
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.MCPComponents["speed"].Visible)
+                        {
+                            Output(isGauge: false, output: "The speed box is already open!");
+                        }
+                        else
+                        {
+                            PMDG737Aircraft.ShowSpeedBox();
+                        }
+                    }
+                    else if(PMDG777Detected)
                     {
 
                         if(PMDG777Aircraft.McpComponents["speed"].Visible)
@@ -1620,8 +1652,18 @@ else              if (PMDG777Detected)
                     break;
 
                 case "ap_Set_Vertical_Speed":
-
-                    if (PMDG777Detected)
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.MCPComponents["vertical"].Visible)
+                        {
+                            Output(isGauge: false, output: "The vertical speed box is already open!");
+                        }
+                        else
+                        {
+                            PMDG737Aircraft.ShowVerticalSpeedBox();
+                        }
+                    }
+else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["vertical"].Visible)
                         {
