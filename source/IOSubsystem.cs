@@ -3693,6 +3693,7 @@ else if (PMDG777Detected)
             ReadToggle(Aircraft.pmdg737.MCP_annunN1, Aircraft.pmdg737.MCP_annunN1.Value > 0, "N1 light", "on", "off");
             // speed
             ReadToggle(Aircraft.pmdg737.MCP_annunSPEED, Aircraft.pmdg737.MCP_annunSPEED.Value > 0, "speed light", "on", "off");
+            ReadToggle(Aircraft.pmdg737.MCP_IASBlank, Aircraft.pmdg737.MCP_IASBlank.Value > 0, "speed box", "blank", "visible");
             // LNAV
             ReadToggle(Aircraft.pmdg737.MCP_annunLNAV, Aircraft.pmdg737.MCP_annunLNAV.Value > 0, "L Nav light", "on", "off");
             // VNAV
