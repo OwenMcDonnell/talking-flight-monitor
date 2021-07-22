@@ -447,6 +447,24 @@
       <DependentUpon>777CDU.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PanelObjects\PanelObject.cs" />
+    <Compile Include="PMDG\PMDG777\CockpitPanels\CockpitPanels_777.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\CockpitPanels_777.Designer.cs">
+      <DependentUpon>CockpitPanels_777.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.Designer.cs">
+      <DependentUpon>ctlElectrical_777.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.Designer.cs">
+      <DependentUpon>ctlMCP_777.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG777\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -718,6 +736,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\777CDU.resx">
       <DependentUpon>777CDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\CockpitPanels_777.resx">
+      <DependentUpon>CockpitPanels_777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.resx">
+      <DependentUpon>ctlElectrical_777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.resx">
+      <DependentUpon>ctlMCP_777.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>

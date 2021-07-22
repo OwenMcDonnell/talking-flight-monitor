@@ -1834,6 +1834,11 @@ else if (PMDG777Detected)
                         CockPitPanels_747 cp = new CockPitPanels_747();
                         cp.Show();
                     }
+                    else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("777"))
+                    {
+                        CockpitPanels_777 cp = new CockpitPanels_777();
+                        cp.Show();
+                    }
                     break;
 
                 default:
