@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TFMMainForm));
-            this.timerMain = new System.Windows.Forms.Timer(this.components);
-            this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.TFMMainMenu = new System.Windows.Forms.MenuStrip();
             this.PlanMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenPlanMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,20 +61,10 @@
             this.changeSpeedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeVerticalSpeedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dbLoadWorker = new System.ComponentModel.BackgroundWorker();
-            this.timerLowPriority = new System.Windows.Forms.Timer(this.components);
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TFMMainMenu.SuspendLayout();
             this.waypointsContextMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // timerMain
-            // 
-            this.timerMain.Tick += new System.EventHandler(this.timerMain_Tick);
-            // 
-            // timerConnection
-            // 
-            this.timerConnection.Interval = 1000;
-            this.timerConnection.Tick += new System.EventHandler(this.TimerConnection_Tick);
             // 
             // TFMMainMenu
             // 
@@ -396,11 +384,6 @@
             // 
             this.dbLoadWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dbLoadWorker_DoWork);
             // 
-            // timerLowPriority
-            // 
-            this.timerLowPriority.Interval = 1000;
-            this.timerLowPriority.Tick += new System.EventHandler(this.timerLowPriority_Tick);
-            // 
             // trayIcon
             // 
             this.trayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -442,8 +425,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timerMain;
-        private System.Windows.Forms.Timer timerConnection;
         private System.Windows.Forms.MenuStrip TFMMainMenu;
         private System.Windows.Forms.ToolStripMenuItem PlanMenu;
         private System.Windows.Forms.ToolStripMenuItem OpenPlanMenuItem;
@@ -464,7 +445,6 @@
         private System.Windows.Forms.ToolStripMenuItem KeyManagerMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CommandKeyMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hotkeyHelpMenuItem;
-        private System.Windows.Forms.Timer timerLowPriority;
         private System.Windows.Forms.ToolStripMenuItem ConnectMenuItem;
         private System.Windows.Forms.ContextMenuStrip waypointsContextMenu;
         private System.Windows.Forms.ToolStripMenuItem addWaypointContextMenuItem;

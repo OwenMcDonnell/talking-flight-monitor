@@ -66,7 +66,7 @@ namespace tfm
             this.contentPanel.Size = new System.Drawing.Size(1134, 742);
             this.contentPanel.TabIndex = 1;
             // 
-            // CockPitPanels_747
+            // CockpitPanels_777
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,8 +78,8 @@ namespace tfm
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "CockPitPanels_747";
-            this.Text = "747 cockpit panels";
+            this.Name = "CockpitPanels_777";
+            this.Text = "777 Cockpit Panels";
             this.ResumeLayout(false);
 
         }

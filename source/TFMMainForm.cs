@@ -22,6 +22,7 @@ using System.Speech.Synthesis;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using System.Collections;
+using System.Timers;
 
 namespace tfm
 {
@@ -29,6 +30,10 @@ namespace tfm
     {
         // get a logger object for this class
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+        // set up timers
+        System.Timers.Timer TimerMain = new System.Timers.Timer(100);
+        System.Timers.Timer TimerConnection = new System.Timers.Timer(1000);
+        System.Timers.Timer TimerLowPriority = new System.Timers.Timer(1000);
 
         // Create a counter for the connection timer.
         private int connectionCounter = 0;
@@ -59,14 +64,17 @@ namespace tfm
 
 
             // Start the connection timer to look for a flight sim
-            this.timerConnection.Start();
+            TimerConnection.Elapsed += TimerConnection_Tick;
+            this.TimerConnection.AutoReset = true;
+            this.TimerConnection.Start();
 
         }
 
+        
 
 
         // This method is called every 1 second by the connection timer.
-        private void TimerConnection_Tick(object sender, EventArgs e)
+        private void TimerConnection_Tick(object sender, ElapsedEventArgs e)
         {
 
             // The connection counter prevents excessive instances of an error
@@ -79,9 +87,13 @@ namespace tfm
                 FSUIPCConnection.Open();
 
                 // If there was no problem, stop this timer and start the main timer
-                this.timerConnection.Stop();
-                this.timerMain.Start();
-                this.timerLowPriority.Start();
+                this.TimerConnection.Stop();
+                this.TimerMain.Elapsed += TimerMain_Tick;
+                this.TimerMain.AutoReset = true;
+                this.TimerMain.Start();
+                this.TimerLowPriority.Elapsed += TimerLowPriority_Tick;
+                this.TimerLowPriority.AutoReset = true;
+                this.TimerLowPriority.Start();
                 // load airport database
                 inst.Speak("loading airport database");
                 dbLoadWorker.RunWorkerAsync();
@@ -103,13 +115,13 @@ namespace tfm
                 {
                     Tolk.Output("Connection timed out. See the TFM log for more details. Please restart TFM or manually connect to continue.");
                     logger.Debug("Connection timeout: The simulator or fsuipc are not running. Make sure they are running before starting TFM.");
-                    this.timerConnection.Stop();
+                    this.TimerConnection.Stop();
                 }
             }
         }
 
         // This method runs 10 times per second (every 100ms). This is set on the timerMain properties.
-        private void timerMain_Tick(object sender, EventArgs e)
+        private void TimerMain_Tick(object sender, ElapsedEventArgs e)
         {
             // Call process() to read/write data to/from FSUIPC
             // We do this in a Try/Catch block incase something goes wrong
@@ -137,15 +149,15 @@ namespace tfm
             catch (Exception ex)
             {
                 // An error occured. Tell the user and stop this timer.
-                this.timerMain.Stop();
+                this.TimerMain.Stop();
                 logger.Debug($"High priority instruments failed to read: {ex.Message}");
                 // Update the connection status
                 // start the connection timer
-                this.timerConnection.Start();
+                this.TimerConnection.Start();
             }
         }
         // second 200 MS timer for lower priority instruments, or instruments that don't work well on 100 MS
-        private void timerLowPriority_Tick(object sender, EventArgs e)
+        private void TimerLowPriority_Tick(object sender, ElapsedEventArgs e)
         {
             try
             {
@@ -155,11 +167,11 @@ namespace tfm
             catch (Exception ex)
             {
                 // Stop the timer.
-                this.timerLowPriority.Stop();
+                this.TimerLowPriority.Stop();
 
                 // Make a log entry since notifying the user is pointless.
                 logger.Debug($"Low priority instruments failed to read. Probable causes include simulator shutdown, loss of network access, or a fsuipc problem. {ex.Message}");
-                this.timerConnection.Start();
+                this.TimerConnection.Start();
             }
         }
 
@@ -167,8 +179,9 @@ namespace tfm
         // Form is closing so stop all the timers and close FSUIPC Connection
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.timerConnection.Stop();
-            this.timerMain.Stop();
+            this.TimerConnection.Stop();
+            this.TimerMain.Stop();
+            this.TimerLowPriority.Stop();
             FSUIPCConnection.Close();
         }
 
@@ -302,7 +315,7 @@ namespace tfm
             // Reset the connection counter so logging errors work.
             connectionCounter = 0;
             Tolk.Output("Attempting to connect...");
-            this.timerConnection.Start();
+            this.TimerConnection.Start();
         }
 
         private void FuelMenuItem_Click(object sender, EventArgs e)

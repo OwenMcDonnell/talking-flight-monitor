@@ -154,6 +154,7 @@ namespace tfm
         private void ctlElectrical_777_Load(object sender, EventArgs e)
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 500;
                                      timer.Tick += new EventHandler(TimerTick);
              timer.Start();
 
@@ -366,6 +367,9 @@ namespace tfm
             }
         }
 
+        
+                
+            
         private void extPwr1Button_Click(object sender, EventArgs e)
         {
             if(Aircraft.pmdg777.ELEC_ExtPwrSw[0].Value == 0)
