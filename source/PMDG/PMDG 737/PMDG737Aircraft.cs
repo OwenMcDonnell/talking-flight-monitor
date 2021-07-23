@@ -12,8 +12,7 @@ namespace tfm
 public static class PMDG737Aircraft
     {
 
-        private static double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
-        private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new PMDG.PMDG737.McpComponents.AltitudeBox();
+                private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new PMDG.PMDG737.McpComponents.AltitudeBox();
         private static tfm.PMDG.PMDG737.McpComponents.SpeedBox speedBox = new PMDG.PMDG737.McpComponents.SpeedBox();
         private static tfm.PMDG.PMDG737.McpComponents.HeadingBox headingBox = new PMDG.PMDG737.McpComponents.HeadingBox();
         private static tfm.PMDG.PMDG737.McpComponents.VerticalSpeedBox verticalSpeedBox = new PMDG.PMDG737.McpComponents.VerticalSpeedBox();
@@ -36,6 +35,7 @@ public static class PMDG737Aircraft
         {
             get
             {
+                double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
                 groundSpeed = Math.Round(groundSpeed);
                 double time = Aircraft.pmdg737.FMC_DistanceToDest.Value / groundSpeed;
                 return TimeSpan.FromHours(time);
@@ -46,6 +46,7 @@ public static class PMDG737Aircraft
         {
             get
             {
+                double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
                 groundSpeed = Math.Round(groundSpeed);
                 double time = Aircraft.pmdg737.FMC_DistanceToTOD.Value / groundSpeed;
                                 return TimeSpan.FromHours(time);
@@ -130,7 +131,7 @@ public static void ShowAltitudeBox()
 
         public static void SpeedIntervene()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_SPEED_SWITCH, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_SPD_INTV_SWITCH, Aircraft.ClkL);
         } // SpeedIntervene
 
         public static void ShowSpeedBox()

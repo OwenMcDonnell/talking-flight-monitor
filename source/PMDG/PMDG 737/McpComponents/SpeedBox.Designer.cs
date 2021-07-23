@@ -126,6 +126,7 @@ namespace tfm.PMDG.PMDG737.McpComponents
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "SpeedBox";
             this.Text = "Speed box";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SpeedBox_FormClosing);
             this.Load += new System.EventHandler(this.SpeedBox_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SpeedBox_KeyDown);
