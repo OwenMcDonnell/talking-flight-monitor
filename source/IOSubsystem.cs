@@ -3654,6 +3654,9 @@ else if (PMDG777Detected)
 
         private void ReadPMDG737Toggles()
         {
+
+            // Flare light as a test.
+            ReadToggle(Aircraft.pmdg737.HGS_annun_FLARE, Aircraft.pmdg737.HGS_annun_FLARE.Value > 0, "Flare light", "on", "off");
             // electrical panel
             ReadPMDGToggle(Aircraft.pmdg737.ELEC_BatSelector, Aircraft.pmdg737.ELEC_BatSelector.Value > 0, "Battery", "active", "off");
             ReadToggle(Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE, Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE.Value > 0, "bat discharge light", "on", "off");

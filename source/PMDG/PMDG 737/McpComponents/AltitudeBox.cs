@@ -159,6 +159,11 @@ namespace tfm.PMDG.PMDG737.McpComponents
                 e.SuppressKeyPress = true;
                 altitudeTextBox.Focus();
             }
+            if(e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                Hide();
+            }
         } // End AltitudeBox key down event.
     } // End AltitudeBox.
     } // End namespace.

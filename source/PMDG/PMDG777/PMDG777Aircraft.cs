@@ -13,11 +13,7 @@ namespace tfm
 static class PMDG777Aircraft
     {
         // Move all PMDG777 offsets to the private versions below.
-        private static PMDG_777X_Offsets _Offsets;
-        private static double groundSpeed = ((double) Aircraft.GroundSpeed.Value* 3600d) / (65536d * 1852d);
-
-
-        // The MCP dialogs.
+                // The MCP dialogs.
         private static System.Windows.Forms.Form speedBox = new tfm.PMDG.PMDG777.McpComponents.SpeedBox();
         private static System.Windows.Forms.Form altitudeBox = new tfm.PMDG.PMDG777.McpComponents.AltitudeBox();
         private static System.Windows.Forms.Form headingBox = new tfm.PMDG.PMDG777.McpComponents.HeadingBox();
@@ -435,6 +431,7 @@ public static int CalculateVerticalSpeedParameter(ushort vs)
         {
             get
             {
+                double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
                 groundSpeed = Math.Round(groundSpeed);
                 double time = Aircraft.pmdg777.FMC_DistanceToDest.Value / groundSpeed;
                 return TimeSpan.FromHours(time);
@@ -445,6 +442,7 @@ public static int CalculateVerticalSpeedParameter(ushort vs)
         {
             get
             {
+                double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
                 groundSpeed = Math.Round(groundSpeed);
                 double time = Aircraft.pmdg777.FMC_DistanceToTOD.Value / groundSpeed;
                                                                                     return TimeSpan.FromHours(time);

@@ -68,6 +68,11 @@ namespace tfm.PMDG.PMDG737.McpComponents
                 e.SuppressKeyPress = true;
                 vsFpaTextBox.Focus();
             }
+            if(e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                Hide();
+            }
         } // End key down event.
 
                 private void vsFpaTextBox_KeyDown(object sender, KeyEventArgs e)
