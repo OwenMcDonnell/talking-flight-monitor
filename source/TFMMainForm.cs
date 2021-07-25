@@ -19,8 +19,6 @@ using tfm.Keyboard_manager;
 using NLog;
 using NLog.Config;
 using System.Speech.Synthesis;
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
 using System.Collections;
 using System.Timers;
 
