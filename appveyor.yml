@@ -4,7 +4,6 @@ branches:
   - master
 nuget:
   project_feed: true
-platform: x86
 configuration: Debug
 
 environment:
