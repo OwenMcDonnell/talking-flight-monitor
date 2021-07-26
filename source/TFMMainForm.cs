@@ -37,6 +37,7 @@ namespace tfm
         private int connectionCounter = 0;
 
 
+
         private readonly IOSubsystem inst = new IOSubsystem();
 
         private readonly bool AzureSpeaking = false;
@@ -121,6 +122,8 @@ namespace tfm
         // This method runs 10 times per second (every 100ms). This is set on the timerMain properties.
         private void TimerMain_Tick(object sender, ElapsedEventArgs e)
         {
+            // stop the timer so we don't tick again while this method is running
+            TimerMain.Stop();
             // Call process() to read/write data to/from FSUIPC
             // We do this in a Try/Catch block incase something goes wrong
             try
@@ -153,10 +156,14 @@ namespace tfm
                 // start the connection timer
                 this.TimerConnection.Start();
             }
+            // we're finished this tick, so restart the timer
+            TimerMain.Start();
         }
         // second 200 MS timer for lower priority instruments, or instruments that don't work well on 100 MS
         private void TimerLowPriority_Tick(object sender, ElapsedEventArgs e)
         {
+            // stop the timer so we don't tick again on another thread
+            TimerLowPriority.Stop();
             try
             {
                 FSUIPCConnection.Process("LowPriority");
@@ -171,6 +178,7 @@ namespace tfm
                 logger.Debug($"Low priority instruments failed to read. Probable causes include simulator shutdown, loss of network access, or a fsuipc problem. {ex.Message}");
                 this.TimerConnection.Start();
             }
+            TimerLowPriority.Start();
         }
 
 
