@@ -231,6 +231,7 @@ namespace tfm
         private bool PMDG737Detected;
         private bool PMDG747Detected;
         private bool PMDG777Detected;
+        private bool PMDGInitializing;
 
         public IOSubsystem()
         {
@@ -416,7 +417,7 @@ namespace tfm
                 if (Properties.Settings.Default.ReadGroundSpeed) ReadGroundSpeed();
                 readAutopilotAltitude();
                 if (Properties.Settings.Default.AltitudeAnnouncements) ReadAltitudeAnnouncement();
-                if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
+                
                 ReadTransponder();
                 ReadRadios();
                 ReadAutoBrake();
@@ -547,6 +548,7 @@ namespace tfm
             ReadToggle(Aircraft.Eng2FuelValve, Aircraft.Eng2FuelValve.Value > 0, "number 2 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng3FuelValve, Aircraft.Eng3FuelValve.Value > 0, "number 3 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng4FuelValve, Aircraft.Eng4FuelValve.Value > 0, "number 4 fuel valve", "open", "closed");
+            if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
 
 
         }
@@ -1357,8 +1359,24 @@ else              if (PMDG777Detected)
                     }
                     else
                     {
-                        if (Aircraft.textMenu.Message == "") return;
-                        Output(isGauge: false, output: Aircraft.textMenu.Message);
+                        if (Aircraft.textMenu.Message.Contains("Initialising All Systems") && PMDGInitializing == false)
+                        {
+                            PMDGInitializing = true;
+                            Output(isGauge: false, output: "Initializing all systems. ");
+
+
+                        }
+                        if (Aircraft.textMenu.Message == "")
+                        {
+                            PMDGInitializing = false;
+                            return;
+                        }
+
+                        if (PMDGInitializing == false)
+                        {
+                            Output(isGauge: false, output: Aircraft.textMenu.Message);
+                        }
+
                     }
 
                 }

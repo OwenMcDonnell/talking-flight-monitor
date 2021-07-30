@@ -1,4 +1,5 @@
 ﻿using tfm.PMDG;
+using tfm.PMDG.PanelObjects;
 using FSUIPC;
 using DavyKager;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace tfm
 {
-public static class PMDG737Aircraft
+static class PMDG737Aircraft
     {
 
                 private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new PMDG.PMDG737.McpComponents.AltitudeBox();
@@ -29,6 +30,221 @@ public static class PMDG737Aircraft
                 };
         }
 
+        /* State dictionaries -
+ * The state dictionaries are designed
+ * to make creating panel objects eaiser. Each dictionary
+ * is a list of 'states' each panel control
+ * will look for. The result is found in
+ *the panel object's CurrentState property. Each list
+ *below is named with the byte = 1 item first, then
+ *the byte = 0 item last. Where more than two
+ *values are present for a panel object state, it is named after the panel control. EX:
+ *_backupPowerStates is used with the backup power switch. */
+
+        private static Dictionary<byte, string> _onOrOffStates = new Dictionary<byte, string>()
+        {
+            {0, "off" },
+            {1, "on" },
+        };
+
+        private static Dictionary<byte, string> _offOrOnStates = new Dictionary<byte, string>
+        {
+            {0, "on" },
+            {1, "off" },
+        };
+        private static Dictionary<byte, string> _autoOrOffStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "auto" },
+        };
+
+        private static Dictionary<byte, string> _standbyPowerStates = new Dictionary<byte, string>
+        {
+            { 0, "off" },
+            {1, "auto" },
+            {2, "battery" },
+        };
+
+        private static Dictionary<byte, string> _testOrOffStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "test" },
+        };
+        private static Dictionary<byte, string> _batteryOrOffStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "battery" },
+        };
+
+        private static Dictionary<byte, string> _cargoTempStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "low" },
+            {2, "high" },
+        };
+
+        private static Dictionary<byte, string> _apuStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "on" },
+            {2, "start" },
+        };
+        private static Dictionary<byte, string> _IRSDisplaySelectorStates = new Dictionary<byte, string>
+        {
+            { 0, "position 1" },
+            {1, "position 2" },
+            {2, "position 3" },
+            {3, "position 4" },
+            {4, "position 5" },
+        };
+        private static Dictionary<byte, string> _IRSSysDisplayStates = new Dictionary<byte, string>
+        {
+            { 0, "left" },
+            {1, "right" },
+        };
+
+        private static Dictionary<byte, string> _momentaryControlState = new Dictionary<byte, string>
+        {
+            {1, "pressed" },
+        };
+
+        private static Dictionary<byte, string> _connectOrDisconnectStates = new Dictionary<byte, string>
+        {
+            {0, "disconnected" },
+            {1, "connected" },
+        };
+
+        private static Dictionary<byte, string> _availableOrUnavailableStates = new Dictionary<byte, string>
+        {
+            {0, "unavailable" },
+            {1, "available" },
+        };
+
+        private static Dictionary<byte, string> _wiperStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "intermittent" },
+            {2, "low" },
+            {3, "high" },
+        };
+
+        private static Dictionary<byte, string> _armedOnOrOffStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "armed" },
+            {2, "on" },
+        };
+
+        private static Dictionary<byte, string> _autoOnOrOffStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {1, "auto" },
+            {2, "on" },
+        };
+
+        private static Dictionary<byte, string> _indoorLightTestStates = new Dictionary<byte, string>
+        {
+            {0, "test" },
+            {1, "bright" },
+            {2, "dim" },
+        };
+
+        private static Dictionary<byte, string> _apuFireHandleStates = new Dictionary<byte, string>
+        {
+            {0, "normal" },
+            {1, "pulled" },
+            {2, "turned left" }, // Momentary position.
+            {3, "turned right" }, // Momentary position.
+        };
+
+        private static Dictionary<byte, string> _engineStartModeStates = new Dictionary<byte, string>
+        {
+            {0, "start" },
+            {1, "normal" },
+        };
+
+        private static Dictionary<byte, string> _fuelToRemainStates = new Dictionary<byte, string>
+        {
+            {0, "pushed" },
+            {1, "pulled" },
+        };
+
+        private static Dictionary<byte, string> _fuelSelectorStates = new Dictionary<byte, string>
+        {
+            {0, "decrease" },
+            {1, "neutral" },
+            {2, "increase" },
+        };
+
+        private static Dictionary<byte, string> _neutralClosedOrOpenStates = new Dictionary<byte, string>
+        {
+            {0, "opened" },
+            {1, "neutral" },
+            {2, "closed" },
+        };
+
+        private static Dictionary<byte, string> _neutralIncreaseOrDecrease = new Dictionary<byte, string>
+        {
+            {0, "decrease" },
+            {1, "neutral" },
+            {2, "increase" },
+        };
+
+        public static PanelObject[] PanelControls
+        {
+            get => new PanelObject[]
+            {
+                new SingleStateToggle { 
+                    Name = "IRS Display Selector", 
+                    PanelName = "Aft Overhead", 
+                    PanelSection = "ADIRU", 
+                    Offset = Aircraft.pmdg737.IRS_DisplaySelector, 
+                    Type = PanelObjectType.Switch, 
+                    Verbosity = AircraftVerbosity.Medium, 
+                    AvailableStates = _IRSDisplaySelectorStates 
+                },
+                new SingleStateToggle {
+                    Name = "IRS Display switch",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Offset = Aircraft.pmdg737.IRS_SysDisplay_R,
+                    Type = PanelObjectType.Switch,
+                    Verbosity = AircraftVerbosity.Medium,
+                    AvailableStates = _IRSSysDisplayStates 
+                },
+                new SingleStateToggle {
+                    Name = "IRS GPS light",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Offset = Aircraft.pmdg737.IRS_annunGPS,
+                    Type = PanelObjectType.Annunciator,
+                    Verbosity = AircraftVerbosity.Medium,
+                    AvailableStates = _onOrOffStates 
+                },
+                new SingleStateToggle {
+                    Name = "IRS left aligned",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Offset = Aircraft.pmdg737.IRS_aligned[0],
+                    Type = PanelObjectType.Annunciator,
+                    Verbosity = AircraftVerbosity.Medium,
+                    AvailableStates = _onOrOffStates
+                },
+                new SingleStateToggle {
+                    Name = "IRS right aligned",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Offset = Aircraft.pmdg737.IRS_aligned[1],
+                    Type = PanelObjectType.Annunciator,
+                    Verbosity = AircraftVerbosity.Medium,
+                    AvailableStates = _onOrOffStates
+                },
+
+
+            };
+        }
+
+                
 
 
         public static TimeSpan TimeToDestination
