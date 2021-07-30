@@ -29,7 +29,42 @@ public static class PMDG737Aircraft
                 };
         }
 
+        
+public static AircraftSystem SpeedMode
+        {
+            get => Aircraft.pmdg737.MCP_IASBlank.Value == 1 ? AircraftSystem.FMC : AircraftSystem.MCP;
+                    } // SpeedMode
 
+        public static AircraftSpeed SpeedType
+        {
+            get => Aircraft.pmdg737.MCP_IASMach.Value < 10 ? AircraftSpeed.Mach : AircraftSpeed.Indicated;
+        } // SpeedType
+
+        public static double MachSpeed
+        {
+            get
+            {
+                double speed = 0;
+                if(Aircraft.pmdg737.MCP_IASMach.Value < 10)
+                {
+                    speed = Math.Round((Aircraft.pmdg737.MCP_IASMach.Value % 1), 2);
+                }
+                return speed;
+            }
+        } // MachSpeed
+
+        public static double IndicatedAirSpeed
+        {
+            get
+            {
+                double speed = 0;
+                if(Aircraft.pmdg737.MCP_IASMach.Value >= 10)
+                {
+                    speed = Aircraft.pmdg737.MCP_IASMach.Value;
+                }
+                return speed;
+            }
+        } // IndicatedAirSpeed
 
         public static TimeSpan TimeToDestination
         {
@@ -138,5 +173,24 @@ public static void ShowAltitudeBox()
         {
             MCPComponents["speed"].Show();
         } // ShowSpeedBox
+
+        public static string GetMCPHeadingComponents()
+        {
+            string navigationAid = string.Empty;
+            if (Aircraft.pmdg737.MCP_annunHDG_SEL.Value == 1 && Aircraft.pmdg737.MCP_annunLNAV.Value == 1)
+            {
+                navigationAid = "Combined";
+            }
+
+            else if (Aircraft.pmdg737.MCP_annunHDG_SEL.Value == 1)
+                {
+                    navigationAid = "HDG SEL";
+                            }// HDG SEL
+else                 if (Aircraft.pmdg737.MCP_annunLNAV.Value == 1)
+                {
+                    navigationAid = "LNav";
+                            }
+            return $"MCP heading {Aircraft.pmdg737.MCP_Heading.Value} {navigationAid}";
+        } // GetMCPHeadingComponents
                     } // End PMDG737Aircraft.
 } // End namespace.

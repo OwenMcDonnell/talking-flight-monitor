@@ -1167,10 +1167,9 @@ else              if (PMDG777Detected)
                 if (Aircraft.pmdg737.MCP_Heading.ValueChanged)
                 {
                     gaugeName = "AP heading";
-                    gaugeValue = Aircraft.pmdg737.MCP_Heading.Value.ToString();
+                    gaugeValue = $"MCP heading {Aircraft.pmdg737.MCP_Heading.Value}";
                     Output(gaugeName, gaugeValue, isGauge);
-
-                }
+                                    }
             }
             if (PMDG747Detected)
             {
@@ -1205,10 +1204,13 @@ else              if (PMDG777Detected)
             {
                 if (Aircraft.pmdg737.MCP_IASMach.ValueChanged)
                 {
-                    gaugeName = "AP airspeed";
-                    gaugeValue = Aircraft.pmdg737.MCP_IASMach.Value.ToString();
-                    Output(gaugeName, gaugeValue, isGauge);
+                    if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
+                    {
 
+                        gaugeName = "AP airspeed";
+                        gaugeValue = Aircraft.pmdg737.MCP_IASMach.Value.ToString();
+                        Output(gaugeName, gaugeValue, isGauge);
+                    }
                 }
             }
             if (PMDG747Detected)
@@ -1559,8 +1561,15 @@ else if (PMDG777Detected)
 
                 case "ap_Get_Heading":
                     gaugeName = "AP heading";
-                    gaugeValue = Autopilot.ApHeading.ToString();
-                    if (Autopilot.ApHeadingLock) gaugeValue = " hold " + gaugeValue;
+                    if (PMDG737Detected)
+                    {
+                        gaugeValue = PMDG737Aircraft.GetMCPHeadingComponents();
+                    } // PMDG 737
+                    else
+                    {
+                        gaugeValue = Autopilot.ApHeading.ToString();
+                        if (Autopilot.ApHeadingLock) gaugeValue = " hold " + gaugeValue;
+                                            } // Freeware
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Heading":
@@ -3951,10 +3960,19 @@ else if (PMDG777Detected)
                         break;
 
                     case "AP heading":
-                        Speak($"heading {gaugeValue}. ");
-                        braille($"hdg: {gaugeValue}\n");
-                        history.AddItem($"{gaugeName}: {gaugeValue}\n");
-                        break;
+                        if (PMDG737Detected || PMDG747Detected || PMDG777Detected)
+                        {
+                            Speak($"{gaugeValue}");
+                            braille($"{gaugeValue}");
+                            history.AddItem($"{gaugeValue}");
+                        }
+                        else
+                        {
+                            Speak($"heading {gaugeValue}. ");
+                            braille($"hdg: {gaugeValue}\n");
+                            history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        }
+                                                break;
 
                     case "AP airspeed":
                         Speak($"{gaugeValue} knotts. ");

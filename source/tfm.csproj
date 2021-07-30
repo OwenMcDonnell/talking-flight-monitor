@@ -314,8 +314,10 @@
       <DependentUpon>frmOutputHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="OutputHistory\OutputHistory.cs" />
+    <Compile Include="PMDG\Enums\AircraftSystem.cs" />
     <Compile Include="PMDG\Enums\AircraftVerbosity.cs" />
     <Compile Include="PMDG\Enums\PanelObjectType.cs" />
+    <Compile Include="PMDG\Enums\AircraftSpeed.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
     <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
