@@ -1201,20 +1201,25 @@ else              if (PMDG777Detected)
                 Output(gaugeName, gaugeValue, isGauge);
             }
 
-            // airspeed
+            // speed
             if (PMDG737Detected)
             {
                 if (Aircraft.pmdg737.MCP_IASMach.ValueChanged)
                 {
                     if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
                     {
-
-                        gaugeName = "AP airspeed";
-                        gaugeValue = Aircraft.pmdg737.MCP_IASMach.Value.ToString();
+                                                gaugeName = "AP airspeed";
+                        gaugeValue = PMDG737Aircraft.IndicatedAirSpeed.ToString(); ;
                         Output(gaugeName, gaugeValue, isGauge);
-                    }
+                    } // airspeed
+                    else if(PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
+                    {
+                        gaugeName = "AP mach";
+                        gaugeValue = PMDG737Aircraft.MachSpeed.ToString();
+                        Output(gaugeName, gaugeValue, isGauge);
+                    } // mach speed
                 }
-            }
+            } // PMDG737
             if (PMDG747Detected)
             {
                 if (Aircraft.pmdg747.MCP_IASMach.ValueChanged)
@@ -1247,7 +1252,7 @@ else              if (PMDG777Detected)
                 gaugeValue = Autopilot.ApAirspeed.ToString();
                 Output(gaugeName, gaugeValue, isGauge);
             }
-            // vertical speed
+                        // vertical speed
             if (Aircraft.ApVerticalSpeed.ValueChanged)
             {
                 gaugeName = "AP vertical speed";
@@ -1534,8 +1539,18 @@ else              if (PMDG777Detected)
 
                 case "ap_Get_Altitude":
                     gaugeName = "AP altitude";
-                    gaugeValue = Autopilot.ApAltitude.ToString();
-                    if (Autopilot.ApAltitudeLock) gaugeValue = " hold " + gaugeValue;
+
+                    if (PMDG737Detected)
+                    {
+                        gaugeValue = PMDG737Aircraft.GetMCPAltitudeComponents();
+                    } // PMDG737
+                    else
+                    {
+
+                        gaugeValue = Autopilot.ApAltitude.ToString();
+                        if (Autopilot.ApAltitudeLock) gaugeValue = " hold " + gaugeValue;
+                    }
+
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Altitude":
@@ -1622,8 +1637,22 @@ else if (PMDG777Detected)
 
                 case "ap_Get_Airspeed":
                     gaugeName = "AP airspeed";
-                    gaugeValue = Autopilot.ApAirspeed.ToString();
-                    if (Autopilot.ApAirspeedHold) gaugeValue = " hold " + gaugeValue;
+                    gaugeValue = string.Empty;
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
+                        {
+                            gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
+                        }
+                    } // PMDG737
+
+                    // freeware.
+                    else
+                    {
+                        gaugeValue = Autopilot.ApAirspeed.ToString();
+                        if (Autopilot.ApAirspeedHold) gaugeValue = " hold " + gaugeValue;
+                    } // freeware
+
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
 
@@ -1661,14 +1690,42 @@ else if (PMDG777Detected)
 
                 case "ap_Get_Mach_Speed":
                     gaugeName = "AP mach";
-                    gaugeValue = Autopilot.ApMachSpeed.ToString();
-                    if (Autopilot.ApMachHold) gaugeValue = " hold " + gaugeValue;
+                    gaugeValue = string.Empty;
+                                        if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
+                        {
+                            gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
+                        } // MachSpeed
+                    } // PMDG737
+
+                    // freeware
+                    else
+                    {
+                        gaugeValue = Autopilot.ApMachSpeed.ToString();
+                        if (Autopilot.ApMachHold) gaugeValue = " hold " + gaugeValue;
+                    } // freeware
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
 
                 case "ap_Set_Mach_Speed":
-                    ap = new frmAutopilot("Mach");
-                    ap.ShowDialog();
+
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.MCPComponents["speed"].Visible == false)
+                        {
+                            PMDG737Aircraft.ShowSpeedBox();
+                        }
+                        else
+                        {
+                            Output(isGauge: false, output: "The speed box is already open!");
+                        }
+                    } // PMDG737
+                    else
+                    {
+                        ap = new frmAutopilot("Mach");
+                        ap.ShowDialog();
+                    }
                     break;
 
                 case "ap_Get_Vertical_Speed":
@@ -3993,15 +4050,34 @@ else if (PMDG777Detected)
                                                 break;
 
                     case "AP airspeed":
-                        Speak($"{gaugeValue} knotts. ");
-                        braille($"{gaugeName}: {gaugeValue}\n");
-                        history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        if (PMDG737Detected || PMDG747Detected || PMDG777Detected)
+                        {
+                            Speak(gaugeValue);
+                            braille(gaugeValue);
+                            history.AddItem(gaugeValue);
+                        } // PMDG
+                        else
+                        {
+                            Speak($"{gaugeValue} knotts. ");
+                            braille($"{gaugeName}: {gaugeValue}\n");
+                            history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        }
                         break;
 
                     case "AP mach":
-                        Speak($"Mach {gaugeValue}");
-                        braille($"{gaugeName}: {gaugeValue}\n");
-                        history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        if (PMDG737Detected || PMDG747Detected || PMDG777Detected)
+                        {
+                            Speak(gaugeValue);
+                            braille(gaugeValue);
+                            history.AddItem(gaugeValue);
+                        } // PMDG
+                        else
+                        {
+
+                            Speak($"Mach {gaugeValue}");
+                            braille($"{gaugeName}: {gaugeValue}\n");
+                            history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        }
                         break;
 
                     case "AP vertical speed":
@@ -4011,9 +4087,18 @@ else if (PMDG777Detected)
                         break;
 
                     case "AP altitude":
-                        Speak($"{gaugeName}: {gaugeValue} feet. ");
-                        braille($"{gaugeName}: {gaugeValue}\n");
-                        history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        if (PMDG737Detected || PMDG747Detected || PMDG777Detected)
+                        {
+                            Speak(gaugeValue);
+                            braille(gaugeValue);
+                            history.AddItem(gaugeValue);
+                        } // PMDG
+                        else
+                        {
+                            Speak($"{gaugeName}: {gaugeValue} feet. ");
+                            braille($"{gaugeName}: {gaugeValue}\n");
+                            history.AddItem($"{gaugeName}: {gaugeValue}\n");
+                        }
                         break;
 
 
