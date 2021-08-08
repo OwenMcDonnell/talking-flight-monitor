@@ -15,6 +15,9 @@ namespace tfm
         // =====================================
         // DECLARE OFFSETS YOU WANT TO USE HERE
         // =====================================
+        public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
+        public static Offset<byte> simulatorTimeMinutes = new Offset<byte>(0x0239);
+        public static Offset<byte> simulatorTimeSeconds = new Offset<byte>(0x023A);
         public static Offset<short> SimPauseControl = new Offset<short>(0x0262);
         public static Offset<short> SimPauseIndicator = new Offset<short>(0x0264);
         public static Offset<short> SimSoundFlag = new Offset<short>(0x0b24);

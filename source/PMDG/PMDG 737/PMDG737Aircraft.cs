@@ -431,31 +431,34 @@ else                 if (Aircraft.pmdg737.MCP_annunLNAV.Value == 1)
         {
             string navigationAID = string.Empty;
             string controllingComponent = string.Empty;
+            string FDUoutput = string.Empty;
             double speed = 0.0;
 
             if(SpeedMode == AircraftSystem.FMC)
             {
-                controllingComponent = "FMC";
+                FDUoutput = "FMC speed";
             }
             else if(SpeedMode == AircraftSystem.MCP)
             {
                 controllingComponent = "MCP";
-            }
+                if (SpeedType == AircraftSpeed.Indicated)
+                {
+                    speed = IndicatedAirSpeed;
+                }
+                else if (SpeedType == AircraftSpeed.Mach)
+                {
+                    speed = MachSpeed;
+                }
 
-            if(SpeedType == AircraftSpeed.Indicated)
-            {
-                speed = IndicatedAirSpeed;
-            }
-            else if(SpeedType == AircraftSpeed.Mach)
-            {
-                speed = MachSpeed;
-            }
+                if (Aircraft.pmdg737.MCP_annunSPEED.Value == 1)
+                {
+                    navigationAID = "HOLD";
+                }
 
-            if(Aircraft.pmdg737.MCP_annunSPEED.Value == 1)
-            {
-                navigationAID = "SPD HLD";
+                FDUoutput = $"{controllingComponent} speed {speed} {navigationAID}";
             }
-            return $"{controllingComponent} SPD {speed} {navigationAID}";
-        } // GetMCPSpeedComponents
+            return FDUoutput;
+
+                                           } // GetMCPSpeedComponents
                     } // End PMDG737Aircraft.
 } // End namespace.

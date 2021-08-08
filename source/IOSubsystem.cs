@@ -1939,6 +1939,9 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "LocalTime":
+                    ReadSimulatorTime();
+                    break;
                 case "distanceToDescent":
                     onTODKey();
                     break;
@@ -4208,7 +4211,19 @@ else if (PMDG777Detected)
             {
                 Tolk.Braille(output);
             }
-        }
+        } // Braille
+
+        private void ReadSimulatorTime()
+        {
+            
+
+            Speak($"{Aircraft.simulatorTimeHours.Value}:{Aircraft.simulatorTimeMinutes.Value}:{Aircraft.simulatorTimeSeconds.Value}");
+        } // ReadSimulatorTime
+
+        private void ReadSimulatorZuluTime()
+        {
+
+        } // ReadSimulatorZuluTime
 
     } // End IOSubsystem class
 } // End TFM namespace.
