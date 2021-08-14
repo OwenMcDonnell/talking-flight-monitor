@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace tfm
 {
-static class PMDG737Aircraft
+    static class PMDG737Aircraft
     {
 
-                private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new PMDG.PMDG737.McpComponents.AltitudeBox();
+        private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new PMDG.PMDG737.McpComponents.AltitudeBox();
         private static tfm.PMDG.PMDG737.McpComponents.SpeedBox speedBox = new PMDG.PMDG737.McpComponents.SpeedBox();
         private static tfm.PMDG.PMDG737.McpComponents.HeadingBox headingBox = new PMDG.PMDG737.McpComponents.HeadingBox();
         private static tfm.PMDG.PMDG737.McpComponents.VerticalSpeedBox verticalSpeedBox = new PMDG.PMDG737.McpComponents.VerticalSpeedBox();
@@ -189,19 +189,27 @@ static class PMDG737Aircraft
             {1, "neutral" },
             {2, "increase" },
         };
-
+        private static Dictionary<byte, string> _irsModeSelect = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            { 1, "align" },
+            { 2, "nav" },
+            { 3, "Att" }
+        };
         public static PanelObject[] PanelControls
         {
             get => new PanelObject[]
             {
-                new SingleStateToggle { 
-                    Name = "IRS Display Selector", 
-                    PanelName = "Aft Overhead", 
-                    PanelSection = "ADIRU", 
-                    Offset = Aircraft.pmdg737.IRS_DisplaySelector, 
-                    Type = PanelObjectType.Switch, 
-                    Verbosity = AircraftVerbosity.Medium, 
-                    AvailableStates = _IRSDisplaySelectorStates 
+                // Aft Forward Panel
+                // ADIRU
+                new SingleStateToggle {
+                    Name = "IRS Display Selector",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Offset = Aircraft.pmdg737.IRS_DisplaySelector,
+                    Type = PanelObjectType.Switch,
+                    Verbosity = AircraftVerbosity.Medium,
+                    AvailableStates = _IRSDisplaySelectorStates
                 },
                 new SingleStateToggle {
                     Name = "IRS Display switch",
@@ -210,7 +218,7 @@ static class PMDG737Aircraft
                     Offset = Aircraft.pmdg737.IRS_SysDisplay_R,
                     Type = PanelObjectType.Switch,
                     Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _IRSSysDisplayStates 
+                    AvailableStates = _IRSSysDisplayStates
                 },
                 new SingleStateToggle {
                     Name = "IRS GPS light",
@@ -219,7 +227,7 @@ static class PMDG737Aircraft
                     Offset = Aircraft.pmdg737.IRS_annunGPS,
                     Type = PanelObjectType.Annunciator,
                     Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _onOrOffStates 
+                    AvailableStates = _onOrOffStates
                 },
                 new SingleStateToggle {
                     Name = "IRS left aligned",
@@ -239,17 +247,118 @@ static class PMDG737Aircraft
                     Verbosity = AircraftVerbosity.Medium,
                     AvailableStates = _onOrOffStates
                 },
+                new SingleStateToggle
+                {
+                    Name = "IRS on DC - left",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Annunciator,
+                    Offset = Aircraft.pmdg737.IRS_annunON_DC[0],
+                    Verbosity = AircraftVerbosity.High,
+                    AvailableStates = _onOrOffStates,
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS on DC - right",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Annunciator,
+                    Offset = Aircraft.pmdg737.IRS_annunON_DC[1],
+                    Verbosity = AircraftVerbosity.High,
+                    AvailableStates = _onOrOffStates,
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS left fault light",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Annunciator,
+                    Offset = Aircraft.pmdg737.IRS_annunFAULT[0],
+                    Verbosity = AircraftVerbosity.High,
+                    AvailableStates = _onOrOffStates,
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS right fault light",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Annunciator,
+                    Offset = Aircraft.pmdg737.IRS_annunFAULT[1],
+                    Verbosity = AircraftVerbosity.High,
+                    AvailableStates = _onOrOffStates,
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS left  DC failure light",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Annunciator,
+                    Offset = Aircraft.pmdg737.IRS_annunDC_FAIL[0],
+                    Verbosity = AircraftVerbosity.High,
+                    AvailableStates = _onOrOffStates,
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS right DC failure light",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Annunciator,
+                    Offset = Aircraft.pmdg737.IRS_annunDC_FAIL[1],
+                    Verbosity = AircraftVerbosity.High,
+                    AvailableStates = _onOrOffStates,
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS left mode selector",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Switch,
+                    Offset = Aircraft.pmdg737.IRS_ModeSelector[0],
+                    Verbosity = AircraftVerbosity.Low,
+                    AvailableStates = _irsModeSelect,
+
+                },
+                new SingleStateToggle
+                {
+                    Name = "IRS right mode selector",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "ADIRU",
+                    Type = PanelObjectType.Switch,
+                    Offset = Aircraft.pmdg737.IRS_ModeSelector[1],
+                    Verbosity = AircraftVerbosity.Low,
+                    AvailableStates = _irsModeSelect,
+                },
+                // PSEU
+                new SingleStateToggle
+                {
+                    Name = "PSEU warning light",
+                    PanelName = "Aft Overhead",
+                    PanelSection = "PSEU",
+                    Type = PanelObjectType.Annunciator,
+                    Verbosity = AircraftVerbosity.Medium,
+                    AvailableStates = _onOrOffStates,
+                    Offset = Aircraft.pmdg737.WARN_annunPSEU,
+                },
+
+
+
+
+
+
+
+
+
 
 
             };
         }
 
-                
-        
-public static AircraftSystem SpeedMode
+
+
+        public static AircraftSystem SpeedMode
         {
             get => Aircraft.pmdg737.MCP_IASBlank.Value == 1 ? AircraftSystem.FMC : AircraftSystem.MCP;
-                    } // SpeedMode
+        } // SpeedMode
 
         public static AircraftSpeed SpeedType
         {
@@ -261,7 +370,7 @@ public static AircraftSystem SpeedMode
             get
             {
                 double speed = 0;
-                if(Aircraft.pmdg737.MCP_IASMach.Value < 10)
+                if (Aircraft.pmdg737.MCP_IASMach.Value < 10)
                 {
                     speed = Math.Round((Aircraft.pmdg737.MCP_IASMach.Value % 1), 2);
                 }
@@ -274,7 +383,7 @@ public static AircraftSystem SpeedMode
             get
             {
                 double speed = 0;
-                if(Aircraft.pmdg737.MCP_IASMach.Value >= 10)
+                if (Aircraft.pmdg737.MCP_IASMach.Value >= 10)
                 {
                     speed = Aircraft.pmdg737.MCP_IASMach.Value;
                 }
@@ -300,7 +409,7 @@ public static AircraftSystem SpeedMode
                 double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
                 groundSpeed = Math.Round(groundSpeed);
                 double time = Aircraft.pmdg737.FMC_DistanceToTOD.Value / groundSpeed;
-                                return TimeSpan.FromHours(time);
+                return TimeSpan.FromHours(time);
             }
         } // End TimeToTOD.
 
@@ -338,7 +447,7 @@ public static AircraftSystem SpeedMode
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_ALT_SET, altitude);
         } // SetAltitude
 
-public static void ShowAltitudeBox()
+        public static void ShowAltitudeBox()
         {
             MCPComponents["altitude"].Show();
         } // ShowAltitudeBox.
@@ -399,14 +508,14 @@ public static void ShowAltitudeBox()
             }
 
             else if (Aircraft.pmdg737.MCP_annunHDG_SEL.Value == 1)
-                {
-                    navigationAid = "HDG SEL";
-                            }// HDG SEL
-else                 if (Aircraft.pmdg737.MCP_annunLNAV.Value == 1)
-                {
-                    navigationAid = "LNav";
-                            }
+            {
+                navigationAid = "HDG SEL";
+            }// HDG SEL
+            else if (Aircraft.pmdg737.MCP_annunLNAV.Value == 1)
+            {
+                navigationAid = "LNav";
+            }
             return $"MCP heading {Aircraft.pmdg737.MCP_Heading.Value} {navigationAid}";
         } // GetMCPHeadingComponents
-                    } // End PMDG737Aircraft.
+    } // End PMDG737Aircraft.
 } // End namespace.
