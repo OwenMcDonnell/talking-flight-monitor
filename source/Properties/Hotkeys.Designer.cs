@@ -1051,5 +1051,41 @@ namespace tfm.Properties {
                 this["distanceToDescent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F10")]
+        public global::System.Windows.Forms.Keys LocalTime {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["LocalTime"]));
+            }
+            set {
+                this["LocalTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F11")]
+        public global::System.Windows.Forms.Keys ZuluTime {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ZuluTime"]));
+            }
+            set {
+                this["ZuluTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F12")]
+        public global::System.Windows.Forms.Keys AutoCruise {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["AutoCruise"]));
+            }
+            set {
+                this["AutoCruise"] = value;
+            }
+        }
     }
 }

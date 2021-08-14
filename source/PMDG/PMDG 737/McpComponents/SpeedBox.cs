@@ -21,8 +21,7 @@ namespace tfm.PMDG.PMDG737.McpComponents
             InitializeComponent();
 
             // Timer for tracking MCP switches and values.
-            speedTimer.Interval = 200;
-                        speedTimer.Tick += new EventHandler(SpeedTimerTick);
+                                    speedTimer.Tick += new EventHandler(SpeedTimerTick);
             speedTimer.Start();
         } // End SpeedBox constructor,.
 
@@ -37,25 +36,22 @@ namespace tfm.PMDG.PMDG737.McpComponents
                 switch (Aircraft.pmdg737.MCP_IASBlank.Value)
                 {
                                                         case 1:
-                        speedTextBox.Text = string.Empty;
-                        speedButton.Text = "&Intervene off";
-                        speedButton.AccessibleName = "Intervene off";
+                        speedTextBox.Text = "[FMC speed]";
+                        speedButton.Text = "&Speed [FMC]";
+                        speedButton.AccessibleName = "Speed [FMC]";
                         break;
                     case 0:
-                                                                            if (Aircraft.pmdg737.MCP_IASMach.Value > 10)
+                                                                            if (PMDG737Aircraft.SpeedType == AircraftSpeed.Mach)
                             {
-                                speedTextBox.Text = Aircraft.pmdg737.MCP_IASMach.Value.ToString();
-                                speedButton.Text = "&Intervene on";
-                                speedButton.AccessibleName = "Intervene on";
+                                speedTextBox.Text = PMDG737Aircraft.MachSpeed.ToString();
+                                speedButton.Text = "&Speed [MCP]";
+                                speedButton.AccessibleName = "Speed [MCP]";
                             }
-                             if (Aircraft.pmdg737.MCP_IASMach.Value < 10)
+                             else if(PMDG737Aircraft.SpeedType == AircraftSpeed.Indicated)
                             {
-                                double machSpeed = Aircraft.pmdg737.MCP_IASMach.Value % 1;
-                                machSpeed = Math.Round(machSpeed, 2);
-
-                                speedTextBox.Text = machSpeed.ToString();
-                                speedButton.Text = "&Intervene on";
-                                speedButton.AccessibleName = "Intervene on";
+                            speedTextBox.Text = PMDG737Aircraft.IndicatedAirSpeed.ToString();
+                                speedButton.Text = "&Speed [MCP]";
+                                speedButton.AccessibleName = "Speed [MCP]";
                             }
 
                                                                             break;                        
@@ -82,29 +78,27 @@ namespace tfm.PMDG.PMDG737.McpComponents
         {
 
             // Set initial values for the form.
-                                       if(Aircraft.pmdg737.MCP_IASBlank.Value == 1)
+                                       if(PMDG737Aircraft.SpeedMode == AircraftSystem.FMC)
             {
-                speedTextBox.Text = string.Empty;
-                speedButton.Text = "&Intervene off";
-                speedButton.AccessibleName = "Interveen off";
+                speedTextBox.Text = "[FMC speed]";
+                speedButton.Text = "Speed [FMC]";
+                speedButton.AccessibleName = "Speed [FMC]";
             }
             else
             {
-                if (Aircraft.pmdg737.MCP_IASMach.Value < 10)
+                if (PMDG737Aircraft.SpeedType == AircraftSpeed.Mach)
                 {
-                    double machSpeed = Math.Round((Aircraft.pmdg737.MCP_IASMach.Value % 1), 2);
-                    speedTextBox.Text = machSpeed.ToString();
-                    speedButton.Text = "&Intervene on";
-                    speedButton.AccessibleName = "Intervene on";
+                    speedTextBox.Text = PMDG737Aircraft.MachSpeed.ToString();
+                    speedButton.Text = "&Speed [MCP]";
+                    speedButton.AccessibleName = "Speed [MCP]";
 
                 }
-                else if (Aircraft.pmdg737.MCP_IASMach.Value > 10)
+                else if (PMDG737Aircraft.SpeedType == AircraftSpeed.Indicated)
                 {
-                    speedTextBox.Text = Aircraft.pmdg737.MCP_IASMach.Value.ToString();
-                    speedButton.Text = "&Intervene on";
-                    speedButton.AccessibleName = "Intervene on";
-
-                }
+                    speedTextBox.Text = PMDG737Aircraft.IndicatedAirSpeed.ToString();
+                    speedButton.Text = "&Speed [MCP]";
+                    speedButton.AccessibleName = "Speed [MCP]";
+                                    }
             }
                         
             if(Aircraft.pmdg737.MCP_ATArmSw.Value == 0)
@@ -131,6 +125,10 @@ namespace tfm.PMDG.PMDG737.McpComponents
         private void speedButton_Click(object sender, EventArgs e)
         {
             PMDG737Aircraft.SpeedIntervene();
+            if(PMDG737Aircraft.SpeedMode == AircraftSystem.FMC)
+            {
+                speedTextBox.Text = "[FMC speed]";
+            }
                    }
 
         private void autoThrottleLButton_Click(object sender, EventArgs e)
@@ -152,13 +150,13 @@ namespace tfm.PMDG.PMDG737.McpComponents
                         if(e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-                if (Aircraft.pmdg737.MCP_IASMach.Value < 10)
+                if (PMDG737Aircraft.SpeedType == AircraftSpeed.Mach)
                 {
                     float.TryParse(speedTextBox.Text, out float mach);
                     var machParameter = (int)(mach / .01);
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_MACH_SET, machParameter);
                 } // End mach.
-                if(Aircraft.pmdg737.MCP_IASMach.Value > 10)
+                if(PMDG737Aircraft.SpeedType == AircraftSpeed.Indicated)
                 {
                     short.TryParse(speedTextBox.Text, out short speed);
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_IAS_SET, speed);

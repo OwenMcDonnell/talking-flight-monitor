@@ -260,5 +260,14 @@
     <Setting Name="distanceToDescent" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Shift+D</Value>
     </Setting>
+    <Setting Name="LocalTime" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F10</Value>
+    </Setting>
+    <Setting Name="ZuluTime" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F11</Value>
+    </Setting>
+    <Setting Name="AutoCruise" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F12</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

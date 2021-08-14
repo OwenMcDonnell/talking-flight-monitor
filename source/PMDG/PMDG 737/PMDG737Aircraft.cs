@@ -517,5 +517,57 @@ namespace tfm
             }
             return $"MCP heading {Aircraft.pmdg737.MCP_Heading.Value} {navigationAid}";
         } // GetMCPHeadingComponents
-    } // End PMDG737Aircraft.
+
+        public static string GetMCPAltitudeComponents()
+        {
+            string navigationAid = string.Empty;
+            if(Aircraft.pmdg737.MCP_annunALT_HOLD.Value == 1)
+            {
+                navigationAid = "hold";
+            }
+            else if(Aircraft.pmdg737.MCP_annunLVL_CHG.Value == 1)
+            {
+                navigationAid = "level change";
+            }
+            else if(Aircraft.pmdg737.MCP_annunVNAV.Value == 1)
+            {
+                navigationAid = "VNav";
+            }
+            return $"MCP altitude {Aircraft.pmdg737.MCP_Altitude.Value} feet {navigationAid}";
+        } // GetMCPAltitudeComponents
+
+        public static string GetMCPSpeedComponents()
+        {
+            string navigationAID = string.Empty;
+            string controllingComponent = string.Empty;
+            string FDUoutput = string.Empty;
+            double speed = 0.0;
+
+            if(SpeedMode == AircraftSystem.FMC)
+            {
+                FDUoutput = "FMC speed";
+            }
+            else if(SpeedMode == AircraftSystem.MCP)
+            {
+                controllingComponent = "MCP";
+                if (SpeedType == AircraftSpeed.Indicated)
+                {
+                    speed = IndicatedAirSpeed;
+                }
+                else if (SpeedType == AircraftSpeed.Mach)
+                {
+                    speed = MachSpeed;
+                }
+
+                if (Aircraft.pmdg737.MCP_annunSPEED.Value == 1)
+                {
+                    navigationAID = "HOLD";
+                }
+
+                FDUoutput = $"{controllingComponent} speed {speed} {navigationAID}";
+            }
+            return FDUoutput;
+
+                                           } // GetMCPSpeedComponents
+                    } // End PMDG737Aircraft.
 } // End namespace.
