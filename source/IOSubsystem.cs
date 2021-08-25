@@ -411,7 +411,7 @@ namespace tfm
                 ReadToggle(Aircraft.BatteryMaster, Aircraft.BatteryMaster.Value > 0, "Battery Master", "active", "off");
                 // TODO: add check for a2a since below toggles aren't needed for a2a
                 ReadToggle(Aircraft.FuelPump, Aircraft.FuelPump.Value > 0, "Fuel pump", "active", "off");
-                if (Properties.Settings.Default.ReadFlaps) ReadFlaps();
+
                 ReadLandingGear();
                 if (Properties.Settings.Default.ReadAutopilot) ReadAutopilotInstruments();
                 if (Properties.Settings.Default.ReadGroundSpeed) ReadGroundSpeed();
@@ -549,7 +549,7 @@ namespace tfm
             ReadToggle(Aircraft.Eng3FuelValve, Aircraft.Eng3FuelValve.Value > 0, "number 3 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng4FuelValve, Aircraft.Eng4FuelValve.Value > 0, "number 4 fuel valve", "open", "closed");
             if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
-
+            if (Properties.Settings.Default.ReadFlaps) ReadFlaps();
 
         }
         private void readOnGround()
