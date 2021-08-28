@@ -107,7 +107,7 @@ namespace tfm
             {
                 if (connectionCounter <= 5)
                 {
-                    logger.Debug($"Connection failed [attempt #{connectionCounter}]: {ex.Message}");
+                    logger.Debug($"Connection failed [attempt #{connectionCounter}]: {ex.Message}: {ex.Source}:{ex.StackTrace}");
                     //logger.Debug($"Inner exception {ex.InnerException.Message}");
                 }
                 else if (connectionCounter == 35)
