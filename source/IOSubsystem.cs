@@ -417,7 +417,7 @@ namespace tfm
                 if (Properties.Settings.Default.ReadGroundSpeed) ReadGroundSpeed();
                 readAutopilotAltitude();
                 if (Properties.Settings.Default.AltitudeAnnouncements) ReadAltitudeAnnouncement();
-                
+
                 ReadTransponder();
                 ReadRadios();
                 ReadAutoBrake();
@@ -455,15 +455,15 @@ namespace tfm
 
                     //ReadPMDG747Toggles();
                     ReadPmdgFMCMessage();
-                                                        } // End read 747 toggles.
-                    if(PMDG777Detected)
+                } // End read 747 toggles.
+                if (PMDG777Detected)
                 {
-                    foreach(tfm.PMDG.PanelObjects.PanelObject control in PMDG777Aircraft.PanelControls)
+                    foreach (tfm.PMDG.PanelObjects.PanelObject control in PMDG777Aircraft.PanelControls)
                     {
-                                                                        if(control.Offset.ValueChanged)
+                        if (control.Offset.ValueChanged)
                         {
                             SingleStateToggle toggle = (SingleStateToggle)control;
-                                                                                    Output(isGauge: false, output: control.ToString());
+                            Output(isGauge: false, output: control.ToString());
                         }
                     }
                     ReadPmdgFMCMessage();
@@ -548,9 +548,8 @@ namespace tfm
             ReadToggle(Aircraft.Eng3FuelValve, Aircraft.Eng3FuelValve.Value > 0, "number 3 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng4FuelValve, Aircraft.Eng4FuelValve.Value > 0, "number 4 fuel valve", "open", "closed");
             if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
-                                }
+        }
 
-                 }
         private void readOnGround()
         {
             if (Aircraft.OnGround.ValueChanged)
