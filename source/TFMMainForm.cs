@@ -151,7 +151,7 @@ namespace tfm
             {
                 // An error occured. Tell the user and stop this timer.
                 this.TimerMain.Stop();
-                logger.Debug($"High priority instruments failed to read: {ex.Message}");
+                logger.Debug($"High priority instruments failed to read: {ex.Message}: {ex.StackTrace}");
                 // Update the connection status
                 // start the connection timer
                 this.TimerConnection.Start();
@@ -175,7 +175,7 @@ namespace tfm
                 this.TimerLowPriority.Stop();
 
                 // Make a log entry since notifying the user is pointless.
-                logger.Debug($"Low priority instruments failed to read. Probable causes include simulator shutdown, loss of network access, or a fsuipc problem. {ex.Message}");
+                logger.Debug($"Low priority instruments failed to read: {ex.Message}: {ex.StackTrace}");
                 this.TimerConnection.Start();
             }
             TimerLowPriority.Start();

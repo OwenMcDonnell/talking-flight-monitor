@@ -20,9 +20,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
         {
             InitializeComponent();
 
-            verticalSpeedTimer.Tick += new EventHandler(TimerTick);
-            verticalSpeedTimer.Start();
-            Tolk.Load();
+                       Tolk.Load();
         } // End constructor.
 
         private void TimerTick(object Sender, EventArgs eventArgs)
@@ -59,7 +57,10 @@ namespace tfm.PMDG.PMDG777.McpComponents
 
         private void VerticalSpeedBox_Load(object sender, EventArgs e)
         {
-            if(Aircraft.pmdg777.MCP_VSDial_Mode.Value == 0)
+            verticalSpeedTimer.Tick += new EventHandler(TimerTick);
+            verticalSpeedTimer.Start();
+
+            if (Aircraft.pmdg777.MCP_VSDial_Mode.Value == 0)
             {
                                                                             vsFpaTextBox.AccessibleName = "Vertical speed";
                                                 modeButton.Text = "&Mode [VS]";

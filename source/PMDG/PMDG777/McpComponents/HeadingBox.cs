@@ -21,10 +21,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
         {
             InitializeComponent();
             Tolk.Load();
-
-            headingTimer.Tick += new EventHandler(TimerTick);
-            headingTimer.Start();
-        } // End constructor.
+                               } // End constructor.
 
         private void TimerTick(object Sender, EventArgs eventArgs)
         {
@@ -82,6 +79,9 @@ namespace tfm.PMDG.PMDG777.McpComponents
 
         private void HeadingBox_Load(object sender, EventArgs e)
         {
+            headingTimer.Tick += new EventHandler(TimerTick);
+            headingTimer.Start();
+
             hdgTrkTextBox.Text = Aircraft.pmdg777.MCP_Heading.Value.ToString();
 
             if (Aircraft.pmdg777.MCP_HDGDial_Mode.Value == 0)

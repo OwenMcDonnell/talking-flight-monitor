@@ -14,10 +14,10 @@ static class PMDG777Aircraft
     {
         // Move all PMDG777 offsets to the private versions below.
                 // The MCP dialogs.
-        private static System.Windows.Forms.Form speedBox = new tfm.PMDG.PMDG777.McpComponents.SpeedBox();
-        private static System.Windows.Forms.Form altitudeBox = new tfm.PMDG.PMDG777.McpComponents.AltitudeBox();
-        private static System.Windows.Forms.Form headingBox = new tfm.PMDG.PMDG777.McpComponents.HeadingBox();
-        private static System.Windows.Forms.Form verticalSpeedBox = new tfm.PMDG.PMDG777.McpComponents.VerticalSpeedBox();
+        private static tfm.PMDG.PMDG777.McpComponents.SpeedBox speedBox = new tfm.PMDG.PMDG777.McpComponents.SpeedBox();
+        private static tfm.PMDG.PMDG777.McpComponents.AltitudeBox altitudeBox = new tfm.PMDG.PMDG777.McpComponents.AltitudeBox();
+        private static tfm.PMDG.PMDG777.McpComponents.HeadingBox headingBox = new tfm.PMDG.PMDG777.McpComponents.HeadingBox();
+        private static tfm.PMDG.PMDG777.McpComponents.VerticalSpeedBox verticalSpeedBox = new tfm.PMDG.PMDG777.McpComponents.VerticalSpeedBox();
 
 
 /* State dictionaries -
@@ -391,7 +391,7 @@ new SingleStateToggle{Name = "FWD outflow valve selector", PanelName = "Overhead
 new SingleStateToggle{Name = "AFT outflow valve selector", PanelName = "Overhead", PanelSection = "Pressurization", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.AIR_OutflowValveManual_Selector[1], AvailableStates = _neutralClosedOrOpenStates},
 new SingleStateToggle{Name = "Landing altitude pressurization", PanelName = "Overhead", PanelSection = "Pressurization", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.AIR_LdgAlt_Sw_Pulled, AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Landing altitude", PanelName = "Overhead", PanelSection = "Pressurization", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.AIR_LdgAlt_Selector, AvailableStates = _neutralIncreaseOrDecrease},
-new SingleStateToggle{Name = "Autobreak", PanelName = "Forward", PanelSection = "Center", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.BRAKES_AutobrakeSelector, AvailableStates = _autoBreakStates},
+new SingleStateToggle{Name = "Autobrake", PanelName = "Forward", PanelSection = "Center", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.BRAKES_AutobrakeSelector, AvailableStates = _autoBreakStates},
 new SingleStateToggle{Name = "Left Flight director", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_FD_Sw_On[0], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Right Flight director", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_FD_Sw_On[1], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Left autothrottle", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_ATArm_Sw_On[0], AvailableStates = _onOrOffStates},
@@ -421,7 +421,7 @@ new SingleStateToggle{Name = "Right stabalizer", PanelName = "Control stand", Pa
 new SingleStateToggle{Name = "Alternate pitch", PanelName = "Control stand", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.FCTL_AltnPitch_Lever, AvailableStates = _downNeutralOrUpStates},
 new SingleStateToggle{Name = "Left fuel valve", PanelName = "Control stand", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.ENG_FuelControl_Sw_RUN[0], AvailableStates = _openOrClosedStates},
 new SingleStateToggle{Name = "Right fuel valve", PanelName = "Control stand", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.ENG_FuelControl_Sw_RUN[1], AvailableStates = _openOrClosedStates},
-new SingleStateToggle{Name = "Speedbrake", PanelName = "Control stand", PanelSection = "Brakes", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FCTL_Speedbrake_Lever, AvailableStates = null},
+//new SingleStateToggle{Name = "Speedbrake", PanelName = "Control stand", PanelSection = "Brakes", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FCTL_Speedbrake_Lever, AvailableStates = null},
 //new SingleStateToggle{Name = "Captain's receiver", PanelName = "Aft aisle stand", PanelSection = "Audio", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_ReceiverSwitches_NEW[0], AvailableStates =_audioFrequencySelectorStates},
 //new SingleStateToggle{Name = "First officer's receiver", PanelName = "Aft aisle stand", PanelSection = "Audio", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_ReceiverSwitches_NEW[1], AvailableStates =_audioFrequencySelectorStates},
 //new SingleStateToggle{Name = "Observer's receiver", PanelName = "Aft aisle stand", PanelSection = "Audio", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_ReceiverSwitches_NEW[2], AvailableStates =_audioFrequencySelectorStates},

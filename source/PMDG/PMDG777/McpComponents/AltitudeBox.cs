@@ -18,9 +18,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
         public AltitudeBox()
         {
             InitializeComponent();
-            altitudeTimer.Tick += new EventHandler(AltitudeTimerTick);
-            altitudeTimer.Start();
-            Tolk.Load();
+                        Tolk.Load();
         } // End constructor.
 
         private void AltitudeTimerTick(object Sender, EventArgs eventArgs)
@@ -78,6 +76,9 @@ namespace tfm.PMDG.PMDG777.McpComponents
 
         private void AltitudeBox_Load(object sender, EventArgs e)
         {
+            altitudeTimer.Tick += new EventHandler(AltitudeTimerTick);
+            altitudeTimer.Start();
+
             altitudeTextBox.Text = Aircraft.pmdg777.MCP_Altitude.Value.ToString();
             if (Aircraft.pmdg777.MCP_annunALT_HOLD.Value == 0)
             {

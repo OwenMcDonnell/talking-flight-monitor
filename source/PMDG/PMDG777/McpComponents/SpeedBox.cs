@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
 {
     public partial class SpeedBox : Form
     {
-        System.Windows.Forms.Timer speedTimer = new System.Windows.Forms.Timer();
+        Timer speedTimer = new Timer();
         private bool _isAirspeedMode = true;
 
 
@@ -23,11 +23,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
         public SpeedBox()
         {
             InitializeComponent();
-
-            // Timer for tracking MCP switches and values.
-                        speedTimer.Tick += new EventHandler(SpeedTimerTick);
-            speedTimer.Start();
-        } // End SpeedBox constructor,.
+                    } // End SpeedBox constructor,.
 
         private void SpeedTimerTick(object Sender, EventArgs eventArgs)
         {
@@ -35,7 +31,38 @@ namespace tfm.PMDG.PMDG777.McpComponents
             // Only look for changes as to not paralize a screen reader when
             // using the controls.
 
-            if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
+            // New way of getting offsets. Only get the ones required for speed.
+foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
+            {
+                if(toggle.Name == "Autobrake")
+                {
+                    switch (toggle.CurrentState.Key)
+                    {
+                        case 0:
+                            autoBrakeRTORadioButton.CheckedChanged -= autoBrakeRTORadioButton_CheckedChanged;
+                            autoBrakeRTORadioButton.Checked = true;
+                            autoBrakeRTORadioButton.CheckedChanged += autoBrakeRTORadioButton_CheckedChanged;
+                            break;
+                        case 1:
+                            autoBrakeOffRadioButton.Checked = true;
+                            break;
+                        case 2:
+                            autoBrakeDisarmRadioButton.Checked = true;
+                            break;
+                        case 3:
+                            autoBrakeMinimumRadioButton.Checked = true;
+                            break;
+                        case 4:
+                            autoBrakeMediumRadioButton.Checked = true;
+                            break;
+                        case 5:
+                            autoBrakeMaximumRadioButton.Checked = true;
+                            break;
+                    }
+                } // Autobrake
+            }
+                                        
+            if (Aircraft.pmdg777.MCP_IASMach.Value > 10)
             {
                 if(Aircraft.pmdg777.MCP_IASMach.ValueChanged)
                 {
@@ -100,9 +127,35 @@ namespace tfm.PMDG.PMDG777.McpComponents
 
         private void SpeedBox_Load(object sender, EventArgs e)
         {
+            speedTimer.Tick += new EventHandler(SpeedTimerTick);
+            speedTimer.Interval = 100;
+            speedTimer.Start();
+
+            var autoBrake = (tfm.PMDG.PanelObjects.SingleStateToggle)PMDG777Aircraft.PanelControls.Where(x => x.Name == "Autobrake").ToArray()[0];
 
             // Set initial values for the form.
-            if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
+            switch (autoBrake.CurrentState.Key)
+            {
+                case 0:
+                    autoBrakeRTORadioButton.Checked = true;
+                    break;
+                case 1:
+                    autoBrakeOffRadioButton.Checked = true;
+                    break;
+                case 2:
+                    autoBrakeDisarmRadioButton.Checked = true;
+                    break;
+                case 3:
+                    autoBrakeMinimumRadioButton.Checked = true;
+                    break;
+                case 4:
+                    autoBrakeMediumRadioButton.Checked = true;
+                    break;
+                case 5:
+                    autoBrakeMaximumRadioButton.Checked = true;
+                    break;
+            } // Autobrake.
+                        if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
             {
                 speedTextBox.Text = Aircraft.pmdg777.MCP_IASMach.Value.ToString();
             } // End airspeed mode.
@@ -239,6 +292,54 @@ namespace tfm.PMDG.PMDG777.McpComponents
                 e.SuppressKeyPress = true;
                 speedTextBox.Focus();
             }
-        } // End SpeedBox key down event.
+                    } // End SpeedBox key down event.
+
+        private void autoBrakeRTORadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoBrakeRTORadioButton.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 0);
+            }
+        }// autoBrakeRTORadioButton_CheckedChanged.
+
+        private void autoBrakeOffRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoBrakeOffRadioButton.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 1);
+            }
+        } // autoBrakeOffRadioButton_CheckChanged
+
+        private void autoBrakeDisarmRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoBrakeDisarmRadioButton.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 2);
+            }
+        } // autoBrakeDisarmRadioButton_CheckedChanged.
+
+        private void autoBrakeMinimumRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoBrakeMinimumRadioButton.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 3);
+            }
+        } // autoBrakeMinimumRadioButton_CheckedChanged
+
+        private void autoBrakeMediumRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoBrakeMediumRadioButton.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 4);
+            }
+        } // autoBrakeMediumRadioButton_CheckedChanged.
+
+        private void autoBrakeMaximumRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoBrakeMaximumRadioButton.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 5);
+            }
+        } // autoBrakeMaximumRadioButton_CheckedChanged
     } // End SpeedBox form.
 } // End namespace.

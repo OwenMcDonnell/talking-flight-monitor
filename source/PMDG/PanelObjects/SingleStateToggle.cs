@@ -49,19 +49,8 @@ namespace tfm.PMDG.PanelObjects
         public override string ToString()
         {
             string output = string.Empty;
-            if(this.Name == "Speedbrake")
-            {
-                if(_offset.Value > 25)
-                {
-                    var percent = Math.Truncate((double)((_offset.Value - 26) * 100) / (100 - 26));
-                    output = $"{this.Name} {percent}%";
-                }
-                            } // Speedbrake
-            else
-            {
-                output = $"{this.Name} {this.CurrentState.Value}";
-            }
-            return output;
+                                        output = $"{this.Name} {this.CurrentState.Value}";
+                        return output;
                                             } // End ToString.
            } // End SingleStateToggle.
 }// End namespace.
