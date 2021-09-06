@@ -42,21 +42,31 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
                             autoBrakeRTORadioButton.CheckedChanged -= autoBrakeRTORadioButton_CheckedChanged;
                             autoBrakeRTORadioButton.Checked = true;
                             autoBrakeRTORadioButton.CheckedChanged += autoBrakeRTORadioButton_CheckedChanged;
-                            break;
+                                                        break;
                         case 1:
+                            autoBrakeOffRadioButton.CheckedChanged -= autoBrakeOffRadioButton_CheckedChanged;
                             autoBrakeOffRadioButton.Checked = true;
+                            autoBrakeOffRadioButton.CheckedChanged += autoBrakeOffRadioButton_CheckedChanged;
                             break;
                         case 2:
+                            autoBrakeDisarmRadioButton.CheckedChanged -= autoBrakeDisarmRadioButton_CheckedChanged;
                             autoBrakeDisarmRadioButton.Checked = true;
+                            autoBrakeDisarmRadioButton.CheckedChanged += autoBrakeDisarmRadioButton_CheckedChanged;
                             break;
                         case 3:
+                            autoBrakeMinimumRadioButton.CheckedChanged -= autoBrakeMinimumRadioButton_CheckedChanged;
                             autoBrakeMinimumRadioButton.Checked = true;
+                            autoBrakeMinimumRadioButton.CheckedChanged += autoBrakeMinimumRadioButton_CheckedChanged;
                             break;
                         case 4:
+                            autoBrakeMediumRadioButton.CheckedChanged -= autoBrakeMediumRadioButton_CheckedChanged;
                             autoBrakeMediumRadioButton.Checked = true;
+                            autoBrakeMediumRadioButton.CheckedChanged += autoBrakeMediumRadioButton_CheckedChanged;
                             break;
                         case 5:
-                            autoBrakeMaximumRadioButton.Checked = true;
+                            autoBrakeMaximumRadioButton.CheckedChanged -= autoBrakeMaximumRadioButton_CheckedChanged;
+                           autoBrakeMaximumRadioButton.Checked = true;
+                            autoBrakeMaximumRadioButton.CheckedChanged += autoBrakeMaximumRadioButton_CheckedChanged;
                             break;
                     }
                 } // Autobrake

@@ -38,9 +38,19 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.autoThrottleLButton = new System.Windows.Forms.Button();
             this.autoThrottleRButton = new System.Windows.Forms.Button();
             this.autoThrottleButton = new System.Windows.Forms.Button();
+            this.autoBrakeGroup = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.autoBrakeRTORadioButton = new System.Windows.Forms.RadioButton();
+            this.autoBrakeOffRadioButton = new System.Windows.Forms.RadioButton();
+            this.autoBrakeDisarmRadioButton = new System.Windows.Forms.RadioButton();
+            this.autoBrakeMinimumRadioButton = new System.Windows.Forms.RadioButton();
+            this.autoBrakeMediumRadioButton = new System.Windows.Forms.RadioButton();
+            this.autoBrakeMaximumRadioButton = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.autoThrottleGroup.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.autoBrakeGroup.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -51,6 +61,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.flowLayoutPanel1.Controls.Add(this.modeButton);
             this.flowLayoutPanel1.Controls.Add(this.speedButton);
             this.flowLayoutPanel1.Controls.Add(this.autoThrottleGroup);
+            this.flowLayoutPanel1.Controls.Add(this.autoBrakeGroup);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -157,6 +168,112 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.autoThrottleButton.UseVisualStyleBackColor = true;
             this.autoThrottleButton.Click += new System.EventHandler(this.autoThrottleButton_Click);
             // 
+            // autoBrakeGroup
+            // 
+            this.autoBrakeGroup.AccessibleName = "Autobrake";
+            this.autoBrakeGroup.AutoSize = true;
+            this.autoBrakeGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.autoBrakeGroup.Controls.Add(this.flowLayoutPanel3);
+            this.autoBrakeGroup.Location = new System.Drawing.Point(3, 97);
+            this.autoBrakeGroup.Name = "autoBrakeGroup";
+            this.autoBrakeGroup.Size = new System.Drawing.Size(720, 118);
+            this.autoBrakeGroup.TabIndex = 4;
+            this.autoBrakeGroup.TabStop = false;
+            this.autoBrakeGroup.Text = "Autobrake";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Controls.Add(this.autoBrakeRTORadioButton);
+            this.flowLayoutPanel3.Controls.Add(this.autoBrakeOffRadioButton);
+            this.flowLayoutPanel3.Controls.Add(this.autoBrakeDisarmRadioButton);
+            this.flowLayoutPanel3.Controls.Add(this.autoBrakeMinimumRadioButton);
+            this.flowLayoutPanel3.Controls.Add(this.autoBrakeMediumRadioButton);
+            this.flowLayoutPanel3.Controls.Add(this.autoBrakeMaximumRadioButton);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 36);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(711, 43);
+            this.flowLayoutPanel3.TabIndex = 0;
+            // 
+            // autoBrakeRTORadioButton
+            // 
+            this.autoBrakeRTORadioButton.AccessibleName = "RTO";
+            this.autoBrakeRTORadioButton.AutoSize = true;
+            this.autoBrakeRTORadioButton.Location = new System.Drawing.Point(3, 3);
+            this.autoBrakeRTORadioButton.Name = "autoBrakeRTORadioButton";
+            this.autoBrakeRTORadioButton.Size = new System.Drawing.Size(92, 37);
+            this.autoBrakeRTORadioButton.TabIndex = 0;
+            this.autoBrakeRTORadioButton.TabStop = true;
+            this.autoBrakeRTORadioButton.Text = "R&TO";
+            this.autoBrakeRTORadioButton.UseVisualStyleBackColor = true;
+            this.autoBrakeRTORadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeRTORadioButton_CheckedChanged);
+            // 
+            // autoBrakeOffRadioButton
+            // 
+            this.autoBrakeOffRadioButton.AccessibleName = "Off";
+            this.autoBrakeOffRadioButton.AutoSize = true;
+            this.autoBrakeOffRadioButton.Location = new System.Drawing.Point(101, 3);
+            this.autoBrakeOffRadioButton.Name = "autoBrakeOffRadioButton";
+            this.autoBrakeOffRadioButton.Size = new System.Drawing.Size(77, 37);
+            this.autoBrakeOffRadioButton.TabIndex = 1;
+            this.autoBrakeOffRadioButton.TabStop = true;
+            this.autoBrakeOffRadioButton.Text = "&Off";
+            this.autoBrakeOffRadioButton.UseVisualStyleBackColor = true;
+            this.autoBrakeOffRadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeOffRadioButton_CheckedChanged);
+            // 
+            // autoBrakeDisarmRadioButton
+            // 
+            this.autoBrakeDisarmRadioButton.AccessibleName = "Disarm";
+            this.autoBrakeDisarmRadioButton.AutoSize = true;
+            this.autoBrakeDisarmRadioButton.Location = new System.Drawing.Point(184, 3);
+            this.autoBrakeDisarmRadioButton.Name = "autoBrakeDisarmRadioButton";
+            this.autoBrakeDisarmRadioButton.Size = new System.Drawing.Size(120, 37);
+            this.autoBrakeDisarmRadioButton.TabIndex = 2;
+            this.autoBrakeDisarmRadioButton.TabStop = true;
+            this.autoBrakeDisarmRadioButton.Text = "&Disarm";
+            this.autoBrakeDisarmRadioButton.UseVisualStyleBackColor = true;
+            this.autoBrakeDisarmRadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeDisarmRadioButton_CheckedChanged);
+            // 
+            // autoBrakeMinimumRadioButton
+            // 
+            this.autoBrakeMinimumRadioButton.AccessibleName = "1: Minimum";
+            this.autoBrakeMinimumRadioButton.AutoSize = true;
+            this.autoBrakeMinimumRadioButton.Location = new System.Drawing.Point(310, 3);
+            this.autoBrakeMinimumRadioButton.Name = "autoBrakeMinimumRadioButton";
+            this.autoBrakeMinimumRadioButton.Size = new System.Drawing.Size(122, 37);
+            this.autoBrakeMinimumRadioButton.TabIndex = 3;
+            this.autoBrakeMinimumRadioButton.TabStop = true;
+            this.autoBrakeMinimumRadioButton.Text = "&1: MIN";
+            this.autoBrakeMinimumRadioButton.UseVisualStyleBackColor = true;
+            this.autoBrakeMinimumRadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeMinimumRadioButton_CheckedChanged);
+            // 
+            // autoBrakeMediumRadioButton
+            // 
+            this.autoBrakeMediumRadioButton.AccessibleName = "2: Medium";
+            this.autoBrakeMediumRadioButton.AutoSize = true;
+            this.autoBrakeMediumRadioButton.Location = new System.Drawing.Point(438, 3);
+            this.autoBrakeMediumRadioButton.Name = "autoBrakeMediumRadioButton";
+            this.autoBrakeMediumRadioButton.Size = new System.Drawing.Size(131, 37);
+            this.autoBrakeMediumRadioButton.TabIndex = 4;
+            this.autoBrakeMediumRadioButton.TabStop = true;
+            this.autoBrakeMediumRadioButton.Text = "&2: MED";
+            this.autoBrakeMediumRadioButton.UseVisualStyleBackColor = true;
+            this.autoBrakeMediumRadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeMediumRadioButton_CheckedChanged);
+            // 
+            // autoBrakeMaximumRadioButton
+            // 
+            this.autoBrakeMaximumRadioButton.AccessibleName = "3: Maximum";
+            this.autoBrakeMaximumRadioButton.AutoSize = true;
+            this.autoBrakeMaximumRadioButton.Location = new System.Drawing.Point(575, 3);
+            this.autoBrakeMaximumRadioButton.Name = "autoBrakeMaximumRadioButton";
+            this.autoBrakeMaximumRadioButton.Size = new System.Drawing.Size(133, 37);
+            this.autoBrakeMaximumRadioButton.TabIndex = 5;
+            this.autoBrakeMaximumRadioButton.TabStop = true;
+            this.autoBrakeMaximumRadioButton.Text = "&3: MAX";
+            this.autoBrakeMaximumRadioButton.UseVisualStyleBackColor = true;
+            this.autoBrakeMaximumRadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeMaximumRadioButton_CheckedChanged);
+            // 
             // SpeedBox
             // 
             this.AccessibleName = "Speed box";
@@ -180,6 +297,10 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.autoThrottleGroup.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.autoBrakeGroup.ResumeLayout(false);
+            this.autoBrakeGroup.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +317,13 @@ namespace tfm.PMDG.PMDG777.McpComponents
         private System.Windows.Forms.Button autoThrottleLButton;
         private System.Windows.Forms.Button autoThrottleRButton;
         private System.Windows.Forms.Button autoThrottleButton;
+        private System.Windows.Forms.GroupBox autoBrakeGroup;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.RadioButton autoBrakeRTORadioButton;
+        private System.Windows.Forms.RadioButton autoBrakeOffRadioButton;
+        private System.Windows.Forms.RadioButton autoBrakeDisarmRadioButton;
+        private System.Windows.Forms.RadioButton autoBrakeMinimumRadioButton;
+        private System.Windows.Forms.RadioButton autoBrakeMediumRadioButton;
+        private System.Windows.Forms.RadioButton autoBrakeMaximumRadioButton;
     }
 }
