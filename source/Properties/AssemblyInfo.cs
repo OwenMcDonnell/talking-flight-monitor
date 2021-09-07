@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Talking Flight Monitor")]
-[assembly: AssemblyDescription("Uses the FSUIPC Client DLL for .NET by Paul Henty")]
+[assembly: AssemblyDescription("Accessibility system for BVI pilots to use with P3D or FSX.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Talking Flight Monitor Development Group")]
 [assembly: AssemblyProduct("Talking Flight Monitor")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright ©  2018-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,4 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyVersion("2.0.18.0")]
+[assembly: AssemblyFileVersion("2.0.18.0")]
