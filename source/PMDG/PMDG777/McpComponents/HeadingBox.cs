@@ -134,6 +134,11 @@ namespace tfm.PMDG.PMDG777.McpComponents
             {
                 hdgTrkTextBox.Focus();
             }
+            if(e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                Hide();
+            }
         } // End form keydown.
 
         private void interveneButton_Click(object sender, EventArgs e)

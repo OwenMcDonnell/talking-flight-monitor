@@ -1075,17 +1075,5 @@ namespace tfm.Properties {
                 this["ZuluTime"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F12")]
-        public global::System.Windows.Forms.Keys AutoCruise {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["AutoCruise"]));
-            }
-            set {
-                this["AutoCruise"] = value;
-            }
-        }
     }
 }

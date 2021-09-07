@@ -92,11 +92,15 @@ namespace tfm.PMDG.PMDG777.McpComponents
 
         private void VerticalSpeedBox_KeyDown(object sender, KeyEventArgs e)
         {
-            
-            if((e.Alt) && (e.KeyCode == Keys.E))
+                        if((e.Alt) && (e.KeyCode == Keys.E))
             {
                 e.SuppressKeyPress = true;
                 vsFpaTextBox.Focus();
+            }
+                        if(e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                Hide();
             }
         } // End key down event.
 
