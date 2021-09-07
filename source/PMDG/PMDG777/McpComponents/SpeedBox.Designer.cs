@@ -46,11 +46,17 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.autoBrakeMinimumRadioButton = new System.Windows.Forms.RadioButton();
             this.autoBrakeMediumRadioButton = new System.Windows.Forms.RadioButton();
             this.autoBrakeMaximumRadioButton = new System.Windows.Forms.RadioButton();
+            this.speedBrakeGroup = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.speedBrakeTrackBar = new System.Windows.Forms.TrackBar();
             this.flowLayoutPanel1.SuspendLayout();
             this.autoThrottleGroup.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.autoBrakeGroup.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.speedBrakeGroup.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.speedBrakeTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -62,6 +68,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.flowLayoutPanel1.Controls.Add(this.speedButton);
             this.flowLayoutPanel1.Controls.Add(this.autoThrottleGroup);
             this.flowLayoutPanel1.Controls.Add(this.autoBrakeGroup);
+            this.flowLayoutPanel1.Controls.Add(this.speedBrakeGroup);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -274,6 +281,39 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.autoBrakeMaximumRadioButton.UseVisualStyleBackColor = true;
             this.autoBrakeMaximumRadioButton.CheckedChanged += new System.EventHandler(this.autoBrakeMaximumRadioButton_CheckedChanged);
             // 
+            // speedBrakeGroup
+            // 
+            this.speedBrakeGroup.AccessibleName = "Speed brake";
+            this.speedBrakeGroup.AutoSize = true;
+            this.speedBrakeGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.speedBrakeGroup.Controls.Add(this.flowLayoutPanel4);
+            this.speedBrakeGroup.Location = new System.Drawing.Point(3, 221);
+            this.speedBrakeGroup.Name = "speedBrakeGroup";
+            this.speedBrakeGroup.Size = new System.Drawing.Size(315, 150);
+            this.speedBrakeGroup.TabIndex = 5;
+            this.speedBrakeGroup.TabStop = false;
+            this.speedBrakeGroup.Text = "Speed brake";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.AutoSize = true;
+            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel4.Controls.Add(this.speedBrakeTrackBar);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 36);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(306, 75);
+            this.flowLayoutPanel4.TabIndex = 0;
+            // 
+            // speedBrakeTrackBar
+            // 
+            this.speedBrakeTrackBar.AccessibleName = "Speed brake";
+            this.speedBrakeTrackBar.Location = new System.Drawing.Point(3, 3);
+            this.speedBrakeTrackBar.Maximum = 100;
+            this.speedBrakeTrackBar.Name = "speedBrakeTrackBar";
+            this.speedBrakeTrackBar.Size = new System.Drawing.Size(300, 69);
+            this.speedBrakeTrackBar.TabIndex = 0;
+            this.speedBrakeTrackBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.speedBrakeTrackBar_KeyDown);
+            // 
             // SpeedBox
             // 
             this.AccessibleName = "Speed box";
@@ -301,6 +341,11 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.autoBrakeGroup.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.speedBrakeGroup.ResumeLayout(false);
+            this.speedBrakeGroup.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.speedBrakeTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +370,8 @@ namespace tfm.PMDG.PMDG777.McpComponents
         private System.Windows.Forms.RadioButton autoBrakeMinimumRadioButton;
         private System.Windows.Forms.RadioButton autoBrakeMediumRadioButton;
         private System.Windows.Forms.RadioButton autoBrakeMaximumRadioButton;
+        private System.Windows.Forms.GroupBox speedBrakeGroup;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.TrackBar speedBrakeTrackBar;
     }
 }

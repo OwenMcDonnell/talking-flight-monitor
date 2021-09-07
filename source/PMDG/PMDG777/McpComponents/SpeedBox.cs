@@ -34,6 +34,15 @@ namespace tfm.PMDG.PMDG777.McpComponents
             // New way of getting offsets. Only get the ones required for speed.
 foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
             {
+                if(toggle.Name == "Speedbrake")
+                {
+                    Offset<byte> speedBrakeOffset = (Offset<byte>)toggle.Offset;
+
+                    if (speedBrakeOffset.ValueChanged)
+                    {
+                                                                            speedBrakeTrackBar.Value = speedBrakeOffset.Value;
+                                                                    } // ValueChanged.
+                } // Speedbrake.
                 if(toggle.Name == "Autobrake")
                 {
                     switch (toggle.CurrentState.Key)
@@ -142,9 +151,13 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
             speedTimer.Start();
 
             var autoBrake = (tfm.PMDG.PanelObjects.SingleStateToggle)PMDG777Aircraft.PanelControls.Where(x => x.Name == "Autobrake").ToArray()[0];
+            var speedBrake = (tfm.PMDG.PanelObjects.SingleStateToggle)PMDG777Aircraft.PanelControls.Where(x => x.Name == "Speedbrake").ToArray()[0];
+            Offset<byte> speedBrakeOffset = (Offset<byte>)speedBrake.Offset;
+
 
             // Set initial values for the form.
-            switch (autoBrake.CurrentState.Key)
+                                        speedBrakeTrackBar.Value = speedBrakeOffset.Value;
+                                    switch (autoBrake.CurrentState.Key)
             {
                 case 0:
                     autoBrakeRTORadioButton.Checked = true;
@@ -302,6 +315,10 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
                 e.SuppressKeyPress = true;
                 speedTextBox.Focus();
             }
+            if(e.Alt && e.KeyCode == Keys.B)
+            {
+                speedBrakeTrackBar.Focus();
+            }
                     } // End SpeedBox key down event.
 
         private void autoBrakeRTORadioButton_CheckedChanged(object sender, EventArgs e)
@@ -351,5 +368,31 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_ABS_AUTOBRAKE_SELECTOR, 5);
             }
         } // autoBrakeMaximumRadioButton_CheckedChanged
+
+                                private void speedBrakeTrackBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Standard scrolling for increase value in trackbar.
+            if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Up)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER, Aircraft.ClkL);
+            }
+            // Standard vscrolling for decrease value in trackbar.
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Down)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER, Aircraft.ClkR);
+            }
+            if(e.KeyCode == Keys.Home || e.KeyCode == Keys.Oemcomma)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_ARM, Aircraft.ClkL);
+            }
+            if(e.KeyCode == Keys.End || e.KeyCode == Keys.OemPeriod)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_UP, Aircraft.ClkL);
+            }
+            if (e.KeyCode == Keys.OemQuestion)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_50, Aircraft.ClkL);
+            }
+                                            }
     } // End SpeedBox form.
 } // End namespace.

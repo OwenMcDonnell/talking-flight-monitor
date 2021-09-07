@@ -49,7 +49,33 @@ namespace tfm.PMDG.PanelObjects
         public override string ToString()
         {
             string output = string.Empty;
-                                        output = $"{this.Name} {this.CurrentState.Value}";
+            if(this.Name == "Speedbrake")
+            {
+
+                                if(_offset.Value > 0 && _offset.Value <= 24)
+                {
+                    output = string.Empty;
+                } // ignore conditions.
+                // Force TFM to announce off/armed states.
+                else if(_offset.Value == 0 || _offset.Value == 25)
+                {
+                    output = $"{this.Name} {this.CurrentState.Value}";
+                } // off/armed conditions.
+
+                // Everything else is a free turning knob with a percent deployed value.
+                else if(_offset.Value >= 26)
+                {
+                                        {
+                        var percent = Math.Truncate((double)((_offset.Value - 26) * 100) / 74);
+                        output = $"{this.Name} {percent}%";
+                    }
+                                                                                                                           } // Everything else.
+                           } // Speedbrake.
+            else
+            {
+                output = $"{this.Name} {this.CurrentState.Value}";
+            }
+                                                                           
                         return output;
                                             } // End ToString.
            } // End SingleStateToggle.
