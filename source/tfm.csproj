@@ -798,6 +798,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
+    <Content Include="changelog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\navigraph.s3db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

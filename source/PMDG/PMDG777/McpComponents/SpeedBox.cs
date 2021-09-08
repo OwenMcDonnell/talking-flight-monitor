@@ -317,7 +317,13 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
             }
             if(e.Alt && e.KeyCode == Keys.B)
             {
+                e.SuppressKeyPress = true;
                 speedBrakeTrackBar.Focus();
+            }
+            if(e.KeyCode == Keys.Escape)
+            {
+                e.SuppressKeyPress = true;
+                Hide();
             }
                     } // End SpeedBox key down event.
 
