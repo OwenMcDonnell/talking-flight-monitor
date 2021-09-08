@@ -118,6 +118,8 @@ namespace tfm
             // newItem.SubItems.Add(plane.ArrivalICAO);    
             // altitude
             newItem.SubItems.Add(plane.AltitudeFeet.ToString("F0"));
+            // speed
+            newItem.SubItems.Add(plane.GroundSpeed.ToString("F0"));
 
             // Add to the list
             this.lvAirborn.Items.Add(newItem);

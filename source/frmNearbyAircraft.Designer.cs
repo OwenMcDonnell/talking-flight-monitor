@@ -46,6 +46,7 @@
             this.colAirDistance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAirAltitude = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnOk = new System.Windows.Forms.Button();
+            this.colAirSpeed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.flowLayoutPanel1.SuspendLayout();
             this.tcTraffic.SuspendLayout();
             this.tabGround.SuspendLayout();
@@ -58,27 +59,30 @@
             this.flowLayoutPanel1.Controls.Add(this.btnOk);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(300, 154);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // tcTraffic
             // 
             this.tcTraffic.Controls.Add(this.tabGround);
             this.tcTraffic.Controls.Add(this.tabAirborn);
-            this.tcTraffic.Location = new System.Drawing.Point(3, 3);
+            this.tcTraffic.Location = new System.Drawing.Point(4, 5);
+            this.tcTraffic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tcTraffic.Name = "tcTraffic";
             this.tcTraffic.SelectedIndex = 0;
-            this.tcTraffic.Size = new System.Drawing.Size(200, 100);
+            this.tcTraffic.Size = new System.Drawing.Size(300, 154);
             this.tcTraffic.TabIndex = 0;
             // 
             // tabGround
             // 
             this.tabGround.Controls.Add(this.lvGround);
-            this.tabGround.Location = new System.Drawing.Point(4, 22);
+            this.tabGround.Location = new System.Drawing.Point(4, 29);
+            this.tabGround.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabGround.Name = "tabGround";
-            this.tabGround.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGround.Size = new System.Drawing.Size(192, 74);
+            this.tabGround.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabGround.Size = new System.Drawing.Size(292, 121);
             this.tabGround.TabIndex = 0;
             this.tabGround.Text = "Ground";
             this.tabGround.UseVisualStyleBackColor = true;
@@ -95,11 +99,12 @@
             this.colLocation});
             this.lvGround.HideSelection = false;
             this.lvGround.LabelWrap = false;
-            this.lvGround.Location = new System.Drawing.Point(0, -1);
+            this.lvGround.Location = new System.Drawing.Point(0, -2);
+            this.lvGround.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvGround.MultiSelect = false;
             this.lvGround.Name = "lvGround";
             this.lvGround.ShowGroups = false;
-            this.lvGround.Size = new System.Drawing.Size(500, 200);
+            this.lvGround.Size = new System.Drawing.Size(748, 306);
             this.lvGround.TabIndex = 0;
             this.lvGround.UseCompatibleStateImageBehavior = false;
             this.lvGround.View = System.Windows.Forms.View.Details;
@@ -135,10 +140,11 @@
             // tabAirborn
             // 
             this.tabAirborn.Controls.Add(this.lvAirborn);
-            this.tabAirborn.Location = new System.Drawing.Point(4, 22);
+            this.tabAirborn.Location = new System.Drawing.Point(4, 29);
+            this.tabAirborn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabAirborn.Name = "tabAirborn";
-            this.tabAirborn.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAirborn.Size = new System.Drawing.Size(192, 74);
+            this.tabAirborn.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabAirborn.Size = new System.Drawing.Size(292, 121);
             this.tabAirborn.TabIndex = 1;
             this.tabAirborn.Text = "Airborn";
             this.tabAirborn.UseVisualStyleBackColor = true;
@@ -149,13 +155,15 @@
             this.colAirCallsign,
             this.colState,
             this.colAirDistance,
-            this.colAirAltitude});
+            this.colAirAltitude,
+            this.colAirSpeed});
             this.lvAirborn.HideSelection = false;
             this.lvAirborn.LabelWrap = false;
-            this.lvAirborn.Location = new System.Drawing.Point(36, -12);
+            this.lvAirborn.Location = new System.Drawing.Point(54, -18);
+            this.lvAirborn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvAirborn.MultiSelect = false;
             this.lvAirborn.Name = "lvAirborn";
-            this.lvAirborn.Size = new System.Drawing.Size(121, 97);
+            this.lvAirborn.Size = new System.Drawing.Size(180, 147);
             this.lvAirborn.TabIndex = 1;
             this.lvAirborn.UseCompatibleStateImageBehavior = false;
             this.lvAirborn.View = System.Windows.Forms.View.Details;
@@ -179,22 +187,28 @@
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(209, 3);
+            this.btnOk.Location = new System.Drawing.Point(312, 5);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.Size = new System.Drawing.Size(112, 35);
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            // 
+            // colAirSpeed
+            // 
+            this.colAirSpeed.Text = "Speed";
             // 
             // frmNearbyAircraft
             // 
             this.AcceptButton = this.btnOk;
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Dialog;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnOk;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmNearbyAircraft";
             this.Text = "Nearby aircraft";
             this.Load += new System.EventHandler(this.frmNearbyAircraft_Load);
@@ -226,5 +240,6 @@
         private System.Windows.Forms.ColumnHeader colState;
         private System.Windows.Forms.ColumnHeader colAirDistance;
         private System.Windows.Forms.ColumnHeader colAirAltitude;
+        private System.Windows.Forms.ColumnHeader colAirSpeed;
     }
 }

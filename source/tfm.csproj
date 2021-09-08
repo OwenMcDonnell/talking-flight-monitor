@@ -458,6 +458,12 @@
     <Compile Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.Designer.cs">
       <DependentUpon>ctlElectrical_777.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlHydraulics_777.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlHydraulics_777.Designer.cs">
+      <DependentUpon>ctlHydraulics_777.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -735,6 +741,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.resx">
       <DependentUpon>ctlElectrical_777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlHydraulics_777.resx">
+      <DependentUpon>ctlHydraulics_777.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.resx">
       <DependentUpon>ctlMCP_777.cs</DependentUpon>
