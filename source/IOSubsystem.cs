@@ -120,6 +120,8 @@ namespace tfm
         private bool isTakeoffComplete = true; // Always true unless takeoff assist is Active.
         private bool TrimEnabled = true;
         private bool FlapsMoving;
+        private bool pmdg777SpeedBrakeMoving = false;
+          
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         private bool muteSimconnect;
@@ -460,12 +462,31 @@ namespace tfm
                 {
                     foreach (tfm.PMDG.PanelObjects.PanelObject control in PMDG777Aircraft.PanelControls)
                     {
-                        if (control.Offset.ValueChanged)
+                        if (control.Name == "Speedbrake") break;
+                                                if (control.Offset.ValueChanged)
                         {
-                            SingleStateToggle toggle = (SingleStateToggle)control;
-                            Output(isGauge: false, output: control.ToString());
+                                                        Output(isGauge: false, output: control.ToString());
                         }
                     }
+                    
+                    foreach(SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
+                    {
+                        if(toggle.Name == "Speedbrake")
+                        {
+                            if (toggle.Offset.ValueChanged)
+                            {
+                                pmdg777SpeedBrakeMoving = true;
+                            }
+                            else
+                            {
+                                if (pmdg777SpeedBrakeMoving)
+                                {
+                                    pmdg777SpeedBrakeMoving = false;
+                                    Output(isGauge: false, output: toggle.ToString());
+                                }
+                            }
+                        }// speedbrake
+                    } // speedbrake silence routine.
                     ReadPmdgFMCMessage();
                 } // End PMDG 777 toggles.
             }
@@ -548,7 +569,7 @@ namespace tfm
             ReadToggle(Aircraft.Eng3FuelValve, Aircraft.Eng3FuelValve.Value > 0, "number 3 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng4FuelValve, Aircraft.Eng4FuelValve.Value > 0, "number 4 fuel valve", "open", "closed");
             if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
-        }
+                    }
 
         private void readOnGround()
         {

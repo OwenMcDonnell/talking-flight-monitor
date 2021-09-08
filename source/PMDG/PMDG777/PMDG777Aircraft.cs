@@ -243,9 +243,15 @@ static class PMDG777Aircraft
             {0, "RTO" },
             {1, "off" },
             {2, "disarm" },
-            {3, "minimum" },
-            {4, "medium" },
-            {5, "maximum" },
+            {3, "1" },
+            {4, "2" },
+            {5, "3" },
+        };
+
+        private static Dictionary<byte, string> _speedBrakeStates = new Dictionary<byte, string>
+        {
+            {0, "off" },
+            {25, "armed" },
         };
 
         // end switch states
@@ -421,7 +427,7 @@ new SingleStateToggle{Name = "Right stabalizer", PanelName = "Control stand", Pa
 new SingleStateToggle{Name = "Alternate pitch", PanelName = "Control stand", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.FCTL_AltnPitch_Lever, AvailableStates = _downNeutralOrUpStates},
 new SingleStateToggle{Name = "Left fuel valve", PanelName = "Control stand", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.ENG_FuelControl_Sw_RUN[0], AvailableStates = _openOrClosedStates},
 new SingleStateToggle{Name = "Right fuel valve", PanelName = "Control stand", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.ENG_FuelControl_Sw_RUN[1], AvailableStates = _openOrClosedStates},
-//new SingleStateToggle{Name = "Speedbrake", PanelName = "Control stand", PanelSection = "Brakes", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FCTL_Speedbrake_Lever, AvailableStates = null},
+new SingleStateToggle{Name = "Speedbrake", PanelName = "Control stand", PanelSection = "Brakes", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FCTL_Speedbrake_Lever, AvailableStates = _speedBrakeStates},
 //new SingleStateToggle{Name = "Captain's receiver", PanelName = "Aft aisle stand", PanelSection = "Audio", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_ReceiverSwitches_NEW[0], AvailableStates =_audioFrequencySelectorStates},
 //new SingleStateToggle{Name = "First officer's receiver", PanelName = "Aft aisle stand", PanelSection = "Audio", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_ReceiverSwitches_NEW[1], AvailableStates =_audioFrequencySelectorStates},
 //new SingleStateToggle{Name = "Observer's receiver", PanelName = "Aft aisle stand", PanelSection = "Audio", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_ReceiverSwitches_NEW[2], AvailableStates =_audioFrequencySelectorStates},
