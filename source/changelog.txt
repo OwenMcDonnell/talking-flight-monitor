@@ -1,5 +1,5 @@
 ﻿What’s new?
-
+* 2.0 alpha 18:
 •	TFM now reads the simulator local time (Zulu) with ], then F10.
 •	PMDG 777: Added remaining relevant offsets for automatic announcements.
 •	PMDG 777, PMDG 737: Fixed problem where MCP boxes refused to show current control states.
@@ -30,6 +30,9 @@ end or . = speedbrake 100%
 / = speedbrake 50% (TFM will say 48%).
 left/down = decrease speedbrake value until it becomes armed, then off.
 right/up = increase speedbrake value.
+
+* 2.0 alpha 18.1:
+fix for CDU execute key and message indicators not reading in PMDG 777.
 
 Known issues:
 •	Installing the new version requires a reset of user settings. We are still trying to figure out how to carry settings from a major version to the next.

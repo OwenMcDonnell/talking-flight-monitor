@@ -462,7 +462,7 @@ namespace tfm
                 {
                     foreach (tfm.PMDG.PanelObjects.PanelObject control in PMDG777Aircraft.PanelControls)
                     {
-                        if (control.Name == "Speedbrake") break;
+                        if (control.Name == "Speedbrake") continue;
                                                 if (control.Offset.ValueChanged)
                         {
                                                         Output(isGauge: false, output: control.ToString());
@@ -4107,8 +4107,8 @@ else if (PMDG777Detected)
                         braille($"{gaugeValue} FPM\n");
                         history.AddItem($"{gaugeName}: {gaugeValue}\n");
                         break;
-
                     case "AP altitude":
+
                         if (PMDG737Detected || PMDG747Detected || PMDG777Detected)
                         {
                             Speak(gaugeValue);
