@@ -569,6 +569,7 @@ namespace tfm
             ReadToggle(Aircraft.Eng3FuelValve, Aircraft.Eng3FuelValve.Value > 0, "number 3 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng4FuelValve, Aircraft.Eng4FuelValve.Value > 0, "number 4 fuel valve", "open", "closed");
             if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
+            ReadFlaps();
                     }
 
         private void readOnGround()
