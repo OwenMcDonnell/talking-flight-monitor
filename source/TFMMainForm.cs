@@ -45,10 +45,17 @@ namespace tfm
         public TFMMainForm()
         {
             InitializeComponent();
+            // Upgrade settings from previous version.
+            if (Properties.Settings.Default.SettingsRequiresUpgrade)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.SettingsRequiresUpgrade = false;
+                Properties.Settings.Default.Save();
+                Application.Restart();
+            }
             Aircraft.InitOffsets();
-            // upgrade settings
-            Properties.Settings.Default.Upgrade();
-            // speak a debug message via SAPI if debug mode is turned on
+
+                        // speak a debug message via SAPI if debug mode is turned on
             if (utility.DebugEnabled)
             {
                 Tolk.PreferSAPI(true);
@@ -203,6 +210,7 @@ namespace tfm
 
         private void TFMMainForm_Load(object sender, EventArgs e)
         {
+                       
         }
 
         private void AboutMenuItem_Click(object sender, EventArgs e)

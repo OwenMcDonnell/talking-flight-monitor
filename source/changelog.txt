@@ -1,2 +1,2 @@
-﻿18.2:
-* Fixed automatic flaps announcement failing on all aircraft.
+﻿18.4:
+* Settings now persist across version changes.
