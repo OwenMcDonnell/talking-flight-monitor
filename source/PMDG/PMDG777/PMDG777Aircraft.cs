@@ -254,6 +254,51 @@ static class PMDG777Aircraft
             {25, "armed" },
         };
 
+        private static Dictionary<byte, string> _transponderAltnSourceStates = new Dictionary<byte, string>
+        {
+            {0, "normal" },
+            {1, "alternate" },
+        };
+
+        private static Dictionary<byte, string> _transponderModeSelectorStates = new Dictionary<byte, string>
+        {
+            {0, "standby" },
+            {1, "altitude reporting off" },
+            {2, "transponder" },
+            {3, "TA only" },
+            {4, "TA/RA" },
+        };
+
+        private static Dictionary<byte, string> _engineFireHandleStates = new Dictionary<byte, string>
+        {
+            {0 , "in (normal) " },
+            {1, "pulled out" },
+            {2, "turned left" },
+            {3, "turned right" },
+        };
+
+        private static Dictionary<byte, string> _aileronTrimStates = new Dictionary<byte, string>
+        {
+            {0, "Left wing down" },
+            {1, "neutral" },
+            {2, "right wing down" },
+        };
+
+        private static Dictionary<byte, string> _rudderTrimStates = new Dictionary<byte, string>
+        {
+            {0, "nose left" },
+            {1, "neutral" },
+            {2, "nose right" },
+        };
+
+        private static Dictionary<byte, string> _doorStates = new Dictionary<byte, string>
+        {
+            {0, "Open" },
+            {1, "closed" },
+            {2, "closed and armed" },
+            {3, "closing" },
+            {4, "opening" },
+        };
         // end switch states
 
         public static Dictionary<string, System.Windows.Forms.Form> McpComponents
@@ -445,7 +490,19 @@ new SingleStateToggle{Name = "Captain's AM frequency light", PanelName = "Aft ai
 new SingleStateToggle{Name = "First officer's AM frequency light", PanelName = "Aft aisle stand", PanelSection = "Radio", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_annunAM[1], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Observer's AM frequency light", PanelName = "Aft aisle stand", PanelSection = "Radio", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.COMM_annunAM[2], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Transponder selector", PanelName = "Aft aisle stand", PanelSection = "TCAS", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.XPDR_XpndrSelector_R, AvailableStates = _transponderSelectorStates},
-
+new SingleStateToggle{Name = "Transponder alternate source selector", PanelName = "Aft aisle stand", PanelSection = "TCAS", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.XPDR_AltSourceSel_ALTN, AvailableStates = _transponderAltnSourceStates},
+new SingleStateToggle{Name = "Transponder mode selector", PanelName = "Aft aisle stand", PanelSection = "TCAS", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.XPDR_ModeSel, AvailableStates = _transponderModeSelectorStates},
+new SingleStateToggle{Name = "Engine 1 fire handle", PanelName = "Aft aisle stand", PanelSection = "Engine fire", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.FIRE_EngineHandle[0], AvailableStates = _engineFireHandleStates},
+new SingleStateToggle{Name = "Engine 2 fire handle", PanelName = "Aft aisle stand", PanelSection = "Engine fire", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.FIRE_EngineHandle[1], AvailableStates = _engineFireHandleStates},
+new SingleStateToggle{Name = "Engine 1 fire bottle discharge light", PanelName = "Aft aisle stand", PanelSection = "Engine fire", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.FIRE_annunENG_BTL_DISCH[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle{Name = "Engine 2 fire bottle discharge light", PanelName = "Aft aisle stand", PanelSection = "Engine fire", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.FIRE_annunENG_BTL_DISCH[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle{Name = "Aileron trim", PanelName = "Aft aisle stand", PanelSection = "Trim", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FCTL_AileronTrim_Switches, AvailableStates = _aileronTrimStates},
+new SingleStateToggle{Name = "Rudder trim", PanelName = "Aft aisle stand", PanelSection = "Trim", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FCTL_RudderTrim_Knob, AvailableStates = _rudderTrimStates},
+new SingleStateToggle{Name = "Entry 1L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[0], AvailableStates = _doorStates},
+new SingleStateToggle{Name = "Entry 1R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[1], AvailableStates = _doorStates},
+new SingleStateToggle{Name = "Entry 2L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[2], AvailableStates = _doorStates},
+new SingleStateToggle{Name = "Entry 2R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[3], AvailableStates = _doorStates},
+// TODO: add conditional door elements.                
 // end panel objects
 new SingleStateToggle{Name = "Execute key", PanelName = "Forward Aisle Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.CDU_annunEXEC[0], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "CDU message light", PanelName = "Forward Aisle Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.CDU_annunMSG[0], AvailableStates = _onOrOffStates},
