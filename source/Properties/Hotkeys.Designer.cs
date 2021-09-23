@@ -1075,5 +1075,17 @@ namespace tfm.Properties {
                 this["ZuluTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        public global::System.Windows.Forms.Keys application_settings {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["application_settings"]));
+            }
+            set {
+                this["application_settings"] = value;
+            }
+        }
     }
 }

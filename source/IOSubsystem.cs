@@ -1959,6 +1959,10 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "application_settings":
+                    DisplayApplicationSettings();
+                    break;
+
                 case "LocalTime":
                     ReadSimulatorTime();
                     break;
@@ -4245,5 +4249,24 @@ else if (PMDG777Detected)
 
         } // ReadSimulatorZuluTime
 
+        private void DisplayApplicationSettings()
+        {
+            frmSettings settings = new frmSettings();
+
+            settings.ShowDialog();
+            if (settings.DialogResult == DialogResult.OK)
+            {
+                if (Properties.Settings.Default.AvionicsTabChangeFlag)
+                {
+                    MessageBox.Show("You must restart TFM for the avionics tab changes to take affect", "restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Reload();
+
+            }
+        } // DisplayApplicationSettings.
     } // End IOSubsystem class
 } // End TFM namespace.
