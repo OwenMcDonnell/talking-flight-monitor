@@ -1,3 +1,4 @@
 ﻿18.4:
 * Settings now persist across version changes.
 * Moved settings to ] question mark (Shift+/). We still need to remove it from the main window, so access settings with ] then Shift + / from now on.
+* Added Ctrl+Shift+M for the A2A aircraft manager.

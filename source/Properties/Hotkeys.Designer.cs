@@ -1087,5 +1087,17 @@ namespace tfm.Properties {
                 this["application_settings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+M")]
+        public global::System.Windows.Forms.Keys A2A_manager {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["A2A_manager"]));
+            }
+            set {
+                this["A2A_manager"] = value;
+            }
+        }
     }
 }

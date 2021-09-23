@@ -1959,8 +1959,12 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "A2A_manager":
+                    Output(isGauge: false, output: "A2A manager not yet supported.");
+                    break;
                 case "application_settings":
-                    DisplayApplicationSettings();
+
+                                        DisplayApplicationSettings();
                     break;
 
                 case "LocalTime":
