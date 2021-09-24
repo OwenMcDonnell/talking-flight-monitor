@@ -266,5 +266,11 @@
     <Setting Name="ZuluTime" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">F11</Value>
     </Setting>
+    <Setting Name="application_settings" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Shift+OemQuestion</Value>
+    </Setting>
+    <Setting Name="A2A_manager" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+Shift+M</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
