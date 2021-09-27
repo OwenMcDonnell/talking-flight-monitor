@@ -272,5 +272,8 @@
     <Setting Name="A2A_manager" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+M</Value>
     </Setting>
+    <Setting Name="aircraft_profiles" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+I</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

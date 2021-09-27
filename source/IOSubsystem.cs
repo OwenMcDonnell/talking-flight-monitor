@@ -1959,6 +1959,9 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "aircraft_profiles":
+                    DisplayAircraftProfiles();
+                    break;
                 case "A2A_manager":
                     DisplayA2AManager();
                     break;
@@ -4277,5 +4280,10 @@ else if (PMDG777Detected)
         {
             Output(isGauge: false, output: "A2A manager not yet supported.");
         } // DisplayA2AManager.
+
+        private void DisplayAircraftProfiles()
+        {
+            Output(isGauge: false, output: "Aircraft profiles not yet supported.");
+        } // AircraftProfiles
     } // End IOSubsystem class
 } // End TFM namespace.

@@ -1099,5 +1099,17 @@ namespace tfm.Properties {
                 this["A2A_manager"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+I")]
+        public global::System.Windows.Forms.Keys aircraft_profiles {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["aircraft_profiles"]));
+            }
+            set {
+                this["aircraft_profiles"] = value;
+            }
+        }
     }
 }
