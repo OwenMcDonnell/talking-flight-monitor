@@ -1123,5 +1123,17 @@ namespace tfm.Properties {
                 this["display_website"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+I")]
+        public global::System.Windows.Forms.Keys report_issue {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["report_issue"]));
+            }
+            set {
+                this["report_issue"] = value;
+            }
+        }
     }
 }

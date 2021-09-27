@@ -1959,6 +1959,9 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "report_issue":
+                    ReportIssue();
+                    break;
                 case "display_website":
                     DisplayWebsite();
                     break;
@@ -4293,5 +4296,10 @@ else if (PMDG777Detected)
         {
             System.Diagnostics.Process.Start("www.talkingflightmonitor.com");
         } // DisplayWebsite
+
+        private void ReportIssue()
+        {
+            System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
+        } // ReportIssue
     } // End IOSubsystem class
 } // End TFM namespace.

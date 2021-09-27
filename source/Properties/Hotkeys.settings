@@ -278,5 +278,8 @@
     <Setting Name="display_website" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+W</Value>
     </Setting>
+    <Setting Name="report_issue" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+Shift+I</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
