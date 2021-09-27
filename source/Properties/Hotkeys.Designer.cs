@@ -1111,5 +1111,17 @@ namespace tfm.Properties {
                 this["aircraft_profiles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+W")]
+        public global::System.Windows.Forms.Keys display_website {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["display_website"]));
+            }
+            set {
+                this["display_website"] = value;
+            }
+        }
     }
 }

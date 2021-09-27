@@ -1959,6 +1959,9 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "display_website":
+                    DisplayWebsite();
+                    break;
                 case "aircraft_profiles":
                     DisplayAircraftProfiles();
                     break;
@@ -4285,5 +4288,10 @@ else if (PMDG777Detected)
         {
             Output(isGauge: false, output: "Aircraft profiles not yet supported.");
         } // AircraftProfiles
+
+        private void DisplayWebsite()
+        {
+            System.Diagnostics.Process.Start("www.talkingflightmonitor.com");
+        } // DisplayWebsite
     } // End IOSubsystem class
 } // End TFM namespace.
