@@ -1,5 +1,6 @@
 ﻿18.4:
 * Settings now persist across version changes.
-* Moved settings to ] question mark (Shift+/). We still need to remove it from the main window, so access settings with ] then Shift + / from now on.
-* Moved A2A manager to main simulator window. Access with ] Ctrl+Shift+M.
-* Moved aircraft profiles to the main simulator window. Access with ] Ctrl+I.
+* Moved settings to the simulator window. Access with ] question mark (Shift+/).
+* Moved A2A manager to the simulator window. Access with ] Ctrl+Shift+M.
+* Moved aircraft profiles to the simulator window. Access with ] Ctrl+I.
+* Moved visit website to the simulator window. Access with ] Ctrl+Shift+W.
