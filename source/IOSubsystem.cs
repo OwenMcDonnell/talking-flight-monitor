@@ -1960,7 +1960,7 @@ else if (PMDG777Detected)
             switch (e.Name)
             {
                 case "A2A_manager":
-                    Output(isGauge: false, output: "A2A manager not yet supported.");
+                    DisplayA2AManager();
                     break;
                 case "application_settings":
 
@@ -4272,5 +4272,10 @@ else if (PMDG777Detected)
 
             }
         } // DisplayApplicationSettings.
+
+        private void DisplayA2AManager()
+        {
+            Output(isGauge: false, output: "A2A manager not yet supported.");
+        } // DisplayA2AManager.
     } // End IOSubsystem class
 } // End TFM namespace.
