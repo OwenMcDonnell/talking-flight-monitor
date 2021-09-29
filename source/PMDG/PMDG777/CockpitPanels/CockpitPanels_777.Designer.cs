@@ -51,7 +51,7 @@ namespace tfm
             treeNode1.Text = "Electrical";
             treeNode2.Name = "MCPNode";
             treeNode2.Text = "MCP";
-            treeNode3.Name = "nodHydraulics";
+            treeNode3.Name = "hydraulicsNode";
             treeNode3.Text = "Hydraulics";
             treeNode4.Name = "overheadNode";
             treeNode4.Text = "Overhead";

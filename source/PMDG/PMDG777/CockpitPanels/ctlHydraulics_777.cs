@@ -53,50 +53,53 @@ namespace tfm
 
         private void tmrHydraulics_Tick(object sender, EventArgs e)
         {
-            UpdateToggleControl(Aircraft.pmdg737.HYD_PumpSw_elec[1].Value > 0, chkElec1);
-            UpdateToggleControl(Aircraft.pmdg737.HYD_PumpSw_elec[0].Value > 0, chkElec2);
-            UpdateToggleControl(Aircraft.pmdg737.HYD_PumpSw_eng[0].Value > 0, chkEng1);
-            UpdateToggleControl(Aircraft.pmdg737.HYD_PumpSw_eng[1].Value > 0, chkEng2);
+            foreach (tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
+            {
+                if (toggle.Name == "Primary electrical pump #1")
+                {
+                    chkElec1.CheckedChanged -= chkElec1_CheckedChanged;
+                    switch (toggle.CurrentState.Key)
+                    {
+                        case 0:
+                            chkElec1.Checked = false;
+                            break;
 
+                        case 1:
+                            chkElec1.Checked = true;
+                            break;
+                    }
+                    chkElec1.CheckedChanged += chkElec1_CheckedChanged;
+                }
+            if (toggle.Name == "Primary electrical pump #2")
+                {
+                    chkElec2.CheckedChanged -= chkElec2_CheckedChanged;
+switch (toggle.CurrentState.Key)
+                    {
+                        case 0:
+                            chkElec2.Checked = false;
+                            break;
+
+                        case 1:
+                            chkElec2.Checked = true;
+                            break;
+                    }
+                    chkElec2.CheckedChanged += chkElec2_CheckedChanged;
+                }
+            
+            }
         }
 
-        private void chkElec1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkElec1.Checked)
-            {
-                pmdg.HydElec1On();
-
-            }
-            else
-            {
-                pmdg.HydElec1Off();
-            }
-        }
-
-        private void chkElec2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkElec2.Checked)
-            {
-                pmdg.HydElec2On();
-
-            }
-            else
-            {
-                pmdg.HydElec2Off();
-            }
-
-        }
 
         private void chkEng1_CheckedChanged(object sender, EventArgs e)
         {
             if (chkEng1.Checked)
             {
-                pmdg.HydEng1On();
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ENG1, 1);
 
             }
             else
             {
-                pmdg.HydEng1Off();
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ENG1, 0);
             }
 
         }
@@ -105,16 +108,86 @@ namespace tfm
         {
             if (chkEng2.Checked)
             {
-                pmdg.HydEng2On();
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ENG2, 1);
 
             }
             else
             {
-                pmdg.HydEng2Off();
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ENG2, 0);
             }
 
         }
 
+        private void chkElec1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkElec1.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ELEC1, 1);
 
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ELEC1, 0);
+            }
+
+        }
+
+        private void chkElec2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkElec2.Checked)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ELEC2, 1);
+
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_ELEC2, 0);
+            }
+
+        }
+
+        private void radAirDemand1_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb.Checked)
+            {
+                switch (rb.Name)
+                {
+                    case "radAirDemand1Off":
+                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_AIR1, 0);
+                        break;
+                    case "radAirDemand1Auto":
+                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_AIR1, 1);
+                        break;
+                    case "radAirDemand1On":
+                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_AIR1, 2);
+                        break;
+
+                }
+            }
+
+        }
+
+        private void radAirDemand2_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb.Checked)
+            {
+                switch (rb.Name)
+                {
+                    case "radAirDemand2Off":
+                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_AIR2, 0);
+                        break;
+                    case "radAirDemand2Auto":
+                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_AIR2, 1);
+                        break;
+                    case "radAirDemand2 On":
+                        FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_HYD_AIR2, 2);
+                        break;
+
+                }
+            }
+
+        }
     }
 }
