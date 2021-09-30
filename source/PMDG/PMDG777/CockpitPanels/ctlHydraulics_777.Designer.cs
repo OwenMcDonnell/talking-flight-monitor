@@ -72,7 +72,7 @@
             // 
             // tmrHydraulics
             // 
-            this.tmrHydraulics.Interval = 500;
+            this.tmrHydraulics.Interval = 1000;
             this.tmrHydraulics.Tick += new System.EventHandler(this.tmrHydraulics_Tick);
             // 
             // flowLayoutPanel1
@@ -305,6 +305,7 @@
             this.radLeftDemandOff.TabStop = true;
             this.radLeftDemandOff.Text = "Off";
             this.radLeftDemandOff.UseVisualStyleBackColor = true;
+            this.radLeftDemandOff.CheckedChanged += new System.EventHandler(this.radLeftDemand_CheckedChanged);
             // 
             // radLeftDemandAuto
             // 
@@ -316,6 +317,7 @@
             this.radLeftDemandAuto.TabStop = true;
             this.radLeftDemandAuto.Text = "Auto";
             this.radLeftDemandAuto.UseVisualStyleBackColor = true;
+            this.radLeftDemandAuto.CheckedChanged += new System.EventHandler(this.radLeftDemand_CheckedChanged);
             // 
             // radLeftDemandOn
             // 
@@ -327,6 +329,7 @@
             this.radLeftDemandOn.TabStop = true;
             this.radLeftDemandOn.Text = "On";
             this.radLeftDemandOn.UseVisualStyleBackColor = true;
+            this.radLeftDemandOn.CheckedChanged += new System.EventHandler(this.radLeftDemand_CheckedChanged);
             // 
             // grpRightDemand
             // 
@@ -358,6 +361,7 @@
             this.radRightDemandPumpOff.TabStop = true;
             this.radRightDemandPumpOff.Text = "Off";
             this.radRightDemandPumpOff.UseVisualStyleBackColor = true;
+            this.radRightDemandPumpOff.CheckedChanged += new System.EventHandler(this.radRightDemandPump_CheckedChanged);
             // 
             // radRightDemandPumpAuto
             // 
@@ -369,6 +373,7 @@
             this.radRightDemandPumpAuto.TabStop = true;
             this.radRightDemandPumpAuto.Text = "Auto";
             this.radRightDemandPumpAuto.UseVisualStyleBackColor = true;
+            this.radRightDemandPumpAuto.CheckedChanged += new System.EventHandler(this.radRightDemandPump_CheckedChanged);
             // 
             // radRightDemandPumpOn
             // 
@@ -380,6 +385,7 @@
             this.radRightDemandPumpOn.TabStop = true;
             this.radRightDemandPumpOn.Text = "On";
             this.radRightDemandPumpOn.UseVisualStyleBackColor = true;
+            this.radRightDemandPumpOn.CheckedChanged += new System.EventHandler(this.radRightDemandPump_CheckedChanged);
             // 
             // ctlHydraulics_777
             // 
