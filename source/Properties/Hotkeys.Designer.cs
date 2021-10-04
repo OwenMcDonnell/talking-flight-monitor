@@ -1099,5 +1099,41 @@ namespace tfm.Properties {
                 this["A2A_manager"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+I")]
+        public global::System.Windows.Forms.Keys aircraft_profiles {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["aircraft_profiles"]));
+            }
+            set {
+                this["aircraft_profiles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+W")]
+        public global::System.Windows.Forms.Keys display_website {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["display_website"]));
+            }
+            set {
+                this["display_website"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+I")]
+        public global::System.Windows.Forms.Keys report_issue {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["report_issue"]));
+            }
+            set {
+                this["report_issue"] = value;
+            }
+        }
     }
 }

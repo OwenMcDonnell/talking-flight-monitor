@@ -1959,8 +1959,17 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "report_issue":
+                    ReportIssue();
+                    break;
+                case "display_website":
+                    DisplayWebsite();
+                    break;
+                case "aircraft_profiles":
+                    DisplayAircraftProfiles();
+                    break;
                 case "A2A_manager":
-                    Output(isGauge: false, output: "A2A manager not yet supported.");
+                    DisplayA2AManager();
                     break;
                 case "application_settings":
 
@@ -2045,9 +2054,9 @@ else if (PMDG777Detected)
                     OnAGLKey();
                     break;
                 case "Disable_Command_Key":
-                    Output(isGauge: false, output: "command key disabled.");
+                                                            Output(isGauge: false, output: "command key disabled.");
                     CommandKeyEnabled = false;
-                    break;
+                                                                                                                         break;
 
                 case "Aircraft_Heading":
                     OnHeadingKey();
@@ -4272,5 +4281,25 @@ else if (PMDG777Detected)
 
             }
         } // DisplayApplicationSettings.
+
+        private void DisplayA2AManager()
+        {
+            Output(isGauge: false, output: "A2A manager not yet supported.");
+        } // DisplayA2AManager.
+
+        private void DisplayAircraftProfiles()
+        {
+            Output(isGauge: false, output: "Aircraft profiles not yet supported.");
+        } // AircraftProfiles
+
+        private void DisplayWebsite()
+        {
+            System.Diagnostics.Process.Start("www.talkingflightmonitor.com");
+        } // DisplayWebsite
+
+        private void ReportIssue()
+        {
+            System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
+        } // ReportIssue
     } // End IOSubsystem class
 } // End TFM namespace.
