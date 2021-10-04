@@ -2054,9 +2054,9 @@ else if (PMDG777Detected)
                     OnAGLKey();
                     break;
                 case "Disable_Command_Key":
-                    Output(isGauge: false, output: "command key disabled.");
+                                                            Output(isGauge: false, output: "command key disabled.");
                     CommandKeyEnabled = false;
-                    break;
+                                                                                                                         break;
 
                 case "Aircraft_Heading":
                     OnHeadingKey();
