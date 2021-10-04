@@ -5,3 +5,4 @@
 * Moved aircraft profiles to the simulator window. Access with ] Ctrl+I.
 * Moved visit website to the simulator window. Access with ] Ctrl+Shift+W.
 * Moved report an issue to the simulator window. Access with ] Ctrl+Shift+I.
+* PMDG 777: Added hydraulics panel.
