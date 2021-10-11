@@ -201,67 +201,7 @@ namespace tfm
             this.TimerLowPriority.Stop();
             FSUIPCConnection.Close();
         }
-
-        private void QuitMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void TFMMainForm_KeyDown(object sender, KeyEventArgs e)
-        {
-        } //End KeyDown event.
-
-
-        private void TFMMainForm_Load(object sender, EventArgs e)
-        {
-                       
-        }
-
-        private void AboutMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox about = new AboutBox();
-            about.ShowDialog();
-        } //End About menu item.
-
-        private void WebsiteMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net");
-        }
-
-        private void ReportIssueMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
-        }
-
-        //End sending data to the simulator.
-        private void SettingsMenuItem_Click(object sender, EventArgs e)
-        {
-            Settings.Default.PropertyChanged += onChange;
-            frmSettings settings = new frmSettings();
-
-            settings.ShowDialog();
-            if (settings.DialogResult == DialogResult.OK)
-            {
-                if (Properties.Settings.Default.AvionicsTabChangeFlag)
-                {
-                    MessageBox.Show("You must restart TFM for the avionics tab changes to take affect", "restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.Reload();
-
-            }
-
-
-        }
-
-        private void onChange(object sender, PropertyChangedEventArgs e)
-        {
-            logger.Debug($"Setting {e.PropertyName} changed");
-        }
-    
+   
                 private void dbLoadWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -276,9 +216,7 @@ namespace tfm
             catch (Exception ex)
             {
                 Tolk.Output("could not load airport database.");
-
             }
-
         } // load database.
 
         protected override void SetVisibleCore(bool value)
@@ -286,96 +224,5 @@ namespace tfm
             base.SetVisibleCore(visibleOnStartup? value:visibleOnStartup);
         } // SetVisibleCore.
 
-        private void KeyManagerMenuItem_Click(object sender, EventArgs e)
-        {
-            frmKeyboardManager keyboardManager = new frmKeyboardManager();
-            keyboardManager.ShowDialog();
-            if (keyboardManager.DialogResult == DialogResult.OK)
-            {
-                Properties.Hotkeys.Default.Save();
-
-            }
-            if (keyboardManager.DialogResult == DialogResult.Cancel)
-            {
-                Properties.Hotkeys.Default.Reload();
-            }
-        }
-
-        private void ToolsMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CommandKeyMenuItem_Click(object sender, EventArgs e)
-        {
-            if (inst.CommandKeyEnabled)
-            {
-                inst.CommandKeyEnabled = false;
-                inst.ResetHotkeys();
-                Tolk.Output("command key disabled");
-            }
-            else
-            {
-                inst.CommandKeyEnabled = true;
-                inst.ResetHotkeys();
-                Tolk.Output("command key enabled");
-
-            }
-        }
-
-        private void hotkeyHelpMenuItem_Click(object sender, EventArgs e)
-        {
-            frmKeyboardHelp keyboardHelp = new frmKeyboardHelp();
-            keyboardHelp.ShowDialog();
-
-        }
-
-        private void ConnectMenuItem_Click(object sender, EventArgs e)
-        {
-            // Reset the connection counter so logging errors work.
-            connectionCounter = 0;
-            Tolk.Output("Attempting to connect...");
-            this.TimerConnection.Start();
-        }
-
-        private void FuelMenuItem_Click(object sender, EventArgs e)
-        {
-            if (FSUIPCConnection.IsOpen == true)
-            {
-                if (Aircraft.AircraftName.Value.Contains("PMDG"))
-                {
-                    MessageBox.Show("Fuel manager is not available on PMDG aircraft. Please use the FMC to load fuel.", "error");
-                }
-                else
-                {
-                    frmFuelManager frm = new frmFuelManager();
-                    frm.ShowDialog();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Fuel and Payload services are only available while connected to the simulator", "Error", MessageBoxButtons.OK);
-
-            }
-        }
-
-        private void TFMMainForm_Resize(object sender, EventArgs e)
-        {
-            /* if (Properties.Settings.Default.sendToTray)
-            {
-                if (this.WindowState == FormWindowState.Minimized)
-                {
-                    trayIcon.Visible = true;
-                    trayIcon.ShowBalloonTip(500);
-                    this.Hide();
-                }
-            } */
-        }
-
-        private void flightPlanMenuItem_Click(object sender, EventArgs e)
-        {
-            FlightPlanForm fp = new FlightPlanForm();
-            fp.ShowDialog();
-        }
-    }//End TFMMainForm class.
+            }//End TFMMainForm class.
 } //End TFM namespace.
