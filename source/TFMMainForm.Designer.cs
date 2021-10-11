@@ -52,18 +52,21 @@
             this.ReportIssueMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hotkeyHelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.waypointsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addWaypointContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeWaypointContextMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.directToHereContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.holdContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeAltitudeContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeSpeedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeVerticalSpeedContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dbLoadWorker = new System.ComponentModel.BackgroundWorker();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayIconContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.commandKeysToggleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.keyboardMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportBugMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.websiteMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.connectToSimMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shutDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TFMMainMenu.SuspendLayout();
-            this.waypointsContextMenu.SuspendLayout();
+            this.trayIconContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // TFMMainMenu
@@ -316,70 +319,6 @@
             this.hotkeyHelpMenuItem.Text = "Hotkey help";
             this.hotkeyHelpMenuItem.Click += new System.EventHandler(this.hotkeyHelpMenuItem_Click);
             // 
-            // waypointsContextMenu
-            // 
-            this.waypointsContextMenu.AccessibleName = "Waypoint menu";
-            this.waypointsContextMenu.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waypointsContextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.waypointsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addWaypointContextMenuItem,
-            this.removeWaypointContextMenu,
-            this.directToHereContextMenuItem,
-            this.holdContextMenuItem,
-            this.changeAltitudeContextMenuItem,
-            this.changeSpeedContextMenuItem,
-            this.changeVerticalSpeedContextMenuItem});
-            this.waypointsContextMenu.Name = "waypointsContextMenu";
-            this.waypointsContextMenu.Size = new System.Drawing.Size(333, 284);
-            // 
-            // addWaypointContextMenuItem
-            // 
-            this.addWaypointContextMenuItem.AccessibleName = "Add waypoint";
-            this.addWaypointContextMenuItem.Name = "addWaypointContextMenuItem";
-            this.addWaypointContextMenuItem.Size = new System.Drawing.Size(332, 40);
-            this.addWaypointContextMenuItem.Text = "&Add waypoint";
-            // 
-            // removeWaypointContextMenu
-            // 
-            this.removeWaypointContextMenu.Name = "removeWaypointContextMenu";
-            this.removeWaypointContextMenu.Size = new System.Drawing.Size(332, 40);
-            this.removeWaypointContextMenu.Text = "&Remove waypoint";
-            // 
-            // directToHereContextMenuItem
-            // 
-            this.directToHereContextMenuItem.AccessibleName = "Direct to here";
-            this.directToHereContextMenuItem.Name = "directToHereContextMenuItem";
-            this.directToHereContextMenuItem.Size = new System.Drawing.Size(332, 40);
-            this.directToHereContextMenuItem.Text = "&Direct to here";
-            // 
-            // holdContextMenuItem
-            // 
-            this.holdContextMenuItem.AccessibleName = "Hold";
-            this.holdContextMenuItem.Name = "holdContextMenuItem";
-            this.holdContextMenuItem.Size = new System.Drawing.Size(332, 40);
-            this.holdContextMenuItem.Text = "&hold";
-            // 
-            // changeAltitudeContextMenuItem
-            // 
-            this.changeAltitudeContextMenuItem.AccessibleName = "Change altitude";
-            this.changeAltitudeContextMenuItem.Name = "changeAltitudeContextMenuItem";
-            this.changeAltitudeContextMenuItem.Size = new System.Drawing.Size(332, 40);
-            this.changeAltitudeContextMenuItem.Text = "Change &altitude";
-            // 
-            // changeSpeedContextMenuItem
-            // 
-            this.changeSpeedContextMenuItem.AccessibleName = "Change speed";
-            this.changeSpeedContextMenuItem.Name = "changeSpeedContextMenuItem";
-            this.changeSpeedContextMenuItem.Size = new System.Drawing.Size(332, 40);
-            this.changeSpeedContextMenuItem.Text = "Change &speed";
-            // 
-            // changeVerticalSpeedContextMenuItem
-            // 
-            this.changeVerticalSpeedContextMenuItem.AccessibleName = "Change vertical speed";
-            this.changeVerticalSpeedContextMenuItem.Name = "changeVerticalSpeedContextMenuItem";
-            this.changeVerticalSpeedContextMenuItem.Size = new System.Drawing.Size(332, 40);
-            this.changeVerticalSpeedContextMenuItem.Text = "Change &vertical speed";
-            // 
             // dbLoadWorker
             // 
             this.dbLoadWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dbLoadWorker_DoWork);
@@ -387,11 +326,97 @@
             // trayIcon
             // 
             this.trayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.trayIcon.BalloonTipText = "TFM is minimized to the system tray.";
-            this.trayIcon.BalloonTipTitle = "TFM notification";
+            this.trayIcon.BalloonTipText = "TFM minimized to the system tray.";
+            this.trayIcon.BalloonTipTitle = "TFM";
+            this.trayIcon.ContextMenuStrip = this.trayIconContextMenu;
             this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
-            this.trayIcon.Text = "TFM";
-            this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
+            this.trayIcon.Text = "Talking flight monitor";
+            // 
+            // trayIconContextMenu
+            // 
+            this.trayIconContextMenu.AccessibleName = "TFM context menu";
+            this.trayIconContextMenu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trayIconContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.trayIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsMenu,
+            this.commandKeysToggleMenuItem,
+            this.toolStripSeparator3,
+            this.keyboardMenuItem,
+            this.reportBugMenuItem,
+            this.websiteMenu,
+            this.aboutMenu,
+            this.toolStripSeparator4,
+            this.connectToSimMenuItem,
+            this.shutDownMenuItem});
+            this.trayIconContextMenu.Name = "trayIconContextMenu";
+            this.trayIconContextMenu.Size = new System.Drawing.Size(324, 336);
+            this.trayIconContextMenu.Text = "TFM";
+            // 
+            // settingsMenu
+            // 
+            this.settingsMenu.AccessibleName = "Settings...";
+            this.settingsMenu.Name = "settingsMenu";
+            this.settingsMenu.Size = new System.Drawing.Size(323, 40);
+            this.settingsMenu.Text = "&Settings";
+            // 
+            // commandKeysToggleMenuItem
+            // 
+            this.commandKeysToggleMenuItem.AccessibleName = "Command keys";
+            this.commandKeysToggleMenuItem.Name = "commandKeysToggleMenuItem";
+            this.commandKeysToggleMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.commandKeysToggleMenuItem.Text = "&Command keys";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(320, 6);
+            // 
+            // keyboardMenuItem
+            // 
+            this.keyboardMenuItem.AccessibleName = "Keyboard...";
+            this.keyboardMenuItem.Name = "keyboardMenuItem";
+            this.keyboardMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.keyboardMenuItem.Text = "&Keyboard...";
+            // 
+            // reportBugMenuItem
+            // 
+            this.reportBugMenuItem.AccessibleName = "Report a bug";
+            this.reportBugMenuItem.Name = "reportBugMenuItem";
+            this.reportBugMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.reportBugMenuItem.Text = "&Report a bug";
+            // 
+            // websiteMenu
+            // 
+            this.websiteMenu.AccessibleName = "Website...";
+            this.websiteMenu.Name = "websiteMenu";
+            this.websiteMenu.Size = new System.Drawing.Size(323, 40);
+            this.websiteMenu.Text = "&Website...";
+            // 
+            // aboutMenu
+            // 
+            this.aboutMenu.AccessibleName = "About...";
+            this.aboutMenu.Name = "aboutMenu";
+            this.aboutMenu.Size = new System.Drawing.Size(323, 40);
+            this.aboutMenu.Text = "&About...";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(320, 6);
+            // 
+            // connectToSimMenuItem
+            // 
+            this.connectToSimMenuItem.AccessibleName = "Connect to simulator";
+            this.connectToSimMenuItem.Name = "connectToSimMenuItem";
+            this.connectToSimMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.connectToSimMenuItem.Text = "&Connect to simulator";
+            // 
+            // shutDownMenuItem
+            // 
+            this.shutDownMenuItem.AccessibleName = "Shutdown";
+            this.shutDownMenuItem.Name = "shutDownMenuItem";
+            this.shutDownMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.shutDownMenuItem.Text = "&Shutdown";
             // 
             // TFMMainForm
             // 
@@ -418,7 +443,7 @@
             this.Resize += new System.EventHandler(this.TFMMainForm_Resize);
             this.TFMMainMenu.ResumeLayout(false);
             this.TFMMainMenu.PerformLayout();
-            this.waypointsContextMenu.ResumeLayout(false);
+            this.trayIconContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,17 +471,20 @@
         private System.Windows.Forms.ToolStripMenuItem CommandKeyMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hotkeyHelpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ConnectMenuItem;
-        private System.Windows.Forms.ContextMenuStrip waypointsContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem addWaypointContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeWaypointContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem directToHereContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem holdContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeAltitudeContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeSpeedContextMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeVerticalSpeedContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FuelMenuItem;
         private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.ToolStripMenuItem flightPlanMenuItem;
+        private System.Windows.Forms.ContextMenuStrip trayIconContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem settingsMenu;
+        private System.Windows.Forms.ToolStripMenuItem commandKeysToggleMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem keyboardMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportBugMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem websiteMenu;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem connectToSimMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shutDownMenuItem;
     }
 }
 

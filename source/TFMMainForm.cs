@@ -26,6 +26,9 @@ namespace tfm
 {
     public partial class TFMMainForm : Form
     {
+
+        private bool visibleOnStartup = false;
+
         // get a logger object for this class
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         // set up timers
@@ -53,6 +56,7 @@ namespace tfm
                 Properties.Settings.Default.Save();
                 Application.Restart();
             }
+            this.trayIcon.Visible = true;
             Aircraft.InitOffsets();
 
                         // speak a debug message via SAPI if debug mode is turned on
@@ -258,10 +262,7 @@ namespace tfm
             logger.Debug($"Setting {e.PropertyName} changed");
         }
     
-
-
-
-        private void dbLoadWorker_DoWork(object sender, DoWorkEventArgs e)
+                private void dbLoadWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -278,7 +279,12 @@ namespace tfm
 
             }
 
-        }
+        } // load database.
+
+        protected override void SetVisibleCore(bool value)
+        {
+            base.SetVisibleCore(visibleOnStartup? value:visibleOnStartup);
+        } // SetVisibleCore.
 
         private void KeyManagerMenuItem_Click(object sender, EventArgs e)
         {
@@ -353,17 +359,9 @@ namespace tfm
             }
         }
 
-        private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            this.Show();
-            this.Focus();
-            trayIcon.Visible = false;
-        }
-
         private void TFMMainForm_Resize(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.sendToTray)
+            /* if (Properties.Settings.Default.sendToTray)
             {
                 if (this.WindowState == FormWindowState.Minimized)
                 {
@@ -371,7 +369,7 @@ namespace tfm
                     trayIcon.ShowBalloonTip(500);
                     this.Hide();
                 }
-            }
+            } */
         }
 
         private void flightPlanMenuItem_Click(object sender, EventArgs e)
