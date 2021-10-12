@@ -4264,6 +4264,9 @@ else if (PMDG777Detected)
 
         private void DisplayApplicationSettings()
         {
+            /// TODO: IoSubsystem: Remove avionics tab from settings.
+            /// TODO: IoSubSystem: Make displaying settings reusable code in the global scope.
+            /// 
             frmSettings settings = new frmSettings();
 
             settings.ShowDialog();

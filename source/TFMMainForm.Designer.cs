@@ -33,15 +33,15 @@
             this.dbLoadWorker = new System.ComponentModel.BackgroundWorker();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayIconContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.commandKeysToggleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.commandKeysMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.keyboardMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportBugMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.websiteMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.issueTrackerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.websiteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.connectToSimMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shutDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trayIconContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -65,85 +65,94 @@
             this.trayIconContextMenu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trayIconContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.trayIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsMenu,
-            this.commandKeysToggleMenuItem,
+            this.settingsMenuItem,
+            this.commandKeysMenuItem,
             this.toolStripSeparator3,
             this.keyboardMenuItem,
-            this.reportBugMenuItem,
-            this.websiteMenu,
-            this.aboutMenu,
+            this.issueTrackerMenuItem,
+            this.websiteMenuItem,
+            this.aboutMenuItem,
             this.toolStripSeparator4,
-            this.connectToSimMenuItem,
+            this.restartMenuItem,
             this.shutDownMenuItem});
             this.trayIconContextMenu.Name = "trayIconContextMenu";
-            this.trayIconContextMenu.Size = new System.Drawing.Size(324, 336);
+            this.trayIconContextMenu.Size = new System.Drawing.Size(261, 369);
             this.trayIconContextMenu.Text = "TFM";
             // 
-            // settingsMenu
+            // settingsMenuItem
             // 
-            this.settingsMenu.AccessibleName = "Settings...";
-            this.settingsMenu.Name = "settingsMenu";
-            this.settingsMenu.Size = new System.Drawing.Size(323, 40);
-            this.settingsMenu.Text = "&Settings";
+            this.settingsMenuItem.AccessibleName = "Settings...";
+            this.settingsMenuItem.Name = "settingsMenuItem";
+            this.settingsMenuItem.Size = new System.Drawing.Size(260, 40);
+            this.settingsMenuItem.Text = "&Settings";
+            this.settingsMenuItem.Click += new System.EventHandler(this.settingsMenuItem_Click);
             // 
-            // commandKeysToggleMenuItem
+            // commandKeysMenuItem
             // 
-            this.commandKeysToggleMenuItem.AccessibleName = "Command keys";
-            this.commandKeysToggleMenuItem.Name = "commandKeysToggleMenuItem";
-            this.commandKeysToggleMenuItem.Size = new System.Drawing.Size(323, 40);
-            this.commandKeysToggleMenuItem.Text = "&Command keys";
+            this.commandKeysMenuItem.AccessibleName = "Command keys";
+            this.commandKeysMenuItem.Name = "commandKeysMenuItem";
+            this.commandKeysMenuItem.Size = new System.Drawing.Size(260, 40);
+            this.commandKeysMenuItem.Text = "&Command keys";
+            this.commandKeysMenuItem.Visible = false;
+            this.commandKeysMenuItem.Click += new System.EventHandler(this.commandKeysMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(320, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(257, 6);
             // 
             // keyboardMenuItem
             // 
             this.keyboardMenuItem.AccessibleName = "Keyboard...";
             this.keyboardMenuItem.Name = "keyboardMenuItem";
-            this.keyboardMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.keyboardMenuItem.Size = new System.Drawing.Size(260, 40);
             this.keyboardMenuItem.Text = "&Keyboard...";
+            this.keyboardMenuItem.Click += new System.EventHandler(this.keyboardMenuItem_Click);
             // 
-            // reportBugMenuItem
+            // issueTrackerMenuItem
             // 
-            this.reportBugMenuItem.AccessibleName = "Report a bug";
-            this.reportBugMenuItem.Name = "reportBugMenuItem";
-            this.reportBugMenuItem.Size = new System.Drawing.Size(323, 40);
-            this.reportBugMenuItem.Text = "&Report a bug";
+            this.issueTrackerMenuItem.AccessibleName = "Issue tracker...";
+            this.issueTrackerMenuItem.Name = "issueTrackerMenuItem";
+            this.issueTrackerMenuItem.Size = new System.Drawing.Size(260, 40);
+            this.issueTrackerMenuItem.Text = "&Issue tracker...";
+            this.issueTrackerMenuItem.Click += new System.EventHandler(this.issueTrackerMenuItem_Click);
             // 
-            // websiteMenu
+            // websiteMenuItem
             // 
-            this.websiteMenu.AccessibleName = "Website...";
-            this.websiteMenu.Name = "websiteMenu";
-            this.websiteMenu.Size = new System.Drawing.Size(323, 40);
-            this.websiteMenu.Text = "&Website...";
+            this.websiteMenuItem.AccessibleName = "Website...";
+            this.websiteMenuItem.Name = "websiteMenuItem";
+            this.websiteMenuItem.Size = new System.Drawing.Size(260, 40);
+            this.websiteMenuItem.Text = "&Website...";
+            this.websiteMenuItem.Click += new System.EventHandler(this.websiteMenuItem_Click);
             // 
-            // aboutMenu
+            // aboutMenuItem
             // 
-            this.aboutMenu.AccessibleName = "About...";
-            this.aboutMenu.Name = "aboutMenu";
-            this.aboutMenu.Size = new System.Drawing.Size(323, 40);
-            this.aboutMenu.Text = "&About...";
+            this.aboutMenuItem.AccessibleName = "About...";
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(260, 40);
+            this.aboutMenuItem.Text = "&About...";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(320, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(257, 6);
             // 
-            // connectToSimMenuItem
+            // restartMenuItem
             // 
-            this.connectToSimMenuItem.AccessibleName = "Connect to simulator";
-            this.connectToSimMenuItem.Name = "connectToSimMenuItem";
-            this.connectToSimMenuItem.Size = new System.Drawing.Size(323, 40);
-            this.connectToSimMenuItem.Text = "&Connect to simulator";
+            this.restartMenuItem.AccessibleName = "Restart";
+            this.restartMenuItem.Name = "restartMenuItem";
+            this.restartMenuItem.Size = new System.Drawing.Size(260, 40);
+            this.restartMenuItem.Text = "&Restart";
+            this.restartMenuItem.Click += new System.EventHandler(this.restartMenuItem_Click);
             // 
             // shutDownMenuItem
             // 
             this.shutDownMenuItem.AccessibleName = "Shutdown";
             this.shutDownMenuItem.Name = "shutDownMenuItem";
-            this.shutDownMenuItem.Size = new System.Drawing.Size(323, 40);
+            this.shutDownMenuItem.Size = new System.Drawing.Size(260, 40);
             this.shutDownMenuItem.Text = "&Shutdown";
+            this.shutDownMenuItem.Click += new System.EventHandler(this.shutDownMenuItem_Click);
             // 
             // TFMMainForm
             // 
@@ -172,15 +181,15 @@
         private System.ComponentModel.BackgroundWorker dbLoadWorker;
         private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.ContextMenuStrip trayIconContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem settingsMenu;
-        private System.Windows.Forms.ToolStripMenuItem commandKeysToggleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem commandKeysMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem keyboardMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportBugMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem websiteMenu;
-        private System.Windows.Forms.ToolStripMenuItem aboutMenu;
+        private System.Windows.Forms.ToolStripMenuItem issueTrackerMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem websiteMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem connectToSimMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restartMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shutDownMenuItem;
     }
 }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -98,6 +99,7 @@ namespace tfm
 
                 // If there was no problem, stop this timer and start the main timer
                 this.TimerConnection.Stop();
+                this.SetCommandKeyMenuText();
                 this.TimerMain.Elapsed += TimerMain_Tick;
                 this.TimerMain.AutoReset = true;
                 this.TimerMain.Start();
@@ -123,9 +125,11 @@ namespace tfm
                 }
                 else if (connectionCounter == 35)
                 {
-                    Tolk.Output("Connection timed out. See the TFM log for more details. Please restart TFM or manually connect to continue.");
+                    Tolk.Output("Connection timed out. See the TFM log for more details. Please restart TFM to continue.");
                     logger.Debug("Connection timeout: The simulator or fsuipc are not running. Make sure they are running before starting TFM.");
                     this.TimerConnection.Stop();
+                    // Command keys menu item is not needed when FSUIPC is not running.
+                    commandKeysMenuItem.Visible = false;
                 }
             }
         }
@@ -152,9 +156,6 @@ namespace tfm
                 {
                     inst.PostTakeOffChecklist();
                 }
-
-
-
             }
 
 
@@ -179,13 +180,13 @@ namespace tfm
             {
                 FSUIPCConnection.Process("LowPriority");
                 inst.ReadLowPriorityInstruments();
-            }
+                            }
             catch (Exception ex)
             {
                 // Stop the timer.
                 this.TimerLowPriority.Stop();
 
-                // Make a log entry since notifying the user is pointless.
+                                // Make a log entry since notifying the user is pointless.
                 logger.Debug($"Low priority instruments failed to read: {ex.Message}: {ex.StackTrace}");
                 this.TimerConnection.Start();
             }
@@ -224,5 +225,163 @@ namespace tfm
             base.SetVisibleCore(visibleOnStartup? value:visibleOnStartup);
         } // SetVisibleCore.
 
-            }//End TFMMainForm class.
+        private void Shutdown()
+        {
+            /// TODO: Add message box confirmation for system tray shutdown code.
+
+            Tolk.PreferSAPI(true);
+            Tolk.Output("TFM is shutting down.");
+            Tolk.PreferSAPI(false);
+            Thread.Sleep(2000);
+            Application.Exit();
+        } // Shutdown
+
+        private void ShowAboutBox()
+        {
+            AboutBox about = new AboutBox();
+            about.ShowDialog();
+        } // ShowAboutBox.
+
+        private void ShowWebsite()
+        {
+            System.Diagnostics.Process.Start("http://www.talkingflightmonitor.com");
+        } // ShowWebsite.
+
+        private void ShowIssueTracker()
+        {
+            System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
+        } // ShowIssueTracker.
+
+private void ShowSettings()
+        {
+            /// TODO: TFM main form: Remove avionics tab from settings.
+            /// TODO: TFM main form: Make displaying settings reusable code in the global scope.
+            /// 
+            frmSettings settings = new frmSettings();
+
+            settings.ShowDialog();
+            if (settings.DialogResult == DialogResult.OK)
+            {
+                if (Properties.Settings.Default.AvionicsTabChangeFlag)
+                {
+                    MessageBox.Show("You must restart TFM for the avionics tab changes to take affect", "restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Reload();
+
+            }
+        } // ShowSettings.
+
+        private void ShowKeyboardManager()
+        {
+                                       frmKeyboardManager keyboardManager = new frmKeyboardManager();
+                keyboardManager.ShowDialog();
+                if (keyboardManager.DialogResult == DialogResult.OK)
+                {
+                    Properties.Hotkeys.Default.Save();
+                                }
+                if (keyboardManager.DialogResult == DialogResult.Cancel)
+                {
+                    Properties.Hotkeys.Default.Reload();
+                }
+            } // ShowKeyboardManager.
+        
+        private bool ToggleCommandKeys()
+        {
+            bool isEnabled = false;
+                                        if (inst.CommandKeyEnabled)
+                {
+                    inst.CommandKeyEnabled = false;
+                isEnabled = false;
+                    inst.ResetHotkeys();
+                Tolk.PreferSAPI(true);    
+                Tolk.Output("command key disabled");
+                Tolk.PreferSAPI(false);
+                }
+                else
+                {
+                    inst.CommandKeyEnabled = true;
+                isEnabled = true;
+                    inst.ResetHotkeys();
+                Tolk.PreferSAPI(true);
+                Tolk.Output("command key enabled");
+                Tolk.PreferSAPI(false);
+                }
+                                        return isEnabled;
+            } // ToggleCommandKeys.
+
+        private void SetCommandKeyMenuText()
+        {
+            // Make the menu item visible in the event the connection timer made it invisible.
+            if(commandKeysMenuItem.Visible == false)
+            {
+                commandKeysMenuItem.Visible = true; 
+            }
+            if(inst.CommandKeyEnabled ==  true)
+            {
+                commandKeysMenuItem.Text = $"&Command keys enabled";
+                commandKeysMenuItem.AccessibleName = "Command keys enabled";
+            }
+            else
+            {
+                commandKeysMenuItem.Text = "&Command keys disabled";
+                commandKeysMenuItem.AccessibleName = "Command keys disabled";
+            }
+        } // SetCommandKeyMenuText.
+
+        private void Restart()
+        {
+            Tolk.PreferSAPI(true);
+            Tolk.Output("TFM is restarting...");
+            Tolk.PreferSAPI(false);
+            Thread.Sleep(1500);
+            Application.Restart();
+                    } // Restart.
+
+        private void settingsMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowSettings();
+        } // settingsMenuItem_Click.
+
+        private void commandKeysMenuItem_Click(object sender, EventArgs e)
+        {
+                        bool isEnabled = ToggleCommandKeys()? true : false;
+            string commandKeyState = isEnabled ?  "enabled" : "disabled";   
+            commandKeysMenuItem.AccessibleName = $"Command keys {commandKeyState}";
+            commandKeysMenuItem.Checked = isEnabled? true : false;
+        } // commandKeysMenuItem_Click.
+
+        private void keyboardMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowKeyboardManager();
+        } // keyboardManagerMenuItem_Click.
+
+        private void issueTrackerMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowIssueTracker();
+        } // issueTrackerMenuItem_Click.
+
+        private void websiteMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowWebsite();
+        } // websiteMenuItem_Click.
+
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAboutBox();
+        } // aboutMenuItem_Click.
+
+        private void restartMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Restart();
+        } // restartMenuItem_Click.
+
+        private void shutDownMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Shutdown();
+        } // shutdownMenuItem_Click.
+    }//End TFMMainForm class.
 } //End TFM namespace.
