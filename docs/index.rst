@@ -3,12 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Talking Flight Monitor documentation!
+Talking Flight Monitor documentation
 ==================================================
+
+This is the official documentation for Talking Flight Monitor (TFM). Check back often, as we will be updating the documentation as time permits. 
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
+   :hidden:
 
 
    quickstart.md
