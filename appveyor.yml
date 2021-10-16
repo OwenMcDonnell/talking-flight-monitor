@@ -7,8 +7,8 @@ nuget:
 configuration: Debug
 
 environment:
-  encFileKey:
-    secure: IS92sMB8DjOsUUuLZRWCEHtM3s4a0TWtWojhyOXsxqk=
+  gh_token:
+    secure: 5NfMTIHSZWCVv5fbAQroqXFDASFCQjRhL0XA61PGKdHJb88a8HrtftbA789/VdEh
 
 before_build:
 - cmd: nuget restore source\tfm.sln
@@ -20,16 +20,54 @@ after_build:
     makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm.nsi
 
     appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
-deploy:
-- provider: FTP
-  on:
-    APPVEYOR_REPO_TAG: true
-  host: voyager.fayretech.com
-  protocol: sftp
-  username: talkingflightmonitor
-  password:
-    secure: gsDOGtodux/gAPPDTybI5w==
-  folder: /tfm-snapshots
+
+deploy_script:
+ - ps: |
+    if ($env:APPVEYOR_REPO_TAG -eq "true") {
+    
+    $token = $env:gh_token
+    $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
+    $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
+    $repo = 'jfayre/talking-flight-monitor'
+    $tag = $env:appveyor_repo_tag_name
+    $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
+
+    $headers = @{
+      "Authorization" = "token $token"
+      "Content-type" = "application/json"
+    }
+
+    $body = @{
+      tag_name = $tag
+      target_commitish = "master"
+      name = $releaseName
+      body = $description
+      draft = $false
+      prerelease = $false
+    }
+
+    Write-Host "Creating release..." -NoNewline
+    $json = (ConvertTo-Json $body)
+    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases" -Headers $headers -Method POST -Body $json
+    $uploadUrl = $release.upload_url.Replace("{?name,label}", "") + "?name=" + [IO.Path]::GetFileName($uploadFilePath)
+    Write-Host "OK" -ForegroundColor Green
+
+    $uploadUrl
+
+    Write-Host "Uploading asset..." -NoNewline
+    $data = [System.IO.File]::ReadAllBytes($uploadFilePath)
+    $wc = New-Object Net.WebClient
+    $wc.Headers['Content-type'] = 'application/octet-stream'
+    $wc.Headers['Authorization'] = "token $token"
+
+    try {
+      $response = $wc.UploadData($uploadUrl, "POST", $data)
+      Write-Host "OK" -ForegroundColor Green
+    } catch {
+      $host.SetShouldExit(1)
+    }
+    }
+
 notifications:
 - provider: Email
   to:

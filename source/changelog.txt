@@ -1,4 +1,5 @@
-﻿18.4:
+﻿## 18.4 Release Notes
+
 * Settings now persist across version changes.
 * Moved settings to the simulator window. Access with ] question mark (Shift+/).
 * Moved A2A manager to the simulator window. Access with ] Ctrl+Shift+M.
@@ -7,15 +8,13 @@
 * Moved report an issue to the simulator window. Access with ] Ctrl+Shift+I.
 * Removed the main TFM window. TFM is now a background app.
 * Added a system tray context menu. While the TFM system tray icon has focus, access with any one of applications key, shift+F10, JAWS key +F11 then pressing ENTER on the icon, right click with the mouse, or by using the systray NVDA addon.
-** The context menu has the following options **
-* Settings - Displays the settings dialog.
-* Command keys - When pressed, toggles the command keys on or off. The menu option will display "enabled" or "disabled" depending on the command key's current state.
-* Keyboard - Displays the keyboard manager.
-* Website - Uses the default system browser to display TFM's website.
-* Issue tracker - Uses the system default browser to display TFM's issue tracker in GitHub.
-* About - Displays the about box.
-* Restart - Restarts TFM.
-* Shutdown - Shuts down TFM.
-** End of tray icon menu options **
-
+    * The context menu has the following options **
+    * Settings - Displays the settings dialog.
+    * Command keys - When pressed, toggles the command keys on or off. The menu option will display "enabled" or "disabled" depending on the command key's current state.
+    * Keyboard - Displays the keyboard manager.
+    * Website - Uses the default system browser to display TFM's website.
+    * Issue tracker - Uses the system default browser to display TFM's issue tracker in GitHub.
+    * About - Displays the about box.
+    * Restart - Restarts TFM.
+    * Shutdown - Shuts down TFM.
 * PMDG 777: Added hydraulics panel.
