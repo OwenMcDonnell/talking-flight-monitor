@@ -1,21 +1,26 @@
 ﻿## version 18.4 Release Notes
 
+### New features
 * Settings now persist across version changes.
 * Moved settings to the simulator window. Access with ] question mark (Shift+/).
 * Moved A2A manager to the simulator window. Access with ] Ctrl+Shift+M.
 * Moved aircraft profiles to the simulator window. Access with ] Ctrl+I.
 * Moved visit website to the simulator window. Access with ] Ctrl+Shift+W.
 * Moved report an issue to the simulator window. Access with ] Ctrl+Shift+I.
+* Revised how TFM reports changes and fixes from version to version.
+
+For those who watch source build through GitHub, the changes.txt file will list all fixes and changes in markdown. The changes.txt file is also found in TFM's install folder. For those who rather have an HTML view of this file, it is found on the [TFM download](http://www.talkingflightmonitor.com/download) page.
+
 * Removed the main TFM window. TFM is now a background app.
+* Added new startup and shutdown sounds. The new sounds are found in TFM's install folder under sounds with the names TFM-Startup.wav and TFM-Shutdown.wav.
 * Added a system tray context menu. While the TFM system tray icon has focus, access with any one of applications key, shift+F10, JAWS key +F11 then pressing ENTER on the icon, right click with the mouse, or by using the systray NVDA addon.
-    * The context menu has the following options **
-    * Settings - Displays the settings dialog.
-    * Command keys - When pressed, toggles the command keys on or off. The menu option will display "enabled" or "disabled" depending on the command key's current state.
-    * Keyboard - Displays the keyboard manager.
-    * Website - Uses the default system browser to display TFM's website.
-    * Issue tracker - Uses the system default browser to display TFM's issue tracker in GitHub.
-    * About - Displays the about box.
-    * Restart - Restarts TFM.
-    * Shutdown - Shuts down TFM.
+            * Settings - Displays the settings dialog.
+        * Command keys - When pressed, toggles the command keys on or off. The menu option will display "enabled" or "disabled" depending on the command key's current state.
+        * Keyboard - Displays the keyboard manager.
+        * Website - Uses the default system browser to display TFM's website.
+        * Issue tracker - Uses the system default browser to display TFM's issue tracker in GitHub.
+        * About - Displays the about box.
+        * Restart - Restarts TFM.
+        * Shutdown - Shuts down TFM.
 * PMDG 777: Added hydraulics panel.
 
