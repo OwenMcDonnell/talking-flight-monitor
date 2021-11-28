@@ -9,7 +9,8 @@ namespace tfm
 {
     public static class utility
     {
-        public static bool DebugEnabled { get; internal set; }
+        public static TFMMainForm TFMMainForm { get; internal set; } 
+                public static bool DebugEnabled { get; internal set; }
 
         public static void UpdateControl(bool toggleStateOn, CheckBox ctrl)
         {
@@ -53,5 +54,9 @@ namespace tfm
             }
         }
 
+        public static void ApplicationShutdown()
+        {
+            TFMMainForm.Shutdown();
+        }
     }
 }

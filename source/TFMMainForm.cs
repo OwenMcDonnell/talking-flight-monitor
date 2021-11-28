@@ -1,4 +1,6 @@
 ﻿using FSUIPC;
+using System.Media;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,6 +81,11 @@ namespace tfm
             this.TimerConnection.AutoReset = true;
             this.TimerConnection.Start();
 
+            var executable = Assembly.GetExecutingAssembly().Location;
+            var soundFile = Path.Combine(Path.GetDirectoryName(executable), @"sounds\TFM-Startup.wav");
+            SoundPlayer sound = new SoundPlayer(soundFile);
+            sound.Play();
+            utility.TFMMainForm = this;
         }
 
         
@@ -197,6 +204,18 @@ namespace tfm
         // Form is closing so stop all the timers and close FSUIPC Connection
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /// TODO: Add message box confirmation for system tray shutdown code.
+
+            Tolk.PreferSAPI(true);
+            Tolk.Output("TFM is shutting down.");
+            Tolk.PreferSAPI(false);
+            Thread.Sleep(2000);
+
+            var executable = Assembly.GetExecutingAssembly().Location;
+            var soundFile = Path.Combine(Path.GetDirectoryName(executable), @"sounds\TFM-Shutdown.wav");
+            SoundPlayer sound = new SoundPlayer(soundFile);
+            sound.Play();
+            Thread.Sleep(10000);
             this.TimerConnection.Stop();
             this.TimerMain.Stop();
             this.TimerLowPriority.Stop();
@@ -222,18 +241,17 @@ namespace tfm
 
         protected override void SetVisibleCore(bool value)
         {
-            base.SetVisibleCore(visibleOnStartup? value:visibleOnStartup);
+            if (!this.IsHandleCreated){
+                this.CreateHandle();
+                value = false;
+            }
+            base.SetVisibleCore(value); 
+            //base.SetVisibleCore(visibleOnStartup? value:visibleOnStartup);
         } // SetVisibleCore.
 
-        private void Shutdown()
+        public void Shutdown()
         {
-            /// TODO: Add message box confirmation for system tray shutdown code.
-
-            Tolk.PreferSAPI(true);
-            Tolk.Output("TFM is shutting down.");
-            Tolk.PreferSAPI(false);
-            Thread.Sleep(2000);
-            Application.Exit();
+            Close();
         } // Shutdown
 
         private void ShowAboutBox()
@@ -381,7 +399,7 @@ private void ShowSettings()
 
         private void shutDownMenuItem_Click(object sender, EventArgs e)
         {
-            this.Shutdown();
+            utility.ApplicationShutdown();
         } // shutdownMenuItem_Click.
     }//End TFMMainForm class.
 } //End TFM namespace.
