@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace tfm.PMDG.PanelObjects
 {
-abstract class PanelObject
+ public abstract class PanelObject
     {
 
         private string _name = string.Empty;

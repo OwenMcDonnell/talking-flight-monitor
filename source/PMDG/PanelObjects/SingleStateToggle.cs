@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace tfm.PMDG.PanelObjects
 {
-    class SingleStateToggle: PanelObject
+    public class SingleStateToggle: PanelObject
     {
 
         private Offset<byte> _offset;
