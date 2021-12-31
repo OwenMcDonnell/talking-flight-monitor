@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tfm.PMDG
 {
-    enum PanelObjectType
+    public enum PanelObjectType
     {
         SingleState = 1,
         NumericDisplay,

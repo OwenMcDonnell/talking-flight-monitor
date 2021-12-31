@@ -307,6 +307,7 @@
     <Compile Include="frmFuelManager.Designer.cs">
       <DependentUpon>frmFuelManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="OutputHistory\frmOutputHistory.cs">
       <SubType>Form</SubType>
     </Compile>

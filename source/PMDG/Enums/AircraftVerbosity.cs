@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tfm.PMDG
 {
-    enum AircraftVerbosity
+    public enum AircraftVerbosity
     {
         None = 1,
         Low,

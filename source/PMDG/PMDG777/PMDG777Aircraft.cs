@@ -12,7 +12,13 @@ namespace tfm
 {
 static class PMDG777Aircraft
     {
-        // Move all PMDG777 offsets to the private versions below.
+        public static bool is200 { get => Aircraft.pmdg777.AircraftModel.Value == 1 ? true : false; }
+        public static bool is200ER { get => Aircraft.pmdg777.AircraftModel.Value == 2 ? true : false; }
+                public static bool is300 { get => Aircraft.pmdg777.AircraftModel.Value == 3 ? true : false; }
+                public static  bool is200LR { get => Aircraft.pmdg777.AircraftModel.Value == 4 ? true : false; }
+                public static bool isFreighter { get => Aircraft.pmdg777.AircraftModel.Value ==5? true : false;}
+        public static  bool is300ER { get => Aircraft.pmdg777.AircraftModel.Value == 6 ? true : false; }
+
                 // The MCP dialogs.
         private static tfm.PMDG.PMDG777.McpComponents.SpeedBox speedBox = new tfm.PMDG.PMDG777.McpComponents.SpeedBox();
         private static tfm.PMDG.PMDG777.McpComponents.AltitudeBox altitudeBox = new tfm.PMDG.PMDG777.McpComponents.AltitudeBox();
@@ -299,6 +305,24 @@ static class PMDG777Aircraft
             {3, "closing" },
             {4, "opening" },
         };
+
+        private static Dictionary<byte, string> _perfInitStates = new Dictionary<byte, string>()
+{
+    {0, "Incomplete" },
+    {1, "Complete" },
+};
+
+        private static Dictionary<byte, string> _takeoffConfigStates = new Dictionary<byte, string>()
+        {
+            {0, "complete" },
+            {1, "incomplete" },
+        };
+
+        private static Dictionary<byte, string> _iruStates = new Dictionary<byte, string>()
+        {
+            {0, "Not alligned" },
+            {1, "Aligned" },
+        };
         // end switch states
 
         public static Dictionary<string, System.Windows.Forms.Form> McpComponents
@@ -311,9 +335,9 @@ static class PMDG777Aircraft
                 {"vertical", verticalSpeedBox },
             };
         } // End McpComponents.
-public static  PanelObject[] PanelControls
+public static  List<PanelObject> PanelControls
         {
-            get => new PanelObject[]
+            get => new List<PanelObject>()
             {
                 new SingleStateToggle {Name = "Backup window heat/left side", PanelName = "Overhead maint.", PanelSection = "Backup window heat", Offset = Aircraft.pmdg777.ICE_WindowHeatBackUp_Sw_OFF[0], Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, AvailableStates = _offOrOnStates },
 new SingleStateToggle{Name = "Backup window heat/Right side", PanelName = "Overhead maint.", PanelSection = "Backup window heat", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg777.ICE_WindowHeatBackUp_Sw_OFF[1], AvailableStates = _offOrOnStates },
@@ -501,9 +525,23 @@ new SingleStateToggle{Name = "Rudder trim", PanelName = "Aft aisle stand", Panel
 new SingleStateToggle{Name = "Entry 1L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[0], AvailableStates = _doorStates},
 new SingleStateToggle{Name = "Entry 1R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[1], AvailableStates = _doorStates},
 new SingleStateToggle{Name = "Entry 2L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[2], AvailableStates = _doorStates},
-new SingleStateToggle{Name = "Entry 2R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[3], AvailableStates = _doorStates},
-// TODO: add conditional door elements.                
-// end panel objects
+ new SingleStateToggle{Name = "Entry 2R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[3], AvailableStates = _doorStates},
+                { new SingleStateToggle{Name = "Entry 3L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[4], AvailableStates = _doorStates}, !is300},
+                { new SingleStateToggle{Name = "Entry 4L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[4], AvailableStates = _doorStates}, is300 },
+                new SingleStateToggle{Name = "Entry 3R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[5], AvailableStates = _doorStates},
+                {                new SingleStateToggle{Name = "Entry 4L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[6], AvailableStates = _doorStates}, !is300},
+                                {                new SingleStateToggle{Name = "Entry 5L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[6], AvailableStates = _doorStates}, is300},
+                                new SingleStateToggle{Name = "Entry 4R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[7], AvailableStates = _doorStates},
+                                new SingleStateToggle{Name = "Entry 5L", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[8], AvailableStates = _doorStates},
+                                                                new SingleStateToggle{Name = "Entry 5R", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[9], AvailableStates = _doorStates},
+                                                                new SingleStateToggle{Name = "Cargo FWD", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[10], AvailableStates = _doorStates},
+                                                                new SingleStateToggle{Name = "Cargo AFT", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[11], AvailableStates = _doorStates},
+                {new SingleStateToggle{Name = "Cargo main", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[12], AvailableStates = _doorStates}, isFreighter},
+                new SingleStateToggle{Name = "Cargo bulk", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[13], AvailableStates = _doorStates},
+                                new SingleStateToggle{Name = "Avionics access", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[14], AvailableStates = _doorStates},
+                                                new SingleStateToggle{Name = "EE access", PanelName = "Aft aisle stand", PanelSection = "Doors", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.DOOR_state[15], AvailableStates = _doorStates},
+                                                                { new SingleStateToggle{Name = "Perf init", PanelName = "Other", PanelSection = "Other", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.FMC_PerfInputComplete, AvailableStates = _perfInitStates}, Properties.Settings.Default.AnnouncePerfInitComplete == true },
+                                                                new SingleStateToggle{Name = "IRU", PanelName = "Other", PanelSection = "Other", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.IRS_aligned, AvailableStates = _iruStates},
 new SingleStateToggle{Name = "Execute key", PanelName = "Forward Aisle Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.CDU_annunEXEC[0], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "CDU message light", PanelName = "Forward Aisle Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.CDU_annunMSG[0], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "CDU offset light", PanelName = "Forward Aisle Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.CDU_annunOFST[0], AvailableStates = _onOrOffStates},
