@@ -1,5 +1,8 @@
-﻿## version 18.4 Release Notes
+﻿## Talking flight monitor 22.1 release notes
 
+### What's new?
+
+* TFM now follows a continuous versioning scheme. The format is YY.MM, where YY is the two digit year and MM is a two digit month.
 * Settings now persist across version changes.
 * Moved settings to the simulator window. Access with ] question mark (Shift+/).
 * Moved A2A manager to the simulator window. Access with ] Ctrl+Shift+M.
@@ -26,4 +29,5 @@
 * PMDG 777: Added an MCP navigation box containing flight directors and autopilots. Access with [ then the letter f.
 * PMDG 737/777: MCP dialogs now select text in the text fields when displayed.
 
+### Known issues
 
