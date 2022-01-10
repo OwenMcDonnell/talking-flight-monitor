@@ -128,5 +128,17 @@ namespace tfm.PMDG.PMDG777.McpComponents
             } // End key check.
 
         } // End vsFPATextBox KeyDown event
+
+        private void VerticalSpeedBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                vsFpaTextBox.SelectAll();
+            }
+            else
+            {
+                vsFpaTextBox.DeselectAll();
+            }
+        }
     } // End VerticalSpeedBox.
 } // End namespace.

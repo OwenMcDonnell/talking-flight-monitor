@@ -83,5 +83,17 @@ namespace tfm.PMDG.PMDG737.McpComponents
                 PMDG737Aircraft.SetVerticalSpeed(vsFpaTextBox.Text);
                                             } // End key check.
                                 } // End vsFPATextBox KeyDown event
+
+        private void VerticalSpeedBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                vsFpaTextBox.SelectAll();
+            }
+            else
+            {
+                vsFpaTextBox.DeselectAll();
+            }
+        }
     } // End VerticalSpeedBox.
 } // End namespace.

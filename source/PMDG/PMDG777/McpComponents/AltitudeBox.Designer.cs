@@ -130,6 +130,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.Text = "AltitudeBox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AltitudeBox_FormClosing);
             this.Load += new System.EventHandler(this.AltitudeBox_Load);
+            this.VisibleChanged += new System.EventHandler(this.AltitudeBox_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AltitudeBox_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

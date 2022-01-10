@@ -85,6 +85,7 @@ namespace tfm.PMDG.PMDG737.McpComponents
             this.Text = "Vertical speed box";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VerticalSpeedBox_FormClosing);
             this.Load += new System.EventHandler(this.VerticalSpeedBox_Load);
+            this.VisibleChanged += new System.EventHandler(this.VerticalSpeedBox_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VerticalSpeedBox_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

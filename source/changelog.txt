@@ -23,6 +23,6 @@
 * PMDG 777: TFM is aware of each of the aircraft models (777F, 300ER, 200LR, etc...).
 * PMDG 777: TFM announces when the PERF INIT page of the FMC is complete. A setting to turn it on/off will come later.
 * PMDG 777: Added an MCP navigation box containing flight directors and autopilots. Access with [ then the letter f.
-
+* PMDG 737/777: MCP dialogs now select text in the text fields when displayed.
 
 
