@@ -284,5 +284,8 @@
     <Setting Name="ap_NavigationBox" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">F</Value>
     </Setting>
+    <Setting Name="get_speedbreak" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">OemQuestion</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

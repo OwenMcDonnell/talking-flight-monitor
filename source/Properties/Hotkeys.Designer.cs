@@ -1147,5 +1147,17 @@ namespace tfm.Properties {
                 this["ap_NavigationBox"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OemQuestion")]
+        public global::System.Windows.Forms.Keys get_speedbreak {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["get_speedbreak"]));
+            }
+            set {
+                this["get_speedbreak"] = value;
+            }
+        }
     }
 }

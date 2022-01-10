@@ -1972,6 +1972,19 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "get_speedbreak":
+                    if (PMDG777Detected)
+                    {
+                        foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
+                        {
+                            if(toggle.Name == "Speedbrake")
+                            {
+                                Output(isGauge: false, output: toggle.ToString());
+                                break;
+                            }
+                        }
+                    } // PMDG 777
+                    break;
                 case "report_issue":
                     ReportIssue();
                     break;
