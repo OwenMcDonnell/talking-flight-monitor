@@ -330,6 +330,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.Text = "Speed box";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SpeedBox_FormClosing);
             this.Load += new System.EventHandler(this.SpeedBox_Load);
+            this.VisibleChanged += new System.EventHandler(this.SpeedBox_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SpeedBox_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

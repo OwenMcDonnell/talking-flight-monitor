@@ -483,6 +483,12 @@
     <Compile Include="PMDG\PMDG777\McpComponents\HeadingBox.Designer.cs">
       <DependentUpon>HeadingBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG777\McpComponents\NavigationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\McpComponents\NavigationBox.Designer.cs">
+      <DependentUpon>NavigationBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG777\McpComponents\SpeedBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -754,6 +760,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\McpComponents\HeadingBox.resx">
       <DependentUpon>HeadingBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\McpComponents\NavigationBox.resx">
+      <DependentUpon>NavigationBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\McpComponents\SpeedBox.resx">
       <DependentUpon>SpeedBox.cs</DependentUpon>

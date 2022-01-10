@@ -126,6 +126,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
             this.Text = "Heading";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HeadingBox_FormClosing);
             this.Load += new System.EventHandler(this.HeadingBox_Load);
+            this.VisibleChanged += new System.EventHandler(this.HeadingBox_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HeadingBox_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

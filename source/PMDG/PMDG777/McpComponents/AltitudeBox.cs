@@ -166,5 +166,17 @@ namespace tfm.PMDG.PMDG777.McpComponents
                 Hide();
             }
         } // End AltitudeBox key down event.
+
+        private void AltitudeBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                altitudeTextBox.SelectAll();
+            }
+            else
+            {
+                altitudeTextBox.DeselectAll();
+            }
+        }
     } // End AltitudeBox.
     } // End namespace.

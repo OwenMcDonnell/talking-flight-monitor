@@ -176,5 +176,17 @@ namespace tfm.PMDG.PMDG737.McpComponents
                 Hide();
             }
         } // End SpeedBox key down event.
+
+        private void SpeedBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                speedTextBox.SelectAll();
+            }
+            else
+            {
+                speedTextBox.DeselectAll();
+            }
+        }
     } // End SpeedBox form.
 } // End namespace.

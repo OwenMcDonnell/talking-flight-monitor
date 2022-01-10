@@ -400,5 +400,17 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_50, Aircraft.ClkL);
             }
                                             }
+
+        private void SpeedBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                speedTextBox.SelectAll();
+            }
+            else
+            {
+                speedTextBox.DeselectAll();
+            }
+        }
     } // End SpeedBox form.
 } // End namespace.

@@ -12,6 +12,7 @@ namespace tfm
 {
 static class PMDG777Aircraft
     {
+        private static InstrumentPanel autopilot = new InstrumentPanel();
         public static bool is200 { get => Aircraft.pmdg777.AircraftModel.Value == 1 ? true : false; }
         public static bool is200ER { get => Aircraft.pmdg777.AircraftModel.Value == 2 ? true : false; }
                 public static bool is300 { get => Aircraft.pmdg777.AircraftModel.Value == 3 ? true : false; }
@@ -19,14 +20,45 @@ static class PMDG777Aircraft
                 public static bool isFreighter { get => Aircraft.pmdg777.AircraftModel.Value ==5? true : false;}
         public static  bool is300ER { get => Aircraft.pmdg777.AircraftModel.Value == 6 ? true : false; }
 
+        public static string tunedNavAid
+        {
+            get
+            {
+                string navAid = $"Nav1: {autopilot.Nav1Freq.ToString()}, course: {autopilot.Nav1Course.ToString()}";
+                // ILS info.
+                if (Aircraft.AutopilotRadioStatus.Value[6])
+                {
+                    navAid += "; ILS [";
+                    double gsInclination = (double)Aircraft.Nav1GSInclination.Value * 360d / 65536d - 360d;
+                    navAid += $"GS angle: {gsInclination.ToString("F1")} degrees, ";
+                    navAid += $"name: {Aircraft.Vor1Name.Value}, ";
+                    if (Aircraft.Vor1ID.Value != "")
+                    {
+                        navAid += $"ID: {Aircraft.Vor1ID.Value}, ";
+                    }
+                    double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
+                    double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
+                    navAid += $"LOC heading: {rwyHeading.ToString("F0")}]";
+                } // ILS information.
+                else
+                {
+                    if(Aircraft.Vor1ID.Value != "")
+                    {
+                        navAid += $", {Aircraft.Vor1ID.Value}";
+                    }
+                } // All other cases.
+                return navAid;
+            }
+                        }
+
                 // The MCP dialogs.
         private static tfm.PMDG.PMDG777.McpComponents.SpeedBox speedBox = new tfm.PMDG.PMDG777.McpComponents.SpeedBox();
+        private static tfm.PMDG.PMDG777.McpComponents.navigationBox NavigationBox = new PMDG.PMDG777.McpComponents.navigationBox();
         private static tfm.PMDG.PMDG777.McpComponents.AltitudeBox altitudeBox = new tfm.PMDG.PMDG777.McpComponents.AltitudeBox();
         private static tfm.PMDG.PMDG777.McpComponents.HeadingBox headingBox = new tfm.PMDG.PMDG777.McpComponents.HeadingBox();
         private static tfm.PMDG.PMDG777.McpComponents.VerticalSpeedBox verticalSpeedBox = new tfm.PMDG.PMDG777.McpComponents.VerticalSpeedBox();
 
-
-/* State dictionaries -
+        /* State dictionaries -
  * The state dictionaries are designed
  * to make creating panel objects eaiser. Each dictionary
  * is a list of 'states' each panel control
@@ -331,6 +363,7 @@ static class PMDG777Aircraft
             {
                 {"altitude", altitudeBox },
                 {"speed", speedBox },
+                {"navigation", NavigationBox },
                 {"heading", headingBox },
                 {"vertical", verticalSpeedBox },
             };
@@ -467,13 +500,13 @@ new SingleStateToggle{Name = "AFT outflow valve selector", PanelName = "Overhead
 new SingleStateToggle{Name = "Landing altitude pressurization", PanelName = "Overhead", PanelSection = "Pressurization", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.AIR_LdgAlt_Sw_Pulled, AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Landing altitude", PanelName = "Overhead", PanelSection = "Pressurization", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.AIR_LdgAlt_Selector, AvailableStates = _neutralIncreaseOrDecrease},
 new SingleStateToggle{Name = "Autobrake", PanelName = "Forward", PanelSection = "Center", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.BRAKES_AutobrakeSelector, AvailableStates = _autoBreakStates},
-new SingleStateToggle{Name = "Left Flight director", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_FD_Sw_On[0], AvailableStates = _onOrOffStates},
-new SingleStateToggle{Name = "Right Flight director", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_FD_Sw_On[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle{Name = "Left flight director", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_FD_Sw_On[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle{Name = "Right flight director", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_FD_Sw_On[1], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Left autothrottle", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_ATArm_Sw_On[0], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Right autothrottle", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_ATArm_Sw_On[1], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Disengage autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_DisengageBar, AvailableStates = _onOrOffStates},
-new SingleStateToggle{Name = "Left Autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.MomintaryPushButton, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_AP_Sw_Pushed[0], AvailableStates = _momentaryControlState},
-new SingleStateToggle{Name = "Right Autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.MomintaryPushButton, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_AP_Sw_Pushed[1], AvailableStates = _momentaryControlState},
+//new SingleStateToggle{Name = "Left autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.MomintaryPushButton, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_AP_Sw_Pushed[0], AvailableStates = _momentaryControlState},
+//new SingleStateToggle{Name = "Right autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.MomintaryPushButton, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_AP_Sw_Pushed[1], AvailableStates = _momentaryControlState},
 new SingleStateToggle{Name = "Left autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_annunAP[0], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Right autopilot", PanelName = "Glare shield", PanelSection = "MCP", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_annunAP[1], AvailableStates = _onOrOffStates},
 new SingleStateToggle{Name = "Autothrottle", PanelName = "Glare shield", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg777.MCP_annunAT, AvailableStates = _onOrOffStates},
@@ -554,6 +587,10 @@ new SingleStateToggle{Name = "CDU offset light", PanelName = "Forward Aisle Stan
                 McpComponents["speed"].Show();
                     } // End ShowSpeedBox.
 
+        public static void ShowNavigationBox()
+        {
+            McpComponents["navigation"].Show();
+        } // ShowNavigationBox();
         public static void ShowAltitudeBox()
         {
             McpComponents["altitude"].Show();

@@ -128,5 +128,17 @@ namespace tfm.PMDG.PMDG737.McpComponents
                 PMDG737Aircraft.SetHeading(hdgTrkTextBox.Text);
             }
         } // End hdgTrkTextBox KeyDown.
+
+        private void HeadingBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                hdgTrkTextBox.SelectAll();
+            }
+            else
+            {
+                hdgTrkTextBox.DeselectAll();
+            }
+        }
     } // End heading box.
 } // End namespace.
