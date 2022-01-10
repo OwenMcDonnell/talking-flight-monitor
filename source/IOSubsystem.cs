@@ -1604,7 +1604,20 @@ else if (PMDG777Detected)
                         break;
                     }
                     break;
-                                    case "ap_Get_Altimeter":
+                case "ap_NavigationBox":
+                    if (PMDG777Detected)
+                    {
+                        if (PMDG777Aircraft.McpComponents["navigation"].Visible)
+                        {
+                            Output(isGauge: false, output: "The navigation box is already open!");
+                        } // navigation box already open.
+                        else
+                        {
+                            PMDG777Aircraft.ShowNavigationBox();
+                        } // navigation box is displayed.
+                    } // PMDG 777
+                    break;
+                case "ap_Get_Altimeter":
                     ReadAltimeter(true);
                     break;
                 case "ap_Set_Altimeter":
