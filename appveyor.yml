@@ -8,7 +8,8 @@ configuration: Debug
 
 environment:
   gh_token:
-    secure: 5NfMTIHSZWCVv5fbAQroqXFDASFCQjRhL0XA61PGKdHJb88a8HrtftbA789/VdEh
+    secure: b8rJBxvFWGz190qF78baVdA0auIIkdU2Sg1tpOfJRtb7h3GVSdG5VtFIqtGLaDkg
+
 
 before_build:
 - cmd: nuget restore source\tfm.sln
