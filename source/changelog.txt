@@ -30,4 +30,4 @@
 * PMDG 737/777: MCP dialogs now select text in the text fields when displayed.
 
 ### Known issues
-
+* TFM might crash or hang. To recover, find it in the processes tab under applications in the Windows task manager. Once found, delete it from the list by pressing the delete key on your keyboard.
