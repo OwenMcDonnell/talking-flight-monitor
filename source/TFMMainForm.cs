@@ -81,10 +81,14 @@ namespace tfm
             this.TimerConnection.AutoReset = true;
             this.TimerConnection.Start();
 
-            var executable = Assembly.GetExecutingAssembly().Location;
-            var soundFile = Path.Combine(Path.GetDirectoryName(executable), @"sounds\TFM-Startup.wav");
-            SoundPlayer sound = new SoundPlayer(soundFile);
-            sound.Play();
+            if (Properties.Settings.Default.PlayStartupSound)
+            {
+                var executable = Assembly.GetExecutingAssembly().Location;
+                var soundFile = Path.Combine(Path.GetDirectoryName(executable), @"sounds\TFM-Startup.wav");
+                SoundPlayer sound = new SoundPlayer(soundFile);
+                sound.Play();
+            }
+
             utility.TFMMainForm = this;
         }
 
@@ -211,11 +215,15 @@ namespace tfm
             Tolk.PreferSAPI(false);
             Thread.Sleep(2000);
 
-            var executable = Assembly.GetExecutingAssembly().Location;
-            var soundFile = Path.Combine(Path.GetDirectoryName(executable), @"sounds\TFM-Shutdown.wav");
-            SoundPlayer sound = new SoundPlayer(soundFile);
-            sound.Play();
-            Thread.Sleep(10000);
+            if (Properties.Settings.Default.PlayShutdownSound)
+            {
+                var executable = Assembly.GetExecutingAssembly().Location;
+                var soundFile = Path.Combine(Path.GetDirectoryName(executable), @"sounds\TFM-Shutdown.wav");
+                SoundPlayer sound = new SoundPlayer(soundFile);
+                sound.Play();
+                Thread.Sleep(10000);
+            }
+
             this.TimerConnection.Stop();
             this.TimerMain.Stop();
             this.TimerLowPriority.Stop();

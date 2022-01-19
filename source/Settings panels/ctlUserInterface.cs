@@ -24,12 +24,8 @@ namespace tfm
 
         private void ctlUserInterface_Load(object sender, EventArgs e)
         {
-            sendToTrayCheckBox.Checked = Properties.Settings.Default.sendToTray;
+            
         }
 
-        private void startInTrayCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.sendToTray = sendToTrayCheckBox.Checked;
-        }
     }
 }

@@ -115,7 +115,6 @@
             settings1.ReadNavRadios = false;
             settings1.ReadSimconnectMessages = true;
             settings1.SAPISpeechRate = 0;
-            settings1.sendToTray = false;
             settings1.SettingsKey = "";
             settings1.takeOffAssistMode = "off";
             settings1.UseMetric = false;

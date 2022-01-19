@@ -68,9 +68,6 @@
     <Setting Name="OutputHistoryLength" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="sendToTray" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="takeOffAssistMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">off</Value>
     </Setting>
@@ -102,6 +99,12 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AnnounceTakeoffConfigComplete" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PlayStartupSound" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PlayShutdownSound" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
