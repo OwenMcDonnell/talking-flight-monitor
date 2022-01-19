@@ -253,7 +253,7 @@ namespace tfm
             var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
             HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
             HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            // HotkeyManager.Current.AddOrReplace("test", Keys.Z, OffsetTest);
+            // HotkeyManager.Current.AddOrReplace("test", Keys.Q, OffsetTest);
 
             runwayGuidanceEnabled = false;
 
@@ -337,12 +337,7 @@ namespace tfm
 
         private void OffsetTest(object sender, HotkeyEventArgs e)
         {
-            List<string> lstHistory = history.GetItems();
-            Tolk.Output(lstHistory.Count.ToString());
-            foreach (string item in lstHistory)
-            {
-                Tolk.Output(item);
-            }
+            Tolk.Output(FSUIPCConnection.ReadLVar("switch_01_73X").ToString());
         }
 
         public void ReadAircraftState()

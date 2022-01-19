@@ -112,25 +112,25 @@ namespace tfm
                 idgDiscon2Button.AccessibleName = "#2 [On]";
             }
             
-            if(Aircraft.pmdg777.ELEC_ExtPwrSw[0].Value == 0)
+            if(Aircraft.pmdg777.ELEC_annunExtPowr_ON[1].Value == 0)
             {
-                extPwr1Button.Text = "#1 [Off]";
-                extPwr1Button.AccessibleName = "#1 [Off]";
+                extPwr1Button.Text = "#1 [Disconnected]";
+                extPwr1Button.AccessibleName = "#1 [Disconnected]";
             }
-            if(Aircraft.pmdg777.ELEC_ExtPwrSw[0].Value == 1)
+            if(Aircraft.pmdg777.ELEC_annunExtPowr_ON[1].Value == 1)
             {
-                extPwr1Button.Text = "#1 [On]";
-                extPwr1Button.AccessibleName = "#1 [On]";
+                extPwr1Button.Text = "#1 [Connected]";
+                extPwr1Button.AccessibleName = "#1 [Connected]";
             }
-            if(Aircraft.pmdg777.ELEC_ExtPwrSw[1].Value == 0)
+            if(Aircraft.pmdg777.ELEC_annunExtPowr_ON[0].Value == 0)
             {
-                extPwr2Button.Text = "#2 [Off]";
-                extPwr2Button.AccessibleName = "#2 [Off]";
+                extPwr2Button.Text = "#2 [Disconnected]";
+                extPwr2Button.AccessibleName = "#2 [Disconnected]";
             }
-            if(Aircraft.pmdg777.ELEC_ExtPwrSw[1].Value == 1)
+            if(Aircraft.pmdg777.ELEC_annunExtPowr_ON[0].Value == 1)
             {
-                extPwr2Button.Text = "#2 [On]";
-                extPwr2Button.AccessibleName = "#2 [On]";
+                extPwr2Button.Text = "#2 [Connected]";
+                extPwr2Button.AccessibleName = "#2 [Connected]";
             }
 
             if(Aircraft.pmdg777.ELEC_annunCabUtilOFF.ValueChanged)
@@ -375,14 +375,10 @@ namespace tfm
             if(Aircraft.pmdg777.ELEC_ExtPwrSw[0].Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_ELEC_GRD_PWR_PRIM_SWITCH, Aircraft.ClkL);
-                extPwr1Button.Text = "#1 [On]";
-                extPwr1Button.AccessibleName = "#1 [On]";
             }
             else
             {
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_ELEC_GRD_PWR_PRIM_SWITCH, Aircraft.ClkR);
-                extPwr1Button.Text = "#1 [Off]";
-                extPwr1Button.AccessibleName = "#1 [Off]";
             }
         }
 
@@ -391,14 +387,10 @@ namespace tfm
             if(Aircraft.pmdg777.ELEC_ExtPwrSw[1].Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_ELEC_GRD_PWR_SEC_SWITCH, Aircraft.ClkL);
-                extPwr2Button.Text = "#2 [On]";
-                extPwr2Button.AccessibleName = "#2 [On]";
             }
             else
             {
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_OH_ELEC_GRD_PWR_SEC_SWITCH, Aircraft.ClkR);
-                extPwr2Button.Text = "#2 [Off]";
-                extPwr2Button.AccessibleName = "#2 [Off]";
             }
         }
     } // End form.

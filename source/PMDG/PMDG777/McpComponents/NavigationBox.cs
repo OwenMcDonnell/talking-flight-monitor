@@ -102,7 +102,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
         private void apRButton_Click(object sender, EventArgs e)
         {
             var apR = (tfm.PMDG.PanelObjects.SingleStateToggle)PMDG777Aircraft.PanelControls.Where(x => x.Name == "Right autopilot").ToArray()[0];
-            if(apR.CurrentState.Key == 0)
+                if(apR.CurrentState.Key == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_777X_Control.EVT_MCP_AP_R_SWITCH, Aircraft.ClkL);
                             }
