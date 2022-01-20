@@ -32,7 +32,7 @@
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Output");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Timing (requires TFM restart)");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Aircraft");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("User interface (requires TFM restart)");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("User interface");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("PMDG");
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
@@ -57,7 +57,7 @@
             treeNode4.Name = "nodAircraft";
             treeNode4.Text = "Aircraft";
             treeNode5.Name = "nodeUserInterface";
-            treeNode5.Text = "User interface (requires TFM restart)";
+            treeNode5.Text = "User interface";
             treeNode6.Name = "nodPMDG";
             treeNode6.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
