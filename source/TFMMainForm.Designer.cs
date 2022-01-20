@@ -76,7 +76,7 @@
             this.restartMenuItem,
             this.shutDownMenuItem});
             this.trayIconContextMenu.Name = "trayIconContextMenu";
-            this.trayIconContextMenu.Size = new System.Drawing.Size(261, 369);
+            this.trayIconContextMenu.Size = new System.Drawing.Size(261, 336);
             this.trayIconContextMenu.Text = "TFM";
             // 
             // settingsMenuItem
@@ -172,6 +172,7 @@
             this.Text = "Talking flight moniter";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Load += new System.EventHandler(this.TFMMainForm_Load);
             this.trayIconContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

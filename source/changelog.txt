@@ -1,33 +1,9 @@
-﻿## Talking flight monitor 22.1 release notes
+﻿## Talking flight monitor 22.1.4 release notes
 
 ### What's new?
-
-* TFM now follows a continuous versioning scheme. The format is YY.MM, where YY is the two digit year and MM is a two digit month.
-* Settings now persist across version changes.
-* Moved settings to the simulator window. Access with ] question mark (Shift+/).
-* Moved A2A manager to the simulator window. Access with ] Ctrl+Shift+M.
-* Moved aircraft profiles to the simulator window. Access with ] Ctrl+I.
-* Moved visit website to the simulator window. Access with ] Ctrl+Shift+W.
-* Moved report an issue to the simulator window. Access with ] Ctrl+Shift+I.
-* Removed the main TFM window. TFM is now a background app.
-* Added a system tray context menu. While the TFM system tray icon has focus, access with any one of applications key, shift+F10, JAWS key +F11 then pressing ENTER on the icon, right click with the mouse, or by using the systray NVDA addon.
-    * The context menu has the following options 
-    * Settings - Displays the settings dialog.
-    * Command keys - When pressed, toggles the command keys on or off. The menu option will display "enabled" or "disabled" depending on the command key's current state.
-    * Keyboard - Displays the keyboard manager.
-    * Website - Uses the default system browser to display TFM's website.
-    * Issue tracker - Uses the system default browser to display TFM's issue tracker in GitHub.
-    * About - Displays the about box.
-    * Restart - Restarts TFM.
-    * Shutdown - Shuts down TFM.
-* PMDG, all aircraft: Added the ability to load offsets based on a specific aircraft model (737-900ER or 777F, etc...)
-* PMDG 777: Added hydraulics panel.
-* PMDG 777: Added remaining offsets. The remaining influence visual aspects of flight. Contact us if you wish to have the display, efis, and panel knobs included.
-* PMDG 777: TFM is aware of each of the aircraft models (777F, 300ER, 200LR, etc...).
-* PMDG 777: TFM announces when the PERF INIT page of the FMC is complete. A setting to turn it on/off will come later.
-* PMDG 777: TFM now reads speedbrake on demand. Access with ] then / ("slash key")
-* PMDG 777: Added an MCP navigation box containing flight directors and autopilots. Access with [ then the letter f.
-* PMDG 737/777: MCP dialogs now select text in the text fields when displayed.
+* Added settings in user interface settings to turn on/off startup and shutdown sounds.
+* Removed the send to tray option since TFM is a background app.
+* TFM no longer crashes during simulator shutdown.
 
 ### Known issues
-* TFM might crash or hang. To recover, find it in the processes tab under applications in the Windows task manager. Once found, delete it from the list by pressing the delete key on your keyboard.
+* There is no keyboard command to restart TFM. Restart it from the notification tray icon.

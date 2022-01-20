@@ -30,8 +30,7 @@ namespace tfm
     public partial class TFMMainForm : Form
     {
 
-        private bool visibleOnStartup = false;
-
+        
         // get a logger object for this class
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         // set up timers
@@ -247,16 +246,6 @@ namespace tfm
             }
         } // load database.
 
-        protected override void SetVisibleCore(bool value)
-        {
-            if (!this.IsHandleCreated){
-                this.CreateHandle();
-                value = false;
-            }
-            base.SetVisibleCore(value); 
-            //base.SetVisibleCore(visibleOnStartup? value:visibleOnStartup);
-        } // SetVisibleCore.
-
         public void Shutdown()
         {
             Close();
@@ -409,5 +398,10 @@ private void ShowSettings()
         {
             utility.ApplicationShutdown();
         } // shutdownMenuItem_Click.
+
+        private void TFMMainForm_Load(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }//End TFMMainForm class.
 } //End TFM namespace.
