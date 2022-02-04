@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace tfm
 {
-    public partial class ctlEngines : UserControl, iPanelsPage
+    public partial class ctlEngines_737 : UserControl, iPanelsPage
     {
         pmdg pmdg = new pmdg();
-        public ctlEngines()
+        public ctlEngines_737()
         {
             InitializeComponent();
         }

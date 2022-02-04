@@ -29,7 +29,7 @@ namespace tfm
             pages.Add("nodMCP", new ctlMCP());
             pages.Add("nodIRU", new ctlInertialReferenceUnit());
             pages.Add("nodHydraulics", new ctlHydraulics());
-            pages.Add("nodEngines", new ctlEngines());      
+            pages.Add("nodEngines", new ctlEngines_737());      
             pages.Add("nodAirSystems", new ctlAirSystems());
             pages.Add("nodAntiIce", new ctlAntiIce());
             pages.Add("nodPressurization", new ctlPressurization());
