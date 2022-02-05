@@ -26,8 +26,8 @@ namespace tfm
             pages.Add("electricalNode", new ctlElectrical_777());
             pages.Add("enginesNode", new ctlEngines_777());
             pages.Add("hydraulicsNode", new ctlHydraulics_777());
+            pages.Add("fuelNode", new ctlFuel_777());
 
-            // pages.Add("MCPNode", new ctlMCP_777());
             foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.contentPanel;
