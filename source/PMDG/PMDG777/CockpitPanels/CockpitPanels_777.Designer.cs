@@ -30,14 +30,16 @@ namespace tfm
         private void InitializeComponent()
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Electrical");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Hydraulics");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Engines");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Fuel");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("IRU");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Fuel");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Hydraulics");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Engines");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
-            treeNode4});
+            treeNode4,
+            treeNode5});
             this.cockpitPanelsTree = new System.Windows.Forms.TreeView();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -51,16 +53,18 @@ namespace tfm
             this.cockpitPanelsTree.Name = "cockpitPanelsTree";
             treeNode1.Name = "electricalNode";
             treeNode1.Text = "Electrical";
-            treeNode2.Name = "hydraulicsNode";
-            treeNode2.Text = "Hydraulics";
-            treeNode3.Name = "enginesNode";
-            treeNode3.Text = "Engines";
-            treeNode4.Name = "fuelNode";
-            treeNode4.Text = "Fuel";
-            treeNode5.Name = "overheadNode";
-            treeNode5.Text = "Overhead";
+            treeNode2.Name = "iruNode";
+            treeNode2.Text = "IRU";
+            treeNode3.Name = "fuelNode";
+            treeNode3.Text = "Fuel";
+            treeNode4.Name = "hydraulicsNode";
+            treeNode4.Text = "Hydraulics";
+            treeNode5.Name = "enginesNode";
+            treeNode5.Text = "Engines";
+            treeNode6.Name = "overheadNode";
+            treeNode6.Text = "Overhead";
             this.cockpitPanelsTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode6});
             this.cockpitPanelsTree.Size = new System.Drawing.Size(199, 742);
             this.cockpitPanelsTree.TabIndex = 0;
             this.cockpitPanelsTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.cockpitPanelsTree_AfterSelect);

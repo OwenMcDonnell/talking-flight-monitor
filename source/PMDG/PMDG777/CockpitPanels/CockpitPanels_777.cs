@@ -27,7 +27,7 @@ namespace tfm
             pages.Add("enginesNode", new ctlEngines_777());
             pages.Add("hydraulicsNode", new ctlHydraulics_777());
             pages.Add("fuelNode", new ctlFuel_777());
-
+            pages.Add("iruNode", new ctlIRU_777());
             foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.contentPanel;
