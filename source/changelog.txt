@@ -1,9 +1,9 @@
-﻿## Talking flight monitor 22.1.4 release notes
+﻿## Talking flight monitor 22.4.0 release notes
 
 ### What's new?
-* Added settings in user interface settings to turn on/off startup and shutdown sounds.
-* Removed the send to tray option since TFM is a background app.
-* TFM no longer crashes during simulator shutdown.
+* In the PMDG page of TFM's settings, the FMC/CDU softkey setting now saves properly.
 
 ### Known issues
 * There is no keyboard command to restart TFM. Restart it from the notification tray icon.
+* The announce perf init complete setting on the PMDG page of TFM settings is not working at this time.
+* TFM incorrectly announces aircraft instrument states in the FS2020 A320 Neo. A reminder that FS2020 is not supported by TFM, and usage results my not be as expected.
