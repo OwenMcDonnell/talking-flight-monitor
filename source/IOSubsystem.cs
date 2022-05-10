@@ -937,14 +937,12 @@ namespace tfm
                 if (Aircraft.Nav1Signal.Value == 256 && localiserDetected == false && Aircraft.Nav1Flags.Value[7])
                 {
 
-                    /*                    double hdgTrue = (double)Aircraft.Heading.Value * 360d / (65536d * 65536d);
-                                        * double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
-                                        * double magHeading = hdgTrue - magvar;
-                                        * double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
-                                        * Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));*/
-
-                    Output(isGauge: false, useSAPI: true, output: $"Runway heading {FlightPlan.DestinationRunway.HeadingTrue}");
-                    localiserDetected = true;
+                                       double hdgTrue = (double)Aircraft.Heading.Value * 360d / (65536d * 65536d);
+                                         double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
+                                        double magHeading = hdgTrue - magvar;
+                                         double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
+                                        Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+                                                            localiserDetected = true;
                     ilsTimer.AutoReset = true;
                     ilsTimer.Enabled = true;
 
@@ -1036,7 +1034,8 @@ namespace tfm
                 }
                 if (Properties.Settings.Default.ReadLocaliserHeadingOffsets)
                 {
-                    var headingOffset = utility.ReadHeadingOffset(Autopilot.Heading, FlightPlan.DestinationRunway.HeadingTrue);
+                                        double heading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
+                    var headingOffset = utility.ReadHeadingOffset(Autopilot.Heading, heading);
                     if (headingOffset < 0)
                     {
                         var gaugeName = "Localiser";
