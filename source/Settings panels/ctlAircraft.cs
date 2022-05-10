@@ -40,6 +40,9 @@ switch(Properties.Settings.Default.takeOffAssistMode)
                     MessageBox.Show("There is a problem loading aircraft settings. Try again later.");
                     break;                    
             }
+
+            readLocaliserHeadingsCheckBox.Checked = Properties.Settings.Default.ReadLocaliserHeadingOffsets;
+            readGSAltitudeCheckBox.Checked = Properties.Settings.Default.ReadGSAltitude;
         }
 
         private void takeoffAssistDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,6 +65,30 @@ switch(Properties.Settings.Default.takeOffAssistMode)
 default:
                     MessageBox.Show("There is a problem displaying aircraft settings. Try again later.");
                     break;
+            }
+        }
+
+        private void readLocaliserHeadingsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (readLocaliserHeadingsCheckBox.Checked)
+            {
+                Properties.Settings.Default.ReadLocaliserHeadingOffsets = true;
+            }
+            else
+            {
+                Properties.Settings.Default.ReadLocaliserHeadingOffsets = false;
+            }
+        }
+
+        private void readGSAltitudeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (readGSAltitudeCheckBox.Checked)
+            {
+                Properties.Settings.Default.ReadGSAltitude = true;
+            }
+            else
+            {
+                Properties.Settings.Default.ReadGSAltitude = false;
             }
         }
     }

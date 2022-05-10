@@ -937,13 +937,12 @@ namespace tfm
                 if (Aircraft.Nav1Signal.Value == 256 && localiserDetected == false && Aircraft.Nav1Flags.Value[7])
                 {
 
-                    double hdgTrue = (double)Aircraft.Heading.Value * 360d / (65536d * 65536d);
-                    double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
-                    double magHeading = hdgTrue - magvar;
-                    double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
-                    Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
-
-                    localiserDetected = true;
+                                       double hdgTrue = (double)Aircraft.Heading.Value * 360d / (65536d * 65536d);
+                                         double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
+                                        double magHeading = hdgTrue - magvar;
+                                         double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
+                                        Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+                                                            localiserDetected = true;
                     ilsTimer.AutoReset = true;
                     ilsTimer.Enabled = true;
 
@@ -971,6 +970,8 @@ namespace tfm
             double locNeedle = (double)Aircraft.Nav1LocNeedle.Value;
             double locPercent;
             double gsPercent;
+            double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
+            double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
             // if on ground, stop reading ILS values
             if (Aircraft.OnGround.Value == 1)
             {
@@ -980,46 +981,106 @@ namespace tfm
             // only read ils when approach mode is on
             if (Aircraft.ApApproachHold.Value == 1 || Aircraft.pmdg737.MCP_annunAPP.Value == 1 || Aircraft.pmdg747.MCP_annunAPP.Value == 1 || Aircraft.pmdg777.MCP_annunAPP.Value == 1)
             {
-                if (gsNeedle > 0 && gsNeedle < 119)
+                if (Properties.Settings.Default.ReadGSAltitude)
                 {
-                    gsPercent = gsNeedle / 119 * 100;
-                    string strPercent = gsPercent.ToString("F0");
-                    var gaugeName = "Glide slope";
-                    var gaugeValue = $"up {strPercent} percent. ";
-                    var isGauge = true;
-                    Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    var gsHeight = utility.CalculateAngleHeight(FlightPlan.DestinationRunway.DistanceFeet, FlightPlan.DestinationRunway.ILSInfo.Slope);
+                    double groundAlt = (double)Aircraft.GroundAltitude.Value / 256d * 3.28084d;
+                    double agl = (double)Aircraft.Altitude.Value - groundAlt;
+                    var relativeGsHeight =agl  - gsHeight;
+                    relativeGsHeight = Math.Round(relativeGsHeight, 0);
 
+                    if (relativeGsHeight > 0)
+                    {
+                        var gaugeName = "Glide slope";
+                        var gaugeValue = $"{relativeGsHeight} below.";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
+                    if (relativeGsHeight < 0)
+                    {
+                        var gaugeName = "Glide slope";
+                        var gaugeValue = $"{Math.Abs(relativeGsHeight)} above";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
+                    if (relativeGsHeight == 0)
+                    {
+                        var gaugeName = "Glide slope";
+                        var gaugeValue = "Centered.";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
                 }
-                if (gsNeedle < 0 && gsNeedle > -119)
+                else
                 {
-                    gsPercent = Math.Abs(gsNeedle) / 119 * 100;
-                    string strPercent = gsPercent.ToString("F0");
-                    var gaugeName = "Glide slope";
-                    var gaugeValue = $"down {strPercent} percent. ";
-                    var isGauge = true;
-                    Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
-
+                    if (gsNeedle > 0 && gsNeedle < 119)
+                    {
+                        gsPercent = gsNeedle / 119 * 100;
+                        string strPercent = gsPercent.ToString("F0");
+                        var gaugeName = "Glide slope";
+                        var gaugeValue = $"up {strPercent} percent. ";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
+                    if (gsNeedle < 0 && gsNeedle > -119)
+                    {
+                        gsPercent = Math.Abs(gsNeedle) / 119 * 100;
+                        string strPercent = gsPercent.ToString("F0");
+                        var gaugeName = "Glide slope";
+                        var gaugeValue = $"down {strPercent} percent. ";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
                 }
-                if (locNeedle > 0 && locNeedle < 127)
+                if (Properties.Settings.Default.ReadLocaliserHeadingOffsets)
                 {
-                    locPercent = locNeedle / 127 * 100;
-                    string strPercent = locPercent.ToString("F0");
-                    var gaugeName = "Localiser";
-                    var gaugeValue = $"{strPercent} percent right. ";
-                    var isGauge = true;
-                    Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                                        double heading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
+                    var headingOffset = utility.ReadHeadingOffset(Autopilot.Heading, heading);
+                    headingOffset = Math.Round(headingOffset, 0);
+                    if (headingOffset < 0)
+                    {
+                        var gaugeName = "Localiser";
+                        var isGauge = true;
+                        var gaugeValue = $"Left {Math.Abs(headingOffset)}";
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
+                    if (headingOffset > 0)
+                    {
+                        var gaugeName = "Localiser";
+                        var isGauge = true;
+                        var gaugeValue = $"Right {headingOffset}";
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
+                    if (headingOffset == 0)
+                    {
+                        var gaugeName = "Localiser";
+                        var isGauge = true;
+                        var gaugeValue = "Centered.";
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
                 }
-                if (locNeedle < 0 && locNeedle > -127)
+                else
                 {
-                    locPercent = Math.Abs(locNeedle) / 127 * 100;
-                    string strPercent = locPercent.ToString("F0");
-                    var gaugeName = "Localiser";
-                    var gaugeValue = $"{strPercent} percent left. ";
-                    var isGauge = true;
-                    Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    if (locNeedle > 0 && locNeedle < 127)
+                    {
+                        locPercent = locNeedle / 127 * 100;
+                        string strPercent = locPercent.ToString("F0");
+                        var gaugeName = "Localiser";
+                        var gaugeValue = $"{strPercent} percent right. ";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
+                    if (locNeedle < 0 && locNeedle > -127)
+                    {
+                        locPercent = Math.Abs(locNeedle) / 127 * 100;
+                        string strPercent = locPercent.ToString("F0");
+                        var gaugeName = "Localiser";
+                        var gaugeValue = $"{strPercent} percent left. ";
+                        var isGauge = true;
+                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                    }
                 }
-
-            }
+                            }
         }
 
         private void ReadSimulationRate(bool TriggeredByKey)
@@ -1967,6 +2028,10 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "destination_runway":
+                    DestinationForm df = new DestinationForm();
+                    df.Show();
+                    break;
                 case "get_speedbreak":
                     if (PMDG777Detected)
                     {

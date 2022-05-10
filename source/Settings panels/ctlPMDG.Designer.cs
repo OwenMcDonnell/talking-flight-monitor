@@ -81,6 +81,7 @@ namespace tfm
             this.radCDUKeysDefault.TabStop = true;
             this.radCDUKeysDefault.Text = "Default (Ctrl+1-6 for left keys, Alt+1-6 for right keys)";
             this.radCDUKeysDefault.UseVisualStyleBackColor = true;
+            this.radCDUKeysDefault.CheckedChanged += new System.EventHandler(this.radCDUKeys_CheckedChanged);
             // 
             // radCDUKeysAlternate
             // 
@@ -92,6 +93,7 @@ namespace tfm
             this.radCDUKeysAlternate.TabStop = true;
             this.radCDUKeysAlternate.Text = "Alternate (F1-F6 for left keys, F7-F12 for right keys)";
             this.radCDUKeysAlternate.UseVisualStyleBackColor = true;
+            this.radCDUKeysAlternate.CheckedChanged += new System.EventHandler(this.radCDUKeys_CheckedChanged);
             // 
             // announcePerfInitCompleteCheckbox
             // 

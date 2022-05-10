@@ -27,6 +27,7 @@ namespace tfm
             pages.Add("nodGeneral", new ctlGeneral());
             pages.Add("nodSpeechOutput", new ctlSpeechOutput());
             pages.Add("nodTiming", new ctlTiming());
+            pages.Add("airportsDatabaseNode", new ctlDatabases());
             pages.Add("nodAircraft", new ctlAircraft());
             pages.Add("nodeUserInterface", new ctlUserInterface());
             pages.Add("nodPMDG", new ctlPMDG());

@@ -67,7 +67,7 @@ namespace tfm
                 Tolk.PreferSAPI(true);
                 Tolk.Output("Debug mode");
                 Tolk.PreferSAPI(false);
-            }
+                            }
 
             if (Properties.Settings.Default.GeonamesUsername == "")
             {
@@ -166,10 +166,11 @@ namespace tfm
                 {
                     inst.PostTakeOffChecklist();
                 }
+                // Set database reference point so we don't have to do it elsewhere.
+                FSUIPCConnection.AirportsDatabase.SetReferenceLocation();
+                
             }
-
-
-            catch (Exception ex)
+                                    catch (Exception ex)
             {
                 // An error occured. Tell the user and stop this timer.
                 this.TimerMain.Stop();
@@ -234,7 +235,7 @@ namespace tfm
             try
             {
                 FSUIPCConnection.AirportsDatabase.LoadTaxiways = true;
-                FSUIPCConnection.AirportsDatabase.Load();
+                FSUIPCConnection.AirportsDatabase.Load(Properties.Settings.Default.P3DAirportsDatabasePath);
                 if (FSUIPCConnection.AirportsDatabase.IsLoaded)
                 {
                     Tolk.Output("Airport database loaded.");

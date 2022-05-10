@@ -58,5 +58,21 @@ namespace tfm
         {
             TFMMainForm.Shutdown();
         }
+
+        public static double ReadHeadingOffset(double current, double target)
+        {
+            double left = current - target;
+            double right = target - current;
+            if (left < 0) left += 360;
+            if (right < 0) right += 360;
+            return left < right ? -left : right;
+        }
+
+        public static  double CalculateAngleHeight( double distanceFeet, double slopeAngle)
+        {
+            var radians = slopeAngle * (Math.PI / 180);
+            var height = distanceFeet * Math.Tan(radians);
+            return height;
+        }
     }
 }
