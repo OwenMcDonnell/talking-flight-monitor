@@ -31,9 +31,10 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Output");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Timing (requires TFM restart)");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Aircraft");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("User interface");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("PMDG");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Airports database");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Aircraft");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("User interface");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("PMDG");
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,19 +55,22 @@
             treeNode2.Text = "Output";
             treeNode3.Name = "nodTiming";
             treeNode3.Text = "Timing (requires TFM restart)";
-            treeNode4.Name = "nodAircraft";
-            treeNode4.Text = "Aircraft";
-            treeNode5.Name = "nodeUserInterface";
-            treeNode5.Text = "User interface";
-            treeNode6.Name = "nodPMDG";
-            treeNode6.Text = "PMDG";
+            treeNode4.Name = "airportsDatabaseNode";
+            treeNode4.Text = "Airports database";
+            treeNode5.Name = "nodAircraft";
+            treeNode5.Text = "Aircraft";
+            treeNode6.Name = "nodeUserInterface";
+            treeNode6.Text = "User interface";
+            treeNode7.Name = "nodPMDG";
+            treeNode7.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
             treeNode4,
             treeNode5,
-            treeNode6});
+            treeNode6,
+            treeNode7});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);

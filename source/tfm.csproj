@@ -294,6 +294,12 @@
     <Compile Include="Flight planning\AirportsForm.Designer.cs">
       <DependentUpon>AirportsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Flight planning\DestinationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flight planning\DestinationForm.Designer.cs">
+      <DependentUpon>DestinationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Flight planning\FlightPlan.cs" />
     <Compile Include="Flight planning\FlightPlanForm.cs">
       <SubType>Form</SubType>
@@ -510,6 +516,12 @@
     <Compile Include="Settings panels\ctlAircraft.Designer.cs">
       <DependentUpon>ctlAircraft.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\ctlDatabases.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\ctlDatabases.Designer.cs">
+      <DependentUpon>ctlDatabases.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\ctlPMDG.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -659,6 +671,9 @@
     <EmbeddedResource Include="Flight planning\AirportsForm.resx">
       <DependentUpon>AirportsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Flight planning\DestinationForm.resx">
+      <DependentUpon>DestinationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Flight planning\FlightPlanForm.resx">
       <DependentUpon>FlightPlanForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -772,6 +787,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\ctlAircraft.resx">
       <DependentUpon>ctlAircraft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\ctlDatabases.resx">
+      <DependentUpon>ctlDatabases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\ctlGeneral.resx">
       <DependentUpon>ctlGeneral.cs</DependentUpon>

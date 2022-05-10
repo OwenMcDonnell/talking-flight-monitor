@@ -287,5 +287,8 @@
     <Setting Name="get_speedbreak" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">OemQuestion</Value>
     </Setting>
+    <Setting Name="destination_runway" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+D</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
