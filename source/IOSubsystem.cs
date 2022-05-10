@@ -1036,6 +1036,7 @@ namespace tfm
                 {
                                         double heading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
                     var headingOffset = utility.ReadHeadingOffset(Autopilot.Heading, heading);
+                    headingOffset = Math.Round(headingOffset, 0);
                     if (headingOffset < 0)
                     {
                         var gaugeName = "Localiser";
