@@ -101,5 +101,28 @@ namespace tfm
                         ilsDetailsTextBox.Text = ilsInfo.ToString();
                 }
 
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
+
+        private void DestinationForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if((e.Alt && e.KeyCode == Keys.A))
+            {
+                airportTextBox.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if((e.Alt && e.KeyCode == Keys.I))
+            {
+                ilsDetailsTextBox.Focus();
+                e.SuppressKeyPress = true;
+            }
+            if((e.Alt && e.KeyCode == Keys.R))
+            {
+                runwayComboBox.Focus();
+                e.SuppressKeyPress = true;
+            }
+                                }
+    }
     }
