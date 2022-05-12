@@ -95,6 +95,7 @@
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // ilsDetailsTextBox
             // 
@@ -122,6 +123,7 @@
             this.Name = "DestinationForm";
             this.Text = "Destination runway";
             this.Load += new System.EventHandler(this.DestinationForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DestinationForm_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
