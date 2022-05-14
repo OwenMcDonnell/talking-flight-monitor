@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -44,15 +45,21 @@ namespace tfm
                 try
                 {
                                                     FlightPlan.Destination = database.Airports.Where(x => x.ICAO == airportTextBox.Text).ToArray()[0];
-                    runwayComboBox.Items.Clear();
+                                        runwayComboBox.Items.Clear();
                                                     foreach(FsRunway runway in FlightPlan.Destination.Runways)
                     {
-                        runwayComboBox.Items.Add(runway.ID.ToString());
+                        ////todo: Implement runway filters.
+                        // Only load ILS runways until other runway types are implemented.
+                        if(runway.ILSInfo != null)
+                        {
+                            runwayComboBox.Items.Add(runway.ID.ToString());
+                        }
+                        
                                                                                             }
                     runwayComboBox.SelectedIndex = 0;
                     // Stop speech from announcing the selected runway as they load.
                     Tolk.Silence();
-                    Tolk.Output($"{FlightPlan.Destination.Runways.Count()} runways loaded.");
+                    Tolk.Output($"{runwayComboBox.Items.Count} runways loaded.");
                 }
                 catch(IndexOutOfRangeException ex)
                 {
