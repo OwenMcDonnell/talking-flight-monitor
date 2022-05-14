@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -44,6 +45,7 @@ namespace tfm
                 try
                 {
                                                     FlightPlan.Destination = database.Airports.Where(x => x.ICAO == airportTextBox.Text).ToArray()[0];
+                    Thread.Sleep(500);                    
                     runwayComboBox.Items.Clear();
                                                     foreach(FsRunway runway in FlightPlan.Destination.Runways)
                     {

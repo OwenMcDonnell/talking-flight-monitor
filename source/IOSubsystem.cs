@@ -984,22 +984,20 @@ namespace tfm
                 if (Properties.Settings.Default.ReadGSAltitude)
                 {
                     var gsHeight = utility.CalculateAngleHeight(FlightPlan.DestinationRunway.DistanceFeet, FlightPlan.DestinationRunway.ILSInfo.Slope);
-                    double groundAlt = (double)Aircraft.GroundAltitude.Value / 256d * 3.28084d;
-                    double agl = (double)Aircraft.Altitude.Value - groundAlt;
-                    var relativeGsHeight =agl  - gsHeight;
+                                        var relativeGsHeight = Autopilot.AglAltitude - gsHeight;
                     relativeGsHeight = Math.Round(relativeGsHeight, 0);
 
                     if (relativeGsHeight > 0)
                     {
                         var gaugeName = "Glide slope";
-                        var gaugeValue = $"{relativeGsHeight} below.";
+                        var gaugeValue = $"{relativeGsHeight} above.";
                         var isGauge = true;
                         Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                     }
                     if (relativeGsHeight < 0)
                     {
                         var gaugeName = "Glide slope";
-                        var gaugeValue = $"{Math.Abs(relativeGsHeight)} above";
+                        var gaugeValue = $"{Math.Abs(relativeGsHeight)} below";
                         var isGauge = true;
                         Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                     }
