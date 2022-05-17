@@ -990,14 +990,14 @@ namespace tfm
                     if (relativeGsHeight > 0)
                     {
                         var gaugeName = "Glide slope";
-                        var gaugeValue = $"{relativeGsHeight} above.";
+                        var gaugeValue = $"{relativeGsHeight} down.";
                         var isGauge = true;
                         Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                     }
                     if (relativeGsHeight < 0)
                     {
                         var gaugeName = "Glide slope";
-                        var gaugeValue = $"{Math.Abs(relativeGsHeight)} below";
+                        var gaugeValue = $"{Math.Abs(relativeGsHeight)} up";
                         var isGauge = true;
                         Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                     }

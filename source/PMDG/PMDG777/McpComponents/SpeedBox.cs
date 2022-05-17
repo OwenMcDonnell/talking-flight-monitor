@@ -15,12 +15,9 @@ namespace tfm.PMDG.PMDG777.McpComponents
     public partial class SpeedBox : Form
     {
         Timer speedTimer = new Timer();
-        private bool _isAirspeedMode = true;
-
-
-
         
-        public SpeedBox()
+
+                public SpeedBox()
         {
             InitializeComponent();
                     } // End SpeedBox constructor,.
@@ -90,7 +87,7 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
                     modeButton.AccessibleName = "mode [IAS]";
                                     }
             } // Airspeed mode.
-            else if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
+            else if(Aircraft.pmdg777.MCP_IASMach.Value < 10)
             {
                 if(Aircraft.pmdg777.MCP_IASMach.ValueChanged)
                 {
@@ -182,7 +179,7 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
             {
                 speedTextBox.Text = Aircraft.pmdg777.MCP_IASMach.Value.ToString();
             } // End airspeed mode.
-            else if(Aircraft.pmdg777.MCP_IASMach.Value < 10)
+            if(Aircraft.pmdg777.MCP_IASMach.Value < 10)
             {
                 speedTextBox.Text = $"{Math.Round(Aircraft.pmdg777.MCP_IASMach.Value, 2)}";
             } // End mach mode.
@@ -209,7 +206,7 @@ foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelC
                 autoThrottleRButton.AccessibleName = "right on";
             } // End right autothrottle.
 
-            if(this._isAirspeedMode)
+            if(Aircraft.pmdg777.MCP_IASMach.Value > 10)
             {
                 modeButton.Text = "&mode [IAS]";
                 modeButton.AccessibleName = "mode [IAS]";
