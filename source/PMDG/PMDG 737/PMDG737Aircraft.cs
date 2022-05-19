@@ -352,10 +352,7 @@ namespace tfm
 
             };
         }
-
-
-
-        public static AircraftSystem SpeedMode
+                                public static AircraftSystem SpeedMode
         {
             get => Aircraft.pmdg737.MCP_IASBlank.Value == 1 ? AircraftSystem.FMC : AircraftSystem.MCP;
         } // SpeedMode
