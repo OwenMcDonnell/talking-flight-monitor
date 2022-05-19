@@ -809,7 +809,7 @@ public static byte CurrentFlapsPosition
                 {
                     speed = MachSpeed;
                 }
-                FDUOutput = $"{controllingComponent} {speed}";
+                FDUOutput = $"{controllingComponent} speed {speed}";
             }
             return FDUOutput;
                     }

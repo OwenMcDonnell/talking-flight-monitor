@@ -743,9 +743,9 @@ namespace tfm
         }
 
 
-
         private void ReadAutoBrake()
         {
+                                       
             string AbState = null;
             if (Aircraft.AutoBrake.ValueChanged)
             {
@@ -1283,7 +1283,7 @@ else              if (PMDG777Detected)
                     if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
                     {
                                                 gaugeName = "AP airspeed";
-                        gaugeValue = PMDG737Aircraft.IndicatedAirSpeed.ToString(); ;
+                        gaugeValue = PMDG737Aircraft.IndicatedAirSpeed.ToString();
                         Output(gaugeName, gaugeValue, isGauge);
                     } // airspeed
                     else if(PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
@@ -1308,9 +1308,19 @@ else              if (PMDG777Detected)
             {
                 if (Aircraft.pmdg777.MCP_IASMach.ValueChanged)
                 {
-                    gaugeName = "AP airspeed";
-                    gaugeValue = Aircraft.pmdg777.MCP_IASMach.Value.ToString();
-                    Output(gaugeName, gaugeValue, isGauge);
+                    if(PMDG777Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
+                    {
+                        gaugeName = "AP airspeed";
+                        gaugeValue = PMDG777Aircraft.IndicatedAirSpeed.ToString();
+                        Output(gaugeName, gaugeValue, isGauge);
+                    }
+                    else if(PMDG777Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
+                    {
+                        gaugeName = "AP airspeed";
+                        gaugeValue = PMDG777Aircraft.MachSpeed.ToString();
+                        Output(gaugeName, gaugeValue, isGauge);
+                    }
+                    
                                     }
                 if (Aircraft.pmdg777.MCP_FPA.ValueChanged)
                 {
@@ -1618,6 +1628,10 @@ else              if (PMDG777Detected)
                     {
                         gaugeValue = PMDG737Aircraft.GetMCPAltitudeComponents();
                     } // PMDG737
+                    if (PMDG777Detected)
+                    {
+                        gaugeValue = PMDG777Aircraft.GetMCPAltitudeComponents();
+                    }
                     else
                     {
 
@@ -1685,6 +1699,10 @@ else if (PMDG777Detected)
                     {
                         gaugeValue = PMDG737Aircraft.GetMCPHeadingComponents();
                     } // PMDG 737
+                    if (PMDG777Detected)
+                    {
+                        gaugeValue = PMDG777Aircraft.GetMCPHeadingComponents();
+                    }
                     else
                     {
                         gaugeValue = Autopilot.ApHeading.ToString();
@@ -1732,6 +1750,10 @@ else if (PMDG777Detected)
                             gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
                         }
                     } // PMDG737
+                    if (PMDG777Detected)
+                    {
+                        gaugeValue = PMDG777Aircraft.GetMCPSpeedComponents();
+                    }
 
                     // freeware.
                     else
