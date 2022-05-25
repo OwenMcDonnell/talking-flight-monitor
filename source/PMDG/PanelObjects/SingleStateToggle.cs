@@ -49,7 +49,7 @@ namespace tfm.PMDG.PanelObjects
         public override string ToString()
         {
             string output = string.Empty;
-            if(this.Name == "Speedbrake")
+            if(this.Offset == Aircraft.pmdg777.FCTL_Speedbrake_Lever)
             {
 
                                 if(_offset.Value > 0 && _offset.Value <= 24)
@@ -71,6 +71,11 @@ namespace tfm.PMDG.PanelObjects
                     }
                                                                                                                            } // Everything else.
                            } // Speedbrake.
+else             if(this.Offset == Aircraft.pmdg737.OXY_Needle)
+            {
+                var percent = Math.Truncate((double)((this._offset.Value - 0) * 100) / (240 - 0));
+                output = $"{this.Name} {percent}%";
+            }
             else
             {
                 output = $"{this.Name} {this.CurrentState.Value}";

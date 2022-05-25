@@ -196,161 +196,104 @@ namespace tfm
             { 2, "nav" },
             { 3, "Att" }
         };
-        public static PanelObject[] PanelControls
+        private static Dictionary<byte, string> _domeLightStates = new Dictionary<byte, string>()
         {
-            get => new PanelObject[]
+            {0, "dim" },
+            {1, "off" },
+            {2, "bright" },
+        };
+        public static Dictionary<byte, string> _normalOrOnStates = new Dictionary<byte, string>()
+        {
+            {0, "on" },
+            {1, "normal" },
+        };
+        private static Dictionary<byte, string> _downOrUpStates = new Dictionary<byte, string>()
+{
+    {0, "up" },
+    {1, "down" },
+};
+
+        private static Dictionary<byte, string> _normalOrTestStates = new Dictionary<byte, string>()
+        {
+            {0, "test" },
+            {1, "normal" },
+        };
+
+        private static Dictionary<byte, string> _flightControlStates = new Dictionary<byte, string>()
+        {
+            {0, "standby" },
+            {1, "off" },
+            {2, "on" },
+        };
+
+        private static Dictionary<byte, string> _armedOrOffStates = new Dictionary<byte, string>()
+        {
+            {0, "off" },
+            {1, "armed" },
+        };
+        public static List<PanelObject> PanelControls
+        {
+            get => new List<PanelObject>()
             {
-                // Aft Forward Panel
-                // ADIRU
-                new SingleStateToggle {
-                    Name = "IRS Display Selector",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Offset = Aircraft.pmdg737.IRS_DisplaySelector,
-                    Type = PanelObjectType.Switch,
-                    Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _IRSDisplaySelectorStates
-                },
-                new SingleStateToggle {
-                    Name = "IRS Display switch",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Offset = Aircraft.pmdg737.IRS_SysDisplay_R,
-                    Type = PanelObjectType.Switch,
-                    Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _IRSSysDisplayStates
-                },
-                new SingleStateToggle {
-                    Name = "IRS GPS light",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Offset = Aircraft.pmdg737.IRS_annunGPS,
-                    Type = PanelObjectType.Annunciator,
-                    Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _onOrOffStates
-                },
-                new SingleStateToggle {
-                    Name = "IRS left aligned",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Offset = Aircraft.pmdg737.IRS_annunALIGN[0],
-                    Type = PanelObjectType.Annunciator,
-                    Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _onOrOffStates
-                },
-                new SingleStateToggle {
-                    Name = "IRS right aligned",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Offset = Aircraft.pmdg737.IRS_annunALIGN[1],
-                    Type = PanelObjectType.Annunciator,
-                    Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _onOrOffStates
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS on DC - left",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Annunciator,
-                    Offset = Aircraft.pmdg737.IRS_annunON_DC[0],
-                    Verbosity = AircraftVerbosity.High,
-                    AvailableStates = _onOrOffStates,
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS on DC - right",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Annunciator,
-                    Offset = Aircraft.pmdg737.IRS_annunON_DC[1],
-                    Verbosity = AircraftVerbosity.High,
-                    AvailableStates = _onOrOffStates,
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS left fault light",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Annunciator,
-                    Offset = Aircraft.pmdg737.IRS_annunFAULT[0],
-                    Verbosity = AircraftVerbosity.High,
-                    AvailableStates = _onOrOffStates,
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS right fault light",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Annunciator,
-                    Offset = Aircraft.pmdg737.IRS_annunFAULT[1],
-                    Verbosity = AircraftVerbosity.High,
-                    AvailableStates = _onOrOffStates,
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS left  DC failure light",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Annunciator,
-                    Offset = Aircraft.pmdg737.IRS_annunDC_FAIL[0],
-                    Verbosity = AircraftVerbosity.High,
-                    AvailableStates = _onOrOffStates,
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS right DC failure light",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Annunciator,
-                    Offset = Aircraft.pmdg737.IRS_annunDC_FAIL[1],
-                    Verbosity = AircraftVerbosity.High,
-                    AvailableStates = _onOrOffStates,
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS left mode selector",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Switch,
-                    Offset = Aircraft.pmdg737.IRS_ModeSelector[0],
-                    Verbosity = AircraftVerbosity.Low,
-                    AvailableStates = _irsModeSelect,
+                // --panel: Aft Forward Panel
+                // --section: ADIRU
+                new SingleStateToggle { Name = "IRS Display Selector", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_DisplaySelector, Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, AvailableStates = _IRSDisplaySelectorStates},
+                new SingleStateToggle { Name = "IRS Display switch", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_SysDisplay_R, Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, AvailableStates = _IRSSysDisplayStates },
+                new SingleStateToggle { Name = "IRS GPS light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_annunGPS, Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Left IRS light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_annunALIGN[0], Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Right IRS light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_annunALIGN[1], Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Left IRS DC light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.IRS_annunON_DC[0], Verbosity = AircraftVerbosity.High, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Right IRS DC light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.IRS_annunON_DC[1], Verbosity = AircraftVerbosity.High, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Left IRS fault light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.IRS_annunFAULT[0], Verbosity = AircraftVerbosity.High, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Right IRS fault light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.IRS_annunFAULT[1], Verbosity = AircraftVerbosity.High, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Left IRS DC failure light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.IRS_annunDC_FAIL[0], Verbosity = AircraftVerbosity.High, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Right IRS DC failure light", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.IRS_annunDC_FAIL[1], Verbosity = AircraftVerbosity.High, AvailableStates = _onOrOffStates },
+                new SingleStateToggle { Name = "Left IRS mode selector", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Switch, Offset = Aircraft.pmdg737.IRS_ModeSelector[0], Verbosity = AircraftVerbosity.Low, AvailableStates = _irsModeSelect },
+                new SingleStateToggle { Name = "Right IRS mode selector", PanelName = "Aft Overhead", PanelSection = "ADIRU", Type = PanelObjectType.Switch, Offset = Aircraft.pmdg737.IRS_ModeSelector[1], Verbosity = AircraftVerbosity.Low, AvailableStates = _irsModeSelect },
+                
+                // --section: PSEU
+                new SingleStateToggle { Name = "PSEU warning light",  PanelName = "Aft Overhead", PanelSection = "PSEU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, AvailableStates = _onOrOffStates, Offset = Aircraft.pmdg737.WARN_annunPSEU },
 
-                },
-                new SingleStateToggle
-                {
-                    Name = "IRS right mode selector",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "ADIRU",
-                    Type = PanelObjectType.Switch,
-                    Offset = Aircraft.pmdg737.IRS_ModeSelector[1],
-                    Verbosity = AircraftVerbosity.Low,
-                    AvailableStates = _irsModeSelect,
-                },
-                // PSEU
-                new SingleStateToggle
-                {
-                    Name = "PSEU warning light",
-                    PanelName = "Aft Overhead",
-                    PanelSection = "PSEU",
-                    Type = PanelObjectType.Annunciator,
-                    Verbosity = AircraftVerbosity.Medium,
-                    AvailableStates = _onOrOffStates,
-                    Offset = Aircraft.pmdg737.WARN_annunPSEU,
-                },
+// --section: Service interphone
+new SingleStateToggle {Name = "Service interphone", PanelName = "Aft Overhead", PanelSection = "Service interphone", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.COMM_ServiceInterphoneSw, AvailableStates = _onOrOffStates },
 
+// --section: lights
+new SingleStateToggle { Name = "Dome lights", PanelName = "Aft Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.LTS_DomeWhiteSw, AvailableStates = _domeLightStates },
 
+// --section: Engines
+new SingleStateToggle { Name = "Engine #1 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[0], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #2 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[1], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #1 reverser", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunREVERSER[0], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #2 reverser", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunREVERSER[1], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #1 control", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunENGINE_CONTROL[0], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #2 control", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunENGINE_CONTROL[1], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #1 alternate", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunALTN[0], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #2 alternate", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunALTN[1], AvailableStates = _onOrOffStates },
 
+// --section: Oxygen
+new SingleStateToggle { Name = "Oxygen level", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Slider, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.OXY_Needle, AvailableStates = null },
+new SingleStateToggle { Name = "Oxygen", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OXY_SwNormal, AvailableStates = _normalOrOnStates},
+new SingleStateToggle { Name = "Passenger oxygen", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OXY_annunPASS_OXY_ON, AvailableStates = _onOrOffStates },
 
+// --section: Gear
+new SingleStateToggle { Name = "Nose gear light", PanelName = "Aft Overhead", PanelSection = "Gear", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GEAR_annunOvhdNOSE, AvailableStates = _downOrUpStates},
+new SingleStateToggle { Name = "Left gear light", PanelName = "Aft Overhead", PanelSection = "Gear", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GEAR_annunOvhdLEFT, AvailableStates = _downOrUpStates},
+new SingleStateToggle { Name = "Right gear light", PanelName = "Aft Overhead", PanelSection = "Gear", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GEAR_annunOvhdRIGHT, AvailableStates = _downOrUpStates},
 
+// --section: Flight recorder
+new SingleStateToggle { Name = "Flight recorder", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_SwNormal, AvailableStates = _normalOrTestStates},
+new SingleStateToggle { Name = "Flight recorder light", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_annunOFF, AvailableStates = _offOrOnStates },
 
+// --panel: Forward Overhead
+// --section: Flight Controls
+new SingleStateToggle { Name = "Capt. flight controls", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[0], AvailableStates = _flightControlStates},
+new SingleStateToggle { Name = "F/O flight controls", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[1], AvailableStates = _flightControlStates},
+new SingleStateToggle { Name = "Left spoilers", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right spoilers", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Yaw damper", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_YawDamper_Sw, AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Alternate flaps", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_AltnFlaps_Sw_ARM, AvailableStates = _armedOrOffStates},
 
-
-
-
-
-            };
+                                          };
         }
                                 public static AircraftSystem SpeedMode
         {
