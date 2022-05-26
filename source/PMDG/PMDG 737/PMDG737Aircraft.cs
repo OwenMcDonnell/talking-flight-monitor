@@ -18,6 +18,41 @@ namespace tfm
         private static tfm.PMDG.PMDG737.McpComponents.HeadingBox headingBox = new PMDG.PMDG737.McpComponents.HeadingBox();
         private static tfm.PMDG.PMDG737.McpComponents.VerticalSpeedBox verticalSpeedBox = new PMDG.PMDG737.McpComponents.VerticalSpeedBox();
 
+        public static PMDG_NGX_CDU_Screen cdu0 = new PMDG_NGX_CDU_Screen(0x5400);
+        public static PMDG_NGX_CDU_Screen cdu1 = new PMDG_NGX_CDU_Screen(0x5800);
+        public static  PMDG_NGX_CDU_Screen cdu2 = new PMDG_NGX_CDU_Screen(0x5C00);
+
+        // constants for PMDG mouse click parameters
+        public const int ClkL = 536870912;
+        public const int ClkR = -2147483648;
+        public const int Inc = 16384;
+        public const int Dec = 8192;
+        public static  void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel)
+        {
+            // there are several PMDG controls that cannot be set by direct parameter entry.
+            // this function calculates the number of increment or decrement commands that need to be set in order to set a switch to a specific position.
+            // We pass in a PMDG control number, an offset to read the current switch position, and the position we want the switch set to.
+            if (pos > sel)
+            {
+                for (int i = 0; i < pos - sel; i++)
+                {
+                    FSUIPCConnection.SendControlToFS(control, Dec);
+                }
+
+            }
+            if (pos < sel)
+            {
+                for (int i = 0; i < sel - pos; i++)
+                {
+                    FSUIPCConnection.SendControlToFS(control, Inc);
+
+                }
+
+            }
+
+        }
+
+
         public static Dictionary<string, System.Windows.Forms.Form> MCPComponents
         {
             get =>
@@ -91,11 +126,10 @@ namespace tfm
         };
         private static Dictionary<byte, string> _IRSDisplaySelectorStates = new Dictionary<byte, string>
         {
-            { 0, "position 1" },
-            {1, "position 2" },
-            {2, "position 3" },
-            {3, "position 4" },
-            {4, "position 5" },
+                        {1, "TK/GS" },
+            {2, "PPOS" },
+            {3, "WIND" },
+            {4, "HDG/STAT" },
         };
         private static Dictionary<byte, string> _IRSSysDisplayStates = new Dictionary<byte, string>
         {
@@ -235,7 +269,7 @@ namespace tfm
         {
             get => new List<PanelObject>()
             {
-                // --panel: Aft Forward Panel
+                // --panel: Aft OverheadPanel
                 // --section: ADIRU
                 new SingleStateToggle { Name = "IRS Display Selector", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_DisplaySelector, Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, AvailableStates = _IRSDisplaySelectorStates},
                 new SingleStateToggle { Name = "IRS Display switch", PanelName = "Aft Overhead", PanelSection = "ADIRU", Offset = Aircraft.pmdg737.IRS_SysDisplay_R, Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, AvailableStates = _IRSSysDisplayStates },
@@ -509,5 +543,61 @@ new SingleStateToggle { Name = "Alternate flaps", PanelName = "Forward Overhead"
             return FDUoutput;
 
                                            } // GetMCPSpeedComponents
+
+        // IRU Left
+        public static void IRULeftOff()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_LEFT, Aircraft.pmdg737.IRS_ModeSelector[0].Value, 0);
+        }
+        public static void IRULeftAlign()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_LEFT, Aircraft.pmdg737.IRS_ModeSelector[0].Value, 1);
+        }
+        public static void IRULeftNav()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_LEFT, Aircraft.pmdg737.IRS_ModeSelector[0].Value, 2);
+        }
+
+        public static void IRULeftAtt()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_LEFT, Aircraft.pmdg737.IRS_ModeSelector[0].Value, 3);
+        }
+                               
+        public static void IRURightOff()
+        {
+
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_RIGHT, Aircraft.pmdg737.IRS_ModeSelector[1].Value, 0);
+        }
+        public static void IRURightAlign()
+        {
+            // IRURightCalc(1);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_RIGHT, Aircraft.pmdg737.IRS_ModeSelector[1].Value, 1);
+        }
+        public static void IRURightNav()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_RIGHT, Aircraft.pmdg737.IRS_ModeSelector[1].Value, 2);
+        }
+                public static void IRURightAtt()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_RIGHT, Aircraft.pmdg737.IRS_ModeSelector[1].Value, 3);
+        }
+
+        // IRS display selector
+        public static void IRSDisplayTrackGS()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_ISDU_DSPL_SEL, Aircraft.pmdg737.IRS_DisplaySelector.Value, 1);
+        }
+        public static void IRSDisplayPPOS()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_ISDU_DSPL_SEL, Aircraft.pmdg737.IRS_DisplaySelector.Value, 2);
+        }
+        public static void IRSDisplayWind()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_ISDU_DSPL_SEL, Aircraft.pmdg737.IRS_DisplaySelector.Value, 3);
+        }
+        public static void IRSDisplayHdgStat()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_ISDU_DSPL_SEL, Aircraft.pmdg737.IRS_DisplaySelector.Value, 4);
+        }
                     } // End PMDG737Aircraft.
 } // End namespace.

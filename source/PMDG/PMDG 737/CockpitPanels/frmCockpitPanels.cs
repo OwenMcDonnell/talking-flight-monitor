@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
+
+
 namespace tfm
 {
     public partial class frmCockpitPanels : Form
@@ -33,6 +36,7 @@ namespace tfm
             pages.Add("nodAirSystems", new ctlAirSystems());
             pages.Add("nodAntiIce", new ctlAntiIce());
             pages.Add("nodPressurization", new ctlPressurization());
+            pages.Add("adiruNode", new ctlADIRU());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

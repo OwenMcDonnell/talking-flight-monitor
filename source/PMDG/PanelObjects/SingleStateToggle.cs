@@ -33,7 +33,15 @@ namespace tfm.PMDG.PanelObjects
                                 return item;
             } // End Get    
         } // End CurrentState.
-                public override PanelObjectType Type => this._type;
+                public override PanelObjectType Type
+        {
+            get => this._type;
+            set
+            {
+                this._type = value;
+                base.Type = value;
+            }
+        }
 
         public override Offset Offset
         {
