@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DavyKager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -119,6 +120,7 @@ foreach(PanelObjects.SingleStateToggle toggle in lights)
             adiruTimer.Enabled = true;
             adiruTimer.Tick += new EventHandler(adiruTimerTick);
                         adiruTimer.Start();
+            Tolk.Load();
                                            }
 
         private void tkGsRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -230,6 +232,11 @@ foreach(PanelObjects.SingleStateToggle toggle in lights)
             {
                 PMDG737Aircraft.IRURightAtt();
             }
+        }
+
+        private void gpsTextBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

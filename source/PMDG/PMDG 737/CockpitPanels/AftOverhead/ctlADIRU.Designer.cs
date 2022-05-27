@@ -113,7 +113,8 @@
             // 
             // irsDisplaySelectorGroup
             // 
-            this.irsDisplaySelectorGroup.AccessibleName = "IRS display selector";
+            this.irsDisplaySelectorGroup.AccessibleName = "IRS display";
+            this.irsDisplaySelectorGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.irsDisplaySelectorGroup.AutoSize = true;
             this.irsDisplaySelectorGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.irsDisplaySelectorGroup.Controls.Add(this.flowLayoutPanel1);
@@ -122,10 +123,11 @@
             this.irsDisplaySelectorGroup.Size = new System.Drawing.Size(753, 121);
             this.irsDisplaySelectorGroup.TabIndex = 0;
             this.irsDisplaySelectorGroup.TabStop = false;
-            this.irsDisplaySelectorGroup.Text = "IRS display selector";
+            this.irsDisplaySelectorGroup.Text = "IRS &display";
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AccessibleRole = System.Windows.Forms.AccessibleRole.Dial;
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.tkGsRadioButton);
@@ -142,6 +144,7 @@
             // tkGsRadioButton
             // 
             this.tkGsRadioButton.AccessibleName = "TRK/GS";
+            this.tkGsRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.tkGsRadioButton.AutoSize = true;
             this.tkGsRadioButton.Location = new System.Drawing.Point(3, 3);
             this.tkGsRadioButton.Name = "tkGsRadioButton";
@@ -155,6 +158,7 @@
             // pPosRadioButton
             // 
             this.pPosRadioButton.AccessibleName = "PPOS";
+            this.pPosRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.pPosRadioButton.AutoSize = true;
             this.pPosRadioButton.Location = new System.Drawing.Point(127, 3);
             this.pPosRadioButton.Name = "pPosRadioButton";
@@ -168,6 +172,7 @@
             // windRadioButton
             // 
             this.windRadioButton.AccessibleName = "WIND";
+            this.windRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.windRadioButton.AutoSize = true;
             this.windRadioButton.Location = new System.Drawing.Point(241, 3);
             this.windRadioButton.Name = "windRadioButton";
@@ -181,6 +186,7 @@
             // hdgStatRadioButton
             // 
             this.hdgStatRadioButton.AccessibleName = "HDG/STAT";
+            this.hdgStatRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.hdgStatRadioButton.AutoSize = true;
             this.hdgStatRadioButton.Location = new System.Drawing.Point(361, 3);
             this.hdgStatRadioButton.Name = "hdgStatRadioButton";
@@ -193,6 +199,7 @@
             // 
             // leftDisplayTextBox
             // 
+            this.leftDisplayTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.leftDisplayTextBox.Location = new System.Drawing.Point(535, 3);
             this.leftDisplayTextBox.Name = "leftDisplayTextBox";
             this.leftDisplayTextBox.Size = new System.Drawing.Size(100, 40);
@@ -200,6 +207,7 @@
             // 
             // rightDisplayTextBox
             // 
+            this.rightDisplayTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
             this.rightDisplayTextBox.Location = new System.Drawing.Point(641, 3);
             this.rightDisplayTextBox.Name = "rightDisplayTextBox";
             this.rightDisplayTextBox.Size = new System.Drawing.Size(100, 40);
@@ -232,6 +240,7 @@
             // irsLeftModeGroupBox
             // 
             this.irsLeftModeGroupBox.AccessibleName = "Left";
+            this.irsLeftModeGroupBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.irsLeftModeGroupBox.AutoSize = true;
             this.irsLeftModeGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.irsLeftModeGroupBox.Controls.Add(this.flowLayoutPanel4);
@@ -240,10 +249,11 @@
             this.irsLeftModeGroupBox.Size = new System.Drawing.Size(389, 118);
             this.irsLeftModeGroupBox.TabIndex = 0;
             this.irsLeftModeGroupBox.TabStop = false;
-            this.irsLeftModeGroupBox.Text = "Left";
+            this.irsLeftModeGroupBox.Text = "&Left";
             // 
             // flowLayoutPanel4
             // 
+            this.flowLayoutPanel4.AccessibleRole = System.Windows.Forms.AccessibleRole.Dial;
             this.flowLayoutPanel4.AutoSize = true;
             this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel4.Controls.Add(this.leftModeOffRadioButton);
@@ -258,6 +268,7 @@
             // leftModeOffRadioButton
             // 
             this.leftModeOffRadioButton.AccessibleName = "IRS off";
+            this.leftModeOffRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.leftModeOffRadioButton.AutoSize = true;
             this.leftModeOffRadioButton.Location = new System.Drawing.Point(3, 3);
             this.leftModeOffRadioButton.Name = "leftModeOffRadioButton";
@@ -271,6 +282,7 @@
             // leftModeAlignRadioButton
             // 
             this.leftModeAlignRadioButton.AccessibleName = "IRS align";
+            this.leftModeAlignRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.leftModeAlignRadioButton.AutoSize = true;
             this.leftModeAlignRadioButton.Location = new System.Drawing.Point(80, 3);
             this.leftModeAlignRadioButton.Name = "leftModeAlignRadioButton";
@@ -284,6 +296,7 @@
             // leftModeNavRadioButton
             // 
             this.leftModeNavRadioButton.AccessibleName = "IRS NAV";
+            this.leftModeNavRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.leftModeNavRadioButton.AutoSize = true;
             this.leftModeNavRadioButton.Location = new System.Drawing.Point(188, 3);
             this.leftModeNavRadioButton.Name = "leftModeNavRadioButton";
@@ -297,6 +310,7 @@
             // leftModeAttRadioButton
             // 
             this.leftModeAttRadioButton.AccessibleName = "IRS A T T";
+            this.leftModeAttRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.leftModeAttRadioButton.AutoSize = true;
             this.leftModeAttRadioButton.Location = new System.Drawing.Point(289, 3);
             this.leftModeAttRadioButton.Name = "leftModeAttRadioButton";
@@ -318,10 +332,11 @@
             this.rightModeGroupBox.Size = new System.Drawing.Size(389, 118);
             this.rightModeGroupBox.TabIndex = 1;
             this.rightModeGroupBox.TabStop = false;
-            this.rightModeGroupBox.Text = "Right";
+            this.rightModeGroupBox.Text = "&Right";
             // 
             // flowLayoutPanel5
             // 
+            this.flowLayoutPanel5.AccessibleRole = System.Windows.Forms.AccessibleRole.Dial;
             this.flowLayoutPanel5.AutoSize = true;
             this.flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel5.Controls.Add(this.rightModeOffRadioButton);
@@ -336,6 +351,7 @@
             // rightModeOffRadioButton
             // 
             this.rightModeOffRadioButton.AccessibleName = "IRS off";
+            this.rightModeOffRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.rightModeOffRadioButton.AutoSize = true;
             this.rightModeOffRadioButton.Location = new System.Drawing.Point(3, 3);
             this.rightModeOffRadioButton.Name = "rightModeOffRadioButton";
@@ -349,6 +365,7 @@
             // rightModeAlignRadioButton
             // 
             this.rightModeAlignRadioButton.AccessibleName = "IRS align";
+            this.rightModeAlignRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.rightModeAlignRadioButton.AutoSize = true;
             this.rightModeAlignRadioButton.Location = new System.Drawing.Point(80, 3);
             this.rightModeAlignRadioButton.Name = "rightModeAlignRadioButton";
@@ -362,6 +379,7 @@
             // rightModeNavRadioButton
             // 
             this.rightModeNavRadioButton.AccessibleName = "IRS NAV";
+            this.rightModeNavRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.rightModeNavRadioButton.AutoSize = true;
             this.rightModeNavRadioButton.Location = new System.Drawing.Point(188, 3);
             this.rightModeNavRadioButton.Name = "rightModeNavRadioButton";
@@ -375,6 +393,7 @@
             // rightModeAttRadioButton
             // 
             this.rightModeAttRadioButton.AccessibleName = "IRS A T T";
+            this.rightModeAttRadioButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.rightModeAttRadioButton.AutoSize = true;
             this.rightModeAttRadioButton.Location = new System.Drawing.Point(289, 3);
             this.rightModeAttRadioButton.Name = "rightModeAttRadioButton";
@@ -400,7 +419,7 @@
             this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel14);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(55, 210);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(1227, 85);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(1301, 85);
             this.flowLayoutPanel6.TabIndex = 1;
             // 
             // gpsLightFlowLayout
@@ -412,7 +431,7 @@
             this.gpsLightFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.gpsLightFlowLayout.Location = new System.Drawing.Point(3, 3);
             this.gpsLightFlowLayout.Name = "gpsLightFlowLayout";
-            this.gpsLightFlowLayout.Size = new System.Drawing.Size(72, 79);
+            this.gpsLightFlowLayout.Size = new System.Drawing.Size(100, 79);
             this.gpsLightFlowLayout.TabIndex = 0;
             // 
             // label1
@@ -420,14 +439,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 33);
+            this.label1.Size = new System.Drawing.Size(94, 33);
             this.label1.TabIndex = 0;
-            this.label1.Text = "&GPS";
+            this.label1.Text = "&1. GPS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gpsTextBox
             // 
             this.gpsTextBox.AccessibleName = "IRS GPS light";
+            this.gpsTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.gpsTextBox.Location = new System.Drawing.Point(3, 36);
             this.gpsTextBox.Name = "gpsTextBox";
             this.gpsTextBox.ReadOnly = true;
@@ -441,7 +461,7 @@
             this.flowLayoutPanel7.Controls.Add(this.label2);
             this.flowLayoutPanel7.Controls.Add(this.leftIrsLightTextBox);
             this.flowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(81, 3);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(109, 3);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
             this.flowLayoutPanel7.Size = new System.Drawing.Size(116, 79);
             this.flowLayoutPanel7.TabIndex = 1;
@@ -453,12 +473,13 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 33);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Left IRS";
+            this.label2.Text = "&2. IRS/L";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leftIrsLightTextBox
             // 
             this.leftIrsLightTextBox.AccessibleName = "Left IRS light";
+            this.leftIrsLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.leftIrsLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.leftIrsLightTextBox.Name = "leftIrsLightTextBox";
             this.leftIrsLightTextBox.ReadOnly = true;
@@ -472,7 +493,7 @@
             this.flowLayoutPanel8.Controls.Add(this.label3);
             this.flowLayoutPanel8.Controls.Add(this.rightIrsLightTextBox);
             this.flowLayoutPanel8.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(203, 3);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(231, 3);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             this.flowLayoutPanel8.Size = new System.Drawing.Size(133, 79);
             this.flowLayoutPanel8.TabIndex = 2;
@@ -482,14 +503,15 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 33);
+            this.label3.Size = new System.Drawing.Size(113, 33);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Right IRS";
+            this.label3.Text = "&3. IRS/R";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rightIrsLightTextBox
             // 
             this.rightIrsLightTextBox.AccessibleName = "Right IRS light";
+            this.rightIrsLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.rightIrsLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.rightIrsLightTextBox.Name = "rightIrsLightTextBox";
             this.rightIrsLightTextBox.ReadOnly = true;
@@ -503,7 +525,7 @@
             this.flowLayoutPanel9.Controls.Add(this.label4);
             this.flowLayoutPanel9.Controls.Add(this.leftIrsDcLightTextBox);
             this.flowLayoutPanel9.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel9.Location = new System.Drawing.Point(342, 3);
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(370, 3);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             this.flowLayoutPanel9.Size = new System.Drawing.Size(129, 79);
             this.flowLayoutPanel9.TabIndex = 3;
@@ -515,12 +537,13 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 33);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Left DC";
+            this.label4.Text = "&4. DC/L";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leftIrsDcLightTextBox
             // 
             this.leftIrsDcLightTextBox.AccessibleName = "Left IRS DC light";
+            this.leftIrsDcLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.leftIrsDcLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.leftIrsDcLightTextBox.Name = "leftIrsDcLightTextBox";
             this.leftIrsDcLightTextBox.ReadOnly = true;
@@ -534,7 +557,7 @@
             this.flowLayoutPanel10.Controls.Add(this.label5);
             this.flowLayoutPanel10.Controls.Add(this.rightIrsDcLightTextBox);
             this.flowLayoutPanel10.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel10.Location = new System.Drawing.Point(477, 3);
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(505, 3);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             this.flowLayoutPanel10.Size = new System.Drawing.Size(129, 79);
             this.flowLayoutPanel10.TabIndex = 4;
@@ -544,14 +567,15 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 33);
+            this.label5.Size = new System.Drawing.Size(109, 33);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Right DC";
+            this.label5.Text = "&5. DC/R";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rightIrsDcLightTextBox
             // 
             this.rightIrsDcLightTextBox.AccessibleName = "Right IRS DC light";
+            this.rightIrsDcLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.rightIrsDcLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.rightIrsDcLightTextBox.Name = "rightIrsDcLightTextBox";
             this.rightIrsDcLightTextBox.ReadOnly = true;
@@ -565,9 +589,9 @@
             this.flowLayoutPanel11.Controls.Add(this.label6);
             this.flowLayoutPanel11.Controls.Add(this.leftIrsFaultLightTextBox);
             this.flowLayoutPanel11.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel11.Location = new System.Drawing.Point(612, 3);
+            this.flowLayoutPanel11.Location = new System.Drawing.Point(640, 3);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-            this.flowLayoutPanel11.Size = new System.Drawing.Size(124, 79);
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(154, 79);
             this.flowLayoutPanel11.TabIndex = 5;
             // 
             // label6
@@ -575,14 +599,15 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 33);
+            this.label6.Size = new System.Drawing.Size(148, 33);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Left fault";
+            this.label6.Text = "&6. FAULT/L";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leftIrsFaultLightTextBox
             // 
             this.leftIrsFaultLightTextBox.AccessibleName = "Left IRS fault light";
+            this.leftIrsFaultLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.leftIrsFaultLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.leftIrsFaultLightTextBox.Name = "leftIrsFaultLightTextBox";
             this.leftIrsFaultLightTextBox.ReadOnly = true;
@@ -596,9 +621,9 @@
             this.flowLayoutPanel12.Controls.Add(this.label7);
             this.flowLayoutPanel12.Controls.Add(this.rightIrsFaultLightTextBox);
             this.flowLayoutPanel12.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel12.Location = new System.Drawing.Point(742, 3);
+            this.flowLayoutPanel12.Location = new System.Drawing.Point(800, 3);
             this.flowLayoutPanel12.Name = "flowLayoutPanel12";
-            this.flowLayoutPanel12.Size = new System.Drawing.Size(141, 79);
+            this.flowLayoutPanel12.Size = new System.Drawing.Size(157, 79);
             this.flowLayoutPanel12.TabIndex = 6;
             // 
             // label7
@@ -606,14 +631,15 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(135, 33);
+            this.label7.Size = new System.Drawing.Size(151, 33);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Right falut";
+            this.label7.Text = "&7. FAULT/R";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rightIrsFaultLightTextBox
             // 
             this.rightIrsFaultLightTextBox.AccessibleName = "Right IRS fault light";
+            this.rightIrsFaultLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.rightIrsFaultLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.rightIrsFaultLightTextBox.Name = "rightIrsFaultLightTextBox";
             this.rightIrsFaultLightTextBox.ReadOnly = true;
@@ -627,7 +653,7 @@
             this.flowLayoutPanel13.Controls.Add(this.label8);
             this.flowLayoutPanel13.Controls.Add(this.leftDCFailLightTextBox);
             this.flowLayoutPanel13.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel13.Location = new System.Drawing.Point(889, 3);
+            this.flowLayoutPanel13.Location = new System.Drawing.Point(963, 3);
             this.flowLayoutPanel13.Name = "flowLayoutPanel13";
             this.flowLayoutPanel13.Size = new System.Drawing.Size(156, 79);
             this.flowLayoutPanel13.TabIndex = 7;
@@ -637,14 +663,15 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(3, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(150, 33);
+            this.label8.Size = new System.Drawing.Size(129, 33);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Left DC fail";
+            this.label8.Text = "&8. DC F/L";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leftDCFailLightTextBox
             // 
             this.leftDCFailLightTextBox.AccessibleName = "Left IRS DC failure light";
+            this.leftDCFailLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.leftDCFailLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.leftDCFailLightTextBox.Name = "leftDCFailLightTextBox";
             this.leftDCFailLightTextBox.ReadOnly = true;
@@ -658,7 +685,7 @@
             this.flowLayoutPanel14.Controls.Add(this.label9);
             this.flowLayoutPanel14.Controls.Add(this.rightDcFailLightTextBox);
             this.flowLayoutPanel14.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel14.Location = new System.Drawing.Point(1051, 3);
+            this.flowLayoutPanel14.Location = new System.Drawing.Point(1125, 3);
             this.flowLayoutPanel14.Name = "flowLayoutPanel14";
             this.flowLayoutPanel14.Size = new System.Drawing.Size(173, 79);
             this.flowLayoutPanel14.TabIndex = 8;
@@ -668,14 +695,15 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(167, 33);
+            this.label9.Size = new System.Drawing.Size(132, 33);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Right DC fail";
+            this.label9.Text = "&9. DC F/R";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rightDcFailLightTextBox
             // 
             this.rightDcFailLightTextBox.AccessibleName = "Left IRS DC failure light";
+            this.rightDcFailLightTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.rightDcFailLightTextBox.Location = new System.Drawing.Point(3, 36);
             this.rightDcFailLightTextBox.Name = "rightDcFailLightTextBox";
             this.rightDcFailLightTextBox.ReadOnly = true;
