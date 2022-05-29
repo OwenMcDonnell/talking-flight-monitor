@@ -27,7 +27,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         }
         private void adiruTimerTick(object Sender, EventArgs e)
         {
-            //todo: Convert IRS display values into linq.
+            adiruTimer.Stop();
+                        //todo: Convert IRS display values into linq.
             leftDisplayTextBox.Text = Aircraft.pmdg737.IRS_DisplayLeft.Value;
             rightDisplayTextBox.Text = Aircraft.pmdg737.IRS_DisplayRight.Value;
 
@@ -111,15 +112,14 @@ foreach(PanelObjects.SingleStateToggle toggle in lights)
                 if (toggle.Offset == Aircraft.pmdg737.IRS_annunON_DC[0]) leftIrsDcLightTextBox.Text = toggle.CurrentState.Value;
                 if (toggle.Offset == Aircraft.pmdg737.IRS_annunON_DC[1]) rightIrsDcLightTextBox.Text = toggle.CurrentState.Value;
             }
-
-                    
+                                    adiruTimer.Start();
         }
 
         private void ctlADIRU_Load(object sender, EventArgs e)
         {
             adiruTimer.Enabled = true;
             adiruTimer.Tick += new EventHandler(adiruTimerTick);
-                        adiruTimer.Start();
+                                    adiruTimer.Start();
             Tolk.Load();
                                            }
 

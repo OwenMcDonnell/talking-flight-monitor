@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("ADIRU");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Aft", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Aft Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Flight Controls");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Electrical");
@@ -42,7 +42,6 @@
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Anti-ice");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Pressurization");
             System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
             treeNode3,
             treeNode4,
             treeNode5,
@@ -65,7 +64,7 @@
             treeNode1.Name = "adiruNode";
             treeNode1.Text = "ADIRU";
             treeNode2.Name = "AftOvhdNode";
-            treeNode2.Text = "Aft";
+            treeNode2.Text = "Aft Overhead";
             treeNode3.Name = "nodFlightControls";
             treeNode3.Text = "Flight Controls";
             treeNode4.Name = "nodElectrical";
@@ -89,6 +88,7 @@
             treeNode13.Name = "nodOverhead";
             treeNode13.Text = "Overhead";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2,
             treeNode13});
             this.tvPanels.Size = new System.Drawing.Size(121, 97);
             this.tvPanels.TabIndex = 1;

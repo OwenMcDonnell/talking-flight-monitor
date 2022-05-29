@@ -3884,6 +3884,18 @@ else if (PMDG777Detected)
 
         private void ReadPMDG737Toggles()
         {
+            // todo: condense pmdg 737 offsets into pmdg737 panel controls.
+            foreach(SingleStateToggle toggle in PMDG737Aircraft.PanelControls)
+            {
+                // Only ones marked to speak are announced.
+                if (toggle.shouldSpeak == true)
+                {
+                    if (toggle.Offset.ValueChanged)
+                    {
+                        Output(isGauge: false, output: toggle.ToString());
+                    }
+                                    }
+            }
 
             // Flare light as a test.
             ReadToggle(Aircraft.pmdg737.HGS_annun_FLARE, Aircraft.pmdg737.HGS_annun_FLARE.Value > 0, "Flare light", "on", "off");

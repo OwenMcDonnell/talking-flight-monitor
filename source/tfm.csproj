@@ -534,6 +534,11 @@
     <Compile Include="PMDG\PMDG777\PMDG777Aircraft.cs" />
     <Compile Include="PMDG\PmDGIndicator.cs" />
     <Compile Include="PMDG\PMDGLight.cs" />
+    <Compile Include="Properties\pmdg737-offsets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>pmdg737-offsets.settings</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\ctlAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -872,6 +877,10 @@
     <None Include="Properties\Hotkeys.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Hotkeys.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\pmdg737-offsets.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>pmdg737-offsets.Designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

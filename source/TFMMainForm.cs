@@ -157,7 +157,7 @@ namespace tfm
                 inst.MonitorN1Limit();
                 if (Aircraft.AircraftName.Value.Contains("PMDG"))
                 {
-                    Aircraft.pmdg737.RefreshData();
+                                        Aircraft.pmdg737.RefreshData();
                     Aircraft.pmdg747.RefreshData();
                    Aircraft.pmdg777.RefreshData();
                                                        }
