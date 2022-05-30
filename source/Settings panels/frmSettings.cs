@@ -31,6 +31,7 @@ namespace tfm
             pages.Add("nodAircraft", new ctlAircraft());
             pages.Add("nodeUserInterface", new ctlUserInterface());
             pages.Add("nodPMDG", new ctlPMDG());
+            pages.Add("737AdiruNode", new Settings_panels.PMDG737.ctlADIRU());
             // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

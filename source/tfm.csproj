@@ -563,6 +563,12 @@
     <Compile Include="Settings panels\ctlUserInterface.Designer.cs">
       <DependentUpon>ctlUserInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlADIRU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
+      <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
     <Compile Include="Autopilot\InstrumentPanel.cs" />
@@ -849,6 +855,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
+      <DependentUpon>ctlADIRU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>

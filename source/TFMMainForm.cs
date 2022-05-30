@@ -283,10 +283,12 @@ private void ShowSettings()
                     MessageBox.Show("You must restart TFM for the avionics tab changes to take affect", "restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 Properties.Settings.Default.Save();
+                Properties.pmdg737_offsets.Default.Save();
             }
             else
             {
                 Properties.Settings.Default.Reload();
+                Properties.pmdg737_offsets.Default.Reload();
 
             }
         } // ShowSettings.
