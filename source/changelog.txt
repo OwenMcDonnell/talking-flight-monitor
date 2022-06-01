@@ -1,9 +1,11 @@
-﻿## Talking flight monitor 22.5.1 release notes
+﻿## Talking flight monitor 22.6 release notes
 
 ### What's new?
-See [Developer update 5/12/2022](https://www.talkingflightmonitor.com/2022/05/12/developer-update-5-12-2022/) for details on the features included with this release. This is a hotfix release to fix some of the new features in the blog post.
-* ILS: The destination runway window no longer crashes when loading runways without an ILS. The temporary fix excludes any runway without an ILS.
-* ILS: the glide slope position is based on the aircraft. Not the other way around. EX: "1500 above" means that the aircraft is 1500 feet above the glide slope, not below it.
+
+* PMDG 777: the MCP/autopilot keys to announce heading, altitude, and speed match the PMDG 737 output.
+* PMDG 737: ADIRU panel
+* PMDG 737: PSEU panel.
+* PMDG 737: Speech settings for panels listed above.
 
 
 ### Known issues

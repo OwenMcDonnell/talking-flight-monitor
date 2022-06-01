@@ -37,6 +37,7 @@ namespace tfm
             pages.Add("nodAntiIce", new ctlAntiIce());
             pages.Add("nodPressurization", new ctlPressurization());
             pages.Add("adiruNode", new ctlADIRU());
+            pages.Add("PSEUNode", new ctlPSEU());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

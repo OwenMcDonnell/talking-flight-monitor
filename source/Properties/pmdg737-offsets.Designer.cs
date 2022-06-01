@@ -178,5 +178,17 @@ namespace tfm.Properties {
                 this["IRS_ModeSelector_R"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WARN_annunPSEU {
+            get {
+                return ((bool)(this["WARN_annunPSEU"]));
+            }
+            set {
+                this["WARN_annunPSEU"] = value;
+            }
+        }
     }
 }

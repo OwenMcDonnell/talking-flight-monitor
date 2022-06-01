@@ -32,6 +32,7 @@ namespace tfm
             pages.Add("nodeUserInterface", new ctlUserInterface());
             pages.Add("nodPMDG", new ctlPMDG());
             pages.Add("737AdiruNode", new Settings_panels.PMDG737.ctlADIRU());
+            pages.Add("737PseuNode", new Settings_panels.PMDG737.ctlPSEU());
             // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {
