@@ -339,6 +339,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.Designer.cs">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
+      <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -581,6 +587,12 @@
     <Compile Include="Settings panels\PMDG737\ctlPSEU.Designer.cs">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.Designer.cs">
+      <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
     <Compile Include="Autopilot\InstrumentPanel.cs" />
@@ -751,6 +763,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.resx">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
+      <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -876,6 +891,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlPSEU.resx">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlServiceInterPhone.resx">
+      <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>

@@ -36,8 +36,10 @@ namespace tfm
             pages.Add("nodAirSystems", new ctlAirSystems());
             pages.Add("nodAntiIce", new ctlAntiIce());
             pages.Add("nodPressurization", new ctlPressurization());
+            // redesigned pages. keep the ones above for backups.
             pages.Add("adiruNode", new ctlADIRU());
             pages.Add("PSEUNode", new ctlPSEU());
+            pages.Add("serviceInterPhoneNode", new ctlServiceInterphone());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

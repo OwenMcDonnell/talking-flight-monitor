@@ -36,11 +36,13 @@
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("User interface");
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("ADIRU panel");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("PSEU panel");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Service interphone panel");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
             treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode10});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -71,10 +73,12 @@
             treeNode7.Text = "ADIRU panel";
             treeNode8.Name = "737PseuNode";
             treeNode8.Text = "PSEU panel";
-            treeNode9.Name = "Pmdg737Node";
-            treeNode9.Text = "737 speech events";
-            treeNode10.Name = "nodPMDG";
-            treeNode10.Text = "PMDG";
+            treeNode9.Name = "737ServiceInterPhoneNode";
+            treeNode9.Text = "Service interphone panel";
+            treeNode10.Name = "Pmdg737Node";
+            treeNode10.Text = "737 speech events";
+            treeNode11.Name = "nodPMDG";
+            treeNode11.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -82,7 +86,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode10});
+            treeNode11});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);

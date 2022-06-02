@@ -289,7 +289,7 @@ namespace tfm
                     new SingleStateToggle { Name = "PSEU warning light",  PanelName = "Aft Overhead", PanelSection = "PSEU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, AvailableStates = _onOrOffStates, Offset = Aircraft.pmdg737.WARN_annunPSEU, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunPSEU },
 
                 // --section: Service interphone
-new SingleStateToggle {Name = "Service interphone", PanelName = "Aft Overhead", PanelSection = "Service interphone", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.COMM_ServiceInterphoneSw, AvailableStates = _onOrOffStates },
+new SingleStateToggle {Name = "Service interphone", PanelName = "Aft Overhead", PanelSection = "Service interphone", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.COMM_ServiceInterphoneSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ServiceInterphoneSw },
 
 // --section: lights
 new SingleStateToggle { Name = "Dome lights", PanelName = "Aft Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.LTS_DomeWhiteSw, AvailableStates = _domeLightStates },
@@ -598,6 +598,16 @@ new SingleStateToggle { Name = "Alternate flaps", PanelName = "Forward Overhead"
         public static void IRSDisplayHdgStat()
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_ISDU_DSPL_SEL, Aircraft.pmdg737.IRS_DisplaySelector.Value, 4);
+        }
+
+        public static void ServiceInterPhoneOn()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 1);
+        }
+
+        public static void ServiceInterPhoneOff()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 0);
         }
                     } // End PMDG737Aircraft.
 } // End namespace.

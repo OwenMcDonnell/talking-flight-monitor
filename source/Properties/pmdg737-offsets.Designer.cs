@@ -190,5 +190,17 @@ namespace tfm.Properties {
                 this["WARN_annunPSEU"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_ServiceInterphoneSw {
+            get {
+                return ((bool)(this["COMM_ServiceInterphoneSw"]));
+            }
+            set {
+                this["COMM_ServiceInterphoneSw"] = value;
+            }
+        }
     }
 }
