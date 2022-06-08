@@ -27,7 +27,7 @@ namespace tfm
         public const int ClkR = -2147483648;
         public const int Inc = 16384;
         public const int Dec = 8192;
-        public static  void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel)
+        public static  void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel, bool useClicks = false)
         {
             // there are several PMDG controls that cannot be set by direct parameter entry.
             // this function calculates the number of increment or decrement commands that need to be set in order to set a switch to a specific position.
@@ -36,17 +36,30 @@ namespace tfm
             {
                 for (int i = 0; i < pos - sel; i++)
                 {
-                    FSUIPCConnection.SendControlToFS(control, Dec);
-                }
+                    if (useClicks)
+                    {
+                        FSUIPCConnection.SendControlToFS(control, ClkR);
+                    }
+                    else
+                    {
+                        FSUIPCConnection.SendControlToFS(control, Dec);
+                    }
+                                    }
 
             }
             if (pos < sel)
             {
                 for (int i = 0; i < sel - pos; i++)
                 {
-                    FSUIPCConnection.SendControlToFS(control, Inc);
-
-                }
+                    if (useClicks)
+                    {
+                        FSUIPCConnection.SendControlToFS(control, ClkL);
+                    }
+                    else
+                    {
+                        FSUIPCConnection.SendControlToFS(control, Inc);
+                    }
+                                    }
 
             }
 
@@ -292,7 +305,7 @@ namespace tfm
 new SingleStateToggle {Name = "Service interphone", PanelName = "Aft Overhead", PanelSection = "Service interphone", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.COMM_ServiceInterphoneSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ServiceInterphoneSw },
 
 // --section: lights
-new SingleStateToggle { Name = "Dome lights", PanelName = "Aft Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.LTS_DomeWhiteSw, AvailableStates = _domeLightStates },
+new SingleStateToggle { Name = "Dome lights", PanelName = "Aft Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.LTS_DomeWhiteSw, AvailableStates = _domeLightStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_DomeWhiteSw },
 
 // --section: Engines
 new SingleStateToggle { Name = "Engine #1 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[0], AvailableStates = _onOrOffStates },

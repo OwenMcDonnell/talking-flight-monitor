@@ -31,22 +31,23 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("ADIRU");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("PSEU");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Service interphone");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Aft Overhead", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Dome lights");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Aft Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Flight Controls");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Electrical");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Fuel");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("MCP");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("IRU");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Engines");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Hydraulics");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("air systems");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Anti-ice");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Pressurization");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Flight Controls");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Electrical");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Fuel");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("MCP");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("IRU");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Engines");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Hydraulics");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("air systems");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Anti-ice");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Pressurization");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode6,
             treeNode7,
             treeNode8,
@@ -55,7 +56,8 @@
             treeNode11,
             treeNode12,
             treeNode13,
-            treeNode14});
+            treeNode14,
+            treeNode15});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -71,33 +73,35 @@
             treeNode2.Text = "PSEU";
             treeNode3.Name = "serviceInterPhoneNode";
             treeNode3.Text = "Service interphone";
-            treeNode4.Name = "AftOvhdNode";
-            treeNode4.Text = "Aft Overhead";
-            treeNode5.Name = "nodFlightControls";
-            treeNode5.Text = "Flight Controls";
-            treeNode6.Name = "nodElectrical";
-            treeNode6.Text = "Electrical";
-            treeNode7.Name = "nodFuel";
-            treeNode7.Text = "Fuel";
-            treeNode8.Name = "nodMCP";
-            treeNode8.Text = "MCP";
-            treeNode9.Name = "nodIRU";
-            treeNode9.Text = "IRU";
-            treeNode10.Name = "nodEngines";
-            treeNode10.Text = "Engines";
-            treeNode11.Name = "nodHydraulics";
-            treeNode11.Text = "Hydraulics";
-            treeNode12.Name = "nodAirSystems";
-            treeNode12.Text = "air systems";
-            treeNode13.Name = "nodAntiIce";
-            treeNode13.Text = "Anti-ice";
-            treeNode14.Name = "nodPressurization";
-            treeNode14.Text = "Pressurization";
-            treeNode15.Name = "nodOverhead";
-            treeNode15.Text = "Overhead";
+            treeNode4.Name = "domeLightsNode";
+            treeNode4.Text = "Dome lights";
+            treeNode5.Name = "AftOvhdNode";
+            treeNode5.Text = "Aft Overhead";
+            treeNode6.Name = "nodFlightControls";
+            treeNode6.Text = "Flight Controls";
+            treeNode7.Name = "nodElectrical";
+            treeNode7.Text = "Electrical";
+            treeNode8.Name = "nodFuel";
+            treeNode8.Text = "Fuel";
+            treeNode9.Name = "nodMCP";
+            treeNode9.Text = "MCP";
+            treeNode10.Name = "nodIRU";
+            treeNode10.Text = "IRU";
+            treeNode11.Name = "nodEngines";
+            treeNode11.Text = "Engines";
+            treeNode12.Name = "nodHydraulics";
+            treeNode12.Text = "Hydraulics";
+            treeNode13.Name = "nodAirSystems";
+            treeNode13.Text = "air systems";
+            treeNode14.Name = "nodAntiIce";
+            treeNode14.Text = "Anti-ice";
+            treeNode15.Name = "nodPressurization";
+            treeNode15.Text = "Pressurization";
+            treeNode16.Name = "nodOverhead";
+            treeNode16.Text = "Overhead";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode15});
+            treeNode5,
+            treeNode16});
             this.tvPanels.Size = new System.Drawing.Size(121, 97);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

@@ -333,6 +333,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlDomeLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlDomeLights.Designer.cs">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -759,6 +765,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlDomeLights.resx">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.resx">
       <DependentUpon>ctlPSEU.cs</DependentUpon>

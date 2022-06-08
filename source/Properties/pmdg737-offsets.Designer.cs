@@ -202,5 +202,17 @@ namespace tfm.Properties {
                 this["COMM_ServiceInterphoneSw"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_DomeWhiteSw {
+            get {
+                return ((bool)(this["LTS_DomeWhiteSw"]));
+            }
+            set {
+                this["LTS_DomeWhiteSw"] = value;
+            }
+        }
     }
 }

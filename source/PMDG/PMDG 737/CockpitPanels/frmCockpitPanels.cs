@@ -40,6 +40,7 @@ namespace tfm
             pages.Add("adiruNode", new ctlADIRU());
             pages.Add("PSEUNode", new ctlPSEU());
             pages.Add("serviceInterPhoneNode", new ctlServiceInterphone());
+            pages.Add("domeLightsNode", new ctlDomeLights());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
