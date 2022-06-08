@@ -34,6 +34,7 @@ namespace tfm
             pages.Add("737AdiruNode", new Settings_panels.PMDG737.ctlADIRU());
             pages.Add("737PseuNode", new Settings_panels.PMDG737.ctlPSEU());
             pages.Add("737ServiceInterPhoneNode", new Settings_panels.PMDG737.ctlServiceInterPhone());
+            pages.Add("domeLightsNode", new Settings_panels.PMDG737.ctlDomeLights());
             // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

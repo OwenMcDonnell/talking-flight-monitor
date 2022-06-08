@@ -6,6 +6,7 @@
 * PMDG 737: ADIRU panel
 * PMDG 737: PSEU panel.
 * PMDG 737: Service interphone panel
+* PMDG 737: Aft Overhead/Dome lights panel.
 * PMDG 737: Speech settings for panels listed above.
 
 

@@ -587,6 +587,12 @@
     <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDomeLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDomeLights.Designer.cs">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlPSEU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -897,6 +903,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlPSEU.resx">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
