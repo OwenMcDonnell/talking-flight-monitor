@@ -308,14 +308,14 @@ new SingleStateToggle {Name = "Service interphone", PanelName = "Aft Overhead", 
 new SingleStateToggle { Name = "Dome lights", PanelName = "Aft Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.LTS_DomeWhiteSw, AvailableStates = _domeLightStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_DomeWhiteSw },
 
 // --section: Engines
-new SingleStateToggle { Name = "Engine #1 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[0], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #2 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[1], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #1 reverser", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunREVERSER[0], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #2 reverser", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunREVERSER[1], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #1 control", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunENGINE_CONTROL[0], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #2 control", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunENGINE_CONTROL[1], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #1 alternate", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunALTN[0], AvailableStates = _onOrOffStates },
-new SingleStateToggle { Name = "Engine #2 alternate", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunALTN[1], AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Engine #1 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_EECSwitch_1 },
+new SingleStateToggle { Name = "Engine #2 EEC", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_EECSwitch[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_EECSwitch_2 },
+new SingleStateToggle { Name = "Engine #1 reverser", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunREVERSER[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_annunREVERSER_1 },
+new SingleStateToggle { Name = "Engine #2 reverser", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunREVERSER[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_annunREVERSER_2 },
+new SingleStateToggle { Name = "Engine #1 control", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunENGINE_CONTROL[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_annunENGINE_CONTROL_1},
+new SingleStateToggle { Name = "Engine #2 control", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunENGINE_CONTROL[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_annunENGINE_CONTROL_2 },
+new SingleStateToggle { Name = "Engine #1 alternate", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunALTN[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_annunALTN_1 },
+new SingleStateToggle { Name = "Engine #2 alternate", PanelName = "Aft Overhead", PanelSection = "Engines", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ENG_annunALTN[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_annunALTN_2 },
 
 // --section: Oxygen
 new SingleStateToggle { Name = "Oxygen level", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Slider, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.OXY_Needle, AvailableStates = null },
@@ -622,5 +622,37 @@ new SingleStateToggle { Name = "Alternate flaps", PanelName = "Forward Overhead"
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 0);
         }
-                    } // End PMDG737Aircraft.
+
+        // --Engine EEC switches.
+        public static void EngineEEC1On()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_L_GUARD, Aircraft.ClkL);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EEC_L_SWITCH, Aircraft.pmdg737.ENG_EECSwitch[0].Value, 1, true);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_L_GUARD, Aircraft.ClkR);
+
+        } // EngineEEC1On
+
+        public static void EngineEEC1Off()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_L_GUARD, Aircraft.ClkL);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EEC_L_SWITCH, Aircraft.pmdg737.ENG_EECSwitch[0].Value, 0, true);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_L_GUARD, Aircraft.ClkR);
+
+        } // EngineEEC1Off
+
+        public static void EngineEEC2On()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_R_GUARD, Aircraft.ClkL);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EEC_R_SWITCH, Aircraft.pmdg737.ENG_EECSwitch[1].Value, 1, true);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_R_GUARD, Aircraft.ClkR);
+                    } // EngineEEC2On.
+
+        public static void EngineEEC2Off()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_R_GUARD, Aircraft.ClkL);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EEC_R_SWITCH, Aircraft.pmdg737.ENG_EECSwitch[1].Value, 0, true);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_R_GUARD, Aircraft.ClkR);
+
+        } // EngineEEC2Off.
+    } // End PMDG737Aircraft.
 } // End namespace.

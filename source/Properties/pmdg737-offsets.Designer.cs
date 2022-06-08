@@ -214,5 +214,101 @@ namespace tfm.Properties {
                 this["LTS_DomeWhiteSw"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_EECSwitch_1 {
+            get {
+                return ((bool)(this["ENG_EECSwitch_1"]));
+            }
+            set {
+                this["ENG_EECSwitch_1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_EECSwitch_2 {
+            get {
+                return ((bool)(this["ENG_EECSwitch_2"]));
+            }
+            set {
+                this["ENG_EECSwitch_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_annunREVERSER_1 {
+            get {
+                return ((bool)(this["ENG_annunREVERSER_1"]));
+            }
+            set {
+                this["ENG_annunREVERSER_1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_annunREVERSER_2 {
+            get {
+                return ((bool)(this["ENG_annunREVERSER_2"]));
+            }
+            set {
+                this["ENG_annunREVERSER_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_annunENGINE_CONTROL_1 {
+            get {
+                return ((bool)(this["ENG_annunENGINE_CONTROL_1"]));
+            }
+            set {
+                this["ENG_annunENGINE_CONTROL_1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_annunENGINE_CONTROL_2 {
+            get {
+                return ((bool)(this["ENG_annunENGINE_CONTROL_2"]));
+            }
+            set {
+                this["ENG_annunENGINE_CONTROL_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_annunALTN_1 {
+            get {
+                return ((bool)(this["ENG_annunALTN_1"]));
+            }
+            set {
+                this["ENG_annunALTN_1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_annunALTN_2 {
+            get {
+                return ((bool)(this["ENG_annunALTN_2"]));
+            }
+            set {
+                this["ENG_annunALTN_2"] = value;
+            }
+        }
     }
 }

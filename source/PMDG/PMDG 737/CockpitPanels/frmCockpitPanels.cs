@@ -41,6 +41,7 @@ namespace tfm
             pages.Add("PSEUNode", new ctlPSEU());
             pages.Add("serviceInterPhoneNode", new ctlServiceInterphone());
             pages.Add("domeLightsNode", new ctlDomeLights());
+            pages.Add("eecNode", new ctlEEC());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
