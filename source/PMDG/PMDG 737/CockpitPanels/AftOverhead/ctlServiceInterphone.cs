@@ -42,11 +42,11 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
             if(toggle.CurrentState.Key == 0)
             {
-                PMDG737Aircraft.ServiceInterPhoneOn();
+                PMDG737Aircraft.CalculateSwitchPosition(FSUIPC.PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, toggle.CurrentState.Key, 1, true);
             }
             else
             {
-                PMDG737Aircraft.ServiceInterPhoneOff();
+                PMDG737Aircraft.CalculateSwitchPosition(FSUIPC.PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, toggle.CurrentState.Key, 0, true);
             }
         }
 
