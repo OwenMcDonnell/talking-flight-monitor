@@ -599,6 +599,12 @@
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.Designer.cs">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEEC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEEC.Designer.cs">
+      <DependentUpon>ctlEEC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlPSEU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -915,6 +921,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
+      <DependentUpon>ctlEEC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlPSEU.resx">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
