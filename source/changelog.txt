@@ -3,15 +3,18 @@
 ### What's new?
 
 * PMDG 777: the MCP/autopilot keys to announce heading, altitude, and speed match the PMDG 737 output.
-* PMDG 737: ADIRU panel
-* PMDG 737: PSEU panel.
-* PMDG 737: Service interphone panel
-* PMDG 737: Aft Overhead/Dome lights panel.
+* PMDG 737 Aft Overhead panels
+    * ADIRU
+    * PSEU
+    * Service interphone
+    * Dome lights
+        * EEC
 * PMDG 737: Speech settings for panels listed above.
 
 
 ### Known issues
 * see [Developer update 5/12/2022](https://www.talkingflightmonitor.com/2022/05/12/developer-update-5-12-2022/) for known issues with new features.
 * There is no keyboard command to restart TFM. Restart it from the notification tray icon.
+* PMDG 737-700 for FS2020 hasn't released an SDK yet. TFM will not work until the SDK is released.
 * The announce perf init complete setting on the PMDG page of TFM settings is not working at this time.
 * TFM incorrectly announces aircraft instrument states in the FS2020 A320 Neo. A reminder that FS2020 is not supported by TFM, and usage results my not be as expected.
