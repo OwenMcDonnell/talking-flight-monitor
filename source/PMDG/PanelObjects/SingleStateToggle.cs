@@ -14,6 +14,23 @@ namespace tfm.PMDG.PanelObjects
         private PanelObjectType _type = PanelObjectType.SingleState;
                 private Dictionary<byte, string> _availableStates = null;
         private KeyValuePair<byte, string> _currentState;
+        private double _percentageValue;
+
+        public double percentageValue
+        {
+            get
+            {
+                if(this.Offset == Aircraft.pmdg777.FCTL_Speedbrake_Lever)
+                {
+                    _percentageValue = Math.Truncate((double)((_offset.Value - 26) * 100) / 74);
+                }
+                else if(this.Offset == Aircraft.pmdg737.OXY_Needle)
+                {
+                    _percentageValue = Math.Truncate((double)((_offset.Value - 0) * 100) / 240);
+                }
+                return _percentageValue;
+            }
+        }
 
         public Dictionary<byte, string> AvailableStates { get => _availableStates; set => _availableStates = value; }
         public KeyValuePair<byte, string> CurrentState
@@ -57,6 +74,7 @@ namespace tfm.PMDG.PanelObjects
         public override string ToString()
         {
             string output = string.Empty;
+            // PMDG 777 speedbrake.
             if(this.Offset == Aircraft.pmdg777.FCTL_Speedbrake_Lever)
             {
 
@@ -73,16 +91,12 @@ namespace tfm.PMDG.PanelObjects
                 // Everything else is a free turning knob with a percent deployed value.
                 else if(_offset.Value >= 26)
                 {
-                                        {
-                        var percent = Math.Truncate((double)((_offset.Value - 26) * 100) / 74);
-                        output = $"{this.Name} {percent}%";
-                    }
-                                                                                                                           } // Everything else.
+                                                                                        output = $"{this.Name} {this.percentageValue}%";
+                                                                                                                                               } // Everything else.
                            } // Speedbrake.
 else             if(this.Offset == Aircraft.pmdg737.OXY_Needle)
             {
-                var percent = Math.Truncate((double)((this._offset.Value - 0) * 100) / (240 - 0));
-                output = $"{this.Name} {percent}%";
+                               output = $"{this.Name} {this.percentageValue}%";
             }
             else
             {

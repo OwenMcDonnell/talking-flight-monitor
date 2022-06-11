@@ -345,6 +345,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.Designer.cs">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlOxygen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlOxygen.Designer.cs">
+      <DependentUpon>ctlOxygen.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -789,6 +795,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlOxygen.resx">
+      <DependentUpon>ctlOxygen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.resx">
       <DependentUpon>ctlPSEU.cs</DependentUpon>
