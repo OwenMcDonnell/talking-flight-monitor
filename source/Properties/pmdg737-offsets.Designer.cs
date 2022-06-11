@@ -310,5 +310,41 @@ namespace tfm.Properties {
                 this["ENG_annunALTN_2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OXY_Needle {
+            get {
+                return ((bool)(this["OXY_Needle"]));
+            }
+            set {
+                this["OXY_Needle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OXY_SwNormal {
+            get {
+                return ((bool)(this["OXY_SwNormal"]));
+            }
+            set {
+                this["OXY_SwNormal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OXY_annunPASS_OXY_ON {
+            get {
+                return ((bool)(this["OXY_annunPASS_OXY_ON"]));
+            }
+            set {
+                this["OXY_annunPASS_OXY_ON"] = value;
+            }
+        }
     }
 }
