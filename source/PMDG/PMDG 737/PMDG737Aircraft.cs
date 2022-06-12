@@ -329,8 +329,8 @@ new SingleStateToggle { Name = "Left gear light", PanelName = "Aft Overhead", Pa
 new SingleStateToggle { Name = "Right gear light", PanelName = "Aft Overhead", PanelSection = "Gear", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GEAR_annunOvhdRIGHT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GEAR_annunOvhdRIGHT},
 
 // --section: Flight recorder
-new SingleStateToggle { Name = "Flight recorder", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_SwNormal, AvailableStates = _normalOrTestStates},
-new SingleStateToggle { Name = "Flight recorder light", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_annunOFF, AvailableStates = _offOrOnStates },
+new SingleStateToggle { Name = "Flight recorder", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_SwNormal, AvailableStates = _normalOrTestStates, shouldSpeak = Properties.pmdg737_offsets.Default.FLTREC_SwNormal},
+new SingleStateToggle { Name = "Flight recorder light", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_annunOFF, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.FLTREC_annunOFF },
 
 // --panel: Forward Overhead
 // --section: Flight Controls
@@ -665,5 +665,15 @@ new SingleStateToggle { Name = "Alternate flaps", PanelName = "Forward Overhead"
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_OXY_PASS_SWITCH, Aircraft.pmdg737.OXY_SwNormal.Value, 1, true);
                                 } // PassengerOxyNormal.
+
+        public static void FlightRecorderTest()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FLTREC_SWITCH, Aircraft.pmdg737.FLTREC_SwNormal.Value, 0, true);
+        } // FlightRecorderTest.
+
+        public static void FlightRecorderNormal()
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FLTREC_SWITCH, Aircraft.pmdg737.FLTREC_SwNormal.Value, 1, true);
+        } // FlightRecorderNormal.
     } // End PMDG737Aircraft.
 } // End namespace.

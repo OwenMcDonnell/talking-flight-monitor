@@ -34,10 +34,11 @@ namespace tfm
             pages.Add("737AdiruNode", new Settings_panels.PMDG737.ctlADIRU());
             pages.Add("737PseuNode", new Settings_panels.PMDG737.ctlPSEU());
             pages.Add("737ServiceInterPhoneNode", new Settings_panels.PMDG737.ctlServiceInterPhone());
-            pages.Add("domeLightsNode", new Settings_panels.PMDG737.ctlDomeLights());
-            pages.Add("eecNode", new Settings_panels.PMDG737.ctlEEC());
-            pages.Add("oxygenNode", new Settings_panels.PMDG737.ctlOxygen());
-            pages.Add("gearNode", new Settings_panels.PMDG737.ctlGear());
+            pages.Add("737DomeLightsNode", new Settings_panels.PMDG737.ctlDomeLights());
+            pages.Add("737EecNode", new Settings_panels.PMDG737.ctlEEC());
+            pages.Add("737OxygenNode", new Settings_panels.PMDG737.ctlOxygen());
+            pages.Add("737GearNode", new Settings_panels.PMDG737.ctlGear());
+            pages.Add("737FlightRecorderNode", new Settings_panels.PMDG737.ctlFlightRecorder());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

@@ -345,6 +345,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.Designer.cs">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlFlightRecorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlFlightRecorder.Designer.cs">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlGear.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -617,6 +623,12 @@
     <Compile Include="Settings panels\PMDG737\ctlEEC.Designer.cs">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.Designer.cs">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlGear.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -814,6 +826,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlFlightRecorder.resx">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlGear.resx">
       <DependentUpon>ctlGear.cs</DependentUpon>
     </EmbeddedResource>
@@ -954,6 +969,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlGear.resx">
       <DependentUpon>ctlGear.cs</DependentUpon>

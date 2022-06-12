@@ -382,5 +382,29 @@ namespace tfm.Properties {
                 this["GEAR_annunOvhdRIGHT"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FLTREC_SwNormal {
+            get {
+                return ((bool)(this["FLTREC_SwNormal"]));
+            }
+            set {
+                this["FLTREC_SwNormal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FLTREC_annunOFF {
+            get {
+                return ((bool)(this["FLTREC_annunOFF"]));
+            }
+            set {
+                this["FLTREC_annunOFF"] = value;
+            }
+        }
     }
 }
