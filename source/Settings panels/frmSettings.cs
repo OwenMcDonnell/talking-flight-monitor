@@ -37,6 +37,7 @@ namespace tfm
             pages.Add("domeLightsNode", new Settings_panels.PMDG737.ctlDomeLights());
             pages.Add("eecNode", new Settings_panels.PMDG737.ctlEEC());
             pages.Add("oxygenNode", new Settings_panels.PMDG737.ctlOxygen());
+            pages.Add("gearNode", new Settings_panels.PMDG737.ctlGear());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

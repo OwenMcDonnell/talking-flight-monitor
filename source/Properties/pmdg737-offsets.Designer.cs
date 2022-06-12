@@ -346,5 +346,41 @@ namespace tfm.Properties {
                 this["OXY_annunPASS_OXY_ON"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GEAR_annunOvhdNOSE {
+            get {
+                return ((bool)(this["GEAR_annunOvhdNOSE"]));
+            }
+            set {
+                this["GEAR_annunOvhdNOSE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GEAR_annunOvhdLEFT {
+            get {
+                return ((bool)(this["GEAR_annunOvhdLEFT"]));
+            }
+            set {
+                this["GEAR_annunOvhdLEFT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GEAR_annunOvhdRIGHT {
+            get {
+                return ((bool)(this["GEAR_annunOvhdRIGHT"]));
+            }
+            set {
+                this["GEAR_annunOvhdRIGHT"] = value;
+            }
+        }
     }
 }

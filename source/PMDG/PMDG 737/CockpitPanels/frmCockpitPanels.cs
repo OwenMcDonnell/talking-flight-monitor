@@ -43,6 +43,7 @@ namespace tfm
             pages.Add("domeLightsNode", new ctlDomeLights());
             pages.Add("eecNode", new ctlEEC());
             pages.Add("oxygenNode", new ctlOxygen());
+            pages.Add("gearNode", new ctlGear());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
