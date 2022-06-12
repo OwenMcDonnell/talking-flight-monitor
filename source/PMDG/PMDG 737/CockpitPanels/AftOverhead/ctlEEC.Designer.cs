@@ -212,7 +212,7 @@
             // 
             // leftAlternateTextBox
             // 
-            this.leftAlternateTextBox.AccessibleName = "Engine #2 alternate";
+            this.leftAlternateTextBox.AccessibleName = "Engine #1 alternate";
             this.leftAlternateTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.leftAlternateTextBox.Location = new System.Drawing.Point(3, 36);
             this.leftAlternateTextBox.Name = "leftAlternateTextBox";
@@ -321,7 +321,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ctlEEC";
             this.Size = new System.Drawing.Size(1468, 170);
             this.Load += new System.EventHandler(this.ctlEEC_Load);
