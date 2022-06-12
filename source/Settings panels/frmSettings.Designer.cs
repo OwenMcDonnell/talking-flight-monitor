@@ -34,15 +34,15 @@
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Airports database");
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Aircraft");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("User interface");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("ADIRU panel");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("PSEU panel");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Service interphone panel");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Dome lights - Aft Overhead");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("EEC - Aft Overhead");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Oxygen - Aft Overhead");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Gear - Aft Overhead");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Flight recorder - Aft Overhead");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("ADIRU");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("PSEU");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Service interphone");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Dome lights");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("EEC");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Oxygen");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Gear");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Flight recorder");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Aft Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode7,
             treeNode8,
             treeNode9,
@@ -51,8 +51,10 @@
             treeNode12,
             treeNode13,
             treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode16});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -80,25 +82,27 @@
             treeNode6.Name = "nodeUserInterface";
             treeNode6.Text = "User interface";
             treeNode7.Name = "737AdiruNode";
-            treeNode7.Text = "ADIRU panel";
+            treeNode7.Text = "ADIRU";
             treeNode8.Name = "737PseuNode";
-            treeNode8.Text = "PSEU panel";
+            treeNode8.Text = "PSEU";
             treeNode9.Name = "737ServiceInterPhoneNode";
-            treeNode9.Text = "Service interphone panel";
+            treeNode9.Text = "Service interphone";
             treeNode10.Name = "737DomeLightsNode";
-            treeNode10.Text = "Dome lights - Aft Overhead";
+            treeNode10.Text = "Dome lights";
             treeNode11.Name = "737EecNode";
-            treeNode11.Text = "EEC - Aft Overhead";
+            treeNode11.Text = "EEC";
             treeNode12.Name = "737OxygenNode";
-            treeNode12.Text = "Oxygen - Aft Overhead";
+            treeNode12.Text = "Oxygen";
             treeNode13.Name = "737GearNode";
-            treeNode13.Text = "Gear - Aft Overhead";
+            treeNode13.Text = "Gear";
             treeNode14.Name = "737FlightRecorderNode";
-            treeNode14.Text = "Flight recorder - Aft Overhead";
-            treeNode15.Name = "Pmdg737Node";
-            treeNode15.Text = "737 speech events";
-            treeNode16.Name = "nodPMDG";
-            treeNode16.Text = "PMDG";
+            treeNode14.Text = "Flight recorder";
+            treeNode15.Name = "aftOverheadNode";
+            treeNode15.Text = "Aft Overhead";
+            treeNode16.Name = "Pmdg737Node";
+            treeNode16.Text = "737 speech events";
+            treeNode17.Name = "nodPMDG";
+            treeNode17.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -106,7 +110,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode16});
+            treeNode17});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);
