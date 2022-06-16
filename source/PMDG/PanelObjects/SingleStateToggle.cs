@@ -10,6 +10,7 @@ namespace tfm.PMDG.PanelObjects
     public class SingleStateToggle: PanelObject
     {
 
+        private Offset<float> _offsetFloat;
         private Offset<byte> _offset;
         private PanelObjectType _type = PanelObjectType.SingleState;
                 private Dictionary<byte, string> _availableStates = null;
@@ -37,9 +38,8 @@ namespace tfm.PMDG.PanelObjects
         {
             get
             {
-                                KeyValuePair<byte, string> item = new KeyValuePair<byte, string>();
-
-                foreach (KeyValuePair<byte, string> pair in this._availableStates)
+                                                KeyValuePair<byte, string> item = new KeyValuePair<byte, string>();
+                               foreach (KeyValuePair<byte, string> pair in this._availableStates)
                 {
                     if (_offset.Value == pair.Key)
                     {
@@ -62,10 +62,27 @@ namespace tfm.PMDG.PanelObjects
 
         public override Offset Offset
         {
-            get => this._offset;
+            get
+            {
+                if(_offset == null)
+                {
+                    return _offsetFloat;
+                }
+                else
+                {
+                    return _offset;
+                }
+            }
             set
             {
-                this._offset = (Offset<byte>)value;
+                if(value is Offset<float>)
+                {
+                    _offsetFloat = (Offset<float>)value;
+                }
+                else
+                {
+                    _offset = (Offset<byte>)value;
+                }
                 base.Offset = value;
             }
         }
@@ -97,6 +114,14 @@ namespace tfm.PMDG.PanelObjects
 else             if(this.Offset == Aircraft.pmdg737.OXY_Needle)
             {
                                output = $"{this.Name} {this.percentageValue}%";
+            }
+            else if(this.Offset == Aircraft.pmdg737.FUEL_FuelTempNeedle)
+            {
+                output = $"{this.Name} {this._offsetFloat.Value}";
+            }
+            else if(this.Offset == Aircraft.pmdg737.APU_EGTNeedle)
+            {
+                output = $"{this.Name} {this._offsetFloat.Value}";
             }
             else
             {

@@ -8,7 +8,10 @@
     * PSEU
     * Service interphone
     * Dome lights
-        * EEC
+     * EEC
+    * Oxygen
+              Gear
+                  Flight recorder
 * PMDG 737: Speech settings for panels listed above.
 
 

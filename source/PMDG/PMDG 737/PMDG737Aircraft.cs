@@ -96,79 +96,79 @@ namespace tfm
             {1, "on" },
         };
 
-        private static Dictionary<byte, string> _offOrOnStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _offOrOnStates = new Dictionary<byte, string>()
         {
             {0, "on" },
             {1, "off" },
         };
-        private static Dictionary<byte, string> _autoOrOffStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _autoOrOffStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "auto" },
         };
 
-        private static Dictionary<byte, string> _standbyPowerStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _standbyPowerStates = new Dictionary<byte, string>()
         {
             { 0, "off" },
             {1, "auto" },
             {2, "battery" },
         };
 
-        private static Dictionary<byte, string> _testOrOffStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _testOrOffStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "test" },
         };
-        private static Dictionary<byte, string> _batteryOrOffStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _batteryOrOffStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "battery" },
         };
 
-        private static Dictionary<byte, string> _cargoTempStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _cargoTempStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "low" },
             {2, "high" },
         };
 
-        private static Dictionary<byte, string> _apuStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _apuStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "on" },
             {2, "start" },
         };
-        private static Dictionary<byte, string> _IRSDisplaySelectorStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _IRSDisplaySelectorStates = new Dictionary<byte, string>()
         {
                         {1, "TK/GS" },
             {2, "PPOS" },
             {3, "WIND" },
             {4, "HDG/STAT" },
         };
-        private static Dictionary<byte, string> _IRSSysDisplayStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _IRSSysDisplayStates = new Dictionary<byte, string>()
         {
             { 0, "left" },
             {1, "right" },
         };
 
-        private static Dictionary<byte, string> _momentaryControlState = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _momentaryControlState = new Dictionary<byte, string>()
         {
             {1, "pressed" },
         };
 
-        private static Dictionary<byte, string> _connectOrDisconnectStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _connectOrDisconnectStates = new Dictionary<byte, string>()
         {
             {0, "disconnected" },
             {1, "connected" },
         };
 
-        private static Dictionary<byte, string> _availableOrUnavailableStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _availableOrUnavailableStates = new Dictionary<byte, string>()
         {
             {0, "unavailable" },
             {1, "available" },
         };
 
-        private static Dictionary<byte, string> _wiperStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _wiperStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "intermittent" },
@@ -176,28 +176,28 @@ namespace tfm
             {3, "high" },
         };
 
-        private static Dictionary<byte, string> _armedOnOrOffStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _armedOnOrOffStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "armed" },
             {2, "on" },
         };
 
-        private static Dictionary<byte, string> _autoOnOrOffStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _autoOnOrOffStates = new Dictionary<byte, string>()
         {
             {0, "off" },
             {1, "auto" },
             {2, "on" },
         };
 
-        private static Dictionary<byte, string> _indoorLightTestStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _indoorLightTestStates = new Dictionary<byte, string>()
         {
             {0, "test" },
             {1, "bright" },
             {2, "dim" },
         };
 
-        private static Dictionary<byte, string> _apuFireHandleStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _apuFireHandleStates = new Dictionary<byte, string>()
         {
             {0, "normal" },
             {1, "pulled" },
@@ -205,39 +205,39 @@ namespace tfm
             {3, "turned right" }, // Momentary position.
         };
 
-        private static Dictionary<byte, string> _engineStartModeStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _engineStartModeStates = new Dictionary<byte, string>()
         {
             {0, "start" },
             {1, "normal" },
         };
 
-        private static Dictionary<byte, string> _fuelToRemainStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _fuelToRemainStates = new Dictionary<byte, string>()
         {
             {0, "pushed" },
             {1, "pulled" },
         };
 
-        private static Dictionary<byte, string> _fuelSelectorStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _fuelSelectorStates = new Dictionary<byte, string>()
         {
             {0, "decrease" },
             {1, "neutral" },
             {2, "increase" },
         };
 
-        private static Dictionary<byte, string> _neutralClosedOrOpenStates = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _neutralClosedOrOpenStates = new Dictionary<byte, string>()
         {
             {0, "opened" },
             {1, "neutral" },
             {2, "closed" },
         };
 
-        private static Dictionary<byte, string> _neutralIncreaseOrDecrease = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _neutralIncreaseOrDecrease = new Dictionary<byte, string>()
         {
             {0, "decrease" },
             {1, "neutral" },
             {2, "increase" },
         };
-        private static Dictionary<byte, string> _irsModeSelect = new Dictionary<byte, string>
+        private static Dictionary<byte, string> _irsModeSelect = new Dictionary<byte, string>()
         {
             {0, "off" },
             { 1, "align" },
@@ -279,9 +279,83 @@ namespace tfm
             {0, "off" },
             {1, "armed" },
         };
-        public static List<PanelObject> PanelControls
+
+        private static Dictionary<byte, string> _offUpOrDownStates = new Dictionary<byte, string>()
         {
-            get => new List<PanelObject>()
+            {0, "up" },
+            {1, "on" },
+            {2, "down" },
+        };
+
+        private static Dictionary<byte, string> _normal1Or2SelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "both on 1" },
+            {1, "normal" },
+            {2, "both on 2" },
+        };
+
+        private static Dictionary<byte, string> _normalLeftOrRightSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "left" },
+            {1, "normal" },
+            {2, "right" }
+        };
+
+        private static Dictionary<byte, string> _auto1Or2SelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "all on 1" },
+            {1, "auto" },
+            {2, "all on 2" },
+        };
+
+        private static Dictionary<byte, string> _fuelValveStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "opened" },
+            {2, "in transit" },
+        };
+
+        private static Dictionary<byte, string> _dcMeterSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "standby" },
+            {1, "Battery bus" },
+            {2, "battery" },
+            {3, "AUX battery" },
+            {4, "TR 1" },
+            {5, "TR 2" },
+            {6, "TR 3" },
+            {7, "test" },
+        };
+
+        private static Dictionary<byte, string> _acMeterSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "standby" },
+            {1, "ground power" },
+            {2, "generator #1" },
+            {3, "APU generator" },
+            {4, "generator #2" },
+            {5, "inverter" },
+            {6, "test" },
+                    };
+
+        private static Dictionary<byte, string> _batterySelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "off" },
+            {1, "battery" },
+            {2, "on" },
+        };
+
+        private static Dictionary<byte, string> _standbySelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "battery" },
+            {1, "off" },
+            {2, "auto" },
+        };
+
+
+                public static List<PanelObject> PanelControls
+        {
+                        get => new List<PanelObject>()
             {
                 // --panel: Aft OverheadPanel
                 // --section: ADIRU
@@ -333,15 +407,108 @@ new SingleStateToggle { Name = "Flight recorder", PanelName = "Aft Overhead", Pa
 new SingleStateToggle { Name = "Flight recorder light", PanelName = "Aft Overhead", PanelSection = "Flight recorder", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FLTREC_annunOFF, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.FLTREC_annunOFF },
 
 // --panel: Forward Overhead
-// --section: Flight Controls
-new SingleStateToggle { Name = "Capt. flight controls", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[0], AvailableStates = _flightControlStates},
-new SingleStateToggle { Name = "F/O flight controls", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[1], AvailableStates = _flightControlStates},
-new SingleStateToggle { Name = "Left spoilers", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[0], AvailableStates = _onOrOffStates},
-new SingleStateToggle { Name = "Right spoilers", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[1], AvailableStates = _onOrOffStates},
-new SingleStateToggle { Name = "Yaw damper", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_YawDamper_Sw, AvailableStates = _onOrOffStates},
-new SingleStateToggle { Name = "Alternate flaps", PanelName = "Forward Overhead", PanelSection = "Flight Controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_AltnFlaps_Sw_ARM, AvailableStates = _armedOrOffStates},
+// --section: Flight controls
+new SingleStateToggle { Name = "Flight control [A]", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[0], AvailableStates = _flightControlStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_FltControl_Sw_1},
+                new SingleStateToggle { Name = "Flight control [B]", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[1], AvailableStates = _flightControlStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_FltControl_Sw_2},
+new SingleStateToggle { Name = "Left spoilers", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_Spoiler_Sw_1},
+new SingleStateToggle { Name = "Right spoilers", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_Spoiler_Sw_2},
+new SingleStateToggle { Name = "Yaw damper", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_YawDamper_Sw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_YawDamper_Sw},
+new SingleStateToggle { Name = "Alternate flaps [armed]", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_AltnFlaps_Sw_ARM, AvailableStates = _armedOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_AltnFlaps_Sw_ARM},
+new SingleStateToggle{Name = "Alternate flaps", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_AltnFlaps_Control_Sw, AvailableStates = _offUpOrDownStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_AltnFlaps_Control_Sw},
+new SingleStateToggle{Name = "Flight control [A] low pressure light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunFC_LOW_PRESSURE[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunFC_LOW_PRESSURE_1},
+new SingleStateToggle{Name = "Flight control [B] low pressure light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunFC_LOW_PRESSURE[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunFC_LOW_PRESSURE_2 },
+new SingleStateToggle{ Name = "Yaw damper light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunYAW_DAMPER, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunYAW_DAMPER},
+new SingleStateToggle { Name = "Flight controls low quantity light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunLOW_QUANTITY, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunLOW_QUANTITY},
+new SingleStateToggle { Name = "Flight controls low pressure light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunLOW_PRESSURE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunLOW_PRESSURE},
+new SingleStateToggle { Name = "Flight controls standby/rudder light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunLOW_STBY_RUD_ON, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunLOW_STBY_RUD_ON},
+new SingleStateToggle { Name = "Feel diff pressure light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunFEEL_DIFF_PRESS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunFEEL_DIFF_PRESS},
+new SingleStateToggle { Name = "Speed trim failed light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.FCTL_annunSPEED_TRIM_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunSPEED_TRIM_FAIL},
+new SingleStateToggle { Name = "Mach trim failed light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunMACH_TRIM_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunMACH_TRIM_FAIL},
+new SingleStateToggle { Name = "Auto slat failed light", PanelName = "Forward Overhead", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunAUTO_SLAT_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunAUTO_SLAT_FAIL},
 
-                                          };
+// ---section: Navigation/Displays
+new SingleStateToggle { Name = "VHF navigation selector", PanelName = "Forward Overhead", PanelSection = "Navigation/Displays", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.NAVDIS_VHFNavSelector, AvailableStates = _normal1Or2SelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.NAVDIS_VHFNavSelector},
+new SingleStateToggle { Name = "IRS selector", PanelName = "Forward Overhead", PanelSection = "Navigation/Displays", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.NAVDIS_IRSSelector, AvailableStates = _normalLeftOrRightSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.NAVDIS_IRSSelector},
+new SingleStateToggle { Name = "FMC selector", PanelName = "Forward Overhead", PanelSection = "Navigation/Displays", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.NAVDIS_FMCSelector, AvailableStates = _normalLeftOrRightSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.NAVDIS_FMCSelector},
+new SingleStateToggle { Name = "Source selector", PanelName = "Forward Overhead", PanelSection = "Navigation/Displays", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.NAVDIS_SourceSelector, AvailableStates = _auto1Or2SelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.NAVDIS_SourceSelector },
+new SingleStateToggle {Name = "Control pane selector", PanelName = "Forward Overhead", PanelSection = "Navigation/Displays", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.NAVDIS_ControlPaneSelector, AvailableStates = _normal1Or2SelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.NAVDIS_ControlPaneSelector},
+
+// ---section: fuel
+new SingleStateToggle { Name = "Fuel temprature", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_FuelTempNeedle, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_FuelTempNeedle},
+new SingleStateToggle { Name = "Crossfeed", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_CrossFeedSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_CrossFeedSw},
+new SingleStateToggle { Name = "Left FWD fuel pump ", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_PumpFwdSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_PumpFwdSw_L},
+new SingleStateToggle { Name = "Right FWD fuel pump", PanelName = "Forward Overhead", PanelSection = "Fuel", Type= PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_PumpFwdSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_PumpFwdSw_R},
+new SingleStateToggle { Name = "Left AFT fuel pump", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_PumpAftSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_PumpAftSw_L},
+new SingleStateToggle { Name = "Right AFT fuel pump", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_PumpAftSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_PumpAftSw_R},
+new SingleStateToggle { Name = "Left center fuel pump", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_PumpCtrSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_PumpCtrSw_L},
+new SingleStateToggle { Name = "Right center fuel pump", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_PumpCtrSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_PumpCtrSw_R},
+new SingleStateToggle { Name = "AFT A: aux fuel", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_AuxAft[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_AuxAft_A},
+new SingleStateToggle { Name = "AFT B: aux fuel", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_AuxAft[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_AuxAft_B},
+new SingleStateToggle { Name = "FWD A: aux fuel", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_AuxFwd[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_AuxFwd_A},
+new SingleStateToggle { Name = "FWD B: aux fuel", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_AuxFwd[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "FWD fuel bleed", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_FWDBleed, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_FWDBleed},
+new SingleStateToggle { Name = "AFT fuel bleed", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_AFTBleed, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_AFTBleed},
+new SingleStateToggle { Name = "Ground fuel transfer", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_GNDXfr, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_GNDXfr},
+new SingleStateToggle { Name = "Engine #1 fuel valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunENG_VALVE_CLOSED[0], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunENG_VALVE_CLOSED_1},
+new SingleStateToggle { Name = "Engine #2 fuel valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunENG_VALVE_CLOSED[1], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunENG_VALVE_CLOSED_2},
+new SingleStateToggle { Name = "Engine #1 spar valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunSPAR_VALVE_CLOSED[0], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunSPAR_VALVE_CLOSED_1},
+new SingleStateToggle { Name = "Engine #2 spar valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunSPAR_VALVE_CLOSED[1], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunSPAR_VALVE_CLOSED_2},
+new SingleStateToggle { Name = "Engine #1 fuel filter bypass light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunFILTER_BYPASS[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunFILTER_BYPASS_1},
+new SingleStateToggle { Name = "Engine #2 fuel filter bypass light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunFILTER_BYPASS[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunFILTER_BYPASS_2},
+new SingleStateToggle { Name = "Crossfeed valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunXFEED_VALVE_OPEN, AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunXFEED_VALVE_OPEN},
+new SingleStateToggle { Name = "Engine #1 AFT low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Aft[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Aft_1},
+new SingleStateToggle { Name = "Engine #2 AFT low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Aft[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Aft_2},
+new SingleStateToggle { Name = "Engine #1 FWD low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Fwd[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Fwd_1},
+new SingleStateToggle { Name = "Engine #2 FWD low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Fwd[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Fwd_2},
+new SingleStateToggle { Name = "Engine #1 center low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Ctr[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Ctr_1},
+new SingleStateToggle { Name = "Engine #2 center low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Ctr[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Ctr_2},
+
+// --section: Electrical
+new SingleStateToggle { Name = "Battery discharge light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunBAT_DISCHARGE},
+new SingleStateToggle { Name = "TR unit light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTR_UNIT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTR_UNIT},
+new SingleStateToggle{ Name = "Elec light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunELEC, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunELEC},
+new SingleStateToggle{ Name = "DC meter selector", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_DCMeterSelector, AvailableStates = _dcMeterSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_DCMeterSelector},
+new SingleStateToggle { Name = "AC meter selector", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_ACMeterSelector, AvailableStates = _acMeterSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_ACMeterSelector},
+new SingleStateToggle { Name = "Battery selector", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BatSelector, AvailableStates = _batterySelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_BatSelector},
+new SingleStateToggle { Name = "Cabin utility", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_CabUtilSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_CabUtilSw},
+new SingleStateToggle { Name = "Passenger seats", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_IFEPassSeatSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_IFEPassSeatSw},
+new SingleStateToggle { Name = "Drive #1 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunDRIVE[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunDRIVE_1},
+new SingleStateToggle { Name = "Drive #2 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunDRIVE[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunDRIVE_2},
+new SingleStateToggle { Name = "Standby power [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSTANDBY_POWER_OFF, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSTANDBY_POWER_OFF},
+new SingleStateToggle { Name = "IDG #1 disconnect", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_IDGDisconnectSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_IDGDisconnectSw_1},
+new SingleStateToggle { Name = "IDG #2 disconnect", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_IDGDisconnectSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_IDGDisconnectSw_2},
+new SingleStateToggle { Name = "Standby power selector", PanelName = "Forward Overhead", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_StandbyPowerSelector, AvailableStates = _standbySelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_StandbyPowerSelector},
+new SingleStateToggle { Name = "Ground power [available] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type= PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGRD_POWER_AVAILABLE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGRD_POWER_AVAILABLE},
+new SingleStateToggle { Name = "Ground power", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_GrdPwrSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_GrdPwrSw},
+new SingleStateToggle { Name = "Bus transfer [auto]", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BusTransSw_AUTO, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_BusTransSw_AUTO},
+new SingleStateToggle { Name = "Generator #1", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_GenSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_GenSw_1},
+new SingleStateToggle { Name = "Generator #2", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_GenSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_GenSw_2},
+new SingleStateToggle { Name = "APU generator #1", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_APUGenSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_APUGenSw_1},
+new SingleStateToggle { Name = "APU generator #2", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_APUGenSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_APUGenSw_2},
+new SingleStateToggle { Name = "Transfer bus #1 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTRANSFER_BUS_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTRANSFER_BUS_OFF_1},
+new SingleStateToggle { Name = "Transfer bus #2 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTRANSFER_BUS_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTRANSFER_BUS_OFF_2},
+new SingleStateToggle { Name = "Source #1 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSOURCE_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSOURCE_OFF_1},
+new SingleStateToggle { Name = "Source #2 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSOURCE_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSOURCE_OFF_2},
+new SingleStateToggle { Name = "Generator #1 bus [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGEN_BUS_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGEN_BUS_OFF_1},
+new SingleStateToggle { Name = "Generator #2 bus [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGEN_BUS_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGEN_BUS_OFF_2},
+new SingleStateToggle { Name = "APU generator bus [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunAPU_GEN_OFF_BUS},
+
+// --section: APU
+new SingleStateToggle { Name = "APU EGT needle", PanelName = "Forward Overhead", PanelSection = "APU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_EGTNeedle, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.APU_EGTNeedle},
+new SingleStateToggle { Name = "APU maint light", PanelName = "Forward Overhead", PanelSection = "APU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_annunMAINT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.APU_annunMAINT},
+new SingleStateToggle { Name = "APU low oil pressure light", PanelName = "Forward Overhead", PanelSection = "APU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_annunLOW_OIL_PRESSURE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.APU_annunLOW_OIL_PRESSURE},
+new SingleStateToggle { Name = "APU fault light", PanelName = "Forward Overhead", PanelSection = "APU", Type= PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_annunFAULT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.APU_annunFAULT},
+new SingleStateToggle { Name = "APU overspeed light", PanelName = "Forward Overhead", PanelSection = "APU", Type = PanelObjectType.Annunciator, Verbosity= AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_annunOVERSPEED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.APU_annunOVERSPEED},
+
+// --section: Wipers
+new SingleStateToggle { Name = "Left wipers", PanelName = "Forward Overhead", PanelSection = "Wipers", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OH_WiperLSelector, AvailableStates = _wiperStates, shouldSpeak = Properties.pmdg737_offsets.Default.OH_WiperLSelector},
+new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", PanelSection = "Wipers", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OH_WiperRSelector, AvailableStates = _wiperStates, shouldSpeak = Properties.pmdg737_offsets.Default.OH_WiperRSelector},
+
+// --panel: Center Overhead
+// -- section: none
+
+                            // --end-panel-controls                              
+            };
         }
                                 public static AircraftSystem SpeedMode
         {
