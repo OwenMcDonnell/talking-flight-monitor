@@ -283,7 +283,7 @@ namespace tfm
         private static Dictionary<byte, string> _offUpOrDownStates = new Dictionary<byte, string>()
         {
             {0, "up" },
-            {1, "on" },
+            {1, "off" },
             {2, "down" },
         };
 
@@ -410,8 +410,8 @@ new SingleStateToggle { Name = "Flight recorder light", PanelName = "Aft Overhea
 // --section: Flight controls
 new SingleStateToggle { Name = "Flight control [A]", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[0], AvailableStates = _flightControlStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_FltControl_Sw_1},
                 new SingleStateToggle { Name = "Flight control [B]", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_FltControl_Sw[1], AvailableStates = _flightControlStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_FltControl_Sw_2},
-new SingleStateToggle { Name = "Left spoilers", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_Spoiler_Sw_1},
-new SingleStateToggle { Name = "Right spoilers", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_Spoiler_Sw_2},
+new SingleStateToggle { Name = "Spoilers A", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_Spoiler_Sw_1},
+new SingleStateToggle { Name = "Spoilers B", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_Spoiler_Sw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_Spoiler_Sw_2},
 new SingleStateToggle { Name = "Yaw damper", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_YawDamper_Sw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_YawDamper_Sw},
 new SingleStateToggle { Name = "Alternate flaps [armed]", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_AltnFlaps_Sw_ARM, AvailableStates = _armedOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_AltnFlaps_Sw_ARM},
 new SingleStateToggle{Name = "Alternate flaps", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_AltnFlaps_Control_Sw, AvailableStates = _offUpOrDownStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_AltnFlaps_Control_Sw},
@@ -424,7 +424,7 @@ new SingleStateToggle { Name = "Flight controls standby/rudder light", PanelName
 new SingleStateToggle { Name = "Feel diff pressure light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunFEEL_DIFF_PRESS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunFEEL_DIFF_PRESS},
 new SingleStateToggle { Name = "Speed trim failed light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Offset = Aircraft.pmdg737.FCTL_annunSPEED_TRIM_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunSPEED_TRIM_FAIL},
 new SingleStateToggle { Name = "Mach trim failed light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunMACH_TRIM_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunMACH_TRIM_FAIL},
-new SingleStateToggle { Name = "Auto slat failed light", PanelName = "Forward Overhead", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunAUTO_SLAT_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunAUTO_SLAT_FAIL},
+new SingleStateToggle { Name = "Auto slat failed light", PanelName = "Forward Overhead", PanelSection = "Flight controls", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FCTL_annunAUTO_SLAT_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FCTL_annunAUTO_SLAT_FAIL},
 
 // ---section: Navigation/Displays
 new SingleStateToggle { Name = "VHF navigation selector", PanelName = "Forward Overhead", PanelSection = "Navigation/Displays", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.NAVDIS_VHFNavSelector, AvailableStates = _normal1Or2SelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.NAVDIS_VHFNavSelector},
@@ -842,5 +842,39 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FLTREC_SWITCH, Aircraft.pmdg737.FLTREC_SwNormal.Value, 1, true);
         } // FlightRecorderNormal.
-    } // End PMDG737Aircraft.
+
+        public static void FlightControlA(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FCTL_A_SWITCH, Aircraft.pmdg737.FCTL_FltControl_Sw[0].Value, position, true);
+        } // FlightControlA.
+
+        public static void FlightControlB(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FCTL_B_SWITCH, Aircraft.pmdg737.FCTL_FltControl_Sw[1].Value, position, true);
+        } // FlightControlB.
+        public static void SpoilerA(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SPOILER_A_SWITCH, Aircraft.pmdg737.FCTL_Spoiler_Sw[0].Value, position, true);
+        } // SpoilerA.
+
+        public static void SpoilerB(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SPOILER_B_SWITCH, Aircraft.pmdg737.FCTL_Spoiler_Sw[1].Value, position, true);
+        } // SpoilerB
+
+        public static void YawDamper(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_YAW_DAMPER, Aircraft.pmdg737.FCTL_YawDamper_Sw.Value, position, true);
+        } // YawDamper
+
+        public static void AlternateFlapsArm(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ALT_FLAPS_MASTER_SWITCH, Aircraft.pmdg737.FCTL_AltnFlaps_Sw_ARM.Value, position, true);
+        } // AlternateFlapsArm
+
+        public static void AlternatFlapsPosition(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ALT_FLAPS_POS_SWITCH, Aircraft.pmdg737.FCTL_AltnFlaps_Control_Sw.Value, position, true);
+        } // AlternatFlapsPosition
+                                   } // End PMDG737Aircraft.
 } // End namespace.

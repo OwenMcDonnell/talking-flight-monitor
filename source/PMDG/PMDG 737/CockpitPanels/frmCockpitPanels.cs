@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
-
+using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 
 namespace tfm
 {
@@ -37,6 +36,7 @@ namespace tfm
             pages.Add("nodAntiIce", new ctlAntiIce());
             pages.Add("nodPressurization", new ctlPressurization());
             // redesigned pages. keep the ones above for backups.
+            // --panel: Aft Overhead
             pages.Add("adiruNode", new ctlADIRU());
             pages.Add("PSEUNode", new ctlPSEU());
             pages.Add("serviceInterPhoneNode", new ctlServiceInterphone());
@@ -45,6 +45,9 @@ namespace tfm
             pages.Add("oxygenNode", new ctlOxygen());
             pages.Add("gearNode", new ctlGear());
             pages.Add("flightRecorderNode", new ctlFlightRecorder());
+
+            // --panel: Forward Overhead
+            pages.Add("flightControlsNode", new ctlFlightControls());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

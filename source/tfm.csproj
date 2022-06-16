@@ -375,6 +375,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.Designer.cs">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -840,6 +846,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.resx">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>
