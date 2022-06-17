@@ -381,6 +381,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.Designer.cs">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.Designer.cs">
+      <DependentUpon>ctlNav_displays.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -629,6 +635,12 @@
     <Compile Include="Settings panels\PMDG737\ctlEEC.Designer.cs">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightControls.Designer.cs">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -850,6 +862,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.resx">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.resx">
+      <DependentUpon>ctlNav_displays.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -978,6 +993,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightControls.resx">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>

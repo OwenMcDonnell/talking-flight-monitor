@@ -51,10 +51,14 @@
             treeNode12,
             treeNode13,
             treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Flight Controls");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Forward Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode16});
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            treeNode15,
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode18});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -99,10 +103,14 @@
             treeNode14.Text = "Flight recorder";
             treeNode15.Name = "aftOverheadNode";
             treeNode15.Text = "Aft Overhead";
-            treeNode16.Name = "Pmdg737Node";
-            treeNode16.Text = "737 speech events";
-            treeNode17.Name = "nodPMDG";
-            treeNode17.Text = "PMDG";
+            treeNode16.Name = "737FlightControlsNode";
+            treeNode16.Text = "Flight Controls";
+            treeNode17.Name = "forwardOverheadNode";
+            treeNode17.Text = "Forward Overhead";
+            treeNode18.Name = "Pmdg737Node";
+            treeNode18.Text = "737 speech events";
+            treeNode19.Name = "nodPMDG";
+            treeNode19.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -110,7 +118,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode17});
+            treeNode19});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);

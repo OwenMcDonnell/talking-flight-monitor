@@ -68,6 +68,9 @@
             this.autoSlatFailFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.autoSlatFailLightTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.mainFlowLayoutPanel.SuspendLayout();
             this.FlightControlsFlowLayoutPanel.SuspendLayout();
             this.indicatorsFlowLayoutPanel.SuspendLayout();
@@ -99,16 +102,19 @@
             // 
             this.FlightControlsFlowLayoutPanel.AutoSize = true;
             this.FlightControlsFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FlightControlsFlowLayoutPanel.Controls.Add(this.label11);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.controlAComboBox);
+            this.FlightControlsFlowLayoutPanel.Controls.Add(this.label12);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.controlBComboBox);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.leftSpoilerButton);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.rightSpoilerButton);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.yawDamperButton);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.altFlapArmButton);
+            this.FlightControlsFlowLayoutPanel.Controls.Add(this.label13);
             this.FlightControlsFlowLayoutPanel.Controls.Add(this.altnFlapsComboBox);
             this.FlightControlsFlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.FlightControlsFlowLayoutPanel.Name = "FlightControlsFlowLayoutPanel";
-            this.FlightControlsFlowLayoutPanel.Size = new System.Drawing.Size(849, 49);
+            this.FlightControlsFlowLayoutPanel.Size = new System.Drawing.Size(1060, 49);
             this.FlightControlsFlowLayoutPanel.TabIndex = 1;
             // 
             // controlAComboBox
@@ -120,10 +126,10 @@
             "standby",
             "off",
             "on"});
-            this.controlAComboBox.Location = new System.Drawing.Point(3, 3);
+            this.controlAComboBox.Location = new System.Drawing.Point(43, 3);
             this.controlAComboBox.Name = "controlAComboBox";
             this.controlAComboBox.Size = new System.Drawing.Size(121, 41);
-            this.controlAComboBox.TabIndex = 0;
+            this.controlAComboBox.TabIndex = 1;
             this.controlAComboBox.SelectedIndexChanged += new System.EventHandler(this.controlAComboBox_SelectedIndexChanged);
             // 
             // controlBComboBox
@@ -135,20 +141,20 @@
             "standby",
             "off",
             "on"});
-            this.controlBComboBox.Location = new System.Drawing.Point(130, 3);
+            this.controlBComboBox.Location = new System.Drawing.Point(210, 3);
             this.controlBComboBox.Name = "controlBComboBox";
             this.controlBComboBox.Size = new System.Drawing.Size(121, 41);
-            this.controlBComboBox.TabIndex = 1;
+            this.controlBComboBox.TabIndex = 3;
             this.controlBComboBox.SelectedIndexChanged += new System.EventHandler(this.controlBComboBox_SelectedIndexChanged);
             // 
             // leftSpoilerButton
             // 
             this.leftSpoilerButton.AutoSize = true;
             this.leftSpoilerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.leftSpoilerButton.Location = new System.Drawing.Point(257, 3);
+            this.leftSpoilerButton.Location = new System.Drawing.Point(337, 3);
             this.leftSpoilerButton.Name = "leftSpoilerButton";
             this.leftSpoilerButton.Size = new System.Drawing.Size(111, 43);
-            this.leftSpoilerButton.TabIndex = 2;
+            this.leftSpoilerButton.TabIndex = 4;
             this.leftSpoilerButton.Text = "button3";
             this.leftSpoilerButton.UseVisualStyleBackColor = true;
             this.leftSpoilerButton.Click += new System.EventHandler(this.leftSpoilerButton_Click);
@@ -157,10 +163,10 @@
             // 
             this.rightSpoilerButton.AutoSize = true;
             this.rightSpoilerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rightSpoilerButton.Location = new System.Drawing.Point(374, 3);
+            this.rightSpoilerButton.Location = new System.Drawing.Point(454, 3);
             this.rightSpoilerButton.Name = "rightSpoilerButton";
             this.rightSpoilerButton.Size = new System.Drawing.Size(111, 43);
-            this.rightSpoilerButton.TabIndex = 3;
+            this.rightSpoilerButton.TabIndex = 5;
             this.rightSpoilerButton.Text = "button4";
             this.rightSpoilerButton.UseVisualStyleBackColor = true;
             this.rightSpoilerButton.Click += new System.EventHandler(this.rightSpoilerButton_Click);
@@ -169,10 +175,10 @@
             // 
             this.yawDamperButton.AutoSize = true;
             this.yawDamperButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.yawDamperButton.Location = new System.Drawing.Point(491, 3);
+            this.yawDamperButton.Location = new System.Drawing.Point(571, 3);
             this.yawDamperButton.Name = "yawDamperButton";
             this.yawDamperButton.Size = new System.Drawing.Size(111, 43);
-            this.yawDamperButton.TabIndex = 4;
+            this.yawDamperButton.TabIndex = 6;
             this.yawDamperButton.Text = "button5";
             this.yawDamperButton.UseVisualStyleBackColor = true;
             this.yawDamperButton.Click += new System.EventHandler(this.yawDamperButton_Click);
@@ -181,10 +187,10 @@
             // 
             this.altFlapArmButton.AutoSize = true;
             this.altFlapArmButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.altFlapArmButton.Location = new System.Drawing.Point(608, 3);
+            this.altFlapArmButton.Location = new System.Drawing.Point(688, 3);
             this.altFlapArmButton.Name = "altFlapArmButton";
             this.altFlapArmButton.Size = new System.Drawing.Size(111, 43);
-            this.altFlapArmButton.TabIndex = 5;
+            this.altFlapArmButton.TabIndex = 7;
             this.altFlapArmButton.Text = "button6";
             this.altFlapArmButton.UseVisualStyleBackColor = true;
             this.altFlapArmButton.Click += new System.EventHandler(this.altFlapArmButton_Click);
@@ -198,10 +204,10 @@
             "up",
             "off",
             "down"});
-            this.altnFlapsComboBox.Location = new System.Drawing.Point(725, 3);
+            this.altnFlapsComboBox.Location = new System.Drawing.Point(936, 3);
             this.altnFlapsComboBox.Name = "altnFlapsComboBox";
             this.altnFlapsComboBox.Size = new System.Drawing.Size(121, 41);
-            this.altnFlapsComboBox.TabIndex = 6;
+            this.altnFlapsComboBox.TabIndex = 9;
             this.altnFlapsComboBox.SelectedIndexChanged += new System.EventHandler(this.altnFlapsComboBox_SelectedIndexChanged);
             // 
             // indicatorsFlowLayoutPanel
@@ -543,6 +549,33 @@
             this.autoSlatFailLightTextBox.TabIndex = 1;
             this.autoSlatFailLightTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 33);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "&A";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(170, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 33);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "&B";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(805, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(125, 33);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Altn &flaps";
+            // 
             // ctlFlightControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
@@ -629,5 +662,8 @@
         private System.Windows.Forms.ComboBox controlAComboBox;
         private System.Windows.Forms.ComboBox controlBComboBox;
         private System.Windows.Forms.ComboBox altnFlapsComboBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
