@@ -653,6 +653,12 @@
     <Compile Include="Settings panels\PMDG737\ctlGear.Designer.cs">
       <DependentUpon>ctlGear.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlNav_Dis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlNav_Dis.Designer.cs">
+      <DependentUpon>ctlNav_Dis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlOxygen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1002,6 +1008,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlGear.resx">
       <DependentUpon>ctlGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlNav_Dis.resx">
+      <DependentUpon>ctlNav_Dis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlOxygen.resx">
       <DependentUpon>ctlOxygen.cs</DependentUpon>

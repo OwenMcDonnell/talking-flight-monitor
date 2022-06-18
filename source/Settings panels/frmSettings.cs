@@ -40,6 +40,7 @@ namespace tfm
             pages.Add("737GearNode", new Settings_panels.PMDG737.ctlGear());
             pages.Add("737FlightRecorderNode", new Settings_panels.PMDG737.ctlFlightRecorder());
             pages.Add("737FlightControlsNode", new Settings_panels.PMDG737.ctlFlightControls());
+            pages.Add("737NavDisNode", new Settings_panels.PMDG737.ctlNav_Dis());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

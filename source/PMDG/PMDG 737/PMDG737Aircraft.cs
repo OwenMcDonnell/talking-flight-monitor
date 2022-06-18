@@ -876,5 +876,30 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ALT_FLAPS_POS_SWITCH, Aircraft.pmdg737.FCTL_AltnFlaps_Control_Sw.Value, position, true);
         } // AlternatFlapsPosition
+
+        public static void VHFSelector(int position)
+        {
+                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_VHF_NAV_SEL, position);
+        } // VHFSelector.
+
+        public static void IRSSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_IRS_SEL, position);
+        } // IRSSelector
+
+        public static void FMCSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_FMC_SEL, position);
+        } // FMCSelector
+
+        public static void SourceSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_DISPLAYS_SOURCE_SEL, position);
+        } // SourceSelector.
+
+        public static void ControlPaneSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_CONTROL_PANEL_SEL, position);
+        } // ControlPaneSelector.
                                    } // End PMDG737Aircraft.
 } // End namespace.

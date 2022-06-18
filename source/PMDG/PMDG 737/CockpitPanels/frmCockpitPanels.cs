@@ -48,6 +48,7 @@ namespace tfm
 
             // --panel: Forward Overhead
             pages.Add("flightControlsNode", new ctlFlightControls());
+            pages.Add("navDisNode", new ctlNav_displays());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
