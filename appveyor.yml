@@ -1,7 +1,4 @@
 version: 0.{build}
-branches:
-  only:
-  - master
 nuget:
   project_feed: true
 configuration: Debug
@@ -10,64 +7,130 @@ environment:
   gh_token:
     secure: b8rJBxvFWGz190qF78baVdA0auIIkdU2Sg1tpOfJRtb7h3GVSdG5VtFIqtGLaDkg
 
+for:
+-
+  branches:
+    only:
+      - master
+  before_build:
+  - cmd: nuget restore source\tfm.sln
+  build:
+    project: source\tfm.sln
+    verbosity: minimal
+  after_build:
+  - ps: >-
+      makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm.nsi
 
-before_build:
-- cmd: nuget restore source\tfm.sln
-build:
-  project: source\tfm.sln
-  verbosity: minimal
-after_build:
-- ps: >-
-    makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm.nsi
+      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
 
-    appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
+  deploy_script:
+   - ps: |
+      if ($env:APPVEYOR_REPO_TAG -eq "true") {
+      
+      $token = $env:gh_token
+      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
+      $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
+      $repo = 'jfayre/talking-flight-monitor'
+      $tag = $env:appveyor_repo_tag_name
+      $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
 
-deploy_script:
- - ps: |
-    if ($env:APPVEYOR_REPO_TAG -eq "true") {
-    
-    $token = $env:gh_token
-    $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
-    $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
-    $repo = 'jfayre/talking-flight-monitor'
-    $tag = $env:appveyor_repo_tag_name
-    $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
+      $headers = @{
+        "Authorization" = "token $token"
+        "Content-type" = "application/json"
+      }
 
-    $headers = @{
-      "Authorization" = "token $token"
-      "Content-type" = "application/json"
-    }
+      $body = @{
+        tag_name = $tag
+        target_commitish = "master"
+        name = $releaseName
+        body = $description
+        draft = $false
+        prerelease = $false
+      }
 
-    $body = @{
-      tag_name = $tag
-      target_commitish = "master"
-      name = $releaseName
-      body = $description
-      draft = $false
-      prerelease = $false
-    }
-
-    Write-Host "Creating release..." -NoNewline
-    $json = (ConvertTo-Json $body)
-    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases" -Headers $headers -Method POST -Body $json
-    $uploadUrl = $release.upload_url.Replace("{?name,label}", "") + "?name=" + [IO.Path]::GetFileName($uploadFilePath)
-    Write-Host "OK" -ForegroundColor Green
-
-    $uploadUrl
-
-    Write-Host "Uploading asset..." -NoNewline
-    $data = [System.IO.File]::ReadAllBytes($uploadFilePath)
-    $wc = New-Object Net.WebClient
-    $wc.Headers['Content-type'] = 'application/octet-stream'
-    $wc.Headers['Authorization'] = "token $token"
-
-    try {
-      $response = $wc.UploadData($uploadUrl, "POST", $data)
+      Write-Host "Creating release..." -NoNewline
+      $json = (ConvertTo-Json $body)
+      $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases" -Headers $headers -Method POST -Body $json
+      $uploadUrl = $release.upload_url.Replace("{?name,label}", "") + "?name=" + [IO.Path]::GetFileName($uploadFilePath)
       Write-Host "OK" -ForegroundColor Green
-    } catch {
-      $host.SetShouldExit(1)
-    }
-    }
+
+      $uploadUrl
+
+      Write-Host "Uploading asset..." -NoNewline
+      $data = [System.IO.File]::ReadAllBytes($uploadFilePath)
+      $wc = New-Object Net.WebClient
+      $wc.Headers['Content-type'] = 'application/octet-stream'
+      $wc.Headers['Authorization'] = "token $token"
+
+      try {
+        $response = $wc.UploadData($uploadUrl, "POST", $data)
+        Write-Host "OK" -ForegroundColor Green
+      } catch {
+        $host.SetShouldExit(1)
+      }
+      }
+-
+  branches:
+    only:
+      - preview
+  before_build:
+  - cmd: nuget restore source\tfm.sln
+  build:
+    project: source\tfm.sln
+    verbosity: minimal
+  after_build:
+  - ps: >-
+      makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm-preview.nsi
+
+      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
+
+  deploy_script:
+   - ps: |
+      if ($env:APPVEYOR_REPO_TAG -eq "true") {
+      
+      $token = $env:gh_token
+      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
+      $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
+      $repo = 'jfayre/talking-flight-monitor'
+      $tag = $env:appveyor_repo_tag_name
+      $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
+
+      $headers = @{
+        "Authorization" = "token $token"
+        "Content-type" = "application/json"
+      }
+
+      $body = @{
+        tag_name = $tag
+        target_commitish = "master"
+        name = $releaseName
+        body = $description
+        draft = $false
+        prerelease = $true
+      }
+
+      Write-Host "Creating pre-release..." -NoNewline
+      $json = (ConvertTo-Json $body)
+      $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases" -Headers $headers -Method POST -Body $json
+      $uploadUrl = $release.upload_url.Replace("{?name,label}", "") + "?name=" + [IO.Path]::GetFileName($uploadFilePath)
+      Write-Host "OK" -ForegroundColor Green
+
+      $uploadUrl
+
+      Write-Host "Uploading asset..." -NoNewline
+      $data = [System.IO.File]::ReadAllBytes($uploadFilePath)
+      $wc = New-Object Net.WebClient
+      $wc.Headers['Content-type'] = 'application/octet-stream'
+      $wc.Headers['Authorization'] = "token $token"
+
+      try {
+        $response = $wc.UploadData($uploadUrl, "POST", $data)
+        Write-Host "OK" -ForegroundColor Green
+      } catch {
+        $host.SetShouldExit(1)
+      }
+      }
+
 
 notifications:
 - provider: Email
