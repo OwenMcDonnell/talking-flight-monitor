@@ -449,13 +449,13 @@ new SingleStateToggle { Name = "FWD B: aux fuel", PanelName = "Forward Overhead"
 new SingleStateToggle { Name = "FWD fuel bleed", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_FWDBleed, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_FWDBleed},
 new SingleStateToggle { Name = "AFT fuel bleed", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_AFTBleed, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_AFTBleed},
 new SingleStateToggle { Name = "Ground fuel transfer", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_GNDXfr, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_GNDXfr},
-new SingleStateToggle { Name = "Engine #1 fuel valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunENG_VALVE_CLOSED[0], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunENG_VALVE_CLOSED_1},
-new SingleStateToggle { Name = "Engine #2 fuel valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunENG_VALVE_CLOSED[1], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunENG_VALVE_CLOSED_2},
-new SingleStateToggle { Name = "Engine #1 spar valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunSPAR_VALVE_CLOSED[0], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunSPAR_VALVE_CLOSED_1},
-new SingleStateToggle { Name = "Engine #2 spar valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunSPAR_VALVE_CLOSED[1], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunSPAR_VALVE_CLOSED_2},
+new SingleStateToggle { Name = "Engine #1 fuel valve [closed] light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunENG_VALVE_CLOSED[0], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunENG_VALVE_CLOSED_1},
+new SingleStateToggle { Name = "Engine #2 fuel valve [closed] light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunENG_VALVE_CLOSED[1], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunENG_VALVE_CLOSED_2},
+new SingleStateToggle { Name = "Engine #1 spar valve [closed] light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunSPAR_VALVE_CLOSED[0], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunSPAR_VALVE_CLOSED_1},
+new SingleStateToggle { Name = "Engine #2 spar valve [closed] light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunSPAR_VALVE_CLOSED[1], AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunSPAR_VALVE_CLOSED_2},
 new SingleStateToggle { Name = "Engine #1 fuel filter bypass light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunFILTER_BYPASS[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunFILTER_BYPASS_1},
 new SingleStateToggle { Name = "Engine #2 fuel filter bypass light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunFILTER_BYPASS[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunFILTER_BYPASS_2},
-new SingleStateToggle { Name = "Crossfeed valve", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunXFEED_VALVE_OPEN, AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunXFEED_VALVE_OPEN},
+new SingleStateToggle { Name = "Crossfeed valve [open] light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunXFEED_VALVE_OPEN, AvailableStates = _fuelValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunXFEED_VALVE_OPEN},
 new SingleStateToggle { Name = "Engine #1 AFT low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Aft[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Aft_1},
 new SingleStateToggle { Name = "Engine #2 AFT low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Aft[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Aft_2},
 new SingleStateToggle { Name = "Engine #1 FWD low pressure light", PanelName = "Forward Overhead", PanelSection = "Fuel", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FUEL_annunLOWPRESS_Fwd[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FUEL_annunLOWPRESS_Fwd_1},
@@ -901,5 +901,75 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_CONTROL_PANEL_SEL, position);
         } // ControlPaneSelector.
+
+        public static void LeftAftFuelPump(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_1_AFT, Aircraft.pmdg737.FUEL_PumpAftSw[0].Value, position, true);
+        } // LeftAftFuelPump
+
+        public static void RightAftFuelPump(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_2_AFT, Aircraft.pmdg737.FUEL_PumpAftSw[1].Value, position, true);
+        } // RightAftFuelPump
+
+        public static void AftAuxFuelA(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_AUX_AFT_A, Aircraft.pmdg737.FUEL_AuxAft[0].Value, position, true);
+        } // AftAuxFuelA
+
+        public static void AftAuxFuelB(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_AUX_AFT_B, Aircraft.pmdg737.FUEL_AuxAft[1].Value, position, true);
+        } // AftAuxFuelB
+
+        public static void AftFuelBleed(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_AFT_BLD, Aircraft.pmdg737.FUEL_AFTBleed.Value, position, true);
+        } // AftFuelBleed
+
+        public static void LeftFwdFuelPump(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_1_FORWARD, Aircraft.pmdg737.FUEL_PumpFwdSw[0].Value, position, true);
+        } // LeftFwdFuelPump
+
+        public static void RightFwdFuelPump(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_2_FORWARD, Aircraft.pmdg737.FUEL_PumpFwdSw[1].Value, position, true);
+        } // RightFwdFuelPump
+
+        public static void FwdAuxFuelA(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_AUX_FWD_A, Aircraft.pmdg737.FUEL_AuxFwd[0].Value, position, true);
+        } // FwdAuxFuelA
+
+        public static void FwdAuxFuelB(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_AUX_FWD_B, Aircraft.pmdg737.FUEL_AuxFwd[1].Value, position, true);
+        } // FwdAuxFuelB
+
+        public static void FwdFuelBleed(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_FWD_BLD, Aircraft.pmdg737.FUEL_FWDBleed.Value, position, true);
+        } // FwdFuelBleed
+
+        public static void LeftCenterFuelPump(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_L_CENTER, Aircraft.pmdg737.FUEL_PumpCtrSw[0].Value, position, true);
+        } // LeftCenterFuelPump
+
+        public static void RightCenterFuelPump(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_R_CENTER, Aircraft.pmdg737.FUEL_PumpCtrSw[1].Value, position, true);
+        } // RightCenterFuelPump
+
+        public static void GroundFuelXfer(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_GND_XFR_SW, Aircraft.pmdg737.FUEL_GNDXfr.Value, position, true);
+        } // GroundFuelXfer
+
+        public static void CrossFeed(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_CROSSFEED, Aircraft.pmdg737.FUEL_CrossFeedSw.Value, position, true);
+        } // Crossfeed
                                    } // End PMDG737Aircraft.
 } // End namespace.
