@@ -69,7 +69,7 @@ RMDir /r "$SMPROGRAMS\$StartMenuFolder"
 SectionEnd
 Function .onInit
 ${If} ${RunningX64}
-StrCpy $instdir "$programfiles64\talking flight monitor"
+StrCpy $instdir "$programfiles64\talking flight monitor preview"
 ${EndIf}
 !insertmacro MUI_LANGDLL_DISPLAY
 FunctionEnd
