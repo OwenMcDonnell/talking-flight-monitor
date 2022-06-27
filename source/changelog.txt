@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 22.6 release notes
+﻿## Talking flight monitor 22.7 release notes
 
 ### What's new?
 
@@ -8,16 +8,22 @@
     * PSEU
     * Service interphone
     * Dome lights
-     * EEC
+    * EEC
     * Oxygen
-              Gear
-                  Flight recorder
+    * Gear
+    * Flight recorder
+* Forward Overhead panels
+    * Flight controls
+    * Navigation/Displays
+    * Fuel
 * PMDG 737: Speech settings for panels listed above.
 
-
 ### Known issues
-* see [Developer update 5/12/2022](https://www.talkingflightmonitor.com/2022/05/12/developer-update-5-12-2022/) for known issues with new features.
 * There is no keyboard command to restart TFM. Restart it from the notification tray icon.
+* The ILS readouts stop when approach mode turns off.
+* The new ILS feature may not work as expected in the PMDG 747.
+
+### FS2020 notes and reminders
 * PMDG 737-700 for FS2020 hasn't released an SDK yet. TFM will not work until the SDK is released.
 * The announce perf init complete setting on the PMDG page of TFM settings is not working at this time.
 * TFM incorrectly announces aircraft instrument states in the FS2020 A320 Neo. A reminder that FS2020 is not supported by TFM, and usage results my not be as expected.
