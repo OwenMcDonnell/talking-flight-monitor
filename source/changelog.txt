@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 22.7 release notes
+﻿## Talking flight monitor 22.7 Preview release notes
 
 ### What's new?
 
@@ -16,7 +16,11 @@
     * Flight controls
     * Navigation/Displays
     * Fuel
+    * Electrical
+    * APU
+    * Wipers
 * PMDG 737: Speech settings for panels listed above.
+* Ctrl+Shift+X - Restart TFM with a keyboard shortcut 
 
 ### Known issues
 * There is no keyboard command to restart TFM. Restart it from the notification tray icon.

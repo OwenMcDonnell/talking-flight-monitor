@@ -26,10 +26,7 @@ namespace tfm
         
         private void loadPages()
         {
-            pages.Add("nodElectrical", new ctlElectrical());
-            //pages.Add("nodFuel", new ctlFuel());
-            pages.Add("nodMCP", new ctlMCP());
-            //pages.Add("nodIRU", new ctlInertialReferenceUnit());
+                                    pages.Add("nodMCP", new ctlMCP());
             pages.Add("nodHydraulics", new ctlHydraulics());
             pages.Add("nodEngines", new ctlEngines_737());      
             pages.Add("nodAirSystems", new ctlAirSystems());
@@ -49,7 +46,10 @@ namespace tfm
             // --panel: Forward Overhead
             pages.Add("flightControlsNode", new ctlFlightControls());
             pages.Add("navDisNode", new ctlNav_displays());
-            pages.Add("fuelNode", new tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead.ctlFuel());
+            pages.Add("fuelNode", new ctlFuel());
+            pages.Add("electricalNode", new ctlElectrical());
+            pages.Add("apuNode", new ctlAPU());
+            pages.Add("wipersNode", new ctlWipers());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
