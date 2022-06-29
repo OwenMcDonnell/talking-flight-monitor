@@ -375,6 +375,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.Designer.cs">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -622,6 +628,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAPU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.cs">
       <SubType>UserControl</SubType>
@@ -877,6 +889,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.resx">
       <DependentUpon>ctlElectrical.cs</DependentUpon>
     </EmbeddedResource>
@@ -1005,6 +1020,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>

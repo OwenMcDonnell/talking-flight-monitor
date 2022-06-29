@@ -48,6 +48,7 @@ namespace tfm
             pages.Add("navDisNode", new ctlNav_displays());
             pages.Add("fuelNode", new ctlFuel());
             pages.Add("electricalNode", new ctlElectrical());
+            pages.Add("apuNode", new ctlAPU());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
