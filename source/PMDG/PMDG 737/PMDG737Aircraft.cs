@@ -21,14 +21,15 @@ namespace tfm
 
         public static PMDG_NGX_CDU_Screen cdu0 = new PMDG_NGX_CDU_Screen(0x5400);
         public static PMDG_NGX_CDU_Screen cdu1 = new PMDG_NGX_CDU_Screen(0x5800);
-        public static  PMDG_NGX_CDU_Screen cdu2 = new PMDG_NGX_CDU_Screen(0x5C00);
+        public static PMDG_NGX_CDU_Screen cdu2 = new PMDG_NGX_CDU_Screen(0x5C00);
 
         // constants for PMDG mouse click parameters
         public const int ClkL = 536870912;
         public const int ClkR = -2147483648;
+        public const int DBLCLKL = 0x04000000;
         public const int Inc = 16384;
         public const int Dec = 8192;
-        public static  void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel, bool useClicks = false)
+        public static void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel, bool useClicks = false)
         {
             // there are several PMDG controls that cannot be set by direct parameter entry.
             // this function calculates the number of increment or decrement commands that need to be set in order to set a switch to a specific position.
@@ -45,7 +46,7 @@ namespace tfm
                     {
                         FSUIPCConnection.SendControlToFS(control, Dec);
                     }
-                                    }
+                }
 
             }
             if (pos < sel)
@@ -55,12 +56,13 @@ namespace tfm
                     if (useClicks)
                     {
                         FSUIPCConnection.SendControlToFS(control, ClkL);
+
                     }
                     else
                     {
                         FSUIPCConnection.SendControlToFS(control, Inc);
                     }
-                                    }
+                }
 
             }
 
@@ -325,7 +327,7 @@ namespace tfm
             {5, "TR 2" },
             {6, "TR 3" },
             {7, "test" },
-        };
+                    };
 
         private static Dictionary<byte, string> _acMeterSelectorStates = new Dictionary<byte, string>()
         {
@@ -353,9 +355,9 @@ namespace tfm
         };
 
 
-                public static List<PanelObject> PanelControls
+        public static List<PanelObject> PanelControls
         {
-                        get => new List<PanelObject>()
+            get => new List<PanelObject>()
             {
                 // --panel: Aft OverheadPanel
                 // --section: ADIRU
@@ -469,29 +471,29 @@ new SingleStateToggle { Name = "TR unit light", PanelName = "Forward Overhead", 
 new SingleStateToggle{ Name = "Elec light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunELEC, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunELEC},
 new SingleStateToggle{ Name = "DC meter selector", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_DCMeterSelector, AvailableStates = _dcMeterSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_DCMeterSelector},
 new SingleStateToggle { Name = "AC meter selector", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_ACMeterSelector, AvailableStates = _acMeterSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_ACMeterSelector},
-new SingleStateToggle { Name = "Battery selector", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BatSelector, AvailableStates = _batterySelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_BatSelector},
+new SingleStateToggle { Name = "Battery", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BatSelector, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_BatSelector},
 new SingleStateToggle { Name = "Cabin utility", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_CabUtilSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_CabUtilSw},
 new SingleStateToggle { Name = "Passenger seats", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_IFEPassSeatSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_IFEPassSeatSw},
 new SingleStateToggle { Name = "Drive #1 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunDRIVE[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunDRIVE_1},
 new SingleStateToggle { Name = "Drive #2 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunDRIVE[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunDRIVE_2},
-new SingleStateToggle { Name = "Standby power [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSTANDBY_POWER_OFF, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSTANDBY_POWER_OFF},
+new SingleStateToggle { Name = "Standby power light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSTANDBY_POWER_OFF, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSTANDBY_POWER_OFF},
 new SingleStateToggle { Name = "IDG #1 disconnect", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_IDGDisconnectSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_IDGDisconnectSw_1},
 new SingleStateToggle { Name = "IDG #2 disconnect", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_IDGDisconnectSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_IDGDisconnectSw_2},
-new SingleStateToggle { Name = "Standby power selector", PanelName = "Forward Overhead", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_StandbyPowerSelector, AvailableStates = _standbySelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_StandbyPowerSelector},
-new SingleStateToggle { Name = "Ground power [available] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type= PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGRD_POWER_AVAILABLE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGRD_POWER_AVAILABLE},
+new SingleStateToggle { Name = "Standby power selector", PanelName = "Forward Overhead", PanelSection = "Electrical",  Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_StandbyPowerSelector, AvailableStates = _standbySelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_StandbyPowerSelector},
+new SingleStateToggle { Name = "Ground power light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type= PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGRD_POWER_AVAILABLE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGRD_POWER_AVAILABLE},
 new SingleStateToggle { Name = "Ground power", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_GrdPwrSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_GrdPwrSw},
-new SingleStateToggle { Name = "Bus transfer [auto]", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BusTransSw_AUTO, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_BusTransSw_AUTO},
+new SingleStateToggle { Name = "Bus transfer", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BusTransSw_AUTO, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_BusTransSw_AUTO},
 new SingleStateToggle { Name = "Generator #1", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_GenSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_GenSw_1},
 new SingleStateToggle { Name = "Generator #2", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_GenSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_GenSw_2},
 new SingleStateToggle { Name = "APU generator #1", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_APUGenSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_APUGenSw_1},
 new SingleStateToggle { Name = "APU generator #2", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_APUGenSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_APUGenSw_2},
-new SingleStateToggle { Name = "Transfer bus #1 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTRANSFER_BUS_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTRANSFER_BUS_OFF_1},
-new SingleStateToggle { Name = "Transfer bus #2 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTRANSFER_BUS_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTRANSFER_BUS_OFF_2},
-new SingleStateToggle { Name = "Source #1 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSOURCE_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSOURCE_OFF_1},
-new SingleStateToggle { Name = "Source #2 [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSOURCE_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSOURCE_OFF_2},
-new SingleStateToggle { Name = "Generator #1 bus [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGEN_BUS_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGEN_BUS_OFF_1},
-new SingleStateToggle { Name = "Generator #2 bus [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGEN_BUS_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGEN_BUS_OFF_2},
-new SingleStateToggle { Name = "APU generator bus [off] light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunAPU_GEN_OFF_BUS},
+new SingleStateToggle { Name = "Transfer bus #1 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTRANSFER_BUS_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTRANSFER_BUS_OFF_1},
+new SingleStateToggle { Name = "Transfer bus #2 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunTRANSFER_BUS_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunTRANSFER_BUS_OFF_2},
+new SingleStateToggle { Name = "Generator #1 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSOURCE_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSOURCE_OFF_1},
+new SingleStateToggle { Name = "Generator #2 light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunSOURCE_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunSOURCE_OFF_2},
+new SingleStateToggle { Name = "Generator #1 bus light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGEN_BUS_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGEN_BUS_OFF_1},
+new SingleStateToggle { Name = "Generator #2 bus light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunGEN_BUS_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunGEN_BUS_OFF_2},
+new SingleStateToggle { Name = "APU generator bus light", PanelName = "Forward Overhead", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ELEC_annunAPU_GEN_OFF_BUS},
 
 // --section: APU
 new SingleStateToggle { Name = "APU EGT needle", PanelName = "Forward Overhead", PanelSection = "APU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_EGTNeedle, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.APU_EGTNeedle},
@@ -510,7 +512,7 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
                             // --end-panel-controls                              
             };
         }
-                                public static AircraftSystem SpeedMode
+        public static AircraftSystem SpeedMode
         {
             get => Aircraft.pmdg737.MCP_IASBlank.Value == 1 ? AircraftSystem.FMC : AircraftSystem.MCP;
         } // SpeedMode
@@ -676,15 +678,15 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         public static string GetMCPAltitudeComponents()
         {
             string navigationAid = string.Empty;
-            if(Aircraft.pmdg737.MCP_annunALT_HOLD.Value == 1)
+            if (Aircraft.pmdg737.MCP_annunALT_HOLD.Value == 1)
             {
                 navigationAid = "hold";
             }
-            else if(Aircraft.pmdg737.MCP_annunLVL_CHG.Value == 1)
+            else if (Aircraft.pmdg737.MCP_annunLVL_CHG.Value == 1)
             {
                 navigationAid = "level change";
             }
-            else if(Aircraft.pmdg737.MCP_annunVNAV.Value == 1)
+            else if (Aircraft.pmdg737.MCP_annunVNAV.Value == 1)
             {
                 navigationAid = "VNav";
             }
@@ -698,11 +700,11 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
             string FDUoutput = string.Empty;
             double speed = 0.0;
 
-            if(SpeedMode == AircraftSystem.FMC)
+            if (SpeedMode == AircraftSystem.FMC)
             {
                 FDUoutput = "FMC speed";
             }
-            else if(SpeedMode == AircraftSystem.MCP)
+            else if (SpeedMode == AircraftSystem.MCP)
             {
                 controllingComponent = "MCP";
                 if (SpeedType == AircraftSpeed.Indicated)
@@ -723,7 +725,7 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
             }
             return FDUoutput;
 
-                                           } // GetMCPSpeedComponents
+        } // GetMCPSpeedComponents
 
         // IRU Left
         public static void IRULeftOff()
@@ -743,7 +745,7 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_LEFT, Aircraft.pmdg737.IRS_ModeSelector[0].Value, 3);
         }
-                               
+
         public static void IRURightOff()
         {
 
@@ -758,7 +760,7 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_RIGHT, Aircraft.pmdg737.IRS_ModeSelector[1].Value, 2);
         }
-                public static void IRURightAtt()
+        public static void IRURightAtt()
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_IRU_MSU_RIGHT, Aircraft.pmdg737.IRS_ModeSelector[1].Value, 3);
         }
@@ -813,7 +815,7 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_R_GUARD, Aircraft.ClkL);
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EEC_R_SWITCH, Aircraft.pmdg737.ENG_EECSwitch[1].Value, 1, true);
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EEC_R_GUARD, Aircraft.ClkR);
-                    } // EngineEEC2On.
+        } // EngineEEC2On.
 
         public static void EngineEEC2Off()
         {
@@ -826,12 +828,12 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         public static void PassengerOxygenOn()
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_OXY_PASS_SWITCH, Aircraft.pmdg737.OXY_SwNormal.Value, 0, true);
-                                           } // PassengerOxyOn.
+        } // PassengerOxyOn.
 
         public static void PassengerOxygenNormal()
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_OXY_PASS_SWITCH, Aircraft.pmdg737.OXY_SwNormal.Value, 1, true);
-                                } // PassengerOxyNormal.
+        } // PassengerOxyNormal.
 
         public static void FlightRecorderTest()
         {
@@ -879,7 +881,7 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
 
         public static void VHFSelector(int position)
         {
-                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_VHF_NAV_SEL, position);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_VHF_NAV_SEL, position);
         } // VHFSelector.
 
         public static void IRSSelector(int position)
@@ -971,5 +973,146 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FUEL_CROSSFEED, Aircraft.pmdg737.FUEL_CrossFeedSw.Value, position, true);
         } // Crossfeed
-                                   } // End PMDG737Aircraft.
-} // End namespace.
+
+        public static void Battery(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_SWITCH, Aircraft.pmdg737.ELEC_BatSelector.Value, position, true);
+        } // BatterySelector
+
+        public static void GroundPower(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, Aircraft.pmdg737.ELEC_GrdPwrSw.Value, position, true);
+        } // GroundPower.
+
+        public static void CabinUtility(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_CAB_UTIL, Aircraft.pmdg737.ELEC_CabUtilSw.Value, position, true);
+        } // CabinUtility
+
+        public static void IFE(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_IFE, Aircraft.pmdg737.ELEC_IFEPassSeatSw.Value, position, true);
+        } // IFE
+
+        public static void DCSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_DC_METER, Aircraft.pmdg737.ELEC_DCMeterSelector.Value, position);
+        } // DCSelector
+
+        public static void ACSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_AC_METER, Aircraft.pmdg737.ELEC_ACMeterSelector.Value, position);
+        } // ACSelector
+
+        public static void StandbyBattery()
+        {
+            if (FSUIPCConnection.ReadLVar("switch_10_73X") != 0)
+            {
+                if (FSUIPCConnection.ReadLVar("switch_11_73X") != 100)
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_GUARD, ClkR);
+
+                }
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkL);
+                Thread.Sleep(250);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkL);
+
+            }
+        }
+
+        public static void StandbyOff()
+        {
+            if (FSUIPCConnection.ReadLVar("switch_10_73X") == 0)
+            {
+                if (FSUIPCConnection.ReadLVar("switch_11_73X") != 100)
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_GUARD, ClkR);
+                    Thread.Sleep(50);
+                }
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkR);
+
+            }
+            if (FSUIPCConnection.ReadLVar("switch_10_73X") == 100)
+            {
+                if (FSUIPCConnection.ReadLVar("switch_11_73X") != 100)
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_GUARD, ClkL);
+                    Thread.Sleep(50);
+                }
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkL);
+
+            }
+        }
+
+        public static void StandbyAuto()
+        {
+            if (FSUIPCConnection.ReadLVar("switch_10_73X") != 100)
+            {
+                if (FSUIPCConnection.ReadLVar("switch_11_73X") != 100)
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_GUARD, ClkR);
+
+                }
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkR);
+                Thread.Sleep(250);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkR);
+                    }
+    }
+
+        public static void Idg1Disconnect(int position)
+        {
+                                    CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_DISCONNECT_1_SWITCH, Aircraft.pmdg737.ELEC_IDGDisconnectSw[0].Value, position, true);
+        } // Idg1Disconnect
+
+        public static void Idg2Disconnect(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_DISCONNECT_2_SWITCH, Aircraft.pmdg737.ELEC_IDGDisconnectSw[1].Value, position, true);
+        } // Idg2Disconnect.
+
+        public static void Generator1(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_GEN1_SWITCH, Aircraft.pmdg737.ELEC_GenSw[0].Value, position, true);
+        } // Generator1
+
+        public static void Generator2(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_GEN2_SWITCH, Aircraft.pmdg737.ELEC_GenSw[1].Value, position, true);
+        } // Generator2
+
+        public static void ApuGenerator1(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_APU_GEN1_SWITCH, Aircraft.pmdg737.ELEC_APUGenSw[0].Value, position, true);
+        } // ApuGenerator1
+
+        public static void ApuGenerator2(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_APU_GEN2_SWITCH, Aircraft.pmdg737.ELEC_APUGenSw[1].Value, position, true);
+        } // ApuGenerator2
+        
+        public static void BusTransferOff()
+        {
+            if (FSUIPCConnection.ReadLVar("switch_18_73X") != 0)
+            {
+                if (FSUIPCConnection.ReadLVar("switch_19_73X") != 100)
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_BUS_TRANSFER_GUARD, ClkR);
+                }
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_BUS_TRANSFER_SWITCH, ClkL);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_BUS_TRANSFER_SWITCH, ClkR);
+            }
+
+        } // BusTransferOff
+
+        public static void BusTransferAuto()
+        {
+            if (FSUIPCConnection.ReadLVar("switch_18_73X") != 100)
+            {
+                if (FSUIPCConnection.ReadLVar("switch_19_73X") != 100)
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_BUS_TRANSFER_GUARD, ClkR);
+                }
+            }
+        } // BusTransferAuto
+
+           } // End PMDG737Aircraft.
+    } // End namespace.

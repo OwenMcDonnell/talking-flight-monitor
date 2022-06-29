@@ -375,6 +375,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.Designer.cs">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -436,23 +442,11 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.Designer.cs">
       <DependentUpon>ctlAntiIce.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlElectrical.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlElectrical.Designer.cs">
-      <DependentUpon>ctlElectrical.cs</DependentUpon>
-    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.Designer.cs">
       <DependentUpon>ctlEngines.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlFuel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlFuel.Designer.cs">
-      <DependentUpon>ctlFuel.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.cs">
       <SubType>UserControl</SubType>
@@ -640,6 +634,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlEEC.Designer.cs">
       <DependentUpon>ctlEEC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlElectrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlElectrical.Designer.cs">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightControls.cs">
       <SubType>UserControl</SubType>
@@ -877,6 +877,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.resx">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.resx">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>
     </EmbeddedResource>
@@ -907,14 +910,8 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.resx">
       <DependentUpon>ctlAntiIce.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlElectrical.resx">
-      <DependentUpon>ctlElectrical.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.resx">
       <DependentUpon>ctlEngines.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlFuel.resx">
-      <DependentUpon>ctlFuel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.resx">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
@@ -1014,6 +1011,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlElectrical.resx">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightControls.resx">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>

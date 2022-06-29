@@ -3884,8 +3884,7 @@ else if (PMDG777Detected)
 
         private void ReadPMDG737Toggles()
         {
-            // todo: condense pmdg 737 offsets into pmdg737 panel controls.
-            foreach(SingleStateToggle toggle in PMDG737Aircraft.PanelControls)
+                        foreach(SingleStateToggle toggle in PMDG737Aircraft.PanelControls)
             {
                 // Only ones marked to speak are announced.
                 if (toggle.shouldSpeak == true)
@@ -3897,7 +3896,7 @@ else if (PMDG777Detected)
                                     }
             }
 
-            // Flare light as a test.
+/* --keep for backup set of offseps ---
             ReadToggle(Aircraft.pmdg737.HGS_annun_FLARE, Aircraft.pmdg737.HGS_annun_FLARE.Value > 0, "Flare light", "on", "off");
             // electrical panel
             ReadPMDGToggle(Aircraft.pmdg737.ELEC_BatSelector, Aircraft.pmdg737.ELEC_BatSelector.Value > 0, "Battery", "active", "off");
@@ -4058,7 +4057,7 @@ else if (PMDG777Detected)
             }
             ReadToggle(Aircraft.pmdg737.AIR_BleedAirSwitch[1], Aircraft.pmdg737.AIR_BleedAirSwitch[1].Value > 0, "engine 2 bleed", "on", "off");
             ReadToggle(Aircraft.pmdg737.AIR_BleedAirSwitch[0], Aircraft.pmdg737.AIR_BleedAirSwitch[0].Value > 0, "engine 1 bleed", "on", "off");
-            ReadToggle(Aircraft.pmdg737.AIR_APUBleedAirSwitch, Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value > 0, "APU bleed", "on", "off");
+            ReadToggle(Aircraft.pmdg737.AIR_APUBleedAirSwitch, Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value > 0, "APU bleed", "on", "off");*/
         } // End ReadPMDG737Toggles.
         private void ReadPMDG747Toggles()
         {
