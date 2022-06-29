@@ -290,5 +290,8 @@
     <Setting Name="destination_runway" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+D</Value>
     </Setting>
+    <Setting Name="ApplicationRestart" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+Shift+X</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

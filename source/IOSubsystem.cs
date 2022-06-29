@@ -2048,6 +2048,9 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "ApplicationRestart":
+                    Application.Restart();
+                    break;
                 case "destination_runway":
                     DestinationForm df = new DestinationForm();
                     df.Show();
