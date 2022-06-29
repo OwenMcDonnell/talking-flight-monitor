@@ -1114,5 +1114,15 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
             }
         } // BusTransferAuto
 
+        public static void LeftWiperSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_WIPER_LEFT_CONTROL, Aircraft.pmdg737.OH_WiperLSelector.Value, position);
+        } // LeftWiperSelector
+
+        public static void RightWiperSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_WIPER_RIGHT_CONTROL, Aircraft.pmdg737.OH_WiperRSelector.Value, position);
+        } // RightWiperSelector
+
            } // End PMDG737Aircraft.
     } // End namespace.

@@ -405,6 +405,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.Designer.cs">
       <DependentUpon>ctlNav_displays.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.Designer.cs">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -701,6 +707,12 @@
     <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.Designer.cs">
       <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlWipers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlWipers.Designer.cs">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
     <Compile Include="Autopilot\InstrumentPanel.cs" />
@@ -904,6 +916,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.resx">
       <DependentUpon>ctlNav_displays.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.resx">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -1056,6 +1071,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlServiceInterPhone.resx">
       <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlWipers.resx">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>

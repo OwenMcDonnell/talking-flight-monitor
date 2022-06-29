@@ -44,6 +44,7 @@ namespace tfm
             pages.Add("737FuelNode", new Settings_panels.PMDG737.ctlFuel());
             pages.Add("737ElectricalNode", new Settings_panels.PMDG737.ctlElectrical());
             pages.Add("737ApuNode", new Settings_panels.PMDG737.ctlAPU());
+            pages.Add("737WipersNode", new Settings_panels.PMDG737.ctlWipers());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {
