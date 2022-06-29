@@ -23,7 +23,6 @@
 * Ctrl+Shift+X - Restart TFM with a keyboard shortcut 
 
 ### Known issues
-* There is no keyboard command to restart TFM. Restart it from the notification tray icon.
 * The ILS readouts stop when approach mode turns off.
 * The new ILS feature may not work as expected in the PMDG 747.
 
