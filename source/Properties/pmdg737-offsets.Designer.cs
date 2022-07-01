@@ -1426,5 +1426,149 @@ namespace tfm.Properties {
                 this["OH_WiperRSelector"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_CircuitBreakerKnob {
+            get {
+                return ((bool)(this["LTS_CircuitBreakerKnob"]));
+            }
+            set {
+                this["LTS_CircuitBreakerKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_OvereadPanelKnob {
+            get {
+                return ((bool)(this["LTS_OvereadPanelKnob"]));
+            }
+            set {
+                this["LTS_OvereadPanelKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_EquipCoolingSupplyNORM {
+            get {
+                return ((bool)(this["AIR_EquipCoolingSupplyNORM"]));
+            }
+            set {
+                this["AIR_EquipCoolingSupplyNORM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_EquipCoolingExhaustNORM {
+            get {
+                return ((bool)(this["AIR_EquipCoolingExhaustNORM"]));
+            }
+            set {
+                this["AIR_EquipCoolingExhaustNORM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunEquipCoolingSupplyOFF {
+            get {
+                return ((bool)(this["AIR_annunEquipCoolingSupplyOFF"]));
+            }
+            set {
+                this["AIR_annunEquipCoolingSupplyOFF"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunEquipCoolingExhaustOFF {
+            get {
+                return ((bool)(this["AIR_annunEquipCoolingExhaustOFF"]));
+            }
+            set {
+                this["AIR_annunEquipCoolingExhaustOFF"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_annunEmerNOT_ARMED {
+            get {
+                return ((bool)(this["LTS_annunEmerNOT_ARMED"]));
+            }
+            set {
+                this["LTS_annunEmerNOT_ARMED"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_EmerExitSelector {
+            get {
+                return ((bool)(this["LTS_EmerExitSelector"]));
+            }
+            set {
+                this["LTS_EmerExitSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_NoSmokingSelector {
+            get {
+                return ((bool)(this["COMM_NoSmokingSelector"]));
+            }
+            set {
+                this["COMM_NoSmokingSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_FastenBeltsSelector {
+            get {
+                return ((bool)(this["COMM_FastenBeltsSelector"]));
+            }
+            set {
+                this["COMM_FastenBeltsSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_annunCALL {
+            get {
+                return ((bool)(this["COMM_annunCALL"]));
+            }
+            set {
+                this["COMM_annunCALL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_annunPA_IN_USE {
+            get {
+                return ((bool)(this["COMM_annunPA_IN_USE"]));
+            }
+            set {
+                this["COMM_annunPA_IN_USE"] = value;
+            }
+        }
     }
 }

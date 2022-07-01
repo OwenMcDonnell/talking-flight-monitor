@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
+using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
+
 
 namespace tfm
 {
@@ -50,6 +52,9 @@ namespace tfm
             pages.Add("electricalNode", new ctlElectrical());
             pages.Add("apuNode", new ctlAPU());
             pages.Add("wipersNode", new ctlWipers());
+
+            // Center Overhead
+            pages.Add("centerOverheadNode", new ctlCenterMain());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

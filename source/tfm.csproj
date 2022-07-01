@@ -375,6 +375,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.Designer.cs">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -900,6 +906,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.resx">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
