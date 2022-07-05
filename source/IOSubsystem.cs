@@ -118,8 +118,9 @@ namespace tfm
         private bool groundSpeedActive;
         private bool takeOffAssistantActive = false;
         private bool isTakeoffComplete = true; // Always true unless takeoff assist is Active.
+        private double OldElevatorTrim = 0;
         private bool TrimEnabled = true;
-        private bool FlapsMoving;
+                private bool FlapsMoving;
         private bool pmdg777SpeedBrakeMoving = false;
           
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -697,33 +698,45 @@ namespace tfm
         }
         private void ReadTrim()
         {
-            // Elevator trim
-            double elevator = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.ElevatorTrim.Value);
-            double aileron = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.AileronTrim.Value);
-            if (Aircraft.ElevatorTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
 
+            if (PMDG737Detected)
             {
-                if (elevator < 0)
+                                                                                if(PMDG737Aircraft.CurrentElevatorTrim != OldElevatorTrim && TrimEnabled)
                 {
-                    Output(isGauge: false, output: $"Trim down {Math.Abs(Math.Round(elevator, 2)):F2}. ");
+                    Output(isGauge: false, output: $"{PMDG737Aircraft.CurrentElevatorTrim}");
+                    OldElevatorTrim = PMDG737Aircraft.CurrentElevatorTrim;
                 }
-                else
-                {
-                    Output(isGauge: false, output: $"Trim up: {Math.Round(elevator, 2):F2}");
-                }
+                            } // end-pmdg737-trim
+            else
+            {
+                // Elevator trim
+                double elevator = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.ElevatorTrim.Value);
+                double aileron = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.AileronTrim.Value);
+                if (Aircraft.ElevatorTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
 
-            }
-            if (Aircraft.AileronTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
-            {
-                if (aileron < 0)
                 {
-                    Output(isGauge: false, output: $"Trim left {Math.Abs(Math.Round(aileron, 2))}. ");
+                    if (elevator < 0)
+                    {
+                        Output(isGauge: false, output: $"Trim down {Math.Abs(Math.Round(elevator, 2)):F2}. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: $"Trim up: {Math.Round(elevator, 2):F2}");
+                    }
+
                 }
-                else
+                if (Aircraft.AileronTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
                 {
-                    Output(isGauge: false, output: $"Trim right {Math.Round(aileron, 2)}");
+                    if (aileron < 0)
+                    {
+                        Output(isGauge: false, output: $"Trim left {Math.Abs(Math.Round(aileron, 2))}. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: $"Trim right {Math.Round(aileron, 2)}");
+                    }
                 }
-            }
+            }// end-freeware-trim
         }
 
         private void ReadAltimeter(bool TriggeredByKey)

@@ -584,6 +584,11 @@ new SingleStateToggle { Name = "PA in use light", PanelName = "Center Overhead",
             }
         } // End TimeToTOD.
 
+        public static double CurrentElevatorTrim
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("ElevTrimTT"), 2);
+        } // CurentElevatorTrim
+
         public static double CurrentFlapsPosition
         {
             get
@@ -1147,6 +1152,39 @@ public static void EmergencyLightSelector(int position)
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EC_SUPPLY_SWITCH, Aircraft.pmdg737.AIR_EquipCoolingSupplyNORM.Value, position, true);
         } // AirEquipCoolingSupply
+        public static void AirEquipCoolingExhaust(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EC_EXHAUST_SWITCH, Aircraft.pmdg737.AIR_EquipCoolingExhaustNORM.Value, position, true);
+        } // AirEquipCoolingExhaust
 
-           } // End PMDG737Aircraft.
+        public static void NoSmokingSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_NO_SMOKING_LIGHT_SWITCH, Aircraft.pmdg737.COMM_NoSmokingSelector.Value, position, true);
+                                                } // NoSmokingSelector
+
+        public static void SeatBeltSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FASTEN_BELTS_LIGHT_SWITCH, Aircraft.pmdg737.COMM_FastenBeltsSelector.Value, position, true);
+        } // SeatBeltSelector
+
+        public static void CircuttBreakerLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CB_LIGHT_CONTROL, Inc);
+        } // CircuttBreakerIncrease
+
+        public static void CircuttBreakerLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CB_LIGHT_CONTROL, Dec);
+        } // CircuttBreakerLightDecrease
+
+        public static void OverheadPanelLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PANEL_LIGHT_CONTROL, Inc);
+        } // OverheadPanelLightIncrease
+
+        public static void OverheadPanelLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PANEL_LIGHT_CONTROL, Dec);
+        } // OverheadPanelLightDecrease
+                       } // End PMDG737Aircraft.
     } // End namespace.

@@ -125,12 +125,15 @@
             // breakerTextBox
             // 
             this.breakerTextBox.AccessibleName = "Circutt breaker knob";
-            this.breakerTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.breakerTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.breakerTextBox.Location = new System.Drawing.Point(118, 3);
             this.breakerTextBox.Name = "breakerTextBox";
+            this.breakerTextBox.ReadOnly = true;
             this.breakerTextBox.Size = new System.Drawing.Size(100, 40);
             this.breakerTextBox.TabIndex = 1;
             this.breakerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.breakerTextBox.Enter += new System.EventHandler(this.breakerTextBox_Enter);
+            this.breakerTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.breakerTextBox_KeyDown);
             // 
             // overHeadLabel
             // 
@@ -145,12 +148,14 @@
             // overheadKnobTextBox
             // 
             this.overheadKnobTextBox.AccessibleName = "Overhead panel knob";
-            this.overheadKnobTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.overheadKnobTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.overheadKnobTextBox.Location = new System.Drawing.Point(430, 3);
             this.overheadKnobTextBox.Name = "overheadKnobTextBox";
             this.overheadKnobTextBox.Size = new System.Drawing.Size(100, 40);
             this.overheadKnobTextBox.TabIndex = 3;
             this.overheadKnobTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.overheadKnobTextBox.Enter += new System.EventHandler(this.overheadKnobTextBox_Enter);
+            this.overheadKnobTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.overheadKnobTextBox_KeyDown);
             // 
             // emergencyexitLabel
             // 
@@ -224,6 +229,7 @@
             this.coolExhaustButton.TabIndex = 1;
             this.coolExhaustButton.Text = "button2";
             this.coolExhaustButton.UseVisualStyleBackColor = true;
+            this.coolExhaustButton.Click += new System.EventHandler(this.coolExhaustButton_Click);
             // 
             // commsGroupBox
             // 
@@ -275,6 +281,7 @@
             this.noSmokingComboBox.Name = "noSmokingComboBox";
             this.noSmokingComboBox.Size = new System.Drawing.Size(121, 41);
             this.noSmokingComboBox.TabIndex = 1;
+            this.noSmokingComboBox.SelectedIndexChanged += new System.EventHandler(this.noSmokingComboBox_SelectedIndexChanged);
             // 
             // seatBeltLabel
             // 
@@ -299,6 +306,7 @@
             this.seatBeltComboBox.Name = "seatBeltComboBox";
             this.seatBeltComboBox.Size = new System.Drawing.Size(121, 41);
             this.seatBeltComboBox.TabIndex = 3;
+            this.seatBeltComboBox.SelectedIndexChanged += new System.EventHandler(this.seatBeltComboBox_SelectedIndexChanged);
             // 
             // indicatorsGroupBox
             // 

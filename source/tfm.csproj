@@ -647,6 +647,12 @@
     <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
       <DependentUpon>ctlAPU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCenterMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCenterMain.Designer.cs">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1047,6 +1053,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlCenterMain.resx">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
