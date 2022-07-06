@@ -76,7 +76,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
                 {
                     if (toggle.Offset.ValueChanged)
                     {
-                        noSmokingComboBox.SelectedIndex = toggle.CurrentState.Key;
+                        chimesComboBox.SelectedIndex = toggle.CurrentState.Key;
                     }
                 } // no smoking
 
@@ -144,7 +144,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
 
                 if (toggle.Offset == Aircraft.pmdg737.COMM_NoSmokingSelector)
                 {
-                    noSmokingComboBox.SelectedIndex = toggle.CurrentState.Key;
+                    chimesComboBox.SelectedIndex = toggle.CurrentState.Key;
                 } // no smoking
 
                 if (toggle.Offset == Aircraft.pmdg737.COMM_FastenBeltsSelector)
@@ -194,16 +194,16 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
             }
         }
 
-        private void noSmokingComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void chimesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Properties.pmdg737_offsets.Default.COMM_NoSmokingSelector == false)
             {
                 if (Tolk.DetectScreenReader() == "NVDA")
                 {
-                    Tolk.Output(noSmokingComboBox.SelectedItem.ToString());
+                    Tolk.Output(chimesComboBox.SelectedItem.ToString());
                 }
             }
-            PMDG737Aircraft.NoSmokingSelector(noSmokingComboBox.SelectedIndex);
+            PMDG737Aircraft.NoSmokingSelector(chimesComboBox.SelectedIndex);
         }
 
         private void seatBeltComboBox_SelectedIndexChanged(object sender, EventArgs e)

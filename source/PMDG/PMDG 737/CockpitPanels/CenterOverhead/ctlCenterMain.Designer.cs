@@ -43,8 +43,8 @@
             this.coolExhaustButton = new System.Windows.Forms.Button();
             this.commsGroupBox = new System.Windows.Forms.GroupBox();
             this.commsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.noSmokingLabel = new System.Windows.Forms.Label();
-            this.noSmokingComboBox = new System.Windows.Forms.ComboBox();
+            this.chimesLabel = new System.Windows.Forms.Label();
+            this.chimesComboBox = new System.Windows.Forms.ComboBox();
             this.seatBeltLabel = new System.Windows.Forms.Label();
             this.seatBeltComboBox = new System.Windows.Forms.ComboBox();
             this.indicatorsGroupBox = new System.Windows.Forms.GroupBox();
@@ -240,7 +240,7 @@
             this.commsGroupBox.Location = new System.Drawing.Point(273, 131);
             this.commsGroupBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.commsGroupBox.Name = "commsGroupBox";
-            this.commsGroupBox.Size = new System.Drawing.Size(539, 122);
+            this.commsGroupBox.Size = new System.Drawing.Size(524, 122);
             this.commsGroupBox.TabIndex = 2;
             this.commsGroupBox.TabStop = false;
             this.commsGroupBox.Text = "&Comms";
@@ -249,44 +249,43 @@
             // 
             this.commsFlowLayoutPanel.AutoSize = true;
             this.commsFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.commsFlowLayoutPanel.Controls.Add(this.noSmokingLabel);
-            this.commsFlowLayoutPanel.Controls.Add(this.noSmokingComboBox);
+            this.commsFlowLayoutPanel.Controls.Add(this.chimesLabel);
+            this.commsFlowLayoutPanel.Controls.Add(this.chimesComboBox);
             this.commsFlowLayoutPanel.Controls.Add(this.seatBeltLabel);
             this.commsFlowLayoutPanel.Controls.Add(this.seatBeltComboBox);
             this.commsFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.commsFlowLayoutPanel.Name = "commsFlowLayoutPanel";
-            this.commsFlowLayoutPanel.Size = new System.Drawing.Size(530, 47);
+            this.commsFlowLayoutPanel.Size = new System.Drawing.Size(515, 47);
             this.commsFlowLayoutPanel.TabIndex = 0;
             // 
-            // noSmokingLabel
+            // chimesLabel
             // 
-            this.noSmokingLabel.AutoSize = true;
-            this.noSmokingLabel.Location = new System.Drawing.Point(20, 0);
-            this.noSmokingLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
-            this.noSmokingLabel.Name = "noSmokingLabel";
-            this.noSmokingLabel.Size = new System.Drawing.Size(114, 33);
-            this.noSmokingLabel.TabIndex = 0;
-            this.noSmokingLabel.Text = "Smo&king";
+            this.chimesLabel.AutoSize = true;
+            this.chimesLabel.Location = new System.Drawing.Point(20, 0);
+            this.chimesLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
+            this.chimesLabel.Name = "chimesLabel";
+            this.chimesLabel.Size = new System.Drawing.Size(99, 33);
+            this.chimesLabel.TabIndex = 0;
+            this.chimesLabel.Text = "&Chimes";
             // 
-            // noSmokingComboBox
+            // chimesComboBox
             // 
-            this.noSmokingComboBox.AccessibleName = "No smoking selector";
-            this.noSmokingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.noSmokingComboBox.FormattingEnabled = true;
-            this.noSmokingComboBox.Items.AddRange(new object[] {
+            this.chimesComboBox.AccessibleName = "Chimes selector";
+            this.chimesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.chimesComboBox.FormattingEnabled = true;
+            this.chimesComboBox.Items.AddRange(new object[] {
             "off",
-            "auto",
             "on"});
-            this.noSmokingComboBox.Location = new System.Drawing.Point(140, 3);
-            this.noSmokingComboBox.Name = "noSmokingComboBox";
-            this.noSmokingComboBox.Size = new System.Drawing.Size(121, 41);
-            this.noSmokingComboBox.TabIndex = 1;
-            this.noSmokingComboBox.SelectedIndexChanged += new System.EventHandler(this.noSmokingComboBox_SelectedIndexChanged);
+            this.chimesComboBox.Location = new System.Drawing.Point(125, 3);
+            this.chimesComboBox.Name = "chimesComboBox";
+            this.chimesComboBox.Size = new System.Drawing.Size(121, 41);
+            this.chimesComboBox.TabIndex = 1;
+            this.chimesComboBox.SelectedIndexChanged += new System.EventHandler(this.chimesComboBox_SelectedIndexChanged);
             // 
             // seatBeltLabel
             // 
             this.seatBeltLabel.AutoSize = true;
-            this.seatBeltLabel.Location = new System.Drawing.Point(284, 0);
+            this.seatBeltLabel.Location = new System.Drawing.Point(269, 0);
             this.seatBeltLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.seatBeltLabel.Name = "seatBeltLabel";
             this.seatBeltLabel.Size = new System.Drawing.Size(116, 33);
@@ -302,7 +301,7 @@
             "off",
             "auto",
             "on"});
-            this.seatBeltComboBox.Location = new System.Drawing.Point(406, 3);
+            this.seatBeltComboBox.Location = new System.Drawing.Point(391, 3);
             this.seatBeltComboBox.Name = "seatBeltComboBox";
             this.seatBeltComboBox.Size = new System.Drawing.Size(121, 41);
             this.seatBeltComboBox.TabIndex = 3;
@@ -501,8 +500,8 @@
         private System.Windows.Forms.Button coolExhaustButton;
         private System.Windows.Forms.GroupBox commsGroupBox;
         private System.Windows.Forms.FlowLayoutPanel commsFlowLayoutPanel;
-        private System.Windows.Forms.Label noSmokingLabel;
-        private System.Windows.Forms.ComboBox noSmokingComboBox;
+        private System.Windows.Forms.Label chimesLabel;
+        private System.Windows.Forms.ComboBox chimesComboBox;
         private System.Windows.Forms.Label seatBeltLabel;
         private System.Windows.Forms.ComboBox seatBeltComboBox;
         private System.Windows.Forms.GroupBox indicatorsGroupBox;

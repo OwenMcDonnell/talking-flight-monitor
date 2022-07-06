@@ -514,7 +514,7 @@ new SingleStateToggle { Name = "Overhead panel knob", PanelName = "Center Overhe
 new SingleStateToggle { Name = "Emergency exit lights", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.LTS_EmerExitSelector, AvailableStates = _armedOnOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_EmerExitSelector},
 new SingleStateToggle { Name = "Equipment cooling supply", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_EquipCoolingSupplyNORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_EquipCoolingSupplyNORM},
 new SingleStateToggle { Name = "Equipment cooling exhaust", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_EquipCoolingExhaustNORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_EquipCoolingExhaustNORM},
-new SingleStateToggle { Name = "No smoking selector", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_NoSmokingSelector, AvailableStates = _autoOnOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_NoSmokingSelector},
+new SingleStateToggle { Name = "Chimes", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_NoSmokingSelector, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_NoSmokingSelector},
 new SingleStateToggle { Name = "Seatbelt selector", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_FastenBeltsSelector, AvailableStates = _autoOnOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_FastenBeltsSelector},
 new SingleStateToggle { Name = "Emergency exit N/armed light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.LTS_annunEmerNOT_ARMED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_annunEmerNOT_ARMED},
 new SingleStateToggle { Name = "Equipment cooling supply light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunEquipCoolingSupplyOFF, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunEquipCoolingSupplyOFF},
@@ -998,9 +998,16 @@ new SingleStateToggle { Name = "PA in use light", PanelName = "Center Overhead",
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_SWITCH, Aircraft.pmdg737.ELEC_BatSelector.Value, position, true);
         } // BatterySelector
 
-        public static void GroundPower(int position)
+        public static void GroundPower()
         {
-            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, Aircraft.pmdg737.ELEC_GrdPwrSw.Value, position, true);
+            if(FSUIPCConnection.ReadLVar("7X7X_Ground_Power_Light_Connected") == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, ClkR);
+            }
         } // GroundPower.
 
         public static void CabinUtility(int position)

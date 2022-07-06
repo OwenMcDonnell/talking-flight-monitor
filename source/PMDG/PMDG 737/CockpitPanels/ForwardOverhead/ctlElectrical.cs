@@ -42,8 +42,9 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
                 if (toggle.Offset == Aircraft.pmdg737.ELEC_GrdPwrSw)
                 {
-                    groundPwrButton.Text = $"G&round power {toggle.CurrentState.Value}";
-                    groundPwrButton.AccessibleName = toggle.ToString();
+                    var groundPowerState = FSUIPCConnection.ReadLVar("7X7X_Ground_Power_Light_Connected") == 1? "on" : "off";
+                    groundPwrButton.Text = $"G&round power {groundPowerState}";
+                    groundPwrButton.AccessibleName = $"{toggle.Name} {groundPowerState}";
                 } // ground power
 
                 if (toggle.Offset == Aircraft.pmdg737.ELEC_CabUtilSw)
@@ -239,16 +240,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
         private void groundPwrButton_Click(object sender, EventArgs e)
         {
-            var toggle = (SingleStateToggle) electricalControls.Where(x => x.Offset == Aircraft.pmdg737.ELEC_GrdPwrSw).ToArray()[0];
-
-            if(toggle.CurrentState.Value == "on")
-            {
-                PMDG737Aircraft.GroundPower(0);
-            }
-            else
-            {
-                PMDG737Aircraft.GroundPower(1);
-            }
+            PMDG737Aircraft.GroundPower();            
         }
 
         private void cabinUtilButton_Click(object sender, EventArgs e)
