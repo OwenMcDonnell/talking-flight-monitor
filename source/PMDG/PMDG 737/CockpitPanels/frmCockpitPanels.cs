@@ -55,6 +55,7 @@ namespace tfm
 
             // Center Overhead
             pages.Add("centerOverheadNode", new ctlCenterMain());
+            pages.Add("antiIceNode", new tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead.ctlAntiIce());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

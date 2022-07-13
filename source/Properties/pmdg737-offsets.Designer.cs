@@ -1570,5 +1570,389 @@ namespace tfm.Properties {
                 this["COMM_annunPA_IN_USE"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_WindowHeatSw1 {
+            get {
+                return ((bool)(this["ICE_WindowHeatSw1"]));
+            }
+            set {
+                this["ICE_WindowHeatSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_WindowHeatSw2 {
+            get {
+                return ((bool)(this["ICE_WindowHeatSw2"]));
+            }
+            set {
+                this["ICE_WindowHeatSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_WindowHeatSw3 {
+            get {
+                return ((bool)(this["ICE_WindowHeatSw3"]));
+            }
+            set {
+                this["ICE_WindowHeatSw3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_WindowHeatSw4 {
+            get {
+                return ((bool)(this["ICE_WindowHeatSw4"]));
+            }
+            set {
+                this["ICE_WindowHeatSw4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_ProbeHeatSw1 {
+            get {
+                return ((bool)(this["ICE_ProbeHeatSw1"]));
+            }
+            set {
+                this["ICE_ProbeHeatSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_ProbeHeatSw2 {
+            get {
+                return ((bool)(this["ICE_ProbeHeatSw2"]));
+            }
+            set {
+                this["ICE_ProbeHeatSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_EngAntiIceSw1 {
+            get {
+                return ((bool)(this["ICE_EngAntiIceSw1"]));
+            }
+            set {
+                this["ICE_EngAntiIceSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_EngAntiIceSw2 {
+            get {
+                return ((bool)(this["ICE_EngAntiIceSw2"]));
+            }
+            set {
+                this["ICE_EngAntiIceSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunOVERHEAT1 {
+            get {
+                return ((bool)(this["ICE_annunOVERHEAT1"]));
+            }
+            set {
+                this["ICE_annunOVERHEAT1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunOVERHEAT2 {
+            get {
+                return ((bool)(this["ICE_annunOVERHEAT2"]));
+            }
+            set {
+                this["ICE_annunOVERHEAT2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunOVERHEAT3 {
+            get {
+                return ((bool)(this["ICE_annunOVERHEAT3"]));
+            }
+            set {
+                this["ICE_annunOVERHEAT3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunOVERHEAT4 {
+            get {
+                return ((bool)(this["ICE_annunOVERHEAT4"]));
+            }
+            set {
+                this["ICE_annunOVERHEAT4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunON1 {
+            get {
+                return ((bool)(this["ICE_annunON1"]));
+            }
+            set {
+                this["ICE_annunON1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunON2 {
+            get {
+                return ((bool)(this["ICE_annunON2"]));
+            }
+            set {
+                this["ICE_annunON2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunON3 {
+            get {
+                return ((bool)(this["ICE_annunON3"]));
+            }
+            set {
+                this["ICE_annunON3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunON4 {
+            get {
+                return ((bool)(this["ICE_annunON4"]));
+            }
+            set {
+                this["ICE_annunON4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunCAPT_PITOT {
+            get {
+                return ((bool)(this["ICE_annunCAPT_PITOT"]));
+            }
+            set {
+                this["ICE_annunCAPT_PITOT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunL_ELEV_PITOT {
+            get {
+                return ((bool)(this["ICE_annunL_ELEV_PITOT"]));
+            }
+            set {
+                this["ICE_annunL_ELEV_PITOT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunL_ALPHA_VANE {
+            get {
+                return ((bool)(this["ICE_annunL_ALPHA_VANE"]));
+            }
+            set {
+                this["ICE_annunL_ALPHA_VANE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunL_TEMP_PROBE {
+            get {
+                return ((bool)(this["ICE_annunL_TEMP_PROBE"]));
+            }
+            set {
+                this["ICE_annunL_TEMP_PROBE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunFO_PITOT {
+            get {
+                return ((bool)(this["ICE_annunFO_PITOT"]));
+            }
+            set {
+                this["ICE_annunFO_PITOT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunR_ELEV_PITOT {
+            get {
+                return ((bool)(this["ICE_annunR_ELEV_PITOT"]));
+            }
+            set {
+                this["ICE_annunR_ELEV_PITOT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunR_ALPHA_VANE {
+            get {
+                return ((bool)(this["ICE_annunR_ALPHA_VANE"]));
+            }
+            set {
+                this["ICE_annunR_ALPHA_VANE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunAUX_PITOT {
+            get {
+                return ((bool)(this["ICE_annunAUX_PITOT"]));
+            }
+            set {
+                this["ICE_annunAUX_PITOT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunVALVE_OPEN1 {
+            get {
+                return ((bool)(this["ICE_annunVALVE_OPEN1"]));
+            }
+            set {
+                this["ICE_annunVALVE_OPEN1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunVALVE_OPEN2 {
+            get {
+                return ((bool)(this["ICE_annunVALVE_OPEN2"]));
+            }
+            set {
+                this["ICE_annunVALVE_OPEN2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunCOWL_ANTI_ICE1 {
+            get {
+                return ((bool)(this["ICE_annunCOWL_ANTI_ICE1"]));
+            }
+            set {
+                this["ICE_annunCOWL_ANTI_ICE1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunCOWL_ANTI_ICE2 {
+            get {
+                return ((bool)(this["ICE_annunCOWL_ANTI_ICE2"]));
+            }
+            set {
+                this["ICE_annunCOWL_ANTI_ICE2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunCOWL_VALVE_OPEN1 {
+            get {
+                return ((bool)(this["ICE_annunCOWL_VALVE_OPEN1"]));
+            }
+            set {
+                this["ICE_annunCOWL_VALVE_OPEN1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_annunCOWL_VALVE_OPEN2 {
+            get {
+                return ((bool)(this["ICE_annunCOWL_VALVE_OPEN2"]));
+            }
+            set {
+                this["ICE_annunCOWL_VALVE_OPEN2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_WingAntiIceSw {
+            get {
+                return ((bool)(this["ICE_WingAntiIceSw"]));
+            }
+            set {
+                this["ICE_WingAntiIceSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ICE_WindowHeatTestSw {
+            get {
+                return ((bool)(this["ICE_WindowHeatTestSw"]));
+            }
+            set {
+                this["ICE_WindowHeatTestSw"] = value;
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@
     * Main center area - Note that center area of overhead is the Center Overhead tree item.
         * The traditional no smoking selector is labeled chimes in the 737-800 and 737-900.
 * PMDG 737: Speech settings for panels listed above.
+    * Anti-ice
 * Ctrl+Shift+X - Restart TFM with a keyboard shortcut 
 * Keyboard letters I and D are now used to change lighting knobs.
     * While a lighting knob has focus: I increases brightness and d decreases brightness.

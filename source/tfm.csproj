@@ -327,6 +327,7 @@
     <Compile Include="PMDG\Enums\AircraftSpeed.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
+    <Compile Include="PMDG\PanelObjects\SingleStateToggleInt32.cs" />
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -374,6 +375,12 @@
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.Designer.cs">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.cs">
       <SubType>UserControl</SubType>
@@ -640,6 +647,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAntiIce.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAntiIce.Designer.cs">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlAPU.cs">
       <SubType>UserControl</SubType>
@@ -913,6 +926,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.resx">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.resx">
       <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -1050,6 +1066,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAntiIce.resx">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
