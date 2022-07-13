@@ -65,15 +65,13 @@
             System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Engines");
             System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Hydraulics");
             System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("air systems");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Anti-ice");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Pressurization");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Pressurization");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode19,
             treeNode20,
             treeNode21,
             treeNode22,
-            treeNode23,
-            treeNode24});
+            treeNode23});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -127,17 +125,15 @@
             treeNode21.Text = "Hydraulics";
             treeNode22.Name = "nodAirSystems";
             treeNode22.Text = "air systems";
-            treeNode23.Name = "nodAntiIce";
-            treeNode23.Text = "Anti-ice";
-            treeNode24.Name = "nodPressurization";
-            treeNode24.Text = "Pressurization";
-            treeNode25.Name = "nodOverhead";
-            treeNode25.Text = "Overhead";
+            treeNode23.Name = "nodPressurization";
+            treeNode23.Text = "Pressurization";
+            treeNode24.Name = "nodOverhead";
+            treeNode24.Text = "Overhead";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
             treeNode18,
-            treeNode25});
+            treeNode24});
             this.tvPanels.Size = new System.Drawing.Size(121, 97);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

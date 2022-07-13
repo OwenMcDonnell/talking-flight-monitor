@@ -32,8 +32,7 @@ namespace tfm
             pages.Add("nodHydraulics", new ctlHydraulics());
             pages.Add("nodEngines", new ctlEngines_737());      
             pages.Add("nodAirSystems", new ctlAirSystems());
-            pages.Add("nodAntiIce", new ctlAntiIce());
-            pages.Add("nodPressurization", new ctlPressurization());
+                        pages.Add("nodPressurization", new ctlPressurization());
             // redesigned pages. keep the ones above for backups.
             // --panel: Aft Overhead
             pages.Add("adiruNode", new ctlADIRU());
@@ -55,7 +54,7 @@ namespace tfm
 
             // Center Overhead
             pages.Add("centerOverheadNode", new ctlCenterMain());
-            pages.Add("antiIceNode", new tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead.ctlAntiIce());
+            pages.Add("antiIceNode", new ctlAntiIce());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {
