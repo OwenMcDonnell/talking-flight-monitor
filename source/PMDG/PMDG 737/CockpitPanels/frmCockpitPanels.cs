@@ -29,8 +29,7 @@ namespace tfm
         private void loadPages()
         {
                                     pages.Add("nodMCP", new ctlMCP());
-            pages.Add("nodHydraulics", new ctlHydraulics());
-            pages.Add("nodEngines", new ctlEngines_737());      
+                        pages.Add("nodEngines", new ctlEngines_737());      
             pages.Add("nodAirSystems", new ctlAirSystems());
                         pages.Add("nodPressurization", new ctlPressurization());
             // redesigned pages. keep the ones above for backups.
@@ -55,6 +54,7 @@ namespace tfm
             // Center Overhead
             pages.Add("centerOverheadNode", new ctlCenterMain());
             pages.Add("antiIceNode", new ctlAntiIce());
+            pages.Add("hydraulicsNode", new ctlHydraulics());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

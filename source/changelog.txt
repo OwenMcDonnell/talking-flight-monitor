@@ -22,6 +22,8 @@
 * Center Overhead
     * Main center area - Note that center area of overhead is the Center Overhead tree item.
         * The traditional no smoking selector is labeled chimes in the 737-800 and 737-900.
+    * Anti-ice
+    * Hydraulics
 * PMDG 737: Speech settings for panels listed above.
     * Anti-ice
 * Ctrl+Shift+X - Restart TFM with a keyboard shortcut 

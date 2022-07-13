@@ -49,6 +49,7 @@ namespace tfm
             // Center overhead...
             pages.Add("737CenterOverheadNode", new Settings_panels.PMDG737.ctlCenterMain());
             pages.Add("737AntiIceNode", new Settings_panels.PMDG737.ctlAntiIce());
+            pages.Add("737HydraulicsNode", new Settings_panels.PMDG737.ctlHydraulics());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

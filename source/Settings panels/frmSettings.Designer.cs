@@ -65,14 +65,16 @@
             treeNode20,
             treeNode21});
             System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Anti-ice");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Center Overhead", new System.Windows.Forms.TreeNode[] {
-            treeNode23});
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Hydraulics");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Center Overhead", new System.Windows.Forms.TreeNode[] {
+            treeNode23,
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode15,
             treeNode22,
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
             treeNode25});
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode26});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -133,12 +135,14 @@
             treeNode22.Text = "Forward Overhead";
             treeNode23.Name = "737AntiIceNode";
             treeNode23.Text = "Anti-ice";
-            treeNode24.Name = "737CenterOverheadNode";
-            treeNode24.Text = "Center Overhead";
-            treeNode25.Name = "Pmdg737Node";
-            treeNode25.Text = "737 speech events";
-            treeNode26.Name = "nodPMDG";
-            treeNode26.Text = "PMDG";
+            treeNode24.Name = "737HydraulicsNode";
+            treeNode24.Text = "Hydraulics";
+            treeNode25.Name = "737CenterOverheadNode";
+            treeNode25.Text = "Center Overhead";
+            treeNode26.Name = "Pmdg737Node";
+            treeNode26.Text = "737 speech events";
+            treeNode27.Name = "nodPMDG";
+            treeNode27.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -146,7 +150,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode26});
+            treeNode27});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);

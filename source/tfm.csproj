@@ -388,6 +388,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.Designer.cs">
       <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.Designer.cs">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -466,12 +472,6 @@
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.Designer.cs">
       <DependentUpon>ctlEngines.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.Designer.cs">
-      <DependentUpon>ctlHydraulics.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.cs">
       <SubType>UserControl</SubType>
@@ -695,6 +695,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlGear.Designer.cs">
       <DependentUpon>ctlGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlHydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlHydraulics.Designer.cs">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlNav_Dis.cs">
       <SubType>UserControl</SubType>
@@ -920,6 +926,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.resx">
       <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.resx">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
     </EmbeddedResource>
@@ -958,9 +967,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.resx">
       <DependentUpon>ctlEngines.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.resx">
-      <DependentUpon>ctlHydraulics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
       <DependentUpon>ctlMCP.cs</DependentUpon>
@@ -1078,6 +1084,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlGear.resx">
       <DependentUpon>ctlGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlHydraulics.resx">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlNav_Dis.resx">
       <DependentUpon>ctlNav_Dis.cs</DependentUpon>

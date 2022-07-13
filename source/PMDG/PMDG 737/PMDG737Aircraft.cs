@@ -565,6 +565,20 @@ new SingleStateToggle { Name = "Right cowl anti-ice light", PanelName = "Center 
 new SingleStateToggle { Name = "Left cowl valve", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunCOWL_VALVE_OPEN[0], AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCOWL_VALVE_OPEN1},
 new SingleStateToggle { Name = "Right cowl valve", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunCOWL_VALVE_OPEN[1], AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCOWL_VALVE_OPEN2},
 
+// --section: Hydraulics
+new SingleStateToggle { Name = "Electric Hydraulic pump #1", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_elec1},
+new SingleStateToggle { Name = "Electric Hydraulic pump #2", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_elec2},
+new SingleStateToggle { Name = "Engine #1 Hydraulic pump", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_eng[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_eng1},
+new SingleStateToggle { Name = "Engine #2 Hydraulic pump", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_eng[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_eng2},
+new SingleStateToggle { Name = "Engine #1 hydraulic pump low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_eng[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_eng1},
+new SingleStateToggle { Name = "Engine #2 hydraulic pump low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_eng[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_eng2},
+new SingleStateToggle { Name = "Electric hydraulic pump #1 low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_elec1},
+new SingleStateToggle { Name = "Electric hydraulic pump #2 low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_elec2},
+new SingleStateToggle { Name = "Electric hydraulic pump #1 overheat light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunOVERHEAT_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunOVERHEAT_elec1},
+new SingleStateToggle { Name = "Electric hydraulic pump #2 overheat light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunOVERHEAT_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunOVERHEAT_elec2},
+
+// --section: Air systems
+
                             // --end-panel-controls                              
             };
         }
@@ -1431,6 +1445,52 @@ public static void EmergencyLightSelector(int position)
             }
         } // Engine2AntiIceOff
 
+        public static void HydraulicElectricalPump1()
+        {
+            if (Aircraft.pmdg737.HYD_PumpSw_elec[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC1, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC1, ClkR);
+            }
+        } // HydraulicsElectricalPump1
 
+        public static void HydraulicElectricalPump2()
+        {
+               if (Aircraft.pmdg737.HYD_PumpSw_elec[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC2, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC2, ClkR);
+            }
+        } // HydraulicElectricalPump2
+
+        public static void HydraulicsEnginePump1()
+        {
+            if (Aircraft.pmdg737.HYD_PumpSw_eng[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG1, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG1, ClkR);
+            }
+        } // HydraulicsEnginePump1
+
+        public static void HydraulicsEnginePump2()
+        {
+            if (Aircraft.pmdg737.HYD_PumpSw_eng[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG2, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG2, ClkR);
+            }
+        } // HydraulicsEnginePump12
     } // End PMDG737Aircraft.
     } // End namespace.

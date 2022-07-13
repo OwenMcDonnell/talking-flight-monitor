@@ -1954,5 +1954,125 @@ namespace tfm.Properties {
                 this["ICE_WindowHeatTestSw"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_PumpSw_eng1 {
+            get {
+                return ((bool)(this["HYD_PumpSw_eng1"]));
+            }
+            set {
+                this["HYD_PumpSw_eng1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_PumpSw_eng2 {
+            get {
+                return ((bool)(this["HYD_PumpSw_eng2"]));
+            }
+            set {
+                this["HYD_PumpSw_eng2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_PumpSw_elec1 {
+            get {
+                return ((bool)(this["HYD_PumpSw_elec1"]));
+            }
+            set {
+                this["HYD_PumpSw_elec1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_PumpSw_elec2 {
+            get {
+                return ((bool)(this["HYD_PumpSw_elec2"]));
+            }
+            set {
+                this["HYD_PumpSw_elec2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_annunLOW_PRESS_eng1 {
+            get {
+                return ((bool)(this["HYD_annunLOW_PRESS_eng1"]));
+            }
+            set {
+                this["HYD_annunLOW_PRESS_eng1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_annunLOW_PRESS_eng2 {
+            get {
+                return ((bool)(this["HYD_annunLOW_PRESS_eng2"]));
+            }
+            set {
+                this["HYD_annunLOW_PRESS_eng2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_annunLOW_PRESS_elec1 {
+            get {
+                return ((bool)(this["HYD_annunLOW_PRESS_elec1"]));
+            }
+            set {
+                this["HYD_annunLOW_PRESS_elec1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_annunLOW_PRESS_elec2 {
+            get {
+                return ((bool)(this["HYD_annunLOW_PRESS_elec2"]));
+            }
+            set {
+                this["HYD_annunLOW_PRESS_elec2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_annunOVERHEAT_elec1 {
+            get {
+                return ((bool)(this["HYD_annunOVERHEAT_elec1"]));
+            }
+            set {
+                this["HYD_annunOVERHEAT_elec1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HYD_annunOVERHEAT_elec2 {
+            get {
+                return ((bool)(this["HYD_annunOVERHEAT_elec2"]));
+            }
+            set {
+                this["HYD_annunOVERHEAT_elec2"] = value;
+            }
+        }
     }
 }
