@@ -151,6 +151,7 @@
             this.overheadKnobTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.overheadKnobTextBox.Location = new System.Drawing.Point(430, 3);
             this.overheadKnobTextBox.Name = "overheadKnobTextBox";
+            this.overheadKnobTextBox.ReadOnly = true;
             this.overheadKnobTextBox.Size = new System.Drawing.Size(100, 40);
             this.overheadKnobTextBox.TabIndex = 3;
             this.overheadKnobTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

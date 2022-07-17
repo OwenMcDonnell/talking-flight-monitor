@@ -224,10 +224,12 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
             if (e.KeyCode == Keys.I)
             {
                 PMDG737Aircraft.CircuttBreakerLightIncrease();
+                breakerTextBox.Refresh();
             } // increase
             if (e.KeyCode == Keys.D)
             {
                 PMDG737Aircraft.CircuttBreakerLightDecrease();
+                breakerTextBox.Refresh();
             } // decrease
         }
 
@@ -236,11 +238,13 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
             if (e.KeyCode == Keys.I)
             {
                 PMDG737Aircraft.OverheadPanelLightIncrease();
+                overheadKnobTextBox.Refresh();
             } // increase
 
             if (e.KeyCode == Keys.D)
             {
                 PMDG737Aircraft.OverheadPanelLightDecrease();
+                overheadKnobTextBox.Refresh();
             } // decrease
         }
 
