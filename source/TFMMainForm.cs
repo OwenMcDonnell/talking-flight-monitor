@@ -116,14 +116,16 @@ namespace tfm
                 this.TimerLowPriority.Elapsed += TimerLowPriority_Tick;
                 this.TimerLowPriority.AutoReset = true;
                 this.TimerLowPriority.Start();
+                TFMDatabase.Initialize();
                 // load airport database
                 inst.Speak("loading airport database");
-                dbLoadWorker.RunWorkerAsync();
+                                dbLoadWorker.RunWorkerAsync();
+                
                 // write version info to the debug log
                 logger.Debug($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
                 logger.Debug($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
                 logger.Debug($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
-
+                logger.Debug($"SQLite version: {TFMDatabase.Version}");
 
             }
             catch (Exception ex)
