@@ -11,6 +11,7 @@ namespace tfm.PMDG.PanelObjects
     {
 
         private Offset<float> _offsetFloat;
+        private Offset<uint> _offsetInt;
         private Offset<byte> _offset;
         private PanelObjectType _type = PanelObjectType.SingleState;
                 private Dictionary<byte, string> _availableStates = null;
@@ -38,10 +39,10 @@ namespace tfm.PMDG.PanelObjects
         {
             get
             {
-                                                KeyValuePair<byte, string> item = new KeyValuePair<byte, string>();
+                                                               KeyValuePair<byte, string> item = new KeyValuePair<byte, string>();
                                foreach (KeyValuePair<byte, string> pair in this._availableStates)
                 {
-                    if (_offset.Value == pair.Key)
+                    if (Offset.GetValue<uint>() == pair.Key)
                     {
                         item = pair;
                         break;
@@ -64,13 +65,17 @@ namespace tfm.PMDG.PanelObjects
         {
             get
             {
-                if(_offset == null)
+                if(_offsetFloat != null)
                 {
                     return _offsetFloat;
                 }
-                else
+                else if(_offset != null)
                 {
                     return _offset;
+                }
+                else
+                {
+                    return _offsetInt;
                 }
             }
             set
@@ -79,7 +84,11 @@ namespace tfm.PMDG.PanelObjects
                 {
                     _offsetFloat = (Offset<float>)value;
                 }
-                else
+                else if(value is Offset<uint>)
+                {
+                    _offsetInt = (Offset<uint>)value;
+                }
+                else if(value is Offset<byte>)
                 {
                     _offset = (Offset<byte>)value;
                 }

@@ -1,4 +1,5 @@
 ﻿using tfm.PMDG;
+using tfm.PMDG;
 using tfm.PMDG.PanelObjects;
 using FSUIPC;
 using DavyKager;
@@ -366,7 +367,48 @@ namespace tfm
             {1, "opened" },
         };
 
+        private static Dictionary<byte, string> _airSourceSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "scant" },
+            {1, "sfwd" },
+            {2, "saft" },
+            {3, "cfwd" },
+            {4, "caft" },
+            {5, "pckl" },
+            {6, "pckr" },
+        };
 
+        private static Dictionary<byte, string> _packStates = new Dictionary<byte, string>()
+        {
+            {0, "off" },
+            {1, "auto" },
+            {2, "high" },
+        };
+
+        private static Dictionary<byte, string> _isolationValveStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "auto" },
+            {2, "open" },
+        };
+
+        private static Dictionary<byte, string> _outflowValveStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "neutral" },
+            {2, "open" },
+        };
+
+        private static Dictionary<byte, string> _pressurizationModeSelector = new Dictionary<byte, string>()
+        {
+            {0, "auto" },
+            {1, "altn" },
+            {2, "man" },
+        };
+
+
+
+        
         public static List<PanelObject> PanelControls
         {
             get => new List<PanelObject>()
@@ -576,8 +618,33 @@ new SingleStateToggle { Name = "Electric hydraulic pump #1 low pressure light", 
 new SingleStateToggle { Name = "Electric hydraulic pump #2 low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_elec2},
 new SingleStateToggle { Name = "Electric hydraulic pump #1 overheat light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunOVERHEAT_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunOVERHEAT_elec1},
 new SingleStateToggle { Name = "Electric hydraulic pump #2 overheat light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunOVERHEAT_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunOVERHEAT_elec2},
-
+/*
 // --section: Air systems
+new SingleStateToggle { Name = "Air source", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_TempSourceSelector, AvailableStates = _airSourceSelectorStates },
+new SingleStateToggle { Name = "Air trim", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_TrimAirSwitch, AvailableStates = _onOrOffStates },
+new SingleStateToggle { Name = "Flight deck temprature light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunZoneTemp[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Forward cabin temprature light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunZoneTemp[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "AFT cabin temprature light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunZoneTemp[2], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Dual bleed light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_annunDualBleed, AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Left ram door light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunRamDoorL, AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right ram door light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunRamDoorR, AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Left recirc fan", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_RecircFanSwitch[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right recirc fan", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_RecircFanSwitch[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Left pack", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_PackSwitch[0], AvailableStates = _packStates},
+new SingleStateToggle { Name = "Right pack", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_PackSwitch[1], AvailableStates = _packStates},
+new SingleStateToggle { Name = "Left air bleed", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_BleedAirSwitch[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right air bleed", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_BleedAirSwitch[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "APU bleed", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_APUBleedAirSwitch, AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Isolation valve", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_IsolationValveSwitch, AvailableStates = _isolationValveStates},
+new SingleStateToggle { Name = "Left pack trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunPackTripOff[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right pack trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunPackTripOff[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Left wing overheat light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunWingBodyOverheat[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right wing overheat light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunWingBodyOverheat[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Left bleed trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunBleedTripOff[0], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Right bleed trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunBleedTripOff[1], AvailableStates = _onOrOffStates},
+new SingleStateToggle { Name = "Flight altitude", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_DisplayFltAlt, AvailableStates = null},
+new SingleStateToggle { Name = "Landing altitude", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.NumericDisplay, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_DisplayLandAlt, AvailableStates = null},
+*/
 
                             // --end-panel-controls                              
             };

@@ -330,7 +330,6 @@
     <Compile Include="PMDG\Enums\AircraftSpeed.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
-    <Compile Include="PMDG\PanelObjects\SingleStateToggleInt32.cs" />
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.cs">
       <SubType>UserControl</SubType>
     </Compile>
