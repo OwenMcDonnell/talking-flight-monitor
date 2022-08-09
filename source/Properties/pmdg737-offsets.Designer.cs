@@ -2074,5 +2074,317 @@ namespace tfm.Properties {
                 this["HYD_annunOVERHEAT_elec2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_TempSourceSelector {
+            get {
+                return ((bool)(this["AIR_TempSourceSelector"]));
+            }
+            set {
+                this["AIR_TempSourceSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_TrimAirSwitch {
+            get {
+                return ((bool)(this["AIR_TrimAirSwitch"]));
+            }
+            set {
+                this["AIR_TrimAirSwitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunZoneTemp1 {
+            get {
+                return ((bool)(this["AIR_annunZoneTemp1"]));
+            }
+            set {
+                this["AIR_annunZoneTemp1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunZoneTemp2 {
+            get {
+                return ((bool)(this["AIR_annunZoneTemp2"]));
+            }
+            set {
+                this["AIR_annunZoneTemp2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunZoneTemp3 {
+            get {
+                return ((bool)(this["AIR_annunZoneTemp3"]));
+            }
+            set {
+                this["AIR_annunZoneTemp3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunDualBleed {
+            get {
+                return ((bool)(this["AIR_annunDualBleed"]));
+            }
+            set {
+                this["AIR_annunDualBleed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunRamDoorL {
+            get {
+                return ((bool)(this["AIR_annunRamDoorL"]));
+            }
+            set {
+                this["AIR_annunRamDoorL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunRamDoorR {
+            get {
+                return ((bool)(this["AIR_annunRamDoorR"]));
+            }
+            set {
+                this["AIR_annunRamDoorR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_RecircFanSwitch1 {
+            get {
+                return ((bool)(this["AIR_RecircFanSwitch1"]));
+            }
+            set {
+                this["AIR_RecircFanSwitch1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_RecircFanSwitch2 {
+            get {
+                return ((bool)(this["AIR_RecircFanSwitch2"]));
+            }
+            set {
+                this["AIR_RecircFanSwitch2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_PackSwitch1 {
+            get {
+                return ((bool)(this["AIR_PackSwitch1"]));
+            }
+            set {
+                this["AIR_PackSwitch1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_PackSwitch2 {
+            get {
+                return ((bool)(this["AIR_PackSwitch2"]));
+            }
+            set {
+                this["AIR_PackSwitch2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_BleedAirSwitch1 {
+            get {
+                return ((bool)(this["AIR_BleedAirSwitch1"]));
+            }
+            set {
+                this["AIR_BleedAirSwitch1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_BleedAirSwitch2 {
+            get {
+                return ((bool)(this["AIR_BleedAirSwitch2"]));
+            }
+            set {
+                this["AIR_BleedAirSwitch2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_APUBleedAirSwitch {
+            get {
+                return ((bool)(this["AIR_APUBleedAirSwitch"]));
+            }
+            set {
+                this["AIR_APUBleedAirSwitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_IsolationValveSwitch {
+            get {
+                return ((bool)(this["AIR_IsolationValveSwitch"]));
+            }
+            set {
+                this["AIR_IsolationValveSwitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunPackTripOff1 {
+            get {
+                return ((bool)(this["AIR_annunPackTripOff1"]));
+            }
+            set {
+                this["AIR_annunPackTripOff1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunPackTripOff2 {
+            get {
+                return ((bool)(this["AIR_annunPackTripOff2"]));
+            }
+            set {
+                this["AIR_annunPackTripOff2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunWingBodyOverheat1 {
+            get {
+                return ((bool)(this["AIR_annunWingBodyOverheat1"]));
+            }
+            set {
+                this["AIR_annunWingBodyOverheat1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunWingBodyOverheat2 {
+            get {
+                return ((bool)(this["AIR_annunWingBodyOverheat2"]));
+            }
+            set {
+                this["AIR_annunWingBodyOverheat2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunBleedTripOff1 {
+            get {
+                return ((bool)(this["AIR_annunBleedTripOff1"]));
+            }
+            set {
+                this["AIR_annunBleedTripOff1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_annunBleedTripOff2 {
+            get {
+                return ((bool)(this["AIR_annunBleedTripOff2"]));
+            }
+            set {
+                this["AIR_annunBleedTripOff2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_DisplayFltAlt {
+            get {
+                return ((bool)(this["AIR_DisplayFltAlt"]));
+            }
+            set {
+                this["AIR_DisplayFltAlt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_DisplayLandAlt {
+            get {
+                return ((bool)(this["AIR_DisplayLandAlt"]));
+            }
+            set {
+                this["AIR_DisplayLandAlt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_OutflowValveSwitch {
+            get {
+                return ((bool)(this["AIR_OutflowValveSwitch"]));
+            }
+            set {
+                this["AIR_OutflowValveSwitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AIR_PressurizationModeSelector {
+            get {
+                return ((bool)(this["AIR_PressurizationModeSelector"]));
+            }
+            set {
+                this["AIR_PressurizationModeSelector"] = value;
+            }
+        }
     }
 }
