@@ -49,16 +49,16 @@
             this.packRComboBox = new System.Windows.Forms.ComboBox();
             this.bleedsGroupBox = new System.Windows.Forms.GroupBox();
             this.bleedFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.leftBleedButton = new System.Windows.Forms.Button();
+            this.rightBleedButton = new System.Windows.Forms.Button();
+            this.apuBleedButton = new System.Windows.Forms.Button();
             this.recircFansGroupBox = new System.Windows.Forms.GroupBox();
             this.recircFansFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.leftRecircFanButton = new System.Windows.Forms.Button();
+            this.rightRecircFanButton = new System.Windows.Forms.Button();
             this.valvesGroupBox = new System.Windows.Forms.GroupBox();
             this.valvesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.airTrimButton = new System.Windows.Forms.Button();
             this.outFlowLabel = new System.Windows.Forms.Label();
             this.outFlowValveComboBox = new System.Windows.Forms.ComboBox();
             this.isolationValveLabel = new System.Windows.Forms.Label();
@@ -161,7 +161,7 @@
             this.airSystemsFlowLayoutPanel.Location = new System.Drawing.Point(37, 10);
             this.airSystemsFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.airSystemsFlowLayoutPanel.Name = "airSystemsFlowLayoutPanel";
-            this.airSystemsFlowLayoutPanel.Size = new System.Drawing.Size(1818, 474);
+            this.airSystemsFlowLayoutPanel.Size = new System.Drawing.Size(1560, 258);
             this.airSystemsFlowLayoutPanel.TabIndex = 0;
             // 
             // displaysGroupBox
@@ -206,9 +206,9 @@
             this.fltAltTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
             this.fltAltTextBox.Location = new System.Drawing.Point(91, 3);
             this.fltAltTextBox.Name = "fltAltTextBox";
-            this.fltAltTextBox.ReadOnly = true;
             this.fltAltTextBox.Size = new System.Drawing.Size(100, 40);
             this.fltAltTextBox.TabIndex = 1;
+            this.fltAltTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fltAltTextBox_KeyDown);
             // 
             // lndAltLabel
             // 
@@ -237,7 +237,7 @@
             this.selectorsGroupBox.Controls.Add(this.selectorsFlowLayoutPanel);
             this.selectorsGroupBox.Location = new System.Drawing.Point(427, 3);
             this.selectorsGroupBox.Name = "selectorsGroupBox";
-            this.selectorsGroupBox.Size = new System.Drawing.Size(570, 231);
+            this.selectorsGroupBox.Size = new System.Drawing.Size(570, 122);
             this.selectorsGroupBox.TabIndex = 1;
             this.selectorsGroupBox.TabStop = false;
             this.selectorsGroupBox.Text = "&Selectors";
@@ -252,7 +252,7 @@
             this.selectorsFlowLayoutPanel.Controls.Add(this.pressModeComboBox);
             this.selectorsFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.selectorsFlowLayoutPanel.Name = "selectorsFlowLayoutPanel";
-            this.selectorsFlowLayoutPanel.Size = new System.Drawing.Size(561, 156);
+            this.selectorsFlowLayoutPanel.Size = new System.Drawing.Size(561, 47);
             this.selectorsFlowLayoutPanel.TabIndex = 0;
             // 
             // airSourceLabel
@@ -268,7 +268,7 @@
             // airSourceSelectorComboBox
             // 
             this.airSourceSelectorComboBox.AccessibleName = "Air source";
-            this.airSourceSelectorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.airSourceSelectorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.airSourceSelectorComboBox.FormattingEnabled = true;
             this.airSourceSelectorComboBox.Items.AddRange(new object[] {
             "scant",
@@ -280,7 +280,7 @@
             "pckr"});
             this.airSourceSelectorComboBox.Location = new System.Drawing.Point(139, 3);
             this.airSourceSelectorComboBox.Name = "airSourceSelectorComboBox";
-            this.airSourceSelectorComboBox.Size = new System.Drawing.Size(121, 150);
+            this.airSourceSelectorComboBox.Size = new System.Drawing.Size(121, 41);
             this.airSourceSelectorComboBox.TabIndex = 1;
             // 
             // pressModeLabel
@@ -296,7 +296,7 @@
             // pressModeComboBox
             // 
             this.pressModeComboBox.AccessibleName = "Pressurization mode";
-            this.pressModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.pressModeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pressModeComboBox.FormattingEnabled = true;
             this.pressModeComboBox.Items.AddRange(new object[] {
             "auto",
@@ -304,7 +304,7 @@
             "man"});
             this.pressModeComboBox.Location = new System.Drawing.Point(437, 3);
             this.pressModeComboBox.Name = "pressModeComboBox";
-            this.pressModeComboBox.Size = new System.Drawing.Size(121, 150);
+            this.pressModeComboBox.Size = new System.Drawing.Size(121, 41);
             this.pressModeComboBox.TabIndex = 3;
             // 
             // packsGroupBox
@@ -315,7 +315,7 @@
             this.packsGroupBox.Controls.Add(this.packsFlowLayoutPanel);
             this.packsGroupBox.Location = new System.Drawing.Point(1003, 3);
             this.packsGroupBox.Name = "packsGroupBox";
-            this.packsGroupBox.Size = new System.Drawing.Size(554, 231);
+            this.packsGroupBox.Size = new System.Drawing.Size(554, 122);
             this.packsGroupBox.TabIndex = 2;
             this.packsGroupBox.TabStop = false;
             this.packsGroupBox.Text = "&Packs";
@@ -330,7 +330,7 @@
             this.packsFlowLayoutPanel.Controls.Add(this.packRComboBox);
             this.packsFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.packsFlowLayoutPanel.Name = "packsFlowLayoutPanel";
-            this.packsFlowLayoutPanel.Size = new System.Drawing.Size(545, 156);
+            this.packsFlowLayoutPanel.Size = new System.Drawing.Size(545, 47);
             this.packsFlowLayoutPanel.TabIndex = 0;
             // 
             // packLLabel
@@ -346,7 +346,7 @@
             // packLComboBox
             // 
             this.packLComboBox.AccessibleName = "Left pack";
-            this.packLComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.packLComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.packLComboBox.FormattingEnabled = true;
             this.packLComboBox.Items.AddRange(new object[] {
             "off",
@@ -354,7 +354,7 @@
             "high"});
             this.packLComboBox.Location = new System.Drawing.Point(135, 3);
             this.packLComboBox.Name = "packLComboBox";
-            this.packLComboBox.Size = new System.Drawing.Size(121, 150);
+            this.packLComboBox.Size = new System.Drawing.Size(121, 41);
             this.packLComboBox.TabIndex = 1;
             // 
             // packRLabel
@@ -370,7 +370,7 @@
             // packRComboBox
             // 
             this.packRComboBox.AccessibleName = "Right pack";
-            this.packRComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.packRComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.packRComboBox.FormattingEnabled = true;
             this.packRComboBox.Items.AddRange(new object[] {
             "off",
@@ -378,7 +378,7 @@
             "high"});
             this.packRComboBox.Location = new System.Drawing.Point(421, 3);
             this.packRComboBox.Name = "packRComboBox";
-            this.packRComboBox.Size = new System.Drawing.Size(121, 150);
+            this.packRComboBox.Size = new System.Drawing.Size(121, 41);
             this.packRComboBox.TabIndex = 3;
             // 
             // bleedsGroupBox
@@ -387,9 +387,9 @@
             this.bleedsGroupBox.AutoSize = true;
             this.bleedsGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bleedsGroupBox.Controls.Add(this.bleedFlowLayoutPanel);
-            this.bleedsGroupBox.Location = new System.Drawing.Point(1563, 3);
+            this.bleedsGroupBox.Location = new System.Drawing.Point(3, 131);
             this.bleedsGroupBox.Name = "bleedsGroupBox";
-            this.bleedsGroupBox.Size = new System.Drawing.Size(252, 104);
+            this.bleedsGroupBox.Size = new System.Drawing.Size(360, 124);
             this.bleedsGroupBox.TabIndex = 3;
             this.bleedsGroupBox.TabStop = false;
             this.bleedsGroupBox.Text = "&Bleeds";
@@ -398,40 +398,46 @@
             // 
             this.bleedFlowLayoutPanel.AutoSize = true;
             this.bleedFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bleedFlowLayoutPanel.Controls.Add(this.button1);
-            this.bleedFlowLayoutPanel.Controls.Add(this.button2);
-            this.bleedFlowLayoutPanel.Controls.Add(this.button3);
+            this.bleedFlowLayoutPanel.Controls.Add(this.leftBleedButton);
+            this.bleedFlowLayoutPanel.Controls.Add(this.rightBleedButton);
+            this.bleedFlowLayoutPanel.Controls.Add(this.apuBleedButton);
             this.bleedFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.bleedFlowLayoutPanel.Name = "bleedFlowLayoutPanel";
-            this.bleedFlowLayoutPanel.Size = new System.Drawing.Size(243, 29);
+            this.bleedFlowLayoutPanel.Size = new System.Drawing.Size(351, 49);
             this.bleedFlowLayoutPanel.TabIndex = 0;
             // 
-            // button1
+            // leftBleedButton
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.leftBleedButton.AutoSize = true;
+            this.leftBleedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.leftBleedButton.Location = new System.Drawing.Point(3, 3);
+            this.leftBleedButton.Name = "leftBleedButton";
+            this.leftBleedButton.Size = new System.Drawing.Size(111, 43);
+            this.leftBleedButton.TabIndex = 0;
+            this.leftBleedButton.Text = "button1";
+            this.leftBleedButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // rightBleedButton
             // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.rightBleedButton.AutoSize = true;
+            this.rightBleedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rightBleedButton.Location = new System.Drawing.Point(120, 3);
+            this.rightBleedButton.Name = "rightBleedButton";
+            this.rightBleedButton.Size = new System.Drawing.Size(111, 43);
+            this.rightBleedButton.TabIndex = 1;
+            this.rightBleedButton.Text = "button2";
+            this.rightBleedButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // apuBleedButton
             // 
-            this.button3.Location = new System.Drawing.Point(165, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.apuBleedButton.AutoSize = true;
+            this.apuBleedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.apuBleedButton.Location = new System.Drawing.Point(237, 3);
+            this.apuBleedButton.Name = "apuBleedButton";
+            this.apuBleedButton.Size = new System.Drawing.Size(111, 43);
+            this.apuBleedButton.TabIndex = 2;
+            this.apuBleedButton.Text = "button3";
+            this.apuBleedButton.UseVisualStyleBackColor = true;
             // 
             // recircFansGroupBox
             // 
@@ -439,7 +445,7 @@
             this.recircFansGroupBox.AutoSize = true;
             this.recircFansGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.recircFansGroupBox.Controls.Add(this.recircFansFlowLayoutPanel);
-            this.recircFansGroupBox.Location = new System.Drawing.Point(3, 240);
+            this.recircFansGroupBox.Location = new System.Drawing.Point(369, 131);
             this.recircFansGroupBox.Name = "recircFansGroupBox";
             this.recircFansGroupBox.Size = new System.Drawing.Size(171, 104);
             this.recircFansGroupBox.TabIndex = 4;
@@ -450,30 +456,30 @@
             // 
             this.recircFansFlowLayoutPanel.AutoSize = true;
             this.recircFansFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.recircFansFlowLayoutPanel.Controls.Add(this.button4);
-            this.recircFansFlowLayoutPanel.Controls.Add(this.button5);
+            this.recircFansFlowLayoutPanel.Controls.Add(this.leftRecircFanButton);
+            this.recircFansFlowLayoutPanel.Controls.Add(this.rightRecircFanButton);
             this.recircFansFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.recircFansFlowLayoutPanel.Name = "recircFansFlowLayoutPanel";
             this.recircFansFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
             this.recircFansFlowLayoutPanel.TabIndex = 0;
             // 
-            // button4
+            // leftRecircFanButton
             // 
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.leftRecircFanButton.Location = new System.Drawing.Point(3, 3);
+            this.leftRecircFanButton.Name = "leftRecircFanButton";
+            this.leftRecircFanButton.Size = new System.Drawing.Size(75, 23);
+            this.leftRecircFanButton.TabIndex = 0;
+            this.leftRecircFanButton.Text = "button4";
+            this.leftRecircFanButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // rightRecircFanButton
             // 
-            this.button5.Location = new System.Drawing.Point(84, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.rightRecircFanButton.Location = new System.Drawing.Point(84, 3);
+            this.rightRecircFanButton.Name = "rightRecircFanButton";
+            this.rightRecircFanButton.Size = new System.Drawing.Size(75, 23);
+            this.rightRecircFanButton.TabIndex = 1;
+            this.rightRecircFanButton.Text = "button5";
+            this.rightRecircFanButton.UseVisualStyleBackColor = true;
             // 
             // valvesGroupBox
             // 
@@ -481,9 +487,9 @@
             this.valvesGroupBox.AutoSize = true;
             this.valvesGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.valvesGroupBox.Controls.Add(this.valvesFlowLayoutPanel);
-            this.valvesGroupBox.Location = new System.Drawing.Point(180, 240);
+            this.valvesGroupBox.Location = new System.Drawing.Point(546, 131);
             this.valvesGroupBox.Name = "valvesGroupBox";
-            this.valvesGroupBox.Size = new System.Drawing.Size(617, 231);
+            this.valvesGroupBox.Size = new System.Drawing.Size(653, 124);
             this.valvesGroupBox.TabIndex = 5;
             this.valvesGroupBox.TabStop = false;
             this.valvesGroupBox.Text = "&Valves/trim";
@@ -492,29 +498,31 @@
             // 
             this.valvesFlowLayoutPanel.AutoSize = true;
             this.valvesFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.valvesFlowLayoutPanel.Controls.Add(this.button6);
+            this.valvesFlowLayoutPanel.Controls.Add(this.airTrimButton);
             this.valvesFlowLayoutPanel.Controls.Add(this.outFlowLabel);
             this.valvesFlowLayoutPanel.Controls.Add(this.outFlowValveComboBox);
             this.valvesFlowLayoutPanel.Controls.Add(this.isolationValveLabel);
             this.valvesFlowLayoutPanel.Controls.Add(this.isolationValveComboBox);
             this.valvesFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.valvesFlowLayoutPanel.Name = "valvesFlowLayoutPanel";
-            this.valvesFlowLayoutPanel.Size = new System.Drawing.Size(608, 156);
+            this.valvesFlowLayoutPanel.Size = new System.Drawing.Size(644, 49);
             this.valvesFlowLayoutPanel.TabIndex = 0;
             // 
-            // button6
+            // airTrimButton
             // 
-            this.button6.Location = new System.Drawing.Point(3, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.airTrimButton.AutoSize = true;
+            this.airTrimButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.airTrimButton.Location = new System.Drawing.Point(3, 3);
+            this.airTrimButton.Name = "airTrimButton";
+            this.airTrimButton.Size = new System.Drawing.Size(111, 43);
+            this.airTrimButton.TabIndex = 0;
+            this.airTrimButton.Text = "button6";
+            this.airTrimButton.UseVisualStyleBackColor = true;
             // 
             // outFlowLabel
             // 
             this.outFlowLabel.AutoSize = true;
-            this.outFlowLabel.Location = new System.Drawing.Point(101, 0);
+            this.outFlowLabel.Location = new System.Drawing.Point(137, 0);
             this.outFlowLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.outFlowLabel.Name = "outFlowLabel";
             this.outFlowLabel.Size = new System.Drawing.Size(101, 33);
@@ -524,21 +532,21 @@
             // outFlowValveComboBox
             // 
             this.outFlowValveComboBox.AccessibleName = "Outflow valve";
-            this.outFlowValveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.outFlowValveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.outFlowValveComboBox.FormattingEnabled = true;
             this.outFlowValveComboBox.Items.AddRange(new object[] {
             "closed",
             "neutral",
             "open"});
-            this.outFlowValveComboBox.Location = new System.Drawing.Point(208, 3);
+            this.outFlowValveComboBox.Location = new System.Drawing.Point(244, 3);
             this.outFlowValveComboBox.Name = "outFlowValveComboBox";
-            this.outFlowValveComboBox.Size = new System.Drawing.Size(121, 150);
+            this.outFlowValveComboBox.Size = new System.Drawing.Size(121, 41);
             this.outFlowValveComboBox.TabIndex = 8;
             // 
             // isolationValveLabel
             // 
             this.isolationValveLabel.AutoSize = true;
-            this.isolationValveLabel.Location = new System.Drawing.Point(352, 0);
+            this.isolationValveLabel.Location = new System.Drawing.Point(388, 0);
             this.isolationValveLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.isolationValveLabel.Name = "isolationValveLabel";
             this.isolationValveLabel.Size = new System.Drawing.Size(126, 33);
@@ -548,15 +556,15 @@
             // isolationValveComboBox
             // 
             this.isolationValveComboBox.AccessibleName = "Isolation valve";
-            this.isolationValveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.isolationValveComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.isolationValveComboBox.FormattingEnabled = true;
             this.isolationValveComboBox.Items.AddRange(new object[] {
             "closed",
             "auto",
             "open"});
-            this.isolationValveComboBox.Location = new System.Drawing.Point(484, 3);
+            this.isolationValveComboBox.Location = new System.Drawing.Point(520, 3);
             this.isolationValveComboBox.Name = "isolationValveComboBox";
-            this.isolationValveComboBox.Size = new System.Drawing.Size(121, 150);
+            this.isolationValveComboBox.Size = new System.Drawing.Size(121, 41);
             this.isolationValveComboBox.TabIndex = 10;
             // 
             // indicatorsFlowLayoutPanel
@@ -992,7 +1000,7 @@
             this.wingBodyOverheatIndicatorGroupBox.Size = new System.Drawing.Size(344, 160);
             this.wingBodyOverheatIndicatorGroupBox.TabIndex = 4;
             this.wingBodyOverheatIndicatorGroupBox.TabStop = false;
-            this.wingBodyOverheatIndicatorGroupBox.Text = "&3. Ram doors";
+            this.wingBodyOverheatIndicatorGroupBox.Text = "&5. Wing ovht";
             // 
             // wingBodyOverheatFlowLayoutPanel
             // 
@@ -1080,6 +1088,7 @@
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlAirSystems";
             this.Size = new System.Drawing.Size(1893, 663);
+            this.Load += new System.EventHandler(this.ctlAirSystems_Load);
             this.airSystemsFlowLayoutPanel.ResumeLayout(false);
             this.airSystemsFlowLayoutPanel.PerformLayout();
             this.displaysGroupBox.ResumeLayout(false);
@@ -1097,6 +1106,7 @@
             this.bleedsGroupBox.ResumeLayout(false);
             this.bleedsGroupBox.PerformLayout();
             this.bleedFlowLayoutPanel.ResumeLayout(false);
+            this.bleedFlowLayoutPanel.PerformLayout();
             this.recircFansGroupBox.ResumeLayout(false);
             this.recircFansGroupBox.PerformLayout();
             this.recircFansFlowLayoutPanel.ResumeLayout(false);
@@ -1178,16 +1188,16 @@
         private System.Windows.Forms.ComboBox packRComboBox;
         private System.Windows.Forms.GroupBox bleedsGroupBox;
         private System.Windows.Forms.FlowLayoutPanel bleedFlowLayoutPanel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button leftBleedButton;
+        private System.Windows.Forms.Button rightBleedButton;
+        private System.Windows.Forms.Button apuBleedButton;
         private System.Windows.Forms.GroupBox recircFansGroupBox;
         private System.Windows.Forms.FlowLayoutPanel recircFansFlowLayoutPanel;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button leftRecircFanButton;
+        private System.Windows.Forms.Button rightRecircFanButton;
         private System.Windows.Forms.GroupBox valvesGroupBox;
         private System.Windows.Forms.FlowLayoutPanel valvesFlowLayoutPanel;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button airTrimButton;
         private System.Windows.Forms.Label outFlowLabel;
         private System.Windows.Forms.ComboBox outFlowValveComboBox;
         private System.Windows.Forms.Label isolationValveLabel;

@@ -469,12 +469,6 @@
     <Compile Include="PMDG\PMDG 747\747CDU.Designer.cs">
       <DependentUpon>747CDU.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.Designer.cs">
-      <DependentUpon>ctlAirSystems.cs</DependentUpon>
-    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -973,9 +967,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.resx">
-      <DependentUpon>ctlAirSystems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.resx">
       <DependentUpon>ctlEngines.cs</DependentUpon>

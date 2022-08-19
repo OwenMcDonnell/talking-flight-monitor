@@ -1560,6 +1560,11 @@ public static void EmergencyLightSelector(int position)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG2, ClkR);
             }
-        } // HydraulicsEnginePump12
+        } // HydraulicsEnginePump2
+
+        public static void SetPressFltAlt(int altitude)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_FLT_ALT_SET, altitude);
+        } // SetPressFltAltitude
     } // End PMDG737Aircraft.
     } // End namespace.

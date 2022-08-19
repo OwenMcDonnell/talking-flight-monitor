@@ -111,6 +111,14 @@ else             if(this.Offset == Aircraft.pmdg737.OXY_Needle)
             {
                 output = $"{this.Name} {_offset.GetValue<float>()}";
             }
+            else if(this.Offset == Aircraft.pmdg737.AIR_DisplayFltAlt)
+            {
+                output = $"{this.Name} {this.Offset.GetValue<string>()}";
+                    }
+            else if (this.Offset == Aircraft.pmdg737.AIR_DisplayLandAlt)
+            {
+                output = $"{this.Name} {this.Offset.GetValue<string>()}";
+            }
             else
             {
                 output = $"{this.Name} {this.CurrentState.Value}";
