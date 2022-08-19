@@ -83,18 +83,18 @@ namespace tfm.PMDG.PanelObjects
             if(this.Offset == Aircraft.pmdg777.FCTL_Speedbrake_Lever)
             {
 
-                                if(_offset.GetValue<uint>() > 0 && _offset.GetValue<uint>() <= 24)
+                                if(_offset.GetValue<byte>() > 0 && _offset.GetValue<byte>() <= 24)
                 {
                     output = string.Empty;
                 } // ignore conditions.
                 // Force TFM to announce off/armed states.
-                else if(_offset.GetValue<uint>() == 0 || _offset.GetValue<uint>() == 25)
+                else if(_offset.GetValue<byte>() == 0 || _offset.GetValue<byte>() == 25)
                 {
                     output = $"{this.Name} {this.CurrentState.Value}";
                 } // off/armed conditions.
 
                 // Everything else is a free turning knob with a percent deployed value.
-                else if(_offset.GetValue<uint>() >= 26)
+                else if(_offset.GetValue<byte>() >= 26)
                 {
                                                                                         output = $"{this.Name} {this.percentageValue}%";
                                                                                                                                                } // Everything else.
