@@ -228,6 +228,7 @@
             this.lndAltTextBox.Name = "lndAltTextBox";
             this.lndAltTextBox.Size = new System.Drawing.Size(100, 40);
             this.lndAltTextBox.TabIndex = 3;
+            this.lndAltTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lndAltTextBox_KeyDown);
             // 
             // selectorsGroupBox
             // 
@@ -282,6 +283,7 @@
             this.airSourceSelectorComboBox.Name = "airSourceSelectorComboBox";
             this.airSourceSelectorComboBox.Size = new System.Drawing.Size(121, 41);
             this.airSourceSelectorComboBox.TabIndex = 1;
+            this.airSourceSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.airSourceSelectorComboBox_SelectedIndexChanged);
             // 
             // pressModeLabel
             // 
@@ -306,6 +308,7 @@
             this.pressModeComboBox.Name = "pressModeComboBox";
             this.pressModeComboBox.Size = new System.Drawing.Size(121, 41);
             this.pressModeComboBox.TabIndex = 3;
+            this.pressModeComboBox.SelectedIndexChanged += new System.EventHandler(this.pressModeComboBox_SelectedIndexChanged);
             // 
             // packsGroupBox
             // 
@@ -356,6 +359,7 @@
             this.packLComboBox.Name = "packLComboBox";
             this.packLComboBox.Size = new System.Drawing.Size(121, 41);
             this.packLComboBox.TabIndex = 1;
+            this.packLComboBox.SelectedIndexChanged += new System.EventHandler(this.packLComboBox_SelectedIndexChanged);
             // 
             // packRLabel
             // 
@@ -380,6 +384,7 @@
             this.packRComboBox.Name = "packRComboBox";
             this.packRComboBox.Size = new System.Drawing.Size(121, 41);
             this.packRComboBox.TabIndex = 3;
+            this.packRComboBox.SelectedIndexChanged += new System.EventHandler(this.packRComboBox_SelectedIndexChanged);
             // 
             // bleedsGroupBox
             // 
@@ -416,6 +421,7 @@
             this.leftBleedButton.TabIndex = 0;
             this.leftBleedButton.Text = "button1";
             this.leftBleedButton.UseVisualStyleBackColor = true;
+            this.leftBleedButton.Click += new System.EventHandler(this.leftBleedButton_Click);
             // 
             // rightBleedButton
             // 
@@ -427,6 +433,7 @@
             this.rightBleedButton.TabIndex = 1;
             this.rightBleedButton.Text = "button2";
             this.rightBleedButton.UseVisualStyleBackColor = true;
+            this.rightBleedButton.Click += new System.EventHandler(this.rightBleedButton_Click);
             // 
             // apuBleedButton
             // 
@@ -438,6 +445,7 @@
             this.apuBleedButton.TabIndex = 2;
             this.apuBleedButton.Text = "button3";
             this.apuBleedButton.UseVisualStyleBackColor = true;
+            this.apuBleedButton.Click += new System.EventHandler(this.apuBleedButton_Click);
             // 
             // recircFansGroupBox
             // 
@@ -471,6 +479,7 @@
             this.leftRecircFanButton.TabIndex = 0;
             this.leftRecircFanButton.Text = "button4";
             this.leftRecircFanButton.UseVisualStyleBackColor = true;
+            this.leftRecircFanButton.Click += new System.EventHandler(this.leftRecircFanButton_Click);
             // 
             // rightRecircFanButton
             // 
@@ -480,6 +489,7 @@
             this.rightRecircFanButton.TabIndex = 1;
             this.rightRecircFanButton.Text = "button5";
             this.rightRecircFanButton.UseVisualStyleBackColor = true;
+            this.rightRecircFanButton.Click += new System.EventHandler(this.rightRecircFanButton_Click);
             // 
             // valvesGroupBox
             // 
@@ -518,6 +528,7 @@
             this.airTrimButton.TabIndex = 0;
             this.airTrimButton.Text = "button6";
             this.airTrimButton.UseVisualStyleBackColor = true;
+            this.airTrimButton.Click += new System.EventHandler(this.airTrimButton_Click);
             // 
             // outFlowLabel
             // 
@@ -542,6 +553,7 @@
             this.outFlowValveComboBox.Name = "outFlowValveComboBox";
             this.outFlowValveComboBox.Size = new System.Drawing.Size(121, 41);
             this.outFlowValveComboBox.TabIndex = 8;
+            this.outFlowValveComboBox.SelectedIndexChanged += new System.EventHandler(this.outFlowValveComboBox_SelectedIndexChanged);
             // 
             // isolationValveLabel
             // 
@@ -566,6 +578,7 @@
             this.isolationValveComboBox.Name = "isolationValveComboBox";
             this.isolationValveComboBox.Size = new System.Drawing.Size(121, 41);
             this.isolationValveComboBox.TabIndex = 10;
+            this.isolationValveComboBox.SelectedIndexChanged += new System.EventHandler(this.isolationValveComboBox_SelectedIndexChanged);
             // 
             // indicatorsFlowLayoutPanel
             // 

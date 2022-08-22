@@ -30,8 +30,8 @@ namespace tfm
         {
                                     pages.Add("nodMCP", new ctlMCP());
                         pages.Add("nodEngines", new ctlEngines_737());      
-                                    pages.Add("nodPressurization", new ctlPressurization());
-            // redesigned pages. keep the ones above for backups.
+
+                                                // redesigned pages. keep the ones above for backups.
             // --panel: Aft Overhead
             pages.Add("adiruNode", new ctlADIRU());
             pages.Add("PSEUNode", new ctlPSEU());

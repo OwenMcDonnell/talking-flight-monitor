@@ -481,12 +481,6 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.Designer.cs">
       <DependentUpon>ctlMCP.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.Designer.cs">
-      <DependentUpon>ctlPressurization.cs</DependentUpon>
-    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -973,9 +967,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
       <DependentUpon>ctlMCP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.resx">
-      <DependentUpon>ctlPressurization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.resx">
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>

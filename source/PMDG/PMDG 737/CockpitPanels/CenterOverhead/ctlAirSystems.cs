@@ -384,8 +384,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
 
         private void fltAltTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            e.Handled = true;
-            if(e.KeyCode == Keys.Enter)
+                        if(e.KeyCode == Keys.Enter)
             {
                 if(int.TryParse(fltAltTextBox.Text, out int altitude))
                 {
@@ -395,7 +394,198 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
                 {
                     Tolk.Output("Cruising altitude is invalid.");
                 }
+                e.SuppressKeyPress = true;
+                e.Handled = true;
             }
+                                }
+
+        private void lndAltTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                if(int.TryParse(lndAltTextBox.Text, out int altitude))
+                {
+                    PMDG737Aircraft.SetPressLndAltitude(altitude);
+                }
+                else
+                {
+                    Tolk.Output("Landing altitude is invalid.");
+                }
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+                               }
+
+        private void airSourceSelectorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Properties.pmdg737_offsets.Default.AIR_TempSourceSelector == false)
+            {
+                if (Tolk.DetectScreenReader() == "NVDA")
+                {
+                    Tolk.Output(airSourceSelectorComboBox.SelectedItem.ToString());
+                }
+            }
+
+            PMDG737Aircraft.AirSourceSelector(airSourceSelectorComboBox.SelectedIndex);
+        }
+
+        private void pressModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Properties.pmdg737_offsets.Default.AIR_PressurizationModeSelector == false)
+            {
+                if (Tolk.DetectScreenReader() == "NVDA")
+                {
+                    Tolk.Output(pressModeComboBox.SelectedItem.ToString());
+                }
+            }
+
+            PMDG737Aircraft.PressModeSelector(pressModeComboBox.SelectedIndex);
+
+        }
+
+        private void packLComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Properties.pmdg737_offsets.Default.AIR_PackSwitch1 == false)
+            {
+                if (Tolk.DetectScreenReader() == "NVDA")
+                {
+                    Tolk.Output(packLComboBox.SelectedItem.ToString());
+                }
+            }
+            PMDG737Aircraft.LeftPackSelector(packLComboBox.SelectedIndex);
+
+        }
+
+        private void packRComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Properties.pmdg737_offsets.Default.AIR_PackSwitch2 == false)
+            {
+                if (Tolk.DetectScreenReader() == "NVDA")
+                {
+                    Tolk.Output(packRComboBox.SelectedItem.ToString());
+                }
+            }
+
+            PMDG737Aircraft.RightPackSelector(packRComboBox.SelectedIndex);
+        }
+
+        private void leftBleedButton_Click(object sender, EventArgs e)
+        {
+            var toggle = (SingleStateToggle)controls.Where(x => x.Offset == Aircraft.pmdg737.AIR_BleedAirSwitch[0]).ToArray()[0];
+
+            if(toggle.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.LeftBleedOff();
+            }
+            else
+            {
+                PMDG737Aircraft.LeftBleedOn();
+            }
+        }
+
+        private void rightBleedButton_Click(object sender, EventArgs e)
+        {
+            var toggle = (SingleStateToggle)controls.Where(x => x.Offset == Aircraft.pmdg737.AIR_BleedAirSwitch[1]).ToArray()[0];
+
+            if(toggle.CurrentState.Value == "off")
+            {
+                PMDG737Aircraft.RightBleedOn();
+            }
+            else
+            {
+                PMDG737Aircraft.RightBleedOff();
+            }
+        }
+
+        private void apuBleedButton_Click(object sender, EventArgs e)
+        {
+
+            var toggle = (SingleStateToggle)controls.Where(x => x.Offset == Aircraft.pmdg737.AIR_APUBleedAirSwitch).ToArray()[0];
+
+            if(toggle.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.APUBleedOff();
+            }
+            else
+            {
+                PMDG737Aircraft.APUBleedOn();
+            }
+        }
+
+        private void leftRecircFanButton_Click(object sender, EventArgs e)
+        {
+
+            var toggle = (SingleStateToggle)controls.Where(x => x.Offset == Aircraft.pmdg737.AIR_RecircFanSwitch[0]).ToArray()[0];
+
+            if(toggle.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.LeftRecircFanOff();
+            }
+            else
+            {
+                PMDG737Aircraft.LeftRecircFanOn();
+            }
+        }
+
+        private void rightRecircFanButton_Click(object sender, EventArgs e)
+        {
+
+            var toggle = (SingleStateToggle)controls.Where(x => x.Offset == Aircraft.pmdg737.AIR_RecircFanSwitch[1]).ToArray()[0];
+
+            if(toggle.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.RightRecircFanOff();
+            }
+            else
+            {
+                PMDG737Aircraft.RightRecircFanOn();
+            }
+        }
+
+        private void airTrimButton_Click(object sender, EventArgs e)
+        {
+
+            var toggle = (SingleStateToggle)controls.Where(x => x.Offset == Aircraft.pmdg737.AIR_TrimAirSwitch).ToArray()[0];
+
+            if(toggle.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.AirTrimOff();
+            }
+            else
+            {
+                PMDG737Aircraft.AirTrimOn();        
+            }
+        }
+
+        private void outFlowValveComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Properties.pmdg737_offsets.Default.AIR_OutflowValveSwitch == false)
+            {
+                if (Tolk.DetectScreenReader() == "NVDA")
+                {
+                    Tolk.Output(outFlowValveComboBox.SelectedItem.ToString());
+                }
+            }
+
+            PMDG737Aircraft.OutflowValveSelector(outFlowValveComboBox.SelectedIndex);
+        }
+
+        private void isolationValveComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Properties.pmdg737_offsets.Default.AIR_IsolationValveSwitch == false)
+            {
+                if (Tolk.DetectScreenReader() == "NVDA")
+                {
+                    Tolk.Output(isolationValveComboBox.SelectedItem.ToString());
+                }
+            }
+
+            PMDG737Aircraft.IsolationValveSelector(isolationValveComboBox.SelectedIndex);
         }
     }
 }

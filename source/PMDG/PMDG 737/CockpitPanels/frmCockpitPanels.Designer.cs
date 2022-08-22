@@ -67,11 +67,9 @@
             treeNode19});
             System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("MCP");
             System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Engines");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Pressurization");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode21,
-            treeNode22,
-            treeNode23});
+            treeNode22});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -125,15 +123,13 @@
             treeNode21.Text = "MCP";
             treeNode22.Name = "nodEngines";
             treeNode22.Text = "Engines";
-            treeNode23.Name = "nodPressurization";
-            treeNode23.Text = "Pressurization";
-            treeNode24.Name = "nodOverhead";
-            treeNode24.Text = "Overhead";
+            treeNode23.Name = "nodOverhead";
+            treeNode23.Text = "Overhead";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
             treeNode20,
-            treeNode24});
+            treeNode23});
             this.tvPanels.Size = new System.Drawing.Size(121, 97);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

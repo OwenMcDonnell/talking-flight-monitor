@@ -1566,5 +1566,102 @@ public static void EmergencyLightSelector(int position)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_FLT_ALT_SET, altitude);
         } // SetPressFltAltitude
+
+        public static void SetPressLndAltitude(int altitude)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_LAND_ALT_SET, altitude);
+        } // SetPressLndAltitude.
+
+        public static void AirSourceSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_AIRCOND_TEMP_SOURCE_SELECTOR_800, position);
+        } // AirSourceSelector
+
+        public static void PressModeSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_SELECTOR, position);
+        } // PressModeSelector
+
+        public static void LeftPackSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_PACK_L_SWITCH, position);
+        } // LeftPackSelector
+
+        public static void RightPackSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_PACK_R_SWITCH, position);
+        } // RightPackSelector
+
+        public static void LeftBleedOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkR);
+        } // LeftBleedOff
+
+        public static void LeftBleedOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkL);
+        } // LeftBleedOn.
+
+        public static void RightBleedOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkR);
+        } // RightBleedOff
+
+        public static void RightBleedOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkL);
+        } // RightBleedOn
+
+        public static void APUBleedOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkL);
+        } // APUBleedOn
+
+        public static void APUBleedOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkR);
+        } // APUBleedOff
+
+        public static void LeftRecircFanOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkL);
+        } // LeftRecircFanOn
+
+        public static void LeftRecircFanOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkR);
+        } // LeftRecircFanOff
+
+        public static void RightRecircFanOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkL);
+        } // RightRecircFanOn
+
+        public static void RightRecircFanOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkR);
+
+
+        } // RightRecircFanOff
+
+        public static void AirTrimOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_AIRCOND_TRIM_AIR_SWITCH_800, ClkL);
+        } // AirTrimOn
+
+        public static void AirTrimOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_AIRCOND_TRIM_AIR_SWITCH_800, ClkR);
+        } // AirTrimOff
+
+        public static void OutflowValveSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_VALVE_SWITCH, position);
+        } // OutflowValveSelector
+
+        public static void IsolationValveSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ISOLATION_VALVE_SWITCH, position);
+        } // IsolationValveSelector
     } // End PMDG737Aircraft.
     } // End namespace.
