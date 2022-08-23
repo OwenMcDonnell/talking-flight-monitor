@@ -50,6 +50,7 @@ namespace tfm
             pages.Add("737CenterOverheadNode", new Settings_panels.PMDG737.ctlCenterMain());
             pages.Add("737AntiIceNode", new Settings_panels.PMDG737.ctlAntiIce());
             pages.Add("737HydraulicsNode", new Settings_panels.PMDG737.ctlHydraulics());
+            pages.Add("737AirSystemsNode", new tfm.Settings_panels.PMDG737.ctlAirSystems());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

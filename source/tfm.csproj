@@ -633,6 +633,12 @@
     <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAirSystems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAirSystems.Designer.cs">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlAntiIce.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1048,6 +1054,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAirSystems.resx">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAntiIce.resx">
       <DependentUpon>ctlAntiIce.cs</DependentUpon>
