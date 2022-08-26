@@ -939,12 +939,28 @@ namespace tfm
             {
                 if (Aircraft.Nav1GS.Value == 1 && gsDetected == false)
                 {
-                    Output(isGauge: false, useSAPI: true, output: "glide slope is alive. ");
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "glide slope is alive. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: "glide slope is alive. ");
+                    }
+                    
                     gsDetected = true;
                 }
                 if (Aircraft.Nav1Flags.Value[7] && hasLocaliser == false)
                 {
-                    Output(isGauge: false, useSAPI: true, output: "nav 1 has localiser.");
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "nav 1 has localiser.");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: "nav 1 has localiser.");
+                    }
+                    
                     hasLocaliser = true;
                 }
                 if (Aircraft.Nav1Signal.Value == 256 && localiserDetected == false && Aircraft.Nav1Flags.Value[7])
@@ -954,7 +970,16 @@ namespace tfm
                                          double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
                                         double magHeading = hdgTrue - magvar;
                                          double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
-                                        Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+                    }
+                    else
+                    {
+                        Output(isGauge: false,output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+                    }
+                                        
                                                             localiserDetected = true;
                     ilsTimer.AutoReset = true;
                     ilsTimer.Enabled = true;
@@ -962,7 +987,16 @@ namespace tfm
                 }
                 if (Aircraft.Nav1Flags.Value[6] && hasGlideSlope == false)
                 {
-                    Output(isGauge: false, useSAPI: true, output: "nav 1 has glide slope. ");
+
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "nav 1 has glide slope. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false,output: "nav 1 has glide slope. ");
+                    }
+
                     hasGlideSlope = true;
                 }
 
@@ -1005,21 +1039,46 @@ namespace tfm
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"{relativeGsHeight} down.";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (relativeGsHeight < 0)
                     {
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"{Math.Abs(relativeGsHeight)} up";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
-                    }
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+                                            }
                     if (relativeGsHeight == 0)
                     {
                         var gaugeName = "Glide slope";
                         var gaugeValue = "Centered.";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
                     }
                 }
                 else
@@ -1031,7 +1090,15 @@ namespace tfm
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"up {strPercent} percent. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
                     }
                     if (gsNeedle < 0 && gsNeedle > -119)
                     {
@@ -1040,8 +1107,16 @@ namespace tfm
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"down {strPercent} percent. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
-                    }
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+                                            }
                 }
                 if (Properties.Settings.Default.ReadLocaliserHeadingOffsets)
                 {
@@ -1053,21 +1128,48 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = $"Left {Math.Abs(headingOffset)}";
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (headingOffset > 0)
                     {
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = $"Right {headingOffset}";
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (headingOffset == 0)
                     {
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = "Centered.";
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
+
                     }
                 }
                 else
@@ -1079,7 +1181,16 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var gaugeValue = $"{strPercent} percent right. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (locNeedle < 0 && locNeedle > -127)
                     {
@@ -1088,7 +1199,16 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var gaugeValue = $"{strPercent} percent left. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                 }
                             }

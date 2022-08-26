@@ -68,6 +68,7 @@
             this.speechHistoryTimestampsCheckBox = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.sapiILSAnnouncementsCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkSpeechRate)).BeginInit();
             this.grpAttitude.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -417,10 +418,11 @@
             this.flowLayoutPanel5.Controls.Add(this.chkAutopilot);
             this.flowLayoutPanel5.Controls.Add(this.UseDatabaseCheckBox);
             this.flowLayoutPanel5.Controls.Add(this.speechHistoryTimestampsCheckBox);
+            this.flowLayoutPanel5.Controls.Add(this.sapiILSAnnouncementsCheckBox);
             this.flowLayoutPanel5.Location = new System.Drawing.Point(8, 9);
             this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(4866, 55);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(5225, 55);
             this.flowLayoutPanel5.TabIndex = 15;
             // 
             // chkReadInstrumentation
@@ -593,6 +595,18 @@
             this.numericUpDown1.TabIndex = 17;
             this.numericUpDown1.Value = global::tfm.Properties.Settings.Default.OutputHistoryLength;
             // 
+            // sapiILSAnnouncementsCheckBox
+            // 
+            this.sapiILSAnnouncementsCheckBox.AccessibleName = "Use SAPI with ILS readouts";
+            this.sapiILSAnnouncementsCheckBox.AutoSize = true;
+            this.sapiILSAnnouncementsCheckBox.Location = new System.Drawing.Point(4869, 3);
+            this.sapiILSAnnouncementsCheckBox.Name = "sapiILSAnnouncementsCheckBox";
+            this.sapiILSAnnouncementsCheckBox.Size = new System.Drawing.Size(353, 37);
+            this.sapiILSAnnouncementsCheckBox.TabIndex = 17;
+            this.sapiILSAnnouncementsCheckBox.Text = "Use SAPI with ILS readouts";
+            this.sapiILSAnnouncementsCheckBox.UseVisualStyleBackColor = true;
+            this.sapiILSAnnouncementsCheckBox.CheckedChanged += new System.EventHandler(this.sapiILSAnnouncementsCheckBox_CheckedChanged);
+            // 
             // ctlSpeechOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
@@ -677,5 +691,6 @@
         private System.Windows.Forms.Button btnVoice;
         private System.Windows.Forms.CheckBox UseDatabaseCheckBox;
         private System.Windows.Forms.CheckBox speechHistoryTimestampsCheckBox;
+        private System.Windows.Forms.CheckBox sapiILSAnnouncementsCheckBox;
     }
 }

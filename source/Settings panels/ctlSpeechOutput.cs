@@ -31,6 +31,7 @@ namespace tfm
         private void CtlSpeechOutput_Load(object sender, EventArgs e)
         {
             Tolk.Load();
+            sapiILSAnnouncementsCheckBox.Checked = Properties.Settings.Default.SapiILSAnnouncements;
             UseDatabaseCheckBox.Checked = Properties.Settings.Default.UseDatabase;
             speechHistoryTimestampsCheckBox.Checked = Properties.Settings.Default.SpeechHistoryTimestamps;
 
@@ -256,6 +257,18 @@ if (rb.Checked)
             else
             {
                 Properties.Settings.Default.SpeechHistoryTimestamps = false;
+            }
+        }
+
+        private void sapiILSAnnouncementsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(sapiILSAnnouncementsCheckBox.Checked == true)
+            {
+                Properties.Settings.Default.SapiILSAnnouncements = true;
+            }
+            else
+            {
+                Properties.Settings.Default.SapiILSAnnouncements = false;
             }
         }
     }

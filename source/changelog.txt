@@ -2,6 +2,7 @@
 
 ### What's new?
 
+* TFM: Option to not use SAPI when on an ILS approach. To turn it on, open TFM settings and navigate to the output section. Check/uncheck the 'use sapi with ILS announcements'option, then press OK to save.
 * PMDG 777: the MCP/autopilot keys to announce heading, altitude, and speed match the PMDG 737 output.
 * PMDG 737 Aft Overhead panels
     * ADIRU
@@ -37,6 +38,7 @@
 
 * Users can now turn on/off the ground power in the electrical panel.
 * Turned on the pre-existing offsets to make the preview releases usable by all users.
+* The above/below announcements now indicate up/down. Up = glide slope is above you and down = glide slope is below you.
 
 ### Known issues
 
