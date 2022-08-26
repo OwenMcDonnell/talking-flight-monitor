@@ -27,5 +27,5 @@ public AircraftVerbosity Verbosity { get => _verbosity; set => _verbosity = valu
         public virtual  PanelObjectType Type { get => _type; set => this._type = value; }
         public  virtual  Offset Offset { get => _offset; set => _offset = value; }
         public bool shouldSpeak { get => _shouldSpeak; set => _shouldSpeak = value; }
-    } // End PanelObject.
+                   } // End PanelObject.
 } // End namespace.

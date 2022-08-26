@@ -1,4 +1,5 @@
 ﻿using tfm.PMDG;
+using tfm.PMDG;
 using tfm.PMDG.PanelObjects;
 using FSUIPC;
 using DavyKager;
@@ -93,6 +94,12 @@ namespace tfm
  *_backupPowerStates is used with the backup power switch. */
 
         private static Dictionary<byte, string> _onOrOffStates = new Dictionary<byte, string>()
+        {
+            {0, "off" },
+            {1, "on" },
+        };
+
+        private static  Dictionary<uint, string> _onOrOffInt32States = new Dictionary<uint, string>()
         {
             {0, "off" },
             {1, "on" },
@@ -209,8 +216,10 @@ namespace tfm
 
         private static Dictionary<byte, string> _engineStartModeStates = new Dictionary<byte, string>()
         {
-            {0, "start" },
-            {1, "normal" },
+            {0, "grd" },
+            {1, "auto" },
+            {2, "cont" },
+            {3, "flt" },
         };
 
         private static Dictionary<byte, string> _fuelToRemainStates = new Dictionary<byte, string>()
@@ -354,6 +363,71 @@ namespace tfm
             {2, "auto" },
         };
 
+        private static Dictionary<byte, string> _openOrClosedStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "opened" },
+        };
+
+        private static Dictionary<byte, string> _airSourceSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "scant" },
+            {1, "sfwd" },
+            {2, "saft" },
+            {3, "cfwd" },
+            {4, "caft" },
+            {5, "pckl" },
+            {6, "pckr" },
+        };
+
+        private static Dictionary<byte, string> _packStates = new Dictionary<byte, string>()
+        {
+            {0, "off" },
+            {1, "auto" },
+            {2, "high" },
+        };
+
+        private static Dictionary<byte, string> _isolationValveStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "auto" },
+            {2, "open" },
+        };
+
+        private static Dictionary<byte, string> _outflowValveStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "neutral" },
+            {2, "open" },
+        };
+
+        private static Dictionary<byte, string> _pressurizationModeSelector = new Dictionary<byte, string>()
+        {
+            {0, "auto" },
+            {1, "altn" },
+            {2, "man" },
+        };
+
+        private static Dictionary<byte, string> _ignitionStartSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "ign L" },
+            {1, "both" },
+            {2, "ign R" },
+        };
+
+        private static Dictionary<byte, string> _retractableLandingLightStates = new Dictionary<byte, string>()
+        {
+            {0, "retract" },
+            {1, "extend" },
+            {2, "on" },
+        };
+
+        private static Dictionary<byte, string> _positionLightStates = new Dictionary<byte, string>()
+        {
+            {0, "steady" },
+            {1, "off" },
+            {2, "strobe/steady" },
+        };
 
         public static List<PanelObject> PanelControls
         {
@@ -507,8 +581,112 @@ new SingleStateToggle { Name = "Left wipers", PanelName = "Forward Overhead", Pa
 new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", PanelSection = "Wipers", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OH_WiperRSelector, AvailableStates = _wiperStates, shouldSpeak = Properties.pmdg737_offsets.Default.OH_WiperRSelector},
 
 // --panel: Center Overhead
-// -- section: none
+// -- section: Main
 
+new SingleStateToggle { Name = "Circutt breaker knob", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_CircuitBreakerKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_CircuitBreakerKnob},
+new SingleStateToggle { Name = "Overhead panel knob", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_OvereadPanelKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_OvereadPanelKnob },
+new SingleStateToggle { Name = "Emergency exit lights", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.LTS_EmerExitSelector, AvailableStates = _armedOnOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_EmerExitSelector},
+new SingleStateToggle { Name = "Equipment cooling supply", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_EquipCoolingSupplyNORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_EquipCoolingSupplyNORM},
+new SingleStateToggle { Name = "Equipment cooling exhaust", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_EquipCoolingExhaustNORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_EquipCoolingExhaustNORM},
+new SingleStateToggle { Name = "Chimes", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_NoSmokingSelector, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_NoSmokingSelector},
+new SingleStateToggle { Name = "Seatbelt selector", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_FastenBeltsSelector, AvailableStates = _autoOnOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_FastenBeltsSelector},
+new SingleStateToggle { Name = "Emergency exit N/armed light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.LTS_annunEmerNOT_ARMED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_annunEmerNOT_ARMED},
+new SingleStateToggle { Name = "Equipment cooling supply light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunEquipCoolingSupplyOFF, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunEquipCoolingSupplyOFF},
+new SingleStateToggle { Name = "Equipment cooling exhaust light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_annunEquipCoolingExhaustOFF, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunEquipCoolingExhaustOFF},
+new SingleStateToggle { Name = "Call light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_annunCALL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_annunCALL},
+new SingleStateToggle { Name = "PA in use light", PanelName = "Center Overhead", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.COMM_annunPA_IN_USE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_annunPA_IN_USE},
+
+// Anti-ice
+new SingleStateToggle { Name = "Left side window heat", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_WindowHeatSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_WindowHeatSw1},
+new SingleStateToggle { Name = "Left forward window heat", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_WindowHeatSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_WindowHeatSw2},
+new SingleStateToggle { Name = "Right forward window heat", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_WindowHeatSw[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_WindowHeatSw3},
+new SingleStateToggle { Name = "Right side window heat", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_WindowHeatSw[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_WindowHeatSw4},
+new SingleStateToggle { Name = "Wing anti-ice", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_WingAntiIceSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_WingAntiIceSw},
+new SingleStateToggle { Name = "Engine #1 anti-ice", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_EngAntiIceSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_EngAntiIceSw1},
+new SingleStateToggle { Name = "Engine #2 anti-ice", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_EngAntiIceSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_EngAntiIceSw2},
+new SingleStateToggle { Name = "Left side window overheat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunOVERHEAT[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunOVERHEAT1},
+new SingleStateToggle { Name = "Left forwardwindow overheat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunOVERHEAT[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunOVERHEAT2},
+new SingleStateToggle { Name = "Right forward window overheat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunOVERHEAT[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunOVERHEAT3},
+new SingleStateToggle { Name = "Right side window overheat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunOVERHEAT[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunOVERHEAT4},
+new SingleStateToggle { Name = "Left side window heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ICE_annunON[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunON1},
+new SingleStateToggle { Name = "Left forward window heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ICE_annunON[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunON2},
+new SingleStateToggle { Name = "Right forward window heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ICE_annunON[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunON3},
+new SingleStateToggle { Name = "Right side window heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ICE_annunON[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunON4},
+new SingleStateToggle { Name = "Captain's pitot heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.ICE_annunCAPT_PITOT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCAPT_PITOT},
+new SingleStateToggle { Name = "Left elevator pitot heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.ICE_annunL_ELEV_PITOT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunL_ELEV_PITOT},
+new SingleStateToggle { Name = "Left alpha vane light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.ICE_annunL_ALPHA_VANE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunL_ALPHA_VANE},
+new SingleStateToggle { Name = "Left temp probe light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity= AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunL_TEMP_PROBE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunL_TEMP_PROBE},
+new SingleStateToggle { Name = "F/O pito heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunFO_PITOT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunFO_PITOT},
+new SingleStateToggle { Name = "Right elevator pitot heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunR_ELEV_PITOT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunR_ELEV_PITOT},
+new SingleStateToggle { Name = "Right alpha vane light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunR_ALPHA_VANE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunR_ALPHA_VANE},
+new SingleStateToggle { Name = "Aux pitot heat light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunAUX_PITOT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunAUX_PITOT},
+new SingleStateToggle { Name = "Left anti-ice valve", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunVALVE_OPEN[0], AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunVALVE_OPEN1},
+new SingleStateToggle { Name = "Right anti-ice valve", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunVALVE_OPEN[1], AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunVALVE_OPEN2},
+new SingleStateToggle { Name = "Left cowl anti-ice light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunCOWL_ANTI_ICE[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCOWL_ANTI_ICE1},
+new SingleStateToggle { Name = "Right cowl anti-ice light", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunCOWL_ANTI_ICE[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCOWL_ANTI_ICE2},
+new SingleStateToggle { Name = "Left cowl valve", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunCOWL_VALVE_OPEN[0], AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCOWL_VALVE_OPEN1},
+new SingleStateToggle { Name = "Right cowl valve", PanelName = "Center Overhead", PanelSection = "Anti-ice", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ICE_annunCOWL_VALVE_OPEN[1], AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg737_offsets.Default.ICE_annunCOWL_VALVE_OPEN2},
+
+// --section: Hydraulics
+new SingleStateToggle { Name = "Electric Hydraulic pump #1", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_elec1},
+new SingleStateToggle { Name = "Electric Hydraulic pump #2", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_elec2},
+new SingleStateToggle { Name = "Engine #1 Hydraulic pump", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_eng[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_eng1},
+new SingleStateToggle { Name = "Engine #2 Hydraulic pump", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_PumpSw_eng[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_PumpSw_eng2},
+new SingleStateToggle { Name = "Engine #1 hydraulic pump low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_eng[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_eng1},
+new SingleStateToggle { Name = "Engine #2 hydraulic pump low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_eng[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_eng2},
+new SingleStateToggle { Name = "Electric hydraulic pump #1 low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_elec1},
+new SingleStateToggle { Name = "Electric hydraulic pump #2 low pressure light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunLOW_PRESS_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunLOW_PRESS_elec2},
+new SingleStateToggle { Name = "Electric hydraulic pump #1 overheat light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunOVERHEAT_elec[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunOVERHEAT_elec1},
+new SingleStateToggle { Name = "Electric hydraulic pump #2 overheat light", PanelName = "Center Overhead", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.HYD_annunOVERHEAT_elec[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.HYD_annunOVERHEAT_elec2},
+// --section: Air systems
+new SingleStateToggle { Name = "Air source", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_TempSourceSelector, AvailableStates = _airSourceSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_TempSourceSelector },
+new SingleStateToggle { Name = "Air trim", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_TrimAirSwitch, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_TrimAirSwitch },
+new SingleStateToggle { Name = "Flight deck temprature light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunZoneTemp[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunZoneTemp1},
+new SingleStateToggle { Name = "Forward cabin temprature light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunZoneTemp[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunZoneTemp2},
+new SingleStateToggle { Name = "AFT cabin temprature light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunZoneTemp[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunZoneTemp3},
+new SingleStateToggle { Name = "Dual bleed light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.High, Offset = Aircraft.pmdg737.AIR_annunDualBleed, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunDualBleed},
+new SingleStateToggle { Name = "Left ram door light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunRamDoorL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunRamDoorL},
+new SingleStateToggle { Name = "Right ram door light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunRamDoorR, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunRamDoorR},
+new SingleStateToggle { Name = "Left recirc fan", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_RecircFanSwitch[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_RecircFanSwitch1},
+new SingleStateToggle { Name = "Right recirc fan", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_RecircFanSwitch[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_RecircFanSwitch2},
+new SingleStateToggle { Name = "Left pack", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_PackSwitch[0], AvailableStates = _packStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_PackSwitch1},
+new SingleStateToggle { Name = "Right pack", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_PackSwitch[1], AvailableStates = _packStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_PackSwitch2},
+new SingleStateToggle { Name = "Left air bleed", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_BleedAirSwitch[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_BleedAirSwitch1},
+new SingleStateToggle { Name = "Right air bleed", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_BleedAirSwitch[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_BleedAirSwitch2},
+new SingleStateToggle { Name = "APU bleed", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_APUBleedAirSwitch, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_APUBleedAirSwitch},
+new SingleStateToggle { Name = "Isolation valve", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_IsolationValveSwitch, AvailableStates = _isolationValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_IsolationValveSwitch},
+new SingleStateToggle { Name = "Left pack trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunPackTripOff[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunPackTripOff1},
+new SingleStateToggle { Name = "Right pack trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunPackTripOff[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunPackTripOff2},
+new SingleStateToggle { Name = "Left wing overheat light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunWingBodyOverheat[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunWingBodyOverheat1},
+new SingleStateToggle { Name = "Right wing overheat light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunWingBodyOverheat[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunWingBodyOverheat2},
+new SingleStateToggle { Name = "Left bleed trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunBleedTripOff[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunBleedTripOff1},
+new SingleStateToggle { Name = "Right bleed trip light", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_annunBleedTripOff[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_annunBleedTripOff2},
+new SingleStateToggle { Name = "Flight altitude", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_DisplayFltAlt, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_DisplayFltAlt},
+new SingleStateToggle { Name = "Landing altitude", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.NumericDisplay, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_DisplayLandAlt, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_DisplayLandAlt},
+new SingleStateToggle { Name = "Outflow valve", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_OutflowValveSwitch, AvailableStates = _outflowValveStates, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_OutflowValveSwitch},
+new SingleStateToggle { Name = "Pressurization mode selector", PanelName = "Center Overhead", PanelSection = "Air Systems", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AIR_PressurizationModeSelector, AvailableStates = _pressurizationModeSelector, shouldSpeak = Properties.pmdg737_offsets.Default.AIR_PressurizationModeSelector},
+
+// ---Panel: Bottom Overhead
+// ---section: Engines
+
+new SingleStateToggle { Name = "APU selector", PanelName = "Bottom Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.APU_Selector, AvailableStates = _apuStates, shouldSpeak = Properties.pmdg737_offsets.Default.APU_Selector},
+new SingleStateToggle { Name = "Engine #1", PanelName = "Bottom Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ENG_StartSelector[0], AvailableStates = _engineStartModeStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_StartSelector1},
+new SingleStateToggle { Name = "Engine #2", PanelName = "Bottom Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ENG_StartSelector[1], AvailableStates = _engineStartModeStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_StartSelector2},
+new SingleStateToggle { Name = "Ignition start selector", PanelName = "Bottom Overhead", PanelSection = "Engines", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ENG_IgnitionSelector, AvailableStates = _ignitionStartSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.ENG_IgnitionSelector},
+
+// --section: lights
+new SingleStateToggle {Name = "Left retractable landing light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LandingLtRetractableSw[0], AvailableStates = _retractableLandingLightStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LandingLtRetractableSw1},
+new SingleStateToggle {Name = "Right retractable landing light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LandingLtRetractableSw[1], AvailableStates = _retractableLandingLightStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LandingLtRetractableSw2},
+new SingleStateToggle{ Name = "Left fixed landing light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LandingLtFixedSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LandingLtFixedSw1},
+new SingleStateToggle{ Name = "Right fixed landing light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LandingLtFixedSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LandingLtFixedSw2},
+new SingleStateToggle { Name = "Left runway turnoff light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_RunwayTurnoffSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_RunwayTurnoffSw1},
+new SingleStateToggle { Name = "Right runway turnoff light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_RunwayTurnoffSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_RunwayTurnoffSw2},
+new SingleStateToggle { Name = "Taxi light", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_TaxiSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_TaxiSw},
+new SingleStateToggle { Name = "Logo lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LogoSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LogoSw},
+new SingleStateToggle { Name = "Position lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_PositionSw, AvailableStates = _positionLightStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_PositionSw},
+new SingleStateToggle { Name = "Anti-collision lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_AntiCollisionSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_AntiCollisionSw},
+new SingleStateToggle { Name = "Wing lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_WingSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_WingSw},
+new SingleStateToggle { Name = "Wheel well lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_WheelWellSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_WheelWellSw},
                             // --end-panel-controls                              
             };
         }
@@ -569,6 +747,11 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
                 return TimeSpan.FromHours(time);
             }
         } // End TimeToTOD.
+
+        public static double CurrentElevatorTrim
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("ElevTrimTT"), 2);
+        } // CurentElevatorTrim
 
         public static double CurrentFlapsPosition
         {
@@ -979,9 +1162,16 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_SWITCH, Aircraft.pmdg737.ELEC_BatSelector.Value, position, true);
         } // BatterySelector
 
-        public static void GroundPower(int position)
+        public static void GroundPower()
         {
-            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, Aircraft.pmdg737.ELEC_GrdPwrSw.Value, position, true);
+            if(FSUIPCConnection.ReadLVar("7X7X_Ground_Power_Light_Connected") == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, ClkR);
+            }
         } // GroundPower.
 
         public static void CabinUtility(int position)
@@ -1124,5 +1314,589 @@ new SingleStateToggle { Name = "Right wipers", PanelName = "Forward Overhead", P
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_WIPER_RIGHT_CONTROL, Aircraft.pmdg737.OH_WiperRSelector.Value, position);
         } // RightWiperSelector
 
-           } // End PMDG737Aircraft.
+public static void EmergencyLightSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EMER_EXIT_LIGHT_SWITCH, Aircraft.pmdg737.LTS_EmerExitSelector.Value, position, true);
+        } // EmergencyLightsSelector
+
+        public static void AirEquipCoolingSupply(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EC_SUPPLY_SWITCH, Aircraft.pmdg737.AIR_EquipCoolingSupplyNORM.Value, position, true);
+        } // AirEquipCoolingSupply
+        public static void AirEquipCoolingExhaust(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EC_EXHAUST_SWITCH, Aircraft.pmdg737.AIR_EquipCoolingExhaustNORM.Value, position, true);
+        } // AirEquipCoolingExhaust
+
+        public static void NoSmokingSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_NO_SMOKING_LIGHT_SWITCH, Aircraft.pmdg737.COMM_NoSmokingSelector.Value, position, true);
+                                                } // NoSmokingSelector
+
+
+
+        public static void SeatBeltSelector(int position)
+        {
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FASTEN_BELTS_LIGHT_SWITCH, Aircraft.pmdg737.COMM_FastenBeltsSelector.Value, position, true);
+        } // SeatBeltSelector
+
+        public static void CircuttBreakerLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CB_LIGHT_CONTROL, Inc);
+        } // CircuttBreakerIncrease
+
+        public static void CircuttBreakerLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CB_LIGHT_CONTROL, Dec);
+        } // CircuttBreakerLightDecrease
+
+        public static void OverheadPanelLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PANEL_LIGHT_CONTROL, Inc);
+        } // OverheadPanelLightIncrease
+
+        public static void OverheadPanelLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PANEL_LIGHT_CONTROL, Dec);
+        } // OverheadPanelLightDecrease
+
+        public static void LeftSideWindowHeatOn()
+        {
+                                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, ClkL);
+                    } // LeftSideWindowHeatOn
+
+        public static void LeftSideWindowHeatOff()
+        {
+                                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, ClkR);
+            
+        } // LeftSideWindowHeatOff
+
+        public static void LeftSideWindowHeatToggle()
+        {
+        if (Aircraft.pmdg737.ICE_WindowHeatSw[0].Value == 0)
+            {
+                LeftSideWindowHeatOn();
+            }
+            else
+            {
+                LeftSideWindowHeatOff();
+            }
+
+        } // LeftSideWindowHeatToggle
+
+        public static void LeftForwardWindowHeatOn()
+        {
+                                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_2, ClkL);
+                    } // LeftForwardWindowHeatOn
+
+        public static void LeftForwardWindowHeatOff()
+        {
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_2, ClkR);
+        } // LeftForwardWindowHeatOff
+
+        public static void LeftForwardWindowHeatToggle()
+        {
+        if (Aircraft.pmdg737.ICE_WindowHeatSw[1].Value == 0)
+            {
+                LeftForwardWindowHeatOn();
+            }
+            else
+            {
+                LeftForwardWindowHeatOff();
+            }
+        } // LeftForwardWindowHeatToggle
+
+        public static void WindowHeatTestOn()
+        {
+            if(Aircraft.pmdg737.ICE_WindowHeatTestSw.Value == 0)
+            {
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkL);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkL);
+            }
+        } // WindowHeatTestOn
+
+        public static void WindowHeatTestOff()
+        {
+        } // WindowHeatTest Off
+
+        public static void WindowOverHeatTest()
+        {
+//            var switchPosition = FSUIPCConnection.ReadLVar("switch_137_73X");
+
+            if(Aircraft.pmdg737.ICE_WindowHeatTestSw.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkR);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkR);
+            }
+        } // WindowOverHeatTest
+
+        public static void RightForwardWindowHeatOn()
+        {
+                                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_3, ClkL);
+                    } // RightForwardWindowHeatOn
+
+        public static void RightForwardWindowHeatOff()
+        {
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_3, ClkR);
+        } // RightForwardWindowHeatOff
+
+    public static void RightForwardWindowHeatToggle()
+        {
+            if (Aircraft.pmdg737.ICE_WindowHeatSw[2].Value == 0)
+            {
+                RightForwardWindowHeatOn();
+            }
+            else
+            {
+                RightForwardWindowHeatOn();
+            }
+        } // RightForwardWindowHeatToggle
+
+        public static void RightSideWindowHeatOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_4, ClkL);
+        } // RightSideWindowHeatOn.
+
+        public static void RightSideWindowHeatOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_4, ClkR);
+        } // RightSideWindowHeatOff
+
+        public static void RightSideWindowHeatToggle()
+        {
+            if (Aircraft.pmdg737.ICE_WindowHeatSw[3].Value == 0)
+            {
+                RightSideWindowHeatOn();
+            }
+            else
+            {
+                RightSideWindowHeatOff();
+            }
+        } // RightSideWindowHeatToggle.
+    
+        public static void LeftProbeHeatOn()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_140_73X") == 100)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_1, ClkL);
+            }
+                    } // LeftProbeHeatOn
+
+        public static void LeftProbeHeatOff()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_140_73X") == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_1, ClkR);
+            }
+        } // LeftProbeHeatOff
+
+        public static void RightProbeHeatOn()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_141_73X") == 100)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_2, ClkL);
+            }
+        } // RightProbeHeatOn
+
+        public static void RightProbeHeatOff()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_141_73X") == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_2, ClkR);
+            }
+        } // RightProbeHeatOff
+
+        public static void WingAntiIceOn()
+        {
+            if(Aircraft.pmdg737.ICE_WingAntiIceSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WING_ANTIICE, ClkL);
+            }
+        } // WingAntiIceOn
+        public static void WingAntiIceOff()
+        {
+            if(Aircraft.pmdg737.ICE_WingAntiIceSw.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WING_ANTIICE, ClkR);
+            }
+        } // WingAntiIceOff
+
+        public static void Engine1AntiIceOn()
+        {
+            if (Aircraft.pmdg737.ICE_EngAntiIceSw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_ENGINE_ANTIICE_1, ClkL);
+            }
+        } // Engine1AntiIceOn
+
+        public static void Engine1AntiIceOff()
+        {
+            if (Aircraft.pmdg737.ICE_EngAntiIceSw[0].Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_ENGINE_ANTIICE_1, ClkR);
+            }
+        } // Engine1AntiIceOff
+
+        public static void Engine2AntiIceOn()
+        {
+            if (Aircraft.pmdg737.ICE_EngAntiIceSw[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_ENGINE_ANTIICE_2, ClkL);
+            }
+        }  // Engine2AntiIceOn
+
+        public static void Engine2AntiIceOff()
+        {
+            if (Aircraft.pmdg737.ICE_EngAntiIceSw[1].Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_ENGINE_ANTIICE_2, ClkR);
+            }
+        } // Engine2AntiIceOff
+
+        public static void HydraulicElectricalPump1()
+        {
+            if (Aircraft.pmdg737.HYD_PumpSw_elec[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC1, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC1, ClkR);
+            }
+        } // HydraulicsElectricalPump1
+
+        public static void HydraulicElectricalPump2()
+        {
+               if (Aircraft.pmdg737.HYD_PumpSw_elec[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC2, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC2, ClkR);
+            }
+        } // HydraulicElectricalPump2
+
+        public static void HydraulicsEnginePump1()
+        {
+            if (Aircraft.pmdg737.HYD_PumpSw_eng[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG1, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG1, ClkR);
+            }
+        } // HydraulicsEnginePump1
+
+        public static void HydraulicsEnginePump2()
+        {
+            if (Aircraft.pmdg737.HYD_PumpSw_eng[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG2, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG2, ClkR);
+            }
+        } // HydraulicsEnginePump2
+
+        public static void SetPressFltAlt(int altitude)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_FLT_ALT_SET, altitude);
+        } // SetPressFltAltitude
+
+        public static void SetPressLndAltitude(int altitude)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_LAND_ALT_SET, altitude);
+        } // SetPressLndAltitude.
+
+        public static void AirSourceSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_AIRCOND_TEMP_SOURCE_SELECTOR_800, position);
+        } // AirSourceSelector
+
+        public static void PressModeSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_SELECTOR, position);
+        } // PressModeSelector
+
+        public static void LeftPackSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_PACK_L_SWITCH, position);
+        } // LeftPackSelector
+
+        public static void RightPackSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_PACK_R_SWITCH, position);
+        } // RightPackSelector
+
+        public static void LeftBleedOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkR);
+        } // LeftBleedOff
+
+        public static void LeftBleedOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkL);
+        } // LeftBleedOn.
+
+        public static void RightBleedOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkR);
+        } // RightBleedOff
+
+        public static void RightBleedOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkL);
+        } // RightBleedOn
+
+        public static void APUBleedOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkL);
+        } // APUBleedOn
+
+        public static void APUBleedOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkR);
+        } // APUBleedOff
+
+        public static void LeftRecircFanOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkL);
+        } // LeftRecircFanOn
+
+        public static void LeftRecircFanOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkR);
+        } // LeftRecircFanOff
+
+        public static void RightRecircFanOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkL);
+        } // RightRecircFanOn
+
+        public static void RightRecircFanOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkR);
+
+
+        } // RightRecircFanOff
+
+        public static void AirTrimOn()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_AIRCOND_TRIM_AIR_SWITCH_800, ClkL);
+        } // AirTrimOn
+
+        public static void AirTrimOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_AIRCOND_TRIM_AIR_SWITCH_800, ClkR);
+        } // AirTrimOff
+
+        public static void OutflowValveSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_VALVE_SWITCH, position);
+        } // OutflowValveSelector
+
+        public static void IsolationValveSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ISOLATION_VALVE_SWITCH, position);
+        } // IsolationValveSelector
+
+public static void APUSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_APU_START, position);
+        } // APUSelector
+
+        public static void Engine1StartSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_L_ENGINE_START, position);
+        } // Engine1StartSelector
+
+        public static void Eng1FuelSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_ENG1_START_LEVER, position);
+        } // Eng1FuelSelector
+
+        public static void Engine2StartSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_ENGINE_START, position);
+        } // Engine2StartSelector
+
+        public static void Eng2FuelSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_ENG2_START_LEVER, position);
+        } // Eng2FuelSelector
+
+        public static void IgnitionSelector(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_IGN_SEL, position);
+        } // IgnitionSelector
+
+        public static void LeftRetractableLandingLights(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_L_RETRACT, position);
+        } // LeftRetractableLandingLights
+
+        public static void RightRetractableLandingLights(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_RETRACT, position);
+        } // RightRetractableLandingLights
+
+        public static void LeftFixedLandingLight()
+        {
+            if (Aircraft.pmdg737.LTS_LandingLtFixedSw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_L_FIXED, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_L_FIXED, ClkR);
+            }
+        } // LeftFixedLandingLights
+
+        public static void RightFixedLandingLights()
+        {
+            if (Aircraft.pmdg737.LTS_LandingLtFixedSw[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_FIXED, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_FIXED, ClkR);
+            }
+                    } // RightFixedLandingLights
+
+public static void LeftTurnOffLights()
+        {
+            if (Aircraft.pmdg737.LTS_RunwayTurnoffSw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_L_TURNOFF, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_L_TURNOFF, ClkR);
+            }
+        }// LeftTurnOffLights
+
+        public static void RightTurnOffLights()
+        {
+            if (Aircraft.pmdg737.LTS_RunwayTurnoffSw[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_TURNOFF, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_TURNOFF, ClkR);
+            }
+
+        } // RightTurnOffLights
+
+        public static void TaxiLights()
+        {
+            if(Aircraft.pmdg737.LTS_TaxiSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_TAXI, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_TAXI, ClkR);
+            }
+        } // TaxiLights
+// PositionLights is the main function that cycles through the different light modes.
+// Each mode has its own function to make it easier to read.
+        public static void PositionLights()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_123_73X") == 0)
+            {
+                PositionLightsOff();
+            }
+            else if(FSUIPCConnection.ReadLVar("switch_123_73X") == 50)
+            {
+                PositionLightsSteady();
+            }
+            else
+            {
+                PositionLightsStrobe();
+            }
+                    } // PositionLights
+
+        private static void PositionLightsStrobe()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_123_73X") != 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
+            }
+        } // PositionLightsStrobe
+
+        private static void PositionLightsOff()
+        {
+            if (FSUIPCConnection.ReadLVar("switch_123_73X") > 50)
+            {
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
+            }
+else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
+            {
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
+            }
+        } // PositionLightsOff
+
+        public static void PositionLightsSteady()
+        {
+            if(FSUIPCConnection.ReadLVar("switch_123_73X") != 100)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
+            }
+        } // PositionLightsSteady
+
+        public static void LogoLights()
+        {
+            if(Aircraft.pmdg737.LTS_LogoSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_LOGO, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_LOGO, ClkR);
+            }
+        } // LogoLights
+
+        public static void AntiCollisionLights()
+        {
+            if(Aircraft.pmdg737.LTS_AntiCollisionSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_ANT_COL, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_ANT_COL, ClkR);
+            }
+        } // AntiCollisionLights
+
+        public static void WingLights()
+        {
+            if(Aircraft.pmdg737.LTS_WingSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WING, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WING, ClkR);
+            }
+        } // WingLights
+
+        public static void WheelWellLights()
+        {
+            if(Aircraft.pmdg737.LTS_WheelWellSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WHEEL_WELL, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WHEEL_WELL, ClkR);
+            }
+        } // WheelWellLights
+    } // End PMDG737Aircraft.
     } // End namespace.

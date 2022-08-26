@@ -45,6 +45,16 @@ namespace tfm
             pages.Add("737ElectricalNode", new Settings_panels.PMDG737.ctlElectrical());
             pages.Add("737ApuNode", new Settings_panels.PMDG737.ctlAPU());
             pages.Add("737WipersNode", new Settings_panels.PMDG737.ctlWipers());
+
+            // Center overhead...
+            pages.Add("737CenterOverheadNode", new Settings_panels.PMDG737.ctlCenterMain());
+            pages.Add("737AntiIceNode", new Settings_panels.PMDG737.ctlAntiIce());
+            pages.Add("737HydraulicsNode", new Settings_panels.PMDG737.ctlHydraulics());
+            pages.Add("737AirSystemsNode", new tfm.Settings_panels.PMDG737.ctlAirSystems());
+
+            // --section: bottom overhead
+            pages.Add("737EnginesNode", new tfm.Settings_panels.PMDG737.ctlEngines());
+            pages.Add("737LightsNode", new tfm.Settings_panels.PMDG737.ctlLights());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

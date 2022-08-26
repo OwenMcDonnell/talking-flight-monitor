@@ -209,6 +209,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -375,6 +378,42 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.Designer.cs">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.Designer.cs">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.Designer.cs">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.Designer.cs">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.Designer.cs">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.Designer.cs">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -442,47 +481,11 @@
     <Compile Include="PMDG\PMDG 747\747CDU.Designer.cs">
       <DependentUpon>747CDU.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.Designer.cs">
-      <DependentUpon>ctlAirSystems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.Designer.cs">
-      <DependentUpon>ctlAntiIce.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.Designer.cs">
-      <DependentUpon>ctlEngines.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.Designer.cs">
-      <DependentUpon>ctlHydraulics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlInertialReferenceUnit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlInertialReferenceUnit.Designer.cs">
-      <DependentUpon>ctlInertialReferenceUnit.cs</DependentUpon>
-    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.Designer.cs">
       <DependentUpon>ctlMCP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.Designer.cs">
-      <DependentUpon>ctlPressurization.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.cs">
       <SubType>Form</SubType>
@@ -605,6 +608,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>pmdg737-offsets.settings</DependentUpon>
     </Compile>
+    <Compile Include="Properties\TFMDatabase.cs" />
     <Compile Include="Settings panels\ctlAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -635,11 +639,29 @@
     <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAirSystems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAirSystems.Designer.cs">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAntiIce.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAntiIce.Designer.cs">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlAPU.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCenterMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCenterMain.Designer.cs">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.cs">
       <SubType>UserControl</SubType>
@@ -658,6 +680,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlElectrical.Designer.cs">
       <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEngines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEngines.Designer.cs">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightControls.cs">
       <SubType>UserControl</SubType>
@@ -682,6 +710,18 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlGear.Designer.cs">
       <DependentUpon>ctlGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlHydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlHydraulics.Designer.cs">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLights.Designer.cs">
+      <DependentUpon>ctlLights.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlNav_Dis.cs">
       <SubType>UserControl</SubType>
@@ -901,6 +941,24 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.resx">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.resx">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.resx">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.resx">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.resx">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.resx">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
     </EmbeddedResource>
@@ -934,26 +992,8 @@
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.resx">
-      <DependentUpon>ctlAirSystems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.resx">
-      <DependentUpon>ctlAntiIce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.resx">
-      <DependentUpon>ctlEngines.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.resx">
-      <DependentUpon>ctlHydraulics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlInertialReferenceUnit.resx">
-      <DependentUpon>ctlInertialReferenceUnit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
       <DependentUpon>ctlMCP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.resx">
-      <DependentUpon>ctlPressurization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.resx">
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>
@@ -1036,8 +1076,17 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAirSystems.resx">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAntiIce.resx">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlCenterMain.resx">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
@@ -1047,6 +1096,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlElectrical.resx">
       <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlEngines.resx">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightControls.resx">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>
@@ -1059,6 +1111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlGear.resx">
       <DependentUpon>ctlGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlHydraulics.resx">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlLights.resx">
+      <DependentUpon>ctlLights.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlNav_Dis.resx">
       <DependentUpon>ctlNav_Dis.cs</DependentUpon>
@@ -1215,9 +1273,11 @@
     <Error Condition="!Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props'))" />
     <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
   <Import Project="packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -118,8 +118,9 @@ namespace tfm
         private bool groundSpeedActive;
         private bool takeOffAssistantActive = false;
         private bool isTakeoffComplete = true; // Always true unless takeoff assist is Active.
+        private double OldElevatorTrim = 0;
         private bool TrimEnabled = true;
-        private bool FlapsMoving;
+                private bool FlapsMoving;
         private bool pmdg777SpeedBrakeMoving = false;
           
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -697,33 +698,45 @@ namespace tfm
         }
         private void ReadTrim()
         {
-            // Elevator trim
-            double elevator = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.ElevatorTrim.Value);
-            double aileron = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.AileronTrim.Value);
-            if (Aircraft.ElevatorTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
 
+            if (PMDG737Detected)
             {
-                if (elevator < 0)
+                                                                                if(PMDG737Aircraft.CurrentElevatorTrim != OldElevatorTrim && TrimEnabled)
                 {
-                    Output(isGauge: false, output: $"Trim down {Math.Abs(Math.Round(elevator, 2)):F2}. ");
+                    Output(isGauge: false, output: $"{PMDG737Aircraft.CurrentElevatorTrim}");
+                    OldElevatorTrim = PMDG737Aircraft.CurrentElevatorTrim;
                 }
-                else
-                {
-                    Output(isGauge: false, output: $"Trim up: {Math.Round(elevator, 2):F2}");
-                }
+                            } // end-pmdg737-trim
+            else
+            {
+                // Elevator trim
+                double elevator = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.ElevatorTrim.Value);
+                double aileron = (double)Aircraft.ConvertRadiansToDegrees(Aircraft.AileronTrim.Value);
+                if (Aircraft.ElevatorTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
 
-            }
-            if (Aircraft.AileronTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
-            {
-                if (aileron < 0)
                 {
-                    Output(isGauge: false, output: $"Trim left {Math.Abs(Math.Round(aileron, 2))}. ");
+                    if (elevator < 0)
+                    {
+                        Output(isGauge: false, output: $"Trim down {Math.Abs(Math.Round(elevator, 2)):F2}. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: $"Trim up: {Math.Round(elevator, 2):F2}");
+                    }
+
                 }
-                else
+                if (Aircraft.AileronTrim.ValueChanged && Aircraft.ApMaster.Value != 1 && TrimEnabled)
                 {
-                    Output(isGauge: false, output: $"Trim right {Math.Round(aileron, 2)}");
+                    if (aileron < 0)
+                    {
+                        Output(isGauge: false, output: $"Trim left {Math.Abs(Math.Round(aileron, 2))}. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: $"Trim right {Math.Round(aileron, 2)}");
+                    }
                 }
-            }
+            }// end-freeware-trim
         }
 
         private void ReadAltimeter(bool TriggeredByKey)
@@ -926,12 +939,28 @@ namespace tfm
             {
                 if (Aircraft.Nav1GS.Value == 1 && gsDetected == false)
                 {
-                    Output(isGauge: false, useSAPI: true, output: "glide slope is alive. ");
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "glide slope is alive. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: "glide slope is alive. ");
+                    }
+                    
                     gsDetected = true;
                 }
                 if (Aircraft.Nav1Flags.Value[7] && hasLocaliser == false)
                 {
-                    Output(isGauge: false, useSAPI: true, output: "nav 1 has localiser.");
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "nav 1 has localiser.");
+                    }
+                    else
+                    {
+                        Output(isGauge: false, output: "nav 1 has localiser.");
+                    }
+                    
                     hasLocaliser = true;
                 }
                 if (Aircraft.Nav1Signal.Value == 256 && localiserDetected == false && Aircraft.Nav1Flags.Value[7])
@@ -941,7 +970,16 @@ namespace tfm
                                          double magvar = (double)Aircraft.MagneticVariation.Value * 360d / 65536d;
                                         double magHeading = hdgTrue - magvar;
                                          double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
-                                        Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+                    }
+                    else
+                    {
+                        Output(isGauge: false,output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
+                    }
+                                        
                                                             localiserDetected = true;
                     ilsTimer.AutoReset = true;
                     ilsTimer.Enabled = true;
@@ -949,7 +987,16 @@ namespace tfm
                 }
                 if (Aircraft.Nav1Flags.Value[6] && hasGlideSlope == false)
                 {
-                    Output(isGauge: false, useSAPI: true, output: "nav 1 has glide slope. ");
+
+                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    {
+                        Output(isGauge: false, useSAPI: true, output: "nav 1 has glide slope. ");
+                    }
+                    else
+                    {
+                        Output(isGauge: false,output: "nav 1 has glide slope. ");
+                    }
+
                     hasGlideSlope = true;
                 }
 
@@ -992,21 +1039,46 @@ namespace tfm
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"{relativeGsHeight} down.";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (relativeGsHeight < 0)
                     {
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"{Math.Abs(relativeGsHeight)} up";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
-                    }
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+                                            }
                     if (relativeGsHeight == 0)
                     {
                         var gaugeName = "Glide slope";
                         var gaugeValue = "Centered.";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
                     }
                 }
                 else
@@ -1018,7 +1090,15 @@ namespace tfm
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"up {strPercent} percent. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
                     }
                     if (gsNeedle < 0 && gsNeedle > -119)
                     {
@@ -1027,8 +1107,16 @@ namespace tfm
                         var gaugeName = "Glide slope";
                         var gaugeValue = $"down {strPercent} percent. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
-                    }
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+                                            }
                 }
                 if (Properties.Settings.Default.ReadLocaliserHeadingOffsets)
                 {
@@ -1040,21 +1128,48 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = $"Left {Math.Abs(headingOffset)}";
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (headingOffset > 0)
                     {
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = $"Right {headingOffset}";
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (headingOffset == 0)
                     {
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = "Centered.";
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
+
                     }
                 }
                 else
@@ -1066,7 +1181,16 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var gaugeValue = $"{strPercent} percent right. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                     if (locNeedle < 0 && locNeedle > -127)
                     {
@@ -1075,7 +1199,16 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var gaugeValue = $"{strPercent} percent left. ";
                         var isGauge = true;
-                        Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+
+                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
+                        }
+                        else
+                        {
+                            Output(gaugeName, gaugeValue, isGauge, textOutput: false);
+                        }
+
                     }
                 }
                             }
@@ -3887,7 +4020,7 @@ else if (PMDG777Detected)
 
         private void ReadPMDG737Toggles()
         {
-                        foreach(SingleStateToggle toggle in PMDG737Aircraft.PanelControls)
+                        foreach(PanelObject toggle in PMDG737Aircraft.PanelControls)
             {
                 // Only ones marked to speak are announced.
                 if (toggle.shouldSpeak == true)
@@ -3899,7 +4032,7 @@ else if (PMDG777Detected)
                                     }
             }
 
-/* --keep for backup set of offseps ---
+
             ReadToggle(Aircraft.pmdg737.HGS_annun_FLARE, Aircraft.pmdg737.HGS_annun_FLARE.Value > 0, "Flare light", "on", "off");
             // electrical panel
             ReadPMDGToggle(Aircraft.pmdg737.ELEC_BatSelector, Aircraft.pmdg737.ELEC_BatSelector.Value > 0, "Battery", "active", "off");
@@ -4060,7 +4193,7 @@ else if (PMDG777Detected)
             }
             ReadToggle(Aircraft.pmdg737.AIR_BleedAirSwitch[1], Aircraft.pmdg737.AIR_BleedAirSwitch[1].Value > 0, "engine 2 bleed", "on", "off");
             ReadToggle(Aircraft.pmdg737.AIR_BleedAirSwitch[0], Aircraft.pmdg737.AIR_BleedAirSwitch[0].Value > 0, "engine 1 bleed", "on", "off");
-            ReadToggle(Aircraft.pmdg737.AIR_APUBleedAirSwitch, Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value > 0, "APU bleed", "on", "off");*/
+            ReadToggle(Aircraft.pmdg737.AIR_APUBleedAirSwitch, Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value > 0, "APU bleed", "on", "off");
         } // End ReadPMDG737Toggles.
         private void ReadPMDG747Toggles()
         {

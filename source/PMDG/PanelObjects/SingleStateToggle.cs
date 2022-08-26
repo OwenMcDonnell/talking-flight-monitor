@@ -10,8 +10,9 @@ namespace tfm.PMDG.PanelObjects
     public class SingleStateToggle: PanelObject
     {
 
-        private Offset<float> _offsetFloat;
-        private Offset<byte> _offset;
+        //private Offset<float> _offsetFloat;
+        //private Offset<uint> _offsetInt;
+        private Offset _offset;
         private PanelObjectType _type = PanelObjectType.SingleState;
                 private Dictionary<byte, string> _availableStates = null;
         private KeyValuePair<byte, string> _currentState;
@@ -23,11 +24,11 @@ namespace tfm.PMDG.PanelObjects
             {
                 if(this.Offset == Aircraft.pmdg777.FCTL_Speedbrake_Lever)
                 {
-                    _percentageValue = Math.Truncate((double)((_offset.Value - 26) * 100) / 74);
+                    _percentageValue = Math.Truncate((double)((_offset.GetValue<byte>() - 26) * 100) / 74);
                 }
                 else if(this.Offset == Aircraft.pmdg737.OXY_Needle)
                 {
-                    _percentageValue = Math.Truncate((double)((_offset.Value - 0) * 100) / 240);
+                    _percentageValue = Math.Truncate((double)((_offset.GetValue<byte>() - 0) * 100) / 240);
                 }
                 return _percentageValue;
             }
@@ -38,10 +39,11 @@ namespace tfm.PMDG.PanelObjects
         {
             get
             {
-                                                KeyValuePair<byte, string> item = new KeyValuePair<byte, string>();
+                                                               KeyValuePair<byte, string> item = new KeyValuePair<byte, string>();
                                foreach (KeyValuePair<byte, string> pair in this._availableStates)
                 {
-                    if (_offset.Value == pair.Key)
+                    uint key = this.Offset.GetValue<byte>();
+                    if (key == pair.Key)
                     {
                         item = pair;
                         break;
@@ -64,26 +66,12 @@ namespace tfm.PMDG.PanelObjects
         {
             get
             {
-                if(_offset == null)
-                {
-                    return _offsetFloat;
-                }
-                else
-                {
-                    return _offset;
-                }
-            }
+                return _offset;
+                            }
             set
             {
-                if(value is Offset<float>)
-                {
-                    _offsetFloat = (Offset<float>)value;
-                }
-                else
-                {
-                    _offset = (Offset<byte>)value;
-                }
-                base.Offset = value;
+                _offset = value;
+                                base.Offset = value;
             }
         }
 
@@ -95,18 +83,18 @@ namespace tfm.PMDG.PanelObjects
             if(this.Offset == Aircraft.pmdg777.FCTL_Speedbrake_Lever)
             {
 
-                                if(_offset.Value > 0 && _offset.Value <= 24)
+                                if(_offset.GetValue<byte>() > 0 && _offset.GetValue<byte>() <= 24)
                 {
                     output = string.Empty;
                 } // ignore conditions.
                 // Force TFM to announce off/armed states.
-                else if(_offset.Value == 0 || _offset.Value == 25)
+                else if(_offset.GetValue<byte>() == 0 || _offset.GetValue<byte>() == 25)
                 {
                     output = $"{this.Name} {this.CurrentState.Value}";
                 } // off/armed conditions.
 
                 // Everything else is a free turning knob with a percent deployed value.
-                else if(_offset.Value >= 26)
+                else if(_offset.GetValue<byte>() >= 26)
                 {
                                                                                         output = $"{this.Name} {this.percentageValue}%";
                                                                                                                                                } // Everything else.
@@ -117,11 +105,19 @@ else             if(this.Offset == Aircraft.pmdg737.OXY_Needle)
             }
             else if(this.Offset == Aircraft.pmdg737.FUEL_FuelTempNeedle)
             {
-                output = $"{this.Name} {this._offsetFloat.Value}";
+                output = $"{this.Name} {_offset.GetValue<float>()}";
             }
             else if(this.Offset == Aircraft.pmdg737.APU_EGTNeedle)
             {
-                output = $"{this.Name} {this._offsetFloat.Value}";
+                output = $"{this.Name} {_offset.GetValue<float>()}";
+            }
+            else if(this.Offset == Aircraft.pmdg737.AIR_DisplayFltAlt)
+            {
+                output = $"{this.Name} {this.Offset.GetValue<string>()}";
+                    }
+            else if (this.Offset == Aircraft.pmdg737.AIR_DisplayLandAlt)
+            {
+                output = $"{this.Name} {this.Offset.GetValue<string>()}";
             }
             else
             {
