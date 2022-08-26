@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 22.8 Preview release notes
+﻿## Talking flight monitor 22.9 Preview release notes
 
 ### What's new?
 
@@ -25,6 +25,9 @@
     * Anti-ice
     * Hydraulics
     * Air Systems
+* Bottom Overhead
+    * Engines - Fuel control switches normally on the control stand are located here for easier use.
+    * Lights
 * PMDG 737: Speech settings for panels listed above.
 * Ctrl+Shift+X - Restart TFM with a keyboard shortcut 
 * Keyboard letters I and D are now used to change lighting knobs.
@@ -32,12 +35,12 @@
 
 ### Bug fixes
 
-The following are bug fixes during the 22.7 preview release cycle.
-
 * Users can now turn on/off the ground power in the electrical panel.
-
+* Turned on the pre-existing offsets to make the preview releases usable by all users.
 
 ### Known issues
+
+* Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
 * The ILS readouts stop when approach mode turns off.
 * The new ILS feature may not work as expected in the PMDG 747.
 

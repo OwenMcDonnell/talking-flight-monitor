@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
-
+using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
 
 namespace tfm
 {
@@ -29,8 +29,7 @@ namespace tfm
         private void loadPages()
         {
                                     pages.Add("nodMCP", new ctlMCP());
-                        pages.Add("nodEngines", new ctlEngines_737());      
-
+                        
                                                 // redesigned pages. keep the ones above for backups.
             // --panel: Aft Overhead
             pages.Add("adiruNode", new ctlADIRU());
@@ -55,6 +54,10 @@ namespace tfm
             pages.Add("antiIceNode", new ctlAntiIce());
             pages.Add("hydraulicsNode", new ctlHydraulics());
             pages.Add("airSystemsNode", new ctlAirSystems());
+
+            // ---panel: Bottom Overhead
+            pages.Add("enginesNode", new ctlEngines());
+            pages.Add("lightsNode", new ctlLights());
             // set the parent and hide them all
             foreach (iPanelsPage page in this.pages.Values)
             {

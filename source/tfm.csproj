@@ -378,6 +378,18 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.Designer.cs">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.Designer.cs">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -468,12 +480,6 @@
     </Compile>
     <Compile Include="PMDG\PMDG 747\747CDU.Designer.cs">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.Designer.cs">
-      <DependentUpon>ctlEngines.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.cs">
       <SubType>UserControl</SubType>
@@ -675,6 +681,12 @@
     <Compile Include="Settings panels\PMDG737\ctlElectrical.Designer.cs">
       <DependentUpon>ctlElectrical.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEngines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEngines.Designer.cs">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -704,6 +716,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlHydraulics.Designer.cs">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLights.Designer.cs">
+      <DependentUpon>ctlLights.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlNav_Dis.cs">
       <SubType>UserControl</SubType>
@@ -923,6 +941,12 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
       <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.resx">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.resx">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.resx">
       <DependentUpon>ctlAirSystems.cs</DependentUpon>
     </EmbeddedResource>
@@ -967,9 +991,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.resx">
-      <DependentUpon>ctlEngines.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
       <DependentUpon>ctlMCP.cs</DependentUpon>
@@ -1076,6 +1097,9 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlElectrical.resx">
       <DependentUpon>ctlElectrical.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlEngines.resx">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightControls.resx">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>
     </EmbeddedResource>
@@ -1090,6 +1114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlHydraulics.resx">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlLights.resx">
+      <DependentUpon>ctlLights.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlNav_Dis.resx">
       <DependentUpon>ctlNav_Dis.cs</DependentUpon>

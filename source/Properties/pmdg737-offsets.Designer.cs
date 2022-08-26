@@ -12,7 +12,7 @@ namespace tfm.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class pmdg737_offsets : global::System.Configuration.ApplicationSettingsBase {
         
         private static pmdg737_offsets defaultInstance = ((pmdg737_offsets)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new pmdg737_offsets())));
@@ -2384,6 +2384,198 @@ namespace tfm.Properties {
             }
             set {
                 this["AIR_PressurizationModeSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APU_Selector {
+            get {
+                return ((bool)(this["APU_Selector"]));
+            }
+            set {
+                this["APU_Selector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_StartSelector1 {
+            get {
+                return ((bool)(this["ENG_StartSelector1"]));
+            }
+            set {
+                this["ENG_StartSelector1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_StartSelector2 {
+            get {
+                return ((bool)(this["ENG_StartSelector2"]));
+            }
+            set {
+                this["ENG_StartSelector2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ENG_IgnitionSelector {
+            get {
+                return ((bool)(this["ENG_IgnitionSelector"]));
+            }
+            set {
+                this["ENG_IgnitionSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_LandingLtRetractableSw1 {
+            get {
+                return ((bool)(this["LTS_LandingLtRetractableSw1"]));
+            }
+            set {
+                this["LTS_LandingLtRetractableSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_LandingLtRetractableSw2 {
+            get {
+                return ((bool)(this["LTS_LandingLtRetractableSw2"]));
+            }
+            set {
+                this["LTS_LandingLtRetractableSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_LandingLtFixedSw1 {
+            get {
+                return ((bool)(this["LTS_LandingLtFixedSw1"]));
+            }
+            set {
+                this["LTS_LandingLtFixedSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_LandingLtFixedSw2 {
+            get {
+                return ((bool)(this["LTS_LandingLtFixedSw2"]));
+            }
+            set {
+                this["LTS_LandingLtFixedSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_RunwayTurnoffSw1 {
+            get {
+                return ((bool)(this["LTS_RunwayTurnoffSw1"]));
+            }
+            set {
+                this["LTS_RunwayTurnoffSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_RunwayTurnoffSw2 {
+            get {
+                return ((bool)(this["LTS_RunwayTurnoffSw2"]));
+            }
+            set {
+                this["LTS_RunwayTurnoffSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_TaxiSw {
+            get {
+                return ((bool)(this["LTS_TaxiSw"]));
+            }
+            set {
+                this["LTS_TaxiSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_LogoSw {
+            get {
+                return ((bool)(this["LTS_LogoSw"]));
+            }
+            set {
+                this["LTS_LogoSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_PositionSw {
+            get {
+                return ((bool)(this["LTS_PositionSw"]));
+            }
+            set {
+                this["LTS_PositionSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_AntiCollisionSw {
+            get {
+                return ((bool)(this["LTS_AntiCollisionSw"]));
+            }
+            set {
+                this["LTS_AntiCollisionSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_WingSw {
+            get {
+                return ((bool)(this["LTS_WingSw"]));
+            }
+            set {
+                this["LTS_WingSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LTS_WheelWellSw {
+            get {
+                return ((bool)(this["LTS_WheelWellSw"]));
+            }
+            set {
+                this["LTS_WheelWellSw"] = value;
             }
         }
     }
