@@ -29,6 +29,7 @@ if(Exists() == true)
                 {
                     _connection.Open();
                     var version = string.Empty;
+                    _connection = new SQLiteConnection(_connectionString);
                     using(var command = new SQLiteCommand(_connection))
                     {
                         command.CommandText = "select sqlite_version()";
@@ -60,6 +61,7 @@ if(Exists() == true)
 
         private static bool TableExists(string tableName)
         {
+            _connection = new SQLiteConnection(_connectionString);
             if(Exists() == true)
             {
 if(_connection.State == System.Data.ConnectionState.Closed)
@@ -163,6 +165,7 @@ else if(overWrite == false && TableExists("SpeechHistory") == true)
             } // CreateHistoryTable
         public static  bool InsertSpeechHistoryItem(string item)
         {
+            _connection = new SQLiteConnection(_connectionString);
                         using(var command = new SQLiteCommand(_connection))
             {
                 if (_connection.State == System.Data.ConnectionState.Closed) _connection.Open();
@@ -184,6 +187,7 @@ else if(overWrite == false && TableExists("SpeechHistory") == true)
         public static List<string> GetAllSpeechHistoryItems()
         {
             List<string> SpeechHistoryItems = new List<string>();
+            _connection = new SQLiteConnection(_connectionString);
             using(var command = new SQLiteCommand(_connection))
             {
                 if (_connection.State == System.Data.ConnectionState.Closed) _connection.Open();
@@ -206,6 +210,7 @@ else if(overWrite == false && TableExists("SpeechHistory") == true)
 
         public static  int DeleteAllSpeechHistoryItems()
         {
+            _connection = new SQLiteConnection(_connectionString);
             using(var command = new SQLiteCommand(_connection))
             {
                 if (_connection.State == System.Data.ConnectionState.Closed) _connection.Open();
