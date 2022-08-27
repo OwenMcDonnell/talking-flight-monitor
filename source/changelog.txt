@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 22.9 Preview release notes
+﻿## Talking flight monitor 22.9.1 Preview release notes
 
 ### What's new?
 
@@ -36,6 +36,7 @@
 
 ### Bug fixes
 
+* The TFM database had connection problems. It now works as expected.
 * Users can now turn on/off the ground power in the electrical panel.
 * Turned on the pre-existing offsets to make the preview releases usable by all users.
 * The above/below announcements now indicate up/down. Up = glide slope is above you and down = glide slope is below you.
