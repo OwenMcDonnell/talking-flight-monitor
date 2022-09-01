@@ -11,6 +11,8 @@ using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
+using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
+
 
 namespace tfm
 {
@@ -58,8 +60,13 @@ namespace tfm
             // ---panel: Bottom Overhead
             pages.Add("enginesNode", new ctlEngines());
             pages.Add("lightsNode", new ctlLights());
-            // set the parent and hide them all
-            foreach (iPanelsPage page in this.pages.Values)
+
+            // --panel: glare shield
+            pages.Add("warningsNode", new ctlWarnings());
+
+
+                        // set the parent and hide them all
+                                    foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.pnlContent;
                 page.SetDocking();

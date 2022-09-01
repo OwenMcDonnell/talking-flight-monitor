@@ -73,6 +73,9 @@
             System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("MCP");
             System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Warnings");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
+            treeNode26});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -132,12 +135,17 @@
             treeNode24.Text = "MCP";
             treeNode25.Name = "nodOverhead";
             treeNode25.Text = "Overhead";
+            treeNode26.Name = "warningsNode";
+            treeNode26.Text = "Warnings";
+            treeNode27.Name = "glareShieldNode";
+            treeNode27.Text = "Glare Shield";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
             treeNode20,
             treeNode23,
-            treeNode25});
+            treeNode25,
+            treeNode27});
             this.tvPanels.Size = new System.Drawing.Size(121, 97);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

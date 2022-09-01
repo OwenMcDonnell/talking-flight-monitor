@@ -450,6 +450,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.Designer.cs">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.Designer.cs">
+      <DependentUpon>ctlWarnings.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -976,6 +982,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.resx">
       <DependentUpon>ctlWipers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.resx">
+      <DependentUpon>ctlWarnings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>

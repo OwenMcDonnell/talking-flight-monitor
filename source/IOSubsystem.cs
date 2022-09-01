@@ -4300,12 +4300,30 @@ else if (PMDG777Detected)
                         break;
 
                     case "Localiser":
-                        Speak($"{gaugeValue}. ", useSAPI: true);
+
+                        if (useSAPI)
+                        {
+                            Speak($"{gaugeValue}. ", useSAPI: true);
+                        }
+                        else
+                        {
+                            Speak($"{gaugeValue}. ");
+                        }
+                        
                         braille($"loc {gaugeValue}\n");
                         break;
 
                     case "Glide slope":
-                        Speak($"{gaugeValue}. ", useSAPI: true);
+
+                        if (useSAPI)
+                        {
+                            Speak($"{gaugeValue}", useSAPI: true);
+                        }
+                        else
+                        {
+                            Speak($"{gaugeValue}");
+                        }
+                        
                         braille($"gs {gaugeValue}\n");
                         break;
 
