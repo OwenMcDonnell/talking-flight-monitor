@@ -64,8 +64,7 @@ namespace tfm
             // --panel: glare shield
             pages.Add("warningsNode", new ctlWarnings());
 
-
-                        // set the parent and hide them all
+                                    // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.pnlContent;
