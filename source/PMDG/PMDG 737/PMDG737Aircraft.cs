@@ -810,55 +810,19 @@ new SingleStateToggle { Name = "N1", PanelName = "Forward", PanelSection = "Main
             get => Math.Round(FSUIPCConnection.ReadLVar("ElevTrimTT"), 2);
         } // CurrentElevatorTrim
 
-        public static PMDG737SpeedBrake CurrentSpeedBrakePosition
+        public static double CurrentSpeedBrakePosition
         {
-            get
-            {
-                var position = FSUIPCConnection.ReadLVar("switch_679_73X");
-                PMDG737SpeedBrake currentPosition = PMDG737SpeedBrake.None;
 
-                switch (position)
-                {
-                    case 0:
-                        currentPosition = PMDG737SpeedBrake.OffOrDown;
-                        break;
-                    case 100:
-                        currentPosition = PMDG737SpeedBrake.Armed;
-                        break;
-                    case 250:
-                        currentPosition = PMDG737SpeedBrake.Half;
-                        break;
-                    case 272:
-                        currentPosition = PMDG737SpeedBrake.Flight;
-                        break;
-                    case 400:
-                        currentPosition = PMDG737SpeedBrake.FullOrUp;
-                        break;
-                }
-                return currentPosition;
-            }
-            set
-            {
-                switch (value)
-                {
-                    case PMDG737SpeedBrake.Armed:
-                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_ARM, ClkL);
-                                                break;
-                    case PMDG737SpeedBrake.Flight:
-                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_FLT_DET, ClkL);
-                        break;
-                    case PMDG737SpeedBrake.FullOrUp:
-                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_UP, ClkL);
-                        break;
-                    case PMDG737SpeedBrake.Half:
-                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_50PCT, ClkL);
-                        break;
-                    case PMDG737SpeedBrake.OffOrDown:
-                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_DOWN, ClkL);
-                        break;
-                                    }
-            }
-        }
+            /*
+             * Named detents are below.
+             * 0: Off
+             * 100: Armed
+             * 250: 50% deployed.
+             * 272: Flight;
+             * 400: 100% deployed.
+             */
+            get => FSUIPCConnection.ReadLVar("SWITCH_679_73X");
+                                               }
 
         public static double CurrentFlapsPosition
         {
@@ -2109,5 +2073,39 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_AUTOBRAKE_SELECTOR, position);
         } // AutoBrake
 
+        public static void SpeedBrakeIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER, ClkL);
+        } // SpeedBrakeIncrease
+
+        public static void SpeedBrakeDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER, ClkR);
+        } // SpeedBrakeDecrease
+
+        public static void SpeedBrakeArm()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_ARM, ClkL);
+        } // SpeedBrakeArm
+
+        public static void SpeedBrakeFlight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_FLT_DET, ClkL);
+        } // SpeedBrakeFlight
+
+        public static void SpeedBrakeFull()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_UP, ClkL);
+        } // SpeedBrakeFull
+
+        public static void SpeedBrakeHalf()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_50PCT, ClkL);
+        } // SpeedBrakeHalf
+
+        public static void SpeedBrakeOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_DOWN, ClkL);
+        } // SpeedBrakeOff
             } // End PMDG737Aircraft.
     } // End namespace.

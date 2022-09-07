@@ -18,7 +18,7 @@ namespace tfm.PMDG.PMDG737.McpComponents
     public partial class mcpSpeed : Form
     {
 private        System.Timers.Timer speedTimer = new System.Timers.Timer();
-        private PMDG737SpeedBrake OldSpeedBrake = PMDG737SpeedBrake.None;
+        private double OldSpeedBrake = 0;
 
                 public mcpSpeed()
         {
@@ -201,22 +201,25 @@ private        System.Timers.Timer speedTimer = new System.Timers.Timer();
             {
                 switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
                 {
-                    case PMDG737SpeedBrake.Armed:
+                    case 100:
                         speedBrakeTextBox.Text = "Armed";
                         break;
-                    case PMDG737SpeedBrake.Flight:
+                    case 272:
                         speedBrakeTextBox.Text = "Flt";
                         break;
-                    case PMDG737SpeedBrake.FullOrUp:
+                    case 400:
                         speedBrakeTextBox.Text = "Up";
                         break;
-                    case PMDG737SpeedBrake.Half:
+                    case 250:
                         speedBrakeTextBox.Text = "Half";
                         break;
-                    case PMDG737SpeedBrake.OffOrDown:
+                    case 0:
                         speedBrakeTextBox.Text = "Off";
                                                 break;
-                                   }
+                    default:
+                        speedBrakeTextBox.Text = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
+                        break;
+                                                      }
                 OldSpeedBrake = PMDG737Aircraft.CurrentSpeedBrakePosition;
             } // speedbrake
         } // SpeedTimerTick
@@ -341,25 +344,28 @@ private        System.Timers.Timer speedTimer = new System.Timers.Timer();
                 speedTextBox.Text = $"{PMDG737Aircraft.MachSpeed}";
             }
 
-                                                                                            // speedbrake
+            // speedbrake
             switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
             {
-                case PMDG737SpeedBrake.Armed:
+                case 100:
                     speedBrakeTextBox.Text = "Armed";
                     break;
-                case PMDG737SpeedBrake.Flight:
+                case 272:
                     speedBrakeTextBox.Text = "Flt";
                     break;
-                case PMDG737SpeedBrake.FullOrUp:
+                case 400:
                     speedBrakeTextBox.Text = "Up";
                     break;
-                case PMDG737SpeedBrake.Half:
+                case 250:
                     speedBrakeTextBox.Text = "Half";
                     break;
-                case PMDG737SpeedBrake.OffOrDown:
+                case 0:
                     speedBrakeTextBox.Text = "Off";
                     break;
-                                           } // speedbrake
+                default:
+                    speedBrakeTextBox.Text = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
+                    break;
+            }            // speedbrake
 
         }
 
@@ -457,25 +463,34 @@ private        System.Timers.Timer speedTimer = new System.Timers.Timer();
         {
             e.Handled = true;
 
+            if(e.KeyCode == Keys.Oemplus)
+            {
+                PMDG737Aircraft.SpeedBrakeIncrease();
+            }
+            if(e.KeyCode == Keys.OemMinus)
+            {
+                PMDG737Aircraft.SpeedBrakeDecrease();
+            }
+
             if(e.KeyCode == Keys.A)
             {
-                PMDG737Aircraft.CurrentSpeedBrakePosition = PMDG737SpeedBrake.Armed;
+                PMDG737Aircraft.SpeedBrakeArm();
             }
             if(e.KeyCode == Keys.F)
             {
-                PMDG737Aircraft.CurrentSpeedBrakePosition = PMDG737SpeedBrake.Flight;
+                PMDG737Aircraft.SpeedBrakeFlight();
             }
             if(e.KeyCode == Keys.U)
             {
-                PMDG737Aircraft.CurrentSpeedBrakePosition = PMDG737SpeedBrake.FullOrUp;
+                PMDG737Aircraft.SpeedBrakeFull();
             }
             if(e.KeyCode == Keys.H)
             {
-                PMDG737Aircraft.CurrentSpeedBrakePosition = PMDG737SpeedBrake.Half;
+                PMDG737Aircraft.SpeedBrakeHalf();
             }
             if(e.KeyCode == Keys.O)
             {
-                PMDG737Aircraft.CurrentSpeedBrakePosition = PMDG737SpeedBrake.OffOrDown;
+                PMDG737Aircraft.SpeedBrakeOff();
             }
         }
 
