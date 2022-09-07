@@ -79,10 +79,15 @@ for:
     project: source\tfm.sln
     verbosity: minimal
   after_build:
-  - ps: >-
-      makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm-preview.nsi
-
-      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
+  - ps: |
+      if ($env:APPVEYOR_REPO_TAG -eq "true") {
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
+      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
+      } else {
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=test-$env:APPVEYOR_BUILD_NUMBER installer\tfm.iss
+      appveyor PushArtifact installer\tfm-test-$env:APPVEYOR_BUILD_NUMBER.EXE
+      }
+      
 
   deploy_script:
    - ps: |
