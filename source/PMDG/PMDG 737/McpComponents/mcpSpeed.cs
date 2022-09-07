@@ -422,7 +422,9 @@ private        System.Timers.Timer speedTimer = new System.Timers.Timer();
 
         private void autoBrakeTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if ((e.Alt && e.KeyCode == Keys.D1) ||
+                (e.Alt && e.KeyCode == Keys.D2) ||
+                (e.Alt && e.KeyCode == Keys.D3)) return;
             if(e.KeyCode == Keys.O)
             {
                 PMDG737Aircraft.AutoBrake(1);
@@ -462,6 +464,7 @@ private        System.Timers.Timer speedTimer = new System.Timers.Timer();
         private void speedBrakeTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = true;
+            if ((e.Alt && e.KeyCode == Keys.U) || (e.Alt && e.KeyCode == Keys.A)) return;
 
             if(e.KeyCode == Keys.Oemplus)
             {

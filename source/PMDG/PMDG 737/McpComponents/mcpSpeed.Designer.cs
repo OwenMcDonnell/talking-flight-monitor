@@ -239,7 +239,7 @@
             this.autoBrakeLabel.Name = "autoBrakeLabel";
             this.autoBrakeLabel.Size = new System.Drawing.Size(138, 33);
             this.autoBrakeLabel.TabIndex = 12;
-            this.autoBrakeLabel.Text = "Auto &brake";
+            this.autoBrakeLabel.Text = "Au&to brake";
             // 
             // autoBrakeTextBox
             // 
