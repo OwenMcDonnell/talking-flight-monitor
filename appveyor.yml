@@ -80,7 +80,7 @@ for:
     verbosity: minimal
   after_build:
   - ps: >-
-      iscc /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
+      compil32 /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
 
       appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
 
