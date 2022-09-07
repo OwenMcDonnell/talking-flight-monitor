@@ -80,7 +80,7 @@ for:
     verbosity: minimal
   after_build:
   - ps: >-
-      "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
 
       appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
 
