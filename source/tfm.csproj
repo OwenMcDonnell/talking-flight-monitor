@@ -328,6 +328,7 @@
     <Compile Include="PMDG\Enums\AircraftVerbosity.cs" />
     <Compile Include="PMDG\Enums\PanelObjectType.cs" />
     <Compile Include="PMDG\Enums\AircraftSpeed.cs" />
+    <Compile Include="PMDG\Enums\PMDG737SpeedBrake.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.cs">
@@ -468,11 +469,11 @@
     <Compile Include="PMDG\PMDG 737\McpComponents\HeadingBox.Designer.cs">
       <DependentUpon>HeadingBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\SpeedBox.cs">
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\SpeedBox.Designer.cs">
-      <DependentUpon>SpeedBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.Designer.cs">
+      <DependentUpon>mcpSpeed.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.cs">
       <SubType>Form</SubType>
@@ -992,8 +993,8 @@
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\HeadingBox.resx">
       <DependentUpon>HeadingBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\SpeedBox.resx">
-      <DependentUpon>SpeedBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpSpeed.resx">
+      <DependentUpon>mcpSpeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.resx">
       <DependentUpon>VerticalSpeedBox.cs</DependentUpon>

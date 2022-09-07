@@ -3,10 +3,13 @@
 ### What's new?
 
 * Glare Shield
+    * EFIS not included see [the blog post](https://www.talkingflightmonitor.com/2022/09/04/pmdg-737-rebuild-series-week-15-tfm-preview-released-glare-shield-progress-and-navigraph-support/) for the reason.
     * Warnings panel
+* MCP boxes
+    * Speed box - Redesigned user interface and performance improvements.
 
 
-### Bug fixes
+        ### Bug fixes
 * ILS announcements used SAPI even if 'use SAPI voice for ILS readouts' was turned off.
 
 ### Known issues
