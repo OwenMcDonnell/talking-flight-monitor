@@ -80,7 +80,7 @@ for:
     verbosity: minimal
   after_build:
   - ps: >-
-      makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm-preview.nsi
+      iscc /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
 
       appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
 
