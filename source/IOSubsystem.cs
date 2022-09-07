@@ -2189,7 +2189,36 @@ else if (PMDG777Detected)
                     df.Show();
                     break;
                 case "get_speedbreak":
-                    if (PMDG777Detected)
+
+                    if (PMDG737Detected)
+                    {
+                                                                            var speedBrakeValue = string.Empty;
+                            switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
+                            {
+                                case 100:
+                                    speedBrakeValue = "Armed";
+                                    break;
+                                case 272:
+                                    speedBrakeValue = "Flt";
+                                    break;
+                                case 400:
+                                    speedBrakeValue = "Up";
+                                    break;
+                                case 250:
+                                    speedBrakeValue = "50%";
+                                    break;
+                                case 0:
+                                    speedBrakeValue = "Off";
+                                    break;
+                                default:
+speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
+                                    break;
+                            }
+
+                            Output(isGauge: false, output: speedBrakeValue);
+                        }
+
+                        if (PMDG777Detected)
                     {
                         foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
                         {
