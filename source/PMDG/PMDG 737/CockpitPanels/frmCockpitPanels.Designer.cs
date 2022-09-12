@@ -190,6 +190,7 @@
             this.KeyPreview = true;
             this.Name = "frmCockpitPanels";
             this.Text = "737 Cockpit";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCockpitPanels_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

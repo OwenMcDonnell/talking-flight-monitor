@@ -92,5 +92,13 @@ namespace tfm
             }
 
         }
+
+        private void frmCockpitPanels_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F6)
+            {
+                tvPanels.Focus();
+            }
+        }
     }
 }
