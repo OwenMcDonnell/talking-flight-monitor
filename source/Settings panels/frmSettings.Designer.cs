@@ -228,12 +228,14 @@
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.tvCategories);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TFM Settings";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSettings_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

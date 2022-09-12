@@ -12,6 +12,7 @@
     * Heading box - Performance improvements and heading indicators.
     * Vertical speed box - Performance improvements and vertical speed indicators.
 * Pressing F6 now places focus on the panels tree in the cockpit panels dialog.
+* Pressing F6 in the settings dialog now returns focus to the categories tree.
 
         ### Bug fixes
 * ILS announcements now honor the use sapi for ILS announcements setting.

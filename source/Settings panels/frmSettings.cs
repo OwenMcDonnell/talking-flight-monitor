@@ -79,5 +79,13 @@ namespace tfm
 
 
             }
+
+        private void frmSettings_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F6)
+            {
+                tvCategories.Focus();
+            }
         }
+    }
 }
