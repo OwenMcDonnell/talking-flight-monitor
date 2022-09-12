@@ -2938,5 +2938,89 @@ namespace tfm.Properties {
                 this["MAIN_N1SetSelector"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_annunHDG_SEL {
+            get {
+                return ((bool)(this["MCP_annunHDG_SEL"]));
+            }
+            set {
+                this["MCP_annunHDG_SEL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_annunLNAV {
+            get {
+                return ((bool)(this["MCP_annunLNAV"]));
+            }
+            set {
+                this["MCP_annunLNAV"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_VertSpeedBlank {
+            get {
+                return ((bool)(this["MCP_VertSpeedBlank"]));
+            }
+            set {
+                this["MCP_VertSpeedBlank"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_annunVS {
+            get {
+                return ((bool)(this["MCP_annunVS"]));
+            }
+            set {
+                this["MCP_annunVS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_annunVNAV {
+            get {
+                return ((bool)(this["MCP_annunVNAV"]));
+            }
+            set {
+                this["MCP_annunVNAV"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_annunLVL_CHG {
+            get {
+                return ((bool)(this["MCP_annunLVL_CHG"]));
+            }
+            set {
+                this["MCP_annunLVL_CHG"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_annunALT_HOLD {
+            get {
+                return ((bool)(this["MCP_annunALT_HOLD"]));
+            }
+            set {
+                this["MCP_annunALT_HOLD"] = value;
+            }
+        }
     }
 }

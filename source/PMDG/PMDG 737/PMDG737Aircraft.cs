@@ -15,10 +15,10 @@ namespace tfm
     static class PMDG737Aircraft
     {
 
-        private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new tfm.PMDG.PMDG737.McpComponents.AltitudeBox();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpAltitude altitudeBox = new tfm.PMDG.PMDG737.McpComponents.mcpAltitude();
         private static tfm.PMDG.PMDG737.McpComponents.mcpSpeed speedBox = new tfm.PMDG.PMDG737.McpComponents.mcpSpeed();
-        private static tfm.PMDG.PMDG737.McpComponents.HeadingBox headingBox = new tfm.PMDG.PMDG737.McpComponents.HeadingBox();
-        private static tfm.PMDG.PMDG737.McpComponents.VerticalSpeedBox verticalSpeedBox = new tfm.PMDG.PMDG737.McpComponents.VerticalSpeedBox();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpHeading  headingBox = new tfm.PMDG.PMDG737.McpComponents.mcpHeading();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpVerticalSpeed verticalSpeedBox = new tfm.PMDG.PMDG737.McpComponents.mcpVerticalSpeed();
 
         public static PMDG_NGX_CDU_Screen cdu0 = new PMDG_NGX_CDU_Screen(0x5400);
         public static PMDG_NGX_CDU_Screen cdu1 = new PMDG_NGX_CDU_Screen(0x5800);
@@ -733,7 +733,13 @@ new SingleStateToggle { Name = "Autothrottle", PanelName = "Glare Shield", Panel
 new SingleStateToggle { Name = "Autothrottle armed light", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunATArm, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunATArm},
 new SingleStateToggle { Name = "N1 light", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunN1, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunN1},
 new SingleStateToggle { Name = "Speed light", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunSPEED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunSPEED},
-
+new SingleStateToggle { Name = "Heading select light", PanelName = "Glare Shield", PanelSection = "MCP-HEADING", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunHDG_SEL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunHDG_SEL},
+new SingleStateToggle { Name = "LNav light", PanelName = "Glare Shield", PanelSection = "MCP-HEADING", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunLNAV, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunLNAV},
+new SingleStateToggle { Name = "Vertical speed mode", PanelName = "Glare Shield", PanelSection = "MCP-VERTICAL", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_VertSpeedBlank, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_VertSpeedBlank },
+new SingleStateToggle { Name = "Vertical speed light", PanelName = "Glare Shield", PanelSection = "MCP-VERTICAL", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunVS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunVS},
+new SingleStateToggle { Name = "V NAV light", PanelName = "Glare Shield", PanelSection = "MCP-ALTITUDE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunVNAV, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunVNAV},
+new SingleStateToggle { Name = "Level change light", PanelName = "Glare Shield", PanelSection = "MCP-ALTITUDE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunLVL_CHG, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunLVL_CHG},
+new SingleStateToggle { Name = "Altitude hold light", PanelName = "Glare Shield", PanelSection = "MCP-ALTITUDE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunALT_HOLD, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunALT_HOLD},
 // ---panel: forward
 // --section: main
 
@@ -886,14 +892,24 @@ new SingleStateToggle { Name = "N1", PanelName = "Forward", PanelSection = "Main
 
         public static void VerticalSpeedIntervene()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, Aircraft.ClkL);
+            if(Aircraft.pmdg737.MCP_VertSpeedBlank.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, ClkR);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, ClkL);
+            }
         } // VerticalSpeedIntervene
-
+    
         public static void SetVerticalSpeed(string verticalSpeedText)
         {
-            ushort.TryParse(verticalSpeedText, out ushort verticalSpeed);
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SET, verticalSpeed);
-        } // SetVerticalSpeed
+            if(int.TryParse(verticalSpeedText, out int speed))
+            {
+                speed = speed - 10000;
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SET, speed);
+            }
+                    } // SetVerticalSpeed
 
         public static void ShowVerticalSpeedBox()
         {

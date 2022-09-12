@@ -13,6 +13,8 @@ using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
 
+using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
+
 
 namespace tfm
 {
@@ -63,7 +65,10 @@ namespace tfm
 
             // --panel: glare shield
             pages.Add("warningsNode", new ctlWarnings());
-
+            pages.Add("mcpAltitudeNode", new ctlMcpAltitude());
+            pages.Add("mcpHeadingNode", new ctlMcpHeading());
+            pages.Add("mcpSpeedNode", new ctlMcpSpeed());
+            pages.Add("mcpVerticalSpeedNode", new ctlMcpVerticalSpeed());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

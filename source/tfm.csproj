@@ -457,17 +457,41 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.Designer.cs">
       <DependentUpon>ctlWarnings.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpAltitude.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpAltitude.Designer.cs">
+      <DependentUpon>ctlMcpAltitude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.Designer.cs">
+      <DependentUpon>ctlMcpHeading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.Designer.cs">
+      <DependentUpon>ctlMcpSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.Designer.cs">
+      <DependentUpon>ctlMcpVerticalSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpAltitude.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.Designer.cs">
-      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpAltitude.Designer.cs">
+      <DependentUpon>mcpAltitude.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\HeadingBox.cs">
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpHeading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\HeadingBox.Designer.cs">
-      <DependentUpon>HeadingBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpHeading.Designer.cs">
+      <DependentUpon>mcpHeading.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.cs">
       <SubType>Form</SubType>
@@ -475,11 +499,11 @@
     <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.Designer.cs">
       <DependentUpon>mcpSpeed.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.cs">
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpVerticalSpeed.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.Designer.cs">
-      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpVerticalSpeed.Designer.cs">
+      <DependentUpon>mcpVerticalSpeed.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\PMDG737Aircraft.cs" />
     <Compile Include="PMDG\PMDG 747\747CDU.cs">
@@ -987,17 +1011,29 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
-      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpAltitude.resx">
+      <DependentUpon>ctlMcpAltitude.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\HeadingBox.resx">
-      <DependentUpon>HeadingBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.resx">
+      <DependentUpon>ctlMcpHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.resx">
+      <DependentUpon>ctlMcpSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.resx">
+      <DependentUpon>ctlMcpVerticalSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpAltitude.resx">
+      <DependentUpon>mcpAltitude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpHeading.resx">
+      <DependentUpon>mcpHeading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpSpeed.resx">
       <DependentUpon>mcpSpeed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.resx">
-      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpVerticalSpeed.resx">
+      <DependentUpon>mcpVerticalSpeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
