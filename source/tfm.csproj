@@ -481,6 +481,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.Designer.cs">
       <DependentUpon>ctlMcpVerticalSpeed.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.Designer.cs">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\mcpAltitude.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +498,12 @@
     </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\mcpHeading.Designer.cs">
       <DependentUpon>mcpHeading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpNavigation.Designer.cs">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.cs">
       <SubType>Form</SubType>
@@ -1023,11 +1035,17 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.resx">
       <DependentUpon>ctlMcpVerticalSpeed.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.resx">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpAltitude.resx">
       <DependentUpon>mcpAltitude.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpHeading.resx">
       <DependentUpon>mcpHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpNavigation.resx">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpSpeed.resx">
       <DependentUpon>mcpSpeed.cs</DependentUpon>

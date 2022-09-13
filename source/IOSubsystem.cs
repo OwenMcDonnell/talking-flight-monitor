@@ -1806,6 +1806,19 @@ else if (PMDG777Detected)
                     }
                     break;
                 case "ap_NavigationBox":
+
+                    if (PMDG737Detected)
+                    {
+                        if (PMDG737Aircraft.MCPComponents["navigation"].Visible == true)
+                        {
+                            Output(isGauge: false, output: "The navigation box is already open!");
+                        }
+                        else
+                        {
+                            PMDG737Aircraft.ShowNavigationBox();
+                        }
+                    }
+
                     if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["navigation"].Visible)

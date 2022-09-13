@@ -69,6 +69,7 @@ namespace tfm
             pages.Add("mcpHeadingNode", new ctlMcpHeading());
             pages.Add("mcpSpeedNode", new ctlMcpSpeed());
             pages.Add("mcpVerticalSpeedNode", new ctlMcpVerticalSpeed());
+            pages.Add("mcpNavigationNode", new ctlMcpNavigation());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

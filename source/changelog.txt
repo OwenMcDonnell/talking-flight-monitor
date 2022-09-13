@@ -5,12 +5,13 @@
 * Glare Shield
     * EFIS not included see [the blog post](https://www.talkingflightmonitor.com/2022/09/04/pmdg-737-rebuild-series-week-15-tfm-preview-released-glare-shield-progress-and-navigraph-support/) for the reason.
     * Warnings panel
-    * MCP panels - Altitude, heading, speed, vertical speed have their own tree nodes and keyboard shortcuts.
+    * MCP panels - Altitude, heading, speed, vertical speed, and navigation have their own tree nodes and keyboard shortcuts.
 * MCP boxes
     * Speed box - Redesigned user interface and performance improvements.
     * Altitude box - Performance improvements and altitude indicators.
     * Heading box - Performance improvements and heading indicators.
     * Vertical speed box - Performance improvements and vertical speed indicators.
+    * Navigation box - new. Contains flight directors, CMDA/B, etc.
 * Pressing F6 now places focus on the panels tree in the cockpit panels dialog.
 * Pressing F6 in the settings dialog now returns focus to the categories tree.
 
