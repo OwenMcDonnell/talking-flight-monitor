@@ -55,6 +55,9 @@ namespace tfm
             // --section: bottom overhead
             pages.Add("737EnginesNode", new tfm.Settings_panels.PMDG737.ctlEngines());
             pages.Add("737LightsNode", new tfm.Settings_panels.PMDG737.ctlLights());
+
+            // ---panel: glare shield
+            pages.Add("737WarningsNode", new Settings_panels.PMDG737.ctlWarnings());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

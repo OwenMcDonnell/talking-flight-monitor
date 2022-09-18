@@ -41,7 +41,7 @@
             this.wipersFlowLayoutPanel.Controls.Add(this.leftWiperCheckBox);
             this.wipersFlowLayoutPanel.Controls.Add(this.rightWiperCheckBox);
             this.wipersFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.wipersFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.wipersFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(5);
             this.wipersFlowLayoutPanel.MaximumSize = new System.Drawing.Size(3200, 1782);
             this.wipersFlowLayoutPanel.Name = "wipersFlowLayoutPanel";
             this.wipersFlowLayoutPanel.Size = new System.Drawing.Size(525, 43);
@@ -61,7 +61,7 @@
             // 
             // rightWiperCheckBox
             // 
-            this.rightWiperCheckBox.AccessibleName = "Left wiper selector switch";
+            this.rightWiperCheckBox.AccessibleName = "Right wiper selector switch";
             this.rightWiperCheckBox.AutoSize = true;
             this.rightWiperCheckBox.Location = new System.Drawing.Point(257, 3);
             this.rightWiperCheckBox.Name = "rightWiperCheckBox";
@@ -79,7 +79,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.wipersFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(3200, 1782);
             this.Name = "ctlWipers";
             this.Size = new System.Drawing.Size(530, 48);
