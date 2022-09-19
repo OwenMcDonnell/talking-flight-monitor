@@ -144,3 +144,4 @@ notifications:
   subject: TFM build
   on_build_success: true
   on_build_failure: true
+
