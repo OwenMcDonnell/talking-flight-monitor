@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Talking Flight Monitor"
-; #define MyAppVersion "2022.9.1"
+#define MyAppVersion "2022.9.1"
 #define MyAppPublisher "Talking Flight Monitor"
 #define MyAppURL "http://www.talkingflightmonitor.com"
 #define MyAppExeName "tfm.exe"
@@ -14,14 +14,6 @@ AppId={{CF550E2F-B91A-40EF-9354-227750FA87EA}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
-#ifdef MyAppVersion
-AppVersion={#MyAppVersion}
-AppVerName={#MyAppName} {#MyAppVersion}
-#else
-AppVersion="test"
-AppVerName={#MyAppName} {{AppVersion}
-#endif
-
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -33,15 +25,8 @@ DisableWelcomePage=no
 DefaultGroupName="Talking Flight Monitor"
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=.
-
+OutputDir=tfm
 OutputBaseFilename=tfm-{#MyAppVersion}
-#ifdef MyAppVersion
-OutputBaseFilename=tfm-{#MyAppVersion}
-#else 
-OutputBaseFilename=tfm-test
-#endif
-
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
