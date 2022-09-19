@@ -94,7 +94,7 @@ for:
       if ($env:APPVEYOR_REPO_TAG -eq "true") {
       
       $token = $env:gh_token
-      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
+      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
       $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
       $repo = 'jfayre/talking-flight-monitor'
       $tag = $env:appveyor_repo_tag_name
