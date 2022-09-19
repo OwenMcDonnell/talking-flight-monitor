@@ -14,6 +14,14 @@ AppId={{CF550E2F-B91A-40EF-9354-227750FA87EA}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
+#ifdef MyAppVersion
+AppVersion={#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
+#else
+AppVersion="test"
+AppVerName={#MyAppName} {{AppVersion}
+#endif
+
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -26,7 +34,14 @@ DefaultGroupName="Talking Flight Monitor"
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=.
+
 OutputBaseFilename=tfm-{#MyAppVersion}
+#ifdef MyAppVersion
+OutputBaseFilename=tfm-{#MyAppVersion}
+#else 
+OutputBaseFilename=tfm-test
+#endif
+
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
