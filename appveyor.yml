@@ -85,7 +85,7 @@ for:
       appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
       } else {
       . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=test-$env:APPVEYOR_BUILD_NUMBER installer\tfm.iss
-      appveyor PushArtifact installer\tfm-$env:APPVEYOR_BUILD_NUMBER.EXE
+      appveyor PushArtifact installer\tfm-test-$env:APPVEYOR_BUILD_NUMBER.EXE
       }
       
 
