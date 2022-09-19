@@ -11,6 +11,10 @@ using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
+using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
+
+using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
+
 
 namespace tfm
 {
@@ -58,8 +62,16 @@ namespace tfm
             // ---panel: Bottom Overhead
             pages.Add("enginesNode", new ctlEngines());
             pages.Add("lightsNode", new ctlLights());
-            // set the parent and hide them all
-            foreach (iPanelsPage page in this.pages.Values)
+
+            // --panel: glare shield
+            pages.Add("warningsNode", new ctlWarnings());
+            pages.Add("mcpAltitudeNode", new ctlMcpAltitude());
+            pages.Add("mcpHeadingNode", new ctlMcpHeading());
+            pages.Add("mcpSpeedNode", new ctlMcpSpeed());
+            pages.Add("mcpVerticalSpeedNode", new ctlMcpVerticalSpeed());
+            pages.Add("mcpNavigationNode", new ctlMcpNavigation());
+                                    // set the parent and hide them all
+                                    foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.pnlContent;
                 page.SetDocking();
@@ -80,6 +92,14 @@ namespace tfm
                 this.currentPage.Show();
             }
 
+        }
+
+        private void frmCockpitPanels_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F6)
+            {
+                tvPanels.Focus();
+            }
         }
     }
 }

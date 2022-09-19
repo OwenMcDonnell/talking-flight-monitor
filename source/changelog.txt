@@ -1,53 +1,29 @@
-﻿## Talking flight monitor 22.9.1 Preview release notes
+﻿## Talking flight monitor 22.10 Preview release notes
 
 ### What's new?
 
-* TFM: Option to not use SAPI when on an ILS approach. To turn it on, open TFM settings and navigate to the output section. Check/uncheck the 'use sapi with ILS announcements'option, then press OK to save.
-* PMDG 777: the MCP/autopilot keys to announce heading, altitude, and speed match the PMDG 737 output.
-* PMDG 737 Aft Overhead panels
-    * ADIRU
-    * PSEU
-    * Service interphone
-    * Dome lights
-    * EEC
-    * Oxygen
-    * Gear
-    * Flight recorder
-* Forward Overhead panels
-    * Flight controls
-    * Navigation/Displays
-    * Fuel
-    * Electrical
-    * APU
-    * Wipers
-* Center Overhead
-    * Main center area - Note that center area of overhead is the Center Overhead tree item.
-        * The traditional no smoking selector is labeled chimes in the 737-800 and 737-900.
-    * Anti-ice
-    * Hydraulics
-    * Air Systems
-* Bottom Overhead
-    * Engines - Fuel control switches normally on the control stand are located here for easier use.
-    * Lights
-* PMDG 737: Speech settings for panels listed above.
-* Ctrl+Shift+X - Restart TFM with a keyboard shortcut 
-* Keyboard letters I and D are now used to change lighting knobs.
-    * While a lighting knob has focus: I increases brightness and d decreases brightness.
+* Glare Shield
+    * EFIS not included see [the blog post](https://www.talkingflightmonitor.com/2022/09/04/pmdg-737-rebuild-series-week-15-tfm-preview-released-glare-shield-progress-and-navigraph-support/) for the reason.
+    * Warnings panel
+    * MCP panels - Altitude, heading, speed, vertical speed, and navigation have their own tree nodes and keyboard shortcuts.
+* MCP boxes
+    * Speed box - Redesigned user interface and performance improvements.
+    * Altitude box - Performance improvements and altitude indicators.
+    * Heading box - Performance improvements and heading indicators.
+    * Vertical speed box - Performance improvements and vertical speed indicators.
+    * Navigation box - new. Contains flight directors, CMDA/B, etc.
+* Pressing F6 now places focus on the panels tree in the cockpit panels dialog.
+* Pressing F6 in the settings dialog now returns focus to the categories tree.
 
-### Bug fixes
-
-* The TFM database had connection problems. It now works as expected.
-* Users can now turn on/off the ground power in the electrical panel.
-* Turned on the pre-existing offsets to make the preview releases usable by all users.
-* The above/below announcements now indicate up/down. Up = glide slope is above you and down = glide slope is below you.
+        ### Bug fixes
+* ILS announcements now honor the use sapi for ILS announcements setting.
 
 ### Known issues
 
 * Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
-* The ILS readouts stop when approach mode turns off.
-* The new ILS feature may not work as expected in the PMDG 747.
+* The PMDG 747 has an approach mode light that turns on when on final. This usually happens after the ILS is active. TFM uses this light to determine when it should start reading signals from the nav radios. Since the app light and the approach mode switch are different, TFM can start reading ILS signals before approach mode is turned on. This is an issue, but the side affect is a desired feature. We will look into this more during the 747 rebuild cycle.
 
 ### FS2020 notes and reminders
-* PMDG 737-700 for FS2020 hasn't released an SDK yet. TFM will not work until the SDK is released.
-* The announce perf init complete setting on the PMDG page of TFM settings is not working at this time.
-* TFM incorrectly announces aircraft instrument states in the FS2020 A320 Neo. A reminder that FS2020 is not supported by TFM, and usage results my not be as expected.
+* The latest builds of fs2020 broke keyboard navigation.
+* You can still use a controller (XBOX/PS/5) to navigate the UI.
+* PMDG 73X for FS2020 hasn't released an SDK yet. TFM will not work until the SDK is released.

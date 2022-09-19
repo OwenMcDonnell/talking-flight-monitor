@@ -55,6 +55,10 @@ namespace tfm
             // --section: bottom overhead
             pages.Add("737EnginesNode", new tfm.Settings_panels.PMDG737.ctlEngines());
             pages.Add("737LightsNode", new tfm.Settings_panels.PMDG737.ctlLights());
+
+            // ---panel: glare shield
+            pages.Add("737WarningsNode", new Settings_panels.PMDG737.ctlWarnings());
+            pages.Add("737mcpNode", new Settings_panels.PMDG737.ctlMCP());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {
@@ -79,5 +83,13 @@ namespace tfm
 
 
             }
+
+        private void frmSettings_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F6)
+            {
+                tvCategories.Focus();
+            }
         }
+    }
 }

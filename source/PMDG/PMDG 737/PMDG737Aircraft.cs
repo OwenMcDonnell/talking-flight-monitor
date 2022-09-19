@@ -9,16 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace tfm
 {
     static class PMDG737Aircraft
     {
 
-        private static tfm.PMDG.PMDG737.McpComponents.AltitudeBox altitudeBox = new PMDG.PMDG737.McpComponents.AltitudeBox();
-        private static tfm.PMDG.PMDG737.McpComponents.SpeedBox speedBox = new PMDG.PMDG737.McpComponents.SpeedBox();
-        private static tfm.PMDG.PMDG737.McpComponents.HeadingBox headingBox = new PMDG.PMDG737.McpComponents.HeadingBox();
-        private static tfm.PMDG.PMDG737.McpComponents.VerticalSpeedBox verticalSpeedBox = new PMDG.PMDG737.McpComponents.VerticalSpeedBox();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpAltitude altitudeBox = new tfm.PMDG.PMDG737.McpComponents.mcpAltitude();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpSpeed speedBox = new tfm.PMDG.PMDG737.McpComponents.mcpSpeed();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpHeading  headingBox = new tfm.PMDG.PMDG737.McpComponents.mcpHeading();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpVerticalSpeed verticalSpeedBox = new tfm.PMDG.PMDG737.McpComponents.mcpVerticalSpeed();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpNavigation navigationBox = new tfm.PMDG.PMDG737.McpComponents.mcpNavigation();
 
         public static PMDG_NGX_CDU_Screen cdu0 = new PMDG_NGX_CDU_Screen(0x5400);
         public static PMDG_NGX_CDU_Screen cdu1 = new PMDG_NGX_CDU_Screen(0x5800);
@@ -30,6 +32,7 @@ namespace tfm
         public const int DBLCLKL = 0x04000000;
         public const int Inc = 16384;
         public const int Dec = 8192;
+        
         public static void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel, bool useClicks = false)
         {
             // there are several PMDG controls that cannot be set by direct parameter entry.
@@ -78,6 +81,7 @@ namespace tfm
                     {"altitude", altitudeBox },
                     {"speed", speedBox },
                     {"heading", headingBox },
+                    {"navigation", navigationBox },
                     {"vertical", verticalSpeedBox },
                 };
         }
@@ -429,6 +433,33 @@ namespace tfm
             {2, "strobe/steady" },
         };
 
+        private static Dictionary<byte, string> _autoBrakeSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "RTO" },
+            {1, "off" },
+            {2, "disarm" },
+            {3, "1" },
+            {4, "2" },
+            {5, "3" },
+        };
+
+        private static Dictionary<byte, string> _n1SelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "2" },
+            {1, "1" },
+            {2, "auto" },
+            {3, "both" },
+        };
+
+        private static Dictionary<byte, string> _bankLimitSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "10" },
+            {1, "15" },
+            {2, "20" },
+            {3, "25" },
+            {4, "30" },
+                    };
+
         public static List<PanelObject> PanelControls
         {
             get => new List<PanelObject>()
@@ -687,6 +718,63 @@ new SingleStateToggle { Name = "Position lights", PanelName = "Bottom Overhead",
 new SingleStateToggle { Name = "Anti-collision lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_AntiCollisionSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_AntiCollisionSw},
 new SingleStateToggle { Name = "Wing lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_WingSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_WingSw},
 new SingleStateToggle { Name = "Wheel well lights", PanelName = "Bottom Overhead", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_WheelWellSw, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_WheelWellSw},
+
+// --panel: Glare Shield
+// --section: Warnings
+new SingleStateToggle {Name = "Left fire warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunFIRE_WARN[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunFIRE_WARN1},
+new SingleStateToggle {Name = "Right fire warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunFIRE_WARN[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunFIRE_WARN2},
+new SingleStateToggle { Name = "Left master caution light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunMASTER_CAUTION[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunMASTER_CAUTION1},
+new SingleStateToggle { Name = "Right master caution light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunMASTER_CAUTION[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunMASTER_CAUTION2},
+new SingleStateToggle { Name = "Flight controls warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunFLT_CONT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunFLT_CONT},
+new SingleStateToggle { Name = "IRS warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunIRS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunIRS},
+new SingleStateToggle { Name = "Fuel warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunFUEL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunFUEL},
+new SingleStateToggle { Name = "Electrical warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunELEC, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunELEC},
+new SingleStateToggle { Name = "APU warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunAPU, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunAPU},
+new SingleStateToggle { Name = "Overheat warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunOVHT_DET, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunOVHT_DET},
+new SingleStateToggle { Name = "Anti-ice warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunANTI_ICE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunANTI_ICE},
+new SingleStateToggle { Name = "Hydraulics warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunHYD, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunHYD},
+new SingleStateToggle { Name = "Doors warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunDOORS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunDOORS},
+new SingleStateToggle { Name = "Engines warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunENG, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunENG},
+new SingleStateToggle { Name = "Overhead warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunOVERHEAD, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunOVERHEAD},
+new SingleStateToggle { Name = "Air Systems warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunAIR_COND, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunAIR_COND},
+
+// --section: MCP
+new SingleStateToggle { Name = "Speed intervene", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASBlank, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASBlank},
+new SingleStateToggle { Name = "MCP Overspeed warning", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASOverspeedFlash, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASOverspeedFlash},
+new SingleStateToggle { Name = "MCP underspeed warning", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASUnderspeedFlash, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASUnderspeedFlash},
+new SingleStateToggle { Name = "Autothrottle", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_ATArmSw, AvailableStates = _armedOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_ATArmSw},
+new SingleStateToggle { Name = "Autothrottle armed light", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunATArm, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunATArm},
+new SingleStateToggle { Name = "N1 light", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunN1, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunN1},
+new SingleStateToggle { Name = "Speed light", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunSPEED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunSPEED},
+new SingleStateToggle { Name = "Heading select light", PanelName = "Glare Shield", PanelSection = "MCP-HEADING", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunHDG_SEL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunHDG_SEL},
+new SingleStateToggle { Name = "LNav light", PanelName = "Glare Shield", PanelSection = "MCP-HEADING", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunLNAV, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunLNAV},
+new SingleStateToggle { Name = "Vertical speed mode", PanelName = "Glare Shield", PanelSection = "MCP-VERTICAL", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_VertSpeedBlank, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_VertSpeedBlank },
+new SingleStateToggle { Name = "Vertical speed light", PanelName = "Glare Shield", PanelSection = "MCP-VERTICAL", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunVS, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunVS},
+new SingleStateToggle { Name = "V NAV light", PanelName = "Glare Shield", PanelSection = "MCP-ALTITUDE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunVNAV, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunVNAV},
+new SingleStateToggle { Name = "Level change light", PanelName = "Glare Shield", PanelSection = "MCP-ALTITUDE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunLVL_CHG, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunLVL_CHG},
+new SingleStateToggle { Name = "Altitude hold light", PanelName = "Glare Shield", PanelSection = "MCP-ALTITUDE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunALT_HOLD, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunALT_HOLD},
+new SingleStateToggle { Name = "Left flight director", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_FDSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_FDSw1},
+new SingleStateToggle { Name = "Right flight director", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_FDSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_FDSw2},
+new SingleStateToggle { Name = "Bank limit", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_BankLimitSel, AvailableStates = _bankLimitSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_BankLimitSel},
+new SingleStateToggle { Name = "Disengage bar", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_DisengageBar, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_DisengageBar},
+new SingleStateToggle { Name = "Left flight director light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunFD[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunFD1},
+new SingleStateToggle { Name = "Right flight director light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunFD[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunFD2},
+new SingleStateToggle { Name = "Approach mode light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunAPP, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunAPP},
+new SingleStateToggle { Name = "VOR/Localizer light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunVOR_LOC, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunVOR_LOC},
+new SingleStateToggle { Name = "CMDA light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunCMD_A, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunCMD_A},
+new SingleStateToggle { Name = "CWSA light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATJION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunCWS_A, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunCWS_A},
+new SingleStateToggle { Name = "CMDB light", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunCMD_B, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunCMD_B},
+new SingleStateToggle { Name = "CWSB", PanelName = "Glare Shield", PanelSection = "MCP-NAVIGATION", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_annunCWS_B, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_annunCWS_B},
+// ---panel: forward
+// --section: main
+
+new SingleStateToggle { Name = "Auto brake", PanelName = "Forward", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MAIN_AutobrakeSelector, AvailableStates = _autoBrakeSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.MAIN_AutobrakeSelector},
+new SingleStateToggle { Name = "Speed brake armed light", PanelName = "Forward", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MAIN_annunSPEEDBRAKE_ARMED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MAIN_annunSPEEDBRAKE_ARMED},
+new SingleStateToggle { Name = "Speed brake extended light", PanelName = "Forward", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MAIN_annunSPEEDBRAKE_EXTENDED, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MAIN_annunSPEEDBRAKE_EXTENDED},
+new SingleStateToggle { Name = "Speedbrake d/n arm light", PanelName = "Forward", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MAIN_annunSPEEDBRAKE_DO_NOT_ARM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MAIN_annunSPEEDBRAKE_DO_NOT_ARM},
+new SingleStateToggle { Name = "Autobrake disarm light", PanelName = "Forward", PanelSection = "Main", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MAIN_annunAUTO_BRAKE_DISARM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MAIN_annunAUTO_BRAKE_DISARM},
+new SingleStateToggle { Name = "N1", PanelName = "Forward", PanelSection = "Main", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MAIN_N1SetSelector, AvailableStates = _n1SelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.MAIN_N1SetSelector},
+
                             // --end-panel-controls                              
             };
         }
@@ -751,7 +839,21 @@ new SingleStateToggle { Name = "Wheel well lights", PanelName = "Bottom Overhead
         public static double CurrentElevatorTrim
         {
             get => Math.Round(FSUIPCConnection.ReadLVar("ElevTrimTT"), 2);
-        } // CurentElevatorTrim
+        } // CurrentElevatorTrim
+
+        public static double CurrentSpeedBrakePosition
+        {
+
+            /*
+             * Named detents are below.
+             * 0: Off
+             * 100: Armed
+             * 250: 50% deployed.
+             * 272: Flight;
+             * 400: 100% deployed.
+             */
+            get => FSUIPCConnection.ReadLVar("SWITCH_679_73X");
+                                               }
 
         public static double CurrentFlapsPosition
         {
@@ -815,14 +917,24 @@ new SingleStateToggle { Name = "Wheel well lights", PanelName = "Bottom Overhead
 
         public static void VerticalSpeedIntervene()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, Aircraft.ClkL);
+            if(Aircraft.pmdg737.MCP_VertSpeedBlank.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, ClkR);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, ClkL);
+            }
         } // VerticalSpeedIntervene
-
+    
         public static void SetVerticalSpeed(string verticalSpeedText)
         {
-            ushort.TryParse(verticalSpeedText, out ushort verticalSpeed);
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SET, verticalSpeed);
-        } // SetVerticalSpeed
+            if(int.TryParse(verticalSpeedText, out int speed))
+            {
+                speed = speed - 10000;
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SET, speed);
+            }
+                    } // SetVerticalSpeed
 
         public static void ShowVerticalSpeedBox()
         {
@@ -834,7 +946,12 @@ new SingleStateToggle { Name = "Wheel well lights", PanelName = "Bottom Overhead
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_SPD_INTV_SWITCH, Aircraft.ClkL);
         } // SpeedIntervene
 
-        public static void ShowSpeedBox()
+        public static void ShowNavigationBox()
+        {
+            MCPComponents["navigation"].Show();
+        }
+
+                public static void ShowSpeedBox()
         {
             MCPComponents["speed"].Show();
         } // ShowSpeedBox
@@ -1898,5 +2015,264 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WHEEL_WELL, ClkR);
             }
         } // WheelWellLights
-    } // End PMDG737Aircraft.
+
+        public static void ChangeOver()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CO_SWITCH, ClkL);
+        } // ChangeOver
+
+        public static void AutoThrottle()
+        {
+            if(Aircraft.pmdg737.MCP_ATArmSw.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_AT_ARM_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_AT_ARM_SWITCH, ClkR);
+            }
+        } // AutoThrottle
+
+        public static void N1SetSelector()
+        {
+            if(FSUIPCConnection.ReadLVar("L:switch_466_73X") < 30)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_N1SET_SELECTOR, Inc);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_N1SET_SELECTOR, 0);
+            }
+        } // N1SetSelector
+
+        public static void N1()
+        {
+            if(Aircraft.pmdg737.MCP_annunN1.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_N1_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_N1_SWITCH, ClkR);
+            }
+        } // N1
+
+        public static void SpeedHold()
+        {
+            if(Aircraft.pmdg737.MCP_annunSPEED.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_SPEED_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_SPEED_SWITCH, ClkR);
+            }
+        } // SpeedHold
+
+        public static void SpoilerAToggle()
+        {
+            if (Aircraft.pmdg737.FCTL_Spoiler_Sw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_SPOILER_A_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_SPOILER_A_SWITCH, ClkR);
+            }
+        } // SpoilerAToggle
+
+        public static void SpoilerBToggle()
+        {
+            if (Aircraft.pmdg737.FCTL_Spoiler_Sw[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_SPOILER_B_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_SPOILER_B_SWITCH, ClkR);
+            }
+
+        } // SpoilerBToggle
+
+        public static void SetSpeed(string speedTxt)
+        {
+            if (SpeedType == AircraftSpeed.Indicated)
+            {
+                if (int.TryParse(speedTxt, out int speed))
+                {
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_IAS_SET, speed);
+                }
+            }
+            else
+            {
+                if (double.TryParse(speedTxt, out double speed))
+                {
+                    speed /= 0.01;
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_MACH_SET, (int)speed);
+                }
+            }
+
+        } // SetSpeed
+
+        public static void AutoBrake(int position)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_AUTOBRAKE_SELECTOR, position);
+        } // AutoBrake
+
+        public static void SpeedBrakeIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER, ClkL);
+        } // SpeedBrakeIncrease
+
+        public static void SpeedBrakeDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER, ClkR);
+        } // SpeedBrakeDecrease
+
+        public static void SpeedBrakeArm()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_ARM, ClkL);
+        } // SpeedBrakeArm
+
+        public static void SpeedBrakeFlight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_FLT_DET, ClkL);
+        } // SpeedBrakeFlight
+
+        public static void SpeedBrakeFull()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_UP, ClkL);
+        } // SpeedBrakeFull
+
+        public static void SpeedBrakeHalf()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_50PCT, ClkL);
+        } // SpeedBrakeHalf
+
+        public static void SpeedBrakeOff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_SPEED_BRAKE_LEVER_DOWN, ClkL);
+        } // SpeedBrakeOff
+
+        public static void FD1()
+        {
+            if (Aircraft.pmdg737.MCP_FDSw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_FD_SWITCH_L, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_FD_SWITCH_L, ClkR);
+            }
+        } // FD1
+
+        public static void FD2()
+        {
+            if (Aircraft.pmdg737.MCP_FDSw[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_FD_SWITCH_R, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_FD_SWITCH_R, ClkR);
+            }
+        } // FD2
+
+        public static void ApproachMode()
+        {
+            if(Aircraft.pmdg737.MCP_annunAPP.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_APP_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_APP_SWITCH, ClkR);
+            }
+        } // ApproachMode
+
+        public static void LocalizerHold()
+        {
+            if(Aircraft.pmdg737.MCP_annunVOR_LOC.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VOR_LOC_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VOR_LOC_SWITCH, ClkR);
+            }
+        } // LocalizerHold
+
+        public static void CMDA()
+        {
+            if(Aircraft.pmdg737.MCP_annunCMD_A.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CMD_A_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CMD_A_SWITCH, ClkR);
+            }
+        } // CMDA
+
+        public static void CWSA()
+        {
+            if(Aircraft.pmdg737.MCP_annunCWS_A.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CWS_A_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CWS_A_SWITCH, ClkR);
+            }
+        } // CWSA
+
+        public static void CMDB()
+        {
+            if(Aircraft.pmdg737.MCP_annunCMD_B.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CMD_B_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CMD_B_SWITCH, ClkR);
+            }
+        } // CMDB
+
+        public static void CWSB()
+        {
+            if(Aircraft.pmdg737.MCP_annunCWS_B.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CWS_B_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CWS_B_SWITCH, ClkR);
+            }
+        } // CWSB
+
+        public static void DisengageBar()
+        {
+            if(Aircraft.pmdg737.MCP_DisengageBar.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_DISENGAGE_BAR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_DISENGAGE_BAR, ClkR);
+            }
+        } // DisengageBar
+
+        public static void BankLimiter()
+        {
+            var counter = Aircraft.pmdg737.MCP_BankLimitSel.Value;
+            if(counter == 4)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_BANK_ANGLE_SELECTOR, 0);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_BANK_ANGLE_SELECTOR, counter+1);
+            }
+                                                        } // BankLimiter
+            } // End PMDG737Aircraft.
     } // End namespace.
