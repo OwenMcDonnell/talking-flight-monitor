@@ -58,6 +58,7 @@ namespace tfm
 
             // ---panel: glare shield
             pages.Add("737WarningsNode", new Settings_panels.PMDG737.ctlWarnings());
+            pages.Add("737mcpNode", new Settings_panels.PMDG737.ctlMCP());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {
