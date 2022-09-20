@@ -1,14 +1,17 @@
-﻿using System;
+﻿
+using FSUIPC;
+using System;
 using System.Collections.Generic;
 
 using System.Globalization;
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace tfm.Vatsim.Feed
 {
-    public partial class VatsimDataBlock
+        public partial class VatsimDataBlock
     {
         [JsonProperty("general")]
         public General General { get; set; }
@@ -124,6 +127,23 @@ namespace tfm.Vatsim.Feed
 
     public partial class Pilot
     {
+                        public double DistanceFrom
+        {
+            get
+            {
+                FsLatLonPoint point = new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value);
+                return Math.Round(point.DistanceFromInNauticalMiles(new FsLatLonPoint(this.Latitude, this.Longitude)), 0);
+            } // Get
+        } // DistanceFrom
+
+        public double BearingTo
+        {
+            get
+            {
+                FsLatLonPoint point = new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value);
+                return Math.Round(point.BearingTo(new FsLatLonPoint(this.Latitude, this.Longitude)), 0);
+            } // Get
+        } // BearingTo
         [JsonProperty("cid")]
         public long Cid { get; set; }
 
@@ -171,6 +191,16 @@ namespace tfm.Vatsim.Feed
 
         [JsonProperty("last_updated")]
         public DateTimeOffset LastUpdated { get; set; }
+
+
+        private async Task<PilotRating[]> GetPilotRatings()
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync("https://data.vatsim.net/v3/vatsim-data.json");
+            var block = tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
+            return block.PilotRatings.ToArray();
+        } // GetPilotRatings
+
     }
 
     public partial class FlightPlan

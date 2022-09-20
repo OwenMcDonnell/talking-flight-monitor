@@ -2463,8 +2463,17 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
                     onFuelTankKey(10);
                     break;
                 case "Nearby_Airborn_Aircraft":
-                    onNearbyAircraft();
-                    break;
+
+                    if (Properties.Settings.Default.VatsimMode)
+                    {
+                        tfm.Vatsim.VatsimRadar vatsimRadar = new Vatsim.VatsimRadar();
+                        vatsimRadar.Show();
+                    }
+                    else
+                    {
+                        onNearbyAircraft();
+                    }
+                                        break;
                 case "Nearby_Ground_Aircraft":
                     onTCASGround();
                     break;
