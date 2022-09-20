@@ -928,6 +928,7 @@
     </Compile>
     <Compile Include="sounds\SineWaveProvider.cs" />
     <Compile Include="utility.cs" />
+    <Compile Include="Vatsim\VatsimData.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
