@@ -127,7 +127,9 @@ namespace tfm.Vatsim.Feed
 
     public partial class Pilot
     {
-                        public double DistanceFrom
+                public string RatingShortName { get; set; }
+
+                                    public double DistanceFrom
         {
             get
             {
@@ -193,15 +195,7 @@ namespace tfm.Vatsim.Feed
         public DateTimeOffset LastUpdated { get; set; }
 
 
-        private async Task<PilotRating[]> GetPilotRatings()
-        {
-            HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync("https://data.vatsim.net/v3/vatsim-data.json");
-            var block = tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
-            return block.PilotRatings.ToArray();
-        } // GetPilotRatings
-
-    }
+            }
 
     public partial class FlightPlan
     {

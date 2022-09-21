@@ -39,8 +39,11 @@
             this.groundSpeedColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ratingColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controllersTabPage = new System.Windows.Forms.TabPage();
+            this.rangeLabel = new System.Windows.Forms.Label();
+            this.distanceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.vatsimRadarTabControl.SuspendLayout();
             this.trafficTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // vatsimRadarTabControl
@@ -59,6 +62,8 @@
             // trafficTabPage
             // 
             this.trafficTabPage.AccessibleName = "aircraft traffic";
+            this.trafficTabPage.Controls.Add(this.distanceNumericUpDown);
+            this.trafficTabPage.Controls.Add(this.rangeLabel);
             this.trafficTabPage.Controls.Add(this.usersListView);
             this.trafficTabPage.Location = new System.Drawing.Point(4, 42);
             this.trafficTabPage.Name = "trafficTabPage";
@@ -71,6 +76,7 @@
             // usersListView
             // 
             this.usersListView.AccessibleName = "Vatsim users";
+            this.usersListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.usersListView.AllowColumnReorder = true;
             this.usersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.callSignColumnHeader,
@@ -81,9 +87,11 @@
             this.groundSpeedColumnHeader,
             this.ratingColumnHeader});
             this.usersListView.HideSelection = false;
+            this.usersListView.HotTracking = true;
+            this.usersListView.HoverSelection = true;
             this.usersListView.Location = new System.Drawing.Point(0, 0);
             this.usersListView.Name = "usersListView";
-            this.usersListView.Size = new System.Drawing.Size(1470, 850);
+            this.usersListView.Size = new System.Drawing.Size(1470, 842);
             this.usersListView.TabIndex = 0;
             this.usersListView.UseCompatibleStateImageBehavior = false;
             this.usersListView.View = System.Windows.Forms.View.Details;
@@ -134,6 +142,35 @@
             this.controllersTabPage.Text = "Controllers";
             this.controllersTabPage.UseVisualStyleBackColor = true;
             // 
+            // rangeLabel
+            // 
+            this.rangeLabel.AutoSize = true;
+            this.rangeLabel.Location = new System.Drawing.Point(10, 850);
+            this.rangeLabel.Name = "rangeLabel";
+            this.rangeLabel.Size = new System.Drawing.Size(182, 33);
+            this.rangeLabel.TabIndex = 1;
+            this.rangeLabel.Text = "&Distance (NM)";
+            // 
+            // distanceNumericUpDown
+            // 
+            this.distanceNumericUpDown.AccessibleName = "Radar distance (NM)";
+            this.distanceNumericUpDown.AutoSize = true;
+            this.distanceNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.distanceNumericUpDown.Location = new System.Drawing.Point(161, 848);
+            this.distanceNumericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.distanceNumericUpDown.Name = "distanceNumericUpDown";
+            this.distanceNumericUpDown.Size = new System.Drawing.Size(120, 40);
+            this.distanceNumericUpDown.TabIndex = 2;
+            this.distanceNumericUpDown.ValueChanged += new System.EventHandler(this.distanceNumericUpDown_ValueChanged);
+            // 
             // VatsimRadar
             // 
             this.AccessibleName = "Vatsim radar";
@@ -144,6 +181,7 @@
             this.ClientSize = new System.Drawing.Size(1478, 944);
             this.Controls.Add(this.vatsimRadarTabControl);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "VatsimRadar";
@@ -151,8 +189,11 @@
             this.Text = "Vatsim radar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VatsimRadar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VatsimRadar_KeyDown);
             this.vatsimRadarTabControl.ResumeLayout(false);
             this.trafficTabPage.ResumeLayout(false);
+            this.trafficTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,5 +211,7 @@
         private System.Windows.Forms.ColumnHeader groundSpeedColumnHeader;
         private System.Windows.Forms.ColumnHeader ratingColumnHeader;
         private System.Windows.Forms.ColumnHeader bearingToColumnHeader;
+        private System.Windows.Forms.NumericUpDown distanceNumericUpDown;
+        private System.Windows.Forms.Label rangeLabel;
     }
 }

@@ -24,11 +24,11 @@ namespace tfm.Vatsim
 
         private async void VatsimRadar_Load(object sender, EventArgs e)
         {
-                        var pilots = await GetPilots();
+            var pilots = await VatsimUtilities.GetPilotsAsync();
                         usersListView.BeginUpdate();
             foreach (Pilot user in pilots)
             {
-                                string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.PilotRating.ToString() };
+                                string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.RatingShortName};
                 usersListView.Items.Add(new ListViewItem(item));
             }
             usersListView.EndUpdate();
@@ -41,5 +41,32 @@ namespace tfm.Vatsim
             var block =tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
             return block.Pilots.ToArray();
         } // GetPilots
+
+        private async  void distanceNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+            usersListView.Items.Clear();
+            var pilots = await GetPilots();
+            var usersWithinRange = pilots.Where(x => x.DistanceFrom <= (double)distanceNumericUpDown.Value).ToArray();
+            usersListView.BeginUpdate();
+            foreach (Pilot user in usersWithinRange)
+            {
+                string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.PilotRating.ToString() };
+                usersListView.Items.Add(new ListViewItem(item));
+            }
+            usersListView.EndUpdate();
+
+            usersListView.Refresh();            
+
+        }
+
+        private void VatsimRadar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Alt && e.KeyCode == Keys.L)
+            {
+                e.SuppressKeyPress = true;
+                                                usersListView.Focus();
+                                                            }
+        }
     } // form
 } // namespace

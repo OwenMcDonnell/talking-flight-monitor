@@ -936,6 +936,7 @@
     <Compile Include="Vatsim\VatsimRadar.Designer.cs">
       <DependentUpon>VatsimRadar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vatsim\VatsimUtilities.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
