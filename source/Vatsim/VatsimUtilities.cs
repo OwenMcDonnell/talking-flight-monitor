@@ -27,12 +27,13 @@ namespace tfm.Vatsim
 
         public static  async Task<List<Ati>> GetControllersAsync()
         {
-
-            List<Ati> controllers = new List<Ati>();
+                        List<Ati> controllers = new List<Ati>();
             var vatsimData = await GetVatsimDataAsync();
 
             foreach(Ati user in vatsimData.Controllers)
             {
+                user.FacilityShortName = vatsimData.Facilities.Where(x => user.Facility == x.Id).ToArray()[0].Short;
+                user.RatingShortName = vatsimData.Ratings.Where(x => user.Rating == x.Id).ToArray()[0].Short;
                 controllers.Add(user);
             }
             return controllers;

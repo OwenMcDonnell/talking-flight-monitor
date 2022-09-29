@@ -41,9 +41,16 @@
             this.groundSpeedColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ratingColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controllersTabPage = new System.Windows.Forms.TabPage();
+            this.controllersListView = new System.Windows.Forms.ListView();
+            this.controllerCallSignColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.controllerFacilityShortNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.controllerFrequencyColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.controllerVisualRangeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.controllerRatingColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.vatsimRadarTabControl.SuspendLayout();
             this.trafficTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
+            this.controllersTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // vatsimRadarTabControl
@@ -162,6 +169,7 @@
             // controllersTabPage
             // 
             this.controllersTabPage.AccessibleName = "Controllers in range";
+            this.controllersTabPage.Controls.Add(this.controllersListView);
             this.controllersTabPage.Location = new System.Drawing.Point(4, 42);
             this.controllersTabPage.Name = "controllersTabPage";
             this.controllersTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -169,6 +177,49 @@
             this.controllersTabPage.TabIndex = 1;
             this.controllersTabPage.Text = "Controllers";
             this.controllersTabPage.UseVisualStyleBackColor = true;
+            // 
+            // controllersListView
+            // 
+            this.controllersListView.AccessibleName = "Controllers";
+            this.controllersListView.AllowColumnReorder = true;
+            this.controllersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.controllerCallSignColumnHeader,
+            this.controllerFacilityShortNameColumnHeader,
+            this.controllerFrequencyColumnHeader,
+            this.controllerVisualRangeColumnHeader,
+            this.controllerRatingColumnHeader});
+            this.controllersListView.HideSelection = false;
+            this.controllersListView.Location = new System.Drawing.Point(0, 0);
+            this.controllersListView.Name = "controllersListView";
+            this.controllersListView.Size = new System.Drawing.Size(1470, 842);
+            this.controllersListView.TabIndex = 0;
+            this.controllersListView.UseCompatibleStateImageBehavior = false;
+            this.controllersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // controllerCallSignColumnHeader
+            // 
+            this.controllerCallSignColumnHeader.Text = "Callsign";
+            this.controllerCallSignColumnHeader.Width = 293;
+            // 
+            // controllerFacilityShortNameColumnHeader
+            // 
+            this.controllerFacilityShortNameColumnHeader.Text = "Facility";
+            this.controllerFacilityShortNameColumnHeader.Width = 293;
+            // 
+            // controllerFrequencyColumnHeader
+            // 
+            this.controllerFrequencyColumnHeader.Text = "Frequency";
+            this.controllerFrequencyColumnHeader.Width = 293;
+            // 
+            // controllerVisualRangeColumnHeader
+            // 
+            this.controllerVisualRangeColumnHeader.Text = "Visual range";
+            this.controllerVisualRangeColumnHeader.Width = 293;
+            // 
+            // controllerRatingColumnHeader
+            // 
+            this.controllerRatingColumnHeader.Text = "Rating";
+            this.controllerRatingColumnHeader.Width = 293;
             // 
             // VatsimRadar
             // 
@@ -193,6 +244,7 @@
             this.trafficTabPage.ResumeLayout(false);
             this.trafficTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).EndInit();
+            this.controllersTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,5 +264,11 @@
         private System.Windows.Forms.ColumnHeader bearingToColumnHeader;
         private System.Windows.Forms.NumericUpDown distanceNumericUpDown;
         private System.Windows.Forms.Label rangeLabel;
+        private System.Windows.Forms.ListView controllersListView;
+        private System.Windows.Forms.ColumnHeader controllerCallSignColumnHeader;
+        private System.Windows.Forms.ColumnHeader controllerFacilityShortNameColumnHeader;
+        private System.Windows.Forms.ColumnHeader controllerFrequencyColumnHeader;
+        private System.Windows.Forms.ColumnHeader controllerVisualRangeColumnHeader;
+        private System.Windows.Forms.ColumnHeader controllerRatingColumnHeader;
     }
 }

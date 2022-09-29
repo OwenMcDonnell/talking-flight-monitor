@@ -1,5 +1,4 @@
-﻿
-using FSUIPC;
+﻿using FSUIPC;
 using System;
 using System.Collections.Generic;
 
@@ -43,6 +42,10 @@ namespace tfm.Vatsim.Feed
 
     public partial class Ati
     {
+
+        public string FacilityShortName { get; set; }
+        public string RatingShortName { get; set; }
+
         [JsonProperty("cid")]
         public long Cid { get; set; }
 

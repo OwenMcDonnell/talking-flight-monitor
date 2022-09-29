@@ -44,7 +44,26 @@ namespace tfm.Vatsim
                                     }
             }); // loading the pilots.
 
+            // Load controllers.
+            VatsimUtilities.GetControllersAsync().ContinueWith(x =>
+            {
 
+                if(x.Status == TaskStatus.Faulted)
+                {
+                    MessageBox.Show("Failed to get list of controllers.");
+                }
+                else
+                {
+
+                    controllersListView.BeginUpdate();
+                    foreach(Ati user in x.Result)
+                    {
+                        string[] item = { user.Callsign, user.FacilityShortName, user.Frequency, user.VisualRange.ToString(), user.RatingShortName };
+                        controllersListView.Items.Add(new ListViewItem(item));
+                                            }
+                    controllersListView.EndUpdate();
+                }
+            });
         } // load
 
         private async Task<Pilot[]> GetPilots()
