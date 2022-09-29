@@ -24,14 +24,27 @@ namespace tfm.Vatsim
 
         private async void VatsimRadar_Load(object sender, EventArgs e)
         {
-            var pilots = await VatsimUtilities.GetPilotsAsync();
-                        usersListView.BeginUpdate();
-            foreach (Pilot user in pilots)
+
+            // Load the pilots.
+            VatsimUtilities.GetPilotsAsync().ContinueWith(x =>
             {
-                                string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.RatingShortName};
-                usersListView.Items.Add(new ListViewItem(item));
-            }
-            usersListView.EndUpdate();
+                if(x.Status == TaskStatus.Faulted)
+                {
+                    MessageBox.Show("failed");
+                }
+                else
+                {
+                                                            usersListView.BeginUpdate();
+                    foreach (Pilot user in x.Result)
+                    {
+                        string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.RatingShortName };
+                        usersListView.Items.Add(new ListViewItem(item));
+                    }
+                    usersListView.EndUpdate();
+                                    }
+            }); // loading the pilots.
+
+
         } // load
 
         private async Task<Pilot[]> GetPilots()

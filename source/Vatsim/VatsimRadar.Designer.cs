@@ -41,7 +41,6 @@
             this.groundSpeedColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ratingColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controllersTabPage = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.vatsimRadarTabControl.SuspendLayout();
             this.trafficTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
@@ -63,7 +62,6 @@
             // trafficTabPage
             // 
             this.trafficTabPage.AccessibleName = "aircraft traffic";
-            this.trafficTabPage.Controls.Add(this.groupBox1);
             this.trafficTabPage.Controls.Add(this.distanceNumericUpDown);
             this.trafficTabPage.Controls.Add(this.rangeLabel);
             this.trafficTabPage.Controls.Add(this.usersListView);
@@ -172,15 +170,6 @@
             this.controllersTabPage.Text = "Controllers";
             this.controllersTabPage.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
             // VatsimRadar
             // 
             this.AccessibleName = "Vatsim radar";
@@ -223,6 +212,5 @@
         private System.Windows.Forms.ColumnHeader bearingToColumnHeader;
         private System.Windows.Forms.NumericUpDown distanceNumericUpDown;
         private System.Windows.Forms.Label rangeLabel;
-        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
