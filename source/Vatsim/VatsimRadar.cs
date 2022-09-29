@@ -46,19 +46,15 @@ namespace tfm.Vatsim
         {
 
             usersListView.Items.Clear();
-            var pilots = await GetPilots();
+
+            var pilots = await VatsimUtilities.GetPilotsAsync();
             var usersWithinRange = pilots.Where(x => x.DistanceFrom <= (double)distanceNumericUpDown.Value).ToArray();
-            usersListView.BeginUpdate();
-            foreach (Pilot user in usersWithinRange)
+                        foreach (Pilot user in usersWithinRange)
             {
-                string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.PilotRating.ToString() };
+                string[] item = { user.Callsign, user.DistanceFrom.ToString(), user.Altitude.ToString(), user.Heading.ToString(), user.BearingTo.ToString(), user.Groundspeed.ToString(), user.RatingShortName };
                 usersListView.Items.Add(new ListViewItem(item));
             }
-            usersListView.EndUpdate();
-
-            usersListView.Refresh();            
-
-        }
+                    }
 
         private void VatsimRadar_KeyDown(object sender, KeyEventArgs e)
         {

@@ -30,6 +30,8 @@
         {
             this.vatsimRadarTabControl = new System.Windows.Forms.TabControl();
             this.trafficTabPage = new System.Windows.Forms.TabPage();
+            this.distanceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.rangeLabel = new System.Windows.Forms.Label();
             this.usersListView = new System.Windows.Forms.ListView();
             this.callSignColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.distanceColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,8 +41,7 @@
             this.groundSpeedColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ratingColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controllersTabPage = new System.Windows.Forms.TabPage();
-            this.rangeLabel = new System.Windows.Forms.Label();
-            this.distanceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.vatsimRadarTabControl.SuspendLayout();
             this.trafficTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distanceNumericUpDown)).BeginInit();
@@ -62,6 +63,7 @@
             // trafficTabPage
             // 
             this.trafficTabPage.AccessibleName = "aircraft traffic";
+            this.trafficTabPage.Controls.Add(this.groupBox1);
             this.trafficTabPage.Controls.Add(this.distanceNumericUpDown);
             this.trafficTabPage.Controls.Add(this.rangeLabel);
             this.trafficTabPage.Controls.Add(this.usersListView);
@@ -72,6 +74,35 @@
             this.trafficTabPage.TabIndex = 0;
             this.trafficTabPage.Text = "Traffic";
             this.trafficTabPage.UseVisualStyleBackColor = true;
+            // 
+            // distanceNumericUpDown
+            // 
+            this.distanceNumericUpDown.AccessibleName = "Radar distance (NM)";
+            this.distanceNumericUpDown.AutoSize = true;
+            this.distanceNumericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.distanceNumericUpDown.Location = new System.Drawing.Point(161, 848);
+            this.distanceNumericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.distanceNumericUpDown.Name = "distanceNumericUpDown";
+            this.distanceNumericUpDown.Size = new System.Drawing.Size(120, 40);
+            this.distanceNumericUpDown.TabIndex = 2;
+            this.distanceNumericUpDown.ValueChanged += new System.EventHandler(this.distanceNumericUpDown_ValueChanged);
+            // 
+            // rangeLabel
+            // 
+            this.rangeLabel.AutoSize = true;
+            this.rangeLabel.Location = new System.Drawing.Point(10, 850);
+            this.rangeLabel.Name = "rangeLabel";
+            this.rangeLabel.Size = new System.Drawing.Size(182, 33);
+            this.rangeLabel.TabIndex = 1;
+            this.rangeLabel.Text = "&Distance (NM)";
             // 
             // usersListView
             // 
@@ -87,7 +118,6 @@
             this.groundSpeedColumnHeader,
             this.ratingColumnHeader});
             this.usersListView.HideSelection = false;
-            this.usersListView.HotTracking = true;
             this.usersListView.HoverSelection = true;
             this.usersListView.Location = new System.Drawing.Point(0, 0);
             this.usersListView.Name = "usersListView";
@@ -142,34 +172,14 @@
             this.controllersTabPage.Text = "Controllers";
             this.controllersTabPage.UseVisualStyleBackColor = true;
             // 
-            // rangeLabel
+            // groupBox1
             // 
-            this.rangeLabel.AutoSize = true;
-            this.rangeLabel.Location = new System.Drawing.Point(10, 850);
-            this.rangeLabel.Name = "rangeLabel";
-            this.rangeLabel.Size = new System.Drawing.Size(182, 33);
-            this.rangeLabel.TabIndex = 1;
-            this.rangeLabel.Text = "&Distance (NM)";
-            // 
-            // distanceNumericUpDown
-            // 
-            this.distanceNumericUpDown.AccessibleName = "Radar distance (NM)";
-            this.distanceNumericUpDown.AutoSize = true;
-            this.distanceNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.distanceNumericUpDown.Location = new System.Drawing.Point(161, 848);
-            this.distanceNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.distanceNumericUpDown.Name = "distanceNumericUpDown";
-            this.distanceNumericUpDown.Size = new System.Drawing.Size(120, 40);
-            this.distanceNumericUpDown.TabIndex = 2;
-            this.distanceNumericUpDown.ValueChanged += new System.EventHandler(this.distanceNumericUpDown_ValueChanged);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // VatsimRadar
             // 
@@ -213,5 +223,6 @@
         private System.Windows.Forms.ColumnHeader bearingToColumnHeader;
         private System.Windows.Forms.NumericUpDown distanceNumericUpDown;
         private System.Windows.Forms.Label rangeLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

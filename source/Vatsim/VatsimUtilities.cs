@@ -15,11 +15,8 @@ namespace tfm.Vatsim
         {
 
             List<Pilot> pilots = new List<Pilot>();
-            HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync("https://data.vatsim.net/v3/vatsim-data.json");
-var            vatsimData = tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
-
-            foreach(Pilot user in vatsimData.Pilots)
+            var vatsimData = await GetVatsimDataAsync();
+                       foreach(Pilot user in vatsimData.Pilots)
             {
                 user.RatingShortName = vatsimData.PilotRatings.Where(x => user.PilotRating == x.Id).ToArray()[0].ShortName;
                 pilots.Add(user);
@@ -28,6 +25,26 @@ var            vatsimData = tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
             return pilots;
         } // GetPilots
 
+        public static  async Task<List<Ati>> GetControllersAsync()
+        {
 
+            List<Ati> controllers = new List<Ati>();
+            var vatsimData = await GetVatsimDataAsync();
+
+            foreach(Ati user in vatsimData.Controllers)
+            {
+                controllers.Add(user);
+            }
+            return controllers;
+                    } // GetControllersAsync
+
+private static  async Task<VatsimDataBlock> GetVatsimDataAsync()
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync("https://data.vatsim.net/v3/vatsim-data.json");
+            var vatsimData = tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
+
+            return vatsimData;
+        } // GetVatsimData
     } // VatsimUtilities
 } // Vatsim
