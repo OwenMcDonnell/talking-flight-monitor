@@ -76,8 +76,8 @@
     <Reference Include="BingMapsSDSToolkit, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BingMapsSDSToolkit.1.0.5\lib\net45\BingMapsSDSToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="fsuipcClient, Version=3.2.20.389, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
-      <HintPath>packages\FSUIPCClientDLL.3.2.20\lib\net40\fsuipcClient.dll</HintPath>
+    <Reference Include="fsuipcClient, Version=3.2.21.391, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
+      <HintPath>packages\FSUIPCClientDLL.3.2.21\lib\net40\fsuipcClient.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\KdTree.1.4.1\lib\net471\KdTreeLib.dll</HintPath>
@@ -929,7 +929,7 @@
     </Compile>
     <Compile Include="sounds\SineWaveProvider.cs" />
     <Compile Include="utility.cs" />
-    <Compile Include="Vatsim\VatsimDataBlock.cs" />
+    <Compile Include="Vatsim\Vatsim.cs" />
     <Compile Include="Vatsim\VatsimRadar.cs">
       <SubType>Form</SubType>
     </Compile>

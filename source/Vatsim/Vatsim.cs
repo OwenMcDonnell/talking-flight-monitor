@@ -1,42 +1,45 @@
-﻿using FSUIPC;
+﻿using tfm;
 using System;
 using System.Collections.Generic;
 
 using System.Globalization;
+
+using FSUIPC;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.Net.Http;
-using System.Threading.Tasks;
 
-namespace tfm.Vatsim.Feed
+
+
+namespace tfm.Vatsim
 {
-        public partial class VatsimDataBlock
+    public partial class VatsimDataBlock
     {
-        [JsonProperty("general")]
+        [JsonProperty("general", NullValueHandling = NullValueHandling.Ignore)]
         public General General { get; set; }
 
-        [JsonProperty("pilots")]
+        [JsonProperty("pilots", NullValueHandling = NullValueHandling.Ignore)]
         public List<Pilot> Pilots { get; set; }
 
-        [JsonProperty("controllers")]
+        [JsonProperty("controllers", NullValueHandling = NullValueHandling.Ignore)]
         public List<Ati> Controllers { get; set; }
 
-        [JsonProperty("atis")]
+        [JsonProperty("atis", NullValueHandling = NullValueHandling.Ignore)]
         public List<Ati> Atis { get; set; }
 
-        [JsonProperty("servers")]
+        [JsonProperty("servers", NullValueHandling = NullValueHandling.Ignore)]
         public List<ServerElement> Servers { get; set; }
 
-        [JsonProperty("prefiles")]
+        [JsonProperty("prefiles", NullValueHandling = NullValueHandling.Ignore)]
         public List<Prefile> Prefiles { get; set; }
 
-        [JsonProperty("facilities")]
+        [JsonProperty("facilities", NullValueHandling = NullValueHandling.Ignore)]
         public List<Facility> Facilities { get; set; }
 
-        [JsonProperty("ratings")]
+        [JsonProperty("ratings", NullValueHandling = NullValueHandling.Ignore)]
         public List<Facility> Ratings { get; set; }
 
-        [JsonProperty("pilot_ratings")]
+        [JsonProperty("pilot_ratings", NullValueHandling = NullValueHandling.Ignore)]
         public List<PilotRating> PilotRatings { get; set; }
     }
 
@@ -46,29 +49,29 @@ namespace tfm.Vatsim.Feed
         public string FacilityShortName { get; set; }
         public string RatingShortName { get; set; }
 
-        [JsonProperty("cid")]
-        public long Cid { get; set; }
+        [JsonProperty("cid", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Cid { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("callsign")]
+        [JsonProperty("callsign", NullValueHandling = NullValueHandling.Ignore)]
         public string Callsign { get; set; }
 
-        [JsonProperty("frequency")]
+        [JsonProperty("frequency", NullValueHandling = NullValueHandling.Ignore)]
         public string Frequency { get; set; }
 
-        [JsonProperty("facility")]
-        public long Facility { get; set; }
+        [JsonProperty("facility", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Facility { get; set; }
 
-        [JsonProperty("rating")]
-        public long Rating { get; set; }
+        [JsonProperty("rating", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Rating { get; set; }
 
-        [JsonProperty("server")]
-        public ServerEnum Server { get; set; }
+        [JsonProperty("server", NullValueHandling = NullValueHandling.Ignore)]
+        public ServerEnum? Server { get; set; }
 
-        [JsonProperty("visual_range")]
-        public long VisualRange { get; set; }
+        [JsonProperty("visual_range", NullValueHandling = NullValueHandling.Ignore)]
+        public long? VisualRange { get; set; }
 
         [JsonProperty("atis_code")]
         public string AtisCode { get; set; }
@@ -76,63 +79,63 @@ namespace tfm.Vatsim.Feed
         [JsonProperty("text_atis")]
         public List<string> TextAtis { get; set; }
 
-        [JsonProperty("last_updated")]
-        public DateTimeOffset LastUpdated { get; set; }
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LastUpdated { get; set; }
 
-        [JsonProperty("logon_time")]
-        public DateTimeOffset LogonTime { get; set; }
+        [JsonProperty("logon_time", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LogonTime { get; set; }
     }
 
     public partial class Facility
     {
-        [JsonProperty("id")]
-        public long Id { get; set; }
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Id { get; set; }
 
-        [JsonProperty("short")]
+        [JsonProperty("short", NullValueHandling = NullValueHandling.Ignore)]
         public string Short { get; set; }
 
-        [JsonProperty("long")]
+        [JsonProperty("long", NullValueHandling = NullValueHandling.Ignore)]
         public string Long { get; set; }
     }
 
     public partial class General
     {
-        [JsonProperty("version")]
-        public long Version { get; set; }
+        [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Version { get; set; }
 
-        [JsonProperty("reload")]
-        public long Reload { get; set; }
+        [JsonProperty("reload", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Reload { get; set; }
 
-        [JsonProperty("update")]
+        [JsonProperty("update", NullValueHandling = NullValueHandling.Ignore)]
         public string Update { get; set; }
 
-        [JsonProperty("update_timestamp")]
-        public DateTimeOffset UpdateTimestamp { get; set; }
+        [JsonProperty("update_timestamp", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? UpdateTimestamp { get; set; }
 
-        [JsonProperty("connected_clients")]
-        public long ConnectedClients { get; set; }
+        [JsonProperty("connected_clients", NullValueHandling = NullValueHandling.Ignore)]
+        public long? ConnectedClients { get; set; }
 
-        [JsonProperty("unique_users")]
-        public long UniqueUsers { get; set; }
+        [JsonProperty("unique_users", NullValueHandling = NullValueHandling.Ignore)]
+        public long? UniqueUsers { get; set; }
     }
 
     public partial class PilotRating
     {
-        [JsonProperty("id")]
-        public long Id { get; set; }
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Id { get; set; }
 
-        [JsonProperty("short_name")]
+        [JsonProperty("short_name", NullValueHandling = NullValueHandling.Ignore)]
         public string ShortName { get; set; }
 
-        [JsonProperty("long_name")]
+        [JsonProperty("long_name", NullValueHandling = NullValueHandling.Ignore)]
         public string LongName { get; set; }
     }
 
     public partial class Pilot
     {
-                public string RatingShortName { get; set; }
+        public string RatingShortName { get; set; }
 
-                                    public double DistanceFrom
+        public double DistanceFrom
         {
             get
             {
@@ -149,20 +152,21 @@ namespace tfm.Vatsim.Feed
                 return Math.Round(point.BearingTo(new FsLatLonPoint(this.Latitude, this.Longitude)), 0);
             } // Get
         } // BearingTo
-        [JsonProperty("cid")]
-        public long Cid { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("cid", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Cid { get; set; }
+
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("callsign")]
+        [JsonProperty("callsign", NullValueHandling = NullValueHandling.Ignore)]
         public string Callsign { get; set; }
 
-        [JsonProperty("server")]
-        public ServerEnum Server { get; set; }
+        [JsonProperty("server", NullValueHandling = NullValueHandling.Ignore)]
+        public ServerEnum? Server { get; set; }
 
-        [JsonProperty("pilot_rating")]
-        public long PilotRating { get; set; }
+        [JsonProperty("pilot_rating", NullValueHandling = NullValueHandling.Ignore)]
+        public long? PilotRating { get; set; }
 
         [JsonProperty("latitude")]
         public double Latitude { get; set; }
@@ -170,129 +174,127 @@ namespace tfm.Vatsim.Feed
         [JsonProperty("longitude")]
         public double Longitude { get; set; }
 
-        [JsonProperty("altitude")]
-        public long Altitude { get; set; }
+        [JsonProperty("altitude", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Altitude { get; set; }
 
-        [JsonProperty("groundspeed")]
-        public long Groundspeed { get; set; }
+        [JsonProperty("groundspeed", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Groundspeed { get; set; }
 
-        [JsonProperty("transponder")]
+        [JsonProperty("transponder", NullValueHandling = NullValueHandling.Ignore)]
         public string Transponder { get; set; }
 
-        [JsonProperty("heading")]
-        public long Heading { get; set; }
+        [JsonProperty("heading", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Heading { get; set; }
 
-        [JsonProperty("qnh_i_hg")]
-        public double QnhIHg { get; set; }
+        [JsonProperty("qnh_i_hg", NullValueHandling = NullValueHandling.Ignore)]
+        public double? QnhIHg { get; set; }
 
-        [JsonProperty("qnh_mb")]
-        public long QnhMb { get; set; }
+        [JsonProperty("qnh_mb", NullValueHandling = NullValueHandling.Ignore)]
+        public long? QnhMb { get; set; }
 
         [JsonProperty("flight_plan")]
         public FlightPlan FlightPlan { get; set; }
 
-        [JsonProperty("logon_time")]
-        public DateTimeOffset LogonTime { get; set; }
+        [JsonProperty("logon_time", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LogonTime { get; set; }
 
-        [JsonProperty("last_updated")]
-        public DateTimeOffset LastUpdated { get; set; }
-
-
-            }
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LastUpdated { get; set; }
+    }
 
     public partial class FlightPlan
     {
-        [JsonProperty("flight_rules")]
-        public FlightRules FlightRules { get; set; }
+        [JsonProperty("flight_rules", NullValueHandling = NullValueHandling.Ignore)]
+        public FlightRules? FlightRules { get; set; }
 
-        [JsonProperty("aircraft")]
+        [JsonProperty("aircraft", NullValueHandling = NullValueHandling.Ignore)]
         public string Aircraft { get; set; }
 
-        [JsonProperty("aircraft_faa")]
+        [JsonProperty("aircraft_faa", NullValueHandling = NullValueHandling.Ignore)]
         public string AircraftFaa { get; set; }
 
-        [JsonProperty("aircraft_short")]
+        [JsonProperty("aircraft_short", NullValueHandling = NullValueHandling.Ignore)]
         public string AircraftShort { get; set; }
 
-        [JsonProperty("departure")]
+        [JsonProperty("departure", NullValueHandling = NullValueHandling.Ignore)]
         public string Departure { get; set; }
 
-        [JsonProperty("arrival")]
+        [JsonProperty("arrival", NullValueHandling = NullValueHandling.Ignore)]
         public string Arrival { get; set; }
 
-        [JsonProperty("alternate")]
+        [JsonProperty("alternate", NullValueHandling = NullValueHandling.Ignore)]
         public string Alternate { get; set; }
 
-        [JsonProperty("cruise_tas")]
+        [JsonProperty("cruise_tas", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
-        public long CruiseTas { get; set; }
+        public long? CruiseTas { get; set; }
 
-        [JsonProperty("altitude")]
+        [JsonProperty("altitude", NullValueHandling = NullValueHandling.Ignore)]
         public string Altitude { get; set; }
 
-        [JsonProperty("deptime")]
+        [JsonProperty("deptime", NullValueHandling = NullValueHandling.Ignore)]
         public string Deptime { get; set; }
 
-        [JsonProperty("enroute_time")]
+        [JsonProperty("enroute_time", NullValueHandling = NullValueHandling.Ignore)]
         public string EnrouteTime { get; set; }
 
-        [JsonProperty("fuel_time")]
+        [JsonProperty("fuel_time", NullValueHandling = NullValueHandling.Ignore)]
         public string FuelTime { get; set; }
 
-        [JsonProperty("remarks")]
+        [JsonProperty("remarks", NullValueHandling = NullValueHandling.Ignore)]
         public string Remarks { get; set; }
 
-        [JsonProperty("route")]
+        [JsonProperty("route", NullValueHandling = NullValueHandling.Ignore)]
         public string Route { get; set; }
 
-        [JsonProperty("revision_id")]
-        public long RevisionId { get; set; }
+        [JsonProperty("revision_id", NullValueHandling = NullValueHandling.Ignore)]
+        public long? RevisionId { get; set; }
 
-        [JsonProperty("assigned_transponder")]
+        [JsonProperty("assigned_transponder", NullValueHandling = NullValueHandling.Ignore)]
         public string AssignedTransponder { get; set; }
     }
 
     public partial class Prefile
     {
-        [JsonProperty("cid")]
-        public long Cid { get; set; }
+        [JsonProperty("cid", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Cid { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
-        public long Name { get; set; }
+        public long? Name { get; set; }
 
-        [JsonProperty("callsign")]
+        [JsonProperty("callsign", NullValueHandling = NullValueHandling.Ignore)]
         public string Callsign { get; set; }
 
-        [JsonProperty("flight_plan")]
+        [JsonProperty("flight_plan", NullValueHandling = NullValueHandling.Ignore)]
         public FlightPlan FlightPlan { get; set; }
 
-        [JsonProperty("last_updated")]
-        public DateTimeOffset LastUpdated { get; set; }
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LastUpdated { get; set; }
     }
 
     public partial class ServerElement
     {
-        [JsonProperty("ident")]
-        public ServerEnum Ident { get; set; }
+        [JsonProperty("ident", NullValueHandling = NullValueHandling.Ignore)]
+        public ServerEnum? Ident { get; set; }
 
-        [JsonProperty("hostname_or_ip")]
+        [JsonProperty("hostname_or_ip", NullValueHandling = NullValueHandling.Ignore)]
         public string HostnameOrIp { get; set; }
 
-        [JsonProperty("location")]
+        [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
         public string Location { get; set; }
 
-        [JsonProperty("name")]
-        public ServerEnum Name { get; set; }
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        public ServerEnum? Name { get; set; }
 
-        [JsonProperty("clients_connection_allowed")]
-        public long ClientsConnectionAllowed { get; set; }
+        [JsonProperty("clients_connection_allowed", NullValueHandling = NullValueHandling.Ignore)]
+        public long? ClientsConnectionAllowed { get; set; }
 
-        [JsonProperty("client_connections_allowed")]
-        public bool ClientConnectionsAllowed { get; set; }
+        [JsonProperty("client_connections_allowed", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? ClientConnectionsAllowed { get; set; }
 
-        [JsonProperty("is_sweatbox")]
-        public bool IsSweatbox { get; set; }
+        [JsonProperty("is_sweatbox", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IsSweatbox { get; set; }
     }
 
     public enum ServerEnum { Amsterdam, Canada, Germany, Singapore, Uk, UsaEast, UsaWest };
@@ -301,12 +303,12 @@ namespace tfm.Vatsim.Feed
 
     public partial class VatsimDataBlock
     {
-        public static VatsimDataBlock FromJson(string json) => JsonConvert.DeserializeObject<VatsimDataBlock>(json, tfm.Vatsim.Feed.Converter.Settings);
+        public static VatsimDataBlock FromJson(string json) => JsonConvert.DeserializeObject<VatsimDataBlock>(json, Vatsim.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this VatsimDataBlock self) => JsonConvert.SerializeObject(self, tfm.Vatsim.Feed.Converter.Settings);
+        public static string ToJson(this VatsimDataBlock self) => JsonConvert.SerializeObject(self, Vatsim.Converter.Settings);
     }
 
     internal static class Converter
@@ -316,11 +318,11 @@ namespace tfm.Vatsim.Feed
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
             Converters =
-            {
-                ServerEnumConverter.Singleton,
-                FlightRulesConverter.Singleton,
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
+        {
+            ServerEnumConverter.Singleton,
+            FlightRulesConverter.Singleton,
+            new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+        },
         };
     }
 

@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 using Newtonsoft.Json;
-using tfm.Vatsim.Feed;
+using tfm.Vatsim;
 using FSUIPC;
 using DavyKager;
 using System;
@@ -17,20 +17,22 @@ namespace tfm.Vatsim
 {
     public partial class VatsimRadar : Form
     {
-        public VatsimRadar()
+
+                public VatsimRadar()
         {
             InitializeComponent();
-        }
+        
+        }   
 
         private async void VatsimRadar_Load(object sender, EventArgs e)
         {
 
             // Load the pilots.
-            VatsimUtilities.GetPilotsAsync().ContinueWith(x =>
-            {
-                if(x.Status == TaskStatus.Faulted)
+await VatsimUtilities.GetPilotsAsync().ContinueWith(x =>
+{
+                                                                                   if(x.Status == TaskStatus.Faulted)
                 {
-                    MessageBox.Show("failed");
+                    MessageBox.Show(x.Result.Count.ToString());
                 }
                 else
                 {
@@ -58,23 +60,20 @@ namespace tfm.Vatsim
                     controllersListView.BeginUpdate();
                     foreach(Ati user in x.Result)
                     {
-                        string[] item = { user.Callsign, user.FacilityShortName, user.Frequency, user.VisualRange.ToString(), user.RatingShortName };
-                        controllersListView.Items.Add(new ListViewItem(item));
+                        string[] cells = { user.Callsign, user.FacilityShortName, user.Frequency, user.VisualRange.ToString(), user.RatingShortName };
+
+                        ListViewItem row = new ListViewItem(cells[0]);
+                        row.SubItems.Add(cells[1]);
+                        row.SubItems.Add(cells[2]);
+                        row.SubItems.Add(cells[3]);
+                        row.SubItems.Add(cells[4]);
+                        controllersListView.Items.Add(row);
                                             }
                     controllersListView.EndUpdate();
                 }
             });
         } // load
-
-        private async Task<Pilot[]> GetPilots()
-        {
-            HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync("https://data.vatsim.net/v3/vatsim-data.json");
-            var block =tfm.Vatsim.Feed.VatsimDataBlock.FromJson(response);
-            return block.Pilots.ToArray();
-        } // GetPilots
-
-        private async  void distanceNumericUpDown_ValueChanged(object sender, EventArgs e)
+                        private async  void distanceNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
 
             usersListView.Items.Clear();
@@ -96,5 +95,34 @@ namespace tfm.Vatsim
                                                 usersListView.Focus();
                                                             }
         }
+
+        private void controllersListView_ItemActivate(object sender, EventArgs e)
+        {
+            var lv = (ListView)sender;
+            var ap = new InstrumentPanel();
+
+            ap.Com1Freq = decimal.Parse(lv.SelectedItems[0].SubItems[2].Text);
+                                            }
+
+        private void usersListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+       }
+
+        private void usersListView_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            // Sort columns based on key presses...
+            if((e.Control && e.KeyCode == Keys.D1))
+            {
+                ColumnClickEventArgs eventArgs = new ColumnClickEventArgs(0);
+                usersListView_ColumnClick(usersListView, eventArgs);
+            }
+
+            if((e.Control && e.KeyCode == Keys.D2))
+            {
+                ColumnClickEventArgs eventArgs = new ColumnClickEventArgs(1);
+                usersListView_ColumnClick(usersListView, eventArgs);
+                            }
+        } // usersListView_ColumnClick
     } // form
 } // namespace

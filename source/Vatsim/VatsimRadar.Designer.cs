@@ -124,12 +124,14 @@
             this.ratingColumnHeader});
             this.usersListView.HideSelection = false;
             this.usersListView.HoverSelection = true;
-            this.usersListView.Location = new System.Drawing.Point(0, 0);
+            this.usersListView.Location = new System.Drawing.Point(0, -1);
             this.usersListView.Name = "usersListView";
             this.usersListView.Size = new System.Drawing.Size(1470, 842);
             this.usersListView.TabIndex = 0;
             this.usersListView.UseCompatibleStateImageBehavior = false;
             this.usersListView.View = System.Windows.Forms.View.Details;
+            this.usersListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.usersListView_ColumnClick);
+            this.usersListView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.usersListView_KeyDown);
             // 
             // callSignColumnHeader
             // 
@@ -195,6 +197,7 @@
             this.controllersListView.TabIndex = 0;
             this.controllersListView.UseCompatibleStateImageBehavior = false;
             this.controllersListView.View = System.Windows.Forms.View.Details;
+            this.controllersListView.ItemActivate += new System.EventHandler(this.controllersListView_ItemActivate);
             // 
             // controllerCallSignColumnHeader
             // 
