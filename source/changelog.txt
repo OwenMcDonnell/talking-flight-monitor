@@ -1,25 +1,18 @@
-﻿## Talking flight monitor 22.10 Preview release notes
+﻿## Talking flight monitor 22.10.2 Preview release notes
 
 ### What's new?
 
-* Glare Shield
-    * EFIS not included see [the blog post](https://www.talkingflightmonitor.com/2022/09/04/pmdg-737-rebuild-series-week-15-tfm-preview-released-glare-shield-progress-and-navigraph-support/) for the reason.
-    * Warnings panel
-    * MCP panels - Altitude, heading, speed, vertical speed, and navigation have their own tree nodes and keyboard shortcuts.
-* MCP boxes
-    * Speed box - Redesigned user interface and performance improvements.
-    * Altitude box - Performance improvements and altitude indicators.
-    * Heading box - Performance improvements and heading indicators.
-    * Vertical speed box - Performance improvements and vertical speed indicators.
-    * Navigation box - new. Contains flight directors, CMDA/B, etc.
-* Pressing F6 now places focus on the panels tree in the cockpit panels dialog.
-* Pressing F6 in the settings dialog now returns focus to the categories tree.
+* Vatsim mode which displays a list of vatsim ATC stations and pilots signed into the Vatsim network.
+    * In TFM's user interface settings, enable/disable by checking/unchecking the Vatsim mode setting.
+    * The AI traffic display is replaced with the live Vatsim display.
+    * Pressing ENTER on an ATC station will set com1 to that frequency.
 
         ### Bug fixes
 * ILS announcements now honor the use sapi for ILS announcements setting.
 
 ### Known issues
 
+* Vatsim mode may crash with System.Exception: Failed to unmarshall type FlightRules. We believe it is a threading problem.
 * Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
 * The PMDG 747 has an approach mode light that turns on when on final. This usually happens after the ILS is active. TFM uses this light to determine when it should start reading signals from the nav radios. Since the app light and the approach mode switch are different, TFM can start reading ILS signals before approach mode is turned on. This is an issue, but the side affect is a desired feature. We will look into this more during the 747 rebuild cycle.
 

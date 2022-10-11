@@ -460,6 +460,178 @@ namespace tfm
             {4, "30" },
                     };
 
+        private static  Dictionary<byte, string> _noseWheelSteeringStates = new Dictionary<byte, string>()
+        {
+            {0, "Alt" },
+            {1, "Normal" },
+        };
+
+        private static  Dictionary<byte, string> _captPanelDuSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "o-pfd" },
+            {1, "normal" },
+            {2, "i-eng" },
+            {3, "i-pfd" },
+            {4, "i-mfd" },
+        };
+
+        private static  Dictionary<byte, string> _foPanelDuSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "i-mfd" },
+            {1, "i-pfd" },
+            {2, "i-eng" },
+            {3, "normal" },
+            {4, "o-pfd" },
+        };
+
+        private static  Dictionary<byte, string> _captLowerDuSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "eng" },
+            {1, "normal" },
+            {2, "nd" },
+        };
+
+        private static  Dictionary<byte, string> _foLowerDuSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "nd" },
+            {1, "normal" },
+            {2, "eng" },
+        };
+
+        private static  Dictionary<byte, string> _disengageTestSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "1" },
+            {1, "off" },
+            {2, "2" },
+        };
+
+        private static  Dictionary<byte, string> _lightsSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "test" },
+            {1, "bright" },
+            {2, "dim" },
+        };
+
+        private static  Dictionary<byte, string> _speedRefSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "set" },
+            {1, "auto" },
+            {2, "v1" },
+            {3, "vr" },
+            {4, "wt" },
+            {5, "vref" },
+            {6, "bug" },
+        };
+
+        private static  Dictionary<byte, string> _fuelFlowSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "reset" },
+            {1, "rate" },
+            {2, "used" },
+        };
+
+        private static  Dictionary<byte, string> _gearLeverStates = new Dictionary<byte, string>()
+        {
+            {0, "up" },
+            {1, "off" },
+            {2, "down" },
+        };
+
+        private static  Dictionary<byte, string> _fireOvhtDetStates = new Dictionary<byte, string>()
+        {
+            {0, "A" },
+            {1, "normal" },
+            {2, "B" },
+        };
+
+        private static  Dictionary<byte, string> _fireTestDetStates = new Dictionary<byte, string>()
+        {
+            {0, "fault/inop" },
+            {1, "neutral" },
+            {2, "fire/overheat" },
+        };
+
+        private static  Dictionary<byte, string> _fireHandlePosStates = new Dictionary<byte, string>()
+        {
+            {0, "in" },
+            {1, "blocked" },
+            {2, "out" },
+            {3, "turned left" },
+            {4, "turned right" },
+        };
+
+        private static  Dictionary<byte, string> _fireExtinguisherTestStates = new Dictionary<byte, string>()
+        {
+            {0, "1" },
+            {1, "neutral" },
+            {2, "2" },
+        };
+
+        private static  Dictionary<byte, string> _cargoDetSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "A" },
+            {1, "normal" },
+            {2, "B" },
+        };
+
+        private static Dictionary<byte, string> _xponderSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "1" },
+            {1, "2" },
+        };
+
+        private static Dictionary<byte, string> _xponderAltSourceSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "1" },
+            {1, "2" },
+        };
+
+        private static Dictionary<byte, string> _xponderModeSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "standby" },
+            {1, "altitude reporting off" },
+            {2, "transponder" },
+            {3, "TA only" },
+            {4, "TA/RA" },
+        };
+
+        private static Dictionary<byte, string> _fltDeckDoorSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "unlocked" },
+            {1, "auto/pushed in" },
+            {2, "auto" },
+            {3, "deny" },
+        };
+
+        private static Dictionary<byte, string> _micSelectorStates = new Dictionary<byte, string>()
+        {
+            {0, "vhf1" },
+            {1, "vhf2" },
+            {2, "vhf3" },
+            {3, "hf1" },
+            {4, "hf2" },
+            {5, "flt" },
+            {6, "svc" },
+            {7, "pa" },
+        };
+
+        private static Dictionary<byte, string> _aircraftModels = new Dictionary<byte, string>()
+        {
+            {1, "600" },
+            {2, "700" },
+            {3, "700 BW" },
+            {4, "700 SSW" },
+            {5, "800" },
+            {6, "800 BW" },
+            {7, "800 SSW" },
+            {8, "900" },
+            {9, "900 BW" },
+            {10, "900 SSW" },
+            {11, "900ER BW" },
+            {12, "900ER SSW" },
+        };
+
+
         public static List<PanelObject> PanelControls
         {
             get => new List<PanelObject>()
