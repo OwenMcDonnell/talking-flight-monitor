@@ -32,8 +32,7 @@ namespace tfm
         
         private void loadPages()
         {
-                                    pages.Add("nodMCP", new ctlMCP());
-                        
+                                                            
                                                 // redesigned pages. keep the ones above for backups.
             // --panel: Aft Overhead
             pages.Add("adiruNode", new ctlADIRU());

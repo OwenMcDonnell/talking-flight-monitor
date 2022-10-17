@@ -3166,5 +3166,605 @@ namespace tfm.Properties {
                 this["MCP_annunCWS_B"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_NoseWheelSteeringSwNORM {
+            get {
+                return ((bool)(this["MAIN_NoseWheelSteeringSwNORM"]));
+            }
+            set {
+                this["MAIN_NoseWheelSteeringSwNORM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunBELOW_GS1 {
+            get {
+                return ((bool)(this["MAIN_annunBELOW_GS1"]));
+            }
+            set {
+                this["MAIN_annunBELOW_GS1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunBELOW_GS2 {
+            get {
+                return ((bool)(this["MAIN_annunBELOW_GS2"]));
+            }
+            set {
+                this["MAIN_annunBELOW_GS2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_MainPanelDUSel1 {
+            get {
+                return ((bool)(this["MAIN_MainPanelDUSel1"]));
+            }
+            set {
+                this["MAIN_MainPanelDUSel1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_MainPanelDUSel2 {
+            get {
+                return ((bool)(this["MAIN_MainPanelDUSel2"]));
+            }
+            set {
+                this["MAIN_MainPanelDUSel2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_LowerDUSel1 {
+            get {
+                return ((bool)(this["MAIN_LowerDUSel1"]));
+            }
+            set {
+                this["MAIN_LowerDUSel1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_LowerDUSel2 {
+            get {
+                return ((bool)(this["MAIN_LowerDUSel2"]));
+            }
+            set {
+                this["MAIN_LowerDUSel2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAP1 {
+            get {
+                return ((bool)(this["MAIN_annunAP1"]));
+            }
+            set {
+                this["MAIN_annunAP1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAP2 {
+            get {
+                return ((bool)(this["MAIN_annunAP2"]));
+            }
+            set {
+                this["MAIN_annunAP2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAT1 {
+            get {
+                return ((bool)(this["MAIN_annunAT1"]));
+            }
+            set {
+                this["MAIN_annunAT1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAT2 {
+            get {
+                return ((bool)(this["MAIN_annunAT2"]));
+            }
+            set {
+                this["MAIN_annunAT2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunFMC1 {
+            get {
+                return ((bool)(this["MAIN_annunFMC1"]));
+            }
+            set {
+                this["MAIN_annunFMC1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunFMC2 {
+            get {
+                return ((bool)(this["MAIN_annunFMC2"]));
+            }
+            set {
+                this["MAIN_annunFMC2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_DisengageTestSelector1 {
+            get {
+                return ((bool)(this["MAIN_DisengageTestSelector1"]));
+            }
+            set {
+                this["MAIN_DisengageTestSelector1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_DisengageTestSelector2 {
+            get {
+                return ((bool)(this["MAIN_DisengageTestSelector2"]));
+            }
+            set {
+                this["MAIN_DisengageTestSelector2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunSTAB_OUT_OF_TRIM {
+            get {
+                return ((bool)(this["MAIN_annunSTAB_OUT_OF_TRIM"]));
+            }
+            set {
+                this["MAIN_annunSTAB_OUT_OF_TRIM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_LightsSelector {
+            get {
+                return ((bool)(this["MAIN_LightsSelector"]));
+            }
+            set {
+                this["MAIN_LightsSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_RMISelector1_VOR {
+            get {
+                return ((bool)(this["MAIN_RMISelector1_VOR"]));
+            }
+            set {
+                this["MAIN_RMISelector1_VOR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_RMISelector2_VOR {
+            get {
+                return ((bool)(this["MAIN_RMISelector2_VOR"]));
+            }
+            set {
+                this["MAIN_RMISelector2_VOR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_SpdRefSelector {
+            get {
+                return ((bool)(this["MAIN_SpdRefSelector"]));
+            }
+            set {
+                this["MAIN_SpdRefSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_FuelFlowSelector {
+            get {
+                return ((bool)(this["MAIN_FuelFlowSelector"]));
+            }
+            set {
+                this["MAIN_FuelFlowSelector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunANTI_SKID_INOP {
+            get {
+                return ((bool)(this["MAIN_annunANTI_SKID_INOP"]));
+            }
+            set {
+                this["MAIN_annunANTI_SKID_INOP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunLE_FLAPS_TRANSIT {
+            get {
+                return ((bool)(this["MAIN_annunLE_FLAPS_TRANSIT"]));
+            }
+            set {
+                this["MAIN_annunLE_FLAPS_TRANSIT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunLE_FLAPS_EXT {
+            get {
+                return ((bool)(this["MAIN_annunLE_FLAPS_EXT"]));
+            }
+            set {
+                this["MAIN_annunLE_FLAPS_EXT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MAIN_TEFlapsNeedle1 {
+            get {
+                return ((bool)(this["MAIN_TEFlapsNeedle1"]));
+            }
+            set {
+                this["MAIN_TEFlapsNeedle1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MAIN_TEFlapsNeedle2 {
+            get {
+                return ((bool)(this["MAIN_TEFlapsNeedle2"]));
+            }
+            set {
+                this["MAIN_TEFlapsNeedle2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunGEAR_transit_nose {
+            get {
+                return ((bool)(this["MAIN_annunGEAR_transit_nose"]));
+            }
+            set {
+                this["MAIN_annunGEAR_transit_nose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunGEAR_transit_left {
+            get {
+                return ((bool)(this["MAIN_annunGEAR_transit_left"]));
+            }
+            set {
+                this["MAIN_annunGEAR_transit_left"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunGEAR_transit_right {
+            get {
+                return ((bool)(this["MAIN_annunGEAR_transit_right"]));
+            }
+            set {
+                this["MAIN_annunGEAR_transit_right"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunGEAR_locked_nose {
+            get {
+                return ((bool)(this["MAIN_annunGEAR_locked_nose"]));
+            }
+            set {
+                this["MAIN_annunGEAR_locked_nose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunGEAR_locked_left {
+            get {
+                return ((bool)(this["MAIN_annunGEAR_locked_left"]));
+            }
+            set {
+                this["MAIN_annunGEAR_locked_left"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunGEAR_locked_right {
+            get {
+                return ((bool)(this["MAIN_annunGEAR_locked_right"]));
+            }
+            set {
+                this["MAIN_annunGEAR_locked_right"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_GearLever {
+            get {
+                return ((bool)(this["MAIN_GearLever"]));
+            }
+            set {
+                this["MAIN_GearLever"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MAIN_BrakePressNeedle {
+            get {
+                return ((bool)(this["MAIN_BrakePressNeedle"]));
+            }
+            set {
+                this["MAIN_BrakePressNeedle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_AIII {
+            get {
+                return ((bool)(this["HGS_annun_AIII"]));
+            }
+            set {
+                this["HGS_annun_AIII"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_NO_AIII {
+            get {
+                return ((bool)(this["HGS_annun_NO_AIII"]));
+            }
+            set {
+                this["HGS_annun_NO_AIII"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_FLARE {
+            get {
+                return ((bool)(this["HGS_annun_FLARE"]));
+            }
+            set {
+                this["HGS_annun_FLARE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_RO {
+            get {
+                return ((bool)(this["HGS_annun_RO"]));
+            }
+            set {
+                this["HGS_annun_RO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_RO_CTN {
+            get {
+                return ((bool)(this["HGS_annun_RO_CTN"]));
+            }
+            set {
+                this["HGS_annun_RO_CTN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_RO_ARM {
+            get {
+                return ((bool)(this["HGS_annun_RO_ARM"]));
+            }
+            set {
+                this["HGS_annun_RO_ARM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_TO {
+            get {
+                return ((bool)(this["HGS_annun_TO"]));
+            }
+            set {
+                this["HGS_annun_TO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_TO_CTN {
+            get {
+                return ((bool)(this["HGS_annun_TO_CTN"]));
+            }
+            set {
+                this["HGS_annun_TO_CTN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_APCH {
+            get {
+                return ((bool)(this["HGS_annun_APCH"]));
+            }
+            set {
+                this["HGS_annun_APCH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_TO_WARN {
+            get {
+                return ((bool)(this["HGS_annun_TO_WARN"]));
+            }
+            set {
+                this["HGS_annun_TO_WARN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_Bar {
+            get {
+                return ((bool)(this["HGS_annun_Bar"]));
+            }
+            set {
+                this["HGS_annun_Bar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HGS_annun_FAIL {
+            get {
+                return ((bool)(this["HGS_annun_FAIL"]));
+            }
+            set {
+                this["HGS_annun_FAIL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAP_Amber1 {
+            get {
+                return ((bool)(this["MAIN_annunAP_Amber1"]));
+            }
+            set {
+                this["MAIN_annunAP_Amber1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAP_Amber2 {
+            get {
+                return ((bool)(this["MAIN_annunAP_Amber2"]));
+            }
+            set {
+                this["MAIN_annunAP_Amber2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAT_Amber1 {
+            get {
+                return ((bool)(this["MAIN_annunAT_Amber1"]));
+            }
+            set {
+                this["MAIN_annunAT_Amber1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MAIN_annunAT_Amber2 {
+            get {
+                return ((bool)(this["MAIN_annunAT_Amber2"]));
+            }
+            set {
+                this["MAIN_annunAT_Amber2"] = value;
+            }
+        }
     }
 }
