@@ -46,8 +46,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
                 {
                     if (toggle.Offset.ValueChanged)
                     {
-                        leftDisengageTestButton.Text = $"&Left disengage test {toggle.CurrentState.Value}";
-                        leftDisengageTestButton.AccessibleName = $"Left disengage test {toggle.CurrentState.Value}";
+                        leftDisengageTestButton.Text = $"&Capt. disengage test {toggle.CurrentState.Value}";
+                        leftDisengageTestButton.AccessibleName = $"Capt. disengage test {toggle.CurrentState.Value}";
                     }
                 } // Disengage test 1
 
@@ -55,8 +55,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
                 {
                     if (toggle.Offset.ValueChanged)
                     {
-                        rightDisengageTestButton.Text = $"&Right disengage test {toggle.CurrentState.Value}";
-                        rightDisengageTestButton.AccessibleName = $"Right disengage test {toggle.CurrentState.Value}";
+                        rightDisengageTestButton.Text = $"F/&O. disengage test {toggle.CurrentState.Value}";
+                        rightDisengageTestButton.AccessibleName = $"F/O. disengage test {toggle.CurrentState.Value}";
                     }
                 } // disengage test 2
 
@@ -64,8 +64,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
                 {
                     if (toggle.Offset.ValueChanged)
                     {
-                        lightsButton.Text = $"&Lights {toggle.CurrentState.Value}";
-                        lightsButton.AccessibleName = $"Lights {toggle.CurrentState.Value}";
+                        lightsButton.Text = $"Cockpit l&ights {toggle.CurrentState.Value}";
+                        lightsButton.AccessibleName = $"Cockpit lights {toggle.CurrentState.Value}";
                     }
                 } // Lights
 
@@ -146,20 +146,20 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
 
                 if (toggle.Offset == Aircraft.pmdg737.MAIN_DisengageTestSelector[0])
                 {
-                                            leftDisengageTestButton.Text = $"&Left disengage test {toggle.CurrentState.Value}";
-                        leftDisengageTestButton.AccessibleName = $"Left disengage test {toggle.CurrentState.Value}";
+                                            leftDisengageTestButton.Text = $"&Capt. disengage test {toggle.CurrentState.Value}";
+                        leftDisengageTestButton.AccessibleName = $"Capt. disengage test {toggle.CurrentState.Value}";
                 } // Disengage test 1
 
                 if (toggle.Offset == Aircraft.pmdg737.MAIN_DisengageTestSelector[1])
                 {
-                                                                rightDisengageTestButton.Text = $"&Right disengage test {toggle.CurrentState.Value}";
-                        rightDisengageTestButton.AccessibleName = $"Right disengage test {toggle.CurrentState.Value}";
+                                                                rightDisengageTestButton.Text = $"F/&O. disengage test {toggle.CurrentState.Value}";
+                        rightDisengageTestButton.AccessibleName = $"F/O. disengage test {toggle.CurrentState.Value}";
                                     } // disengage test 2
 
                 if (toggle.Offset == Aircraft.pmdg737.MAIN_LightsSelector)
                 {
-                                            lightsButton.Text = $"&Lights {toggle.CurrentState.Value}";
-                        lightsButton.AccessibleName = $"Lights {toggle.CurrentState.Value}";
+                                            lightsButton.Text = $"Cockpit l&ights {toggle.CurrentState.Value}";
+                        lightsButton.AccessibleName = $"Cockpit lights {toggle.CurrentState.Value}";
                 } // Lights
 
                 if (toggle.Offset == Aircraft.pmdg737.MAIN_FuelFlowSelector)

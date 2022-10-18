@@ -741,6 +741,12 @@
     <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.Designer.cs">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFuel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1188,6 +1194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFuel.resx">
       <DependentUpon>ctlFuel.cs</DependentUpon>

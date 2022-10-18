@@ -81,14 +81,16 @@
             System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
             treeNode30,
             treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Forward");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode15,
             treeNode22,
             treeNode26,
             treeNode29,
-            treeNode32});
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode32,
             treeNode33});
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode34});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -167,10 +169,12 @@
             treeNode31.Text = "MCP";
             treeNode32.Name = "737GlareShieldNode";
             treeNode32.Text = "Glare Shield";
-            treeNode33.Name = "Pmdg737Node";
-            treeNode33.Text = "737 speech events";
-            treeNode34.Name = "nodPMDG";
-            treeNode34.Text = "PMDG";
+            treeNode33.Name = "737ForwardNode";
+            treeNode33.Text = "Forward";
+            treeNode34.Name = "Pmdg737Node";
+            treeNode34.Text = "737 speech events";
+            treeNode35.Name = "nodPMDG";
+            treeNode35.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -178,7 +182,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode34});
+            treeNode35});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);
