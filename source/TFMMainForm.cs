@@ -246,6 +246,8 @@ namespace tfm
             catch (Exception ex)
             {
                 Tolk.Output("could not load airport database.");
+                Tolk.Output(ex.Message);
+
             }
         } // load database.
 

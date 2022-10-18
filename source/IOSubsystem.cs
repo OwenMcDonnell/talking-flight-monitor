@@ -86,6 +86,7 @@ namespace tfm
         // readonly SoundPlayer apCmdSound = new SoundPlayer(@"sounds\ap_command.wav");
         private static WaveFileReader cmdSound;
         private static WaveFileReader apCmdSound;
+        private static WaveFileReader tickSound;
 
         // list to store registered hotkey identifiers
         readonly List<string> hotkeys = new List<string>();
@@ -235,6 +236,7 @@ namespace tfm
         private bool PMDG747Detected;
         private bool PMDG777Detected;
         private bool PMDGInitializing;
+        private bool FirstOfficerCountDown;
 
         public IOSubsystem()
         {
@@ -1590,6 +1592,17 @@ else              if (PMDG777Detected)
 
 
                         }
+                        if (Aircraft.textMenu.Message.Contains("hold Ctrl to skip"))
+                        {
+                            tickSound = new WaveFileReader(@"sounds\tick.wav");
+                            mixer.AddMixerInput(tickSound);
+
+                            OldSimConnectMessage = Aircraft.textMenu.ToString();
+                            return;
+                        }
+
+
+                        
                         if (Aircraft.textMenu.Message == "")
                         {
                             PMDGInitializing = false;
