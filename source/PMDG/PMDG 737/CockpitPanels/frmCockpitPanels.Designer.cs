@@ -70,24 +70,36 @@
             System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Bottom Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode21,
             treeNode22});
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("MCP");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Warnings");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Altitude");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Speed");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Heading");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Navigation");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Vertical speed");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("MCP", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Warnings");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Altitude");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Speed");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Heading");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Navigation");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Vertical speed");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("MCP", new System.Windows.Forms.TreeNode[] {
+            treeNode25,
+            treeNode26,
             treeNode27,
             treeNode28,
-            treeNode29,
-            treeNode30,
-            treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
-            treeNode26,
-            treeNode32});
+            treeNode29});
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
+            treeNode24,
+            treeNode30});
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("MCP");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("DU");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Analog/navigation");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Speed");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Brakes");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Flaps");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Gear");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Forward", new System.Windows.Forms.TreeNode[] {
+            treeNode32,
+            treeNode33,
+            treeNode34,
+            treeNode35,
+            treeNode36,
+            treeNode37,
+            treeNode38});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -95,7 +107,8 @@
             // tvPanels
             // 
             this.tvPanels.AccessibleName = "panels";
-            this.tvPanels.Location = new System.Drawing.Point(3, 2);
+            this.tvPanels.Location = new System.Drawing.Point(-3, 47);
+            this.tvPanels.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tvPanels.Name = "tvPanels";
             treeNode1.Name = "adiruNode";
             treeNode1.Text = "ADIRU";
@@ -143,34 +156,46 @@
             treeNode22.Text = "Lights";
             treeNode23.Name = "Node0";
             treeNode23.Text = "Bottom Overhead";
-            treeNode24.Name = "nodMCP";
-            treeNode24.Text = "MCP";
-            treeNode25.Name = "nodOverhead";
-            treeNode25.Text = "Overhead";
-            treeNode26.Name = "warningsNode";
-            treeNode26.Text = "Warnings";
-            treeNode27.Name = "mcpAltitudeNode";
-            treeNode27.Text = "Altitude";
-            treeNode28.Name = "mcpSpeedNode";
-            treeNode28.Text = "Speed";
-            treeNode29.Name = "mcpHeadingNode";
-            treeNode29.Text = "Heading";
-            treeNode30.Name = "mcpNavigationNode";
-            treeNode30.Text = "Navigation";
-            treeNode31.Name = "mcpVerticalSpeedNode";
-            treeNode31.Text = "Vertical speed";
-            treeNode32.Name = "mcpNode";
+            treeNode24.Name = "warningsNode";
+            treeNode24.Text = "Warnings";
+            treeNode25.Name = "mcpAltitudeNode";
+            treeNode25.Text = "Altitude";
+            treeNode26.Name = "mcpSpeedNode";
+            treeNode26.Text = "Speed";
+            treeNode27.Name = "mcpHeadingNode";
+            treeNode27.Text = "Heading";
+            treeNode28.Name = "mcpNavigationNode";
+            treeNode28.Text = "Navigation";
+            treeNode29.Name = "mcpVerticalSpeedNode";
+            treeNode29.Text = "Vertical speed";
+            treeNode30.Name = "mcpNode";
+            treeNode30.Text = "MCP";
+            treeNode31.Name = "glareShieldNode";
+            treeNode31.Text = "Glare Shield";
+            treeNode32.Name = "forwardMcpNode";
             treeNode32.Text = "MCP";
-            treeNode33.Name = "glareShieldNode";
-            treeNode33.Text = "Glare Shield";
+            treeNode33.Name = "duNode";
+            treeNode33.Text = "DU";
+            treeNode34.Name = "analogNode";
+            treeNode34.Text = "Analog/navigation";
+            treeNode35.Name = "forwardSpeedNode";
+            treeNode35.Text = "Speed";
+            treeNode36.Name = "brakesNode";
+            treeNode36.Text = "Brakes";
+            treeNode37.Name = "flapsNode";
+            treeNode37.Text = "Flaps";
+            treeNode38.Name = "forwardGearNode";
+            treeNode38.Text = "Gear";
+            treeNode39.Name = "forwardNode";
+            treeNode39.Text = "Forward";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
             treeNode20,
             treeNode23,
-            treeNode25,
-            treeNode33});
-            this.tvPanels.Size = new System.Drawing.Size(121, 97);
+            treeNode31,
+            treeNode39});
+            this.tvPanels.Size = new System.Drawing.Size(300, 700);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);
             // 
@@ -178,20 +203,27 @@
             // 
             this.pnlContent.AutoSize = true;
             this.pnlContent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnlContent.Location = new System.Drawing.Point(130, 3);
+            this.pnlContent.Location = new System.Drawing.Point(297, 5);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(0, 0);
             this.pnlContent.TabIndex = 2;
             // 
             // frmCockpitPanels
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AccessibleName = "Cockpit panels";
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1333, 744);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.tvPanels);
+            this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "frmCockpitPanels";
             this.Text = "737 Cockpit";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCockpitPanels_KeyDown);

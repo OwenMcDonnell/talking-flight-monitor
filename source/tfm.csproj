@@ -450,6 +450,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.Designer.cs">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -522,12 +528,6 @@
     </Compile>
     <Compile Include="PMDG\PMDG 747\747CDU.Designer.cs">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.Designer.cs">
-      <DependentUpon>ctlMCP.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.cs">
       <SubType>Form</SubType>
@@ -740,6 +740,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.Designer.cs">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFuel.cs">
       <SubType>UserControl</SubType>
@@ -1039,6 +1045,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.resx">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>
     </EmbeddedResource>
@@ -1074,9 +1083,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
-      <DependentUpon>ctlMCP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.resx">
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>
@@ -1188,6 +1194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFuel.resx">
       <DependentUpon>ctlFuel.cs</DependentUpon>
