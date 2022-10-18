@@ -450,6 +450,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.Designer.cs">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1032,6 +1038,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.resx">
       <DependentUpon>ctlWipers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>

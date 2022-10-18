@@ -2483,5 +2483,65 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_BANK_ANGLE_SELECTOR, counter+1);
             }
                                                         } // BankLimiter
-            } // End PMDG737Aircraft.
+
+        public static void NoseWheelSteering()
+        {
+if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_NOSE_WHEEL_STEERING_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_NOSE_WHEEL_STEERING_SWITCH, ClkR);
+            }
+        } // NoseWheelSteering
+
+        public static void LeftDisengageTest()
+        {
+            if (Aircraft.pmdg737.MAIN_DisengageTestSelector[0].Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_DISENGAGE_TEST_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_DISENGAGE_TEST_SWITCH, 0);
+            }
+        } // LeftDisengageTest
+
+        public static void RightDisengageTest()
+        {
+            if (Aircraft.pmdg737.MAIN_DisengageTestSelector[1].Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_DISENGAGE_TEST_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_DISENGAGE_TEST_SWITCH, 0);
+            }
+        } // RightDisengageTest
+
+        public static void Lights()
+        {
+            if(Aircraft.pmdg737.MAIN_LightsSelector.Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_MASTER_LIGHTS_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_MASTER_LIGHTS_SWITCH, 0);
+            }
+        } // Lights
+
+        public static void FuelFlow()
+        {
+                if(Aircraft.pmdg737.MAIN_FuelFlowSelector.Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_FUEL_FLOW_SWITCH, ClkL);
+            }
+                else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_FUEL_FLOW_SWITCH, 0);
+            }
+        } //FuelFlow
+    } // End PMDG737Aircraft.
     } // End namespace.

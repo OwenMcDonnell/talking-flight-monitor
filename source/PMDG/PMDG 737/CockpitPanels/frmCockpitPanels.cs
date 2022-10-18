@@ -12,8 +12,8 @@ using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
-
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
+using tfm.PMDG.PMDG_737.CockpitPanels.Forward;
 
 
 namespace tfm
@@ -69,6 +69,9 @@ namespace tfm
             pages.Add("mcpSpeedNode", new ctlMcpSpeed());
             pages.Add("mcpVerticalSpeedNode", new ctlMcpVerticalSpeed());
             pages.Add("mcpNavigationNode", new ctlMcpNavigation());
+
+            // Forward panel
+            pages.Add("forwardNode", new ctlForwardMain());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
