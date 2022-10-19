@@ -108,7 +108,7 @@
             // 
             this.tvPanels.AccessibleName = "panels";
             this.tvPanels.Location = new System.Drawing.Point(-3, 47);
-            this.tvPanels.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tvPanels.Margin = new System.Windows.Forms.Padding(5);
             this.tvPanels.Name = "tvPanels";
             treeNode1.Name = "adiruNode";
             treeNode1.Text = "ADIRU";
@@ -204,7 +204,7 @@
             this.pnlContent.AutoSize = true;
             this.pnlContent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlContent.Location = new System.Drawing.Point(297, 5);
-            this.pnlContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(5);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(0, 0);
             this.pnlContent.TabIndex = 2;
@@ -222,7 +222,7 @@
             this.Controls.Add(this.tvPanels);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "frmCockpitPanels";
             this.Text = "737 Cockpit";

@@ -72,6 +72,7 @@ namespace tfm
 
             // Forward panel
             pages.Add("forwardNode", new ctlForwardMain());
+            pages.Add("forwardMcpNode", new ctlForwardMcp());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
