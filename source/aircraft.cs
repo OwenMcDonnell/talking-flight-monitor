@@ -258,6 +258,7 @@ namespace tfm
         public static Offset<ushort> SimulationRate = new Offset<ushort>(0x0c1a);
         // PMDG offsets. These are all read-only. Writing is done via the PMDG control codes.
         public static PMDG_737_NGX_Offsets pmdg737 = new PMDG_737_NGX_Offsets();
+        public static PMDG_737_MSFS_Offsets PMDG_737_MSFS_Offsets = new PMDG_737_MSFS_Offsets();
         public static PMDG_747QOTSII_Offsets pmdg747 = new PMDG_747QOTSII_Offsets();
         public static PMDG_777X_Offsets pmdg777 = new PMDG_777X_Offsets();
         // define a few PMDG offsets that aren't included in the .net library.

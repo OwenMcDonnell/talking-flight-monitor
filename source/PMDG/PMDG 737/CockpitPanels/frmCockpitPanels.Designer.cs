@@ -87,7 +87,7 @@
             treeNode30});
             System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("MCP");
             System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("DU");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Analog/navigation");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Standby");
             System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Speed");
             System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Brakes");
             System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Flaps");
@@ -176,8 +176,8 @@
             treeNode32.Text = "MCP";
             treeNode33.Name = "duNode";
             treeNode33.Text = "DU";
-            treeNode34.Name = "analogNode";
-            treeNode34.Text = "Analog/navigation";
+            treeNode34.Name = "standbyNode";
+            treeNode34.Text = "Standby";
             treeNode35.Name = "forwardSpeedNode";
             treeNode35.Text = "Speed";
             treeNode36.Name = "brakesNode";

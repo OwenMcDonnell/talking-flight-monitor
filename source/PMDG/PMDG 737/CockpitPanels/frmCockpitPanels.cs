@@ -70,9 +70,12 @@ namespace tfm
             pages.Add("mcpVerticalSpeedNode", new ctlMcpVerticalSpeed());
             pages.Add("mcpNavigationNode", new ctlMcpNavigation());
 
-            // Forward panel
+            // --panel: Forward panel
             pages.Add("forwardNode", new ctlForwardMain());
             pages.Add("forwardMcpNode", new ctlForwardMcp());
+            pages.Add("duNode", new ctlDU());
+            pages.Add("standbyNode", new ctlStandby());
+            pages.Add("forwardSpeedNode", new ctlForwardSpeed());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

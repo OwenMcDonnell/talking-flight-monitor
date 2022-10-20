@@ -2543,5 +2543,89 @@ if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_FUEL_FLOW_SWITCH, 0);
             }
         } //FuelFlow
+
+        public static void DU1()
+        {
+            if (Aircraft.pmdg737.MAIN_MainPanelDUSel[0].Value != 4)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_MAIN_DU_SELECTOR, Aircraft.pmdg737.MAIN_MainPanelDUSel[0].Value + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_MAIN_DU_SELECTOR, 0);
+            }
+        } // DU1
+
+        public static void DU2()
+        {
+            if (Aircraft.pmdg737.MAIN_MainPanelDUSel[1].Value != 4)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_MAIN_DU_SELECTOR, Aircraft.pmdg737.MAIN_MainPanelDUSel[1].Value + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_MAIN_DU_SELECTOR, 0);
+            }
+        } // DU2
+
+        public static void LowerDU1()
+        {
+            if (Aircraft.pmdg737.MAIN_LowerDUSel[0].Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_LOWER_DU_SELECTOR, Aircraft.pmdg737.MAIN_LowerDUSel[0].Value + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_LOWER_DU_SELECTOR, 0);
+            }
+        } // Lower DU1
+
+        public static void LowerDU2()
+        {
+            if (Aircraft.pmdg737.MAIN_LowerDUSel[1].Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_LOWER_DU_SELECTOR, Aircraft.pmdg737.MAIN_LowerDUSel[1].Value + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_LOWER_DU_SELECTOR, 0);
+            }
+        } // Lower DU2
+
+        public static void RMI1()
+        {
+            if(Aircraft.pmdg737.MAIN_RMISelector1_VOR.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_RMI_LEFT_SELECTOR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_RMI_LEFT_SELECTOR, ClkR);
+            }
+        }// RMI1
+
+        public static void RMI2()
+        {
+            if(Aircraft.pmdg737.MAIN_RMISelector2_VOR.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_RMI_RIGHT_SELECTOR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_RMI_RIGHT_SELECTOR, ClkR);
+            }
+        } // RMI2
+
+        public static void SpeedRef()
+        {
+if(Aircraft.pmdg737.MAIN_SpdRefSelector.Value != 6)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_SPEED_REFERENCE_SELECTOR, Aircraft.pmdg737.MAIN_SpdRefSelector.Value + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_SPEED_REFERENCE_SELECTOR, 0);
+            }
+        } // SpeedRef
     } // End PMDG737Aircraft.
     } // End namespace.
