@@ -724,6 +724,7 @@
             this.Name = "ctlADIRU";
             this.Size = new System.Drawing.Size(1568, 298);
             this.Load += new System.EventHandler(this.ctlADIRU_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlADIRU_VisibleChanged);
             this.mainLayout.ResumeLayout(false);
             this.mainLayout.PerformLayout();
             this.irsDisplaySelectorGroup.ResumeLayout(false);

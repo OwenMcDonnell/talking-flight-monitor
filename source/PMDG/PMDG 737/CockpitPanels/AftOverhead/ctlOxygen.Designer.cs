@@ -141,6 +141,7 @@
             this.Name = "ctlOxygen";
             this.Size = new System.Drawing.Size(598, 88);
             this.Load += new System.EventHandler(this.ctlOxygen_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlOxygen_VisibleChanged);
             this.oxygenFlowLayoutPanel.ResumeLayout(false);
             this.oxygenFlowLayoutPanel.PerformLayout();
             this.oxygenNeedleFlowLayout.ResumeLayout(false);

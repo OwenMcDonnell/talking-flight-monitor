@@ -238,5 +238,18 @@ foreach(PanelObjects.SingleStateToggle toggle in lights)
         {
 
         }
+
+        private void ctlADIRU_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                adiruTimer.Start();
+            }
+            else
+            {
+                adiruTimer.Stop();
+            }
+
+        }
     }
 }

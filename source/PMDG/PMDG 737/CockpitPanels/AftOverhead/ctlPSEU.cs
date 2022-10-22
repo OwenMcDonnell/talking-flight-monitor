@@ -48,5 +48,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         public void SetDocking()
         {
                     }
+
+        private void ctlPSEU_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                pseuTimer.Start();
+            }
+            else
+            {
+                pseuTimer.Stop();
+            }
+
+        }
     }
 }

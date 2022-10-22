@@ -52,5 +52,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
             gearTimer.Tick += new EventHandler(gearTimerTick);
             gearTimer.Start();
         }
+
+        private void ctlGear_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                gearTimer.Start();
+            }
+            else
+            {
+                gearTimer.Stop();
+            }
+
+        }
     }
 }

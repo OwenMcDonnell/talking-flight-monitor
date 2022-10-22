@@ -40,7 +40,7 @@
             this.flowLayoutPanel1.Controls.Add(this.domeLightsComboBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(127, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(127, 47);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // domeLightsComboBox
@@ -68,8 +68,9 @@
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ctlDomeLights";
-            this.Size = new System.Drawing.Size(130, 37);
+            this.Size = new System.Drawing.Size(130, 50);
             this.Load += new System.EventHandler(this.ctlDomeLights_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlDomeLights_VisibleChanged);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

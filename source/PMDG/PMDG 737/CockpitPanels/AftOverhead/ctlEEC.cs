@@ -114,5 +114,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
                 PMDG737Aircraft.EngineEEC2On();
             }
         }
+
+        private void ctlEEC_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                eecTimer.Start();
+            }
+            else
+            {
+                eecTimer.Stop();
+            }
+
+        }
     }
 }

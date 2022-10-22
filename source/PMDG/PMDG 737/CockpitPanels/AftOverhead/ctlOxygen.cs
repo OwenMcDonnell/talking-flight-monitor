@@ -68,5 +68,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
                 
             }
         }
+
+        private void ctlOxygen_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                oxyTimer.Start();
+            }
+            else
+            {
+                oxyTimer.Stop();
+            }
+
+        }
     }
 }

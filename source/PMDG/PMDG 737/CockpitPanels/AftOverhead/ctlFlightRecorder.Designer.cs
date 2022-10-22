@@ -103,6 +103,7 @@
             this.Name = "ctlFlightRecorder";
             this.Size = new System.Drawing.Size(304, 88);
             this.Load += new System.EventHandler(this.ctlFlightRecorder_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlFlightRecorder_VisibleChanged);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flightRecorderLightFlowLayoutPanel.ResumeLayout(false);
