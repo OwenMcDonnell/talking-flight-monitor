@@ -203,6 +203,14 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
 
         private void ctlForwardMain_VisibleChanged(object sender, EventArgs e)
         {
+            if (this.Visible == true)
+            {
+                mainTimer.Start();
+            }
+            else
+            {
+                mainTimer.Stop();
+            }
             // Stop and start the timer based on visibility.
             if (this.Visible)
             {

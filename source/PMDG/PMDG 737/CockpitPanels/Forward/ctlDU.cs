@@ -129,5 +129,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
         {
             PMDG737Aircraft.LowerDU2();
         }
+
+        private void ctlDU_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                duTimer.Start();
+            }
+            else
+            {
+                duTimer.Stop();
+            }
+
+        }
     }
 }

@@ -151,5 +151,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
             } // loop
 
         }
+
+        private void ctlForwardMcp_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                mcpTimer.Start();
+            }
+            else
+            {
+                mcpTimer.Stop();
+            }
+
+        }
     }
 }

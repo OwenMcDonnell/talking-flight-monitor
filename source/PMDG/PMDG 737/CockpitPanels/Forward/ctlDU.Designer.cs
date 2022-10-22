@@ -111,6 +111,7 @@
             this.Name = "ctlDU";
             this.Size = new System.Drawing.Size(471, 52);
             this.Load += new System.EventHandler(this.ctlDU_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlDU_VisibleChanged);
             this.duFlowLayoutPanel.ResumeLayout(false);
             this.duFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

@@ -78,11 +78,12 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.standbyFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlStandby";
             this.Size = new System.Drawing.Size(237, 52);
             this.Load += new System.EventHandler(this.ctlStandby_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlStandby_VisibleChanged);
             this.standbyFlowLayoutPanel.ResumeLayout(false);
             this.standbyFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

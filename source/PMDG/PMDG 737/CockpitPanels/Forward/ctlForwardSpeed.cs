@@ -86,5 +86,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
         {
             PMDG737Aircraft.SpeedRef();
         }
+
+        private void ctlForwardSpeed_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                speedTimer.Start();
+            }
+            else
+            {
+                speedTimer.Stop();
+            }
+
+        }
     }
 }

@@ -86,5 +86,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
         {
             PMDG737Aircraft.RMI2();
         }
+
+        private void ctlStandby_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                standbyTimer.Start();
+            }
+            else
+            {
+                standbyTimer.Stop();
+            }
+
+        }
     }
 }

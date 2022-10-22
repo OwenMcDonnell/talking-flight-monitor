@@ -305,6 +305,7 @@
             this.Name = "ctlForwardMcp";
             this.Size = new System.Drawing.Size(433, 184);
             this.Load += new System.EventHandler(this.ctlForwardMcp_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlForwardMcp_VisibleChanged);
             this.mcpFlowLayoutPanel.ResumeLayout(false);
             this.mcpFlowLayoutPanel.PerformLayout();
             this.throttleGroup.ResumeLayout(false);
