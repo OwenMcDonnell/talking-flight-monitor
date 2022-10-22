@@ -493,6 +493,7 @@
             this.Name = "ctlWarnings";
             this.Size = new System.Drawing.Size(1829, 222);
             this.Load += new System.EventHandler(this.ctlWarnings_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlWarnings_VisibleChanged);
             this.warningsFlowLayoutPanel.ResumeLayout(false);
             this.warningsFlowLayoutPanel.PerformLayout();
             this.fireGroupBox.ResumeLayout(false);
