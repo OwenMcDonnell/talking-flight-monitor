@@ -309,5 +309,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         {
             PMDG737Aircraft.WheelWellLights();
         }
+
+        private void ctlLights_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                lightsTimer.Start();
+            }
+            else
+            {
+                lightsTimer.Stop();
+            }
+
+        }
     }
 }

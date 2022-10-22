@@ -209,5 +209,18 @@ if(FSUIPCConnection.ReadLVar("switch_689_73X") == 0)
 
             PMDG737Aircraft.IgnitionSelector(ignitionSelectorComboBox.SelectedIndex);
         }
+
+        private void ctlEngines_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                enginesTimer.Start();
+            }
+            else
+            {
+                enginesTimer.Stop();
+            }
+
+        }
     }
 }

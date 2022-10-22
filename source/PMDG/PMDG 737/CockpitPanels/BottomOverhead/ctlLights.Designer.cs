@@ -308,6 +308,7 @@
             this.Name = "ctlLights";
             this.Size = new System.Drawing.Size(1868, 134);
             this.Load += new System.EventHandler(this.ctlLights_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlLights_VisibleChanged);
             this.lightsFlowLayoutPanel.ResumeLayout(false);
             this.lightsFlowLayoutPanel.PerformLayout();
             this.landingGroupBox.ResumeLayout(false);
