@@ -1102,6 +1102,7 @@
             this.Name = "ctlAirSystems";
             this.Size = new System.Drawing.Size(1893, 663);
             this.Load += new System.EventHandler(this.ctlAirSystems_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlAirSystems_VisibleChanged);
             this.airSystemsFlowLayoutPanel.ResumeLayout(false);
             this.airSystemsFlowLayoutPanel.PerformLayout();
             this.displaysGroupBox.ResumeLayout(false);

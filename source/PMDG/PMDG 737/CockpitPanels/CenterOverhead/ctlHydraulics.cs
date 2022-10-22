@@ -125,5 +125,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         {
             PMDG737Aircraft.HydraulicsEnginePump2();
         }
+
+        private void ctlHydraulics_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                hydraulicsTimer.Start();
+            }
+            else
+            {
+                hydraulicsTimer.Stop();
+            }
+
+        }
     }
 }

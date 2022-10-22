@@ -587,5 +587,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
 
             PMDG737Aircraft.IsolationValveSelector(isolationValveComboBox.SelectedIndex);
         }
+
+        private void ctlAirSystems_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                airSystemsTimer.Start();
+            }
+            else
+            {
+                airSystemsTimer.Stop();
+            }
+
+        }
     }
 }

@@ -257,5 +257,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         {
             overheadKnobTextBox.Select(0, 0);
         }
+
+        private void ctlCenterMain_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                mainTimer.Start();
+            }
+            else
+            {
+                mainTimer.Stop();
+            }
+
+        }
     }
 }

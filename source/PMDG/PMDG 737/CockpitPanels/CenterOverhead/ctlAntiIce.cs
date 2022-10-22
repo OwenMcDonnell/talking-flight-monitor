@@ -391,5 +391,18 @@ foreach(PanelObject control in antiIceControls)
             }
 
         }
+
+        private void ctlAntiIce_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                antiIceTimer.Start();
+            }
+            else
+            {
+                antiIceTimer.Stop();
+            }
+
+        }
     }
 }

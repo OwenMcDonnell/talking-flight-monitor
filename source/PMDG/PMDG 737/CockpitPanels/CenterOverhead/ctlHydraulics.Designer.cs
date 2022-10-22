@@ -429,6 +429,7 @@
             this.Name = "ctlHydraulics";
             this.Size = new System.Drawing.Size(986, 209);
             this.Load += new System.EventHandler(this.ctlHydraulics_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlHydraulics_VisibleChanged);
             this.hydraulicsFlowLayoutPanel.ResumeLayout(false);
             this.hydraulicsFlowLayoutPanel.PerformLayout();
             this.indicatorsFlowLayoutPanel.ResumeLayout(false);
