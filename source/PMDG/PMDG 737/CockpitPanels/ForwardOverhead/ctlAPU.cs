@@ -67,5 +67,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
             apuTimer.Tick += new EventHandler(ApuTimerTick);
             apuTimer.Start();
         }
+
+        private void ctlAPU_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                apuTimer.Start();
+            }
+            else
+            {
+                apuTimer.Stop();
+            }
+
+        }
     }
 }

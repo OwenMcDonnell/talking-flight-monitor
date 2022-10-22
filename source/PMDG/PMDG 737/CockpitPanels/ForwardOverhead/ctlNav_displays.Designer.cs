@@ -194,6 +194,7 @@
             this.Name = "ctlNav_displays";
             this.Size = new System.Drawing.Size(1168, 51);
             this.Load += new System.EventHandler(this.ctlNav_displays_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlNav_displays_VisibleChanged);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

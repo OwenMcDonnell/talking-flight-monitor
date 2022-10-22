@@ -95,5 +95,18 @@ foreach(PanelObject control in wiperControls)
             wipersTimer.Tick += new EventHandler((WiperTimerTick));
             wipersTimer.Start();
         }
+
+        private void ctlWipers_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                wipersTimer.Start();
+            }
+            else
+            {
+                wipersTimer.Stop();
+            }
+
+        }
     }
 }

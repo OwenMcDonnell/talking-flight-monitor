@@ -207,5 +207,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
             }
             PMDG737Aircraft.AlternatFlapsPosition(altnFlapsComboBox.SelectedIndex);
         }
+
+        private void ctlFlightControls_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                flightControlsTimer.Start();
+            }
+            else
+            {
+                flightControlsTimer.Stop();
+            }
+
+        }
     }
 }
