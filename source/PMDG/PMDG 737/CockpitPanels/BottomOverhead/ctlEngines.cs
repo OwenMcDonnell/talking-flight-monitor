@@ -91,6 +91,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         private void ctlEngines_Load(object sender, EventArgs e)
         {
             enginesTimer.Tick += new EventHandler(EnginesTimerTick);
+            enginesTimer.Interval = 300;
             enginesTimer.Start();
 
 

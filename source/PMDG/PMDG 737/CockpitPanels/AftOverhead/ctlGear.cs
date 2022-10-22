@@ -50,6 +50,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlGear_Load(object sender, EventArgs e)
         {
             gearTimer.Tick += new EventHandler(gearTimerTick);
+            gearTimer.Interval = 300;
             gearTimer.Start();
         }
 

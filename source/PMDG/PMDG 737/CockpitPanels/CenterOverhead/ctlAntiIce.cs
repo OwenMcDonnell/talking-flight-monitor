@@ -297,7 +297,7 @@ foreach(PanelObject control in antiIceControls)
         private void ctlAntiIce_Load(object sender, EventArgs e)
         {
             antiIceTimer.Tick += new EventHandler(AntiIceTimerTic);
-            antiIceTimer.Interval = 1000;
+            antiIceTimer.Interval = 300;
             antiIceTimer.Start();
         }
 

@@ -150,6 +150,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         {
 
             lightsTimer.Tick += new EventHandler(LightsTimerTick);
+            lightsTimer.Interval = 300;
             lightsTimer.Start();
 
             foreach (PanelObject control in controls)

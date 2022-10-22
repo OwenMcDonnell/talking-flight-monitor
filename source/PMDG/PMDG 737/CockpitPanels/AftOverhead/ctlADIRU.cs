@@ -119,7 +119,8 @@ foreach(PanelObjects.SingleStateToggle toggle in lights)
         {
             adiruTimer.Enabled = true;
             adiruTimer.Tick += new EventHandler(adiruTimerTick);
-                                    adiruTimer.Start();
+            adiruTimer.Interval = 300;
+            adiruTimer.Start();
             Tolk.Load();
                                            }
 

@@ -52,6 +52,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlOxygen_Load(object sender, EventArgs e)
         {
             oxyTimer.Tick += new EventHandler(oxyTimerTick);
+            oxyTimer.Interval = 300;
             oxyTimer.Start();
         }
 

@@ -235,7 +235,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlAirSystems_Load(object sender, EventArgs e)
         {
             Tolk.Load();
-            airSystemsTimer.Tick += new EventHandler(AirSystemsTimerTick);  
+            airSystemsTimer.Tick += new EventHandler(AirSystemsTimerTick);
+            airSystemsTimer.Interval = 300;
             airSystemsTimer.Start();
             foreach(PanelObject control in controls)
             {

@@ -36,6 +36,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
                 private void ctlDomeLights_Load(object sender, EventArgs e)
         {
             lightsTimer.Tick += new EventHandler(LightsTimerTick);
+            lightsTimer.Interval = 300;
             lightsTimer.Start();
             domeLightsComboBox.SelectedIndex = domeLights.CurrentState.Key;
                         Tolk.Load();

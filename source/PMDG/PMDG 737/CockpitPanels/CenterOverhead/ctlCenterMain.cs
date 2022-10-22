@@ -118,6 +118,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlCenterMain_Load(object sender, EventArgs e)
         {
             mainTimer.Tick += new EventHandler(MainTimerTick);
+            mainTimer.Interval = 300;
             mainTimer.Start();
             Tolk.Load();
             foreach (PanelObject control in mainControls)

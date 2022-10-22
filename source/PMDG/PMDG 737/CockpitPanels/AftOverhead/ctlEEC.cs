@@ -85,6 +85,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlEEC_Load(object sender, EventArgs e)
         {
             eecTimer.Tick += new EventHandler(eecTimerTick);
+            eecTimer.Interval = 300;
             eecTimer.Start();
         }
 

@@ -103,6 +103,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlHydraulics_Load(object sender, EventArgs e)
         {
             hydraulicsTimer.Tick += new EventHandler(HydraulicsTimerTic);
+            hydraulicsTimer.Interval = 300;
             hydraulicsTimer.Start();
         }
 
