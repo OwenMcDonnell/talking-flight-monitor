@@ -59,7 +59,7 @@ namespace tfm
                 Application.Restart();
             }
             this.trayIcon.Visible = true;
-            Aircraft.InitOffsets();
+            
 
                         // speak a debug message via SAPI if debug mode is turned on
             if (utility.DebugEnabled)
@@ -109,6 +109,7 @@ namespace tfm
 
                 // If there was no problem, stop this timer and start the main timer
                 this.TimerConnection.Stop();
+                Aircraft.InitOffsets();
                 this.SetCommandKeyMenuText();
                 this.TimerMain.Elapsed += TimerMain_Tick;
                 this.TimerMain.AutoReset = true;
