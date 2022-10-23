@@ -456,6 +456,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.Designer.cs">
       <DependentUpon>ctlDU.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.Designer.cs">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1071,6 +1077,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.resx">
       <DependentUpon>ctlDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.resx">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.resx">
       <DependentUpon>ctlForwardMain.cs</DependentUpon>
