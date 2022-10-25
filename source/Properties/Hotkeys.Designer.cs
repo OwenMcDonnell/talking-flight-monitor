@@ -1183,5 +1183,29 @@ namespace tfm.Properties {
                 this["ApplicationRestart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+G")]
+        public global::System.Windows.Forms.Keys JumpToGate {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["JumpToGate"]));
+            }
+            set {
+                this["JumpToGate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+R")]
+        public global::System.Windows.Forms.Keys JumpToRunway {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["JumpToRunway"]));
+            }
+            set {
+                this["JumpToRunway"] = value;
+            }
+        }
     }
 }

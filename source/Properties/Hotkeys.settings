@@ -293,5 +293,11 @@
     <Setting Name="ApplicationRestart" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+X</Value>
     </Setting>
+    <Setting Name="JumpToGate" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+G</Value>
+    </Setting>
+    <Setting Name="JumpToRunway" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+R</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

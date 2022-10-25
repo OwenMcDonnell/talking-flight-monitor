@@ -2207,6 +2207,16 @@ else if (PMDG777Detected)
             ResetHotkeys();
             switch (e.Name)
             {
+                case "JumpToRunway":
+
+                    JumpTo.RunwaysForm runwaysForm = new JumpTo.RunwaysForm();
+                    runwaysForm.ShowDialog();
+                    break;
+                case "JumpToGate":
+
+                    tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
+                    gatesForm.ShowDialog();
+                    break;
                 case "ApplicationRestart":
                     Application.Restart();
                     break;
