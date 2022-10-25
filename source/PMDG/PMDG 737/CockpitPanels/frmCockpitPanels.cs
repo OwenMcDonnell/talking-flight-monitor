@@ -76,6 +76,8 @@ namespace tfm
             pages.Add("duNode", new ctlDU());
             pages.Add("standbyNode", new ctlStandby());
             pages.Add("forwardSpeedNode", new ctlForwardSpeed());
+            pages.Add("brakesNode", new ctlForwardBrakes());
+            pages.Add("flapsNode", new ctlFlaps());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
