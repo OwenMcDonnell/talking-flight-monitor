@@ -2627,5 +2627,17 @@ if(Aircraft.pmdg737.MAIN_SpdRefSelector.Value != 6)
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_SPEED_REFERENCE_SELECTOR, 0);
             }
         } // SpeedRef
+
+public static void Gear()
+        {
+            if(Aircraft.pmdg737.MAIN_GearLever.Value != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GEAR_LEVER, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GEAR_LEVER, 0);
+            }
+        } // Gear
     } // End PMDG737Aircraft.
     } // End namespace.
