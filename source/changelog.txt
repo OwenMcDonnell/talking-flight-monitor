@@ -1,22 +1,41 @@
-﻿## Talking flight monitor 22.10.2 Preview release notes
+﻿## Talking flight monitor 22.11 Preview release notes
 
 ### What's new?
 
-* Vatsim mode which displays a list of vatsim ATC stations and pilots signed into the Vatsim network.
+* Vatsim mode (right bracket (]), then P). Displays a list of vatsim ATC stations and pilots signed into the Vatsim network.
     * In TFM's user interface settings, enable/disable by checking/unchecking the Vatsim mode setting.
     * The AI traffic display is replaced with the live Vatsim display.
     * Pressing ENTER on an ATC station will set com1 to that frequency.
+    * Filter pilots with the maximum range field (Alt+D).
+    * In the pilots list, CtrL+1 - Ctrl+7 sorts by columns 1 - 7.
+    * In the controllers list, pressing Ctrl+1 - Ctrl+5 sorts by columns 1 - 5.
+* Forward panel
+    * MCP
+    * DU
+    * Standby
+    * Speed
+    * Brakes
+    * Flaps
+    *   Gear
 
-        ### Bug fixes
-* ILS announcements now honor the use sapi for ILS announcements setting.
+### MSFS 2020 support
+
+Covers initial support for the PMDG 737 series of aircraft for MSFS 2020. To ensure everything works, you will need the following installed on your PC/laptop.
+* TFM 22.11.0 preview or later.
+* MSFS 2020 update 11 preview or later.
+* FSUIPC 7.3.12 or later.
+* First officer next for PMDG 737 aircraft.
+* One or more of the following aircraft.
+    * PMDG 737-600 for MSFS
+    * PMDG 737-700 for MSFS
+    * PMDG 737-800 for MSFS
+    * PMDG 737-900 for MSFS
 
 ### Known issues
 
-* Vatsim mode may crash with System.Exception: Failed to unmarshall type FlightRules. We believe it is a threading problem.
-* Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
-* The PMDG 747 has an approach mode light that turns on when on final. This usually happens after the ILS is active. TFM uses this light to determine when it should start reading signals from the nav radios. Since the app light and the approach mode switch are different, TFM can start reading ILS signals before approach mode is turned on. This is an issue, but the side affect is a desired feature. We will look into this more during the 747 rebuild cycle.
+* TFM: Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
+* TFM: The PMDG 747 has an approach mode light that turns on when on final. This usually happens after the ILS is active. TFM uses this light to determine when it should start reading signals from the nav radios. Since the app light and the approach mode switch are different, TFM can start reading ILS signals before approach mode is turned on. This is an issue, but the side affect is a desired feature. We will look into this more during the 747 rebuild cycle.
+* MSFS: Update 11 beta broke navigation. Sighted users have the identical problem, waiting on a fix.
+* MSFS/PMDG: The speed brake works as expected. It will report different values than the P3D version of the 737 though.
+* MSFS/PMDG: Keyboard is no longer an option group under PMDG setup/options in the FMC. You will need to use TFM's panels/controls  or a 3rd party keyboard manager instead.
 
-### FS2020 notes and reminders
-* The latest builds of fs2020 broke keyboard navigation.
-* You can still use a controller (XBOX/PS/5) to navigate the UI.
-* PMDG 73X for FS2020 hasn't released an SDK yet. TFM will not work until the SDK is released.
