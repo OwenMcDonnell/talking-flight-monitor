@@ -12,7 +12,7 @@ namespace tfm.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
     internal sealed partial class Hotkeys : global::System.Configuration.ApplicationSettingsBase {
         
         private static Hotkeys defaultInstance = ((Hotkeys)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Hotkeys())));
@@ -1078,7 +1078,7 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Oemcomma")]
         public global::System.Windows.Forms.Keys application_settings {
             get {
                 return ((global::System.Windows.Forms.Keys)(this["application_settings"]));
@@ -1181,6 +1181,18 @@ namespace tfm.Properties {
             }
             set {
                 this["ApplicationRestart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        public global::System.Windows.Forms.Keys Keyboard_Manager {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["Keyboard_Manager"]));
+            }
+            set {
+                this["Keyboard_Manager"] = value;
             }
         }
     }
