@@ -17,6 +17,9 @@
     * Brakes
     * Flaps
     *   Gear
+* The new keyboard command for settings is right bracket (]), then Ctrl+, (comma).
+* The new keyboard command for keyboard manager is right bracket (]), then ? (question mark).
+* Inside the keyboard manager, pressing ALT+E while on a TFM command will activate that command.
 
 ### MSFS 2020 support
 
