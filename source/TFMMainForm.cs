@@ -50,6 +50,7 @@ namespace tfm
         public TFMMainForm()
         {
             InitializeComponent();
+            
             // Upgrade settings from previous version.
             if (Properties.Settings.Default.SettingsRequiresUpgrade)
             {
@@ -75,6 +76,7 @@ namespace tfm
             }
 
 
+            
             // Start the connection timer to look for a flight sim
             TimerConnection.Elapsed += TimerConnection_Tick;
             this.TimerConnection.AutoReset = true;
