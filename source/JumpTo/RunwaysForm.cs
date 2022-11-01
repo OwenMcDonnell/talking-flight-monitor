@@ -68,7 +68,8 @@ namespace tfm.JumpTo
         private void runwaysListView_ItemActivate(object sender, EventArgs e)
         {
             FsRunway runway = (FsRunway)runwaysListView.SelectedItems[0].Tag;
-            runway.MoveAircraftHere(true);
+            runway.MoveAircraftHere(false);
+            this.Close();
         }
     }
 }

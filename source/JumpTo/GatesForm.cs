@@ -66,6 +66,7 @@ namespace tfm.JumpTo
         {
             FsGate gate = (FsGate)gatesListView.SelectedItems[0].Tag;
             gate.MoveAircraftHere(false);
+            this.Close();
         }
     }
 }
