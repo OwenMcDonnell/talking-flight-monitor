@@ -81,16 +81,30 @@
             System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
             treeNode30,
             treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Forward");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("MCP");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("DU");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Standby");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Speed");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Brakes");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Flaps");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Gear");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Forward", new System.Windows.Forms.TreeNode[] {
+            treeNode33,
+            treeNode34,
+            treeNode35,
+            treeNode36,
+            treeNode37,
+            treeNode38,
+            treeNode39});
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode15,
             treeNode22,
             treeNode26,
             treeNode29,
             treeNode32,
-            treeNode33});
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
-            treeNode34});
+            treeNode40});
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode41});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -169,12 +183,26 @@
             treeNode31.Text = "MCP";
             treeNode32.Name = "737GlareShieldNode";
             treeNode32.Text = "Glare Shield";
-            treeNode33.Name = "737ForwardNode";
-            treeNode33.Text = "Forward";
-            treeNode34.Name = "Pmdg737Node";
-            treeNode34.Text = "737 speech events";
-            treeNode35.Name = "nodPMDG";
-            treeNode35.Text = "PMDG";
+            treeNode33.Name = "737ForwardMcpNode";
+            treeNode33.Text = "MCP";
+            treeNode34.Name = "737DUNode";
+            treeNode34.Text = "DU";
+            treeNode35.Name = "737StandbyNode";
+            treeNode35.Text = "Standby";
+            treeNode36.Name = "737ForwardSpeedNode";
+            treeNode36.Text = "Speed";
+            treeNode37.Name = "737ForwardBrakesNode";
+            treeNode37.Text = "Brakes";
+            treeNode38.Name = "737ForwardFlapsNode";
+            treeNode38.Text = "Flaps";
+            treeNode39.Name = "737ForwardGearNode";
+            treeNode39.Text = "Gear";
+            treeNode40.Name = "737ForwardNode";
+            treeNode40.Text = "Forward";
+            treeNode41.Name = "Pmdg737Node";
+            treeNode41.Text = "737 speech events";
+            treeNode42.Name = "nodPMDG";
+            treeNode42.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -182,7 +210,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode35});
+            treeNode42});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);

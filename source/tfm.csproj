@@ -765,6 +765,12 @@
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.Designer.cs">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDU.Designer.cs">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlEEC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -795,11 +801,41 @@
     <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.Designer.cs">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardBrakes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardBrakes.Designer.cs">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardFlaps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardFlaps.Designer.cs">
+      <DependentUpon>ctlForwardFlaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardGear.Designer.cs">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlForwardMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlForwardMain.Designer.cs">
       <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMcp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMcp.Designer.cs">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardSpeed.Designer.cs">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFuel.cs">
       <SubType>UserControl</SubType>
@@ -854,6 +890,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.Designer.cs">
       <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlStandby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlStandby.Designer.cs">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlWarnings.cs">
       <SubType>UserControl</SubType>
@@ -1261,6 +1303,9 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlDU.resx">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </EmbeddedResource>
@@ -1276,8 +1321,23 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardBrakes.resx">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardFlaps.resx">
+      <DependentUpon>ctlForwardFlaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardGear.resx">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMain.resx">
       <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMcp.resx">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardSpeed.resx">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFuel.resx">
       <DependentUpon>ctlFuel.cs</DependentUpon>
@@ -1305,6 +1365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlServiceInterPhone.resx">
       <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlStandby.resx">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>

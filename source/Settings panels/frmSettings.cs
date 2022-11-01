@@ -62,6 +62,13 @@ namespace tfm
 
             // --panel: Forward
             pages.Add("737ForwardNode", new tfm.Settings_panels.PMDG737.ctlForwardMain());
+            pages.Add("737ForwardMcpNode", new tfm.Settings_panels.PMDG737.ctlForwardMcp());
+            pages.Add("737DUNode", new tfm.Settings_panels.PMDG737.ctlDU());
+            pages.Add("737StandbyNode", new tfm.Settings_panels.PMDG737.ctlStandby());
+            pages.Add("737ForwardSpeedNode", new tfm.Settings_panels.PMDG737.ctlForwardSpeed());
+            pages.Add("737ForwardBrakesNode", new tfm.Settings_panels.PMDG737.ctlForwardBrakes());
+            pages.Add("737ForwardFlapsNode", new tfm.Settings_panels.PMDG737.ctlForwardFlaps());
+            pages.Add("737ForwardGearNode", new tfm.Settings_panels.PMDG737.ctlForwardGear());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {
