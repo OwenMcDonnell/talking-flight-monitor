@@ -258,5 +258,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.GlareShield
             }
 
         }
+
+        private void ctlWarnings_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                warningTimer.Start();
+            }
+            else
+            {
+                warningTimer.Stop();
+            }
+
+        }
     }
 }

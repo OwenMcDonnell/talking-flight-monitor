@@ -85,6 +85,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlEEC_Load(object sender, EventArgs e)
         {
             eecTimer.Tick += new EventHandler(eecTimerTick);
+            eecTimer.Interval = 300;
             eecTimer.Start();
         }
 
@@ -113,6 +114,19 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
             {
                 PMDG737Aircraft.EngineEEC2On();
             }
+        }
+
+        private void ctlEEC_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                eecTimer.Start();
+            }
+            else
+            {
+                eecTimer.Stop();
+            }
+
         }
     }
 }

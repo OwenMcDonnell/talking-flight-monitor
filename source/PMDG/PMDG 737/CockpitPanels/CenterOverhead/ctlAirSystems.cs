@@ -235,7 +235,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlAirSystems_Load(object sender, EventArgs e)
         {
             Tolk.Load();
-            airSystemsTimer.Tick += new EventHandler(AirSystemsTimerTick);  
+            airSystemsTimer.Tick += new EventHandler(AirSystemsTimerTick);
+            airSystemsTimer.Interval = 300;
             airSystemsTimer.Start();
             foreach(PanelObject control in controls)
             {
@@ -586,6 +587,19 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
             }
 
             PMDG737Aircraft.IsolationValveSelector(isolationValveComboBox.SelectedIndex);
+        }
+
+        private void ctlAirSystems_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                airSystemsTimer.Start();
+            }
+            else
+            {
+                airSystemsTimer.Stop();
+            }
+
         }
     }
 }

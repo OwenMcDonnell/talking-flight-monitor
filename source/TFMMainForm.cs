@@ -50,6 +50,7 @@ namespace tfm
         public TFMMainForm()
         {
             InitializeComponent();
+            
             // Upgrade settings from previous version.
             if (Properties.Settings.Default.SettingsRequiresUpgrade)
             {
@@ -59,7 +60,7 @@ namespace tfm
                 Application.Restart();
             }
             this.trayIcon.Visible = true;
-            Aircraft.InitOffsets();
+            
 
                         // speak a debug message via SAPI if debug mode is turned on
             if (utility.DebugEnabled)
@@ -75,6 +76,7 @@ namespace tfm
             }
 
 
+            
             // Start the connection timer to look for a flight sim
             TimerConnection.Elapsed += TimerConnection_Tick;
             this.TimerConnection.AutoReset = true;
@@ -109,6 +111,7 @@ namespace tfm
 
                 // If there was no problem, stop this timer and start the main timer
                 this.TimerConnection.Stop();
+                Aircraft.InitOffsets();
                 this.SetCommandKeyMenuText();
                 this.TimerMain.Elapsed += TimerMain_Tick;
                 this.TimerMain.AutoReset = true;
@@ -246,6 +249,8 @@ namespace tfm
             catch (Exception ex)
             {
                 Tolk.Output("could not load airport database.");
+                Tolk.Output(ex.Message);
+
             }
         } // load database.
 

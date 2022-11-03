@@ -47,7 +47,7 @@
             this.wipersFlowLayoutPanel.Location = new System.Drawing.Point(0, 1);
             this.wipersFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.wipersFlowLayoutPanel.Name = "wipersFlowLayoutPanel";
-            this.wipersFlowLayoutPanel.Size = new System.Drawing.Size(610, 34);
+            this.wipersFlowLayoutPanel.Size = new System.Drawing.Size(610, 47);
             this.wipersFlowLayoutPanel.TabIndex = 0;
             // 
             // leftWipersLabel
@@ -109,11 +109,12 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.wipersFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlWipers";
-            this.Size = new System.Drawing.Size(613, 38);
+            this.Size = new System.Drawing.Size(613, 51);
             this.Load += new System.EventHandler(this.ctlWipers_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlWipers_VisibleChanged);
             this.wipersFlowLayoutPanel.ResumeLayout(false);
             this.wipersFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

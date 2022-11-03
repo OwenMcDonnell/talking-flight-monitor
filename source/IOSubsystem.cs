@@ -36,6 +36,7 @@ using tfm.Properties;
 using System.CodeDom;
 using System.Speech.Synthesis;
 using System.ComponentModel.Design;
+using tfm.Keyboard_manager;
 // using Microsoft.CognitiveServices.Speech;
 // using Microsoft.CognitiveServices.Speech.Audio;
 
@@ -57,6 +58,7 @@ namespace tfm
         // speech history class
         private readonly OutputHistory history = new OutputHistory();
         public PMDGPanelUpdateEvent pmdg;
+        
         private SineWaveProvider pitchSineProvider;
 
 
@@ -86,6 +88,7 @@ namespace tfm
         // readonly SoundPlayer apCmdSound = new SoundPlayer(@"sounds\ap_command.wav");
         private static WaveFileReader cmdSound;
         private static WaveFileReader apCmdSound;
+        private static WaveFileReader tickSound;
 
         // list to store registered hotkey identifiers
         readonly List<string> hotkeys = new List<string>();
@@ -231,11 +234,16 @@ namespace tfm
         private bool apuOff = true;
         private bool fuelManagerActive;
         WaveFileReader gpwsSound;
-        private bool PMDG737Detected;
+        public bool PMDG737Detected;
         private bool PMDG747Detected;
-        private bool PMDG777Detected;
+        public bool PMDG777Detected;
         private bool PMDGInitializing;
+        private bool FirstOfficerCountDown;
 
+        public IOSubsystem(bool AdditionalInstance)
+        {
+
+        }
         public IOSubsystem()
         {
 
@@ -272,22 +280,26 @@ namespace tfm
                 altitudeCalloutFlags.Add(i, false);
             }
             pmdg = new PMDGPanelUpdateEvent();
+            
+           
         }
+
+        
         /*private void SetupAzureSpeech()
-        {
-            try
-            {
-                azureConfig = SpeechConfig.FromSubscription(Properties.Settings.Default.AzureAPIKey, Properties.Settings.Default.AzureServiceRegion);
-                azureSynth = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(azureConfig);
+{
+   try
+   {
+       azureConfig = SpeechConfig.FromSubscription(Properties.Settings.Default.AzureAPIKey, Properties.Settings.Default.AzureServiceRegion);
+       azureSynth = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(azureConfig);
 
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show("error setting up Azure Speech. Either you did not enter an API key, or the settings file needs updating.\n If adding the Azure key doesn't work, try deleting your settings file and restarting TFM. ");
-                logger.Debug($"Error setting up Azure speech: {x.Message}");
+   }
+   catch (Exception x)
+   {
+       MessageBox.Show("error setting up Azure Speech. Either you did not enter an API key, or the settings file needs updating.\n If adding the Azure key doesn't work, try deleting your settings file and restarting TFM. ");
+       logger.Debug($"Error setting up Azure speech: {x.Message}");
 
-            }
-        }
+   }
+}
 */
         private void SetupAudio()
         {
@@ -1590,6 +1602,17 @@ else              if (PMDG777Detected)
 
 
                         }
+                        if (Aircraft.textMenu.Message.Contains("hold Ctrl to skip"))
+                        {
+                            tickSound = new WaveFileReader(@"sounds\tick.wav");
+                            mixer.AddMixerInput(tickSound);
+
+                            OldSimConnectMessage = Aircraft.textMenu.ToString();
+                            return;
+                        }
+
+
+                        
                         if (Aircraft.textMenu.Message == "")
                         {
                             PMDGInitializing = false;
@@ -1734,6 +1757,15 @@ else              if (PMDG777Detected)
 
         private void onAutopilotKeyPressed(object sender, HotkeyEventArgs e)
         {
+            
+            e.Handled = true;
+            ResetHotkeys();
+            ExecuteAutopilotCommand(e.Name);
+            
+        }
+
+        private void ExecuteAutopilotCommand(string Name)
+        {
             frmAutopilot ap;
             frmComRadios com;
             frmNavRadios nav;
@@ -1742,9 +1774,7 @@ else              if (PMDG777Detected)
             string gaugeValue;
             bool isGauge = true;
 
-            e.Handled = true;
-            ResetHotkeys();
-            switch (e.Name)
+            switch (Name)
             {
                 case "ap_FMCMessage":
                     ReadPmdgFMCMessage("requested");
@@ -1787,7 +1817,7 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowAltitudeBox();
                         }
                     } // PMDG 737
-else if (PMDG777Detected)
+                    else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["altitude"].Visible)
                         {
@@ -1797,7 +1827,7 @@ else if (PMDG777Detected)
                         {
                             PMDG777Aircraft.ShowAltitudeBox();
                         }
-                                            } // End PMDG777.
+                    } // End PMDG777.
                     else
                     {
                         ap = new frmAutopilot("Altitude");
@@ -1853,7 +1883,7 @@ else if (PMDG777Detected)
                     {
                         gaugeValue = Autopilot.ApHeading.ToString();
                         if (Autopilot.ApHeadingLock) gaugeValue = " hold " + gaugeValue;
-                                            } // Freeware
+                    } // Freeware
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Heading":
@@ -1868,7 +1898,7 @@ else if (PMDG777Detected)
                             PMDG737Aircraft.ShowHeadingBox();
                         }
                     }
-else if (PMDG777Detected)
+                    else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["heading"].Visible)
                         {
@@ -1923,10 +1953,10 @@ else if (PMDG777Detected)
                             PMDG737Aircraft.ShowSpeedBox();
                         }
                     }
-                    else if(PMDG777Detected)
+                    else if (PMDG777Detected)
                     {
 
-                        if(PMDG777Aircraft.McpComponents["speed"].Visible)
+                        if (PMDG777Aircraft.McpComponents["speed"].Visible)
                         {
                             Output(isGauge: false, output: "Speed box already open!");
                             history.AddItem("Speed box already open!");
@@ -1935,18 +1965,18 @@ else if (PMDG777Detected)
                         {
                             PMDG777Aircraft.ShowSpeedBox();
                         }
-                                            } // End PMDG 777.
+                    } // End PMDG 777.
                     else
                     {
                         ap = new frmAutopilot("Airspeed");
                         ap.ShowDialog();
                     } // End freeware planes.
-                                        break;
+                    break;
 
                 case "ap_Get_Mach_Speed":
                     gaugeName = "AP mach";
                     gaugeValue = string.Empty;
-                                        if (PMDG737Detected)
+                    if (PMDG737Detected)
                     {
                         if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
                         {
@@ -2002,7 +2032,7 @@ else if (PMDG777Detected)
                             PMDG737Aircraft.ShowVerticalSpeedBox();
                         }
                     }
-else if (PMDG777Detected)
+                    else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["vertical"].Visible)
                         {
@@ -2187,13 +2217,27 @@ else if (PMDG777Detected)
             }
         }
 
-        private void onKeyPressed(object sender, HotkeyEventArgs e)
+        public void ExecuteCommand(string Name)
         {
-
-            e.Handled = true;
-            ResetHotkeys();
-            switch (e.Name)
+            switch (Name)
             {
+
+                case "JumpToRunway":
+
+                    JumpTo.RunwaysForm runwaysForm = new JumpTo.RunwaysForm();
+                    runwaysForm.ShowDialog();
+                    break;
+                case "JumpToGate":
+
+                    tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
+                    gatesForm.ShowDialog();
+                    break;
+
+                case "keyboard_manager":
+                    DisplayKeyboardManager();
+                    break;
+
+
                 case "ApplicationRestart":
                     Application.Restart();
                     break;
@@ -2205,37 +2249,37 @@ else if (PMDG777Detected)
 
                     if (PMDG737Detected)
                     {
-                                                                            var speedBrakeValue = string.Empty;
-                            switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
-                            {
-                                case 100:
-                                    speedBrakeValue = "Armed";
-                                    break;
-                                case 272:
-                                    speedBrakeValue = "Flt";
-                                    break;
-                                case 400:
-                                    speedBrakeValue = "Up";
-                                    break;
-                                case 250:
-                                    speedBrakeValue = "50%";
-                                    break;
-                                case 0:
-                                    speedBrakeValue = "Off";
-                                    break;
-                                default:
-speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
-                                    break;
-                            }
-
-                            Output(isGauge: false, output: speedBrakeValue);
+                        var speedBrakeValue = string.Empty;
+                        switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
+                        {
+                            case 100:
+                                speedBrakeValue = "Armed";
+                                break;
+                            case 272:
+                                speedBrakeValue = "Flt";
+                                break;
+                            case 400:
+                                speedBrakeValue = "Up";
+                                break;
+                            case 250:
+                                speedBrakeValue = "50%";
+                                break;
+                            case 0:
+                                speedBrakeValue = "Off";
+                                break;
+                            default:
+                                speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
+                                break;
                         }
 
-                        if (PMDG777Detected)
+                        Output(isGauge: false, output: speedBrakeValue);
+                    }
+
+                    if (PMDG777Detected)
                     {
-                        foreach(tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
+                        foreach (tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
                         {
-                            if(toggle.Name == "Speedbrake")
+                            if (toggle.Name == "Speedbrake")
                             {
                                 Output(isGauge: false, output: toggle.ToString());
                                 break;
@@ -2257,7 +2301,7 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
                     break;
                 case "application_settings":
 
-                                        DisplayApplicationSettings();
+                    DisplayApplicationSettings();
                     break;
 
                 case "LocalTime":
@@ -2338,9 +2382,9 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
                     OnAGLKey();
                     break;
                 case "Disable_Command_Key":
-                                                            Output(isGauge: false, output: "command key disabled.");
+                    Output(isGauge: false, output: "command key disabled.");
                     CommandKeyEnabled = false;
-                                                                                                                         break;
+                    break;
 
                 case "Aircraft_Heading":
                     OnHeadingKey();
@@ -2463,7 +2507,16 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
                     onFuelTankKey(10);
                     break;
                 case "Nearby_Airborn_Aircraft":
-                    onNearbyAircraft();
+
+                    if (Properties.Settings.Default.VatsimMode)
+                    {
+                        tfm.Vatsim.VatsimRadar vatsimRadar = new Vatsim.VatsimRadar();
+                        vatsimRadar.Show();
+                    }
+                    else
+                    {
+                        onNearbyAircraft();
+                    }
                     break;
                 case "Nearby_Ground_Aircraft":
                     onTCASGround();
@@ -2501,6 +2554,13 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
                     break;
 
             }
+        }
+        private void onKeyPressed(object sender, HotkeyEventArgs e)
+        {
+
+            e.Handled = true;
+            ResetHotkeys();
+            ExecuteCommand(e.Name);
 
         }
 
@@ -4585,10 +4645,6 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
             settings.ShowDialog();
             if (settings.DialogResult == DialogResult.OK)
             {
-                if (Properties.Settings.Default.AvionicsTabChangeFlag)
-                {
-                    MessageBox.Show("You must restart TFM for the avionics tab changes to take affect", "restart required", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
                 Properties.Settings.Default.Save();
                 Properties.pmdg737_offsets.Default.Save();
             }
@@ -4600,6 +4656,21 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
             }
         } // DisplayApplicationSettings.
 
+        private void DisplayKeyboardManager()
+        {
+            frmKeyboardManager keyboardManager = new frmKeyboardManager();
+            keyboardManager.ShowDialog();
+            if (keyboardManager.DialogResult == DialogResult.OK)
+            {
+                Properties.Hotkeys.Default.Save();
+            }
+            if (keyboardManager.DialogResult == DialogResult.Cancel)
+            {
+                Properties.Hotkeys.Default.Reload();
+            }
+
+        }
+
         private void DisplayA2AManager()
         {
             Output(isGauge: false, output: "A2A manager not yet supported.");
@@ -4610,12 +4681,12 @@ speedBrakeValue = PMDG737Aircraft.CurrentSpeedBrakePosition.ToString();
             Output(isGauge: false, output: "Aircraft profiles not yet supported.");
         } // AircraftProfiles
 
-        private void DisplayWebsite()
+        public static  void DisplayWebsite()
         {
             System.Diagnostics.Process.Start("www.talkingflightmonitor.com");
         } // DisplayWebsite
 
-        private void ReportIssue()
+        public static void ReportIssue()
         {
             System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
         } // ReportIssue

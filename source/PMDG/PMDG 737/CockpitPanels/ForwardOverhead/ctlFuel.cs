@@ -414,5 +414,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
                 PMDG737Aircraft.CrossFeed(1);
             }
         }
+
+        private void ctlFuel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                fuelTimer.Start();
+            }
+            else
+            {
+                fuelTimer.Stop();
+            }
+
+        }
     }
 }

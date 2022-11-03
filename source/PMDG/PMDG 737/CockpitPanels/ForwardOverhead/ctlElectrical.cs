@@ -423,5 +423,17 @@ if(toggle.CurrentState.Value == "on")
             }
         }
 
-           }
+        private void ctlElectrical_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                electricalTimer.Start();
+            }
+            else
+            {
+                electricalTimer.Stop();
+            }
+
+        }
+    }
 }

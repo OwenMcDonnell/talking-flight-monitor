@@ -12,8 +12,8 @@ using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
-
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
+using tfm.PMDG.PMDG_737.CockpitPanels.Forward;
 
 
 namespace tfm
@@ -32,8 +32,7 @@ namespace tfm
         
         private void loadPages()
         {
-                                    pages.Add("nodMCP", new ctlMCP());
-                        
+                                                            
                                                 // redesigned pages. keep the ones above for backups.
             // --panel: Aft Overhead
             pages.Add("adiruNode", new ctlADIRU());
@@ -70,6 +69,16 @@ namespace tfm
             pages.Add("mcpSpeedNode", new ctlMcpSpeed());
             pages.Add("mcpVerticalSpeedNode", new ctlMcpVerticalSpeed());
             pages.Add("mcpNavigationNode", new ctlMcpNavigation());
+
+            // --panel: Forward panel
+            pages.Add("forwardNode", new ctlForwardMain());
+            pages.Add("forwardMcpNode", new ctlForwardMcp());
+            pages.Add("duNode", new ctlDU());
+            pages.Add("standbyNode", new ctlStandby());
+            pages.Add("forwardSpeedNode", new ctlForwardSpeed());
+            pages.Add("brakesNode", new ctlForwardBrakes());
+            pages.Add("flapsNode", new ctlFlaps());
+            pages.Add("forwardGearNode", new ctlForwardGear());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

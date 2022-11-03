@@ -37,6 +37,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         {
             Tolk.Load();
             pseuTimer.Tick += new EventHandler(PSEUTimerTick);
+            pseuTimer.Interval = 300;
             pseuTimer.Start();
         }
 
@@ -48,5 +49,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         public void SetDocking()
         {
                     }
+
+        private void ctlPSEU_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                pseuTimer.Start();
+            }
+            else
+            {
+                pseuTimer.Stop();
+            }
+
+        }
     }
 }

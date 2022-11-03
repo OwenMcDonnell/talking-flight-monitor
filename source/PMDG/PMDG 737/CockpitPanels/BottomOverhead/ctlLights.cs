@@ -150,6 +150,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         {
 
             lightsTimer.Tick += new EventHandler(LightsTimerTick);
+            lightsTimer.Interval = 300;
             lightsTimer.Start();
 
             foreach (PanelObject control in controls)
@@ -308,6 +309,19 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         private void wheelWellButton_Click(object sender, EventArgs e)
         {
             PMDG737Aircraft.WheelWellLights();
+        }
+
+        private void ctlLights_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                lightsTimer.Start();
+            }
+            else
+            {
+                lightsTimer.Stop();
+            }
+
         }
     }
 }

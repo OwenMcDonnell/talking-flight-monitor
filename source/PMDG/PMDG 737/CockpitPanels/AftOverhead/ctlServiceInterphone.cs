@@ -53,7 +53,21 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlServiceInterphone_Load(object sender, EventArgs e)
         {
             phoneTimer.Tick += new EventHandler(phoneTimerTick);
+            phoneTimer.Interval = 300;
             phoneTimer.Start();
+        }
+
+        private void ctlServiceInterphone_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                phoneTimer.Start();
+            }
+            else
+            {
+                phoneTimer.Stop();
+            }
+
         }
     }
 }

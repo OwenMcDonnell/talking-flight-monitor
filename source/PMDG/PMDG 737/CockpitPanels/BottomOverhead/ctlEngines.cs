@@ -91,6 +91,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         private void ctlEngines_Load(object sender, EventArgs e)
         {
             enginesTimer.Tick += new EventHandler(EnginesTimerTick);
+            enginesTimer.Interval = 300;
             enginesTimer.Start();
 
 
@@ -208,6 +209,19 @@ if(FSUIPCConnection.ReadLVar("switch_689_73X") == 0)
             }
 
             PMDG737Aircraft.IgnitionSelector(ignitionSelectorComboBox.SelectedIndex);
+        }
+
+        private void ctlEngines_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                enginesTimer.Start();
+            }
+            else
+            {
+                enginesTimer.Stop();
+            }
+
         }
     }
 }

@@ -103,8 +103,6 @@
             settings1.AnnouncePerfInitComplete = true;
             settings1.AnnounceTakeoffConfigComplete = true;
             settings1.AttitudeAnnouncementMode = 1;
-            settings1.avionics_tab = "simplified";
-            settings1.AvionicsTabChangeFlag = false;
             settings1.AzureAPIKey = "";
             settings1.AzureServiceRegion = "";
             settings1.AzureVoice = "";

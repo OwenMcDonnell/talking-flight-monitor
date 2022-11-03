@@ -103,6 +103,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlHydraulics_Load(object sender, EventArgs e)
         {
             hydraulicsTimer.Tick += new EventHandler(HydraulicsTimerTic);
+            hydraulicsTimer.Interval = 300;
             hydraulicsTimer.Start();
         }
 
@@ -124,6 +125,19 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void eng2Button_Click(object sender, EventArgs e)
         {
             PMDG737Aircraft.HydraulicsEnginePump2();
+        }
+
+        private void ctlHydraulics_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                hydraulicsTimer.Start();
+            }
+            else
+            {
+                hydraulicsTimer.Stop();
+            }
+
         }
     }
 }

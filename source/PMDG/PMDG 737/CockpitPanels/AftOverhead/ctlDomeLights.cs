@@ -36,6 +36,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
                 private void ctlDomeLights_Load(object sender, EventArgs e)
         {
             lightsTimer.Tick += new EventHandler(LightsTimerTick);
+            lightsTimer.Interval = 300;
             lightsTimer.Start();
             domeLightsComboBox.SelectedIndex = domeLights.CurrentState.Key;
                         Tolk.Load();
@@ -50,5 +51,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
             }
             PMDG737Aircraft.CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_DOME_SWITCH, domeLights.CurrentState.Key, domeLightsComboBox.SelectedIndex, true);
                     }
+
+        private void ctlDomeLights_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                lightsTimer.Start();
+            }
+            else
+            {
+                lightsTimer.Stop();
+            }
+
+        }
     }
 }

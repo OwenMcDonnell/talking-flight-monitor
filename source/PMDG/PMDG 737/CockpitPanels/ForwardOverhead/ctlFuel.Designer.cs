@@ -551,6 +551,7 @@
             this.Name = "ctlFuel";
             this.Size = new System.Drawing.Size(1842, 263);
             this.Load += new System.EventHandler(this.ctlFuel_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlFuel_VisibleChanged);
             this.mainFlowLayoutPanel.ResumeLayout(false);
             this.mainFlowLayoutPanel.PerformLayout();
             this.aftGroupBox.ResumeLayout(false);

@@ -267,7 +267,7 @@
       <Value Profile="(Default)">F11</Value>
     </Setting>
     <Setting Name="application_settings" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Shift+OemQuestion</Value>
+      <Value Profile="(Default)">Ctrl+Oemcomma</Value>
     </Setting>
     <Setting Name="A2A_manager" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+M</Value>
@@ -292,6 +292,15 @@
     </Setting>
     <Setting Name="ApplicationRestart" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+X</Value>
+    </Setting>
+    <Setting Name="JumpToGate" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+G</Value>
+    </Setting>
+    <Setting Name="JumpToRunway" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+R</Value>
+    </Setting>
+    <Setting Name="keyboard_manager" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+K</Value>
     </Setting>
   </Settings>
 </SettingsFile>

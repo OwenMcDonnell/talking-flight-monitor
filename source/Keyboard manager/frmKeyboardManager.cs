@@ -17,10 +17,13 @@ namespace tfm.Keyboard_manager
         ListView.SelectedListViewItemCollection selectedKey;
         private bool apTabSelected;
         private bool generalTabSelected;
+        IOSubsystem IO = new IOSubsystem(AdditionalInstance: true);
+
 
         public frmKeyboardManager()
         {
             InitializeComponent();
+            
 
         }
 
@@ -138,6 +141,14 @@ namespace tfm.Keyboard_manager
             }
             lvAutopilotKeys.EndUpdate();
 
+        }
+
+        private void btnExecute_Click(object sender, EventArgs e)
+        {
+            string name = selectedKey[0].Text.Replace(" ", "_");
+            IO.ExecuteCommand(name);
+
+            
         }
     }
 

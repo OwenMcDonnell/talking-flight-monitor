@@ -291,6 +291,7 @@
             this.Name = "ctlEngines";
             this.Size = new System.Drawing.Size(1622, 133);
             this.Load += new System.EventHandler(this.ctlEngines_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlEngines_VisibleChanged);
             this.enginesFlowLayoutPanel.ResumeLayout(false);
             this.enginesFlowLayoutPanel.PerformLayout();
             this.engine1GroupBox.ResumeLayout(false);

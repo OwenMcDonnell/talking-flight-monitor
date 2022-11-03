@@ -76,8 +76,8 @@
     <Reference Include="BingMapsSDSToolkit, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BingMapsSDSToolkit.1.0.5\lib\net45\BingMapsSDSToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="fsuipcClient, Version=3.2.20.389, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
-      <HintPath>packages\FSUIPCClientDLL.3.2.20\lib\net40\fsuipcClient.dll</HintPath>
+    <Reference Include="fsuipcClient, Version=3.2.24.394, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
+      <HintPath>packages\FSUIPCClientDLL.3.2.24-beta\lib\net40\fsuipcClient.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\KdTree.1.4.1\lib\net471\KdTreeLib.dll</HintPath>
@@ -221,6 +221,7 @@
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -315,6 +316,18 @@
       <DependentUpon>frmFuelManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="JumpTo\GatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JumpTo\GatesForm.Designer.cs">
+      <DependentUpon>GatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JumpTo\RunwaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JumpTo\RunwaysForm.Designer.cs">
+      <DependentUpon>RunwaysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OutputHistory\frmOutputHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -449,6 +462,54 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.Designer.cs">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.Designer.cs">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlFlaps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlFlaps.Designer.cs">
+      <DependentUpon>ctlFlaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.Designer.cs">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardGear.Designer.cs">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMcp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMcp.Designer.cs">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardSpeed.Designer.cs">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlStandby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlStandby.Designer.cs">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -521,12 +582,6 @@
     </Compile>
     <Compile Include="PMDG\PMDG 747\747CDU.Designer.cs">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.Designer.cs">
-      <DependentUpon>ctlMCP.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.cs">
       <SubType>Form</SubType>
@@ -710,6 +765,12 @@
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.Designer.cs">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDU.Designer.cs">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlEEC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -739,6 +800,42 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.Designer.cs">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardBrakes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardBrakes.Designer.cs">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardFlaps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardFlaps.Designer.cs">
+      <DependentUpon>ctlForwardFlaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardGear.Designer.cs">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMcp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMcp.Designer.cs">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardSpeed.Designer.cs">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFuel.cs">
       <SubType>UserControl</SubType>
@@ -793,6 +890,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.Designer.cs">
       <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlStandby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlStandby.Designer.cs">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlWarnings.cs">
       <SubType>UserControl</SubType>
@@ -928,6 +1031,14 @@
     </Compile>
     <Compile Include="sounds\SineWaveProvider.cs" />
     <Compile Include="utility.cs" />
+    <Compile Include="Vatsim\Vatsim.cs" />
+    <Compile Include="Vatsim\VatsimRadar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vatsim\VatsimRadar.Designer.cs">
+      <DependentUpon>VatsimRadar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vatsim\VatsimUtilities.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -951,6 +1062,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFuelManager.resx">
       <DependentUpon>frmFuelManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JumpTo\GatesForm.resx">
+      <DependentUpon>GatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JumpTo\RunwaysForm.resx">
+      <DependentUpon>RunwaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Keyboard manager\frmKeyboardHelp.resx">
       <DependentUpon>frmKeyboardHelp.cs</DependentUpon>
@@ -1030,6 +1147,30 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.resx">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.resx">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlFlaps.resx">
+      <DependentUpon>ctlFlaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.resx">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardGear.resx">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMcp.resx">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardSpeed.resx">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlStandby.resx">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>
     </EmbeddedResource>
@@ -1065,9 +1206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
-      <DependentUpon>ctlMCP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.resx">
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>
@@ -1165,6 +1303,9 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlDU.resx">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
       <DependentUpon>ctlEEC.cs</DependentUpon>
     </EmbeddedResource>
@@ -1179,6 +1320,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
       <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardBrakes.resx">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardFlaps.resx">
+      <DependentUpon>ctlForwardFlaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardGear.resx">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMcp.resx">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardSpeed.resx">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFuel.resx">
       <DependentUpon>ctlFuel.cs</DependentUpon>
@@ -1207,6 +1366,9 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlServiceInterPhone.resx">
       <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlStandby.resx">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>
     </EmbeddedResource>
@@ -1229,6 +1391,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vatsim\VatsimRadar.resx">
+      <DependentUpon>VatsimRadar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1317,6 +1482,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="sounds\TFM-Startup.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\tick.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tolk.dll">

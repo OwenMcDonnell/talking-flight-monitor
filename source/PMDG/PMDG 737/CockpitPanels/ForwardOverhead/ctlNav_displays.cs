@@ -172,5 +172,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
             PMDG737Aircraft.ControlPaneSelector(controlPaneComboBox.SelectedIndex);
         }
+
+        private void ctlNav_displays_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                sourceTimer.Start();
+            }
+            else
+            {
+                sourceTimer.Stop();
+            }
+
+        }
     }
 }

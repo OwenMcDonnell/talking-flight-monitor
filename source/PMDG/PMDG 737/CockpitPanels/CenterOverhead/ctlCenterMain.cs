@@ -118,6 +118,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlCenterMain_Load(object sender, EventArgs e)
         {
             mainTimer.Tick += new EventHandler(MainTimerTick);
+            mainTimer.Interval = 300;
             mainTimer.Start();
             Tolk.Load();
             foreach (PanelObject control in mainControls)
@@ -256,6 +257,19 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void overheadKnobTextBox_Enter(object sender, EventArgs e)
         {
             overheadKnobTextBox.Select(0, 0);
+        }
+
+        private void ctlCenterMain_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                mainTimer.Start();
+            }
+            else
+            {
+                mainTimer.Stop();
+            }
+
         }
     }
 }

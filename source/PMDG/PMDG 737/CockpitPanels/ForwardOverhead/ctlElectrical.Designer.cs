@@ -900,6 +900,7 @@
             this.Name = "ctlElectrical";
             this.Size = new System.Drawing.Size(1792, 441);
             this.Load += new System.EventHandler(this.ctlElectrical_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlElectrical_VisibleChanged);
             this.mainFlowLayoutPanel.ResumeLayout(false);
             this.mainFlowLayoutPanel.PerformLayout();
             this.dcPowerGroupBox.ResumeLayout(false);

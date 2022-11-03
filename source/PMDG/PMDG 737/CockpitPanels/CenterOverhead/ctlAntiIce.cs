@@ -297,7 +297,7 @@ foreach(PanelObject control in antiIceControls)
         private void ctlAntiIce_Load(object sender, EventArgs e)
         {
             antiIceTimer.Tick += new EventHandler(AntiIceTimerTic);
-            antiIceTimer.Interval = 1000;
+            antiIceTimer.Interval = 300;
             antiIceTimer.Start();
         }
 
@@ -388,6 +388,19 @@ foreach(PanelObject control in antiIceControls)
             else
             {
                 PMDG737Aircraft.Engine2AntiIceOn();
+            }
+
+        }
+
+        private void ctlAntiIce_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                antiIceTimer.Start();
+            }
+            else
+            {
+                antiIceTimer.Stop();
             }
 
         }

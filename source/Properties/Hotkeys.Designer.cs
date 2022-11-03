@@ -1078,7 +1078,7 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Oemcomma")]
         public global::System.Windows.Forms.Keys application_settings {
             get {
                 return ((global::System.Windows.Forms.Keys)(this["application_settings"]));
@@ -1181,6 +1181,42 @@ namespace tfm.Properties {
             }
             set {
                 this["ApplicationRestart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+G")]
+        public global::System.Windows.Forms.Keys JumpToGate {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["JumpToGate"]));
+            }
+            set {
+                this["JumpToGate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+R")]
+        public global::System.Windows.Forms.Keys JumpToRunway {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["JumpToRunway"]));
+            }
+            set {
+                this["JumpToRunway"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+K")]
+        public global::System.Windows.Forms.Keys keyboard_manager {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["keyboard_manager"]));
+            }
+            set {
+                this["keyboard_manager"] = value;
             }
         }
     }

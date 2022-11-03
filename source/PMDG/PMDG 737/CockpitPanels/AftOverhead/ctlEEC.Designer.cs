@@ -325,6 +325,7 @@
             this.Name = "ctlEEC";
             this.Size = new System.Drawing.Size(1468, 170);
             this.Load += new System.EventHandler(this.ctlEEC_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlEEC_VisibleChanged);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.indicatorsGroupBox.ResumeLayout(false);

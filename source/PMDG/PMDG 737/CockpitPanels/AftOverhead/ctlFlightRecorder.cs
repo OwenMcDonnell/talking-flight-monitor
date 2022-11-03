@@ -61,7 +61,21 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlFlightRecorder_Load(object sender, EventArgs e)
         {
             flightRecorderTimer.Tick += new EventHandler(flightRecorderTimerTick);
+            flightRecorderTimer.Interval = 300;
             flightRecorderTimer.Start();
+        }
+
+        private void ctlFlightRecorder_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                flightRecorderTimer.Start();
+            }
+            else
+            {
+                flightRecorderTimer.Stop();
+            }
+
         }
     }
 }

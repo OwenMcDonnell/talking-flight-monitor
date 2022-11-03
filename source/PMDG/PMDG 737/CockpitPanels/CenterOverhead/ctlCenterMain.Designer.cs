@@ -461,6 +461,7 @@
             this.Name = "ctlCenterMain";
             this.Size = new System.Drawing.Size(914, 550);
             this.Load += new System.EventHandler(this.ctlCenterMain_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlCenterMain_VisibleChanged);
             this.centerMainFlowLayoutPanel.ResumeLayout(false);
             this.centerMainFlowLayoutPanel.PerformLayout();
             this.lightsGroupBox.ResumeLayout(false);

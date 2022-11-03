@@ -1284,6 +1284,7 @@
             this.Name = "ctlAntiIce";
             this.Size = new System.Drawing.Size(1803, 621);
             this.Load += new System.EventHandler(this.ctlAntiIce_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlAntiIce_VisibleChanged);
             this.antiIceFlowLayoutPanel.ResumeLayout(false);
             this.antiIceFlowLayoutPanel.PerformLayout();
             this.windowHeatGroupBox.ResumeLayout(false);
