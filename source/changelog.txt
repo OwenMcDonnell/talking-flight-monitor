@@ -18,7 +18,7 @@
     * Flaps
     *   Gear
 * The new keyboard command for settings is right bracket (]), then Ctrl+, (comma).
-* The new keyboard command for keyboard manager is right bracket (]), then ? (question mark).
+* The new keyboard command for keyboard manager is right bracket (]), then Ctrl+K.
 * Inside the keyboard manager, pressing ALT+E while on a TFM command will activate that command.
 
 ### MSFS 2020 support
@@ -36,6 +36,7 @@ Covers initial support for the PMDG 737 series of aircraft for MSFS 2020. To ens
 
 ### Known issues
 
+* TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
 * TFM: Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
 * TFM: The PMDG 747 has an approach mode light that turns on when on final. This usually happens after the ILS is active. TFM uses this light to determine when it should start reading signals from the nav radios. Since the app light and the approach mode switch are different, TFM can start reading ILS signals before approach mode is turned on. This is an issue, but the side affect is a desired feature. We will look into this more during the 747 rebuild cycle.
 * MSFS: Update 11 beta broke navigation. Sighted users have the identical problem, waiting on a fix.

@@ -2233,7 +2233,7 @@ else              if (PMDG777Detected)
                     gatesForm.ShowDialog();
                     break;
 
-                case "Keyboard_Manager":
+                case "keyboard_manager":
                     DisplayKeyboardManager();
                     break;
 
@@ -4658,18 +4658,16 @@ else              if (PMDG777Detected)
 
         private void DisplayKeyboardManager()
         {
-            frmKeyboardManager keyboard = new frmKeyboardManager();
-            keyboard.ShowDialog();
-            if (keyboard.DialogResult == DialogResult.OK)
+            frmKeyboardManager keyboardManager = new frmKeyboardManager();
+            keyboardManager.ShowDialog();
+            if (keyboardManager.DialogResult == DialogResult.OK)
             {
                 Properties.Hotkeys.Default.Save();
-
             }
-            else
+            if (keyboardManager.DialogResult == DialogResult.Cancel)
             {
                 Properties.Hotkeys.Default.Reload();
             }
-
 
         }
 

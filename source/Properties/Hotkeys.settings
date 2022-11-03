@@ -300,7 +300,7 @@
       <Value Profile="(Default)">Ctrl+R</Value>
     </Setting>
     <Setting Name="keyboard_manager" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Shift+OemQuestion</Value>
+      <Value Profile="(Default)">Ctrl+K</Value>
     </Setting>
   </Settings>
 </SettingsFile>
