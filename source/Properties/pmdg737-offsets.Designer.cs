@@ -3766,5 +3766,209 @@ namespace tfm.Properties {
                 this["MAIN_annunAT_Amber2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_MainPanelKnob1 {
+            get {
+                return ((bool)(this["LTS_MainPanelKnob1"]));
+            }
+            set {
+                this["LTS_MainPanelKnob1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_MainPanelKnob2 {
+            get {
+                return ((bool)(this["LTS_MainPanelKnob2"]));
+            }
+            set {
+                this["LTS_MainPanelKnob2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_BackgroundKnob {
+            get {
+                return ((bool)(this["LTS_BackgroundKnob"]));
+            }
+            set {
+                this["LTS_BackgroundKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_AFDSFloodKnob {
+            get {
+                return ((bool)(this["LTS_AFDSFloodKnob"]));
+            }
+            set {
+                this["LTS_AFDSFloodKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_OutbdDUBrtKnob1 {
+            get {
+                return ((bool)(this["LTS_OutbdDUBrtKnob1"]));
+            }
+            set {
+                this["LTS_OutbdDUBrtKnob1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_OutbdDUBrtKnob2 {
+            get {
+                return ((bool)(this["LTS_OutbdDUBrtKnob2"]));
+            }
+            set {
+                this["LTS_OutbdDUBrtKnob2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_InbdDUBrtKnob1 {
+            get {
+                return ((bool)(this["LTS_InbdDUBrtKnob1"]));
+            }
+            set {
+                this["LTS_InbdDUBrtKnob1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_InbdDUBrtKnob2 {
+            get {
+                return ((bool)(this["LTS_InbdDUBrtKnob2"]));
+            }
+            set {
+                this["LTS_InbdDUBrtKnob2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_InbdDUMapBrtKnob1 {
+            get {
+                return ((bool)(this["LTS_InbdDUMapBrtKnob1"]));
+            }
+            set {
+                this["LTS_InbdDUMapBrtKnob1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_InbdDUMapBrtKnob2 {
+            get {
+                return ((bool)(this["LTS_InbdDUMapBrtKnob2"]));
+            }
+            set {
+                this["LTS_InbdDUMapBrtKnob2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_UpperDUBrtKnob {
+            get {
+                return ((bool)(this["LTS_UpperDUBrtKnob"]));
+            }
+            set {
+                this["LTS_UpperDUBrtKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_LowerDUBrtKnob {
+            get {
+                return ((bool)(this["LTS_LowerDUBrtKnob"]));
+            }
+            set {
+                this["LTS_LowerDUBrtKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_LowerDUMapBrtKnob {
+            get {
+                return ((bool)(this["LTS_LowerDUMapBrtKnob"]));
+            }
+            set {
+                this["LTS_LowerDUMapBrtKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GPWS_annunINOP {
+            get {
+                return ((bool)(this["GPWS_annunINOP"]));
+            }
+            set {
+                this["GPWS_annunINOP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GPWS_FlapInhibitSw_NORM {
+            get {
+                return ((bool)(this["GPWS_FlapInhibitSw_NORM"]));
+            }
+            set {
+                this["GPWS_FlapInhibitSw_NORM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GPWS_GearInhibitSw_NORM {
+            get {
+                return ((bool)(this["GPWS_GearInhibitSw_NORM"]));
+            }
+            set {
+                this["GPWS_GearInhibitSw_NORM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GPWS_TerrInhibitSw_NORM {
+            get {
+                return ((bool)(this["GPWS_TerrInhibitSw_NORM"]));
+            }
+            set {
+                this["GPWS_TerrInhibitSw_NORM"] = value;
+            }
+        }
     }
 }
