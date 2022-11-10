@@ -171,9 +171,7 @@ namespace tfm
                 {
                     inst.PostTakeOffChecklist();
                 }
-                // Set database reference point so we don't have to do it elsewhere.
-                FSUIPCConnection.AirportsDatabase.SetReferenceLocation();
-                
+                               
             }
                                     catch (Exception ex)
             {
