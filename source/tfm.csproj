@@ -333,6 +333,11 @@
     <Compile Include="JumpTo\RunwaysForm.Designer.cs">
       <DependentUpon>RunwaysForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Keyboard manager\KeyNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KeyNames.resx</DependentUpon>
+    </Compile>
     <Compile Include="OutputHistory\frmOutputHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1098,6 +1103,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Keyboard manager\frmModifyKey.resx">
       <DependentUpon>frmModifyKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyboard manager\KeyNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>KeyNames.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="OutputHistory\frmOutputHistory.resx">
       <DependentUpon>frmOutputHistory.cs</DependentUpon>
