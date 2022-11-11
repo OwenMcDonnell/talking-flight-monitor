@@ -631,7 +631,7 @@ namespace tfm
             {12, "900ER SSW" },
         };
 
-
+        
         public static List<PanelObject> PanelControls
         {
             get => new List<PanelObject>()
@@ -994,17 +994,17 @@ new SingleStateToggle { Name = "Main panel Backlight", PanelName = "Lower Forwar
 new SingleStateToggle { Name = "AFDS flood light", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_AFDSFloodKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_AFDSFloodKnob},
 new SingleStateToggle { Name = "Left outboard DU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_OutbdDUBrtKnob[0], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_OutbdDUBrtKnob1},
 new SingleStateToggle { Name = "Right outboard DU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_OutbdDUBrtKnob[1], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_OutbdDUBrtKnob2},
-new SingleStateToggle { Name = "Left inboard DDU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_InbdDUBrtKnob[0], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_InbdDUBrtKnob1},
-new SingleStateToggle { Name = "Right inboard DDU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_InbdDUBrtKnob[1], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_InbdDUBrtKnob2},
+new SingleStateToggle { Name = "Left inboard DU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_InbdDUBrtKnob[0], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_InbdDUBrtKnob1},
+new SingleStateToggle { Name = "Right inboard DU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_InbdDUBrtKnob[1], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_InbdDUBrtKnob2},
 new SingleStateToggle { Name = "Left inboard map brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_InbdDUMapBrtKnob[0], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_InbdDUMapBrtKnob1},
 new SingleStateToggle { Name = "Right inboard map brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_InbdDUMapBrtKnob[1], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_InbdDUMapBrtKnob2},
 new SingleStateToggle { Name = "Upper DU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_UpperDUBrtKnob},
 new SingleStateToggle {Name = "Lower DU brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LowerDUBrtKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LowerDUBrtKnob},
 new SingleStateToggle { Name = "Lower DU map brightness", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_LowerDUMapBrtKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_LowerDUMapBrtKnob},
 new SingleStateToggle { Name = "GPWS inop light", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_annunINOP, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_annunINOP},
-new SingleStateToggle { Name = "GPWS flaps inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_FlapInhibitSw_NORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_FlapInhibitSw_NORM},
-new SingleStateToggle { Name = "GPWS gear inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_GearInhibitSw_NORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_GearInhibitSw_NORM},
-new SingleStateToggle { Name = "GPWS terrain inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_TerrInhibitSw_NORM, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_TerrInhibitSw_NORM},
+new SingleStateToggle { Name = "GPWS flaps inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_FlapInhibitSw_NORM, AvailableStates = _normalOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_FlapInhibitSw_NORM},
+new SingleStateToggle { Name = "GPWS gear inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_GearInhibitSw_NORM, AvailableStates = _normalOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_GearInhibitSw_NORM},
+new SingleStateToggle { Name = "GPWS terrain inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_TerrInhibitSw_NORM, AvailableStates = _normalOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_TerrInhibitSw_NORM},
 
 // --end-panel-controls                              
             };
@@ -2661,5 +2661,171 @@ public static void Gear()
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GEAR_LEVER, 0);
             }
         } // Gear
-    } // End PMDG737Aircraft.
+
+public static void LeftLowerMainPanelLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_MAIN_PANEL_BRT, Inc);
+        } // LeftLowerMainPanelLightIncrease
+
+        public static void LeftLowerMainPanelLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_MAIN_PANEL_BRT, Dec);
+        } // LeftLowerMainPanelLightDecrease
+
+public static void RightMainPanelLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_MAIN_PANEL_BRT, Inc);
+        } // RightMainPanelLightIncrease
+
+        public static void RightMainPanelLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_MAIN_PANEL_BRT, Dec);
+        } // RightMainPanelDecrease
+
+        public static void MainPanelBackLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_BACKGROUND_BRT, Inc);
+        } // MainPanelBackLightIncrease
+
+        public static void MainPanelBackLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_BACKGROUND_BRT, Dec);
+        } // MainPanelBackLightDecrease
+
+        public static void AFDSFloodLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_AFDS_BRT, Inc);
+        } // AFDSFloodLightIncrease
+
+        public static void AFDSFloodLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_AFDS_BRT, Dec);
+        } // AFDSFloodLightDecrease
+
+        public static void FlapsInhibit()
+        {
+            if(Aircraft.pmdg737.GPWS_FlapInhibitSw_NORM.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_FLAP_INHIBIT_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_FLAP_INHIBIT_SWITCH, ClkR);
+            }
+        } // FlapsInhibit
+
+        public static void GearInhibit()
+        {
+            if(Aircraft.pmdg737.GPWS_GearInhibitSw_NORM.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_GEAR_INHIBIT_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_GEAR_INHIBIT_SWITCH, ClkR);
+            }
+        } // GearInhibit
+
+        public static void TerrainInhibit()
+        {
+            if(Aircraft.pmdg737.GPWS_TerrInhibitSw_NORM.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_TERR_INHIBIT_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_TERR_INHIBIT_SWITCH, ClkR);
+            }
+        } // TerrainInhibit
+
+        public static void LeftOutbdDuLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_OUTBD_DU_BRT, Inc);
+        } // LeftOutbdDuLightIncrease
+
+        public static void LeftOutbdDuLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_OUTBD_DU_BRT, Dec);
+        } // LeftOutbdDuLightDecrease
+
+        public static void RightOutbdDuLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_OUTBD_DU_BRT, Inc);
+        } // RightOutbdDuLightIncrease
+
+        public static void RightOutbdDuLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_OUTBD_DU_BRT, Dec);
+        } // RightOutbdDuLightDecrease
+
+        public static void LeftInbdDuLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_INBD_DU_BRT, Inc);
+        } // LeftInbdDuLightIncrease
+
+        public static void LeftInbdDuLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_INBD_DU_BRT, Dec);
+        } // LeftInbdDuLightDecrease
+
+        public static void RightInbdDuLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_INBD_DU_BRT, Inc);
+        } // RightInbdDuLightIncrease
+
+        public static void RightInbdDuLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_INBD_DU_BRT, Dec);
+        } // RightInbdDuLightDecrease
+
+        public static void LeftInbdMapLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_INBD_DU_INNER_BRT, Inc);
+        } // LeftInbdMapLightIncrease
+
+        public static void LeftInbdMapLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_INBD_DU_INNER_BRT, Dec);
+        } // LeftInbdMapLightDecrease
+
+        public static void RightInbdMapLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_INBD_DU_INNER_BRT, Inc);
+        } // RightInbdMapLightIncrease
+
+        public static void RightInbdMapLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_INBD_DU_INNER_BRT, Dec);
+        } // RightInbdMapLightDecrease
+
+        public static void UpperDuLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_UPPER_DU_BRT, Inc);
+        } // UpperDuLightIncrease
+
+        public static void UpperDuLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_UPPER_DU_BRT, Dec);
+        } // UpperDuLightDecrease
+
+        public static void LowerDuLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_LOWER_DU_BRT, Inc);
+        } // LowerDuLightIncrease
+
+        public static void LowerDuLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_LOWER_DU_BRT, Dec);
+        } // LowerDuLightDecrease
+
+        public static void LowerMapLightIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_LOWER_DU_INNER_BRT, Inc);
+        } // LowerMapLightIncrease
+
+        public static void LowerMapLightDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_LOWER_DU_INNER_BRT, Dec);
+        } // LowerMapLightDecrease
+                  } // End PMDG737Aircraft.
     } // End namespace.

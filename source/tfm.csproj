@@ -426,6 +426,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.Designer.cs">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.Designer.cs">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1128,6 +1134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.resx">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.resx">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>

@@ -1,25 +1,8 @@
-﻿## Talking flight monitor 22.11 Preview release notes
+﻿## Talking flight monitor 22.11.1 Preview release notes
 
 ### What's new?
 
-* Vatsim mode (right bracket (]), then P). Displays a list of vatsim ATC stations and pilots signed into the Vatsim network.
-    * In TFM's user interface settings, enable/disable by checking/unchecking the Vatsim mode setting.
-    * The AI traffic display is replaced with the live Vatsim display.
-    * Pressing ENTER on an ATC station will set com1 to that frequency.
-    * Filter pilots with the maximum range field (Alt+D).
-    * In the pilots list, CtrL+1 - Ctrl+7 sorts by columns 1 - 7.
-    * In the controllers list, pressing Ctrl+1 - Ctrl+5 sorts by columns 1 - 5.
-* Forward panel
-    * MCP
-    * DU
-    * Standby
-    * Speed
-    * Brakes
-    * Flaps
-    *   Gear
-* The new keyboard command for settings is right bracket (]), then Ctrl+, (comma).
-* The new keyboard command for keyboard manager is right bracket (]), then Ctrl+K.
-* Inside the keyboard manager, pressing ALT+E while on a TFM command will activate that command.
+* Lower forward panel
 
 ### MSFS 2020 support
 

@@ -100,6 +100,7 @@
             treeNode36,
             treeNode37,
             treeNode38});
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Lower Forward");
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -188,13 +189,16 @@
             treeNode38.Text = "Gear";
             treeNode39.Name = "forwardNode";
             treeNode39.Text = "Forward";
+            treeNode40.Name = "lowerForwardNode";
+            treeNode40.Text = "Lower Forward";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
             treeNode20,
             treeNode23,
             treeNode31,
-            treeNode39});
+            treeNode39,
+            treeNode40});
             this.tvPanels.Size = new System.Drawing.Size(300, 700);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

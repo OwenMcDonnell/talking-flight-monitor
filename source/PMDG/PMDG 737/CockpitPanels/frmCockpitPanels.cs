@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tfm.PMDG.PMDG_737.CockpitPanels;
 using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
@@ -79,6 +80,9 @@ namespace tfm
             pages.Add("brakesNode", new ctlForwardBrakes());
             pages.Add("flapsNode", new ctlFlaps());
             pages.Add("forwardGearNode", new ctlForwardGear());
+
+            // --panel: Lower Forward
+            pages.Add("lowerForwardNode", new ctlLowerForward());
                                     // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
