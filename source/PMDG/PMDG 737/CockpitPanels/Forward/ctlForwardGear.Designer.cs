@@ -267,6 +267,7 @@
             this.Name = "ctlForwardGear";
             this.Size = new System.Drawing.Size(1210, 130);
             this.Load += new System.EventHandler(this.ctlForwardGear_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlForwardGear_VisibleChanged);
             this.gearFlowLayoutPanel.ResumeLayout(false);
             this.gearFlowLayoutPanel.PerformLayout();
             this.gearTransitGroupBox.ResumeLayout(false);

@@ -114,5 +114,17 @@ if(Aircraft.pmdg737.MCP_VertSpeedBlank.Value == 1)
         public void SetDocking()
         {
                     }
+
+        private void ctlMcpVerticalSpeed_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                vsTimer.Start();
+            }
+            else
+            {
+                vsTimer.Stop();
+            }
+        }
     }
 }

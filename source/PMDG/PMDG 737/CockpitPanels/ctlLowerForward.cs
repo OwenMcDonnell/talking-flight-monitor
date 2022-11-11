@@ -457,5 +457,17 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
                 PMDG737Aircraft.LowerMapLightDecrease();
             }
         }
+
+        private void ctlLowerForward_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                lowerForwardTimer.Start();
+            }
+            else
+            {
+                lowerForwardTimer.Stop();
+            }
+        }
     }
 }

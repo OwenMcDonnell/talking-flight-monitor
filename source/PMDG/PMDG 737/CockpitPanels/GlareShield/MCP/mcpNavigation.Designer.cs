@@ -419,6 +419,7 @@
             this.Name = "ctlMcpNavigation";
             this.Size = new System.Drawing.Size(1781, 118);
             this.Load += new System.EventHandler(this.mcpNavigation_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlMcpNavigation_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mcpNavigation_KeyDown);
             this.navigationFlowLayoutPanel.ResumeLayout(false);
             this.navigationFlowLayoutPanel.PerformLayout();

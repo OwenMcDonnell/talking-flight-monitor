@@ -150,5 +150,17 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.Forward
         {
             PMDG737Aircraft.Gear();
         }
+
+        private void ctlForwardGear_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                gearTimer.Start();
+            }
+            else
+            {
+                gearTimer.Stop();
+            }
+        }
     }
 }

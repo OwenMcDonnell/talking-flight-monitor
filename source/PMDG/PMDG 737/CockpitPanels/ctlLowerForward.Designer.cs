@@ -546,6 +546,7 @@
             this.Name = "ctlLowerForward";
             this.Size = new System.Drawing.Size(1855, 343);
             this.Load += new System.EventHandler(this.ctlLowerForward_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlLowerForward_VisibleChanged);
             this.controlsFlowLayoutPanel.ResumeLayout(false);
             this.controlsFlowLayoutPanel.PerformLayout();
             this.mainPanelGroupBox.ResumeLayout(false);
