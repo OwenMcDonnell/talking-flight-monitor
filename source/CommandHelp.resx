@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AGL_Altitude" xml:space="preserve">
+    <value>Read above ground altitude</value>
+  </data>
+  <data name="ZuluTime" xml:space="preserve">
+    <value>Read current ZuluTime</value>
+  </data>
+  <data name="Fuel_Report" xml:space="preserve">
+    <value>Get fuel report</value>
+  </data>
+  <data name="Read_Flaps_Angle" xml:space="preserve">
+    <value>Read Flaps Angle</value>
+  </data>
+  <data name="Vertical_Speed" xml:space="preserve">
+    <value>Read Vertical Speed</value>
+  </data>
+  <data name="Engine_1_Info" xml:space="preserve">
+    <value>Engine 1 Info</value>
+  </data>
+  <data name="Fuel_Tank_7" xml:space="preserve">
+    <value>Fuel Tank 7 info</value>
+  </data>
+  <data name="aircraft_profiles" xml:space="preserve">
+    <value>Open aircraft profile window</value>
+  </data>
+  <data name="Fuel_Tank_8" xml:space="preserve">
+    <value>Fuel Tank 8 info</value>
+  </data>
+  <data name="distanceToDescent" xml:space="preserve">
+    <value>Get distance to descent</value>
+  </data>
+  <data name="Current_Location" xml:space="preserve">
+    <value>Get current location of aircraft</value>
+  </data>
+  <data name="Weight_Report" xml:space="preserve">
+    <value>Weight Report</value>
+  </data>
+  <data name="Toggle_Autopilot_Announcement" xml:space="preserve">
+    <value>Toggle Autopilot Announcement</value>
+  </data>
+  <data name="Indicated_Airspeed" xml:space="preserve">
+    <value>Read indicated airspeed</value>
+  </data>
+  <data name="ap_Get_Vertical_Speed" xml:space="preserve">
+    <value>Get autopilot vertical speed</value>
+  </data>
+  <data name="destination_runway" xml:space="preserve">
+    <value>Get destination runway</value>
+  </data>
+  <data name="ap_PMDG_CDU" xml:space="preserve">
+    <value>Access PMDG CDU</value>
+  </data>
+  <data name="A2A_manager" xml:space="preserve">
+    <value>Open A2A aircraft manager</value>
+  </data>
+  <data name="takeoff_assist" xml:space="preserve">
+    <value>takeoff assist</value>
+  </data>
+  <data name="report_issue" xml:space="preserve">
+    <value>report issue</value>
+  </data>
+  <data name="Next_Waypoint" xml:space="preserve">
+    <value>Next Waypoint</value>
+  </data>
+  <data name="ap_NavigationBox" xml:space="preserve">
+    <value>Bring up nav radio dialog</value>
+  </data>
+  <data name="ap_Get_Mach_Speed" xml:space="preserve">
+    <value>Get mach speed</value>
+  </data>
+  <data name="Engine_3_Throttle" xml:space="preserve">
+    <value>Engine 3 Throttle</value>
+  </data>
+  <data name="JumpToRunway" xml:space="preserve">
+    <value>JumpToRunway</value>
+  </data>
+  <data name="Output_History" xml:space="preserve">
+    <value>Output History</value>
+  </data>
+  <data name="get_spoilers" xml:space="preserve">
+    <value>get spoilers</value>
+  </data>
+  <data name="Fuel_Tank_10" xml:space="preserve">
+    <value>Fuel Tank 10 info</value>
+  </data>
+  <data name="ap_Set_Heading" xml:space="preserve">
+    <value>Set autopilot heading</value>
+  </data>
+  <data name="ap_Set_Vertical_Speed" xml:space="preserve">
+    <value>Set vertical speed</value>
+  </data>
+  <data name="LocalTime" xml:space="preserve">
+    <value>get local time</value>
+  </data>
+  <data name="display_website" xml:space="preserve">
+    <value>Open TFM website</value>
+  </data>
+  <data name="Fuel_Tank_4" xml:space="preserve">
+    <value>Fuel Tank 4 info</value>
+  </data>
+  <data name="Fuel_Tank_9" xml:space="preserve">
+    <value>Fuel Tank 9 info</value>
+  </data>
+  <data name="application_quit" xml:space="preserve">
+    <value>Quit application</value>
+  </data>
+  <data name="Runway_Guidance_Mode" xml:space="preserve">
+    <value>Runway Guidance Mode</value>
+  </data>
+  <data name="ap_Set_Com_Radios" xml:space="preserve">
+    <value>Set comm radios</value>
+  </data>
+  <data name="Engine_4_Info" xml:space="preserve">
+    <value>Engine 4 Info</value>
+  </data>
+  <data name="Engine_4_Throttle" xml:space="preserve">
+    <value>Engine 4 Throttle</value>
+  </data>
+  <data name="Landing_Rate" xml:space="preserve">
+    <value>Get landing rate</value>
+  </data>
+  <data name="n1monitor" xml:space="preserve">
+    <value>n1monitor</value>
+  </data>
+  <data name="ap_Get_Altimeter" xml:space="preserve">
+    <value>Get altimeter</value>
+  </data>
+  <data name="ASL_Altitude" xml:space="preserve">
+    <value>Get above sea level altitude</value>
+  </data>
+  <data name="Fuel_Tank_1" xml:space="preserve">
+    <value>Fuel Tank 1 info</value>
+  </data>
+  <data name="Engine_3_Info" xml:space="preserve">
+    <value>Engine 3 Info</value>
+  </data>
+  <data name="ap_Set_Altitude" xml:space="preserve">
+    <value>Set autopilot altitude</value>
+  </data>
+  <data name="Fuel_Tank_2" xml:space="preserve">
+    <value>Fuel Tank 2 info</value>
+  </data>
+  <data name="Speak_Attitude" xml:space="preserve">
+    <value>Speak Attitude</value>
+  </data>
+  <data name="Mach_Speed" xml:space="preserve">
+    <value>get Mach speed</value>
+  </data>
+  <data name="ap_Get_Com_Radios" xml:space="preserve">
+    <value>Get current comm radio settings</value>
+  </data>
+  <data name="ap_Set_Throttle" xml:space="preserve">
+    <value>Set throttle</value>
+  </data>
+  <data name="ap_Get_Heading" xml:space="preserve">
+    <value>Get autopilot heading</value>
+  </data>
+  <data name="Repeat_Last_Simconnect_Message" xml:space="preserve">
+    <value>Repeat Last Simconnect Message</value>
+  </data>
+  <data name="get_speedbreak" xml:space="preserve">
+    <value>get speedbreak</value>
+  </data>
+  <data name="Engine_2_Throttle" xml:space="preserve">
+    <value>Engine 2 Throttle</value>
+  </data>
+  <data name="ap_Command_Key" xml:space="preserve">
+    <value>Autopilot command key.</value>
+  </data>
+  <data name="Ground_Speed" xml:space="preserve">
+    <value>Ground Speedread Ground speed</value>
+  </data>
+  <data name="ap_Get_Airspeed" xml:space="preserve">
+    <value>Get autopilot airspeed</value>
+  </data>
+  <data name="Engine_1_Throttle" xml:space="preserve">
+    <value>Engine 1 Throttle</value>
+  </data>
+  <data name="ap_Set_Transponder" xml:space="preserve">
+    <value>Set  transponder</value>
+  </data>
+  <data name="Toggle_Trim_Announcement" xml:space="preserve">
+    <value>Toggle Trim Announcement</value>
+  </data>
+  <data name="Command_Key" xml:space="preserve">
+    <value>Command key</value>
+  </data>
+  <data name="Aircraft_Heading" xml:space="preserve">
+    <value>Read aircraft heading</value>
+  </data>
+  <data name="Outside_Temperature" xml:space="preserve">
+    <value>Outside Temperature</value>
+  </data>
+  <data name="Toggle_GPWS_Announcement" xml:space="preserve">
+    <value>Toggle GPWS Announcement</value>
+  </data>
+  <data name="ap_FMCMessage" xml:space="preserve">
+    <value>Read last FMC message</value>
+  </data>
+  <data name="True_Airspeed" xml:space="preserve">
+    <value>Read True Airspeed</value>
+  </data>
+  <data name="Toggle_Braille_output" xml:space="preserve">
+    <value>Toggle Braille output</value>
+  </data>
+  <data name="ap_Set_Altimeter" xml:space="preserve">
+    <value>Set altimeter</value>
+  </data>
+  <data name="Nearest_City" xml:space="preserve">
+    <value>Nearest City</value>
+  </data>
+  <data name="ap_Get_Altitude" xml:space="preserve">
+    <value>Get autopilot altitude</value>
+  </data>
+  <data name="Wind_Information" xml:space="preserve">
+    <value>Wind Information</value>
+  </data>
+  <data name="Fuel_Tank_3" xml:space="preserve">
+    <value>Fuel Tank 3 info</value>
+  </data>
+  <data name="ap_PMDG_Panels" xml:space="preserve">
+    <value>Open PMDG panels</value>
+  </data>
+  <data name="Toggle_ILS_Announcement" xml:space="preserve">
+    <value>Toggle ILS Announcement</value>
+  </data>
+  <data name="Read_Simulation_Rate" xml:space="preserve">
+    <value>Read Simulation Rate</value>
+  </data>
+  <data name="Engine_2_Info" xml:space="preserve">
+    <value>Engine 2 Info</value>
+  </data>
+  <data name="ap_Set_Mach_Speed" xml:space="preserve">
+    <value>Set mach speed</value>
+  </data>
+  <data name="Nearby_Airborn_Aircraft" xml:space="preserve">
+    <value>Nearby Airborn Aircraft</value>
+  </data>
+  <data name="Fuel_Manager" xml:space="preserve">
+    <value>Open Fuel Manager</value>
+  </data>
+  <data name="Nearby_Ground_Aircraft" xml:space="preserve">
+    <value>Nearby Ground Aircraft</value>
+  </data>
+  <data name="Fuel_Tank_5" xml:space="preserve">
+    <value>Fuel Tank 5 info</value>
+  </data>
+  <data name="Fuel_Tank_6" xml:space="preserve">
+    <value>Fuel Tank 6 info</value>
+  </data>
+  <data name="ap_set_spoilers" xml:space="preserve">
+    <value>Set spoilers</value>
+  </data>
+  <data name="ap_Set_Nav_Radios" xml:space="preserve">
+    <value>Set nav radios</value>
+  </data>
+  <data name="JumpToGate" xml:space="preserve">
+    <value>JumpToGate</value>
+  </data>
+  <data name="Disable_Command_Key" xml:space="preserve">
+    <value>Disable Command Key</value>
+  </data>
+  <data name="Mute_Simconnect_Messages" xml:space="preserve">
+    <value>Toggle reading of SimConnect messages</value>
+  </data>
+  <data name="Destination_Info" xml:space="preserve">
+    <value>Get destination info</value>
+  </data>
+  <data name="ApplicationRestart" xml:space="preserve">
+    <value>Restart TFM</value>
+  </data>
+  <data name="application_settings" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+  <data name="Read_Landing_Gear" xml:space="preserve">
+    <value>Read Landing Gear</value>
+  </data>
+  <data name="ap_Set_Airspeed" xml:space="preserve">
+    <value>Set autopilot airspeed</value>
+  </data>
+  <data name="ap_Get_Transponder" xml:space="preserve">
+    <value>Get current transponder setting</value>
+  </data>
+  <data name="flight_planner" xml:space="preserve">
+    <value>flight planner</value>
+  </data>
+  <data name="Attitude_Mode" xml:space="preserve">
+    <value>Toggle attitude mode</value>
+  </data>
+  <data name="Fuel_Flow" xml:space="preserve">
+    <value>Get fuel flow</value>
+  </data>
+  <data name="Toggle_Flaps_Announcement" xml:space="preserve">
+    <value>Toggle Flaps Announcement</value>
+  </data>
+  <data name="keyboard_manager" xml:space="preserve">
+    <value>Open Keyboard Manager</value>
+  </data>
+  <data name="ap_Get_Nav_Radios" xml:space="preserve">
+    <value>Get nav radio info</value>
+  </data>
+</root>

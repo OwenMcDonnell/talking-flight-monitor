@@ -302,5 +302,8 @@
     <Setting Name="keyboard_manager" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+K</Value>
     </Setting>
+    <Setting Name="toggle_help_mode" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Shift+OemQuestion</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

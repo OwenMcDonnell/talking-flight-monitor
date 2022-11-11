@@ -1219,5 +1219,17 @@ namespace tfm.Properties {
                 this["keyboard_manager"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        public global::System.Windows.Forms.Keys toggle_help_mode {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["toggle_help_mode"]));
+            }
+            set {
+                this["toggle_help_mode"] = value;
+            }
+        }
     }
 }

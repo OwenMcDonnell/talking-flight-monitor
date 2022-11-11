@@ -286,6 +286,11 @@
     <Compile Include="Autopilot\frmAltimeter.Designer.cs">
       <DependentUpon>frmAltimeter.cs</DependentUpon>
     </Compile>
+    <Compile Include="commandHelp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>commandHelp.resx</DependentUpon>
+    </Compile>
     <Compile Include="ComparisonTypes.cs" />
     <Compile Include="Events\PMDGPanelUpdateEvent.cs" />
     <Compile Include="Events\PMDGPanelUpdateEventArgs.cs" />
@@ -1056,6 +1061,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Autopilot\frmComRadios.resx">
       <DependentUpon>frmComRadios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="commandHelp.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>commandHelp.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Flight planning\AirportsForm.resx">
       <DependentUpon>AirportsForm.cs</DependentUpon>
