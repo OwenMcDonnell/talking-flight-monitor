@@ -29,6 +29,7 @@ using NGeoNames.Entities;
 using TimeZoneConverter;
 using System.Diagnostics;
 using System.Reflection;
+using System.Resources;
 using System.ServiceModel.Security;
 using System.Drawing.Text;
 using System.Windows.Forms.VisualStyles;
@@ -63,6 +64,8 @@ namespace tfm
 
 
 
+        // load command help resources
+        private ResourceManager rm = new ResourceManager(typeof(commandHelp));
 
         // timers
         private static System.Timers.Timer RunwayGuidanceTimer;
@@ -218,6 +221,7 @@ namespace tfm
         }
 
         public bool WarningFlag { get; private set; }
+        public bool helpModeEnabled { get; private set; }
 
         public bool CommandKeyEnabled = true;
 
@@ -262,7 +266,7 @@ namespace tfm
             var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
             HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
             HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            // HotkeyManager.Current.AddOrReplace("test", Keys.Q, OffsetTest);
+            HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
 
             runwayGuidanceEnabled = false;
 
@@ -284,7 +288,17 @@ namespace tfm
            
         }
 
-        
+        private void RunTest(object sender, HotkeyEventArgs e)
+        {
+            e.Handled = true;
+            ResourceManager rm = new ResourceManager(typeof(commandHelp));
+            
+
+
+
+        }
+
+
         /*private void SetupAzureSpeech()
 {
    try
@@ -1675,14 +1689,18 @@ else              if (PMDG777Detected)
 
         private void commandMode(object sender, HotkeyEventArgs e)
         {
-            // Check to see if we are connected to the sim
-            if (FSUIPCConnection.IsOpen || utility.DebugEnabled)
+            // Check to see if we are connected to the sim.
+            if (FSUIPCConnection.IsOpen || utility.DebugEnabled || helpModeEnabled)
             {
                 // remove the left bracket autopilot command
                 HotkeyManager.Current.Remove("ap_Command_Key");
                 // play the command sound
                 cmdSound = new WaveFileReader(@"sounds\command.wav");
                 mixer.AddMixerInput(cmdSound);
+                if (helpModeEnabled)
+                {
+                    Speak(rm.GetString("Command_Key"));
+                }
                 // populate a list of hotkeys, so we can clear them later.
                 foreach (SettingsProperty s in Properties.Hotkeys.Default.Properties)
                 {
@@ -1724,11 +1742,16 @@ else              if (PMDG777Detected)
                 // AudioPlaybackEngine.Instance.PlaySound(cmdSound);
                 apCmdSound = new WaveFileReader(@"sounds\ap_command.wav");
                 mixer.AddMixerInput(apCmdSound);
+                if (helpModeEnabled)
+                {
+                    Speak(rm.GetString("ap_Command_Key"));
+                }
+
                 // populate a list of hotkeys, so we can clear them later.
                 foreach (SettingsProperty s in Properties.Hotkeys.Default.Properties)
                 {
                     if (s.Name == "Autopilot_Command_Key") continue;
-                    if (s.Name.StartsWith("ap_"))
+                    if (s.Name.StartsWith("ap_") || s.Name == "toggle_help_mode")
                     {
                         autopilotHotkeys.Add(s.Name);
                         try
@@ -1760,6 +1783,19 @@ else              if (PMDG777Detected)
             
             e.Handled = true;
             ResetHotkeys();
+            
+            if (helpModeEnabled == true)
+            {
+                if (e.Name == "toggle_help_mode")
+                {
+                    Output(isGauge: false, output: "Toggle Command help. Exiting help.");
+                    helpModeEnabled = false;
+                    return;
+                }
+
+                Speak(rm.GetString(e.Name));
+                return;
+            }
             ExecuteAutopilotCommand(e.Name);
             
         }
@@ -1776,6 +1812,15 @@ else              if (PMDG777Detected)
 
             switch (Name)
             {
+                case "toggle_help_mode":
+                    // enabling command help is handled here. Since command functions are bypassed when help is on, we handle turning it off in the key pressed event.
+                    if (helpModeEnabled == false)
+                    {
+                        Output(isGauge: false, output: "Command help enabled");
+                        helpModeEnabled = true;
+                    }
+                    break;
+
                 case "ap_FMCMessage":
                     ReadPmdgFMCMessage("requested");
                     break;
@@ -2232,6 +2277,14 @@ else              if (PMDG777Detected)
                     tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
                     gatesForm.ShowDialog();
                     break;
+                case "toggle_help_mode":
+                    // enabling command help is handled here. Since command functions are bypassed when help is on, we handle turning it off in the key pressed event.
+                    if (helpModeEnabled == false)
+                    {
+                        Output(isGauge: false, output: "Command help enabled");
+                        helpModeEnabled = true;
+                    }
+                    break;
 
                 case "keyboard_manager":
                     DisplayKeyboardManager();
@@ -2560,6 +2613,18 @@ else              if (PMDG777Detected)
 
             e.Handled = true;
             ResetHotkeys();
+            if (helpModeEnabled == true)
+            {
+                if (e.Name == "toggle_help_mode")
+                {
+                    Output(isGauge: false, output: "Toggle Command help. Exiting help.");
+                    helpModeEnabled = false;
+                    return;
+                }
+                Output(isGauge:false, output:rm.GetString(e.Name));
+                return;
+            }
+
             ExecuteCommand(e.Name);
 
         }
