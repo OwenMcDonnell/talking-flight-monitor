@@ -9,6 +9,10 @@
     * TFM will describe the keyboard command instead of performing its action.
     * Press right bracket (]), then question mark (?) again to turn it off.
 
+    ### Bug fixes
+
+    * PMDG 737 cockpit performance improvements.
+
 
 ### MSFS 2020 support
 
