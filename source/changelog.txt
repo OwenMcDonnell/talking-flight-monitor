@@ -3,6 +3,12 @@
 ### What's new?
 
 * Lower forward panel
+* Keyboard help.
+    * Press right bracket (]), then question mark (?) to turn it on.
+    * Press the fully qualified keyboard command. Example: right bracket (]), then A.
+    * TFM will describe the keyboard command instead of performing its action.
+    * Press right bracket (]), then question mark (?) again to turn it off.
+
 
 ### MSFS 2020 support
 
