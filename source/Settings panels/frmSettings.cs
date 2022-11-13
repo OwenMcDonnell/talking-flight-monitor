@@ -69,6 +69,9 @@ namespace tfm
             pages.Add("737ForwardBrakesNode", new tfm.Settings_panels.PMDG737.ctlForwardBrakes());
             pages.Add("737ForwardFlapsNode", new tfm.Settings_panels.PMDG737.ctlForwardFlaps());
             pages.Add("737ForwardGearNode", new tfm.Settings_panels.PMDG737.ctlForwardGear());
+
+            // --panel: Lower forward
+            pages.Add("737LowerForwardNode", new tfm.Settings_panels.PMDG737.ctlLowerForward());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

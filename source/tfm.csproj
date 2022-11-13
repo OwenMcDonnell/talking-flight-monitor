@@ -883,6 +883,12 @@
     <Compile Include="Settings panels\PMDG737\ctlLights.Designer.cs">
       <DependentUpon>ctlLights.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLowerForward.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLowerForward.Designer.cs">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlMCP.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1386,6 +1392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlLights.resx">
       <DependentUpon>ctlLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlLowerForward.resx">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlMCP.resx">
       <DependentUpon>ctlMCP.cs</DependentUpon>
