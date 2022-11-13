@@ -314,6 +314,12 @@
     <Compile Include="Flight planning\FlightPlanForm.Designer.cs">
       <DependentUpon>FlightPlanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFirstRunHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFirstRunHelp.Designer.cs">
+      <DependentUpon>frmFirstRunHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFuelManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1079,6 +1085,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Flight planning\FlightPlanForm.resx">
       <DependentUpon>FlightPlanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFirstRunHelp.resx">
+      <DependentUpon>frmFirstRunHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFuelManager.resx">
       <DependentUpon>frmFuelManager.cs</DependentUpon>

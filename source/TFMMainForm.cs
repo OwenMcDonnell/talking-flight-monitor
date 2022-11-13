@@ -69,7 +69,17 @@ namespace tfm
                 Tolk.Output("Debug mode");
                 Tolk.PreferSAPI(false);
                             }
+// Show first run dialog if it hasn't been disabled
+if (Properties.Settings.Default.ShowFirstRunDialog)
+            {
+                frmFirstRunHelp frm = new frmFirstRunHelp();
+                frm.ShowDialog();
+                if (frm.DialogResult == DialogResult.OK) {
+                    Properties.Settings.Default.Save();
 
+                }
+
+            }
             if (Properties.Settings.Default.GeonamesUsername == "")
             {
                 MessageBox.Show("Geonames username has not been configured. Flight following features will not function.\nGo to the General section in settings to add your Geonames user name\n", "error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
