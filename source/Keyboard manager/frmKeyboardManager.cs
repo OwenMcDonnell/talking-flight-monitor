@@ -63,7 +63,10 @@ namespace tfm.Keyboard_manager
             string tab = tcKeys.SelectedTab.Name;
             frmModifyKey frm = new frmModifyKey(name: name, tab: tab);
             frm.ShowDialog();
-            
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                updateListViewsAfterModify();
+            }
         }
 
         private void btnDefaults_Click(object sender, EventArgs e)
