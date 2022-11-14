@@ -18,7 +18,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
     public partial class ctlElectrical : UserControl, iPanelsPage
     {
 
-        Timer electricalTimer = new Timer();
+        System.Timers.Timer electricalTimer = new System.Timers.Timer();
         PanelObject[] electricalControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Forward Overhead" && x.PanelSection == "Electrical").ToArray();
         public ctlElectrical()
         {
@@ -29,7 +29,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
         {
                     }
 
-        private void electricalTimerTick(object Sender, EventArgs eventArgs)
+        private void electricalTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach (PanelObject control in electricalControls)
             {
@@ -206,7 +206,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
         private void ctlElectrical_Load(object sender, EventArgs e)
         {
-            electricalTimer.Tick += new EventHandler(electricalTimerTick);
+            electricalTimer.Elapsed += new System.Timers.ElapsedEventHandler(electricalTimerTick);
+            electricalTimer.Interval = 300;
             electricalTimer.Start();
 
             foreach(PanelObject control in electricalControls)
