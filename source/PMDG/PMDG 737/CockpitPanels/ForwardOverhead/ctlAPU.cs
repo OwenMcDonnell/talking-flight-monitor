@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
     public partial class ctlAPU : UserControl, iPanelsPage
     {
 
-        private Timer apuTimer = new Timer();
+        private System.Timers.Timer apuTimer = new System.Timers.Timer();
         private PanelObject[] apuControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Forward Overhead" && x.PanelSection == "APU").ToArray();
 
         public ctlAPU()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
         {
                     }
 
-        private void ApuTimerTick(object Sender, EventArgs eventArgs)
+        private void ApuTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach(PanelObject control in apuControls)
             {
@@ -64,7 +64,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
         private void ctlAPU_Load(object sender, EventArgs e)
         {
-            apuTimer.Tick += new EventHandler(ApuTimerTick);
+            apuTimer.Elapsed += new System.Timers.ElapsedEventHandler(ApuTimerTick);
+            apuTimer.Interval = 300;
             apuTimer.Start();
         }
 
