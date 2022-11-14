@@ -17,10 +17,10 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
     public partial class ctlLights : UserControl, iPanelsPage
     {
 
-        private Timer lightsTimer = new Timer();
+        private System.Timers.Timer lightsTimer = new System.Timers.Timer();
         private PanelObject[] controls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Bottom Overhead" && x.PanelSection == "Lights").ToArray();
 
-        private void LightsTimerTick(object Sender, EventArgs eventArgs)
+        private void LightsTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
 
             foreach(PanelObject control in controls)
@@ -148,8 +148,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
 
         private void ctlLights_Load(object sender, EventArgs e)
         {
-
-            lightsTimer.Tick += new EventHandler(LightsTimerTick);
+            lightsTimer.Elapsed += new System.Timers.ElapsedEventHandler(LightsTimerTick);
             lightsTimer.Interval = 300;
             lightsTimer.Start();
 
