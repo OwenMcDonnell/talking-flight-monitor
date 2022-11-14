@@ -13,7 +13,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 {
     public partial class ctlADIRU : UserControl, iPanelsPage
     {
-        private Timer adiruTimer = new Timer();
+        private System.Timers.Timer adiruTimer = new System.Timers.Timer();
         PanelObjects.PanelObject[] iruControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelSection == "ADIRU" && x.Type != PanelObjectType.Annunciator).ToArray();
         PanelObjects.PanelObject[] lights = PMDG737Aircraft.PanelControls.Where(x => x.PanelSection == "ADIRU" && x.Type == PanelObjectType.Annunciator).ToArray();
         public ctlADIRU()
@@ -25,7 +25,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         {
             
         }
-        private void adiruTimerTick(object Sender, EventArgs e)
+        private void adiruTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             adiruTimer.Stop();
                         //todo: Convert IRS display values into linq.
@@ -117,8 +117,7 @@ foreach(PanelObjects.SingleStateToggle toggle in lights)
 
         private void ctlADIRU_Load(object sender, EventArgs e)
         {
-            adiruTimer.Enabled = true;
-            adiruTimer.Tick += new EventHandler(adiruTimerTick);
+            adiruTimer.Elapsed += new System.Timers.ElapsedEventHandler(adiruTimerTick);
             adiruTimer.Interval = 300;
             adiruTimer.Start();
             Tolk.Load();
