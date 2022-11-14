@@ -266,7 +266,7 @@ namespace tfm
             var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
             HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
             HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
+            // HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
 
             runwayGuidanceEnabled = false;
 
@@ -291,8 +291,8 @@ namespace tfm
         private void RunTest(object sender, HotkeyEventArgs e)
         {
             e.Handled = true;
-            ResourceManager rm = new ResourceManager(typeof(commandHelp));
-            
+            Tolk.Output(FSUIPCConnection.ReadLVar("switch_28_73X").ToString("f2"));
+             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_APU_GEN1_SWITCH, Aircraft.ClkL);
 
 
 
@@ -364,7 +364,7 @@ namespace tfm
 
         private void OffsetTest(object sender, HotkeyEventArgs e)
         {
-            Tolk.Output(FSUIPCConnection.ReadLVar("switch_01_73X").ToString());
+            Tolk.Output(FSUIPCConnection.ReadLVar("ngx_switch_28_a").ToString());
         }
 
         public void ReadAircraftState()
