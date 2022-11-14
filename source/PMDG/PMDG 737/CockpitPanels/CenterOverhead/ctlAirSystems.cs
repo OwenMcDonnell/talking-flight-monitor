@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
 {
     public partial class ctlAirSystems : UserControl, iPanelsPage
     {
-        Timer airSystemsTimer = new Timer();
+        System.Timers.Timer airSystemsTimer = new System.Timers.Timer();
         PanelObject[] controls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Center Overhead" && x.PanelSection == "Air Systems").ToArray();
 
         public ctlAirSystems()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         {
                     }
 
-        private void AirSystemsTimerTick(Object Sender, EventArgs eventArgs)
+        private void AirSystemsTimerTick(Object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach (PanelObject control in controls)
             {
@@ -235,7 +235,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         private void ctlAirSystems_Load(object sender, EventArgs e)
         {
             Tolk.Load();
-            airSystemsTimer.Tick += new EventHandler(AirSystemsTimerTick);
+            airSystemsTimer.Elapsed += new System.Timers.ElapsedEventHandler(AirSystemsTimerTick);
             airSystemsTimer.Interval = 300;
             airSystemsTimer.Start();
             foreach(PanelObject control in controls)
