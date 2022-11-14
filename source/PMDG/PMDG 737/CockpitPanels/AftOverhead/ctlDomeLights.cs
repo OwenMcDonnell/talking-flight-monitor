@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 {
     public partial class ctlDomeLights : UserControl, iPanelsPage
     {
-        private Timer lightsTimer = new Timer();
+        private System.Timers.Timer lightsTimer = new System.Timers.Timer();
         PanelObjects.SingleStateToggle domeLights = (PanelObjects.SingleStateToggle)PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.LTS_DomeWhiteSw).ToArray()[0];
         public ctlDomeLights()
         {
@@ -25,7 +25,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         {
                     }
 
-        private void LightsTimerTick(object Sender, EventArgs eventArgs)
+        private void LightsTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             if (domeLights.Offset.ValueChanged)
             {
@@ -35,7 +35,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
                 private void ctlDomeLights_Load(object sender, EventArgs e)
         {
-            lightsTimer.Tick += new EventHandler(LightsTimerTick);
+            lightsTimer.Elapsed += new System.Timers.ElapsedEventHandler(LightsTimerTick);
             lightsTimer.Interval = 300;
             lightsTimer.Start();
             domeLightsComboBox.SelectedIndex = domeLights.CurrentState.Key;
