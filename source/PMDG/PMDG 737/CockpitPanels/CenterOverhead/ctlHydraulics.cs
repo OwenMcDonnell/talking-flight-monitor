@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
             public partial class ctlHydraulics : UserControl, iPanelsPage
     {
 
-        private Timer hydraulicsTimer = new Timer();
+        private System.Timers.Timer hydraulicsTimer = new System.Timers.Timer();
         private PanelObject[] hydControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Center Overhead" && x.PanelSection == "Hydraulics").ToArray();
 
         public ctlHydraulics()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         {
                     }
 
-        private void HydraulicsTimerTic(object Sender, EventArgs eventArgs)
+        private void HydraulicsTimerTic(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
 
             foreach(PanelObject control in hydControls)
@@ -102,7 +102,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
 
         private void ctlHydraulics_Load(object sender, EventArgs e)
         {
-            hydraulicsTimer.Tick += new EventHandler(HydraulicsTimerTic);
+            hydraulicsTimer.Elapsed += new System.Timers.ElapsedEventHandler(HydraulicsTimerTic);
             hydraulicsTimer.Interval = 300;
             hydraulicsTimer.Start();
         }
