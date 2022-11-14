@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
     public partial class ctlFlightControls : UserControl, iPanelsPage
     {
 
-        Timer flightControlsTimer = new Timer();
+        System.Timers.Timer flightControlsTimer = new System.Timers.Timer();
         private PanelObject[] flightControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Forward Overhead" && x.PanelSection == "Flight controls").ToArray();
 
         public ctlFlightControls()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
         {
                     }
 
-        private void flightControlsTimerTick(object Sender, EventArgs eventArgs)
+        private void flightControlsTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
 
             foreach(PanelObject control in flightControls)
@@ -113,7 +113,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
         private void ctlFlightControls_Load(object sender, EventArgs e)
         {
-           flightControlsTimer.Tick += new EventHandler(flightControlsTimerTick);
+            flightControlsTimer.Elapsed += new System.Timers.ElapsedEventHandler(flightControlsTimerTick);
+            flightControlsTimer.Interval = 300;
             flightControlsTimer.Start();
             Tolk.Load();
 
