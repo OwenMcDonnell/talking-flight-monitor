@@ -18,7 +18,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
     public partial class ctlAntiIce : UserControl, iPanelsPage
     {
 
-        private Timer antiIceTimer = new Timer(500);
+        private System.Timers.Timer antiIceTimer = new System.Timers.Timer();
         PanelObject[] antiIceControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Center Overhead" && x.PanelSection == "Anti-ice").ToArray();
 
         public ctlAntiIce()
@@ -34,14 +34,14 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead
         
         private void ctlAntiIce_Load(object sender, EventArgs e)
         {
-            
-            antiIceTimer.Elapsed += onAntiIceTickEvent;
-            
+
+            antiIceTimer.Elapsed += new System.Timers.ElapsedEventHandler(AntiIceTimerTick);
+            antiIceTimer.Interval = 300;
             
             antiIceTimer.Start();
         }
 
-        private void onAntiIceTickEvent(object sender, System.Timers.ElapsedEventArgs e)
+        private void AntiIceTimerTick(object sender, System.Timers.ElapsedEventArgs e)
         {
 
             
