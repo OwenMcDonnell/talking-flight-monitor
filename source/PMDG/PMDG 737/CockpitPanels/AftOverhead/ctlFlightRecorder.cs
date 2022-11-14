@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
     public partial class ctlFlightRecorder : UserControl, iPanelsPage
     {
 
-        private Timer flightRecorderTimer = new Timer();
+        private System.Timers.Timer flightRecorderTimer = new System.Timers.Timer();
         private PanelObject[] flightRecorderControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Aft Overhead" && x.PanelSection == "Flight recorder").ToArray();
 
         public ctlFlightRecorder()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         {
                     }
 
-        private void flightRecorderTimerTick(object Sender, EventArgs eventArgs)
+        private void flightRecorderTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach(PanelObject control in flightRecorderControls)
             {
@@ -60,7 +60,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
         private void ctlFlightRecorder_Load(object sender, EventArgs e)
         {
-            flightRecorderTimer.Tick += new EventHandler(flightRecorderTimerTick);
+            flightRecorderTimer.Elapsed += new System.Timers.ElapsedEventHandler(flightRecorderTimerTick);
             flightRecorderTimer.Interval = 300;
             flightRecorderTimer.Start();
         }

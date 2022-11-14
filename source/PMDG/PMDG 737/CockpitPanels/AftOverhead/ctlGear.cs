@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
     public partial class ctlGear : UserControl, iPanelsPage
     {
 
-        private Timer gearTimer = new Timer();
+        private System.Timers.Timer gearTimer = new System.Timers.Timer();
         private PanelObject[] gearControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Aft Overhead" && x.PanelSection == "Gear").ToArray();
 
         public ctlGear()
@@ -26,7 +26,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         {
                     }
 
-        private void gearTimerTick(object Sender, EventArgs eventArgs)
+        private void gearTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach(PanelObject control in gearControls)
             {
@@ -49,7 +49,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
         private void ctlGear_Load(object sender, EventArgs e)
         {
-            gearTimer.Tick += new EventHandler(gearTimerTick);
+            gearTimer.Elapsed += new System.Timers.ElapsedEventHandler(gearTimerTick);
             gearTimer.Interval = 300;
             gearTimer.Start();
         }
