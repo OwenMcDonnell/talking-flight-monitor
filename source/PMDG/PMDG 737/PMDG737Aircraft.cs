@@ -2827,5 +2827,35 @@ public static void RightMainPanelLightIncrease()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_LOWER_DU_INNER_BRT, Dec);
         } // LowerMapLightDecrease
-                  } // End PMDG737Aircraft.
+
+        public static void MasterWarning1Reset()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MASTER_CAUTION_LIGHT_LEFT, ClkL);
+        } // MasterWarning1Reset.
+
+        public static void MasterWarning2Reset()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MASTER_CAUTION_LIGHT_RIGHT, ClkL);
+        } // MasterWarning2Reset
+
+        public static void FireWarning1Reset()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_WARN_LIGHT_LEFT, ClkL);
+        } // FireWarning1Reset
+
+        public static void FireWarning2Reset()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_WARN_LIGHT_RIGHT, ClkL);
+        } // FireWarning2Reset
+
+        public static void WarningPanel1Reset()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_SYSTEM_ANNUNCIATOR_PANEL_LEFT, ClkL);
+        } // WarningPanel1Reset
+
+        public static void WarningPanel2Reset()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_SYSTEM_ANNUNCIATOR_PANEL_RIGHT, ClkL);
+        } // WarningPanel2Reset
+    } // End PMDG737Aircraft.
     } // End namespace.
