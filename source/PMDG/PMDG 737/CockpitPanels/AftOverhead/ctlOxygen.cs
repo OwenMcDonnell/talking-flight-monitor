@@ -59,13 +59,13 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void oxygenButton_Click(object sender, EventArgs e)
         {
             var toggle = (SingleStateToggle)PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.OXY_SwNormal).ToArray()[0];
-            if(toggle.CurrentState.Value == "on")
+            if(toggle.CurrentState.Value == "off")
             {
                 PMDG737Aircraft.PassengerOxygenNormal();
             }
             else
             {
-                PMDG737Aircraft.PassengerOxygenOn();
+                PMDG737Aircraft.PassengerOxygenOff();
                 
             }
         }
