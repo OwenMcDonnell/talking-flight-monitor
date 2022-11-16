@@ -13,6 +13,7 @@
 
     ### Bug fixes
 
+* PMDG 737: Added master caution/warning reset buttons to the Glare shield/warnings panel
     * PMDG 737 cockpit performance improvements.
 
 
