@@ -35,12 +35,16 @@
             this.fire1TextBox = new System.Windows.Forms.TextBox();
             this.fire2Label = new System.Windows.Forms.Label();
             this.fire2TextBox = new System.Windows.Forms.TextBox();
+            this.leftMasterFireWarningButton = new System.Windows.Forms.Button();
+            this.rightMasterFireWarningButton = new System.Windows.Forms.Button();
             this.masterCautionGroupBox = new System.Windows.Forms.GroupBox();
             this.masterCautionFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.masterCaution1Label = new System.Windows.Forms.Label();
             this.masterCaution1TextBox = new System.Windows.Forms.TextBox();
             this.masterCaution2Label = new System.Windows.Forms.Label();
             this.masterCaution2TextBox = new System.Windows.Forms.TextBox();
+            this.leftMasterWarningButton = new System.Windows.Forms.Button();
+            this.rightMasterWarningButton = new System.Windows.Forms.Button();
             this.flControlsLabel = new System.Windows.Forms.Label();
             this.fltControlsTextBox = new System.Windows.Forms.TextBox();
             this.irsLabel = new System.Windows.Forms.Label();
@@ -65,12 +69,6 @@
             this.overheadTextBox = new System.Windows.Forms.TextBox();
             this.airSystemsLabel = new System.Windows.Forms.Label();
             this.airSystemsTextBox = new System.Windows.Forms.TextBox();
-            this.leftMasterWarningButton = new System.Windows.Forms.Button();
-            this.rightMasterWarningButton = new System.Windows.Forms.Button();
-            this.leftMasterFireWarningButton = new System.Windows.Forms.Button();
-            this.rightMasterFireWarningButton = new System.Windows.Forms.Button();
-            this.leftPanelResetButton = new System.Windows.Forms.Button();
-            this.rightPanelResetButton = new System.Windows.Forms.Button();
             this.warningsFlowLayoutPanel.SuspendLayout();
             this.fireGroupBox.SuspendLayout();
             this.fireFlowLayoutPanel.SuspendLayout();
@@ -108,12 +106,10 @@
             this.warningsFlowLayoutPanel.Controls.Add(this.overheadTextBox);
             this.warningsFlowLayoutPanel.Controls.Add(this.airSystemsLabel);
             this.warningsFlowLayoutPanel.Controls.Add(this.airSystemsTextBox);
-            this.warningsFlowLayoutPanel.Controls.Add(this.leftPanelResetButton);
-            this.warningsFlowLayoutPanel.Controls.Add(this.rightPanelResetButton);
             this.warningsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.warningsFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.warningsFlowLayoutPanel.Name = "warningsFlowLayoutPanel";
-            this.warningsFlowLayoutPanel.Size = new System.Drawing.Size(1803, 355);
+            this.warningsFlowLayoutPanel.Size = new System.Drawing.Size(1803, 352);
             this.warningsFlowLayoutPanel.TabIndex = 0;
             // 
             // fireGroupBox
@@ -184,6 +180,32 @@
             this.fire2TextBox.Size = new System.Drawing.Size(100, 40);
             this.fire2TextBox.TabIndex = 3;
             // 
+            // leftMasterFireWarningButton
+            // 
+            this.leftMasterFireWarningButton.AccessibleName = "Master fire warning #1 reset";
+            this.leftMasterFireWarningButton.AutoSize = true;
+            this.leftMasterFireWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.leftMasterFireWarningButton.Location = new System.Drawing.Point(407, 3);
+            this.leftMasterFireWarningButton.Name = "leftMasterFireWarningButton";
+            this.leftMasterFireWarningButton.Size = new System.Drawing.Size(302, 43);
+            this.leftMasterFireWarningButton.TabIndex = 4;
+            this.leftMasterFireWarningButton.Text = "Master fire warn #1 reset";
+            this.leftMasterFireWarningButton.UseVisualStyleBackColor = true;
+            this.leftMasterFireWarningButton.Click += new System.EventHandler(this.leftMasterFireWarningButton_Click);
+            // 
+            // rightMasterFireWarningButton
+            // 
+            this.rightMasterFireWarningButton.AccessibleName = "Master fire warning #2 reset";
+            this.rightMasterFireWarningButton.AutoSize = true;
+            this.rightMasterFireWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rightMasterFireWarningButton.Location = new System.Drawing.Point(715, 3);
+            this.rightMasterFireWarningButton.Name = "rightMasterFireWarningButton";
+            this.rightMasterFireWarningButton.Size = new System.Drawing.Size(302, 43);
+            this.rightMasterFireWarningButton.TabIndex = 5;
+            this.rightMasterFireWarningButton.Text = "Master fire warn #1 reset";
+            this.rightMasterFireWarningButton.UseVisualStyleBackColor = true;
+            this.rightMasterFireWarningButton.Click += new System.EventHandler(this.rightMasterFireWarningButton_Click);
+            // 
             // masterCautionGroupBox
             // 
             this.masterCautionGroupBox.AccessibleName = "Master caution warnings";
@@ -251,6 +273,32 @@
             this.masterCaution2TextBox.ReadOnly = true;
             this.masterCaution2TextBox.Size = new System.Drawing.Size(100, 40);
             this.masterCaution2TextBox.TabIndex = 3;
+            // 
+            // leftMasterWarningButton
+            // 
+            this.leftMasterWarningButton.AccessibleName = "Master warning #1 reset";
+            this.leftMasterWarningButton.AutoSize = true;
+            this.leftMasterWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.leftMasterWarningButton.Location = new System.Drawing.Point(649, 3);
+            this.leftMasterWarningButton.Name = "leftMasterWarningButton";
+            this.leftMasterWarningButton.Size = new System.Drawing.Size(257, 43);
+            this.leftMasterWarningButton.TabIndex = 4;
+            this.leftMasterWarningButton.Text = "Master warn #1 reset";
+            this.leftMasterWarningButton.UseVisualStyleBackColor = true;
+            this.leftMasterWarningButton.Click += new System.EventHandler(this.leftMasterWarningButton_Click);
+            // 
+            // rightMasterWarningButton
+            // 
+            this.rightMasterWarningButton.AccessibleName = "Master warning #2 reset";
+            this.rightMasterWarningButton.AutoSize = true;
+            this.rightMasterWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rightMasterWarningButton.Location = new System.Drawing.Point(912, 3);
+            this.rightMasterWarningButton.Name = "rightMasterWarningButton";
+            this.rightMasterWarningButton.Size = new System.Drawing.Size(257, 43);
+            this.rightMasterWarningButton.TabIndex = 5;
+            this.rightMasterWarningButton.Text = "Master warn #2 reset";
+            this.rightMasterWarningButton.UseVisualStyleBackColor = true;
+            this.rightMasterWarningButton.Click += new System.EventHandler(this.rightMasterWarningButton_Click);
             // 
             // flControlsLabel
             // 
@@ -492,82 +540,6 @@
             this.airSystemsTextBox.Size = new System.Drawing.Size(100, 40);
             this.airSystemsTextBox.TabIndex = 25;
             // 
-            // leftMasterWarningButton
-            // 
-            this.leftMasterWarningButton.AccessibleName = "Master warning #1 reset";
-            this.leftMasterWarningButton.AutoSize = true;
-            this.leftMasterWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.leftMasterWarningButton.Location = new System.Drawing.Point(649, 3);
-            this.leftMasterWarningButton.Name = "leftMasterWarningButton";
-            this.leftMasterWarningButton.Size = new System.Drawing.Size(257, 43);
-            this.leftMasterWarningButton.TabIndex = 4;
-            this.leftMasterWarningButton.Text = "Master warn #1 reset";
-            this.leftMasterWarningButton.UseVisualStyleBackColor = true;
-            this.leftMasterWarningButton.Click += new System.EventHandler(this.leftMasterWarningButton_Click);
-            // 
-            // rightMasterWarningButton
-            // 
-            this.rightMasterWarningButton.AccessibleName = "Master warning #2 reset";
-            this.rightMasterWarningButton.AutoSize = true;
-            this.rightMasterWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rightMasterWarningButton.Location = new System.Drawing.Point(912, 3);
-            this.rightMasterWarningButton.Name = "rightMasterWarningButton";
-            this.rightMasterWarningButton.Size = new System.Drawing.Size(257, 43);
-            this.rightMasterWarningButton.TabIndex = 5;
-            this.rightMasterWarningButton.Text = "Master warn #2 reset";
-            this.rightMasterWarningButton.UseVisualStyleBackColor = true;
-            this.rightMasterWarningButton.Click += new System.EventHandler(this.rightMasterWarningButton_Click);
-            // 
-            // leftMasterFireWarningButton
-            // 
-            this.leftMasterFireWarningButton.AccessibleName = "Master fire warning #1 reset";
-            this.leftMasterFireWarningButton.AutoSize = true;
-            this.leftMasterFireWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.leftMasterFireWarningButton.Location = new System.Drawing.Point(407, 3);
-            this.leftMasterFireWarningButton.Name = "leftMasterFireWarningButton";
-            this.leftMasterFireWarningButton.Size = new System.Drawing.Size(302, 43);
-            this.leftMasterFireWarningButton.TabIndex = 4;
-            this.leftMasterFireWarningButton.Text = "Master fire warn #1 reset";
-            this.leftMasterFireWarningButton.UseVisualStyleBackColor = true;
-            this.leftMasterFireWarningButton.Click += new System.EventHandler(this.leftMasterFireWarningButton_Click);
-            // 
-            // rightMasterFireWarningButton
-            // 
-            this.rightMasterFireWarningButton.AccessibleName = "Master fire warning #2 reset";
-            this.rightMasterFireWarningButton.AutoSize = true;
-            this.rightMasterFireWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rightMasterFireWarningButton.Location = new System.Drawing.Point(715, 3);
-            this.rightMasterFireWarningButton.Name = "rightMasterFireWarningButton";
-            this.rightMasterFireWarningButton.Size = new System.Drawing.Size(302, 43);
-            this.rightMasterFireWarningButton.TabIndex = 5;
-            this.rightMasterFireWarningButton.Text = "Master fire warn #1 reset";
-            this.rightMasterFireWarningButton.UseVisualStyleBackColor = true;
-            this.rightMasterFireWarningButton.Click += new System.EventHandler(this.rightMasterFireWarningButton_Click);
-            // 
-            // leftPanelResetButton
-            // 
-            this.leftPanelResetButton.AccessibleName = "Warnings reset, left side";
-            this.leftPanelResetButton.AutoSize = true;
-            this.leftPanelResetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.leftPanelResetButton.Location = new System.Drawing.Point(266, 309);
-            this.leftPanelResetButton.Name = "leftPanelResetButton";
-            this.leftPanelResetButton.Size = new System.Drawing.Size(167, 43);
-            this.leftPanelResetButton.TabIndex = 26;
-            this.leftPanelResetButton.Text = "Warn reset/L";
-            this.leftPanelResetButton.UseVisualStyleBackColor = true;
-            this.leftPanelResetButton.Click += new System.EventHandler(this.leftPanelResetButton_Click);
-            // 
-            // rightPanelResetButton
-            // 
-            this.rightPanelResetButton.AccessibleName = "Warnings reset, right side";
-            this.rightPanelResetButton.Location = new System.Drawing.Point(439, 309);
-            this.rightPanelResetButton.Name = "rightPanelResetButton";
-            this.rightPanelResetButton.Size = new System.Drawing.Size(75, 23);
-            this.rightPanelResetButton.TabIndex = 27;
-            this.rightPanelResetButton.Text = "Warnings reset/R";
-            this.rightPanelResetButton.UseVisualStyleBackColor = true;
-            this.rightPanelResetButton.Click += new System.EventHandler(this.rightPanelResetButton_Click);
-            // 
             // ctlWarnings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
@@ -579,7 +551,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlWarnings";
-            this.Size = new System.Drawing.Size(1806, 358);
+            this.Size = new System.Drawing.Size(1806, 355);
             this.Load += new System.EventHandler(this.ctlWarnings_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlWarnings_VisibleChanged);
             this.warningsFlowLayoutPanel.ResumeLayout(false);
@@ -640,7 +612,5 @@
         private System.Windows.Forms.Button rightMasterWarningButton;
         private System.Windows.Forms.Button leftMasterFireWarningButton;
         private System.Windows.Forms.Button rightMasterFireWarningButton;
-        private System.Windows.Forms.Button leftPanelResetButton;
-        private System.Windows.Forms.Button rightPanelResetButton;
     }
 }
