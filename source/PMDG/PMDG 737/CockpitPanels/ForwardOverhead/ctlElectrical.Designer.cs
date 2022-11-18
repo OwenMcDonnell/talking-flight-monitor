@@ -56,11 +56,11 @@
             this.idg2Button = new System.Windows.Forms.Button();
             this.generatorsGroupBox = new System.Windows.Forms.GroupBox();
             this.generatorsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.generator1Button = new System.Windows.Forms.Button();
-            this.generator2Button = new System.Windows.Forms.Button();
-            this.apuGen1Button = new System.Windows.Forms.Button();
-            this.apuGen2Button = new System.Windows.Forms.Button();
-            this.busXferButton = new System.Windows.Forms.Button();
+            this.generator1OnButton = new System.Windows.Forms.Button();
+            this.generator2OnButton = new System.Windows.Forms.Button();
+            this.apuGen1OnButton = new System.Windows.Forms.Button();
+            this.apuGen2OnButton = new System.Windows.Forms.Button();
+            this.busXferAutoButton = new System.Windows.Forms.Button();
             this.lightsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lightsGroupBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -92,6 +92,11 @@
             this.gen2BusTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.apuGenBusTextBox = new System.Windows.Forms.TextBox();
+            this.generator1OffButton = new System.Windows.Forms.Button();
+            this.generator2OffButton = new System.Windows.Forms.Button();
+            this.apuGen1Off = new System.Windows.Forms.Button();
+            this.apuGen2OffButton = new System.Windows.Forms.Button();
+            this.busXferOffButton = new System.Windows.Forms.Button();
             this.mainFlowLayoutPanel.SuspendLayout();
             this.dcPowerGroupBox.SuspendLayout();
             this.dcPowerFlowLayoutPanel.SuspendLayout();
@@ -446,7 +451,7 @@
             this.generatorsGroupBox.Controls.Add(this.generatorsFlowLayoutPanel);
             this.generatorsGroupBox.Location = new System.Drawing.Point(252, 131);
             this.generatorsGroupBox.Name = "generatorsGroupBox";
-            this.generatorsGroupBox.Size = new System.Drawing.Size(594, 124);
+            this.generatorsGroupBox.Size = new System.Drawing.Size(1427, 124);
             this.generatorsGroupBox.TabIndex = 11;
             this.generatorsGroupBox.TabStop = false;
             this.generatorsGroupBox.Text = "&Generators";
@@ -455,75 +460,84 @@
             // 
             this.generatorsFlowLayoutPanel.AutoSize = true;
             this.generatorsFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.generatorsFlowLayoutPanel.Controls.Add(this.generator1Button);
-            this.generatorsFlowLayoutPanel.Controls.Add(this.generator2Button);
-            this.generatorsFlowLayoutPanel.Controls.Add(this.apuGen1Button);
-            this.generatorsFlowLayoutPanel.Controls.Add(this.apuGen2Button);
-            this.generatorsFlowLayoutPanel.Controls.Add(this.busXferButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.generator1OnButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.generator1OffButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.generator2OnButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.generator2OffButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.apuGen1OnButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.apuGen1Off);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.apuGen2OnButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.apuGen2OffButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.busXferAutoButton);
+            this.generatorsFlowLayoutPanel.Controls.Add(this.busXferOffButton);
             this.generatorsFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.generatorsFlowLayoutPanel.Name = "generatorsFlowLayoutPanel";
-            this.generatorsFlowLayoutPanel.Size = new System.Drawing.Size(585, 49);
+            this.generatorsFlowLayoutPanel.Size = new System.Drawing.Size(1418, 49);
             this.generatorsFlowLayoutPanel.TabIndex = 0;
             // 
-            // generator1Button
+            // generator1OnButton
             // 
-            this.generator1Button.AutoSize = true;
-            this.generator1Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.generator1Button.Location = new System.Drawing.Point(3, 3);
-            this.generator1Button.Name = "generator1Button";
-            this.generator1Button.Size = new System.Drawing.Size(111, 43);
-            this.generator1Button.TabIndex = 0;
-            this.generator1Button.Text = "button1";
-            this.generator1Button.UseVisualStyleBackColor = true;
-            this.generator1Button.Click += new System.EventHandler(this.generator1Button_Click);
+            this.generator1OnButton.AccessibleName = "Generator #1 on";
+            this.generator1OnButton.AutoSize = true;
+            this.generator1OnButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.generator1OnButton.Location = new System.Drawing.Point(3, 3);
+            this.generator1OnButton.Name = "generator1OnButton";
+            this.generator1OnButton.Size = new System.Drawing.Size(140, 43);
+            this.generator1OnButton.TabIndex = 0;
+            this.generator1OnButton.Text = "Gen #1 on";
+            this.generator1OnButton.UseVisualStyleBackColor = true;
+            this.generator1OnButton.Click += new System.EventHandler(this.generator1OnButton_Click);
             // 
-            // generator2Button
+            // generator2OnButton
             // 
-            this.generator2Button.AutoSize = true;
-            this.generator2Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.generator2Button.Location = new System.Drawing.Point(120, 3);
-            this.generator2Button.Name = "generator2Button";
-            this.generator2Button.Size = new System.Drawing.Size(111, 43);
-            this.generator2Button.TabIndex = 1;
-            this.generator2Button.Text = "button2";
-            this.generator2Button.UseVisualStyleBackColor = true;
-            this.generator2Button.Click += new System.EventHandler(this.generator2Button_Click);
+            this.generator2OnButton.AccessibleName = "Generator #2 on";
+            this.generator2OnButton.AutoSize = true;
+            this.generator2OnButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.generator2OnButton.Location = new System.Drawing.Point(298, 3);
+            this.generator2OnButton.Name = "generator2OnButton";
+            this.generator2OnButton.Size = new System.Drawing.Size(140, 43);
+            this.generator2OnButton.TabIndex = 2;
+            this.generator2OnButton.Text = "Gen #2 on";
+            this.generator2OnButton.UseVisualStyleBackColor = true;
+            this.generator2OnButton.Click += new System.EventHandler(this.generator2OnButton_Click);
             // 
-            // apuGen1Button
+            // apuGen1OnButton
             // 
-            this.apuGen1Button.AutoSize = true;
-            this.apuGen1Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.apuGen1Button.Location = new System.Drawing.Point(237, 3);
-            this.apuGen1Button.Name = "apuGen1Button";
-            this.apuGen1Button.Size = new System.Drawing.Size(111, 43);
-            this.apuGen1Button.TabIndex = 2;
-            this.apuGen1Button.Text = "button1";
-            this.apuGen1Button.UseVisualStyleBackColor = true;
-            this.apuGen1Button.Click += new System.EventHandler(this.apuGen1Button_Click);
+            this.apuGen1OnButton.AccessibleName = "APU generator #1 on";
+            this.apuGen1OnButton.AutoSize = true;
+            this.apuGen1OnButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.apuGen1OnButton.Location = new System.Drawing.Point(525, 3);
+            this.apuGen1OnButton.Name = "apuGen1OnButton";
+            this.apuGen1OnButton.Size = new System.Drawing.Size(195, 43);
+            this.apuGen1OnButton.TabIndex = 4;
+            this.apuGen1OnButton.Text = "APU gen #1 on";
+            this.apuGen1OnButton.UseVisualStyleBackColor = true;
+            this.apuGen1OnButton.Click += new System.EventHandler(this.apuGen1OnButton_Click);
             // 
-            // apuGen2Button
+            // apuGen2OnButton
             // 
-            this.apuGen2Button.AutoSize = true;
-            this.apuGen2Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.apuGen2Button.Location = new System.Drawing.Point(354, 3);
-            this.apuGen2Button.Name = "apuGen2Button";
-            this.apuGen2Button.Size = new System.Drawing.Size(111, 43);
-            this.apuGen2Button.TabIndex = 3;
-            this.apuGen2Button.Text = "button2";
-            this.apuGen2Button.UseVisualStyleBackColor = true;
-            this.apuGen2Button.Click += new System.EventHandler(this.apuGen2Button_Click);
+            this.apuGen2OnButton.AutoSize = true;
+            this.apuGen2OnButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.apuGen2OnButton.Location = new System.Drawing.Point(807, 3);
+            this.apuGen2OnButton.Name = "apuGen2OnButton";
+            this.apuGen2OnButton.Size = new System.Drawing.Size(259, 43);
+            this.apuGen2OnButton.TabIndex = 6;
+            this.apuGen2OnButton.Text = "APU generator #2 on";
+            this.apuGen2OnButton.UseVisualStyleBackColor = true;
+            this.apuGen2OnButton.Click += new System.EventHandler(this.apuGen2OnButton_Click);
             // 
-            // busXferButton
+            // busXferAutoButton
             // 
-            this.busXferButton.AutoSize = true;
-            this.busXferButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.busXferButton.Location = new System.Drawing.Point(471, 3);
-            this.busXferButton.Name = "busXferButton";
-            this.busXferButton.Size = new System.Drawing.Size(111, 43);
-            this.busXferButton.TabIndex = 11;
-            this.busXferButton.Text = "button1";
-            this.busXferButton.UseVisualStyleBackColor = true;
-            this.busXferButton.Click += new System.EventHandler(this.busXferButton_Click);
+            this.busXferAutoButton.AccessibleName = "Bus transfer auto";
+            this.busXferAutoButton.AutoSize = true;
+            this.busXferAutoButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.busXferAutoButton.Location = new System.Drawing.Point(1153, 3);
+            this.busXferAutoButton.Name = "busXferAutoButton";
+            this.busXferAutoButton.Size = new System.Drawing.Size(181, 43);
+            this.busXferAutoButton.TabIndex = 8;
+            this.busXferAutoButton.Text = "Bus Xfer auto";
+            this.busXferAutoButton.UseVisualStyleBackColor = true;
+            this.busXferAutoButton.Click += new System.EventHandler(this.busXferAutoButton_Click);
             // 
             // lightsFlowLayoutPanel
             // 
@@ -886,6 +900,63 @@
             this.apuGenBusTextBox.Size = new System.Drawing.Size(100, 40);
             this.apuGenBusTextBox.TabIndex = 27;
             // 
+            // generator1OffButton
+            // 
+            this.generator1OffButton.AccessibleName = "Generator #1 off";
+            this.generator1OffButton.AutoSize = true;
+            this.generator1OffButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.generator1OffButton.Location = new System.Drawing.Point(149, 3);
+            this.generator1OffButton.Name = "generator1OffButton";
+            this.generator1OffButton.Size = new System.Drawing.Size(143, 43);
+            this.generator1OffButton.TabIndex = 1;
+            this.generator1OffButton.Text = "Gen #1 off";
+            this.generator1OffButton.UseVisualStyleBackColor = true;
+            this.generator1OffButton.Click += new System.EventHandler(this.generator1OffButton_Click);
+            // 
+            // generator2OffButton
+            // 
+            this.generator2OffButton.AccessibleName = "Generator #2 off";
+            this.generator2OffButton.Location = new System.Drawing.Point(444, 3);
+            this.generator2OffButton.Name = "generator2OffButton";
+            this.generator2OffButton.Size = new System.Drawing.Size(75, 23);
+            this.generator2OffButton.TabIndex = 3;
+            this.generator2OffButton.Text = "Gen #2 off";
+            this.generator2OffButton.UseVisualStyleBackColor = true;
+            this.generator2OffButton.Click += new System.EventHandler(this.generator2OffButton_Click);
+            // 
+            // apuGen1Off
+            // 
+            this.apuGen1Off.AccessibleName = "APU generator #1 off";
+            this.apuGen1Off.Location = new System.Drawing.Point(726, 3);
+            this.apuGen1Off.Name = "apuGen1Off";
+            this.apuGen1Off.Size = new System.Drawing.Size(75, 23);
+            this.apuGen1Off.TabIndex = 5;
+            this.apuGen1Off.Text = "APU gen #1 off";
+            this.apuGen1Off.UseVisualStyleBackColor = true;
+            this.apuGen1Off.Click += new System.EventHandler(this.apuGen1Off_Click);
+            // 
+            // apuGen2OffButton
+            // 
+            this.apuGen2OffButton.AccessibleName = "APU generator #2 off";
+            this.apuGen2OffButton.Location = new System.Drawing.Point(1072, 3);
+            this.apuGen2OffButton.Name = "apuGen2OffButton";
+            this.apuGen2OffButton.Size = new System.Drawing.Size(75, 23);
+            this.apuGen2OffButton.TabIndex = 7;
+            this.apuGen2OffButton.Text = "APU gen #2 off";
+            this.apuGen2OffButton.UseVisualStyleBackColor = true;
+            this.apuGen2OffButton.Click += new System.EventHandler(this.apuGen2OffButton_Click);
+            // 
+            // busXferOffButton
+            // 
+            this.busXferOffButton.AccessibleName = "Bus transfer off";
+            this.busXferOffButton.Location = new System.Drawing.Point(1340, 3);
+            this.busXferOffButton.Name = "busXferOffButton";
+            this.busXferOffButton.Size = new System.Drawing.Size(75, 23);
+            this.busXferOffButton.TabIndex = 9;
+            this.busXferOffButton.Text = "Bus xfer off";
+            this.busXferOffButton.UseVisualStyleBackColor = true;
+            this.busXferOffButton.Click += new System.EventHandler(this.busXferOffButton_Click);
+            // 
             // ctlElectrical
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
@@ -960,11 +1031,11 @@
         private System.Windows.Forms.Button idg2Button;
         private System.Windows.Forms.GroupBox generatorsGroupBox;
         private System.Windows.Forms.FlowLayoutPanel generatorsFlowLayoutPanel;
-        private System.Windows.Forms.Button generator1Button;
-        private System.Windows.Forms.Button generator2Button;
-        private System.Windows.Forms.Button apuGen1Button;
-        private System.Windows.Forms.Button apuGen2Button;
-        private System.Windows.Forms.Button busXferButton;
+        private System.Windows.Forms.Button generator1OnButton;
+        private System.Windows.Forms.Button generator2OnButton;
+        private System.Windows.Forms.Button apuGen1OnButton;
+        private System.Windows.Forms.Button apuGen2OnButton;
+        private System.Windows.Forms.Button busXferAutoButton;
         private System.Windows.Forms.FlowLayoutPanel lightsFlowLayoutPanel;
         private System.Windows.Forms.GroupBox lightsGroupBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -996,5 +1067,10 @@
         private System.Windows.Forms.TextBox gen2BusTextBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox apuGenBusTextBox;
+        private System.Windows.Forms.Button generator1OffButton;
+        private System.Windows.Forms.Button generator2OffButton;
+        private System.Windows.Forms.Button apuGen1Off;
+        private System.Windows.Forms.Button apuGen2OffButton;
+        private System.Windows.Forms.Button busXferOffButton;
     }
 }

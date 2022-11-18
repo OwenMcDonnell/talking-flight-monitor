@@ -13,6 +13,7 @@
 
     ### Bug fixes
 
+    * Added Gen 1, gen 2, APU 1, APU 2, and transfer buss off buttons to electrical panel.
 * PMDG 737: Added master caution/warning reset buttons to the Glare shield/warnings panel
     * PMDG 737 cockpit performance improvements.
 
