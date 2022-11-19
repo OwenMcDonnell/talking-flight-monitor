@@ -1006,6 +1006,11 @@ new SingleStateToggle { Name = "GPWS flaps inhibit", PanelName = "Lower Forward"
 new SingleStateToggle { Name = "GPWS gear inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_GearInhibitSw_NORM, AvailableStates = _normalOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_GearInhibitSw_NORM},
 new SingleStateToggle { Name = "GPWS terrain inhibit", PanelName = "Lower Forward", PanelSection = "Lights", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.GPWS_TerrInhibitSw_NORM, AvailableStates = _normalOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.GPWS_TerrInhibitSw_NORM},
 
+
+// --panel: Control Stand
+// --section: CDU
+
+
 // --end-panel-controls                              
             };
         }

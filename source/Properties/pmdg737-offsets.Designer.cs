@@ -12,7 +12,7 @@ namespace tfm.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class pmdg737_offsets : global::System.Configuration.ApplicationSettingsBase {
         
         private static pmdg737_offsets defaultInstance = ((pmdg737_offsets)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new pmdg737_offsets())));
@@ -3968,6 +3968,678 @@ namespace tfm.Properties {
             }
             set {
                 this["GPWS_TerrInhibitSw_NORM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunEXEC1 {
+            get {
+                return ((bool)(this["CDU_annunEXEC1"]));
+            }
+            set {
+                this["CDU_annunEXEC1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunEXEC2 {
+            get {
+                return ((bool)(this["CDU_annunEXEC2"]));
+            }
+            set {
+                this["CDU_annunEXEC2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunCALL1 {
+            get {
+                return ((bool)(this["CDU_annunCALL1"]));
+            }
+            set {
+                this["CDU_annunCALL1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunCALL2 {
+            get {
+                return ((bool)(this["CDU_annunCALL2"]));
+            }
+            set {
+                this["CDU_annunCALL2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunFAIL1 {
+            get {
+                return ((bool)(this["CDU_annunFAIL1"]));
+            }
+            set {
+                this["CDU_annunFAIL1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunFAIL2 {
+            get {
+                return ((bool)(this["CDU_annunFAIL2"]));
+            }
+            set {
+                this["CDU_annunFAIL2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunMSG1 {
+            get {
+                return ((bool)(this["CDU_annunMSG1"]));
+            }
+            set {
+                this["CDU_annunMSG1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunMSG2 {
+            get {
+                return ((bool)(this["CDU_annunMSG2"]));
+            }
+            set {
+                this["CDU_annunMSG2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunOFST1 {
+            get {
+                return ((bool)(this["CDU_annunOFST1"]));
+            }
+            set {
+                this["CDU_annunOFST1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CDU_annunOFST2 {
+            get {
+                return ((bool)(this["CDU_annunOFST2"]));
+            }
+            set {
+                this["CDU_annunOFST2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CDU_BrtKnob1 {
+            get {
+                return ((bool)(this["CDU_BrtKnob1"]));
+            }
+            set {
+                this["CDU_BrtKnob1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CDU_BrtKnob2 {
+            get {
+                return ((bool)(this["CDU_BrtKnob2"]));
+            }
+            set {
+                this["CDU_BrtKnob2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TRIM_StabTrimMainElecSw_NORMAL {
+            get {
+                return ((bool)(this["TRIM_StabTrimMainElecSw_NORMAL"]));
+            }
+            set {
+                this["TRIM_StabTrimMainElecSw_NORMAL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TRIM_StabTrimAutoPilotSw_NORMAL {
+            get {
+                return ((bool)(this["TRIM_StabTrimAutoPilotSw_NORMAL"]));
+            }
+            set {
+                this["TRIM_StabTrimAutoPilotSw_NORMAL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TRIM_StabTrimSw_NORMAL {
+            get {
+                return ((bool)(this["TRIM_StabTrimSw_NORMAL"]));
+            }
+            set {
+                this["TRIM_StabTrimSw_NORMAL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_PedFloodKnob {
+            get {
+                return ((bool)(this["LTS_PedFloodKnob"]));
+            }
+            set {
+                this["LTS_PedFloodKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LTS_PedPanelKnob {
+            get {
+                return ((bool)(this["LTS_PedPanelKnob"]));
+            }
+            set {
+                this["LTS_PedPanelKnob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PED_annunLOCK_FAIL {
+            get {
+                return ((bool)(this["PED_annunLOCK_FAIL"]));
+            }
+            set {
+                this["PED_annunLOCK_FAIL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PED_annunAUTO_UNLK {
+            get {
+                return ((bool)(this["PED_annunAUTO_UNLK"]));
+            }
+            set {
+                this["PED_annunAUTO_UNLK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PED_FltDkDoorSel {
+            get {
+                return ((bool)(this["PED_FltDkDoorSel"]));
+            }
+            set {
+                this["PED_FltDkDoorSel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PED_annunParkingBrake {
+            get {
+                return ((bool)(this["PED_annunParkingBrake"]));
+            }
+            set {
+                this["PED_annunParkingBrake"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_OvhtDetSw1 {
+            get {
+                return ((bool)(this["FIRE_OvhtDetSw1"]));
+            }
+            set {
+                this["FIRE_OvhtDetSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_OvhtDetSw2 {
+            get {
+                return ((bool)(this["FIRE_OvhtDetSw2"]));
+            }
+            set {
+                this["FIRE_OvhtDetSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunENG_OVERHEAT1 {
+            get {
+                return ((bool)(this["FIRE_annunENG_OVERHEAT1"]));
+            }
+            set {
+                this["FIRE_annunENG_OVERHEAT1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunENG_OVERHEAT2 {
+            get {
+                return ((bool)(this["FIRE_annunENG_OVERHEAT2"]));
+            }
+            set {
+                this["FIRE_annunENG_OVERHEAT2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_DetTestSw {
+            get {
+                return ((bool)(this["FIRE_DetTestSw"]));
+            }
+            set {
+                this["FIRE_DetTestSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_HandlePos1 {
+            get {
+                return ((bool)(this["FIRE_HandlePos1"]));
+            }
+            set {
+                this["FIRE_HandlePos1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_HandlePos2 {
+            get {
+                return ((bool)(this["FIRE_HandlePos2"]));
+            }
+            set {
+                this["FIRE_HandlePos2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_HandlePos3 {
+            get {
+                return ((bool)(this["FIRE_HandlePos3"]));
+            }
+            set {
+                this["FIRE_HandlePos3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_HandleIlluminated1 {
+            get {
+                return ((bool)(this["FIRE_HandleIlluminated1"]));
+            }
+            set {
+                this["FIRE_HandleIlluminated1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_HandleIlluminated2 {
+            get {
+                return ((bool)(this["FIRE_HandleIlluminated2"]));
+            }
+            set {
+                this["FIRE_HandleIlluminated2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_HandleIlluminated3 {
+            get {
+                return ((bool)(this["FIRE_HandleIlluminated3"]));
+            }
+            set {
+                this["FIRE_HandleIlluminated3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunWHEEL_WELL {
+            get {
+                return ((bool)(this["FIRE_annunWHEEL_WELL"]));
+            }
+            set {
+                this["FIRE_annunWHEEL_WELL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunFAULT {
+            get {
+                return ((bool)(this["FIRE_annunFAULT"]));
+            }
+            set {
+                this["FIRE_annunFAULT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunAPU_DET_INOP {
+            get {
+                return ((bool)(this["FIRE_annunAPU_DET_INOP"]));
+            }
+            set {
+                this["FIRE_annunAPU_DET_INOP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FIRE_annunAPU_BOTTLE_DISCHARGE {
+            get {
+                return ((bool)(this["FIRE_annunAPU_BOTTLE_DISCHARGE"]));
+            }
+            set {
+                this["FIRE_annunAPU_BOTTLE_DISCHARGE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunBOTTLE_DISCHARGE1 {
+            get {
+                return ((bool)(this["FIRE_annunBOTTLE_DISCHARGE1"]));
+            }
+            set {
+                this["FIRE_annunBOTTLE_DISCHARGE1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunBOTTLE_DISCHARGE2 {
+            get {
+                return ((bool)(this["FIRE_annunBOTTLE_DISCHARGE2"]));
+            }
+            set {
+                this["FIRE_annunBOTTLE_DISCHARGE2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_ExtinguisherTestSw {
+            get {
+                return ((bool)(this["FIRE_ExtinguisherTestSw"]));
+            }
+            set {
+                this["FIRE_ExtinguisherTestSw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunExtinguisherTest1 {
+            get {
+                return ((bool)(this["FIRE_annunExtinguisherTest1"]));
+            }
+            set {
+                this["FIRE_annunExtinguisherTest1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FIRE_annunExtinguisherTest2 {
+            get {
+                return ((bool)(this["FIRE_annunExtinguisherTest2"]));
+            }
+            set {
+                this["FIRE_annunExtinguisherTest2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRE_annunExtinguisherTest3 {
+            get {
+                return ((bool)(this["FIRE_annunExtinguisherTest3"]));
+            }
+            set {
+                this["FIRE_annunExtinguisherTest3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_annunExtTest1 {
+            get {
+                return ((bool)(this["CARGO_annunExtTest1"]));
+            }
+            set {
+                this["CARGO_annunExtTest1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_annunExtTest2 {
+            get {
+                return ((bool)(this["CARGO_annunExtTest2"]));
+            }
+            set {
+                this["CARGO_annunExtTest2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_DetSelect1 {
+            get {
+                return ((bool)(this["CARGO_DetSelect1"]));
+            }
+            set {
+                this["CARGO_DetSelect1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_DetSelect2 {
+            get {
+                return ((bool)(this["CARGO_DetSelect2"]));
+            }
+            set {
+                this["CARGO_DetSelect2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_ArmedSw1 {
+            get {
+                return ((bool)(this["CARGO_ArmedSw1"]));
+            }
+            set {
+                this["CARGO_ArmedSw1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_ArmedSw2 {
+            get {
+                return ((bool)(this["CARGO_ArmedSw2"]));
+            }
+            set {
+                this["CARGO_ArmedSw2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_annunFWD {
+            get {
+                return ((bool)(this["CARGO_annunFWD"]));
+            }
+            set {
+                this["CARGO_annunFWD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_annunAFT {
+            get {
+                return ((bool)(this["CARGO_annunAFT"]));
+            }
+            set {
+                this["CARGO_annunAFT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_annunDETECTOR_FAULT {
+            get {
+                return ((bool)(this["CARGO_annunDETECTOR_FAULT"]));
+            }
+            set {
+                this["CARGO_annunDETECTOR_FAULT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CARGO_annunDISCH {
+            get {
+                return ((bool)(this["CARGO_annunDISCH"]));
+            }
+            set {
+                this["CARGO_annunDISCH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool XPDR_XpndrSelector_2 {
+            get {
+                return ((bool)(this["XPDR_XpndrSelector_2"]));
+            }
+            set {
+                this["XPDR_XpndrSelector_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool XPDR_AltSourceSel_2 {
+            get {
+                return ((bool)(this["XPDR_AltSourceSel_2"]));
+            }
+            set {
+                this["XPDR_AltSourceSel_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool XPDR_ModeSel {
+            get {
+                return ((bool)(this["XPDR_ModeSel"]));
+            }
+            set {
+                this["XPDR_ModeSel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool XPDR_annunFAIL {
+            get {
+                return ((bool)(this["XPDR_annunFAIL"]));
+            }
+            set {
+                this["XPDR_annunFAIL"] = value;
             }
         }
     }
