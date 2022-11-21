@@ -101,6 +101,9 @@
             treeNode37,
             treeNode38});
             System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Lower Forward");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("CDU");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
+            treeNode41});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -191,6 +194,10 @@
             treeNode39.Text = "Forward";
             treeNode40.Name = "lowerForwardNode";
             treeNode40.Text = "Lower Forward";
+            treeNode41.Name = "controlStandCDUNode";
+            treeNode41.Text = "CDU";
+            treeNode42.Name = "controlStandNode";
+            treeNode42.Text = "Control Stand";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
@@ -198,7 +205,8 @@
             treeNode23,
             treeNode31,
             treeNode39,
-            treeNode40});
+            treeNode40,
+            treeNode42});
             this.tvPanels.Size = new System.Drawing.Size(300, 700);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

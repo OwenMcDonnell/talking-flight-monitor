@@ -631,6 +631,21 @@ namespace tfm
             {12, "900ER SSW" },
         };
 
+        private static Dictionary<byte, string> _fltDckDoorStates = new Dictionary<byte, string>()
+        {
+            {0, "Unlocked" },
+            {1, "Auto/pushed in" },
+            {2, "auto" },
+            {3, "deny" },
+        };
+
+        private static Dictionary<byte, string> _normalAOrBStates = new Dictionary<byte, string>()
+        {
+            {0, "A" },
+            {1, "normal" },
+            {2, "B" },
+        };
+
         
         public static List<PanelObject> PanelControls
         {
@@ -1010,6 +1025,68 @@ new SingleStateToggle { Name = "GPWS terrain inhibit", PanelName = "Lower Forwar
 // --panel: Control Stand
 // --section: CDU
 
+new SingleStateToggle {Name = "CDU #1 execute key", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity= AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunEXEC[0], AvailableStates = _availableOrUnavailableStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunEXEC1},
+new SingleStateToggle {Name = "CDU #2 execute key", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity= AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunEXEC[1], AvailableStates = _availableOrUnavailableStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunEXEC2},
+new SingleStateToggle { Name = "CDU #1 call light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunCALL[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunCALL1},
+new SingleStateToggle { Name = "CDU #2 call light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunCALL[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunCALL2},
+new SingleStateToggle { Name = "CDU #1 faill light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunFAIL[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunFAIL1},
+new SingleStateToggle { Name = "CDU #2 faill light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunFAIL[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunFAIL2},
+new SingleStateToggle { Name = "CDU #1 message light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunMSG[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunMSG1},
+new SingleStateToggle { Name = "CDU #2 message light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunMSG[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunMSG2},
+new SingleStateToggle { Name = "CDU #1 offset light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunOFST[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunOFST1},
+new SingleStateToggle { Name = "CDU #2 offset light", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_annunOFST[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_annunOFST2},
+new SingleStateToggle { Name = "CDU #1 brightness", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_BrtKnob[0], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_BrtKnob1},
+new SingleStateToggle { Name = "CDU #2 brightness", PanelName = "Control Stand", PanelSection = "CDU", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CDU_BrtKnob[1], AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.CDU_BrtKnob2},
+new SingleStateToggle { Name = "Electrical stab trim", PanelName = "Control Stand", PanelSection = "TRIM", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.TRIM_StabTrimMainElecSw_NORMAL, AvailableStates = _normalOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.TRIM_StabTrimMainElecSw_NORMAL},
+new SingleStateToggle { Name = "Auto pilot stab trim", PanelName = "Control Stand", PanelSection = "TRIM", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.TRIM_StabTrimAutoPilotSw_NORMAL, AvailableStates = _normalOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.TRIM_StabTrimAutoPilotSw_NORMAL},
+new SingleStateToggle { Name = "Stab trim", PanelName = "Control Stand", PanelSection = "TRIM", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.TRIM_StabTrimSw_NORMAL, AvailableStates = _normalOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.TRIM_StabTrimSw_NORMAL},
+new SingleStateToggle { Name = "Pedestal brightness", PanelName = "Control Stand", PanelSection = "PEDESTAL", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_PedFloodKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_PedFloodKnob},
+new SingleStateToggle { Name = "Pedestal panel brightness", PanelName = "Control Stand", PanelSection = "PEDESTAL", Type = PanelObjectType.Dial, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.LTS_PedPanelKnob, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.LTS_PedPanelKnob},
+new SingleStateToggle { Name = "Lock failure light", PanelName = "Control Stand", PanelSection = "PEDESTAL", Type = PanelObjectType.Annunciator, Verbosity= AircraftVerbosity.Low, Offset = Aircraft.pmdg737.PED_annunLOCK_FAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.PED_annunLOCK_FAIL},
+new SingleStateToggle { Name = "Auto unlock light", PanelName = "Control Stand", PanelSection = "PEDESTAL", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.PED_annunAUTO_UNLK, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.PED_annunAUTO_UNLK},
+new SingleStateToggle { Name = "Flight deck door", PanelName = "Control Stand", PanelSection = "PEDESTAL", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.PED_FltDkDoorSel, AvailableStates = _fltDckDoorStates, shouldSpeak = Properties.pmdg737_offsets.Default.PED_FltDkDoorSel},
+new SingleStateToggle { Name = "Parking brake light", PanelName = "Control Stand", PanelSection = "PEDESTAL", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.PED_annunParkingBrake, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.PED_annunParkingBrake},
+new SingleStateToggle { Name = "Left overheat detector", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_OvhtDetSw[0], AvailableStates = _normalAOrBStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_OvhtDetSw1},
+new SingleStateToggle { Name = "Right overheat detector", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_OvhtDetSw[1], AvailableStates = _normalAOrBStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_OvhtDetSw2},
+new SingleStateToggle { Name = "Engine #1 overheat light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunENG_OVERHEAT[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunENG_OVERHEAT1},
+new SingleStateToggle { Name = "Engine #2 overheat light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunENG_OVERHEAT[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunENG_OVERHEAT2},
+new SingleStateToggle { Name = "Fire detection test", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_DetTestSw, AvailableStates = _fireTestDetStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_DetTestSw},
+new SingleStateToggle { Name = "Left fire handle", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_HandlePos[0], AvailableStates = _fireHandlePosStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_HandlePos1},
+new SingleStateToggle { Name = "Right fire handle", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_HandlePos[1], AvailableStates = _fireHandlePosStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_HandlePos2},
+new SingleStateToggle { Name = "APU fire handle", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_HandlePos[2], AvailableStates = _fireHandlePosStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_HandlePos3},
+new SingleStateToggle { Name = "Left fire handle illuminated light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_HandleIlluminated[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_HandleIlluminated1},
+new SingleStateToggle { Name = "Right fire handle illuminated light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_HandleIlluminated[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_HandleIlluminated2},
+new SingleStateToggle { Name = "APU fire handle illuminated light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_HandleIlluminated[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_HandleIlluminated3},
+new SingleStateToggle { Name = "Wheel well fire light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunWHEEL_WELL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunWHEEL_WELL},
+new SingleStateToggle { Name = "Fire fault light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunFAULT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunFAULT},
+new SingleStateToggle{Name = "APU fire detector inop light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunAPU_DET_INOP, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunAPU_DET_INOP},
+new SingleStateToggle { Name = "APU fire bottle discharge light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunAPU_BOTTLE_DISCHARGE, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunAPU_BOTTLE_DISCHARGE},
+new SingleStateToggle { Name = "Left fire bottle discharge light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunBOTTLE_DISCHARGE[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunBOTTLE_DISCHARGE1},
+new SingleStateToggle { Name = "Right fire bottle discharge light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunBOTTLE_DISCHARGE[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunBOTTLE_DISCHARGE2},
+new SingleStateToggle { Name = "Fire extinguisher test", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_ExtinguisherTestSw, AvailableStates = _fireExtinguisherTestStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_ExtinguisherTestSw },
+new SingleStateToggle { Name = "Left fire extinguisher test light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunExtinguisherTest[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunExtinguisherTest1},
+new SingleStateToggle { Name = "Right fire extinguisher test light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunExtinguisherTest[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunExtinguisherTest2},
+new SingleStateToggle { Name = "APU fire extinguisher test light", PanelName = "Control Stand", PanelSection = "FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.FIRE_annunExtinguisherTest[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.FIRE_annunExtinguisherTest3},
+
+// --section: cargo fire
+
+new SingleStateToggle { Name = "Forward cargo fire extinguisher test light", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_annunExtTest[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_annunExtTest1},
+new SingleStateToggle { Name = "Aft cargo fire extinguisher test light", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_annunExtTest[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_annunExtTest2},
+new SingleStateToggle { Name = "Forward cargo fire detector", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_DetSelect[0], AvailableStates = _cargoDetSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_DetSelect1},
+new SingleStateToggle { Name = "Aft cargo fire detector", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_DetSelect[1], AvailableStates = _cargoDetSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_DetSelect2},
+new SingleStateToggle { Name = "Forward cargo fire detector armed", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_ArmedSw[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_ArmedSw1},
+new SingleStateToggle { Name = "Aft cargo fire detector armed", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_ArmedSw[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_ArmedSw2},
+new SingleStateToggle { Name = "Forward cargo fire light", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_annunFWD, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_annunFWD},
+new SingleStateToggle { Name = "Aft cargo fire light", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_annunAFT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_annunAFT},
+new SingleStateToggle { Name = "Cargo fire detector fault light", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_annunDETECTOR_FAULT, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_annunDETECTOR_FAULT},
+new SingleStateToggle { Name = "Cargo fire discharge light", PanelName = "Control Stand", PanelSection = "CARGO FIRE", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.CARGO_annunDISCH, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.CARGO_annunDISCH},
+
+// --section: transponder
+
+new SingleStateToggle { Name = "Transponder source", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_XpndrSelector_2, AvailableStates = _xponderSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_XpndrSelector_2},
+new SingleStateToggle { Name = "Transponder alternate source", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_AltSourceSel_2, AvailableStates = _xponderAltSourceSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_AltSourceSel_2},
+new SingleStateToggle { Name = "Transponder mode", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_ModeSel, AvailableStates = _xponderModeSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_ModeSel},
+new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_annunFAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_annunFAIL},
 
 // --end-panel-controls                              
             };
@@ -2882,5 +2959,25 @@ public static void RightMainPanelLightIncrease()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_SYSTEM_ANNUNCIATOR_PANEL_RIGHT, ClkL);
         } // WarningPanel2Reset
+
+        public static void CDU1BrightnessIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_BRITENESS, Inc);
+        } // CDU1BrightnessIncrease
+
+        public static void CDU1BrightnessDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_BRITENESS, Dec);
+        } // CDU1BrightnessDecrease
+
+        public static void CDU2BrightnessIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_BRITENESS, Inc);
+        } // CDU2BrightnessIncrease
+
+        public static void CDU2BrightnessDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_BRITENESS, Dec);
+        } // CDU2BrightnessDecrease
     } // End PMDG737Aircraft.
-    } // End namespace.
+            } // End namespace.

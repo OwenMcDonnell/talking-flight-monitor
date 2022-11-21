@@ -33,7 +33,6 @@ Covers initial support for the PMDG 737 series of aircraft for MSFS 2020. To ens
 
 ### Known issues
 
-* PMDG 737: There isn't any way to turn on/off generators, APU generators, or buses in the electrical panel. A fix will be in a future update. Until now, use apps such as First officer to perform startup/shutdown flows.
 * TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
 * TFM: Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
 * TFM: The PMDG 747 has an approach mode light that turns on when on final. This usually happens after the ILS is active. TFM uses this light to determine when it should start reading signals from the nav radios. Since the app light and the approach mode switch are different, TFM can start reading ILS signals before approach mode is turned on. This is an issue, but the side affect is a desired feature. We will look into this more during the 747 rebuild cycle.

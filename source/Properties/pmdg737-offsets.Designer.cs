@@ -4642,5 +4642,29 @@ namespace tfm.Properties {
                 this["XPDR_annunFAIL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool XPDR_XpndrSelector_1 {
+            get {
+                return ((bool)(this["XPDR_XpndrSelector_1"]));
+            }
+            set {
+                this["XPDR_XpndrSelector_1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool XPDR_AltSourceSel_1 {
+            get {
+                return ((bool)(this["XPDR_AltSourceSel_1"]));
+            }
+            set {
+                this["XPDR_AltSourceSel_1"] = value;
+            }
+        }
     }
 }

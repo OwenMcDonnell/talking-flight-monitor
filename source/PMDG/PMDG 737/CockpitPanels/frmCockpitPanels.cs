@@ -15,7 +15,7 @@ using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
 using tfm.PMDG.PMDG_737.CockpitPanels.Forward;
-
+using tfm.PMDG.PMDG_737.CockpitPanels.ControlStand;
 
 namespace tfm
 {
@@ -83,7 +83,10 @@ namespace tfm
 
             // --panel: Lower Forward
             pages.Add("lowerForwardNode", new ctlLowerForward());
-                                    // set the parent and hide them all
+
+            // --panel: control stand
+            pages.Add("controlStandCDUNode", new ctlControlStandCDU());
+                                                // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.pnlContent;
