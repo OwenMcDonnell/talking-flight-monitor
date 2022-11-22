@@ -2266,7 +2266,10 @@ else              if (PMDG777Detected)
         {
             switch (Name)
             {
-
+                case "SetTrim":
+                    tfm.PMDG.PMDG_737.Forms.TrimForm trimForm = new PMDG.PMDG_737.Forms.TrimForm();
+                    trimForm.ShowDialog();
+                    break;
                 case "JumpToRunway":
 
                     JumpTo.RunwaysForm runwaysForm = new JumpTo.RunwaysForm();

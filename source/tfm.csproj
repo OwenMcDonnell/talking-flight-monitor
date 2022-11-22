@@ -448,6 +448,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.Designer.cs">
       <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.Designer.cs">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -573,6 +579,12 @@
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.Designer.cs">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\TrimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\TrimForm.Designer.cs">
+      <DependentUpon>TrimForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\McpComponents\mcpAltitude.cs">
       <SubType>Form</SubType>
@@ -1177,6 +1189,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.resx">
       <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.resx">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.resx">
       <DependentUpon>ctlLowerForward.cs</DependentUpon>
     </EmbeddedResource>
@@ -1239,6 +1254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.resx">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\Forms\TrimForm.resx">
+      <DependentUpon>TrimForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpAltitude.resx">
       <DependentUpon>mcpAltitude.cs</DependentUpon>

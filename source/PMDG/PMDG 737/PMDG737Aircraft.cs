@@ -2979,5 +2979,51 @@ public static void RightMainPanelLightIncrease()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_BRITENESS, Dec);
         } // CDU2BrightnessDecrease
+
+        public static void TrimWheelDown()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_TRIM_WHEEL, Inc);
+        } // TrimWheelDown
+
+        public static void TrimWheelUp()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_TRIM_WHEEL, Dec);
+        } // TrimWheelUp
+
+        public static void StabTrimElectrical()
+        {
+            if(Aircraft.pmdg737.TRIM_StabTrimMainElecSw_NORMAL.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_STABTRIM_ELEC_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_STABTRIM_ELEC_SWITCH, ClkR);
+            }
+        } // StabTrimElectrical
+
+public static void StabTrimAutoPilot()
+        {
+            if(Aircraft.pmdg737.TRIM_StabTrimAutoPilotSw_NORMAL.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_STABTRIM_AP_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_STABTRIM_AP_SWITCH, ClkR);
+            }
+        }     // StabTrimAutoPilot
+
+        public static void StabTrim()
+        {
+            if(Aircraft.pmdg737.TRIM_StabTrimSw_NORMAL.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_STAB_TRIM_OVRD_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_STAB_TRIM_OVRD_SWITCH, ClkR);
+            }
+        } // StabTrim
     } // End PMDG737Aircraft.
             } // End namespace.

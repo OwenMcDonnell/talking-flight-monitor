@@ -305,5 +305,8 @@
     <Setting Name="toggle_help_mode" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Shift+OemQuestion</Value>
     </Setting>
+    <Setting Name="SetTrim" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+T</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
