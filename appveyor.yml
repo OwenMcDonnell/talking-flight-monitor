@@ -81,7 +81,7 @@ for:
   after_build:
   - ps: |
       if ($env:APPVEYOR_REPO_TAG -eq "true") {
-      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm.iss
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm-preview.iss
       appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
       } else {
       . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=test-$env:APPVEYOR_BUILD_NUMBER installer\tfm.iss
