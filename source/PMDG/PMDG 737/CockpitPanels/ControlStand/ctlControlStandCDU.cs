@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ControlStand
     public partial class ctlControlStandCDU : UserControl, iPanelsPage
     {
 
-        private System.Timers.Timer cduTimer = new System.Timers.Timer();
+        System.Timers.Timer cduTimer = new System.Timers.Timer();
         public ctlControlStandCDU()
         {
                                     InitializeComponent();

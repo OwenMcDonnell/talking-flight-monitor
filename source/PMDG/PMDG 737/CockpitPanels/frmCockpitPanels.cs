@@ -87,6 +87,7 @@ namespace tfm
             // --panel: control stand
             pages.Add("controlStandCDUNode", new ctlControlStandCDU());
             pages.Add("controlStandTrimNode", new ctlControlStandTrim());
+            pages.Add("pedestalNode", new ctlPedestal());
                                                 // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

@@ -454,6 +454,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.Designer.cs">
       <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.Designer.cs">
+      <DependentUpon>ctlPedestal.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1191,6 +1197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.resx">
       <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.resx">
+      <DependentUpon>ctlPedestal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.resx">
       <DependentUpon>ctlLowerForward.cs</DependentUpon>

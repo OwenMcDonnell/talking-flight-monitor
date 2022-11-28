@@ -1149,10 +1149,35 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
             }
         } // End TimeToTOD.
 
+        public static double CurrentAileronTrim
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("AileronTrimTT"), 2);
+        } // CurrentAileronTrim
+
+        public static double CurrentLeftElevatorTrimTab
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("NGXLeftElevatorTrimTab"), 2);
+        } // CurrentLeftElevatorTrimTab
+
+        public static double CurrentRightElevatorTrimTab
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("NGXRightElevatorTrimTab"), 2);
+        } // CurrentNGXRightElevatorTrimTab
+
+        public static double CurrentStabTrim
+        {
+            get => FSUIPCConnection.ReadLVar("NGXHStabTrim");
+        } // CurrentStabTrim
+
         public static double CurrentElevatorTrim
         {
             get => Math.Round(FSUIPCConnection.ReadLVar("ElevTrimTT"), 2);
         } // CurrentElevatorTrim
+
+        public static double CurrentRudderTrim
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("RudderTrimTT"), 2);
+        } // CurrentRudderTrim
 
         public static double CurrentSpeedBrakePosition
         {
@@ -2990,6 +3015,16 @@ public static void RightMainPanelLightIncrease()
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_TRIM_WHEEL, Dec);
         } // TrimWheelUp
 
+        public static void AileronTrimLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FCTL_AILERON_TRIM, ClkL);
+        } // AileronTrimLeft
+
+        public static void AileronTrimRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FCTL_AILERON_TRIM, ClkR);
+        } // AileronTrimRight
+
         public static void StabTrimElectrical()
         {
             if(Aircraft.pmdg737.TRIM_StabTrimMainElecSw_NORMAL.Value == 0)
@@ -3025,5 +3060,42 @@ public static void StabTrimAutoPilot()
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_STAB_TRIM_OVRD_SWITCH, ClkR);
             }
         } // StabTrim
+
+        public static void PedestalFloodIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_FLOOD_CONTROL, Inc);
+        } // PedestalFloodIncrease
+
+        public static void PedestalFloodDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_FLOOD_CONTROL, Dec);
+        } // PedestalFloodDecrease
+
+        public static void PedestalPanelBrightnessIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_PANEL_CONTROL, Inc);
+        } // PedestalPanelBrightnessIncrease
+
+        public static void PedestalPanelBrightnessDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_PANEL_CONTROL, Dec);
+        } // PedestalPanelBrightnessDecrease
+
+        public static void ParkingBrake()
+        {
+            if(Aircraft.pmdg737.PED_annunParkingBrake.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_PARK_BRAKE_LEVER, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_PARK_BRAKE_LEVER, ClkR);
+            }
+        } // ParkingBrake
+
+        public static void FlightDeckDoor()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FLT_DK_DOOR_KNOB, 0x8000000);
+        } // FlightDeckDoor
     } // End PMDG737Aircraft.
             } // End namespace.

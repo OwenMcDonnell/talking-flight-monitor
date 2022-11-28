@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 22.11.1 Preview release notes
+﻿## Talking flight monitor 22.12 Preview release notes
 
 ### What's new?
 
@@ -10,6 +10,14 @@
     * Press right bracket (]), then question mark (?) again to turn it off.
 * A quick help dialog that appears on TFM startup. Check the 'don't show me this again.' option in the dialog to hide it forever.
 * Special characters such as the left bracket ([) and right bracket (]) are correctly displayed in the keyboard manager.
+* Control stand
+    * CDU
+    * Trim - use the U and D keys on the keyboard to increase/decrease trim.
+    * Pedestal
+    * Fire
+    * Cargo fire
+    * Transponder
+* Trim dialog - Access with right bracket (]), then CTRL+T.
 
     ### Bug fixes
 

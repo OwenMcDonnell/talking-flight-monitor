@@ -2267,8 +2267,16 @@ else              if (PMDG777Detected)
             switch (Name)
             {
                 case "SetTrim":
-                    tfm.PMDG.PMDG_737.Forms.TrimForm trimForm = new PMDG.PMDG_737.Forms.TrimForm();
-                    trimForm.ShowDialog();
+                    if (PMDG737Detected)
+                    {
+                        tfm.PMDG.PMDG_737.Forms.TrimForm trimForm = new PMDG.PMDG_737.Forms.TrimForm();
+                        trimForm.ShowDialog();
+
+                    }
+                    else
+                    {
+                        throw new NotImplementedException("Setting trim is only available for the PMDG 737 at this time.");
+                    }
                     break;
                 case "JumpToRunway":
 
@@ -2472,8 +2480,8 @@ else              if (PMDG777Detected)
                     onAirtempKey();
                     break;
                 case "Toggle_Trim_Announcement":
-                    onTrimKey();
-                    break;
+                                                                                            onTrimKey();
+                                                                    break;
                 case "Mute_Simconnect_Messages":
                     OnMuteSimconnectKey();
                     break;
