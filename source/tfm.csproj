@@ -454,6 +454,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.Designer.cs">
       <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlFire.Designer.cs">
+      <DependentUpon>ctlFire.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.cs">
       <SubType>UserControl</SubType>
     </Compile>
