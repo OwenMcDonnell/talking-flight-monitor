@@ -553,9 +553,9 @@ namespace tfm
 
         private static  Dictionary<byte, string> _fireHandlePosStates = new Dictionary<byte, string>()
         {
-            {0, "in" },
+            {0, "pushed in" },
             {1, "blocked" },
-            {2, "out" },
+            {2, "pulled out" },
             {3, "turned left" },
             {4, "turned right" },
         };
@@ -3097,5 +3097,113 @@ public static void StabTrimAutoPilot()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FLT_DK_DOOR_KNOB, 0x8000000);
         } // FlightDeckDoor
+
+        public static void FireTest()
+        {
+            var counter = Aircraft.pmdg737.FIRE_DetTestSw.Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_DETECTION_TEST_SWITCH, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_DETECTION_TEST_SWITCH, 0);
+            }
+        } // FireTest
+
+        public static void LeftFireOverheatDetector()
+        {
+            var counter = Aircraft.pmdg737.FIRE_OvhtDetSw[0].Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_1, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_1, 0);
+            }
+        } // Left FireOverheatDetector
+
+        public static void RightFireOverheatDetector()
+        {
+            var counter = Aircraft.pmdg737.FIRE_OvhtDetSw[1].Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_2, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_2, 0);
+            }
+        } // RightFireOverheatDetector
+
+        public static void FireExtinguisherTest()
+        {
+            var counter = Aircraft.pmdg737.FIRE_ExtinguisherTestSw.Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_EXTINGUISHER_TEST_SWITCH, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_EXTINGUISHER_TEST_SWITCH, 0);
+            }
+        } // FireExtinguisherTest
+
+        public static void FireAlarmCuttoff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_BELL_CUTOUT_SWITCH, ClkL);
+        } // FireAlarmCuttoff
+
+        public static void Engine1FireHandlePushPull()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_1_BOTTOM, ClkL);
+        } // Engine1FireHandlePushPull
+
+        public static void Engine1FireHandleTurnLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_1_TOP, ClkL);
+        } // Engine1FireHandleTurnLeft
+
+        public static void Engine1FireHandleTurnRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_1_TOP, ClkR);
+        } // Engine1FireHandleTurnRight
+
+        public static void PushPullApuFireHandle()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_APU_BOTTOM, ClkL);
+        } // PushPullApuFireHandle
+
+        public static void ApuFireHandleLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_APU_TOP, ClkL);
+        } // ApuFireHandleLeft
+
+        public static void ApuFireHandleRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_APU_TOP, ClkR);
+        } // ApuFireHandleRight
+
+        public static void PushPullEngine2FireHandle()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_BOTTOM, ClkL);
+        } // PushPullEngine2FireHandle
+
+        public static void Engine2FireHandleLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_TOP, ClkL);
+        } // Engine2FireHandleLeft
+
+
+
+        public static void Engine2FireHandleRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_TOP, ClkR);
+        } // Engine2FireHandleRight
     } // End PMDG737Aircraft.
             } // End namespace.

@@ -104,10 +104,12 @@
             System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("CDU");
             System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Trim");
             System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Pedestal");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Fire protection");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
             treeNode41,
             treeNode42,
-            treeNode43});
+            treeNode43,
+            treeNode44});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -204,8 +206,10 @@
             treeNode42.Text = "Trim";
             treeNode43.Name = "pedestalNode";
             treeNode43.Text = "Pedestal";
-            treeNode44.Name = "controlStandNode";
-            treeNode44.Text = "Control Stand";
+            treeNode44.Name = "fireNode";
+            treeNode44.Text = "Fire protection";
+            treeNode45.Name = "controlStandNode";
+            treeNode45.Text = "Control Stand";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
@@ -214,7 +218,7 @@
             treeNode31,
             treeNode39,
             treeNode40,
-            treeNode44});
+            treeNode45});
             this.tvPanels.Size = new System.Drawing.Size(300, 700);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);

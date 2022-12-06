@@ -1204,6 +1204,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.resx">
       <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlFire.resx">
+      <DependentUpon>ctlFire.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.resx">
       <DependentUpon>ctlPedestal.cs</DependentUpon>
     </EmbeddedResource>
