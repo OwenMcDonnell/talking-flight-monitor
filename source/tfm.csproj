@@ -442,6 +442,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.Designer.cs">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlCargoFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlCargoFire.Designer.cs">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1197,6 +1203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.resx">
       <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlCargoFire.resx">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.resx">
       <DependentUpon>ctlControlStandCDU.cs</DependentUpon>

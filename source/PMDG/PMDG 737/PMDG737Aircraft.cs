@@ -3205,5 +3205,69 @@ public static void StabTrimAutoPilot()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_TOP, ClkR);
         } // Engine2FireHandleRight
+
+        public static void ForwardCargoFireSelector()
+        {
+            var counter = Aircraft.pmdg737.CARGO_DetSelect[0].Value;
+
+if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_FWD, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_FWD, 0);
+            }
+        } // ForwardCargoFireSelector
+
+        public static void AftCargoFireSelector()
+        {
+            var counter = Aircraft.pmdg737.CARGO_DetSelect[1].Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_AFT, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_AFT, 0);
+            }
+        } // AftCargoFireSelector
+
+        public static void ForwardCargoFireArm()
+        {
+            if (Aircraft.pmdg737.CARGO_ArmedSw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_FWD, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_FWD, ClkR);
+            }
+        } // ForwardCargoFireArm
+
+        public static void AftCargoFireArm()
+        {
+                        if (Aircraft.pmdg737.CARGO_ArmedSw[1].Value == 0)
+            {
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_AFT, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_AFT, ClkR);
+            }
+        } // AftCargoFireArm
+
+        public static void CargoFireDischarge()
+        {
+            if(Aircraft.pmdg737.CARGO_annunDISCH.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkR);
+            }
+        } // CargoFireDischarge
     } // End PMDG737Aircraft.
             } // End namespace.

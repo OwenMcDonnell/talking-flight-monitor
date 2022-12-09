@@ -89,6 +89,7 @@ namespace tfm
             pages.Add("controlStandTrimNode", new ctlControlStandTrim());
             pages.Add("pedestalNode", new ctlPedestal());
             pages.Add("fireNode", new ctlFire());
+            pages.Add("cargoFireNode", new ctlCargoFire());
                                                 // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
