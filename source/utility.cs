@@ -9,6 +9,8 @@ namespace tfm
 {
     public static class utility
     {
+
+        public static InstrumentPanel InstrumentPanel { get => new InstrumentPanel(); }
         public static TFMMainForm TFMMainForm { get; internal set; } 
                 public static bool DebugEnabled { get; internal set; }
 

@@ -2143,8 +2143,18 @@ else              if (PMDG777Detected)
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Transponder":
-                    ap = new frmAutopilot("Transponder");
-                    ap.ShowDialog();
+
+                    if (PMDG737Detected)
+                    {
+                        var transponderForm = new tfm.PMDG.PMDG_737.Forms.TransponderForm();
+                        transponderForm.ShowDialog();
+                    }
+                    else
+                    {
+                        ap = new frmAutopilot("Transponder");
+                        ap.ShowDialog();
+
+                    }
                     break;
 
                 case "ap_Set_Throttle":

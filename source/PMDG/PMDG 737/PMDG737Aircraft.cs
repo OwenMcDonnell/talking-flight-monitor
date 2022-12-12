@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Diagnostics.Metrics;
 
 namespace tfm
 {
@@ -588,10 +589,10 @@ namespace tfm
 
         private static Dictionary<byte, string> _xponderModeSelectorStates = new Dictionary<byte, string>()
         {
-            {0, "standby" },
-            {1, "altitude reporting off" },
-            {2, "transponder" },
-            {3, "TA only" },
+            {0, "STBY" },
+            {1, "ALT off" },
+            {2, "XPNDR" },
+            {3, "TA" },
             {4, "TA/RA" },
         };
 
@@ -3269,5 +3270,59 @@ if(counter != 2)
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkR);
             }
         } // CargoFireDischarge
+
+public static void SetTransponder(string code)
+        {
+            int.TryParse(code, out int transponderCode);
+            utility.InstrumentPanel.Transponder = transponderCode;
+        } // SetTransponder
+
+        public static void TransponderSource()
+        {
+            if(Aircraft.pmdg737.XPDR_XpndrSelector_2.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_XPNDR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_XPNDR, ClkR);
+            }
+                   } // TransponderSource
+
+        public static void TransponderAlternateSource()
+        {
+            if(Aircraft.pmdg737.XPDR_AltSourceSel_2.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_ALTSOURCE, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_ALTSOURCE, ClkR);
+            }
+        } // TransponderAlternateSource
+
+        public static void TransponderMode()
+        {
+            var counter = Aircraft.pmdg737.XPDR_ModeSel.Value;
+
+            if(counter != 4)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, 0);
+            }
+        } // TransponderMode
+
+        public static void TransponderIdent()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_IDENT, ClkL);
+        } // TransponderIdent
+
+        public static void TransponderTest()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_TEST, ClkL);
+        } // TransponderTest
     } // End PMDG737Aircraft.
             } // End namespace.

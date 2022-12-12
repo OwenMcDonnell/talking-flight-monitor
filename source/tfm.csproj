@@ -472,6 +472,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.Designer.cs">
       <DependentUpon>ctlPedestal.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.Designer.cs">
+      <DependentUpon>ctlXponder.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -597,6 +603,12 @@
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.Designer.cs">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\TransponderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\TransponderForm.Designer.cs">
+      <DependentUpon>TransponderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\Forms\TrimForm.cs">
       <SubType>Form</SubType>
@@ -1219,6 +1231,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.resx">
       <DependentUpon>ctlPedestal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.resx">
+      <DependentUpon>ctlXponder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.resx">
       <DependentUpon>ctlLowerForward.cs</DependentUpon>
     </EmbeddedResource>
@@ -1281,6 +1296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.resx">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\Forms\TransponderForm.resx">
+      <DependentUpon>TransponderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\Forms\TrimForm.resx">
       <DependentUpon>TrimForm.cs</DependentUpon>

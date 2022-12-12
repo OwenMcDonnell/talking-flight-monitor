@@ -106,12 +106,14 @@
             System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Pedestal");
             System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Fire protection");
             System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Cargo fire protection");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Transponder");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
             treeNode41,
             treeNode42,
             treeNode43,
             treeNode44,
-            treeNode45});
+            treeNode45,
+            treeNode46});
             this.tvPanels = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -212,8 +214,10 @@
             treeNode44.Text = "Fire protection";
             treeNode45.Name = "cargoFireNode";
             treeNode45.Text = "Cargo fire protection";
-            treeNode46.Name = "controlStandNode";
-            treeNode46.Text = "Control Stand";
+            treeNode46.Name = "transponderNode";
+            treeNode46.Text = "Transponder";
+            treeNode47.Name = "controlStandNode";
+            treeNode47.Text = "Control Stand";
             this.tvPanels.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode9,
             treeNode16,
@@ -222,7 +226,7 @@
             treeNode31,
             treeNode39,
             treeNode40,
-            treeNode46});
+            treeNode47});
             this.tvPanels.Size = new System.Drawing.Size(300, 700);
             this.tvPanels.TabIndex = 1;
             this.tvPanels.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvPanels_AfterSelect);
