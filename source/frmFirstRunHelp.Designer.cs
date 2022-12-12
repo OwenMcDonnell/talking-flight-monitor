@@ -45,14 +45,14 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(7);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(606, 412);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // txtHelpMessage
             // 
-            this.txtHelpMessage.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtHelpMessage.HideSelection = false;
             this.txtHelpMessage.Location = new System.Drawing.Point(3, 3);
             this.txtHelpMessage.Multiline = true;
             this.txtHelpMessage.Name = "txtHelpMessage";
@@ -102,8 +102,8 @@
             this.ClientSize = new System.Drawing.Size(1924, 1050);
             this.ControlBox = false;
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "frmFirstRunHelp";
             this.ShowInTaskbar = false;
             this.Text = "TFM First Run";
