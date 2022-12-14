@@ -23,26 +23,21 @@
 
     ### Bug fixes
 
+    * The MSFS airports database no longer causes GPU, CPU, and code matrix overruns.
     * Added Gen 1, gen 2, APU 1, APU 2, and transfer buss off buttons to electrical panel.
 * PMDG 737: Added master caution/warning reset buttons to the Glare shield/warnings panel
     * PMDG 737 cockpit performance improvements.
 
-
-### MSFS 2020 support
-
-Covers initial support for the PMDG 737 series of aircraft for MSFS 2020. To ensure everything works, you will need the following installed on your PC/laptop.
-* TFM 22.11.0 preview or later.
-* MSFS 2020 update 11or later.
-* FSUIPC 7.3.14 or later.
-* First officer next for PMDG 737 aircraft.
-* One or more of the following aircraft.
-    * PMDG 737-600 for MSFS
-    * PMDG 737-700 for MSFS
-    * PMDG 737-800 for MSFS
-    * PMDG 737-900 for MSFS
-
 ### Known issues
 
+* TFM repeatedly announces some indicators as on then off. The prominant ones are the auto pilot and auto throttle disengage lights found in the forward panel/CDU segment. This is expected because these lights blink under certain conditions. If they get spammy, turn them off in TFM settings.
+    * Open TFM settings with right bracket (]), then Ctrl + comma (,).
+    * Navigate to PMDG and press right arrow to open the group.
+    * Arrow down to 737 speech events and open it with right arrow.
+    * Navigate to Forward group and open it with right arrow.
+    * Navigate to the MCP item.
+    * Check the items to speak and uncheck the items to remain silent.
+    * Press the OK button to save and close.
 * There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
 * TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
 * TFM: Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
