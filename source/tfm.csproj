@@ -604,6 +604,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.Designer.cs">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\CDU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\CDU.Designer.cs">
+      <DependentUpon>CDU.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\Forms\TransponderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1296,6 +1302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.resx">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\Forms\CDU.resx">
+      <DependentUpon>CDU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\Forms\TransponderForm.resx">
       <DependentUpon>TransponderForm.cs</DependentUpon>

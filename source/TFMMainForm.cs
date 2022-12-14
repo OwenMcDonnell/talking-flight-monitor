@@ -132,7 +132,10 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
                 TFMDatabase.Initialize();
                 // load airport database
                 inst.Speak("loading airport database");
-                                dbLoadWorker.RunWorkerAsync();
+                //dbLoadWorker.RunWorkerAsync();
+
+                var dbTask = Task.Run(() => utility.LoadAirportsDatabase());
+                dbTask.Wait();
                 
                 // write version info to the debug log
                 logger.Debug($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");

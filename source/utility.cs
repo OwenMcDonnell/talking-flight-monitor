@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DavyKager;
+using FSUIPC;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,5 +88,24 @@ namespace tfm
             return airacCycle;
         } // End LoadAiracCycle method.
 
+        public static void LoadAirportsDatabase()
+        {
+            try
+            {
+                FSUIPCConnection.AirportsDatabase.LoadTaxiways = true;
+                FSUIPCConnection.AirportsDatabase.Load(Properties.Settings.Default.P3DAirportsDatabasePath);
+                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
+                {
+                    Tolk.Output("Airport database loaded.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Tolk.Output("could not load airport database.");
+                Tolk.Output(ex.Message);
+
+            }
+
+        } // LoadAirportsDatabase
     }
 }
