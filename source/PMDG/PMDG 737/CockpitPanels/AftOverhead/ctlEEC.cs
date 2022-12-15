@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 {
     public partial class ctlEEC : UserControl, iPanelsPage
     {
-        private Timer eecTimer = new Timer();
+        private System.Timers.Timer eecTimer = new System.Timers.Timer();
         private PanelObject[] toggles = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Aft Overhead" && x.PanelSection == "Engines").ToArray();
 
         public ctlEEC()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
             
         }
 
-        private void eecTimerTick(object Sender, EventArgs eventArgs)
+        private void eecTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach(PanelObject control in toggles)
             {
@@ -84,7 +84,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
         private void ctlEEC_Load(object sender, EventArgs e)
         {
-            eecTimer.Tick += new EventHandler(eecTimerTick);
+            eecTimer.Elapsed += new System.Timers.ElapsedEventHandler(eecTimerTick);
             eecTimer.Interval = 300;
             eecTimer.Start();
         }

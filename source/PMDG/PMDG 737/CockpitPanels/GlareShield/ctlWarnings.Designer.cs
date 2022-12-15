@@ -35,12 +35,16 @@
             this.fire1TextBox = new System.Windows.Forms.TextBox();
             this.fire2Label = new System.Windows.Forms.Label();
             this.fire2TextBox = new System.Windows.Forms.TextBox();
+            this.leftMasterFireWarningButton = new System.Windows.Forms.Button();
+            this.rightMasterFireWarningButton = new System.Windows.Forms.Button();
             this.masterCautionGroupBox = new System.Windows.Forms.GroupBox();
             this.masterCautionFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.masterCaution1Label = new System.Windows.Forms.Label();
             this.masterCaution1TextBox = new System.Windows.Forms.TextBox();
             this.masterCaution2Label = new System.Windows.Forms.Label();
             this.masterCaution2TextBox = new System.Windows.Forms.TextBox();
+            this.leftMasterWarningButton = new System.Windows.Forms.Button();
+            this.rightMasterWarningButton = new System.Windows.Forms.Button();
             this.flControlsLabel = new System.Windows.Forms.Label();
             this.fltControlsTextBox = new System.Windows.Forms.TextBox();
             this.irsLabel = new System.Windows.Forms.Label();
@@ -105,7 +109,7 @@
             this.warningsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.warningsFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.warningsFlowLayoutPanel.Name = "warningsFlowLayoutPanel";
-            this.warningsFlowLayoutPanel.Size = new System.Drawing.Size(1826, 219);
+            this.warningsFlowLayoutPanel.Size = new System.Drawing.Size(1803, 352);
             this.warningsFlowLayoutPanel.TabIndex = 0;
             // 
             // fireGroupBox
@@ -116,7 +120,7 @@
             this.fireGroupBox.Controls.Add(this.fireFlowLayoutPanel);
             this.fireGroupBox.Location = new System.Drawing.Point(3, 3);
             this.fireGroupBox.Name = "fireGroupBox";
-            this.fireGroupBox.Size = new System.Drawing.Size(413, 121);
+            this.fireGroupBox.Size = new System.Drawing.Size(1029, 124);
             this.fireGroupBox.TabIndex = 0;
             this.fireGroupBox.TabStop = false;
             this.fireGroupBox.Text = "&Fire";
@@ -129,9 +133,11 @@
             this.fireFlowLayoutPanel.Controls.Add(this.fire1TextBox);
             this.fireFlowLayoutPanel.Controls.Add(this.fire2Label);
             this.fireFlowLayoutPanel.Controls.Add(this.fire2TextBox);
+            this.fireFlowLayoutPanel.Controls.Add(this.leftMasterFireWarningButton);
+            this.fireFlowLayoutPanel.Controls.Add(this.rightMasterFireWarningButton);
             this.fireFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.fireFlowLayoutPanel.Name = "fireFlowLayoutPanel";
-            this.fireFlowLayoutPanel.Size = new System.Drawing.Size(404, 46);
+            this.fireFlowLayoutPanel.Size = new System.Drawing.Size(1020, 49);
             this.fireFlowLayoutPanel.TabIndex = 0;
             // 
             // fire1Label
@@ -174,15 +180,41 @@
             this.fire2TextBox.Size = new System.Drawing.Size(100, 40);
             this.fire2TextBox.TabIndex = 3;
             // 
+            // leftMasterFireWarningButton
+            // 
+            this.leftMasterFireWarningButton.AccessibleName = "Master fire warning #1 reset";
+            this.leftMasterFireWarningButton.AutoSize = true;
+            this.leftMasterFireWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.leftMasterFireWarningButton.Location = new System.Drawing.Point(407, 3);
+            this.leftMasterFireWarningButton.Name = "leftMasterFireWarningButton";
+            this.leftMasterFireWarningButton.Size = new System.Drawing.Size(302, 43);
+            this.leftMasterFireWarningButton.TabIndex = 4;
+            this.leftMasterFireWarningButton.Text = "Master fire warn #1 reset";
+            this.leftMasterFireWarningButton.UseVisualStyleBackColor = true;
+            this.leftMasterFireWarningButton.Click += new System.EventHandler(this.leftMasterFireWarningButton_Click);
+            // 
+            // rightMasterFireWarningButton
+            // 
+            this.rightMasterFireWarningButton.AccessibleName = "Master fire warning #2 reset";
+            this.rightMasterFireWarningButton.AutoSize = true;
+            this.rightMasterFireWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rightMasterFireWarningButton.Location = new System.Drawing.Point(715, 3);
+            this.rightMasterFireWarningButton.Name = "rightMasterFireWarningButton";
+            this.rightMasterFireWarningButton.Size = new System.Drawing.Size(302, 43);
+            this.rightMasterFireWarningButton.TabIndex = 5;
+            this.rightMasterFireWarningButton.Text = "Master fire warn #1 reset";
+            this.rightMasterFireWarningButton.UseVisualStyleBackColor = true;
+            this.rightMasterFireWarningButton.Click += new System.EventHandler(this.rightMasterFireWarningButton_Click);
+            // 
             // masterCautionGroupBox
             // 
             this.masterCautionGroupBox.AccessibleName = "Master caution warnings";
             this.masterCautionGroupBox.AutoSize = true;
             this.masterCautionGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.masterCautionGroupBox.Controls.Add(this.masterCautionFlowLayoutPanel);
-            this.masterCautionGroupBox.Location = new System.Drawing.Point(422, 3);
+            this.masterCautionGroupBox.Location = new System.Drawing.Point(3, 133);
             this.masterCautionGroupBox.Name = "masterCautionGroupBox";
-            this.masterCautionGroupBox.Size = new System.Drawing.Size(655, 121);
+            this.masterCautionGroupBox.Size = new System.Drawing.Size(1181, 124);
             this.masterCautionGroupBox.TabIndex = 1;
             this.masterCautionGroupBox.TabStop = false;
             this.masterCautionGroupBox.Text = "&Master caution";
@@ -195,9 +227,11 @@
             this.masterCautionFlowLayoutPanel.Controls.Add(this.masterCaution1TextBox);
             this.masterCautionFlowLayoutPanel.Controls.Add(this.masterCaution2Label);
             this.masterCautionFlowLayoutPanel.Controls.Add(this.masterCaution2TextBox);
+            this.masterCautionFlowLayoutPanel.Controls.Add(this.leftMasterWarningButton);
+            this.masterCautionFlowLayoutPanel.Controls.Add(this.rightMasterWarningButton);
             this.masterCautionFlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.masterCautionFlowLayoutPanel.Name = "masterCautionFlowLayoutPanel";
-            this.masterCautionFlowLayoutPanel.Size = new System.Drawing.Size(646, 46);
+            this.masterCautionFlowLayoutPanel.Size = new System.Drawing.Size(1172, 49);
             this.masterCautionFlowLayoutPanel.TabIndex = 0;
             // 
             // masterCaution1Label
@@ -240,10 +274,36 @@
             this.masterCaution2TextBox.Size = new System.Drawing.Size(100, 40);
             this.masterCaution2TextBox.TabIndex = 3;
             // 
+            // leftMasterWarningButton
+            // 
+            this.leftMasterWarningButton.AccessibleName = "Master warning #1 reset";
+            this.leftMasterWarningButton.AutoSize = true;
+            this.leftMasterWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.leftMasterWarningButton.Location = new System.Drawing.Point(649, 3);
+            this.leftMasterWarningButton.Name = "leftMasterWarningButton";
+            this.leftMasterWarningButton.Size = new System.Drawing.Size(257, 43);
+            this.leftMasterWarningButton.TabIndex = 4;
+            this.leftMasterWarningButton.Text = "Master warn #1 reset";
+            this.leftMasterWarningButton.UseVisualStyleBackColor = true;
+            this.leftMasterWarningButton.Click += new System.EventHandler(this.leftMasterWarningButton_Click);
+            // 
+            // rightMasterWarningButton
+            // 
+            this.rightMasterWarningButton.AccessibleName = "Master warning #2 reset";
+            this.rightMasterWarningButton.AutoSize = true;
+            this.rightMasterWarningButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rightMasterWarningButton.Location = new System.Drawing.Point(912, 3);
+            this.rightMasterWarningButton.Name = "rightMasterWarningButton";
+            this.rightMasterWarningButton.Size = new System.Drawing.Size(257, 43);
+            this.rightMasterWarningButton.TabIndex = 5;
+            this.rightMasterWarningButton.Text = "Master warn #2 reset";
+            this.rightMasterWarningButton.UseVisualStyleBackColor = true;
+            this.rightMasterWarningButton.Click += new System.EventHandler(this.rightMasterWarningButton_Click);
+            // 
             // flControlsLabel
             // 
             this.flControlsLabel.AutoSize = true;
-            this.flControlsLabel.Location = new System.Drawing.Point(1090, 0);
+            this.flControlsLabel.Location = new System.Drawing.Point(1197, 130);
             this.flControlsLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.flControlsLabel.Name = "flControlsLabel";
             this.flControlsLabel.Size = new System.Drawing.Size(137, 33);
@@ -254,7 +314,7 @@
             // 
             this.fltControlsTextBox.AccessibleName = "Flight controls";
             this.fltControlsTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.fltControlsTextBox.Location = new System.Drawing.Point(1233, 3);
+            this.fltControlsTextBox.Location = new System.Drawing.Point(1340, 133);
             this.fltControlsTextBox.Name = "fltControlsTextBox";
             this.fltControlsTextBox.ReadOnly = true;
             this.fltControlsTextBox.Size = new System.Drawing.Size(100, 40);
@@ -263,7 +323,7 @@
             // irsLabel
             // 
             this.irsLabel.AutoSize = true;
-            this.irsLabel.Location = new System.Drawing.Point(1346, 0);
+            this.irsLabel.Location = new System.Drawing.Point(1453, 130);
             this.irsLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.irsLabel.Name = "irsLabel";
             this.irsLabel.Size = new System.Drawing.Size(43, 33);
@@ -274,7 +334,7 @@
             // 
             this.irsTextBox.AccessibleName = "IRS";
             this.irsTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.irsTextBox.Location = new System.Drawing.Point(1395, 3);
+            this.irsTextBox.Location = new System.Drawing.Point(1502, 133);
             this.irsTextBox.Name = "irsTextBox";
             this.irsTextBox.ReadOnly = true;
             this.irsTextBox.Size = new System.Drawing.Size(100, 40);
@@ -283,7 +343,7 @@
             // fuelLabel
             // 
             this.fuelLabel.AutoSize = true;
-            this.fuelLabel.Location = new System.Drawing.Point(1508, 0);
+            this.fuelLabel.Location = new System.Drawing.Point(1615, 130);
             this.fuelLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.fuelLabel.Name = "fuelLabel";
             this.fuelLabel.Size = new System.Drawing.Size(65, 33);
@@ -294,7 +354,7 @@
             // 
             this.fuelTextBox.AccessibleName = "Fuel";
             this.fuelTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.fuelTextBox.Location = new System.Drawing.Point(1579, 3);
+            this.fuelTextBox.Location = new System.Drawing.Point(1686, 133);
             this.fuelTextBox.Name = "fuelTextBox";
             this.fuelTextBox.ReadOnly = true;
             this.fuelTextBox.Size = new System.Drawing.Size(100, 40);
@@ -303,7 +363,7 @@
             // electricalLabel
             // 
             this.electricalLabel.AutoSize = true;
-            this.electricalLabel.Location = new System.Drawing.Point(1692, 0);
+            this.electricalLabel.Location = new System.Drawing.Point(10, 260);
             this.electricalLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.electricalLabel.Name = "electricalLabel";
             this.electricalLabel.Size = new System.Drawing.Size(121, 33);
@@ -314,7 +374,7 @@
             // 
             this.electricalTextBox.AccessibleName = "Electrical";
             this.electricalTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.electricalTextBox.Location = new System.Drawing.Point(3, 130);
+            this.electricalTextBox.Location = new System.Drawing.Point(137, 263);
             this.electricalTextBox.Name = "electricalTextBox";
             this.electricalTextBox.ReadOnly = true;
             this.electricalTextBox.Size = new System.Drawing.Size(100, 40);
@@ -323,7 +383,7 @@
             // apuLabel
             // 
             this.apuLabel.AutoSize = true;
-            this.apuLabel.Location = new System.Drawing.Point(116, 127);
+            this.apuLabel.Location = new System.Drawing.Point(250, 260);
             this.apuLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.apuLabel.Name = "apuLabel";
             this.apuLabel.Size = new System.Drawing.Size(69, 33);
@@ -334,7 +394,7 @@
             // 
             this.apuTextBox.AccessibleName = "APU";
             this.apuTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.apuTextBox.Location = new System.Drawing.Point(191, 130);
+            this.apuTextBox.Location = new System.Drawing.Point(325, 263);
             this.apuTextBox.Name = "apuTextBox";
             this.apuTextBox.ReadOnly = true;
             this.apuTextBox.Size = new System.Drawing.Size(100, 40);
@@ -343,7 +403,7 @@
             // overheatLabel
             // 
             this.overheatLabel.AutoSize = true;
-            this.overheatLabel.Location = new System.Drawing.Point(304, 127);
+            this.overheatLabel.Location = new System.Drawing.Point(438, 260);
             this.overheatLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.overheatLabel.Name = "overheatLabel";
             this.overheatLabel.Size = new System.Drawing.Size(114, 33);
@@ -354,7 +414,7 @@
             // 
             this.overheatTextBox.AccessibleName = "Overheat";
             this.overheatTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.overheatTextBox.Location = new System.Drawing.Point(424, 130);
+            this.overheatTextBox.Location = new System.Drawing.Point(558, 263);
             this.overheatTextBox.Name = "overheatTextBox";
             this.overheatTextBox.ReadOnly = true;
             this.overheatTextBox.Size = new System.Drawing.Size(100, 40);
@@ -363,7 +423,7 @@
             // antiIceLabel
             // 
             this.antiIceLabel.AutoSize = true;
-            this.antiIceLabel.Location = new System.Drawing.Point(537, 127);
+            this.antiIceLabel.Location = new System.Drawing.Point(671, 260);
             this.antiIceLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.antiIceLabel.Name = "antiIceLabel";
             this.antiIceLabel.Size = new System.Drawing.Size(105, 33);
@@ -374,7 +434,7 @@
             // 
             this.antiIceTextBox.AccessibleName = "Anti-ice";
             this.antiIceTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.antiIceTextBox.Location = new System.Drawing.Point(648, 130);
+            this.antiIceTextBox.Location = new System.Drawing.Point(782, 263);
             this.antiIceTextBox.Name = "antiIceTextBox";
             this.antiIceTextBox.ReadOnly = true;
             this.antiIceTextBox.Size = new System.Drawing.Size(100, 40);
@@ -383,7 +443,7 @@
             // hydraulicsLabel
             // 
             this.hydraulicsLabel.AutoSize = true;
-            this.hydraulicsLabel.Location = new System.Drawing.Point(761, 127);
+            this.hydraulicsLabel.Location = new System.Drawing.Point(895, 260);
             this.hydraulicsLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.hydraulicsLabel.Name = "hydraulicsLabel";
             this.hydraulicsLabel.Size = new System.Drawing.Size(135, 33);
@@ -394,7 +454,7 @@
             // 
             this.hydraulicsTextBox.AccessibleName = "Hydraulics";
             this.hydraulicsTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.hydraulicsTextBox.Location = new System.Drawing.Point(902, 130);
+            this.hydraulicsTextBox.Location = new System.Drawing.Point(1036, 263);
             this.hydraulicsTextBox.Name = "hydraulicsTextBox";
             this.hydraulicsTextBox.ReadOnly = true;
             this.hydraulicsTextBox.Size = new System.Drawing.Size(100, 40);
@@ -403,7 +463,7 @@
             // doorsLabel
             // 
             this.doorsLabel.AutoSize = true;
-            this.doorsLabel.Location = new System.Drawing.Point(1015, 127);
+            this.doorsLabel.Location = new System.Drawing.Point(1149, 260);
             this.doorsLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.doorsLabel.Name = "doorsLabel";
             this.doorsLabel.Size = new System.Drawing.Size(83, 33);
@@ -414,7 +474,7 @@
             // 
             this.doorsTextBox.AccessibleName = "Doors";
             this.doorsTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.doorsTextBox.Location = new System.Drawing.Point(1104, 130);
+            this.doorsTextBox.Location = new System.Drawing.Point(1238, 263);
             this.doorsTextBox.Name = "doorsTextBox";
             this.doorsTextBox.ReadOnly = true;
             this.doorsTextBox.Size = new System.Drawing.Size(100, 40);
@@ -423,7 +483,7 @@
             // enginesLabel
             // 
             this.enginesLabel.AutoSize = true;
-            this.enginesLabel.Location = new System.Drawing.Point(1217, 127);
+            this.enginesLabel.Location = new System.Drawing.Point(1351, 260);
             this.enginesLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.enginesLabel.Name = "enginesLabel";
             this.enginesLabel.Size = new System.Drawing.Size(104, 33);
@@ -434,7 +494,7 @@
             // 
             this.enginesTextBox.AccessibleName = "Engines";
             this.enginesTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.enginesTextBox.Location = new System.Drawing.Point(1327, 130);
+            this.enginesTextBox.Location = new System.Drawing.Point(1461, 263);
             this.enginesTextBox.Name = "enginesTextBox";
             this.enginesTextBox.ReadOnly = true;
             this.enginesTextBox.Size = new System.Drawing.Size(100, 40);
@@ -443,7 +503,7 @@
             // overheadLabel
             // 
             this.overheadLabel.AutoSize = true;
-            this.overheadLabel.Location = new System.Drawing.Point(1440, 127);
+            this.overheadLabel.Location = new System.Drawing.Point(1574, 260);
             this.overheadLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.overheadLabel.Name = "overheadLabel";
             this.overheadLabel.Size = new System.Drawing.Size(120, 33);
@@ -454,7 +514,7 @@
             // 
             this.overheadTextBox.AccessibleName = "Overhead";
             this.overheadTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.overheadTextBox.Location = new System.Drawing.Point(1566, 130);
+            this.overheadTextBox.Location = new System.Drawing.Point(1700, 263);
             this.overheadTextBox.Name = "overheadTextBox";
             this.overheadTextBox.ReadOnly = true;
             this.overheadTextBox.Size = new System.Drawing.Size(100, 40);
@@ -463,7 +523,7 @@
             // airSystemsLabel
             // 
             this.airSystemsLabel.AutoSize = true;
-            this.airSystemsLabel.Location = new System.Drawing.Point(1679, 127);
+            this.airSystemsLabel.Location = new System.Drawing.Point(10, 306);
             this.airSystemsLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.airSystemsLabel.Name = "airSystemsLabel";
             this.airSystemsLabel.Size = new System.Drawing.Size(144, 33);
@@ -474,7 +534,7 @@
             // 
             this.airSystemsTextBox.AccessibleName = "Air systems";
             this.airSystemsTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
-            this.airSystemsTextBox.Location = new System.Drawing.Point(3, 176);
+            this.airSystemsTextBox.Location = new System.Drawing.Point(160, 309);
             this.airSystemsTextBox.Name = "airSystemsTextBox";
             this.airSystemsTextBox.ReadOnly = true;
             this.airSystemsTextBox.Size = new System.Drawing.Size(100, 40);
@@ -491,7 +551,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlWarnings";
-            this.Size = new System.Drawing.Size(1829, 222);
+            this.Size = new System.Drawing.Size(1806, 355);
             this.Load += new System.EventHandler(this.ctlWarnings_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlWarnings_VisibleChanged);
             this.warningsFlowLayoutPanel.ResumeLayout(false);
@@ -548,5 +608,9 @@
         private System.Windows.Forms.TextBox overheadTextBox;
         private System.Windows.Forms.Label airSystemsLabel;
         private System.Windows.Forms.TextBox airSystemsTextBox;
+        private System.Windows.Forms.Button leftMasterWarningButton;
+        private System.Windows.Forms.Button rightMasterWarningButton;
+        private System.Windows.Forms.Button leftMasterFireWarningButton;
+        private System.Windows.Forms.Button rightMasterFireWarningButton;
     }
 }

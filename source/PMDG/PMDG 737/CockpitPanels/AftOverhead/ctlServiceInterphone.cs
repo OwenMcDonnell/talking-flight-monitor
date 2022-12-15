@@ -12,14 +12,14 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 {
     public partial class ctlServiceInterphone : UserControl, iPanelsPage
     {
-        private Timer phoneTimer = new Timer();
+        private System.Timers.Timer phoneTimer = new System.Timers.Timer();
 
         public ctlServiceInterphone()
         {
             InitializeComponent();
         }
 
-        private void phoneTimerTick(object Sender, EventArgs eventArgs)
+        private void phoneTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
         foreach(PanelObjects.SingleStateToggle toggle in PMDG737Aircraft.PanelControls)
             {
@@ -52,7 +52,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
         private void ctlServiceInterphone_Load(object sender, EventArgs e)
         {
-            phoneTimer.Tick += new EventHandler(phoneTimerTick);
+            phoneTimer.Elapsed += new System.Timers.ElapsedEventHandler(phoneTimerTick);
             phoneTimer.Interval = 300;
             phoneTimer.Start();
         }

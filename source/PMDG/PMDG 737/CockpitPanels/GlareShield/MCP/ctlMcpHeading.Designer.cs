@@ -160,6 +160,7 @@
             this.Name = "ctlMcpHeading";
             this.Size = new System.Drawing.Size(1075, 68);
             this.Load += new System.EventHandler(this.CtlMcpHeading_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlMcpHeading_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mcpHeading_KeyDown);
             this.headingFlowLayoutPanel.ResumeLayout(false);
             this.headingFlowLayoutPanel.PerformLayout();

@@ -18,7 +18,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
     public partial class ctlElectrical : UserControl, iPanelsPage
     {
 
-        Timer electricalTimer = new Timer();
+        System.Timers.Timer electricalTimer = new System.Timers.Timer();
         PanelObject[] electricalControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Forward Overhead" && x.PanelSection == "Electrical").ToArray();
         public ctlElectrical()
         {
@@ -29,7 +29,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
         {
                     }
 
-        private void electricalTimerTick(object Sender, EventArgs eventArgs)
+        private void electricalTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach (PanelObject control in electricalControls)
             {
@@ -99,38 +99,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
                     idg2Button.Text = toggle.ToString();
                     idg2Button.AccessibleName = toggle.ToString();
                 } // IDG2
-
-                if (toggle.Offset == Aircraft.pmdg737.ELEC_GenSw[0])
-                {
-                    generator1Button.Text = toggle.ToString();
-                    generator1Button.AccessibleName = toggle.ToString();
-                } // generator 1
-
-                if (toggle.Offset == Aircraft.pmdg737.ELEC_GenSw[1])
-                {
-                    generator2Button.Text = toggle.ToString();
-                    generator2Button.AccessibleName = toggle.ToString();
-                } // generator 2
-
-                if (toggle.Offset == Aircraft.pmdg737.ELEC_APUGenSw[0])
-                {
-                    apuGen1Button.Text = toggle.ToString();
-                    apuGen1Button.AccessibleName = toggle.ToString();
-                } // APU gen1
-
-                if (toggle.Offset == Aircraft.pmdg737.ELEC_APUGenSw[1])
-                {
-                    apuGen2Button.Text = toggle.ToString();
-                    apuGen2Button.AccessibleName = toggle.ToString();
-                } // APU gen2
-
-                if (toggle.Offset == Aircraft.pmdg737.ELEC_BusTransSw_AUTO)
-                {
-                    busXferButton.Text = toggle.ToString();
-                    busXferButton.AccessibleName = toggle.ToString();
-                } // Bus Xfer
-
-                if (toggle.Offset == Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE)
+                                                if (toggle.Offset == Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE)
                 {
                     batDischargeTextBox.Text = toggle.CurrentState.Value;
                 } // Battery light
@@ -206,13 +175,14 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
         private void ctlElectrical_Load(object sender, EventArgs e)
         {
-            electricalTimer.Tick += new EventHandler(electricalTimerTick);
+            electricalTimer.Elapsed += new System.Timers.ElapsedEventHandler(electricalTimerTick);
+            electricalTimer.Interval = 300;
             electricalTimer.Start();
 
             foreach(PanelObject control in electricalControls)
             {
                 var toggle = (SingleStateToggle)control;
-
+    
                 if(toggle.Offset == Aircraft.pmdg737.ELEC_StandbyPowerSelector)
                 {
                     standbyPowerComboBox.SelectedIndex = toggle.CurrentState.Key;
@@ -348,82 +318,9 @@ if(toggle.CurrentState.Value == "on")
                 PMDG737Aircraft.Idg2Disconnect(1);
             }
 
-
         }
 
-        private void generator1Button_Click(object sender, EventArgs e)
-        {
-            var toggle = (SingleStateToggle)electricalControls.Where(x => x.Offset == Aircraft.pmdg737.ELEC_GenSw[0]).ToArray()[0];
-
-            if(toggle.CurrentState.Value == "on")
-            {
-                PMDG737Aircraft.Generator1(0);
-            }
-            else
-            {
-                PMDG737Aircraft.Generator1(1);
-            
-
-            }
-        }
-
-        private void generator2Button_Click(object sender, EventArgs e)
-        {
-            var toggle = (SingleStateToggle)electricalControls.Where(x => x.Offset == Aircraft.pmdg737.ELEC_GenSw[1]).ToArray()[0];
-
-            if(toggle.CurrentState.Value == "on")
-            {
-                PMDG737Aircraft.Generator2(0);
-            }
-            else
-            {
-                PMDG737Aircraft.Generator2(1);
-            }
-        }
-
-        private void apuGen1Button_Click(object sender, EventArgs e)
-        {
-            var toggle = (SingleStateToggle)electricalControls.Where(x => x.Offset == Aircraft.pmdg737.ELEC_APUGenSw[0]).ToArray()[0];
-
-            if(toggle.CurrentState.Value == "on")
-            {
-                PMDG737Aircraft.ApuGenerator1(0);
-            }
-            else
-            {
-                PMDG737Aircraft.ApuGenerator1(1);
-            }
-        }
-
-        private void apuGen2Button_Click(object sender, EventArgs e)
-        {
-            var toggle = (SingleStateToggle)electricalControls.Where(x => x.Offset == Aircraft.pmdg737.ELEC_APUGenSw[1]).ToArray()[0];
-
-            if(toggle.CurrentState.Value == "on")
-            {
-                PMDG737Aircraft.ApuGenerator2(0);
-            }
-            else
-            {
-                PMDG737Aircraft.ApuGenerator2(1);
-            }
-        }
-
-        private void busXferButton_Click(object sender, EventArgs e)
-        {
-            var toggle = (SingleStateToggle)electricalControls.Where(x => x.Offset == Aircraft.pmdg737.ELEC_BusTransSw_AUTO).ToArray()[0];
-
-            if(toggle.CurrentState.Value == "auto")
-            {
-                PMDG737Aircraft.BusTransferOff();
-            }
-            else
-            {
-                PMDG737Aircraft.BusTransferAuto();
-            }
-        }
-
-        private void ctlElectrical_VisibleChanged(object sender, EventArgs e)
+                                       private void ctlElectrical_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible == true)
             {
@@ -434,6 +331,56 @@ if(toggle.CurrentState.Value == "on")
                 electricalTimer.Stop();
             }
 
+        }
+
+        private void generator1OnButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.Generator1On();
+        }
+
+        private void generator2OnButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.Generator2On();
+        }
+
+        private void apuGen1OnButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.ApuGenerator1On();
+        }
+
+        private void apuGen2OnButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.ApuGenerator2On();
+                        }
+
+        private void busXferAutoButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.BusTransferAuto();
+        }
+
+        private void generator1OffButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.Generator1Off();
+        }
+
+        private void generator2OffButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.Generator2Off();
+        }
+
+        private void apuGen1Off_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.ApuGenerator1Off();
+        }
+
+        private void apuGen2OffButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.ApuGenerator2Off();
+        }
+
+        private void busXferOffButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.BusTransferOff();
         }
     }
 }

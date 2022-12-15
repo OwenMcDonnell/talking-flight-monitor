@@ -14,15 +14,14 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 {
     public partial class ctlPSEU : UserControl, iPanelsPage
     {
-        private System.Windows.Forms.Timer pseuTimer = new System.Windows.Forms.Timer();
+        private System.Timers.Timer pseuTimer = new System.Timers.Timer();
 
-
-        public ctlPSEU()
+                public ctlPSEU()
         {
             InitializeComponent();
         }
 
-        private void PSEUTimerTick(object Sender, EventArgs eventArgs)
+        private void PSEUTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach(PanelObjects.SingleStateToggle light in PMDG737Aircraft.PanelControls)
             {
@@ -36,7 +35,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void ctlPSEU_Load(object sender, EventArgs e)
         {
             Tolk.Load();
-            pseuTimer.Tick += new EventHandler(PSEUTimerTick);
+            pseuTimer.Elapsed += new System.Timers.ElapsedEventHandler(PSEUTimerTick);
             pseuTimer.Interval = 300;
             pseuTimer.Start();
         }

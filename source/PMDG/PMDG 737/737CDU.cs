@@ -764,7 +764,7 @@ namespace tfm
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_SPACE, Aircraft.ClkL);
                     break;
                 case Keys.OemQuestion:
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_SLASH, Aircraft.ClkL);
+                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_SLASH, Aircraft.ClkL);
                     break;
                 case Keys.Oemplus:
                     // send key twice to get plus symbol
@@ -775,7 +775,7 @@ namespace tfm
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_PLUS_MINUS, Aircraft.ClkL);
                     break;
                 case Keys.Back:
-                    FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_CDU_L_DEL, Aircraft.ClkL);
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DEL, Aircraft.ClkL);
                     break;
 
             }

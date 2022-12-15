@@ -512,5 +512,17 @@ private        System.Timers.Timer speedTimer = new System.Timers.Timer();
         public void SetDocking()
         {
                     }
+
+        private void ctlMcpSpeed_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                speedTimer.Start();
+            }
+            else
+            {
+                speedTimer.Stop();
+            }
+        }
     }
 }

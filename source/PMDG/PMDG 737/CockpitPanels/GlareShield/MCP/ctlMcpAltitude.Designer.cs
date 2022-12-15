@@ -204,20 +204,20 @@
             this.holdTextBox.TabIndex = 11;
             this.holdTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mcpAltitude
+            // ctlMcpAltitude
             // 
             this.AccessibleName = "MCP Altitude";
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1528, 73);
             this.Controls.Add(this.altitudeFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                        this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "mcpAltitude";
-            this.Text = "MCP altitude";
-                        this.Load += new System.EventHandler(this.ctlMcpAltitude_Load);
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Name = "ctlMcpAltitude";
+            this.Size = new System.Drawing.Size(1526, 66);
+            this.Load += new System.EventHandler(this.ctlMcpAltitude_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlMcpAltitude_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mcpAltitude_KeyDown);
             this.altitudeFlowLayoutPanel.ResumeLayout(false);
             this.altitudeFlowLayoutPanel.PerformLayout();

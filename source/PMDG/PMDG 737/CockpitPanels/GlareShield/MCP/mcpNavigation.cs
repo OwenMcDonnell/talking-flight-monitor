@@ -291,5 +291,17 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP
         public void SetDocking()
         {
                     }
+
+        private void ctlMcpNavigation_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                navigationTimer.Start();
+            }
+            else
+            {
+                navigationTimer.Start();
+            }
+        }
     }
 }

@@ -103,20 +103,20 @@
             this.verticalSpeedLightTextBox.TabIndex = 4;
             this.verticalSpeedLightTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mcpVerticalSpeed
+            // ctlMcpVerticalSpeed
             // 
             this.AccessibleName = "MCP vertical speed";
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(793, 73);
             this.Controls.Add(this.vertSpeedFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                        this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "mcpVerticalSpeed";
-            this.Text = "MCP vertical speed";
-                        this.Load += new System.EventHandler(this.mcpVerticalSpeed_Load);
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Name = "ctlMcpVerticalSpeed";
+            this.Size = new System.Drawing.Size(786, 66);
+            this.Load += new System.EventHandler(this.mcpVerticalSpeed_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlMcpVerticalSpeed_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mcpVerticalSpeed_KeyDown);
             this.vertSpeedFlowLayoutPanel.ResumeLayout(false);
             this.vertSpeedFlowLayoutPanel.PerformLayout();

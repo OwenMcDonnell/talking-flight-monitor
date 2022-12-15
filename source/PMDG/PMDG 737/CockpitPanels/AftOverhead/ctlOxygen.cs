@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
     public partial class ctlOxygen : UserControl, iPanelsPage
     {
 
-        private Timer oxyTimer = new Timer();
+        private System.Timers.Timer oxyTimer = new System.Timers.Timer();
         private PanelObject[] oxyControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Aft Overhead" && x.PanelSection == "Oxygen").ToArray();
         public ctlOxygen()
         {
@@ -26,7 +26,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         {
                     }
 
-        private void oxyTimerTick(object Sender, EventArgs eventArgs)
+        private void oxyTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach(PanelObject control in oxyControls)
             {
@@ -51,7 +51,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
 
         private void ctlOxygen_Load(object sender, EventArgs e)
         {
-            oxyTimer.Tick += new EventHandler(oxyTimerTick);
+            oxyTimer.Elapsed += new System.Timers.ElapsedEventHandler(oxyTimerTick);
             oxyTimer.Interval = 300;
             oxyTimer.Start();
         }
@@ -59,13 +59,13 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
         private void oxygenButton_Click(object sender, EventArgs e)
         {
             var toggle = (SingleStateToggle)PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.OXY_SwNormal).ToArray()[0];
-            if(toggle.CurrentState.Value == "on")
+            if(toggle.CurrentState.Value == "off")
             {
                 PMDG737Aircraft.PassengerOxygenNormal();
             }
             else
             {
-                PMDG737Aircraft.PassengerOxygenOn();
+                PMDG737Aircraft.PassengerOxygenOff();
                 
             }
         }

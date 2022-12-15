@@ -1,10 +1,12 @@
-﻿using System;
+﻿using NGeoNames.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +16,8 @@ namespace tfm.Keyboard_manager
     public partial class frmKeyboardManager : Form
     {
         KeysConverter kc = new KeysConverter();
+        ResourceManager rm = new ResourceManager(typeof(KeyNames));
+        
         ListView.SelectedListViewItemCollection selectedKey;
         private bool apTabSelected;
         private bool generalTabSelected;
@@ -61,34 +65,7 @@ namespace tfm.Keyboard_manager
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                if (tcKeys.SelectedTab == tabGeneral)
-                {
-                    lvKeys.Items.Clear();
-                    lvKeys.BeginUpdate();
-                    foreach (SettingsPropertyValue s in Properties.Hotkeys.Default.PropertyValues)
-                    {
-                        if (s.Name.StartsWith("ap_")) continue;
-                        lvKeys.Items.Add(s.Name).SubItems.Add(kc.ConvertToString(s.PropertyValue));
-                    }
-                    lvKeys.EndUpdate();
-
-                }
-                if (tcKeys.SelectedTab == tabAutopilot)
-                {
-                    lvAutopilotKeys.Items.Clear();
-                    lvAutopilotKeys.BeginUpdate();
-                    foreach (SettingsPropertyValue s in Properties.Hotkeys.Default.PropertyValues)
-                    {
-                        if (s.Name.StartsWith("ap_"))
-                        {
-                            lvAutopilotKeys.Items.Add(s.Name).SubItems.Add(kc.ConvertToString(s.PropertyValue));
-                        }
-
-                    }
-                    lvAutopilotKeys.EndUpdate();
-
-                }
-
+                updateListViewsAfterModify();
             }
         }
 
@@ -97,12 +74,8 @@ namespace tfm.Keyboard_manager
             Properties.Hotkeys.Default.Reset();
             Properties.Hotkeys.Default.Reload();
             lvKeys.Items.Clear();
-            lvKeys.BeginUpdate();
-            foreach (SettingsProperty s in Properties.Hotkeys.Default.Properties)
-            {
-                lvKeys.Items.Add(s.Name).SubItems.Add(kc.ConvertToString(s.DefaultValue));
-            }
-            lvKeys.EndUpdate();
+            lvAutopilotKeys.Items.Clear();
+            updateListViews();
 
         }
 
@@ -121,13 +94,30 @@ namespace tfm.Keyboard_manager
 
         private void frmKeyboardManager_Load(object sender, EventArgs e)
         {
+            updateListViews();
+        }
+
+        private void updateListViews()
+        {
             string keyName = null;
+
             lvKeys.BeginUpdate();
             foreach (SettingsProperty s in Properties.Hotkeys.Default.Properties)
             {
                 keyName = s.Name.Replace("_", " ");
                 if (s.Name.StartsWith("ap_")) continue;
-                lvKeys.Items.Add(keyName).SubItems.Add(kc.ConvertToString(s.DefaultValue));
+                // split key string to extract the modifier
+                string[] key = kc.ConvertToString(s.DefaultValue).Split('+');
+
+                if (key.Count() == 1)
+                {
+                    lvKeys.Items.Add(keyName).SubItems.Add(rm.GetString(key[0]));
+                }
+                if (key.Count() == 2)
+                {
+                    lvKeys.Items.Add(keyName).SubItems.Add(key[0] + "+" + rm.GetString(key[1]));
+                }
+
             }
             lvKeys.EndUpdate();
             lvAutopilotKeys.BeginUpdate();
@@ -135,13 +125,76 @@ namespace tfm.Keyboard_manager
             {
                 keyName = s.Name.Replace("_", " ");
                 if (s.Name.StartsWith("ap_"))
-                { 
-                    lvAutopilotKeys.Items.Add(keyName).SubItems.Add(kc.ConvertToString(s.DefaultValue)); 
+                {
+                    // split key string to extract the modifier
+                    string[] key = kc.ConvertToString(s.DefaultValue).Split('+');
+
+                    if (key.Count() == 1)
+                    {
+                        lvAutopilotKeys.Items.Add(keyName).SubItems.Add(rm.GetString(key[0]));
+                    }
+                    if (key.Count() == 2)
+                    {
+                        lvAutopilotKeys.Items.Add(keyName).SubItems.Add(key[0] + "+" + rm.GetString(key[1]));
+                    }
+
                 }
             }
             lvAutopilotKeys.EndUpdate();
 
         }
+
+        private void updateListViewsAfterModify ()
+        {
+            string keyName;
+            lvKeys.Items.Clear();
+            lvKeys.BeginUpdate();
+            foreach (SettingsPropertyValue s in Properties.Hotkeys.Default.PropertyValues)
+            {
+                keyName = s.Name.Replace("_", " ");
+                if (s.Name.StartsWith("ap_")) continue;
+                // split key string to extract the modifier
+                string[] key = kc.ConvertToString(s.PropertyValue).Split('+');
+
+                if (key.Count() == 1)
+                {
+                    lvKeys.Items.Add(keyName).SubItems.Add(rm.GetString(key[0]));
+                }
+                if (key.Count() == 2)
+                {
+                    lvKeys.Items.Add(keyName).SubItems.Add(key[0] + "+" + rm.GetString(key[1]));
+                }
+
+            }
+            lvKeys.EndUpdate();
+            lvAutopilotKeys.BeginUpdate();
+            foreach (SettingsPropertyValue s in Properties.Hotkeys.Default.PropertyValues)
+            {
+                keyName = s.Name.Replace("_", " ");
+                if (s.Name.StartsWith("ap_"))
+                {
+                    // split key string to extract the modifier
+                    string[] key = kc.ConvertToString(s.PropertyValue).Split('+');
+
+                    if (key.Count() == 1)
+                    {
+                        lvAutopilotKeys.Items.Add(keyName).SubItems.Add(rm.GetString(key[0]));
+                    }
+                    if (key.Count() == 2)
+                    {
+                        lvAutopilotKeys.Items.Add(keyName).SubItems.Add(key[0] + "+" + rm.GetString(key[1]));
+                    }
+
+                }
+            }
+            lvAutopilotKeys.EndUpdate();
+
+
+        }
+
+
+
+
 
         private void btnExecute_Click(object sender, EventArgs e)
         {

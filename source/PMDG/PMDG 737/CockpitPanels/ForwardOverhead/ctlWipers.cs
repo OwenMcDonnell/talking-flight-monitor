@@ -15,7 +15,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
     public partial class ctlWipers : UserControl, iPanelsPage
     {
 
-        private Timer wipersTimer = new Timer();
+        private System.Timers.Timer wipersTimer = new System.Timers.Timer();
         private PanelObject[] wiperControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Forward Overhead" && x.PanelSection == "Wipers").ToArray();
 
         public ctlWipers()
@@ -27,7 +27,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
         {
                     }
 
-        private void WiperTimerTick(object Sender, EventArgs eventArgs)
+        private void WiperTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
 
             foreach(PanelObject control in wiperControls)
@@ -79,7 +79,11 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
         private void ctlWipers_Load(object sender, EventArgs e)
                     {
             Tolk.Load();
-foreach(PanelObject control in wiperControls)
+            wipersTimer.Elapsed += new System.Timers.ElapsedEventHandler(WiperTimerTick);
+            wipersTimer.Interval = 300;
+            wipersTimer.Start();
+
+            foreach (PanelObject control in wiperControls)
             {
                 var toggle = (SingleStateToggle)control;
 
@@ -92,9 +96,7 @@ foreach(PanelObject control in wiperControls)
                     rightWipersComboBox.SelectedIndex = toggle.CurrentState.Key;
                 }
             }
-            wipersTimer.Tick += new EventHandler((WiperTimerTick));
-            wipersTimer.Start();
-        }
+                    }
 
         private void ctlWipers_VisibleChanged(object sender, EventArgs e)
         {

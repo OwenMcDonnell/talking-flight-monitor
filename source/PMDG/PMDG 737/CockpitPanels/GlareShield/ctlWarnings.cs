@@ -271,5 +271,35 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.GlareShield
             }
 
         }
+
+        private void leftMasterWarningButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.MasterWarning1Reset();
+        }
+
+        private void rightMasterWarningButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.MasterWarning2Reset();
+        }
+
+        private void leftMasterFireWarningButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.FireWarning1Reset();
+        }
+
+        private void rightMasterFireWarningButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.FireWarning2Reset();
+        }
+
+        private void leftPanelResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.WarningPanel1Reset();
+        }
+
+        private void rightPanelResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG737Aircraft.WarningPanel2Reset();
+        }
     }
 }

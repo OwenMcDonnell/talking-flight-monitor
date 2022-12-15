@@ -115,5 +115,17 @@ private        PanelObject[] headingControls = PMDG737Aircraft.PanelControls.Whe
         {
             
         }
+
+        private void ctlMcpHeading_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                headingTimer.Start();
+            }
+            else
+            {
+                headingTimer.Stop();
+            }
+        }
     }
 }

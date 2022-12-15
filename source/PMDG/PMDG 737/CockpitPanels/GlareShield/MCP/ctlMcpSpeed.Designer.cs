@@ -488,6 +488,7 @@
             this.Name = "ctlMcpSpeed";
             this.Size = new System.Drawing.Size(1677, 196);
             this.Load += new System.EventHandler(this.mcpSpeed_Load);
+            this.VisibleChanged += new System.EventHandler(this.ctlMcpSpeed_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mcpSpeed_KeyDown);
             this.mcpSpeedFlowLayoutPanel.ResumeLayout(false);
             this.mcpSpeedFlowLayoutPanel.PerformLayout();

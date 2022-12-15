@@ -141,5 +141,17 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP
         {
             
         }
+
+        private void ctlMcpAltitude_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                altitudeTimer.Start();
+            }
+            else
+            {
+                altitudeTimer.Stop();
+            }
+        }
     }
                 }

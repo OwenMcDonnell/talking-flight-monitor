@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tfm.PMDG.PMDG_737.CockpitPanels;
 using tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.CenterOverhead;
@@ -14,7 +15,7 @@ using tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
 using tfm.PMDG.PMDG_737.CockpitPanels.Forward;
-
+using tfm.PMDG.PMDG_737.CockpitPanels.ControlStand;
 
 namespace tfm
 {
@@ -79,7 +80,18 @@ namespace tfm
             pages.Add("brakesNode", new ctlForwardBrakes());
             pages.Add("flapsNode", new ctlFlaps());
             pages.Add("forwardGearNode", new ctlForwardGear());
-                                    // set the parent and hide them all
+
+            // --panel: Lower Forward
+            pages.Add("lowerForwardNode", new ctlLowerForward());
+
+            // --panel: control stand
+            pages.Add("controlStandCDUNode", new ctlControlStandCDU());
+            pages.Add("controlStandTrimNode", new ctlControlStandTrim());
+            pages.Add("pedestalNode", new ctlPedestal());
+            pages.Add("fireNode", new ctlFire());
+            pages.Add("cargoFireNode", new ctlCargoFire());
+            pages.Add("transponderNode", new ctlXponder());
+                                                // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
                 page.Parent = this.pnlContent;

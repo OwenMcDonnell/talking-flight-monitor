@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 {
     public partial class ctlFuel : UserControl, iPanelsPage
     {
-        private Timer fuelTimer = new Timer();
+        private System.Timers.Timer fuelTimer = new System.Timers.Timer();
         private PanelObject[] fuelControls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Forward Overhead" && x.PanelSection == "Fuel").ToArray();
 
                         public ctlFuel()
@@ -22,7 +22,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
             InitializeComponent();
         }
 
-        private void fuelTimerTick(object Sender, EventArgs eventArgs)
+        private void fuelTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
 
             foreach(PanelObject control in fuelControls)
@@ -203,7 +203,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ForwardOverhead
 
         private void ctlFuel_Load(object sender, EventArgs e)
         {
-            fuelTimer.Tick += new EventHandler(fuelTimerTick);
+            fuelTimer.Elapsed += new System.Timers.ElapsedEventHandler(fuelTimerTick);
+            fuelTimer.Interval = 300;
             fuelTimer.Start();
         }
 

@@ -16,7 +16,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
     public partial class ctlEngines : UserControl, iPanelsPage
     {
 
-        private Timer enginesTimer = new Timer();
+        private System.Timers.Timer enginesTimer = new System.Timers.Timer();
         PanelObject[] controls = PMDG737Aircraft.PanelControls.Where(x => x.PanelName == "Bottom Overhead" && x.PanelSection == "Engines").ToArray();
 
         public ctlEngines()
@@ -25,7 +25,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
         }
 
 
-        private void EnginesTimerTick(object Sender, EventArgs eventArgs)
+        private void EnginesTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
             foreach (PanelObject control in controls)
             {
@@ -90,7 +90,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.BottomOverhead
 
         private void ctlEngines_Load(object sender, EventArgs e)
         {
-            enginesTimer.Tick += new EventHandler(EnginesTimerTick);
+            enginesTimer.Elapsed += new System.Timers.ElapsedEventHandler(EnginesTimerTick);
             enginesTimer.Interval = 300;
             enginesTimer.Start();
 

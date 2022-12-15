@@ -96,15 +96,31 @@
             treeNode37,
             treeNode38,
             treeNode39});
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Lower forward");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("CDU");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Trim");
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Pedestal");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Fire protection");
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Cargo fire protection");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Transponder");
+            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
+            treeNode42,
+            treeNode43,
+            treeNode44,
+            treeNode45,
+            treeNode46,
+            treeNode47});
+            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode15,
             treeNode22,
             treeNode26,
             treeNode29,
             treeNode32,
-            treeNode40});
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
-            treeNode41});
+            treeNode40,
+            treeNode41,
+            treeNode48});
+            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode49});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -199,10 +215,26 @@
             treeNode39.Text = "Gear";
             treeNode40.Name = "737ForwardNode";
             treeNode40.Text = "Forward";
-            treeNode41.Name = "Pmdg737Node";
-            treeNode41.Text = "737 speech events";
-            treeNode42.Name = "nodPMDG";
-            treeNode42.Text = "PMDG";
+            treeNode41.Name = "737LowerForwardNode";
+            treeNode41.Text = "Lower forward";
+            treeNode42.Name = "737ControlStandCDUNode";
+            treeNode42.Text = "CDU";
+            treeNode43.Name = "737ControlStandTrimNode";
+            treeNode43.Text = "Trim";
+            treeNode44.Name = "737PedestalNode";
+            treeNode44.Text = "Pedestal";
+            treeNode45.Name = "737FireNode";
+            treeNode45.Text = "Fire protection";
+            treeNode46.Name = "737CargoFireNode";
+            treeNode46.Text = "Cargo fire protection";
+            treeNode47.Name = "737TransponderNode";
+            treeNode47.Text = "Transponder";
+            treeNode48.Name = "737ControlStandNode";
+            treeNode48.Text = "Control Stand";
+            treeNode49.Name = "Pmdg737Node";
+            treeNode49.Text = "737 speech events";
+            treeNode50.Name = "nodPMDG";
+            treeNode50.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -210,7 +242,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode42});
+            treeNode50});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);
