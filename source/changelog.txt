@@ -2,6 +2,8 @@
 
 ### What's new?
 
+NOTE: the items below include both release notes for 22.11.2 and 22.12 previews. They were left out of the 22.11.2 preview build.
+
 * Lower forward panel
 * Keyboard help.
     * Press right bracket (]), then question mark (?) to turn it on.
@@ -30,6 +32,9 @@
 
 ### Known issues
 
+* The airports database section of TFM settings only has a P3D database location. A fix will come in a future TFM build.
+* Pressing right bracket (]), then Shift+C will produce an error if there isn't a Bingmaps API key provided. A fix will come in a future build.
+* The PMDG 737 cockpit panels window and the FMC window still need performance optimizations and may slightly lag. Fixes will come in a future build.
 * TFM repeatedly announces some indicators as on then off. The prominant ones are the auto pilot and auto throttle disengage lights found in the forward panel/CDU segment. This is expected because these lights blink under certain conditions. If they get spammy, turn them off in TFM settings.
     * Open TFM settings with right bracket (]), then Ctrl + comma (,).
     * Navigate to PMDG and press right arrow to open the group.

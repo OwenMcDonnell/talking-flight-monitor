@@ -257,6 +257,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -829,11 +830,35 @@
     <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
       <DependentUpon>ctlAPU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCargoFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCargoFire.Designer.cs">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlCenterMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlCenterMain.Designer.cs">
       <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandCDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandCDU.Designer.cs">
+      <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandPedestal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandPedestal.Designer.cs">
+      <DependentUpon>ctlControlStandPedestal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandTrim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandTrim.Designer.cs">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlDomeLights.cs">
       <SubType>UserControl</SubType>
@@ -864,6 +889,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlEngines.Designer.cs">
       <DependentUpon>ctlEngines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFire.Designer.cs">
+      <DependentUpon>ctlFire.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlFlightControls.cs">
       <SubType>UserControl</SubType>
@@ -978,6 +1009,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlStandby.Designer.cs">
       <DependentUpon>ctlStandby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlTransponder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlTransponder.Designer.cs">
+      <DependentUpon>ctlTransponder.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlWarnings.cs">
       <SubType>UserControl</SubType>
@@ -1420,8 +1457,20 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlCargoFire.resx">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlCenterMain.resx">
       <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlControlStandCDU.resx">
+      <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlControlStandPedestal.resx">
+      <DependentUpon>ctlControlStandPedestal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlControlStandTrim.resx">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
       <DependentUpon>ctlDomeLights.cs</DependentUpon>
@@ -1437,6 +1486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlEngines.resx">
       <DependentUpon>ctlEngines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFire.resx">
+      <DependentUpon>ctlFire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightControls.resx">
       <DependentUpon>ctlFlightControls.cs</DependentUpon>
@@ -1494,6 +1546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlStandby.resx">
       <DependentUpon>ctlStandby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlTransponder.resx">
+      <DependentUpon>ctlTransponder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlWarnings.resx">
       <DependentUpon>ctlWarnings.cs</DependentUpon>
