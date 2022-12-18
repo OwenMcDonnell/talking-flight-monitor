@@ -4453,7 +4453,7 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool FIRE_annunExtinguisherTest2 {
             get {
                 return ((bool)(this["FIRE_annunExtinguisherTest2"]));

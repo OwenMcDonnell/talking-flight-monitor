@@ -1110,7 +1110,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FIRE_annunExtinguisherTest2" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FIRE_annunExtinguisherTest3" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

@@ -72,6 +72,14 @@ namespace tfm
 
             // --panel: Lower forward
             pages.Add("737LowerForwardNode", new tfm.Settings_panels.PMDG737.ctlLowerForward());
+
+            // --panel: Control Stand
+            pages.Add("737ControlStandCDUNode", new tfm.Settings_panels.PMDG737.ctlControlStandCDU());
+            pages.Add("737ControlStandTrimNode", new tfm.Settings_panels.PMDG737.ctlControlStandTrim());
+            pages.Add("737PedestalNode", new tfm.Settings_panels.PMDG737.ctlControlStandPedestal());
+            pages.Add("737FireNode", new tfm.Settings_panels.PMDG737.ctlFire());
+            pages.Add("737CargoFireNode", new tfm.Settings_panels.PMDG737.ctlCargoFire());
+            pages.Add("737TransponderNode", new tfm.Settings_panels.PMDG737.ctlTransponder());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

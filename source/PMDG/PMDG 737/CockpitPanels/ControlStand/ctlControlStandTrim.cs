@@ -15,6 +15,9 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ControlStand
     public partial class ctlControlStandTrim : UserControl, iPanelsPage
                     {
         private double oldElevatorTrim = 0.0;
+        private double oldAileronTrim = 0.0;
+        private double oldStabTrim = 0.0;
+
         System.Timers.Timer trimTimer = new System.Timers.Timer();
 
         public ctlControlStandTrim()
@@ -32,6 +35,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ControlStand
             {
                 trimTextBox.Text = PMDG737Aircraft.CurrentElevatorTrim.ToString();
                 oldElevatorTrim = PMDG737Aircraft.CurrentElevatorTrim;
+            }
+
+            if(PMDG737Aircraft.CurrentAileronTrim != oldAileronTrim)
+            {
+                aileronTrimTextBox.Text = PMDG737Aircraft.CurrentAileronTrim.ToString();
+                oldAileronTrim = PMDG737Aircraft.CurrentAileronTrim;
+            }
+
+            if(oldStabTrim != PMDG737Aircraft.CurrentStabTrim)
+            {
+                stabTrimTextBox.Text = PMDG737Aircraft.CurrentStabTrim.ToString();
+                oldStabTrim = PMDG737Aircraft.CurrentStabTrim;
             }
 
             foreach(PanelObject control in PMDG737Aircraft.PanelControls)
@@ -74,7 +89,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ControlStand
             trimTimer.Start();
 
             trimTextBox.Text = PMDG737Aircraft.CurrentElevatorTrim.ToString();
-
+            aileronTrimTextBox.Text = PMDG737Aircraft.CurrentAileronTrim.ToString();
+            stabTrimTextBox.Text = PMDG737Aircraft.CurrentStabTrim.ToString();
             foreach (PanelObject control in PMDG737Aircraft.PanelControls)
             {
 
@@ -142,6 +158,19 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ControlStand
             else
             {
                 trimTimer.Stop();
+            }
+        }
+
+        private void aileronTrimTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.L)
+            {
+                PMDG737Aircraft.AileronTrimLeft();
+            }
+
+            if(e.KeyCode == Keys.R)
+            {
+                PMDG737Aircraft.AileronTrimRight();
             }
         }
     }

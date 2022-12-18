@@ -31,6 +31,10 @@
             this.trimFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.trimWheelLabel = new System.Windows.Forms.Label();
             this.trimTextBox = new System.Windows.Forms.TextBox();
+            this.aileronTrimLabel = new System.Windows.Forms.Label();
+            this.aileronTrimTextBox = new System.Windows.Forms.TextBox();
+            this.stabTrimLabel = new System.Windows.Forms.Label();
+            this.stabTrimTextBox = new System.Windows.Forms.TextBox();
             this.trimElectricalButton = new System.Windows.Forms.Button();
             this.trimAutopilotButton = new System.Windows.Forms.Button();
             this.stabTrimButton = new System.Windows.Forms.Button();
@@ -43,13 +47,17 @@
             this.trimFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trimFlowLayoutPanel.Controls.Add(this.trimWheelLabel);
             this.trimFlowLayoutPanel.Controls.Add(this.trimTextBox);
+            this.trimFlowLayoutPanel.Controls.Add(this.aileronTrimLabel);
+            this.trimFlowLayoutPanel.Controls.Add(this.aileronTrimTextBox);
+            this.trimFlowLayoutPanel.Controls.Add(this.stabTrimLabel);
+            this.trimFlowLayoutPanel.Controls.Add(this.stabTrimTextBox);
             this.trimFlowLayoutPanel.Controls.Add(this.trimElectricalButton);
             this.trimFlowLayoutPanel.Controls.Add(this.trimAutopilotButton);
             this.trimFlowLayoutPanel.Controls.Add(this.stabTrimButton);
             this.trimFlowLayoutPanel.Location = new System.Drawing.Point(-8, -42);
             this.trimFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.trimFlowLayoutPanel.Name = "trimFlowLayoutPanel";
-            this.trimFlowLayoutPanel.Size = new System.Drawing.Size(544, 49);
+            this.trimFlowLayoutPanel.Size = new System.Drawing.Size(1052, 49);
             this.trimFlowLayoutPanel.TabIndex = 1;
             // 
             // trimWheelLabel
@@ -76,14 +84,59 @@
             this.trimTextBox.Enter += new System.EventHandler(this.trimTextBox_Enter);
             this.trimTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trimTextBox_KeyDown);
             // 
+            // aileronTrimLabel
+            // 
+            this.aileronTrimLabel.AutoSize = true;
+            this.aileronTrimLabel.Location = new System.Drawing.Point(203, 0);
+            this.aileronTrimLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.aileronTrimLabel.Name = "aileronTrimLabel";
+            this.aileronTrimLabel.Size = new System.Drawing.Size(151, 33);
+            this.aileronTrimLabel.TabIndex = 2;
+            this.aileronTrimLabel.Text = "&Aileron trim";
+            // 
+            // aileronTrimTextBox
+            // 
+            this.aileronTrimTextBox.AccessibleName = "Aileron trim";
+            this.aileronTrimTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
+            this.aileronTrimTextBox.Location = new System.Drawing.Point(360, 3);
+            this.aileronTrimTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.aileronTrimTextBox.Name = "aileronTrimTextBox";
+            this.aileronTrimTextBox.ReadOnly = true;
+            this.aileronTrimTextBox.Size = new System.Drawing.Size(100, 40);
+            this.aileronTrimTextBox.TabIndex = 3;
+            this.aileronTrimTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.aileronTrimTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.aileronTrimTextBox_KeyDown);
+            // 
+            // stabTrimLabel
+            // 
+            this.stabTrimLabel.AutoSize = true;
+            this.stabTrimLabel.Location = new System.Drawing.Point(480, 0);
+            this.stabTrimLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.stabTrimLabel.Name = "stabTrimLabel";
+            this.stabTrimLabel.Size = new System.Drawing.Size(105, 33);
+            this.stabTrimLabel.TabIndex = 4;
+            this.stabTrimLabel.Text = "St&b trim";
+            // 
+            // stabTrimTextBox
+            // 
+            this.stabTrimTextBox.AccessibleName = "Stab trim";
+            this.stabTrimTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.Indicator;
+            this.stabTrimTextBox.Location = new System.Drawing.Point(591, 3);
+            this.stabTrimTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.stabTrimTextBox.Name = "stabTrimTextBox";
+            this.stabTrimTextBox.ReadOnly = true;
+            this.stabTrimTextBox.Size = new System.Drawing.Size(100, 40);
+            this.stabTrimTextBox.TabIndex = 5;
+            this.stabTrimTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // trimElectricalButton
             // 
             this.trimElectricalButton.AutoSize = true;
             this.trimElectricalButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.trimElectricalButton.Location = new System.Drawing.Point(196, 3);
+            this.trimElectricalButton.Location = new System.Drawing.Point(704, 3);
             this.trimElectricalButton.Name = "trimElectricalButton";
             this.trimElectricalButton.Size = new System.Drawing.Size(111, 43);
-            this.trimElectricalButton.TabIndex = 2;
+            this.trimElectricalButton.TabIndex = 6;
             this.trimElectricalButton.Text = "button1";
             this.trimElectricalButton.UseVisualStyleBackColor = true;
             this.trimElectricalButton.Click += new System.EventHandler(this.trimElectricalButton_Click);
@@ -92,10 +145,10 @@
             // 
             this.trimAutopilotButton.AutoSize = true;
             this.trimAutopilotButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.trimAutopilotButton.Location = new System.Drawing.Point(313, 3);
+            this.trimAutopilotButton.Location = new System.Drawing.Point(821, 3);
             this.trimAutopilotButton.Name = "trimAutopilotButton";
             this.trimAutopilotButton.Size = new System.Drawing.Size(111, 43);
-            this.trimAutopilotButton.TabIndex = 3;
+            this.trimAutopilotButton.TabIndex = 7;
             this.trimAutopilotButton.Text = "button1";
             this.trimAutopilotButton.UseVisualStyleBackColor = true;
             this.trimAutopilotButton.Click += new System.EventHandler(this.trimAutopilotButton_Click);
@@ -104,10 +157,10 @@
             // 
             this.stabTrimButton.AutoSize = true;
             this.stabTrimButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.stabTrimButton.Location = new System.Drawing.Point(430, 3);
+            this.stabTrimButton.Location = new System.Drawing.Point(938, 3);
             this.stabTrimButton.Name = "stabTrimButton";
             this.stabTrimButton.Size = new System.Drawing.Size(111, 43);
-            this.stabTrimButton.TabIndex = 4;
+            this.stabTrimButton.TabIndex = 8;
             this.stabTrimButton.Text = "button1";
             this.stabTrimButton.UseVisualStyleBackColor = true;
             this.stabTrimButton.Click += new System.EventHandler(this.stabTrimButton_Click);
@@ -142,5 +195,9 @@
         private System.Windows.Forms.Button trimElectricalButton;
         private System.Windows.Forms.Button trimAutopilotButton;
         private System.Windows.Forms.Button stabTrimButton;
+        private System.Windows.Forms.Label aileronTrimLabel;
+        private System.Windows.Forms.TextBox aileronTrimTextBox;
+        private System.Windows.Forms.Label stabTrimLabel;
+        private System.Windows.Forms.TextBox stabTrimTextBox;
     }
 }

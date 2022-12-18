@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Diagnostics.Metrics;
 
 namespace tfm
 {
@@ -553,9 +554,9 @@ namespace tfm
 
         private static  Dictionary<byte, string> _fireHandlePosStates = new Dictionary<byte, string>()
         {
-            {0, "in" },
+            {0, "pushed in" },
             {1, "blocked" },
-            {2, "out" },
+            {2, "pulled out" },
             {3, "turned left" },
             {4, "turned right" },
         };
@@ -588,10 +589,10 @@ namespace tfm
 
         private static Dictionary<byte, string> _xponderModeSelectorStates = new Dictionary<byte, string>()
         {
-            {0, "standby" },
-            {1, "altitude reporting off" },
-            {2, "transponder" },
-            {3, "TA only" },
+            {0, "STBY" },
+            {1, "ALT off" },
+            {2, "XPNDR" },
+            {3, "TA" },
             {4, "TA/RA" },
         };
 
@@ -1149,10 +1150,35 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
             }
         } // End TimeToTOD.
 
+        public static double CurrentAileronTrim
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("AileronTrimTT"), 2);
+        } // CurrentAileronTrim
+
+        public static double CurrentLeftElevatorTrimTab
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("NGXLeftElevatorTrimTab"), 2);
+        } // CurrentLeftElevatorTrimTab
+
+        public static double CurrentRightElevatorTrimTab
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("NGXRightElevatorTrimTab"), 2);
+        } // CurrentNGXRightElevatorTrimTab
+
+        public static double CurrentStabTrim
+        {
+            get => FSUIPCConnection.ReadLVar("NGXHStabTrim");
+        } // CurrentStabTrim
+
         public static double CurrentElevatorTrim
         {
             get => Math.Round(FSUIPCConnection.ReadLVar("ElevTrimTT"), 2);
         } // CurrentElevatorTrim
+
+        public static double CurrentRudderTrim
+        {
+            get => Math.Round(FSUIPCConnection.ReadLVar("RudderTrimTT"), 2);
+        } // CurrentRudderTrim
 
         public static double CurrentSpeedBrakePosition
         {
@@ -2990,6 +3016,16 @@ public static void RightMainPanelLightIncrease()
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_TRIM_WHEEL, Dec);
         } // TrimWheelUp
 
+        public static void AileronTrimLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FCTL_AILERON_TRIM, ClkL);
+        } // AileronTrimLeft
+
+        public static void AileronTrimRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FCTL_AILERON_TRIM, ClkR);
+        } // AileronTrimRight
+
         public static void StabTrimElectrical()
         {
             if(Aircraft.pmdg737.TRIM_StabTrimMainElecSw_NORMAL.Value == 0)
@@ -3025,5 +3061,268 @@ public static void StabTrimAutoPilot()
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_STAB_TRIM_OVRD_SWITCH, ClkR);
             }
         } // StabTrim
+
+        public static void PedestalFloodIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_FLOOD_CONTROL, Inc);
+        } // PedestalFloodIncrease
+
+        public static void PedestalFloodDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_FLOOD_CONTROL, Dec);
+        } // PedestalFloodDecrease
+
+        public static void PedestalPanelBrightnessIncrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_PANEL_CONTROL, Inc);
+        } // PedestalPanelBrightnessIncrease
+
+        public static void PedestalPanelBrightnessDecrease()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_PED_PANEL_CONTROL, Dec);
+        } // PedestalPanelBrightnessDecrease
+
+        public static void ParkingBrake()
+        {
+            if(Aircraft.pmdg737.PED_annunParkingBrake.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_PARK_BRAKE_LEVER, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_PARK_BRAKE_LEVER, ClkR);
+            }
+        } // ParkingBrake
+
+        public static void FlightDeckDoor()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FLT_DK_DOOR_KNOB, 0x8000000);
+        } // FlightDeckDoor
+
+        public static void FireTest()
+        {
+            var counter = Aircraft.pmdg737.FIRE_DetTestSw.Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_DETECTION_TEST_SWITCH, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_DETECTION_TEST_SWITCH, 0);
+            }
+        } // FireTest
+
+        public static void LeftFireOverheatDetector()
+        {
+            var counter = Aircraft.pmdg737.FIRE_OvhtDetSw[0].Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_1, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_1, 0);
+            }
+        } // Left FireOverheatDetector
+
+        public static void RightFireOverheatDetector()
+        {
+            var counter = Aircraft.pmdg737.FIRE_OvhtDetSw[1].Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_2, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_2, 0);
+            }
+        } // RightFireOverheatDetector
+
+        public static void FireExtinguisherTest()
+        {
+            var counter = Aircraft.pmdg737.FIRE_ExtinguisherTestSw.Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_EXTINGUISHER_TEST_SWITCH, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_EXTINGUISHER_TEST_SWITCH, 0);
+            }
+        } // FireExtinguisherTest
+
+        public static void FireAlarmCuttoff()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_BELL_CUTOUT_SWITCH, ClkL);
+        } // FireAlarmCuttoff
+
+        public static void Engine1FireHandlePushPull()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_1_BOTTOM, ClkL);
+        } // Engine1FireHandlePushPull
+
+        public static void Engine1FireHandleTurnLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_1_TOP, ClkL);
+        } // Engine1FireHandleTurnLeft
+
+        public static void Engine1FireHandleTurnRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_1_TOP, ClkR);
+        } // Engine1FireHandleTurnRight
+
+        public static void PushPullApuFireHandle()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_APU_BOTTOM, ClkL);
+        } // PushPullApuFireHandle
+
+        public static void ApuFireHandleLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_APU_TOP, ClkL);
+        } // ApuFireHandleLeft
+
+        public static void ApuFireHandleRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_APU_TOP, ClkR);
+        } // ApuFireHandleRight
+
+        public static void PushPullEngine2FireHandle()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_BOTTOM, ClkL);
+        } // PushPullEngine2FireHandle
+
+        public static void Engine2FireHandleLeft()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_TOP, ClkL);
+        } // Engine2FireHandleLeft
+
+
+
+        public static void Engine2FireHandleRight()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_HANDLE_ENGINE_2_TOP, ClkR);
+        } // Engine2FireHandleRight
+
+        public static void ForwardCargoFireSelector()
+        {
+            var counter = Aircraft.pmdg737.CARGO_DetSelect[0].Value;
+
+if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_FWD, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_FWD, 0);
+            }
+        } // ForwardCargoFireSelector
+
+        public static void AftCargoFireSelector()
+        {
+            var counter = Aircraft.pmdg737.CARGO_DetSelect[1].Value;
+
+            if(counter != 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_AFT, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_AFT, 0);
+            }
+        } // AftCargoFireSelector
+
+        public static void ForwardCargoFireArm()
+        {
+            if (Aircraft.pmdg737.CARGO_ArmedSw[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_FWD, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_FWD, ClkR);
+            }
+        } // ForwardCargoFireArm
+
+        public static void AftCargoFireArm()
+        {
+                        if (Aircraft.pmdg737.CARGO_ArmedSw[1].Value == 0)
+            {
+                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_AFT, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_AFT, ClkR);
+            }
+        } // AftCargoFireArm
+
+        public static void CargoFireDischarge()
+        {
+            if(Aircraft.pmdg737.CARGO_annunDISCH.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkR);
+            }
+        } // CargoFireDischarge
+
+public static void SetTransponder(string code)
+        {
+            int.TryParse(code, out int transponderCode);
+            utility.InstrumentPanel.Transponder = transponderCode;
+        } // SetTransponder
+
+        public static void TransponderSource()
+        {
+            if(Aircraft.pmdg737.XPDR_XpndrSelector_2.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_XPNDR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_XPNDR, ClkR);
+            }
+                   } // TransponderSource
+
+        public static void TransponderAlternateSource()
+        {
+            if(Aircraft.pmdg737.XPDR_AltSourceSel_2.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_ALTSOURCE, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_ALTSOURCE, ClkR);
+            }
+        } // TransponderAlternateSource
+
+        public static void TransponderMode()
+        {
+            var counter = Aircraft.pmdg737.XPDR_ModeSel.Value;
+
+            if(counter != 4)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, 0);
+            }
+        } // TransponderMode
+
+        public static void TransponderIdent()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_IDENT, ClkL);
+        } // TransponderIdent
+
+        public static void TransponderTest()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_TEST, ClkL);
+        } // TransponderTest
     } // End PMDG737Aircraft.
             } // End namespace.

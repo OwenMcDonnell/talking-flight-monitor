@@ -16,6 +16,9 @@ namespace tfm.PMDG.PMDG_737.Forms
     {
 
         private double oldElevatorTrim = 0.0;
+        private double oldAileronTrim = 0.0;
+        private double oldStabTrim = 0.0;
+
         System.Timers.Timer trimTimer = new System.Timers.Timer();
         
         public TrimForm()
@@ -31,6 +34,17 @@ namespace tfm.PMDG.PMDG_737.Forms
                 oldElevatorTrim = PMDG737Aircraft.CurrentElevatorTrim;
             }
 
+            if(oldStabTrim != PMDG737Aircraft.CurrentStabTrim)
+            {
+                stabTrimTextBox.Text = PMDG737Aircraft.CurrentStabTrim.ToString();
+                oldStabTrim = PMDG737Aircraft.CurrentStabTrim;
+            }
+
+            if(oldAileronTrim != PMDG737Aircraft.CurrentAileronTrim)
+            {
+                aileronTrimTextBox.Text = PMDG737Aircraft.CurrentAileronTrim.ToString();
+                oldAileronTrim = PMDG737Aircraft.CurrentAileronTrim;
+            }
             foreach (PanelObject control in PMDG737Aircraft.PanelControls)
             {
 
@@ -71,6 +85,8 @@ namespace tfm.PMDG.PMDG_737.Forms
             trimTimer.Start();
 
             trimTextBox.Text = PMDG737Aircraft.CurrentElevatorTrim.ToString();
+            aileronTrimTextBox.Text = PMDG737Aircraft.CurrentAileronTrim.ToString();
+            stabTrimTextBox.Text = PMDG737Aircraft.CurrentStabTrim.ToString();
 
             foreach (PanelObject control in PMDG737Aircraft.PanelControls)
             {
@@ -130,6 +146,18 @@ namespace tfm.PMDG.PMDG_737.Forms
         private void stabTrimButton_Click(object sender, EventArgs e)
         {
             PMDG737Aircraft.StabTrim();
+        }
+
+        private void aileronTrimTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.R)
+            {
+                PMDG737Aircraft.AileronTrimRight();
+            }
+            if(e.KeyCode == Keys.L)
+            {
+                PMDG737Aircraft.AileronTrimLeft();
+            }
         }
     }
 }
