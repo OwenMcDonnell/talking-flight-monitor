@@ -65,6 +65,7 @@ namespace tfm
 
             // --panel: glare shield
             pages.Add("warningsNode", new ctlWarnings());
+            pages.Add("mcpNode", new ctlMCPPower());
             pages.Add("mcpAltitudeNode", new ctlMcpAltitude());
             pages.Add("mcpHeadingNode", new ctlMcpHeading());
             pages.Add("mcpSpeedNode", new ctlMcpSpeed());

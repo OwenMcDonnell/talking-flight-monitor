@@ -593,6 +593,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.Designer.cs">
       <DependentUpon>ctlMcpHeading.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMCPPower.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMCPPower.Designer.cs">
+      <DependentUpon>ctlMCPPower.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1345,6 +1351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.resx">
       <DependentUpon>ctlMcpHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMCPPower.resx">
+      <DependentUpon>ctlMCPPower.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.resx">
       <DependentUpon>ctlMcpSpeed.cs</DependentUpon>

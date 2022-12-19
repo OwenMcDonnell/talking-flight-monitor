@@ -1,35 +1,15 @@
-﻿## Talking flight monitor 22.12 Preview release notes
+﻿## Talking flight monitor 23.1 Preview release notes
 
 ### What's new?
 
-NOTE: the items below include both release notes for 22.11.2 and 22.12 previews. They were left out of the 22.11.2 preview build.
+* PMDG 737 - AFS panel
+* PMDG 737 - Electrical/busses panel
 
-* Lower forward panel
-* Keyboard help.
-    * Press right bracket (]), then question mark (?) to turn it on.
-    * Press the fully qualified keyboard command. Example: right bracket (]), then A.
-    * TFM will describe the keyboard command instead of performing its action.
-    * Press right bracket (]), then question mark (?) again to turn it off.
-* A quick help dialog that appears on TFM startup. Check the 'don't show me this again.' option in the dialog to hide it forever.
-* Special characters such as the left bracket ([) and right bracket (]) are correctly displayed in the keyboard manager.
-* Control stand
-    * CDU
-    * Trim - use the U and D keys on the keyboard to increase/decrease trim.
-    * Pedestal
-    * Fire
-    * Cargo fire
-    * Transponder
-* Trim dialog - Access with right bracket (]), then CTRL+T.
-* Transponder dialog - Access with left bracket ([), then Shift+T.
-])
 
     ### Bug fixes
 
-    * The MSFS airports database no longer causes GPU, CPU, and code matrix overruns.
-    * Added Gen 1, gen 2, APU 1, APU 2, and transfer buss off buttons to electrical panel.
-* PMDG 737: Added master caution/warning reset buttons to the Glare shield/warnings panel
-    * PMDG 737 cockpit performance improvements.
-
+* PMDG 737 - The MCP power indicator was missing from the glare shield/MCP node in the cockpit panels and TFM settings.
+* PMDG 737 - Changed the Control Stand/Pedestal brightness knob accelerator to ALT+B.
 ### Known issues
 
 * The airports database section of TFM settings only has a P3D database location. A fix will come in a future TFM build.

@@ -49,6 +49,7 @@ namespace tfm.Settings_panels.PMDG737
             cwsaLightCheckBox.DataBindings.Add("Checked", Properties.pmdg737_offsets.Default, "MCP_annunCWS_A");
             cmdbLightCheckBox.DataBindings.Add("Checked", Properties.pmdg737_offsets.Default, "MCP_annunCMD_B");
             cwsbLightCheckBox.DataBindings.Add("Checked", Properties.pmdg737_offsets.Default, "MCP_annunCWS_B");
+            powerCheckBox.DataBindings.Add("Checked", Properties.pmdg737_offsets.Default, "MCP_indication_powered");
         }
     }
 }

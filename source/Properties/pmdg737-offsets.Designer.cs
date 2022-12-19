@@ -4702,5 +4702,209 @@ namespace tfm.Properties {
                 this["AFS_ControlsRoll"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_HOT_BAT {
+            get {
+                return ((bool)(this["BUSSES_DC_HOT_BAT"]));
+            }
+            set {
+                this["BUSSES_DC_HOT_BAT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_HOT_BAT_SWITCHED {
+            get {
+                return ((bool)(this["BUSSES_DC_HOT_BAT_SWITCHED"]));
+            }
+            set {
+                this["BUSSES_DC_HOT_BAT_SWITCHED"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_BAT_BUS {
+            get {
+                return ((bool)(this["BUSSES_DC_BAT_BUS"]));
+            }
+            set {
+                this["BUSSES_DC_BAT_BUS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_STANDBY_BUS {
+            get {
+                return ((bool)(this["BUSSES_DC_STANDBY_BUS"]));
+            }
+            set {
+                this["BUSSES_DC_STANDBY_BUS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_BUS1 {
+            get {
+                return ((bool)(this["BUSSES_DC_BUS1"]));
+            }
+            set {
+                this["BUSSES_DC_BUS1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_BUS2 {
+            get {
+                return ((bool)(this["BUSSES_DC_BUS2"]));
+            }
+            set {
+                this["BUSSES_DC_BUS2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_DC_GROUND_SVC {
+            get {
+                return ((bool)(this["BUSSES_DC_GROUND_SVC"]));
+            }
+            set {
+                this["BUSSES_DC_GROUND_SVC"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_TRANSFER1 {
+            get {
+                return ((bool)(this["BUSSES_AC_TRANSFER1"]));
+            }
+            set {
+                this["BUSSES_AC_TRANSFER1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_TRANSFER2 {
+            get {
+                return ((bool)(this["BUSSES_AC_TRANSFER2"]));
+            }
+            set {
+                this["BUSSES_AC_TRANSFER2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_GROUND_SVC1 {
+            get {
+                return ((bool)(this["BUSSES_AC_GROUND_SVC1"]));
+            }
+            set {
+                this["BUSSES_AC_GROUND_SVC1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_GROUND_SVC2 {
+            get {
+                return ((bool)(this["BUSSES_AC_GROUND_SVC2"]));
+            }
+            set {
+                this["BUSSES_AC_GROUND_SVC2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_MAIN1 {
+            get {
+                return ((bool)(this["BUSSES_AC_MAIN1"]));
+            }
+            set {
+                this["BUSSES_AC_MAIN1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_MAIN2 {
+            get {
+                return ((bool)(this["BUSSES_AC_MAIN2"]));
+            }
+            set {
+                this["BUSSES_AC_MAIN2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_GALLEY1 {
+            get {
+                return ((bool)(this["BUSSES_AC_GALLEY1"]));
+            }
+            set {
+                this["BUSSES_AC_GALLEY1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_GALLEY2 {
+            get {
+                return ((bool)(this["BUSSES_AC_GALLEY2"]));
+            }
+            set {
+                this["BUSSES_AC_GALLEY2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BUSSES_AC_STANDBY {
+            get {
+                return ((bool)(this["BUSSES_AC_STANDBY"]));
+            }
+            set {
+                this["BUSSES_AC_STANDBY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MCP_indication_powered {
+            get {
+                return ((bool)(this["MCP_indication_powered"]));
+            }
+            set {
+                this["MCP_indication_powered"] = value;
+            }
+        }
     }
 }
