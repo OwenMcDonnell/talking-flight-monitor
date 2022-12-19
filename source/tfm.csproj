@@ -479,6 +479,12 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.Designer.cs">
       <DependentUpon>ctlXponder.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAFS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAFS.Designer.cs">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -811,6 +817,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAFS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAFS.Designer.cs">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlAirSystems.cs">
       <SubType>UserControl</SubType>
@@ -1277,6 +1289,9 @@
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.resx">
       <DependentUpon>ctlXponder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAFS.resx">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.resx">
       <DependentUpon>ctlLowerForward.cs</DependentUpon>
     </EmbeddedResource>
@@ -1447,6 +1462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAFS.resx">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAirSystems.resx">
       <DependentUpon>ctlAirSystems.cs</DependentUpon>

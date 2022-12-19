@@ -4666,5 +4666,41 @@ namespace tfm.Properties {
                 this["XPDR_AltSourceSel_1"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AFS_AutothrottleServosConnected {
+            get {
+                return ((bool)(this["AFS_AutothrottleServosConnected"]));
+            }
+            set {
+                this["AFS_AutothrottleServosConnected"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AFS_ControlsPitch {
+            get {
+                return ((bool)(this["AFS_ControlsPitch"]));
+            }
+            set {
+                this["AFS_ControlsPitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AFS_ControlsRoll {
+            get {
+                return ((bool)(this["AFS_ControlsRoll"]));
+            }
+            set {
+                this["AFS_ControlsRoll"] = value;
+            }
+        }
     }
 }

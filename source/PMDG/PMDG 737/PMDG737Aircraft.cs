@@ -1089,6 +1089,11 @@ new SingleStateToggle { Name = "Transponder alternate source", PanelName = "Cont
 new SingleStateToggle { Name = "Transponder mode", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_ModeSel, AvailableStates = _xponderModeSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_ModeSel},
 new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_annunFAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_annunFAIL},
 
+// --panel: AFS
+new SingleStateToggle { Name = "Auto throttle servos", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_AutothrottleServosConnected, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_AutothrottleServosConnected},
+new SingleStateToggle { Name = "Auto pitch", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_ControlsPitch, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_ControlsPitch},
+new SingleStateToggle { Name = "Auto roll", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_ControlsRoll, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_ControlsRoll},
+
 // --end-panel-controls                              
             };
         }
