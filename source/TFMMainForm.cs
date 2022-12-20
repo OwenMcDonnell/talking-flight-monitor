@@ -184,8 +184,13 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
                 {
                     inst.PostTakeOffChecklist();
                 }
-                               
-            }
+
+                // Keep track of the user in terms of the airports database.
+                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
+                {
+                    FSUIPCConnection.AirportsDatabase.SetReferenceLocation();
+                }
+                                                           }
                                     catch (Exception ex)
             {
                 // An error occured. Tell the user and stop this timer.
