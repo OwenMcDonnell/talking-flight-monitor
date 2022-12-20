@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 22.12.1 Preview release notes
+﻿## Talking flight monitor 22.12.2 Preview release notes
 
 ### What's new?
 
