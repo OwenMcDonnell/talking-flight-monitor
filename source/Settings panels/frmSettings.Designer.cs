@@ -76,51 +76,53 @@
             System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode(" Bottom Overhead", new System.Windows.Forms.TreeNode[] {
             treeNode27,
             treeNode28});
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Warnings");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("MCP");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
-            treeNode30,
-            treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("MCP");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("DU");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Standby");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Speed");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Brakes");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Flaps");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Gear");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Forward", new System.Windows.Forms.TreeNode[] {
-            treeNode33,
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("AFS");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Warnings");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("MCP");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Glare Shield", new System.Windows.Forms.TreeNode[] {
+            treeNode31,
+            treeNode32});
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("MCP");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("DU");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Standby");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Speed");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Brakes");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Flaps");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Gear");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Forward", new System.Windows.Forms.TreeNode[] {
             treeNode34,
             treeNode35,
             treeNode36,
             treeNode37,
             treeNode38,
-            treeNode39});
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Lower forward");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("CDU");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Trim");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Pedestal");
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Fire protection");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Cargo fire protection");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Transponder");
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
-            treeNode42,
+            treeNode39,
+            treeNode40});
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Lower forward");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("CDU");
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Trim");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Pedestal");
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Fire protection");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Cargo fire protection");
+            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Transponder");
+            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Control Stand", new System.Windows.Forms.TreeNode[] {
             treeNode43,
             treeNode44,
             treeNode45,
             treeNode46,
-            treeNode47});
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
+            treeNode47,
+            treeNode48});
+            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("737 speech events", new System.Windows.Forms.TreeNode[] {
             treeNode15,
             treeNode22,
             treeNode26,
             treeNode29,
-            treeNode32,
-            treeNode40,
+            treeNode30,
+            treeNode33,
             treeNode41,
-            treeNode48});
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode42,
             treeNode49});
+            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("PMDG", new System.Windows.Forms.TreeNode[] {
+            treeNode50});
             this.tvCategories = new System.Windows.Forms.TreeView();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -193,48 +195,50 @@
             treeNode28.Text = "Lights";
             treeNode29.Name = "bottomOverheadNode";
             treeNode29.Text = " Bottom Overhead";
-            treeNode30.Name = "737WarningsNode";
-            treeNode30.Text = "Warnings";
-            treeNode31.Name = "737mcpNode";
-            treeNode31.Text = "MCP";
-            treeNode32.Name = "737GlareShieldNode";
-            treeNode32.Text = "Glare Shield";
-            treeNode33.Name = "737ForwardMcpNode";
-            treeNode33.Text = "MCP";
-            treeNode34.Name = "737DUNode";
-            treeNode34.Text = "DU";
-            treeNode35.Name = "737StandbyNode";
-            treeNode35.Text = "Standby";
-            treeNode36.Name = "737ForwardSpeedNode";
-            treeNode36.Text = "Speed";
-            treeNode37.Name = "737ForwardBrakesNode";
-            treeNode37.Text = "Brakes";
-            treeNode38.Name = "737ForwardFlapsNode";
-            treeNode38.Text = "Flaps";
-            treeNode39.Name = "737ForwardGearNode";
-            treeNode39.Text = "Gear";
-            treeNode40.Name = "737ForwardNode";
-            treeNode40.Text = "Forward";
-            treeNode41.Name = "737LowerForwardNode";
-            treeNode41.Text = "Lower forward";
-            treeNode42.Name = "737ControlStandCDUNode";
-            treeNode42.Text = "CDU";
-            treeNode43.Name = "737ControlStandTrimNode";
-            treeNode43.Text = "Trim";
-            treeNode44.Name = "737PedestalNode";
-            treeNode44.Text = "Pedestal";
-            treeNode45.Name = "737FireNode";
-            treeNode45.Text = "Fire protection";
-            treeNode46.Name = "737CargoFireNode";
-            treeNode46.Text = "Cargo fire protection";
-            treeNode47.Name = "737TransponderNode";
-            treeNode47.Text = "Transponder";
-            treeNode48.Name = "737ControlStandNode";
-            treeNode48.Text = "Control Stand";
-            treeNode49.Name = "Pmdg737Node";
-            treeNode49.Text = "737 speech events";
-            treeNode50.Name = "nodPMDG";
-            treeNode50.Text = "PMDG";
+            treeNode30.Name = "737AfsNode";
+            treeNode30.Text = "AFS";
+            treeNode31.Name = "737WarningsNode";
+            treeNode31.Text = "Warnings";
+            treeNode32.Name = "737mcpNode";
+            treeNode32.Text = "MCP";
+            treeNode33.Name = "737GlareShieldNode";
+            treeNode33.Text = "Glare Shield";
+            treeNode34.Name = "737ForwardMcpNode";
+            treeNode34.Text = "MCP";
+            treeNode35.Name = "737DUNode";
+            treeNode35.Text = "DU";
+            treeNode36.Name = "737StandbyNode";
+            treeNode36.Text = "Standby";
+            treeNode37.Name = "737ForwardSpeedNode";
+            treeNode37.Text = "Speed";
+            treeNode38.Name = "737ForwardBrakesNode";
+            treeNode38.Text = "Brakes";
+            treeNode39.Name = "737ForwardFlapsNode";
+            treeNode39.Text = "Flaps";
+            treeNode40.Name = "737ForwardGearNode";
+            treeNode40.Text = "Gear";
+            treeNode41.Name = "737ForwardNode";
+            treeNode41.Text = "Forward";
+            treeNode42.Name = "737LowerForwardNode";
+            treeNode42.Text = "Lower forward";
+            treeNode43.Name = "737ControlStandCDUNode";
+            treeNode43.Text = "CDU";
+            treeNode44.Name = "737ControlStandTrimNode";
+            treeNode44.Text = "Trim";
+            treeNode45.Name = "737PedestalNode";
+            treeNode45.Text = "Pedestal";
+            treeNode46.Name = "737FireNode";
+            treeNode46.Text = "Fire protection";
+            treeNode47.Name = "737CargoFireNode";
+            treeNode47.Text = "Cargo fire protection";
+            treeNode48.Name = "737TransponderNode";
+            treeNode48.Text = "Transponder";
+            treeNode49.Name = "737ControlStandNode";
+            treeNode49.Text = "Control Stand";
+            treeNode50.Name = "Pmdg737Node";
+            treeNode50.Text = "737 speech events";
+            treeNode51.Name = "nodPMDG";
+            treeNode51.Text = "PMDG";
             this.tvCategories.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -242,7 +246,7 @@
             treeNode4,
             treeNode5,
             treeNode6,
-            treeNode50});
+            treeNode51});
             this.tvCategories.Size = new System.Drawing.Size(180, 146);
             this.tvCategories.TabIndex = 0;
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategory_AfterSelect);
