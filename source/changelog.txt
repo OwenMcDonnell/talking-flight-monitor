@@ -1,15 +1,15 @@
-﻿## Talking flight monitor 23.1 Preview release notes
+﻿## Talking flight monitor 22.12.1 Preview release notes
 
 ### What's new?
 
 * PMDG 737 - AFS panel
-* PMDG 737 - Electrical/busses panel
-
 
     ### Bug fixes
 
+* TFM - MSFS and P3D airports database now provides accurate ILS readouts.
 * PMDG 737 - The MCP power indicator was missing from the glare shield/MCP node in the cockpit panels and TFM settings.
 * PMDG 737 - Changed the Control Stand/Pedestal brightness knob accelerator to ALT+B.
+
 ### Known issues
 
 * The airports database section of TFM settings only has a P3D database location. A fix will come in a future TFM build.
@@ -23,6 +23,6 @@
     * Navigate to the MCP item.
     * Check the items to speak and uncheck the items to remain silent.
     * Press the OK button to save and close.
-* There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
-* TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
+* PMDG 737 - There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
+* TFM - Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
 * TFM: Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
