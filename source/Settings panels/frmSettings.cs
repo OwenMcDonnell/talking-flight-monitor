@@ -80,6 +80,9 @@ namespace tfm
             pages.Add("737FireNode", new tfm.Settings_panels.PMDG737.ctlFire());
             pages.Add("737CargoFireNode", new tfm.Settings_panels.PMDG737.ctlCargoFire());
             pages.Add("737TransponderNode", new tfm.Settings_panels.PMDG737.ctlTransponder());
+
+            // --panel: AFS
+            pages.Add("737AfsNode", new tfm.Settings_panels.PMDG737.ctlAFS());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

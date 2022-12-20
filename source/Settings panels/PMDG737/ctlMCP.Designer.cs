@@ -55,6 +55,7 @@
             this.cwsaLightCheckBox = new System.Windows.Forms.CheckBox();
             this.cmdbLightCheckBox = new System.Windows.Forms.CheckBox();
             this.cwsbLightCheckBox = new System.Windows.Forms.CheckBox();
+            this.powerCheckBox = new System.Windows.Forms.CheckBox();
             this.mcpFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -339,7 +340,7 @@
             // 
             // cmdaLightCheckBox
             // 
-            this.cmdaLightCheckBox.AccessibleName = "CMDA light";
+            this.cmdaLightCheckBox.AccessibleName = "CMDA indicator";
             this.cmdaLightCheckBox.AutoSize = true;
             this.cmdaLightCheckBox.Location = new System.Drawing.Point(385, 89);
             this.cmdaLightCheckBox.Name = "cmdaLightCheckBox";
@@ -381,15 +382,27 @@
             this.cwsbLightCheckBox.Text = "CWSB light";
             this.cwsbLightCheckBox.UseVisualStyleBackColor = true;
             // 
+            // powerCheckBox
+            // 
+            this.powerCheckBox.AccessibleName = "Power indicator";
+            this.powerCheckBox.AutoSize = true;
+            this.powerCheckBox.Location = new System.Drawing.Point(0, 0);
+            this.powerCheckBox.Name = "powerCheckBox";
+            this.powerCheckBox.Size = new System.Drawing.Size(111, 37);
+            this.powerCheckBox.TabIndex = 1;
+            this.powerCheckBox.Text = "Power";
+            this.powerCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ctlMCP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Controls.Add(this.powerCheckBox);
             this.Controls.Add(this.mcpFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlMCP";
             this.Size = new System.Drawing.Size(1875, 132);
@@ -430,5 +443,6 @@
         private System.Windows.Forms.CheckBox cwsaLightCheckBox;
         private System.Windows.Forms.CheckBox cmdbLightCheckBox;
         private System.Windows.Forms.CheckBox cwsbLightCheckBox;
+        private System.Windows.Forms.CheckBox powerCheckBox;
     }
 }

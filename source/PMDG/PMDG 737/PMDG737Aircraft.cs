@@ -927,6 +927,7 @@ new SingleStateToggle { Name = "Overhead warning light", PanelName = "Glare Shie
 new SingleStateToggle { Name = "Air Systems warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunAIR_COND, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunAIR_COND},
 
 // --section: MCP
+new SingleStateToggle { Name = "MCP power", PanelName = "MCP", PanelSection = "MCP", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_indication_powered, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_indication_powered},
 new SingleStateToggle { Name = "Speed intervene", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASBlank, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASBlank},
 new SingleStateToggle { Name = "MCP Overspeed warning", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASOverspeedFlash, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASOverspeedFlash},
 new SingleStateToggle { Name = "MCP underspeed warning", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASUnderspeedFlash, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASUnderspeedFlash},
@@ -1088,6 +1089,11 @@ new SingleStateToggle { Name = "Transponder source", PanelName = "Control Stand"
 new SingleStateToggle { Name = "Transponder alternate source", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_AltSourceSel_2, AvailableStates = _xponderAltSourceSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_AltSourceSel_2},
 new SingleStateToggle { Name = "Transponder mode", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_ModeSel, AvailableStates = _xponderModeSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_ModeSel},
 new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_annunFAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_annunFAIL},
+
+// --panel: AFS
+new SingleStateToggle { Name = "Auto throttle servos", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_AutothrottleServosConnected, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_AutothrottleServosConnected},
+new SingleStateToggle { Name = "Auto pitch", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_ControlsPitch, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_ControlsPitch},
+new SingleStateToggle { Name = "Auto roll", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_ControlsRoll, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_ControlsRoll},
 
 // --end-panel-controls                              
             };

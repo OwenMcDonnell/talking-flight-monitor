@@ -65,6 +65,7 @@ namespace tfm
 
             // --panel: glare shield
             pages.Add("warningsNode", new ctlWarnings());
+            pages.Add("mcpNode", new ctlMCPPower());
             pages.Add("mcpAltitudeNode", new ctlMcpAltitude());
             pages.Add("mcpHeadingNode", new ctlMcpHeading());
             pages.Add("mcpSpeedNode", new ctlMcpSpeed());
@@ -91,6 +92,9 @@ namespace tfm
             pages.Add("fireNode", new ctlFire());
             pages.Add("cargoFireNode", new ctlCargoFire());
             pages.Add("transponderNode", new ctlXponder());
+
+            // --panel: AFS
+            pages.Add("afsNode", new ctlAFS());
                                                 // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {
