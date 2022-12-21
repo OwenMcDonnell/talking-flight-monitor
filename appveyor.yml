@@ -96,7 +96,7 @@ for:
       $token = $env:gh_token
       $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
       $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
-      $repo = 'jfayre/talking-flight-monitor'
+      $repo = 'talking-flight-monitor/talking-flight-monitor'
       $tag = $env:appveyor_repo_tag_name
       $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
 
