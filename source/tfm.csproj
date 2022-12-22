@@ -854,6 +854,12 @@
     <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
       <DependentUpon>ctlAPU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlBuses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlBuses.Designer.cs">
+      <DependentUpon>ctlBuses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\PMDG737\ctlCargoFire.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1492,6 +1498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlBuses.resx">
+      <DependentUpon>ctlBuses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlCargoFire.resx">
       <DependentUpon>ctlCargoFire.cs</DependentUpon>
