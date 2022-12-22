@@ -50,6 +50,7 @@ namespace tfm
             pages.Add("navDisNode", new ctlNav_displays());
             pages.Add("fuelNode", new ctlFuel());
             pages.Add("electricalNode", new ctlElectrical());
+            pages.Add("busesNode", new ctlBusses());
             pages.Add("apuNode", new ctlAPU());
             pages.Add("wipersNode", new ctlWipers());
 
