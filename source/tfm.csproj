@@ -359,6 +359,12 @@
     <Compile Include="PMDG\Enums\PMDG737SpeedBrake.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.Designer.cs">
+      <DependentUpon>ctlCaptainACP.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1246,6 +1252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OutputHistory\frmOutputHistory.resx">
       <DependentUpon>frmOutputHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.resx">
+      <DependentUpon>ctlCaptainACP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>

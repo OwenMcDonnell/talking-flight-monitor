@@ -16,6 +16,7 @@ using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
 using tfm.PMDG.PMDG_737.CockpitPanels.Forward;
 using tfm.PMDG.PMDG_737.CockpitPanels.ControlStand;
+using tfm.PMDG.PMDG_737.CockpitPanels.AftElectronic;
 
 namespace tfm
 {
@@ -96,6 +97,9 @@ namespace tfm
 
             // --panel: AFS
             pages.Add("afsNode", new ctlAFS());
+
+            // --panel: AFT electronic
+            pages.Add("captainACPNode", new ctlCaptainACP());
                                                 // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

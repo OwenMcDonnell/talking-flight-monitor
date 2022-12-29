@@ -4906,5 +4906,77 @@ namespace tfm.Properties {
                 this["MCP_indication_powered"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_ReceiverSwitches1 {
+            get {
+                return ((bool)(this["COMM_ReceiverSwitches1"]));
+            }
+            set {
+                this["COMM_ReceiverSwitches1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_ReceiverSwitches2 {
+            get {
+                return ((bool)(this["COMM_ReceiverSwitches2"]));
+            }
+            set {
+                this["COMM_ReceiverSwitches2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_ReceiverSwitches3 {
+            get {
+                return ((bool)(this["COMM_ReceiverSwitches3"]));
+            }
+            set {
+                this["COMM_ReceiverSwitches3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_SelectedMic1 {
+            get {
+                return ((bool)(this["COMM_SelectedMic1"]));
+            }
+            set {
+                this["COMM_SelectedMic1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_SelectedMic2 {
+            get {
+                return ((bool)(this["COMM_SelectedMic2"]));
+            }
+            set {
+                this["COMM_SelectedMic2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool COMM_SelectedMic3 {
+            get {
+                return ((bool)(this["COMM_SelectedMic3"]));
+            }
+            set {
+                this["COMM_SelectedMic3"] = value;
+            }
+        }
     }
 }
