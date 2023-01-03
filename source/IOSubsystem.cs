@@ -38,6 +38,7 @@ using System.CodeDom;
 using System.Speech.Synthesis;
 using System.ComponentModel.Design;
 using tfm.Keyboard_manager;
+using tfm.PMDG.PMDG_737.flows;
 // using Microsoft.CognitiveServices.Speech;
 // using Microsoft.CognitiveServices.Speech.Audio;
 
@@ -266,7 +267,7 @@ namespace tfm
             var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
             HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
             HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            // HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
+            HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
 
             runwayGuidanceEnabled = false;
 
@@ -291,10 +292,8 @@ namespace tfm
         private void RunTest(object sender, HotkeyEventArgs e)
         {
             e.Handled = true;
-            Tolk.Output(FSUIPCConnection.ReadLVar("switch_28_73X").ToString("f2"));
-             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_APU_GEN1_SWITCH, Aircraft.ClkL);
-
-
+            Preflight737 pf = new Preflight737();
+            var flow = Task.Run(() => pf.PreflightFlow(1))    ;
 
         }
 

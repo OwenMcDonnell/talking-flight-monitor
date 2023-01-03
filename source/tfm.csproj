@@ -623,6 +623,7 @@
     <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.Designer.cs">
       <DependentUpon>mcpNavigation.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 737\flows\preflight.cs" />
     <Compile Include="PMDG\PMDG 737\Forms\CDU.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -538,5 +538,17 @@ namespace tfm.Properties {
                 this["ShowFirstRunDialog"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PreflightAlignIRS {
+            get {
+                return ((bool)(this["PreflightAlignIRS"]));
+            }
+            set {
+                this["PreflightAlignIRS"] = value;
+            }
+        }
     }
 }
