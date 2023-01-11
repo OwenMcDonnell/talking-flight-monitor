@@ -477,7 +477,7 @@ namespace tfm
                         }
                     }
 
-                    //ReadPMDG747Toggles();
+                    ReadPMDG747Toggles();
                     ReadPmdgFMCMessage();
                 } // End read 747 toggles.
                 if (PMDG777Detected)
@@ -1862,7 +1862,18 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowAltitudeBox();
                         }
                     } // PMDG 737
-                    else if (PMDG777Detected)
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["altitude"].Visible)
+                        {
+                            Output(isGauge: false, output: "The altitude box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowAltitudeBox();
+                        }
+                    }
+                                        else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["altitude"].Visible)
                         {
@@ -1893,8 +1904,18 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowNavigationBox();
                         }
                     }
-
-                    if (PMDG777Detected)
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["navigation"].Visible)
+                        {
+                            Output(isGauge: false, output: "The MCP flight controls window is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowNavigationBox();
+                        }
+                    }
+else                    if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["navigation"].Visible)
                         {
@@ -1941,6 +1962,17 @@ else              if (PMDG777Detected)
                         else
                         {
                             PMDG737Aircraft.ShowHeadingBox();
+                        }
+                    }
+                    if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["heading"].Visible)
+                        {
+                            Output(isGauge: false, output: "The heading box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowHeadingBox();
                         }
                     }
                     else if (PMDG777Detected)
@@ -1998,6 +2030,17 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowSpeedBox();
                         }
                     }
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["speed"].Visible)
+                        {
+                            Output(isGauge: false, output: "The speed box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowSpeedBox();
+                        }
+                    } // PMDG747
                     else if (PMDG777Detected)
                     {
 
@@ -2075,6 +2118,17 @@ else              if (PMDG777Detected)
                         else
                         {
                             PMDG737Aircraft.ShowVerticalSpeedBox();
+                        }
+                    }
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["vertical"].Visible)
+                        {
+                            Output(isGauge: false, output: "The vertical speed box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowVerticalSpeedBox();
                         }
                     }
                     else if (PMDG777Detected)
@@ -2347,6 +2401,32 @@ else              if (PMDG777Detected)
                         }
 
                         Output(isGauge: false, output: speedBrakeValue);
+                    }
+
+                    if (PMDG747Detected)
+                    {
+                        var speedBrakeValue = string.Empty;
+                        switch (PMDG747Aircraft.CurrentSpeedBrakePosition)
+                        {
+                            case 0:
+                                speedBrakeValue = "down";
+                                break;
+                            case 25:
+                                speedBrakeValue = "armed";
+                                break;
+                            case 62:
+                                speedBrakeValue = "flt";
+                                break;
+                            case 100:
+                                speedBrakeValue = "up";
+                                break;
+                            default:
+                                speedBrakeValue = PMDG747Aircraft.CurrentSpeedBrakePosition.ToString();
+                                break;
+                        }
+
+                        Output(isGauge: false, output: speedBrakeValue);
+
                     }
 
                     if (PMDG777Detected)
@@ -4385,6 +4465,17 @@ else              if (PMDG777Detected)
         } // End ReadPMDG737Toggles.
         private void ReadPMDG747Toggles()
         {
+
+            foreach(PanelObject toggle in PMDG747Aircraft.PanelControls)
+            {
+                if (toggle.shouldSpeak == true)
+                {
+                    if (toggle.Offset.ValueChanged)
+                    {
+                        Output(isGauge: false, output: toggle.ToString());
+                    }
+                }
+            }
             // Overhead Maintenance
             // Electrical
             ReadToggle(Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0], Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0].Value > 0, "Gen. #1 field", "Off", "On");

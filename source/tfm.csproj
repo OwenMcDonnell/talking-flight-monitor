@@ -359,6 +359,12 @@
     <Compile Include="PMDG\Enums\PMDG737SpeedBrake.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.Designer.cs">
+      <DependentUpon>ctlCaptainACP.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -496,6 +502,12 @@
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.Designer.cs">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlBusses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlBusses.Designer.cs">
+      <DependentUpon>ctlBusses.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.cs">
       <SubType>UserControl</SubType>
@@ -703,6 +715,36 @@
     <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.Designer.cs">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\AltitudeBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\AltitudeBox.Designer.cs">
+      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\HeadingBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\HeadingBox.Designer.cs">
+      <DependentUpon>HeadingBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\NavigationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\NavigationBox.Designer.cs">
+      <DependentUpon>NavigationBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\SpeedBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\SpeedBox.Designer.cs">
+      <DependentUpon>SpeedBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\VerticalSpeedBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\VerticalSpeedBox.Designer.cs">
+      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 747\PMDG747Aircraft.cs" />
     <Compile Include="PMDG\pmdg.cs" />
     <Compile Include="PMDG\PMDG747.cs" />
@@ -793,6 +835,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>pmdg737-offsets.settings</DependentUpon>
     </Compile>
+    <Compile Include="Properties\pmdg747-offsets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>pmdg747-offsets.settings</DependentUpon>
+    </Compile>
     <Compile Include="Properties\TFMDatabase.cs" />
     <Compile Include="Settings panels\ctlAircraft.cs">
       <SubType>UserControl</SubType>
@@ -847,6 +894,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlBuses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlBuses.Designer.cs">
+      <DependentUpon>ctlBuses.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\PMDG737\ctlCargoFire.cs">
       <SubType>UserControl</SubType>
@@ -1235,6 +1288,9 @@
     <EmbeddedResource Include="OutputHistory\frmOutputHistory.resx">
       <DependentUpon>frmOutputHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.resx">
+      <DependentUpon>ctlCaptainACP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.resx">
       <DependentUpon>ctlADIRU.cs</DependentUpon>
     </EmbeddedResource>
@@ -1303,6 +1359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlBusses.resx">
+      <DependentUpon>ctlBusses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.resx">
       <DependentUpon>ctlElectrical.cs</DependentUpon>
@@ -1406,6 +1465,21 @@
     <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.resx">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\AltitudeBox.resx">
+      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\HeadingBox.resx">
+      <DependentUpon>HeadingBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\NavigationBox.resx">
+      <DependentUpon>NavigationBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\SpeedBox.resx">
+      <DependentUpon>SpeedBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\VerticalSpeedBox.resx">
+      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\777CDU.resx">
       <DependentUpon>777CDU.cs</DependentUpon>
     </EmbeddedResource>
@@ -1483,6 +1557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
       <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlBuses.resx">
+      <DependentUpon>ctlBuses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlCargoFire.resx">
       <DependentUpon>ctlCargoFire.cs</DependentUpon>
@@ -1617,6 +1694,10 @@
     <None Include="Properties\pmdg737-offsets.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>pmdg737-offsets.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\pmdg747-offsets.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>pmdg747-offsets.Designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

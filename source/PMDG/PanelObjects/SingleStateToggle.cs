@@ -15,7 +15,9 @@ namespace tfm.PMDG.PanelObjects
         private Offset _offset;
         private PanelObjectType _type = PanelObjectType.SingleState;
                 private Dictionary<byte, string> _availableStates = null;
+        private Dictionary<int, string> _altnAvailableStates = null;
         private KeyValuePair<byte, string> _currentState;
+        private KeyValuePair<int, string> _altnCurrentState;
         private double _percentageValue;
 
         public double percentageValue
@@ -35,6 +37,7 @@ namespace tfm.PMDG.PanelObjects
         }
 
         public Dictionary<byte, string> AvailableStates { get => _availableStates; set => _availableStates = value; }
+        public Dictionary<int, string> altnAvailableStates { get => _altnAvailableStates; set => _altnAvailableStates = value; }
         public KeyValuePair<byte, string> CurrentState
         {
             get
@@ -52,7 +55,27 @@ namespace tfm.PMDG.PanelObjects
                                 return item;
             } // End Get    
         } // End CurrentState.
-                public override PanelObjectType Type
+
+        public KeyValuePair<int, string> AltnCurrentState
+        {
+            get
+            {
+                KeyValuePair<int, string> item = new KeyValuePair<int, string>();
+                foreach (KeyValuePair<int, string> pair in this._altnAvailableStates)
+                {
+                    uint key = this.Offset.GetValue<byte>();
+                    if (key == pair.Key)
+                    {
+                        item = pair;
+                        break;
+                    }
+                }
+                return item;
+            } // End Get    
+        } // End AltnCurrentState.
+
+
+        public override PanelObjectType Type
         {
             get => this._type;
             set
@@ -118,6 +141,12 @@ else             if(this.Offset == Aircraft.pmdg737.OXY_Needle)
             else if (this.Offset == Aircraft.pmdg737.AIR_DisplayLandAlt)
             {
                 output = $"{this.Name} {this.Offset.GetValue<string>()}";
+            }
+            else if(this.Offset == Aircraft.pmdg737.COMM_ReceiverSwitches[0] ||
+                this.Offset == Aircraft.pmdg737.COMM_ReceiverSwitches[1] ||
+                this.Offset == Aircraft.pmdg737.COMM_ReceiverSwitches[2])
+            {
+                output = $"{this.Name} {this.AltnCurrentState.Value}";
             }
             else
             {
