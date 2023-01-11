@@ -616,24 +616,23 @@ namespace tfm
             {7, "PA" },
         };
 
-        private static Dictionary<int, string> _comReceiverStates = new Dictionary<int, string>()
+        private static Dictionary<byte, string> _comReceiverStates = new Dictionary<byte, string>()
         {
-            {0x0001, "VHF1" },
-            {0x0002, "VHF2" },
-            {0x0004, "VHF3" },
-            {0x0008, "HF1" },
-            {0x0010, "HF2" },
-            {0x0020, "FLT" },
-            {0x0040, "SVC" },
-            {0x0080, "PA" },
-            {0x0100, "NAV1" },
-            {0x0200, "NAV2" },
-            {0x0400, "ADF1" },
-            {0x0800, "ADF2" },
-            {0x1000, "MKR" },
-            {0x2000, "SPKR" },
-
-        };
+            { 0, "VHF1" },
+            {1, "VHF2" },
+            {2, "VHF3" },
+            {3, "HF1" },
+            {4, "HF2" },
+            {5, "FLT" },
+            {6, "SVC" },
+            {7, "PA" },
+            {8, "NAV1" },
+            {9, "NAV2" },
+            {10, "ADF1" },
+            {11, "ADF2" },
+            {12, "MKR" },
+            {13, "SPKR" },
+                    };
 
         private static Dictionary<byte, string> _aircraftModels = new Dictionary<byte, string>()
         {
@@ -1134,11 +1133,11 @@ new SingleStateToggle { Name = "AC bus: standby", PanelName = "Electrical", Pane
 
 // Microphones and comms receivers. Uses a dictionary of <int, string> for the receiver bitmask.
 new SingleStateToggle {Name = "Captain's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[0], AvailableStates = _micSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic1},
-new SingleStateToggle {Name = "First officer's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[1], altnAvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic2},
-new SingleStateToggle {Name = "Observer's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[2], altnAvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic3},
-new SingleStateToggle {Name = "Captain's comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[0], altnAvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches1},
-new SingleStateToggle {Name = "First officer's comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[1], altnAvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches2},
-new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[2], altnAvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches3},
+new SingleStateToggle {Name = "First officer's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[1], AvailableStates = _micSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic2},
+new SingleStateToggle {Name = "Observer's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[2], AvailableStates = _micSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic3},
+new SingleStateToggle {Name = "Captain's comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[0], AvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches1},
+new SingleStateToggle {Name = "First officer's comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[1], AvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches2},
+new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[2], AvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches3},
 // --end-panel-controls                              
             };
         }
@@ -3379,28 +3378,28 @@ public static void SetTransponder(string code)
         {
             switch (mode)
             {
-                case "VHF1":
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF1, 1);
+                case "vhf1":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF1, ClkL);
                     break;
-                case "VHF2":
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF2, 1);
+                case "vhf2":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF2, ClkR);
                     break;
-                case "VHF3":
+                case "vhf3":
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF3, ClkL);
                     break;
-                case "HF1":
+                case "hf1":
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_HF1, ClkL);
                     break;
-                case "HF2":
+                case "hf2":
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_HF2, ClkL);
                     break;
-                case "FLT":
+                case "flt":
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_FLT, ClkL);
                     break;
-                case "SVC":
+                case "svc":
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_SVC, ClkL);
                     break;
-                case "PA":
+                case "pa":
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_PA, ClkL);
                     break;
             }

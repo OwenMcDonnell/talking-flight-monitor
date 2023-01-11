@@ -38,9 +38,17 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftElectronic
                 {
                     if (toggle.Offset.ValueChanged)
                     {
-                        micComboBox.SelectedItem = toggle.AltnCurrentState.Value;
+                        micComboBox.SelectedIndex = toggle.CurrentState.Key;
                     }
                 } // microphone
+
+                if(toggle.Offset == Aircraft.pmdg737.COMM_ReceiverSwitches[0])
+                {
+                    if (toggle.Offset.ValueChanged)
+                    {
+                        receiverComboBox.SelectedIndex = toggle.CurrentState.Key;
+                    }
+                }
             } // loop.
         }
 
@@ -58,12 +66,12 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftElectronic
 
                 if (toggle.Offset == Aircraft.pmdg737.COMM_SelectedMic[0])
                 {
-                    micComboBox.Items.Clear();
-                    micComboBox.DataSource = toggle.AvailableStates.ToList();
-                    micComboBox.ValueMember = "Key";
-                    micComboBox.DisplayMember = "Value";
                     micComboBox.SelectedIndex = toggle.CurrentState.Key;
-                                    } // microphone
+                } // microphone
+                                if(toggle.Offset == Aircraft.pmdg737.COMM_ReceiverSwitches[0])
+                {
+                    receiverComboBox.SelectedIndex = toggle.CurrentState.Key;
+                }
             } // loop.
 
         }
@@ -78,8 +86,8 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftElectronic
 
         private void micComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var option = (KeyValuePair<byte, string>)micComboBox.SelectedItem;
-            PMDG737Aircraft.CaptainMicrophoneSelector(option.Value);
+                        PMDG737Aircraft.CaptainMicrophoneSelector(micComboBox.SelectedItem.ToString());
         }
-    }
+
+           }
 }

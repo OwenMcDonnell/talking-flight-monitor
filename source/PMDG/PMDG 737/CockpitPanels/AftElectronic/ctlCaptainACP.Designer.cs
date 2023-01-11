@@ -31,6 +31,8 @@
             this.acpFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.micLabel = new System.Windows.Forms.Label();
             this.micComboBox = new System.Windows.Forms.ComboBox();
+            this.receiverLabel = new System.Windows.Forms.Label();
+            this.receiverComboBox = new System.Windows.Forms.ComboBox();
             this.acpFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,10 +42,12 @@
             this.acpFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.acpFlowLayoutPanel.Controls.Add(this.micLabel);
             this.acpFlowLayoutPanel.Controls.Add(this.micComboBox);
+            this.acpFlowLayoutPanel.Controls.Add(this.receiverLabel);
+            this.acpFlowLayoutPanel.Controls.Add(this.receiverComboBox);
             this.acpFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.acpFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.acpFlowLayoutPanel.Name = "acpFlowLayoutPanel";
-            this.acpFlowLayoutPanel.Size = new System.Drawing.Size(274, 47);
+            this.acpFlowLayoutPanel.Size = new System.Drawing.Size(525, 47);
             this.acpFlowLayoutPanel.TabIndex = 0;
             // 
             // micLabel
@@ -77,6 +81,41 @@
             this.micComboBox.SelectedIndexChanged += new System.EventHandler(this.micComboBox_SelectedIndexChanged);
             this.micComboBox.Enter += new System.EventHandler(this.micComboBox_Enter);
             // 
+            // receiverLabel
+            // 
+            this.receiverLabel.AutoSize = true;
+            this.receiverLabel.Location = new System.Drawing.Point(284, 0);
+            this.receiverLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.receiverLabel.Name = "receiverLabel";
+            this.receiverLabel.Size = new System.Drawing.Size(111, 33);
+            this.receiverLabel.TabIndex = 2;
+            this.receiverLabel.Text = "Receiver";
+            // 
+            // receiverComboBox
+            // 
+            this.receiverComboBox.AccessibleName = "Captain\'s receiver";
+            this.receiverComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.receiverComboBox.FormattingEnabled = true;
+            this.receiverComboBox.Items.AddRange(new object[] {
+            "VHF1",
+            "VHF2",
+            "VHF3",
+            "HF1",
+            "HF2",
+            "FLT",
+            "SVC",
+            "PA",
+            "NAV1",
+            "NAV2",
+            "ADF1",
+            "ADF2",
+            "MKR",
+            "SPKR"});
+            this.receiverComboBox.Location = new System.Drawing.Point(401, 3);
+            this.receiverComboBox.Name = "receiverComboBox";
+            this.receiverComboBox.Size = new System.Drawing.Size(121, 41);
+            this.receiverComboBox.TabIndex = 3;
+            // 
             // ctlCaptainACP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
@@ -88,7 +127,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlCaptainACP";
-            this.Size = new System.Drawing.Size(277, 50);
+            this.Size = new System.Drawing.Size(528, 50);
             this.Load += new System.EventHandler(this.ctlCaptainACP_Load);
             this.acpFlowLayoutPanel.ResumeLayout(false);
             this.acpFlowLayoutPanel.PerformLayout();
@@ -102,5 +141,7 @@
         private System.Windows.Forms.FlowLayoutPanel acpFlowLayoutPanel;
         private System.Windows.Forms.Label micLabel;
         private System.Windows.Forms.ComboBox micComboBox;
+        private System.Windows.Forms.Label receiverLabel;
+        private System.Windows.Forms.ComboBox receiverComboBox;
     }
 }

@@ -1,28 +1,20 @@
-﻿## Talking flight monitor 22.12.7 Preview release notes
+﻿## Talking flight monitor 23.1 Preview release notes
 
 ### What's new?
 
-* PMDG 737 - AFS panel
-
-    ### Bug fixes
-
-* TFM - MSFS and P3D airports database now provides accurate ILS readouts.
-* PMDG 737 - The MCP power indicator was missing from the glare shield/MCP node in the cockpit panels and TFM settings.
-* PMDG 737 - Changed the Control Stand/Pedestal brightness knob accelerator to ALT+B.
+* PMDG747: Adapted about 10% of the PMDG737 infrastructure to the PMDG747.
+* PMDG747: Added the MCP boxes.
+    * Altitude
+    * Heading
+    * navigation - also known as MCP flight controls.
+    * Speed
+    * Vertical speed.
 
 ### Known issues
 
-* The airports database section of TFM settings only has a P3D database location. A fix will come in a future TFM build.
-* Pressing right bracket (]), then Shift+C will produce an error if there isn't a Bingmaps API key provided. A fix will come in a future build.
-* The PMDG 737 cockpit panels window and the FMC window still need performance optimizations and may slightly lag. Fixes will come in a future build.
-* TFM repeatedly announces some indicators as on then off. The prominant ones are the auto pilot and auto throttle disengage lights found in the forward panel/CDU segment. This is expected because these lights blink under certain conditions. If they get spammy, turn them off in TFM settings.
-    * Open TFM settings with right bracket (]), then Ctrl + comma (,).
-    * Navigate to PMDG and press right arrow to open the group.
-    * Arrow down to 737 speech events and open it with right arrow.
-    * Navigate to Forward group and open it with right arrow.
-    * Navigate to the MCP item.
-    * Check the items to speak and uncheck the items to remain silent.
-    * Press the OK button to save and close.
-* PMDG 737 - There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
-* TFM - Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
-* TFM: Since all offsets are turned on, there may be some double/tripple announcements of the same control state. Examples may include the parking break announcing itself twice after turning it on or off once.
+* TFM/MSFS: The airports database is too large to load all at once. This requires an airports database redesign. Paul Henty is taking care of this, and we will hear back in a few weeks.
+* PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future release.
+* PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future release.
+* PMDG 737: There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
+* TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
+* PMDG737/PMDG747: Old versions of aircraft announcements are still turned on. They will be permanently turned off in a future release.
