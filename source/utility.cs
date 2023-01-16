@@ -80,15 +80,7 @@ namespace tfm
             return height;
         }
 
-        public static  TblHeader LoadAiracCycle()
-        {
-            // Get the navigraph database header. No checks against the array index because we already know
-            // That there is only 1 header returned.
-            var airacCycle = new navigraphContext().TblHeader.ToArray()[0];
-            return airacCycle;
-        } // End LoadAiracCycle method.
-
-        public static async void LoadAirportsDatabase()
+                public static async void LoadAirportsDatabase()
         {
 
             if (FSUIPCConnection.IsOpen)

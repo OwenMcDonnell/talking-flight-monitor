@@ -1146,7 +1146,6 @@
     <Compile Include="Keyboard manager\frmModifyKey.Designer.cs">
       <DependentUpon>frmModifyKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="navigraph\navigraphContext.cs" />
     <Compile Include="Settings panels\ctlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1172,32 +1171,6 @@
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\iSettingsPage.cs" />
-    <Compile Include="navigraph\TblAirportCommunication.cs" />
-    <Compile Include="navigraph\TblAirportMsa.cs" />
-    <Compile Include="navigraph\TblAirports.cs" />
-    <Compile Include="navigraph\TblControlledAirspace.cs" />
-    <Compile Include="navigraph\TblCruisingTables.cs" />
-    <Compile Include="navigraph\TblEnrouteAirwayRestriction.cs" />
-    <Compile Include="navigraph\TblEnrouteAirways.cs" />
-    <Compile Include="navigraph\TblEnrouteCommunication.cs" />
-    <Compile Include="navigraph\TblEnrouteNdbnavaids.cs" />
-    <Compile Include="navigraph\TblEnrouteWaypoints.cs" />
-    <Compile Include="navigraph\TblFirUir.cs" />
-    <Compile Include="navigraph\TblGate.cs" />
-    <Compile Include="navigraph\TblGls.cs" />
-    <Compile Include="navigraph\TblGridMora.cs" />
-    <Compile Include="navigraph\TblHeader.cs" />
-    <Compile Include="navigraph\TblHoldings.cs" />
-    <Compile Include="navigraph\TblIaps.cs" />
-    <Compile Include="navigraph\TblLocalizerMarker.cs" />
-    <Compile Include="navigraph\TblLocalizersGlideslopes.cs" />
-    <Compile Include="navigraph\TblRestrictiveAirspace.cs" />
-    <Compile Include="navigraph\TblRunways.cs" />
-    <Compile Include="navigraph\TblSids.cs" />
-    <Compile Include="navigraph\TblStars.cs" />
-    <Compile Include="navigraph\TblTerminalNdbnavaids.cs" />
-    <Compile Include="navigraph\TblTerminalWaypoints.cs" />
-    <Compile Include="navigraph\TblVhfnavaids.cs" />
     <Compile Include="TemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
