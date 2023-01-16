@@ -133,6 +133,12 @@ private static        tfm.PMDG.PMDG_747.McpComponents.AltitudeBox AltitudeBox = 
             {0, "on" },
             {1, "off" },
         };
+
+        private static Dictionary<byte, string> _openOrClosedStates = new Dictionary<byte, string>()
+        {
+            {0, "closed" },
+            {1, "open" },
+        };
         //--end-state-dictionaries
 
         //--panel-controls
@@ -140,6 +146,23 @@ private static        tfm.PMDG.PMDG_747.McpComponents.AltitudeBox AltitudeBox = 
         {
             get => new List<PanelObject>()
             {
+                // ---panel: Overhead Maint
+                // ---section: Electric
+
+new SingleStateToggle { Name = "Generator #1 field reset", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_GenFieldReset[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_GenFieldReset1},
+new SingleStateToggle { Name = "Generator #2 field reset", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_GenFieldReset[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_GenFieldReset2},
+new SingleStateToggle { Name = "Generator #3 field reset", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_GenFieldReset[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_GenFieldReset3},
+new SingleStateToggle { Name = "Generator #4 field reset", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_GenFieldReset[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_GenFieldReset4},
+new SingleStateToggle { Name = "APU #1 field reset", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_APUFieldReset[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_APUFieldReset1},
+new SingleStateToggle { Name = "APU #2 field reset", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_APUFieldReset[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_APUFieldReset2},
+new SingleStateToggle { Name = "Split system breaker", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_SplitSystemBreaker, AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_SplitSystemBreaker},
+new SingleStateToggle { Name = "Generator #1 field light", PanelName = "Overhead Maint", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunGen_FIELD_OFF1},
+new SingleStateToggle { Name = "Generator #2 field light", PanelName = "Overhead Maint", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunGen_FIELD_OFF2},
+new SingleStateToggle { Name = "Generator #3 field light", PanelName = "Overhead Maint", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunGen_FIELD_OFF3},
+new SingleStateToggle { Name = "Generator #4 field light", PanelName = "Overhead Maint", PanelSection = "Electrical", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunGen_FIELD_OFF4},
+new SingleStateToggle { Name = "APU field #1 light", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunAPU_FIELD_OFF1},
+new SingleStateToggle { Name = "APU field #2 light", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunAPU_FIELD_OFF2},
+new SingleStateToggle { Name = "Split system breaker light", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunSplitSystemBreaker_OPEN, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunSplitSystemBreaker_OPEN},
 
                 // ---panel: Glare Shield
                 //---section: MCP
@@ -170,6 +193,22 @@ private static        tfm.PMDG.PMDG_747.McpComponents.AltitudeBox AltitudeBox = 
         }
         //--end-panel-controls
 
+        // ---properties
+
+        public static bool Is800
+        {
+            get
+            {
+                if(Aircraft.pmdg747.AircraftModel.Value ==8 || Aircraft.pmdg747.AircraftModel.Value == 9)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        } // Is800
         public static AircraftSystem SpeedMode
         {
             get => Aircraft.pmdg747.MCP_IASBlank.Value == 1 ? AircraftSystem.FMC : AircraftSystem.MCP;
@@ -592,5 +631,7 @@ public static void SetVerticalSpeed(string verticalSpeedText)
                 FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_MCP_DISENGAGE_BAR, ClkR);
             }
         } // DisengageBarToggle
+
+
     } // End PMDG747Aircraft.
 } // End namespace.

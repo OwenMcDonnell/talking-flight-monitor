@@ -298,5 +298,173 @@ namespace tfm.Properties {
                 this["MCP_panelPowered"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_GenFieldReset1 {
+            get {
+                return ((bool)(this["ELEC_GenFieldReset1"]));
+            }
+            set {
+                this["ELEC_GenFieldReset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_GenFieldReset2 {
+            get {
+                return ((bool)(this["ELEC_GenFieldReset2"]));
+            }
+            set {
+                this["ELEC_GenFieldReset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_GenFieldReset3 {
+            get {
+                return ((bool)(this["ELEC_GenFieldReset3"]));
+            }
+            set {
+                this["ELEC_GenFieldReset3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_GenFieldReset4 {
+            get {
+                return ((bool)(this["ELEC_GenFieldReset4"]));
+            }
+            set {
+                this["ELEC_GenFieldReset4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_APUFieldReset1 {
+            get {
+                return ((bool)(this["ELEC_APUFieldReset1"]));
+            }
+            set {
+                this["ELEC_APUFieldReset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_APUFieldReset2 {
+            get {
+                return ((bool)(this["ELEC_APUFieldReset2"]));
+            }
+            set {
+                this["ELEC_APUFieldReset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_SplitSystemBreaker {
+            get {
+                return ((bool)(this["ELEC_SplitSystemBreaker"]));
+            }
+            set {
+                this["ELEC_SplitSystemBreaker"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunGen_FIELD_OFF1 {
+            get {
+                return ((bool)(this["ELEC_annunGen_FIELD_OFF1"]));
+            }
+            set {
+                this["ELEC_annunGen_FIELD_OFF1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunGen_FIELD_OFF2 {
+            get {
+                return ((bool)(this["ELEC_annunGen_FIELD_OFF2"]));
+            }
+            set {
+                this["ELEC_annunGen_FIELD_OFF2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunGen_FIELD_OFF3 {
+            get {
+                return ((bool)(this["ELEC_annunGen_FIELD_OFF3"]));
+            }
+            set {
+                this["ELEC_annunGen_FIELD_OFF3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunGen_FIELD_OFF4 {
+            get {
+                return ((bool)(this["ELEC_annunGen_FIELD_OFF4"]));
+            }
+            set {
+                this["ELEC_annunGen_FIELD_OFF4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunAPU_FIELD_OFF1 {
+            get {
+                return ((bool)(this["ELEC_annunAPU_FIELD_OFF1"]));
+            }
+            set {
+                this["ELEC_annunAPU_FIELD_OFF1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunAPU_FIELD_OFF2 {
+            get {
+                return ((bool)(this["ELEC_annunAPU_FIELD_OFF2"]));
+            }
+            set {
+                this["ELEC_annunAPU_FIELD_OFF2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ELEC_annunSplitSystemBreaker_OPEN {
+            get {
+                return ((bool)(this["ELEC_annunSplitSystemBreaker_OPEN"]));
+            }
+            set {
+                this["ELEC_annunSplitSystemBreaker_OPEN"] = value;
+            }
+        }
     }
 }

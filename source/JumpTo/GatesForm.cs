@@ -23,16 +23,11 @@ namespace tfm.JumpTo
         {
 
             Tolk.Load();
-                        if (FSUIPCConnection.IsOpen)
+                        if (FSUIPCConnection.IsOpen == false)
             {
-                FSUIPCConnection.AirportsDatabase.SetReferenceLocation();
-                                                   } // connection
-            else
-            {
-                MessageBox.Show("Not connected to FSUIPC. This window will now close.");
-                this.Close();
-            }
-                    }
+                Tolk.Output("Not connected to FSUIPC.");
+                                                                   }
+                                }
 
         private void airportTextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -41,10 +36,11 @@ namespace tfm.JumpTo
                 FsAirport airport = FSUIPCConnection.AirportsDatabase.Airports[airportTextBox.Text.ToUpper()];
                 if (airport != null)
                 {
+                    airport.LoadComponents(AirportComponents.Gates);
                     gatesListView.Items.Clear();
                     foreach (FsGate gate in airport.Gates)
                     {
-                        var item = new ListViewItem(gate.ID);
+                                                var item = new ListViewItem(gate.ID);
                         item.SubItems.Add(gate.Name);
                         item.SubItems.Add(gate.Number);
                         item.SubItems.Add(gate.Type.ToString());

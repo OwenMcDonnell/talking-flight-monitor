@@ -1,20 +1,56 @@
-﻿## Talking flight monitor 23.1 Preview release notes
+﻿## Talking flight monitor 23.1.1 Preview release notes
 
 ### What's new?
 
-* PMDG747: Adapted about 10% of the PMDG737 infrastructure to the PMDG747.
-* PMDG747: Added the MCP boxes.
-    * Altitude
-    * Heading
-    * navigation - also known as MCP flight controls.
-    * Speed
-    * Vertical speed.
+#### Airports database
+
+##### Why the changes?
+
+The airports database structure has significantly changed since TFM 23.1, released at the start of January 2023. The new database design reduces the memory footprint of the airports data loaded into memory. When TFM starts, it loads the airports database. This database is over 3GB in size while it lives in memory. Each time a user requests information from the database, it calculates that user's current location in relation to everything in the world. The resulting airports database takes up an additional 3GB of memory. To reduce the amount of times TFM recalculates the user's current location in the world, TFM constantly recalculates the user's current location every 250MS. The consiquence is that every 250MS, TFM eats another 3GB of memory. This forces the CPU to over work, pushing incomplete work on to the GPU, which eventually overloads. As a result, MSFS users experience audio buffering, jittering or jumping video, or significant lagging when the airports database is loaded. P3D users don't experience these problems because the airports database is small enough to rebuild without taking up significant portions of computer resources. To make it easier to work with the airports database, all users will have the same changes to work with. Below are the changes made to the new airports database structure.
+
+##### What's new?
+
+* When starting TFM for the first time, you must build the airports database.
+    * Start TFM.
+    * Go into TFM settings.
+    * Find the airports database section in the tree.
+    * In the airports database window.
+        * In the P3d airports database area, locate and set the P3D airports database folder.
+        * In the MSFS area, locate and set your MSFS airports database folder.
+        * Locate the "rebuild airports database" button and activate it.
+        * A message will appear, notifying you when the database is finished building.
+        * Press the OK button to close settings.
+    * Restart TFM by pressing right bracket (]), then CTRL+SHIFT+X.
+    * When TFM restarts, it will load the new database.
+* Most TFM airport database features such as the ILS tracking system stay the same. We will announch any changes when they occur.
+* Most airport database features run faster. A test of the 'Where am I?' feature accessed by pressing right bracket (]), then SHIFT+C significantlly improved in speed.
+* Report bugs in the GitHub issue queue if you find any problems.
+
+##### What's missing?
+
+* We removed the freeware flight planner. It requires a significant rewrite to comply with the new airports database design.
+* We removed the airports search window found under procedures menu in the freeware flight planner. It requires significant rewrites to comply with the new airports database design.
+
+We thank everyone for their patience while TFM goes through this significant change. We will keep everyone updated as we progress through the database changes.
+
+#### PMDG 737
+
+* The audio and comms panels are not yet finished. The will come in a future build.
+* We are looking into an alternate FMC design. It will come in a future build.
+
+#### PMDG 747
+
+* Added the Overhead Maint/Electrical panel.
+
+#### Other changes
+
+* While on the ground, the 'Where am I?' feature will announce the airport ICAO code if you are not located at a runway, gate, or taxiway. This comes in handy when landing on something other than a gate, taxiway, or runway. For instance, you land at KJFK and cannot stop before reaching the end of the runway. In this case, pressing right bracket (]), then SHIFT+C, will now announce "@KJFK" instead of the city/state/country. The 'Where am I?' feature still announces the city/state or province/country you are flying over while airborn.
 
 ### Known issues
 
-* TFM/MSFS: The airports database is too large to load all at once. This requires an airports database redesign. Paul Henty is taking care of this, and we will hear back in a few weeks.
 * PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future release.
 * PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future release.
+* PMDG747: The Overhead Maint/Electrical panel is not in TFM settings. It will be added in a future release.
 * PMDG737: The audio/comms panels are not finished yet. Use the ACP panel at your own risk.
 * PMDG 737: There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
 * TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.

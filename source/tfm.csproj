@@ -76,8 +76,8 @@
     <Reference Include="BingMapsSDSToolkit, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BingMapsSDSToolkit.1.0.5\lib\net45\BingMapsSDSToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="fsuipcClient, Version=3.2.25.395, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
-      <HintPath>packages\FSUIPCClientDLL.3.2.25\lib\net40\fsuipcClient.dll</HintPath>
+    <Reference Include="fsuipcClient, Version=3.3.1.401, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
+      <HintPath>packages\FSUIPCClientDLL.3.3.1\lib\net462\fsuipcClient.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\KdTree.1.4.1\lib\net471\KdTreeLib.dll</HintPath>
@@ -184,6 +184,12 @@
     <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>packages\NLog.5.0.5\lib\net46\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>packages\protobuf-net.3.1.26\lib\net462\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>packages\protobuf-net.Core.3.1.26\lib\net462\protobuf-net.Core.dll</HintPath>
+    </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.2\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
@@ -247,8 +253,8 @@
     <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Json.7.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=7.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.7.0.1\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -296,12 +302,6 @@
     <Compile Include="Events\PMDGPanelUpdateEvent.cs" />
     <Compile Include="Events\PMDGPanelUpdateEventArgs.cs" />
     <Compile Include="ExpressionBuilder.cs" />
-    <Compile Include="Flight planning\AirportsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Flight planning\AirportsForm.Designer.cs">
-      <DependentUpon>AirportsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Flight planning\DestinationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,12 +309,6 @@
       <DependentUpon>DestinationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Flight planning\FlightPlan.cs" />
-    <Compile Include="Flight planning\FlightPlanForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Flight planning\FlightPlanForm.Designer.cs">
-      <DependentUpon>FlightPlanForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmFirstRunHelp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -714,6 +708,12 @@
     </Compile>
     <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.Designer.cs">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Electric.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 747\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
@@ -1245,14 +1245,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>commandHelp.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Flight planning\AirportsForm.resx">
-      <DependentUpon>AirportsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Flight planning\DestinationForm.resx">
       <DependentUpon>DestinationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Flight planning\FlightPlanForm.resx">
-      <DependentUpon>FlightPlanForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFirstRunHelp.resx">
       <DependentUpon>frmFirstRunHelp.cs</DependentUpon>
@@ -1464,6 +1458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.resx">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.resx">
+      <DependentUpon>ctlOverheadMaint_Electric.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>
