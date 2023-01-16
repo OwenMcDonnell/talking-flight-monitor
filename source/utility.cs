@@ -88,24 +88,32 @@ namespace tfm
             return airacCycle;
         } // End LoadAiracCycle method.
 
-        public static void LoadAirportsDatabase()
+        public static async void LoadAirportsDatabase()
         {
-            try
+
+            if (FSUIPCConnection.IsOpen)
             {
-                FSUIPCConnection.AirportsDatabase.LoadTaxiways = true;
-                FSUIPCConnection.AirportsDatabase.Load(Properties.Settings.Default.P3DAirportsDatabasePath);
-                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
+                AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
+
+                if(FSUIPCConnection.FSUIPCVersion.Major <= 6)
                 {
-                    Tolk.Output("Airport database loaded.");
+                    database.MakeRunwaysFolder = Properties.Settings.Default.P3DAirportsDatabasePath;
                 }
-            }
-            catch (Exception ex)
-            {
-                Tolk.Output("could not load airport database.");
-                Tolk.Output(ex.Message);
+                else
+                {
+                    database.MakeRunwaysFolder = Properties.Settings.Default.MSFSAirportsDatabasePath;
+                }
 
-            }
-
+                if (database.DatabaseFilesExist)
+                {
+                    database.Load();
+                    Tolk.Output("Airports database loaded.");
+                }
+                else
+                {
+                    Tolk.Output("Database failed to load. see the log for more details.");
+                }
+                                                                                                            } // open connection.
         } // LoadAirportsDatabase
     }
 }

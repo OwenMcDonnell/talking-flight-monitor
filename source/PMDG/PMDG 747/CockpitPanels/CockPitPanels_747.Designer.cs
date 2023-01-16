@@ -30,10 +30,13 @@ namespace tfm
         private void InitializeComponent()
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Electrical");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("MCP");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Overhead Maint", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Electrical");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("MCP");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Overhead", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
             this.cockpitPanelsTree = new System.Windows.Forms.TreeView();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -45,14 +48,19 @@ namespace tfm
             this.cockpitPanelsTree.Location = new System.Drawing.Point(0, 0);
             this.cockpitPanelsTree.Margin = new System.Windows.Forms.Padding(5);
             this.cockpitPanelsTree.Name = "cockpitPanelsTree";
-            treeNode1.Name = "electricalNode";
+            treeNode1.Name = "overheadMaintElectricalNode";
             treeNode1.Text = "Electrical";
-            treeNode2.Name = "MCPNode";
-            treeNode2.Text = "MCP";
-            treeNode3.Name = "overheadNode";
-            treeNode3.Text = "Overhead";
+            treeNode2.Name = "overheadMaintNode";
+            treeNode2.Text = "Overhead Maint";
+            treeNode3.Name = "electricalNode";
+            treeNode3.Text = "Electrical";
+            treeNode4.Name = "MCPNode";
+            treeNode4.Text = "MCP";
+            treeNode5.Name = "overheadNode";
+            treeNode5.Text = "Overhead";
             this.cockpitPanelsTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode2,
+            treeNode5});
             this.cockpitPanelsTree.Size = new System.Drawing.Size(199, 742);
             this.cockpitPanelsTree.TabIndex = 0;
             this.cockpitPanelsTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.cockpitPanelsTree_AfterSelect);

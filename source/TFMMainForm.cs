@@ -134,10 +134,8 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
                 inst.Speak("loading airport database");
                 //dbLoadWorker.RunWorkerAsync();
 
-                var dbTask = Task.Run(() => utility.LoadAirportsDatabase());
-                dbTask.Wait();
-                
-                // write version info to the debug log
+                utility.LoadAirportsDatabase();
+                                                // write version info to the debug log
                 logger.Debug($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
                 logger.Debug($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
                 logger.Debug($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
@@ -184,13 +182,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
                 {
                     inst.PostTakeOffChecklist();
                 }
-
-                // Keep track of the user in terms of the airports database.
-                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
-                {
-                    FSUIPCConnection.AirportsDatabase.SetReferenceLocation();
-                }
-                                                           }
+                                                                                          }
                                     catch (Exception ex)
             {
                 // An error occured. Tell the user and stop this timer.
@@ -250,27 +242,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
             this.TimerLowPriority.Stop();
             FSUIPCConnection.Close();
         }
-   
-                private void dbLoadWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                FSUIPCConnection.AirportsDatabase.LoadTaxiways = true;
-                FSUIPCConnection.AirportsDatabase.Load(Properties.Settings.Default.P3DAirportsDatabasePath);
-                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
-                {
-                    Tolk.Output("Airport database loaded.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Tolk.Output("could not load airport database.");
-                Tolk.Output(ex.Message);
-
-            }
-        } // load database.
-
-        public void Shutdown()
+                           public void Shutdown()
         {
             Close();
         } // Shutdown

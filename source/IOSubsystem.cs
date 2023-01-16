@@ -1039,6 +1039,7 @@ namespace tfm
 
         private void onILSTimerTick(object sender, ElapsedEventArgs e)
         {
+            FlightPlan.Destination.SetReferenceLocation(AirportComponents.Runways);
             double gsNeedle = (double)Aircraft.Nav1GSNeedle.Value;
             double locNeedle = (double)Aircraft.Nav1LocNeedle.Value;
             double locPercent;
@@ -2478,7 +2479,7 @@ else                    if (PMDG777Detected)
                     break;
 
                 case "flight_planner":
-                    var isPlannerActive = false;
+                    /*var isPlannerActive = false;
                     foreach (Form form in Application.OpenForms)
                     {
                         if (form is FlightPlanForm)
@@ -2500,6 +2501,8 @@ else                    if (PMDG777Detected)
                         break;
                     }
                     isPlannerActive = false;
+                    break;*/
+                    Output(isGauge: false, output: "Feature not yet implemented.");
                     break;
                 case "takeoff_assist":
                     onTakeOffAssistant();
@@ -3902,54 +3905,38 @@ else                    if (PMDG777Detected)
 
         }
 
+        /// <summary>
+        /// TODO: Rework current location feature.
+        /// </summary>
         private async void OnCurrentLocation()
         {
             var database = FSUIPCConnection.AirportsDatabase;
-            database.SetReferenceLocation();
-            FsGate currentGate = null;
-            FsTaxiway currentTaxiWay = null;
-            FsRunway currentRunway = null;
+            var currentLocation = database.Airports.GetPlayerLocation(AirportComponents.Gates | AirportComponents.Runways | AirportComponents.Taxiways);
 
-            foreach (FsAirport airport in database.Airports)
+            // Check to see if we are on the ground
+            if(currentLocation != null && currentLocation.OnGround)
             {
-                foreach (FsGate gate in airport.Gates)
+                                if (currentLocation.Runway != null && currentLocation.Runway.IsPlayerOnRunway)
                 {
-                    if (gate.IsPlayerAtGate)
-                    {
-                        currentGate = gate;
-                        break;
-                    }
-                } // Loop gates.
-                foreach (FsRunway runway in airport.Runways)
+                    Output(isGauge: false, output: $"Runway {currentLocation.Runway.ID}@{currentLocation.Airport.ICAO}");
+                }
+else if (currentLocation.Gate != null && currentLocation.Gate.IsPlayerAtGate)
                 {
-                    if (runway.IsPlayerOnRunway)
-                    {
-                        currentRunway = runway;
-                        break;
-                    }
-                } //Loop through runways.
-                foreach (FsTaxiway taxiway in airport.Taxiways)
+                    Output(isGauge: false, output: $"Gate {currentLocation.Gate.ID}@{currentLocation.Airport.ICAO}");
+                }
+else if(currentLocation.Taxiway != null && currentLocation.Taxiway.IsPlayerOnTaxiway)
                 {
-                    if (taxiway.IsPlayerOnTaxiway)
-                    {
-                        currentTaxiWay = taxiway;
-                        break;
-                    }
-                } // Loop through taxiways.
-            } // loop through airports.
-
-            if (currentTaxiWay != null && currentGate == null)
-            {
-                Output(isGauge: false, output: $"taxi way {currentTaxiWay.Name}@{currentTaxiWay.Airport.ICAO}");
-            }
-            else if (currentRunway != null)
-            {
-                Output(isGauge: false, output: $"runway {currentRunway.ID}@{currentRunway.Airport.ICAO}");
-            }
-            else if (currentGate != null)
-            {
-                Output(isGauge: false, output: $"gate {currentGate.ID}@{currentGate.Airport.ICAO}");
-            }
+                    Output(isGauge: false, output: $"Taxiway {currentLocation.Taxiway.Name}@{currentLocation.Airport.ICAO}");
+                }
+else if(currentLocation.Gate == null && currentLocation.Taxiway == null && currentLocation.Runway == null && currentLocation.Airport.IsPlayerAtAirport)
+                {
+                    Output(isGauge: false, output: $"@{currentLocation.Airport.ICAO}");
+                }
+else if(currentLocation.Airport == null)
+                {
+                    Output(isGauge: false, output: "Not at an airport.");
+                }
+                                                               }
             else
             {
                 if (string.IsNullOrEmpty(Properties.Settings.Default.bingMapsAPIKey))
