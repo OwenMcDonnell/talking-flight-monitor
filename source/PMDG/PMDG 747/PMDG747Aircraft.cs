@@ -632,6 +632,100 @@ public static void SetVerticalSpeed(string verticalSpeedText)
             }
         } // DisengageBarToggle
 
+public static void Gen1ResetToggle()
+        {
+            if (Aircraft.pmdg747.ELEC_GenFieldReset[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN_FIELD1_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN_FIELD1_SWITCH, ClkR);
+            }
+        } // Gen1ResetToggle
+
+        public static   void Gen2ResetToggle()
+        {
+            if (Aircraft.pmdg747.ELEC_GenFieldReset[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN2_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN2_SWITCH, ClkR);
+            }
+        } // Gen2ResetToggle
+
+        public static void Gen3ResetToggle()
+        {
+            if (Aircraft.pmdg747.ELEC_GenFieldReset[2].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN_FIELD3_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN_FIELD3_SWITCH, ClkR);
+            }
+        } // Gen3ResetToggle
+
+        public static void Gen4ResetToggle()
+        {
+            if (Aircraft.pmdg747.ELEC_GenFieldReset[3].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN_FIELD4_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GEN_FIELD4_SWITCH, ClkR);
+            }
+        } // Gen4ResetToggle
+
+        public static void APU1ResetToggle()
+        {
+            if (Aircraft.pmdg747.ELEC_APUFieldReset[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_APU_FIELD1_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_APU_FIELD1_SWITCH, ClkR);
+            }
+        } // APU1ResetToggle
+
+        public static void APU2ResetToggle()
+        {
+            if (Aircraft.pmdg747.ELEC_APUFieldReset[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_APU_FIELD2_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_APU_FIELD2_SWITCH, ClkR);
+            }
+        } // APU2ResetToggle
+
+        public static void SplitSystemBreakerToggle()
+        {
+            if(Aircraft.pmdg747.ELEC_SplitSystemBreaker.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_SPLIT_BREAKER_SWITCH, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_SPLIT_BREAKER_SWITCH, ClkR);
+            }
+        } // SplitSystemBreakerToggle
+
+        public static void GroundPowerTest()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_GND_TESTS_SWITCH, ClkL);
+        } // GroundPowerTest
+
+        public static void TowingPower()
+        {
+            
+        } // TowingPower
+
 
     } // End PMDG747Aircraft.
 } // End namespace.

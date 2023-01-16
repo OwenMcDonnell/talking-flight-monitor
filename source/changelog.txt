@@ -2,7 +2,14 @@
 
 ### What's new?
 
+#### PMDG 747
+
+* The Overhead Maint/Electrical panel controls now work.
+
+### Other changes
+
 * Removed the navigraph cycle 1908.
+
 ### Bug fixes
 
 * Fixed a bug where The heading box would display for the PMDG 737, PMDG 747, and freeware aircraft. Pressing left bracket ([), then SHIFT+H now displays the heading box for the PMDG 737.
