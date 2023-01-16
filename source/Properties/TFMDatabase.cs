@@ -1,7 +1,8 @@
-﻿using NLog;
+﻿using Microsoft.Data.Sqlite;
+using System.Data.SQLite;
+using NLog;
 using NLog.Common;
 using System.IO;
-using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
