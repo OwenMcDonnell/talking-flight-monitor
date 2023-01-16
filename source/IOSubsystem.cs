@@ -1965,7 +1965,7 @@ else                    if (PMDG777Detected)
                             PMDG737Aircraft.ShowHeadingBox();
                         }
                     }
-                    if (PMDG747Detected)
+else                    if (PMDG747Detected)
                     {
                         if (PMDG747Aircraft.MCPComponents["heading"].Visible)
                         {
