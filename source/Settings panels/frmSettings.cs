@@ -84,6 +84,9 @@ namespace tfm
 
             // --panel: AFS
             pages.Add("737AfsNode", new tfm.Settings_panels.PMDG737.ctlAFS());
+
+            // ---747 settings
+            pages.Add("overheadMaint_ElectricalNode", new tfm.Settings_panels.PMDG747.ctlOverHeadMaint_Electrical());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

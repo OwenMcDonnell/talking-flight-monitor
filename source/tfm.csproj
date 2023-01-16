@@ -1097,6 +1097,12 @@
     <Compile Include="Settings panels\PMDG737\ctlWipers.Designer.cs">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.Designer.cs">
+      <DependentUpon>ctlOverHeadMaint_Electrical.cs</DependentUpon>
+    </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
     <Compile Include="Autopilot\InstrumentPanel.cs" />
@@ -1627,6 +1633,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG737\ctlWipers.resx">
       <DependentUpon>ctlWipers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.resx">
+      <DependentUpon>ctlOverHeadMaint_Electrical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>

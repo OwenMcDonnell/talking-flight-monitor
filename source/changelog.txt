@@ -5,6 +5,7 @@
 #### PMDG 747
 
 * The Overhead Maint/Electrical panel controls now work.
+* Settings to automatically announce aircraft changes now work. Find them under settings/PMDG/747 speech events.
 
 ### Other changes
 
