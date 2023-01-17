@@ -10,6 +10,7 @@
 ### Other changes
 
 * Removed the navigraph cycle 1908.
+* The build button in airports database section of TFM settings doesn't appear if no sim is loaded.
 
 ### Bug fixes
 
