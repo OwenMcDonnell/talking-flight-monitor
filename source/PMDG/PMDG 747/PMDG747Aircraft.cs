@@ -164,7 +164,12 @@ new SingleStateToggle { Name = "APU field #1 light", PanelName = "Overhead Maint
 new SingleStateToggle { Name = "APU field #2 light", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunAPU_FIELD_OFF2},
 new SingleStateToggle { Name = "Split system breaker light", PanelName = "Overhead Maint", PanelSection = "Electric", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.ELEC_annunSplitSystemBreaker_OPEN, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.ELEC_annunSplitSystemBreaker_OPEN},
 
-                // ---panel: Glare Shield
+// ---section: fuel
+
+new SingleStateToggle { Name = "Scavenge pump", PanelName = "Overhead Maint", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FUEL_CWTScavengePump_Sw_ON, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FUEL_CWTScavengePump_Sw_ON},
+new SingleStateToggle { Name = "RSV 2-3 valve", PanelName = "Overhead Maint", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FUEL_Reserve23Xfer_Sw_OPEN, AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg747_offsets.Default.FUEL_Reserve23Xfer_Sw_OPEN},
+                
+// ---panel: Glare Shield
                 //---section: MCP
 
                 new SingleStateToggle { Name = "Speed intervene", PanelName = "Glare Shield", PanelSection = "MCP", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.MCP_IASBlank, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.MCP_IASBlank},
@@ -723,9 +728,32 @@ public static void Gen1ResetToggle()
 
         public static void TowingPower()
         {
-            
+            FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_ELEC_TOWING_PWR, ClkL);
         } // TowingPower
 
+        public static void ScavengePumpToggle()
+        {
+            if(Aircraft.pmdg747.FUEL_CWTScavengePump_Sw_ON.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_FUEL_CWT_SCAVENGE_PUMP, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_FUEL_CWT_SCAVENGE_PUMP, ClkR);
+            }
+        } // ScavengePumpToggle
+
+        public static void Rsv23Transfer()
+        {
+            if(Aircraft.pmdg747.FUEL_Reserve23Xfer_Sw_OPEN.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_FUEL_RSV_2_3_XFR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_747QOTSII_Control.EVT_OH_FUEL_RSV_2_3_XFR, ClkR);
+            }
+        } // Rsv23Xfer.
 
     } // End PMDG747Aircraft.
 } // End namespace.

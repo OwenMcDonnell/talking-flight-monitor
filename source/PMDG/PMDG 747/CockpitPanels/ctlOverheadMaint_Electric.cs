@@ -287,5 +287,10 @@ namespace tfm.PMDG.PMDG_747.CockpitPanels
         {
             PMDG747Aircraft.GroundPowerTest();
         }
+
+        private void towingPwrButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.TowingPower();
+        }
     }
 }

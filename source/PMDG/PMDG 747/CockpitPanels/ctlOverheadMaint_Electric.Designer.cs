@@ -246,6 +246,7 @@
             this.towingPwrButton.TabIndex = 4;
             this.towingPwrButton.Text = "&Tow Pwr";
             this.towingPwrButton.UseVisualStyleBackColor = true;
+            this.towingPwrButton.Click += new System.EventHandler(this.towingPwrButton_Click);
             // 
             // indicatorsFlowLayoutPanel
             // 

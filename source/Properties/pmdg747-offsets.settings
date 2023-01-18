@@ -113,5 +113,11 @@
     <Setting Name="ELEC_annunSplitSystemBreaker_OPEN" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="FUEL_Reserve23Xfer_Sw_OPEN" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FUEL_CWTScavengePump_Sw_ON" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

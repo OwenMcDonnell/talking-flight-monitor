@@ -5,7 +5,7 @@
 #### PMDG 747
 
 * The Overhead Maint/Electrical panel controls now work.
-* Settings to automatically announce aircraft changes now work. Find them under settings/PMDG/747 speech events.
+* Added Overhead Maint/Fuel panel.
 
 ### Other changes
 
@@ -18,10 +18,8 @@
 
 ### Known issues
 
-* The PMDG 747 Overhead Maint/Electrical panel controls do not work.
 * PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future release.
 * PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future release.
-* PMDG747: The Overhead Maint/Electrical panel is not in TFM settings. It will be added in a future release.
 * PMDG737: The audio/comms panels are not finished yet. Use the ACP panel at your own risk.
 * PMDG 737: There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
 * TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.

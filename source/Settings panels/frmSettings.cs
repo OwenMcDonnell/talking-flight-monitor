@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -87,6 +87,7 @@ namespace tfm
 
             // ---747 settings
             pages.Add("overheadMaint_ElectricalNode", new tfm.Settings_panels.PMDG747.ctlOverHeadMaint_Electrical());
+            pages.Add("overheadMaintFuelNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Fuel());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

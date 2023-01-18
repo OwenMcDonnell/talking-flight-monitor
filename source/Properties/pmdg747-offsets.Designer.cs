@@ -466,5 +466,29 @@ namespace tfm.Properties {
                 this["ELEC_annunSplitSystemBreaker_OPEN"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FUEL_Reserve23Xfer_Sw_OPEN {
+            get {
+                return ((bool)(this["FUEL_Reserve23Xfer_Sw_OPEN"]));
+            }
+            set {
+                this["FUEL_Reserve23Xfer_Sw_OPEN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FUEL_CWTScavengePump_Sw_ON {
+            get {
+                return ((bool)(this["FUEL_CWTScavengePump_Sw_ON"]));
+            }
+            set {
+                this["FUEL_CWTScavengePump_Sw_ON"] = value;
+            }
+        }
     }
 }
