@@ -119,5 +119,17 @@
     <Setting Name="FUEL_CWTScavengePump_Sw_ON" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="FCTL_WingHydValve_Sw_SHUT_OFF1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FCTL_WingHydValve_Sw_SHUT_OFF2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FCTL_WingHydValve_Sw_SHUT_OFF3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FCTL_WingHydValve_Sw_SHUT_OFF4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

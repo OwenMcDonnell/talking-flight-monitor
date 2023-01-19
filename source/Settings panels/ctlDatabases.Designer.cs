@@ -152,6 +152,7 @@
             this.rebuildAirportsDatabaseButton.TabIndex = 3;
             this.rebuildAirportsDatabaseButton.Text = "B&uild...";
             this.rebuildAirportsDatabaseButton.UseVisualStyleBackColor = true;
+            this.rebuildAirportsDatabaseButton.Click += new System.EventHandler(this.rebuildAirportsDatabaseButton_Click);
             // 
             // ctlDatabases
             // 
