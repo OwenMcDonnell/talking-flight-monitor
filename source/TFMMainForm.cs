@@ -187,6 +187,21 @@ namespace tfm
                 {
                     inst.PostTakeOffChecklist();
                 }
+
+                if(Aircraft.inCloud.Value > 0)
+                {
+                    if (Aircraft.inCloud.ValueChanged)
+                    {
+                        inst.Output(isGauge: false, output: "In cloud.");
+                    }
+                                    }
+                else
+                {
+                    if (Aircraft.inCloud.ValueChanged)
+                    {
+                        inst.Output(isGauge: false, output: "Out of cloud.");
+                    }
+                }
             }
             catch (Exception ex)
             {

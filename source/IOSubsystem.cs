@@ -2910,11 +2910,85 @@ else                    if (PMDG747Detected)
 
         private void onWindKey()
         {
-            double WindSpeed = (double)Aircraft.WindSpeed.Value;
+            string turbulanceLevel = string.Empty;
+            string precipitation = string.Empty;
+            string precipitationRate = string.Empty;
+            var turbulance = Math.Truncate(Aircraft.ambientTurbulance.Value);
+                        double WindSpeed = (double)Aircraft.WindSpeed.Value;
             double WindDirection = (double)Aircraft.WindDirection.Value * 360d / 65536d;
             WindDirection = Math.Round(WindDirection);
             double WindGust = (double)Aircraft.WindGust.Value;
-            Output(isGauge: false, output: $"Wind: {WindDirection} at {WindSpeed} knotts. Gusts at {WindGust} knotts.");
+            var visibility = (double)(Aircraft.ambientVisibilityMeters.Value/0.3821)/6071;
+            
+            if(visibility < 1)
+            {
+                visibility = Math.Round(visibility, 2);
+            }
+            else
+            {
+                visibility = Math.Round(visibility);
+            }
+            
+                        if(turbulance == 0)
+                            {
+                turbulanceLevel = "none";
+                }
+            else if(turbulance >= 1 && turbulance <= 250)
+            {
+                turbulanceLevel = "light";
+            }
+            else if(turbulance >= 251 && turbulance <= 500)
+            {
+                turbulanceLevel = "moderate";
+            }
+            else if(turbulance >= 501 && turbulance <= 750)
+            {
+                turbulanceLevel = "severe";
+            }
+            else if(turbulance >= 751)
+            {
+                turbulanceLevel = "extreme";
+            }
+
+                        if(Aircraft.precipitationRate.Value == 0)
+            {
+                precipitationRate = "No";
+            }
+                        else if(Aircraft.precipitationRate.Value == 1)
+            {
+                precipitationRate = "Light";
+            }
+                        else if(Aircraft.precipitationRate.Value == 2)
+            {
+                precipitationRate = "Moderate";
+            }
+                        else if(Aircraft.precipitationRate.Value == 3)
+            {
+                precipitationRate = "Heavy";
+            }
+                        else if(Aircraft.precipitationRate.Value == 4)
+            {
+                precipitationRate = "Very heavy";
+            }
+            
+                        if(Aircraft.precipitationType.Value == 0)
+            {
+                precipitation = "precipitation";
+            }
+                        else if(Aircraft.precipitationType.Value == 1)
+            {
+                precipitation = "rain";
+            }
+                        else if(Aircraft.precipitationType.Value == 2)
+            {
+                precipitation = "snow";
+            }
+                        else if(Aircraft.precipitationType.Value == 3)
+            {
+                precipitation = "hail";
+            }
+                                Output(isGauge: false, output: $"Wind: {WindDirection} at {WindSpeed} knotts. Gusts at {WindGust} knotts. Turbulance {turbulanceLevel}. Visibility {visibility} Knottical miles. {precipitationRate} {precipitation}.");
+                
 
         }
 
