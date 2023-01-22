@@ -538,5 +538,149 @@ namespace tfm.Properties {
                 this["FCTL_WingHydValve_Sw_SHUT_OFF4"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_TailHydValve_Sw_SHUT_OFF1 {
+            get {
+                return ((bool)(this["FCTL_TailHydValve_Sw_SHUT_OFF1"]));
+            }
+            set {
+                this["FCTL_TailHydValve_Sw_SHUT_OFF1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_TailHydValve_Sw_SHUT_OFF2 {
+            get {
+                return ((bool)(this["FCTL_TailHydValve_Sw_SHUT_OFF2"]));
+            }
+            set {
+                this["FCTL_TailHydValve_Sw_SHUT_OFF2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_TailHydValve_Sw_SHUT_OFF3 {
+            get {
+                return ((bool)(this["FCTL_TailHydValve_Sw_SHUT_OFF3"]));
+            }
+            set {
+                this["FCTL_TailHydValve_Sw_SHUT_OFF3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_TailHydValve_Sw_SHUT_OFF4 {
+            get {
+                return ((bool)(this["FCTL_TailHydValve_Sw_SHUT_OFF4"]));
+            }
+            set {
+                this["FCTL_TailHydValve_Sw_SHUT_OFF4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunTailHydVALVE_CLOSED1 {
+            get {
+                return ((bool)(this["FCTL_annunTailHydVALVE_CLOSED1"]));
+            }
+            set {
+                this["FCTL_annunTailHydVALVE_CLOSED1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunTailHydVALVE_CLOSED2 {
+            get {
+                return ((bool)(this["FCTL_annunTailHydVALVE_CLOSED2"]));
+            }
+            set {
+                this["FCTL_annunTailHydVALVE_CLOSED2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunTailHydVALVE_CLOSED3 {
+            get {
+                return ((bool)(this["FCTL_annunTailHydVALVE_CLOSED3"]));
+            }
+            set {
+                this["FCTL_annunTailHydVALVE_CLOSED3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunTailHydVALVE_CLOSED4 {
+            get {
+                return ((bool)(this["FCTL_annunTailHydVALVE_CLOSED4"]));
+            }
+            set {
+                this["FCTL_annunTailHydVALVE_CLOSED4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunWingHydVALVE_CLOSED1 {
+            get {
+                return ((bool)(this["FCTL_annunWingHydVALVE_CLOSED1"]));
+            }
+            set {
+                this["FCTL_annunWingHydVALVE_CLOSED1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunWingHydVALVE_CLOSED2 {
+            get {
+                return ((bool)(this["FCTL_annunWingHydVALVE_CLOSED2"]));
+            }
+            set {
+                this["FCTL_annunWingHydVALVE_CLOSED2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunWingHydVALVE_CLOSED3 {
+            get {
+                return ((bool)(this["FCTL_annunWingHydVALVE_CLOSED3"]));
+            }
+            set {
+                this["FCTL_annunWingHydVALVE_CLOSED3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FCTL_annunWingHydVALVE_CLOSED4 {
+            get {
+                return ((bool)(this["FCTL_annunWingHydVALVE_CLOSED4"]));
+            }
+            set {
+                this["FCTL_annunWingHydVALVE_CLOSED4"] = value;
+            }
+        }
     }
 }

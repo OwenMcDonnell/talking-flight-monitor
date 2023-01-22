@@ -1115,6 +1115,12 @@
     <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.Designer.cs">
       <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
     <Compile Include="Autopilot\InstrumentPanel.cs" />
@@ -1654,6 +1660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.resx">
       <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.resx">
+      <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BingMapsSDSToolkit.GeodataAPI;
 
 namespace tfm
 {
@@ -169,6 +170,26 @@ new SingleStateToggle { Name = "Split system breaker light", PanelName = "Overhe
 new SingleStateToggle { Name = "Scavenge pump", PanelName = "Overhead Maint", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FUEL_CWTScavengePump_Sw_ON, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FUEL_CWTScavengePump_Sw_ON},
 new SingleStateToggle { Name = "RSV 2-3 valve", PanelName = "Overhead Maint", PanelSection = "Fuel", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FUEL_Reserve23Xfer_Sw_OPEN, AvailableStates = _openOrClosedStates, shouldSpeak = Properties.pmdg747_offsets.Default.FUEL_Reserve23Xfer_Sw_OPEN},
                 
+
+// ---section: Hydraulics
+
+new SingleStateToggle { Name = "Wing hydraulic valve #1", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_WingHydValve_Sw_SHUT_OFF[0], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_WingHydValve_Sw_SHUT_OFF1},
+new SingleStateToggle { Name = "Wing hydraulic valve #2", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_WingHydValve_Sw_SHUT_OFF[1], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_WingHydValve_Sw_SHUT_OFF2},
+new SingleStateToggle { Name = "Wing hydraulic valve #3", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_WingHydValve_Sw_SHUT_OFF[2], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_WingHydValve_Sw_SHUT_OFF3},
+new SingleStateToggle { Name = "Wing hydraulic valve #4", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_WingHydValve_Sw_SHUT_OFF[3], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_WingHydValve_Sw_SHUT_OFF4},
+new SingleStateToggle { Name = "Tail hydraulic valve #1", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_TailHydValve_Sw_SHUT_OFF[0], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_TailHydValve_Sw_SHUT_OFF1},
+new SingleStateToggle { Name = "Tail hydraulic valve #2", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_TailHydValve_Sw_SHUT_OFF[1], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_TailHydValve_Sw_SHUT_OFF2},
+new SingleStateToggle { Name = "Tail hydraulic valve #3", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_TailHydValve_Sw_SHUT_OFF[2], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_TailHydValve_Sw_SHUT_OFF3},
+new SingleStateToggle { Name = "Tail hydraulic valve #4", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_TailHydValve_Sw_SHUT_OFF[3], AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_TailHydValve_Sw_SHUT_OFF4},
+new SingleStateToggle { Name = "Wing hydraulic valve #1 light", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunWingHydVALVE_CLOSED1},
+new SingleStateToggle { Name = "Wing hydraulic valve #2 light", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunWingHydVALVE_CLOSED2},
+new SingleStateToggle { Name = "Wing hydraulic valve #3 light", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunWingHydVALVE_CLOSED3},
+new SingleStateToggle { Name = "Wing hydraulic valve #4 light", PanelName = "Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunWingHydVALVE_CLOSED4},
+new SingleStateToggle { Name = "Tail hydraulic valve #1 light", PanelName ="Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunTailHydVALVE_CLOSED1},
+new SingleStateToggle { Name = "Tail hydraulic valve #2 light", PanelName ="Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunTailHydVALVE_CLOSED2},
+new SingleStateToggle { Name = "Tail hydraulic valve #3 light", PanelName ="Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunTailHydVALVE_CLOSED3},
+new SingleStateToggle { Name = "Tail hydraulic valve #4 light", PanelName ="Overhead Maint", PanelSection = "Hydraulics", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg747_offsets.Default.FCTL_annunTailHydVALVE_CLOSED4},
+
 // ---panel: Glare Shield
                 //---section: MCP
 
