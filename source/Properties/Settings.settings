@@ -8,7 +8,7 @@
     <Setting Name="FlightFollowing" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ReadInstrumentation" Type="System.Boolean" Scope="User">
+    <Setting Name="AutomaticAnnouncements" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ReadSimconnectMessages" Type="System.Boolean" Scope="User">

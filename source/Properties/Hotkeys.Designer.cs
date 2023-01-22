@@ -12,7 +12,7 @@ namespace tfm.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class Hotkeys : global::System.Configuration.ApplicationSettingsBase {
         
         private static Hotkeys defaultInstance = ((Hotkeys)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Hotkeys())));
@@ -1241,6 +1241,18 @@ namespace tfm.Properties {
             }
             set {
                 this["SetTrim"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+M")]
+        public global::System.Windows.Forms.Keys Toggle_Global_Mute {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["Toggle_Global_Mute"]));
+            }
+            set {
+                this["Toggle_Global_Mute"] = value;
             }
         }
     }

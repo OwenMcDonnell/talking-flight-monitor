@@ -2578,6 +2578,10 @@ else                    if (PMDG747Detected)
                 case "Mute_Simconnect_Messages":
                     OnMuteSimconnectKey();
                     break;
+                case "Toggle_Global_Mute":
+                    OnGlobalMuteKey();
+                    break;
+
                 case "Repeat_Last_Simconnect_Message":
                     onRepeatLastSimconnectMessage();
                     break;
@@ -2712,6 +2716,21 @@ else                    if (PMDG747Detected)
 
             }
         }
+
+        private void OnGlobalMuteKey()
+        {
+            if (Properties.Settings.Default.AutomaticAnnouncements == true)
+            {
+                Properties.Settings.Default.AutomaticAnnouncements = false;
+                Output(isGauge: false, output: "Automatic announcements disabled.");
+            }
+            else
+            {
+                Properties.Settings.Default.AutomaticAnnouncements = true;
+                Output(isGauge: false, output: "Automatic announcements enabled.");
+            }
+        }
+
         private void onKeyPressed(object sender, HotkeyEventArgs e)
         {
 

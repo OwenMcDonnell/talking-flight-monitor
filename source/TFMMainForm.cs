@@ -30,7 +30,7 @@ namespace tfm
     public partial class TFMMainForm : Form
     {
 
-        
+
         // get a logger object for this class
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         // set up timers
@@ -50,7 +50,7 @@ namespace tfm
         public TFMMainForm()
         {
             InitializeComponent();
-            
+
             // Upgrade settings from previous version.
             if (Properties.Settings.Default.SettingsRequiresUpgrade)
             {
@@ -60,21 +60,22 @@ namespace tfm
                 Application.Restart();
             }
             this.trayIcon.Visible = true;
-            
 
-                        // speak a debug message via SAPI if debug mode is turned on
+
+            // speak a debug message via SAPI if debug mode is turned on
             if (utility.DebugEnabled)
             {
                 Tolk.PreferSAPI(true);
                 Tolk.Output("Debug mode");
                 Tolk.PreferSAPI(false);
-                            }
-// Show first run dialog if it hasn't been disabled
-if (Properties.Settings.Default.ShowFirstRunDialog)
+            }
+            // Show first run dialog if it hasn't been disabled
+            if (Properties.Settings.Default.ShowFirstRunDialog)
             {
                 frmFirstRunHelp frm = new frmFirstRunHelp();
                 frm.ShowDialog();
-                if (frm.DialogResult == DialogResult.OK) {
+                if (frm.DialogResult == DialogResult.OK)
+                {
                     Properties.Settings.Default.Save();
 
                 }
@@ -86,7 +87,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
             }
 
 
-            
+
             // Start the connection timer to look for a flight sim
             TimerConnection.Elapsed += TimerConnection_Tick;
             this.TimerConnection.AutoReset = true;
@@ -103,7 +104,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
             utility.TFMMainForm = this;
         }
 
-        
+
 
 
         // This method is called every 1 second by the connection timer.
@@ -135,7 +136,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
                 //dbLoadWorker.RunWorkerAsync();
 
                 utility.LoadAirportsDatabase();
-                                                // write version info to the debug log
+                // write version info to the debug log
                 logger.Debug($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
                 logger.Debug($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
                 logger.Debug($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
@@ -173,17 +174,21 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
                 inst.MonitorN1Limit();
                 if (Aircraft.AircraftName.Value.Contains("PMDG"))
                 {
-                                        Aircraft.pmdg737.RefreshData();
+                    Aircraft.pmdg737.RefreshData();
                     Aircraft.pmdg747.RefreshData();
-                   Aircraft.pmdg777.RefreshData();
-                                                       }
-                inst.ReadAircraftState();
+                    Aircraft.pmdg777.RefreshData();
+                }
+                if (Properties.Settings.Default.AutomaticAnnouncements)
+                {
+                    inst.ReadAircraftState();
+                }
+
                 if (!inst.PostTakeOffChecklist())
                 {
                     inst.PostTakeOffChecklist();
                 }
-                                                                                          }
-                                    catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 // An error occured. Tell the user and stop this timer.
                 this.TimerMain.Stop();
@@ -203,14 +208,18 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
             try
             {
                 FSUIPCConnection.Process("LowPriority");
-                inst.ReadLowPriorityInstruments();
-                            }
+                if (Properties.Settings.Default.AutomaticAnnouncements)
+                {
+                    inst.ReadLowPriorityInstruments();
+                }
+
+            }
             catch (Exception ex)
             {
                 // Stop the timer.
                 this.TimerLowPriority.Stop();
 
-                                // Make a log entry since notifying the user is pointless.
+                // Make a log entry since notifying the user is pointless.
                 logger.Debug($"Low priority instruments failed to read: {ex.Message}: {ex.StackTrace}");
                 this.TimerConnection.Start();
             }
@@ -242,7 +251,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
             this.TimerLowPriority.Stop();
             FSUIPCConnection.Close();
         }
-                           public void Shutdown()
+        public void Shutdown()
         {
             Close();
         } // Shutdown
@@ -263,7 +272,7 @@ if (Properties.Settings.Default.ShowFirstRunDialog)
             System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
         } // ShowIssueTracker.
 
-private void ShowSettings()
+        private void ShowSettings()
         {
             /// TODO: TFM main form: Remove avionics tab from settings.
             /// TODO: TFM main form: Make displaying settings reusable code in the global scope.
@@ -290,50 +299,50 @@ private void ShowSettings()
 
         private void ShowKeyboardManager()
         {
-                                       frmKeyboardManager keyboardManager = new frmKeyboardManager();
-                keyboardManager.ShowDialog();
-                if (keyboardManager.DialogResult == DialogResult.OK)
-                {
-                    Properties.Hotkeys.Default.Save();
-                                }
-                if (keyboardManager.DialogResult == DialogResult.Cancel)
-                {
-                    Properties.Hotkeys.Default.Reload();
-                }
-            } // ShowKeyboardManager.
-        
+            frmKeyboardManager keyboardManager = new frmKeyboardManager();
+            keyboardManager.ShowDialog();
+            if (keyboardManager.DialogResult == DialogResult.OK)
+            {
+                Properties.Hotkeys.Default.Save();
+            }
+            if (keyboardManager.DialogResult == DialogResult.Cancel)
+            {
+                Properties.Hotkeys.Default.Reload();
+            }
+        } // ShowKeyboardManager.
+
         private bool ToggleCommandKeys()
         {
             bool isEnabled = false;
-                                        if (inst.CommandKeyEnabled)
-                {
-                    inst.CommandKeyEnabled = false;
+            if (inst.CommandKeyEnabled)
+            {
+                inst.CommandKeyEnabled = false;
                 isEnabled = false;
-                    inst.ResetHotkeys();
-                Tolk.PreferSAPI(true);    
+                inst.ResetHotkeys();
+                Tolk.PreferSAPI(true);
                 Tolk.Output("command key disabled");
                 Tolk.PreferSAPI(false);
-                }
-                else
-                {
-                    inst.CommandKeyEnabled = true;
+            }
+            else
+            {
+                inst.CommandKeyEnabled = true;
                 isEnabled = true;
-                    inst.ResetHotkeys();
+                inst.ResetHotkeys();
                 Tolk.PreferSAPI(true);
                 Tolk.Output("command key enabled");
                 Tolk.PreferSAPI(false);
-                }
-                                        return isEnabled;
-            } // ToggleCommandKeys.
+            }
+            return isEnabled;
+        } // ToggleCommandKeys.
 
         private void SetCommandKeyMenuText()
         {
             // Make the menu item visible in the event the connection timer made it invisible.
-            if(commandKeysMenuItem.Visible == false)
+            if (commandKeysMenuItem.Visible == false)
             {
-                commandKeysMenuItem.Visible = true; 
+                commandKeysMenuItem.Visible = true;
             }
-            if(inst.CommandKeyEnabled ==  true)
+            if (inst.CommandKeyEnabled == true)
             {
                 commandKeysMenuItem.Text = $"&Command keys enabled";
                 commandKeysMenuItem.AccessibleName = "Command keys enabled";
@@ -352,7 +361,7 @@ private void ShowSettings()
             Tolk.PreferSAPI(false);
             Thread.Sleep(1500);
             Application.Restart();
-                    } // Restart.
+        } // Restart.
 
         private void settingsMenuItem_Click(object sender, EventArgs e)
         {
@@ -361,10 +370,10 @@ private void ShowSettings()
 
         private void commandKeysMenuItem_Click(object sender, EventArgs e)
         {
-                        bool isEnabled = ToggleCommandKeys()? true : false;
-            string commandKeyState = isEnabled ?  "enabled" : "disabled";   
+            bool isEnabled = ToggleCommandKeys() ? true : false;
+            string commandKeyState = isEnabled ? "enabled" : "disabled";
             commandKeysMenuItem.AccessibleName = $"Command keys {commandKeyState}";
-            commandKeysMenuItem.Checked = isEnabled? true : false;
+            commandKeysMenuItem.Checked = isEnabled ? true : false;
         } // commandKeysMenuItem_Click.
 
         private void keyboardMenuItem_Click(object sender, EventArgs e)

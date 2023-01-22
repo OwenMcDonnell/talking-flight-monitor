@@ -308,5 +308,8 @@
     <Setting Name="SetTrim" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+T</Value>
     </Setting>
+    <Setting Name="Toggle_Global_Mute" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Shift+M</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
