@@ -1224,6 +1224,18 @@
       <DependentUpon>VatsimRadar.cs</DependentUpon>
     </Compile>
     <Compile Include="Vatsim\VatsimUtilities.cs" />
+    <Compile Include="Weather\CloudLayerExplorerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Weather\CloudLayerExplorerForm.Designer.cs">
+      <DependentUpon>CloudLayerExplorerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\WindLayerExplorerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Weather\WindLayerExplorerForm.Designer.cs">
+      <DependentUpon>WindLayerExplorerForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -1682,6 +1694,12 @@
     </Compile>
     <EmbeddedResource Include="Vatsim\VatsimRadar.resx">
       <DependentUpon>VatsimRadar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\CloudLayerExplorerForm.resx">
+      <DependentUpon>CloudLayerExplorerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\WindLayerExplorerForm.resx">
+      <DependentUpon>WindLayerExplorerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="changelog.txt">

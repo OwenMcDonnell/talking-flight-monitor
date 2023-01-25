@@ -9,9 +9,16 @@
 
 #### Weather
 
-* Pressing the keyboard command for wind will now give basic weather information.
+* Pressing the keyboard command for wind will now give basic wind layer info.
+    * Layer number.
+    * Direction
+    * Speed
+    * Gusts.
     * visibility
-    * The type and rate of percipitation. For example, "light rain" or "very heavy snow".
+    * Wind turbulence (different than cloud turbulence).
+    * Shear level.
+* Removed the keyboard command for aircraft profiles (right bracket, Ctrl+I). It was never used.
+* Added wind layer explorer dialog. Access with right bracket, Ctrl+I. The wind layer explorer allows you to see the different wind conditions at the aircraft's current location. The output is identical to wind info key (right bracket, I).
 * Added the ability for TFM to automatically announce when you are in or out of a cloud.
 
 #### Other changes
