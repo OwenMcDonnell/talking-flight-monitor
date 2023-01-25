@@ -2916,7 +2916,11 @@ else                    if (PMDG747Detected)
         private void onWindKey()
         {
             var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
-            var windLayer = weather.WindLayers.Where(x => x.UpperAltitudeFeet <= Autopilot.AglAltitude).OrderBy(x => x.UpperAltitudeFeet).FirstOrDefault();
+            var windLayer = weather.WindLayers.Where(x => x.UpperAltitudeFeet >= Autopilot.AslAltitude).OrderBy(x => x.UpperAltitudeFeet).FirstOrDefault();
+            if(windLayer == null)
+            {
+                windLayer = weather.WindLayers[0];
+            }
                                   Output(isGauge: false, output: $"Upper altitude {windLayer.UpperAltitudeFeet}. Direction: {((int)windLayer.Direction)}. Speed: {windLayer.SpeedKnots} knotts. Gust: {windLayer.GustKnots} knotts. Visibility: {weather.Visibility.RangeNauticalMiles} Knottical miles. Turbulence: {windLayer.Turbulence}. Shear: {windLayer.Shear}.");
                 
                     }
