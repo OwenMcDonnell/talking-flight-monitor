@@ -28,6 +28,8 @@ namespace tfm.Weather
 
             pages.Add("windNode", new Weather.ctlWindLayers());
             pages.Add("cloudsNode", new Weather.ctlClouds());
+            pages.Add("tempraturesNode", new Weather.ctlTempratures());
+
             // Set parent and hide pages.
             foreach(iPanelsPage page in this.pages.Values)
             {

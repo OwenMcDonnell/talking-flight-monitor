@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Wind");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Clouds");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Tempratures");
             this.weatherCategoriesTreeView = new System.Windows.Forms.TreeView();
             this.closeButton = new System.Windows.Forms.Button();
             this.contentPanel = new System.Windows.Forms.Panel();
@@ -46,9 +47,12 @@
             treeNode1.Text = "Wind";
             treeNode2.Name = "cloudsNode";
             treeNode2.Text = "Clouds";
+            treeNode3.Name = "tempraturesNode";
+            treeNode3.Text = "Tempratures";
             this.weatherCategoriesTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode2});
+            treeNode2,
+            treeNode3});
             this.weatherCategoriesTreeView.Size = new System.Drawing.Size(300, 742);
             this.weatherCategoriesTreeView.TabIndex = 0;
             this.weatherCategoriesTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.weatherCategoriesTreeView_AfterSelect);

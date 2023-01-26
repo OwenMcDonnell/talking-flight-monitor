@@ -1235,17 +1235,17 @@
       <DependentUpon>VatsimRadar.cs</DependentUpon>
     </Compile>
     <Compile Include="Vatsim\VatsimUtilities.cs" />
-    <Compile Include="Weather\CloudLayerExplorerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Weather\CloudLayerExplorerForm.Designer.cs">
-      <DependentUpon>CloudLayerExplorerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Weather\ctlClouds.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Weather\ctlClouds.Designer.cs">
       <DependentUpon>ctlClouds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\ctlTempratures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlTempratures.Designer.cs">
+      <DependentUpon>ctlTempratures.cs</DependentUpon>
     </Compile>
     <Compile Include="Weather\ctlWindLayers.cs">
       <SubType>UserControl</SubType>
@@ -1258,12 +1258,6 @@
     </Compile>
     <Compile Include="Weather\WeatherCenterForm.Designer.cs">
       <DependentUpon>WeatherCenterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Weather\WindLayerExplorerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Weather\WindLayerExplorerForm.Designer.cs">
-      <DependentUpon>WindLayerExplorerForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -1727,20 +1721,17 @@
     <EmbeddedResource Include="Vatsim\VatsimRadar.resx">
       <DependentUpon>VatsimRadar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Weather\CloudLayerExplorerForm.resx">
-      <DependentUpon>CloudLayerExplorerForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Weather\ctlClouds.resx">
       <DependentUpon>ctlClouds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlTempratures.resx">
+      <DependentUpon>ctlTempratures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Weather\ctlWindLayers.resx">
       <DependentUpon>ctlWindLayers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Weather\WeatherCenterForm.resx">
       <DependentUpon>WeatherCenterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Weather\WindLayerExplorerForm.resx">
-      <DependentUpon>WindLayerExplorerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="changelog.txt">
