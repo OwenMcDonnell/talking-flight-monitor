@@ -845,6 +845,11 @@
       <DependentUpon>pmdg747-offsets.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\TFMDatabase.cs" />
+    <Compile Include="Properties\Weather.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Weather.settings</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\ctlAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1120,6 +1125,12 @@
     </Compile>
     <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.Designer.cs">
       <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\WindSnadshot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\WindSnadshot.Designer.cs">
+      <DependentUpon>WindSnadshot.cs</DependentUpon>
     </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
@@ -1676,6 +1687,9 @@
     <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.resx">
       <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\WindSnadshot.resx">
+      <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1730,6 +1744,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Properties\Weather.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Weather.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

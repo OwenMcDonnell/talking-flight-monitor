@@ -9,26 +9,26 @@
 
 #### Weather
 
-* Pressing the keyboard command for wind will now give basic wind layer info.
-    * Layer number.
+* Pressing the keyboard command for wind will now give basic wind layer info. Go to TFM settings/Weather/Wind command to include or exclude them from the wind command's output.
+    * Upper altitude
     * Direction
     * Speed
     * Gusts.
     * visibility
     * Wind turbulence (different than cloud turbulence).
     * Shear level.
-* Removed the keyboard command for aircraft profiles (right bracket, Ctrl+I). It was never used.
-* Added wind layer explorer dialog. Access with right bracket, Ctrl+I. The wind layer explorer allows you to see the different wind conditions at the aircraft's current location. The output is identical to wind info key (right bracket, I).
-* Added the ability for TFM to automatically announce when you are in or out of a cloud.
+
 
 #### Other changes
 
+* Removed the keyboard command for aircraft profiles (right bracket, Ctrl+I). It was never used.
 * Removed the navigraph cycle 1908.
 
 ### Bug fixes
 
 * The PMDG 737 shows its own heading box instead of the freeware aircraft set heading window.
 * The build database will only be visible when a simulator is loaded.
+
 ### Known issues
 
 * PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future release.

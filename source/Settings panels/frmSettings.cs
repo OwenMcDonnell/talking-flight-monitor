@@ -89,6 +89,9 @@ namespace tfm
             pages.Add("overheadMaint_ElectricalNode", new tfm.Settings_panels.PMDG747.ctlOverHeadMaint_Electrical());
             pages.Add("overheadMaintFuelNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Fuel());
             pages.Add("overheadMaintHydNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Hydraulics());
+
+            // Weather
+            pages.Add("weather_WindNode", new tfm.Settings_panels.Weather.WindSnadshot());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {
