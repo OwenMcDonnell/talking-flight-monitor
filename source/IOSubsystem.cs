@@ -3944,7 +3944,7 @@ else                    if (PMDG747Detected)
             {
                                 if (currentLocation.Runway != null && currentLocation.Runway.IsPlayerOnRunway)
                 {
-                    Output(isGauge: false, output: $"Runway {currentLocation.Runway.ID}@{currentLocation.Airport.ICAO}");
+                    Output(isGauge: false, output: $"Runway {currentLocation.Runway.ID}@{currentLocation.Airport.ICAO}/{currentLocation.Runway.LengthFeet}");
                 }
 else if (currentLocation.Gate != null && currentLocation.Gate.IsPlayerAtGate)
                 {
