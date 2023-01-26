@@ -272,9 +272,6 @@
     <Setting Name="A2A_manager" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+M</Value>
     </Setting>
-    <Setting Name="wind_layer_explorer" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Ctrl+I</Value>
-    </Setting>
     <Setting Name="display_website" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+W</Value>
     </Setting>
@@ -311,11 +308,11 @@
     <Setting Name="Toggle_Global_Mute" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Shift+M</Value>
     </Setting>
-    <Setting Name="cloud_layer_explorer" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Ctrl+O</Value>
-    </Setting>
     <Setting Name="cloud_info" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Shift+O</Value>
+    </Setting>
+    <Setting Name="weather_center" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+W</Value>
     </Setting>
   </Settings>
 </SettingsFile>

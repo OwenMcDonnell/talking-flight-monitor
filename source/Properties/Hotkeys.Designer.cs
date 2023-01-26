@@ -1102,18 +1102,6 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+I")]
-        public global::System.Windows.Forms.Keys wind_layer_explorer {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["wind_layer_explorer"]));
-            }
-            set {
-                this["wind_layer_explorer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+W")]
         public global::System.Windows.Forms.Keys display_website {
             get {
@@ -1258,18 +1246,6 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+O")]
-        public global::System.Windows.Forms.Keys cloud_layer_explorer {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["cloud_layer_explorer"]));
-            }
-            set {
-                this["cloud_layer_explorer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Shift+O")]
         public global::System.Windows.Forms.Keys cloud_info {
             get {
@@ -1277,6 +1253,18 @@ namespace tfm.Properties {
             }
             set {
                 this["cloud_info"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+W")]
+        public global::System.Windows.Forms.Keys weather_center {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["weather_center"]));
+            }
+            set {
+                this["weather_center"] = value;
             }
         }
     }

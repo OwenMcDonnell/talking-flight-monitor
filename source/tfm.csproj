@@ -1241,6 +1241,24 @@
     <Compile Include="Weather\CloudLayerExplorerForm.Designer.cs">
       <DependentUpon>CloudLayerExplorerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Weather\ctlClouds.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlClouds.Designer.cs">
+      <DependentUpon>ctlClouds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\ctlWindLayers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlWindLayers.Designer.cs">
+      <DependentUpon>ctlWindLayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\WeatherCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Weather\WeatherCenterForm.Designer.cs">
+      <DependentUpon>WeatherCenterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Weather\WindLayerExplorerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1711,6 +1729,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Weather\CloudLayerExplorerForm.resx">
       <DependentUpon>CloudLayerExplorerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlClouds.resx">
+      <DependentUpon>ctlClouds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlWindLayers.resx">
+      <DependentUpon>ctlWindLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\WeatherCenterForm.resx">
+      <DependentUpon>WeatherCenterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Weather\WindLayerExplorerForm.resx">
       <DependentUpon>WindLayerExplorerForm.cs</DependentUpon>

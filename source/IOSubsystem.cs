@@ -2448,15 +2448,19 @@ else                    if (PMDG747Detected)
                 case "display_website":
                     DisplayWebsite();
                     break;
-                case "cloud_layer_explorer":
-                    var cloud = new tfm.Weather.CloudLayerExplorerForm();
-                    cloud.ShowDialog();
+                case "weather_center":
+                    tfm.Weather.WeatherCenterForm weatherCenter = new Weather.WeatherCenterForm();
+                    if (weatherCenter.Visible)
+                    {
+                        Output(isGauge: false, output: "The weather center is already open!");
+                    }
+                    else
+                    {
+                        weatherCenter.ShowDialog();
+                    }
+                    
                     break;
-                case "wind_layer_explorer":
-                    var wind = new tfm.Weather.WindLayerExplorerForm();
-                    wind.ShowDialog();
-                    break;
-                case "A2A_manager":
+                              case "A2A_manager":
                     DisplayA2AManager();
                     break;
                 case "application_settings":
