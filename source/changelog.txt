@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 23.1.2 Preview release notes
+﻿## Talking flight monitor 23.2 Preview release notes
 
 ### What's new?
 
@@ -17,7 +17,7 @@
     * visibility
     * Wind turbulence (different than cloud turbulence).
     * Shear level.
-
+* Weather center. The weather center is TFM's WX radar. With it, pilots can check the weather conditions at their aircraft's current location. For more information, see *insert blog post.* Access with right bracket, CONTROL+W.
 
 #### Other changes
 
@@ -26,11 +26,12 @@
 
 ### Bug fixes
 
+* PMDG 747 and weather center settings now save as expected.
 * The PMDG 737 shows its own heading box instead of the freeware aircraft set heading window.
 * The build database will only be visible when a simulator is loaded.
 
 ### Known issues
-
+* PMDG 747: Some panels are excluded from TFM because the controls are write-only with no clear explanation on the control's settings. Those panels will appear in this section. We will keep everyone updated if the state of the panels change.
 * PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future release.
 * PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future release.
 * PMDG737: The audio/comms panels are not finished yet. Use the ACP panel at your own risk.

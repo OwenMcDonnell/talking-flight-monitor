@@ -28,7 +28,15 @@ namespace tfm.Weather
         {
 
             Tolk.Load();
-            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            FsWeather weather = null;
+            if(utility.CurrentWeather == null)
+            {
+                weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            }
+            else
+            {
+                weather = utility.CurrentWeather;
+            }
             var layerNumber = 0;
 
             for (int i = 0; i <= weather.TemperatureLayers.Count - 1; i++)

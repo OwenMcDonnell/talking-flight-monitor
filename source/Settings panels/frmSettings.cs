@@ -92,6 +92,7 @@ namespace tfm
 
             // Weather
             pages.Add("weather_WindNode", new tfm.Settings_panels.Weather.WindSnadshot());
+            pages.Add("weatherCloudCommandNode", new tfm.Settings_panels.Weather.ctlCloudSnapshot());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

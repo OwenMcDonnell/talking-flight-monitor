@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FSUIPC;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,6 +66,16 @@ namespace tfm.Weather
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void WeatherCenterForm_Load(object sender, EventArgs e)
+        {
+            if(utility.CurrentWeather == null)
+            {
+                utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+                utility.WeatherLastUpdated = DateTime.Now;
+            }
+            this.AccessibleName = $"{utility.CurrentWeather.Name} last refresh {utility.WeatherLastUpdated}";
         }
     }
 }

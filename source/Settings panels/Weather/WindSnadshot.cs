@@ -31,5 +31,17 @@ namespace tfm.Settings_panels.Weather
             turbulenceCheckBox.DataBindings.Add("Checked", Properties.Weather.Default, "WindLayer_Turbulence");
             shearCheckBox.DataBindings.Add("Checked", Properties.Weather.Default, "WindLayer_Shear");
         }
+
+        private void upperAltitudeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (upperAltitudeCheckBox.Checked)
+            {
+                Properties.Weather.Default.WindLayer_UpperAltitude = true;
+            }
+            else
+            {
+                Properties.Weather.Default.WindLayer_UpperAltitude = false;
+            }
+        }
     }
 }

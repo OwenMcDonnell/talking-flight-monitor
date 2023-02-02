@@ -66,6 +66,7 @@
             this.upperAltitudeCheckBox.TabIndex = 0;
             this.upperAltitudeCheckBox.Text = "Upper altitude";
             this.upperAltitudeCheckBox.UseVisualStyleBackColor = true;
+            this.upperAltitudeCheckBox.CheckedChanged += new System.EventHandler(this.upperAltitudeCheckBox_CheckedChanged);
             // 
             // directionCheckBox
             // 
@@ -141,7 +142,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.windFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "WindSnadshot";
             this.Size = new System.Drawing.Size(1021, 49);

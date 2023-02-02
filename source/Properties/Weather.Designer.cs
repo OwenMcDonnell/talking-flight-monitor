@@ -106,5 +106,185 @@ namespace tfm.Properties {
                 this["WindLayer_Shear"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int weather_refresh_rate {
+            get {
+                return ((int)(this["weather_refresh_rate"]));
+            }
+            set {
+                this["weather_refresh_rate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_InCloud {
+            get {
+                return ((bool)(this["CloudLayer_InCloud"]));
+            }
+            set {
+                this["CloudLayer_InCloud"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_CloudType {
+            get {
+                return ((bool)(this["CloudLayer_CloudType"]));
+            }
+            set {
+                this["CloudLayer_CloudType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_CloudCoverage {
+            get {
+                return ((bool)(this["CloudLayer_CloudCoverage"]));
+            }
+            set {
+                this["CloudLayer_CloudCoverage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_Icing {
+            get {
+                return ((bool)(this["CloudLayer_Icing"]));
+            }
+            set {
+                this["CloudLayer_Icing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_PrecipitationRate {
+            get {
+                return ((bool)(this["CloudLayer_PrecipitationRate"]));
+            }
+            set {
+                this["CloudLayer_PrecipitationRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_PrecipitationType {
+            get {
+                return ((bool)(this["CloudLayer_PrecipitationType"]));
+            }
+            set {
+                this["CloudLayer_PrecipitationType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_Turbulence {
+            get {
+                return ((bool)(this["CloudLayer_Turbulence"]));
+            }
+            set {
+                this["CloudLayer_Turbulence"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_DistanceToTop {
+            get {
+                return ((bool)(this["CloudLayer_DistanceToTop"]));
+            }
+            set {
+                this["CloudLayer_DistanceToTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_DistanceToBottom {
+            get {
+                return ((bool)(this["CloudLayer_DistanceToBottom"]));
+            }
+            set {
+                this["CloudLayer_DistanceToBottom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_OutOfCloud {
+            get {
+                return ((bool)(this["CloudLayer_OutOfCloud"]));
+            }
+            set {
+                this["CloudLayer_OutOfCloud"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_DistanceToCloudAbove {
+            get {
+                return ((bool)(this["CloudLayer_DistanceToCloudAbove"]));
+            }
+            set {
+                this["CloudLayer_DistanceToCloudAbove"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_NoCloudsAbove {
+            get {
+                return ((bool)(this["CloudLayer_NoCloudsAbove"]));
+            }
+            set {
+                this["CloudLayer_NoCloudsAbove"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_DistanceToCloudBelow {
+            get {
+                return ((bool)(this["CloudLayer_DistanceToCloudBelow"]));
+            }
+            set {
+                this["CloudLayer_DistanceToCloudBelow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayer_NoCloudsBelow {
+            get {
+                return ((bool)(this["CloudLayer_NoCloudsBelow"]));
+            }
+            set {
+                this["CloudLayer_NoCloudsBelow"] = value;
+            }
+        }
     }
 }

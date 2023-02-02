@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Wind");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Clouds");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Tempratures");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Wind");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Clouds");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Tempratures");
             this.weatherCategoriesTreeView = new System.Windows.Forms.TreeView();
             this.closeButton = new System.Windows.Forms.Button();
             this.contentPanel = new System.Windows.Forms.Panel();
@@ -43,16 +43,16 @@
             this.weatherCategoriesTreeView.Location = new System.Drawing.Point(0, 0);
             this.weatherCategoriesTreeView.Margin = new System.Windows.Forms.Padding(5);
             this.weatherCategoriesTreeView.Name = "weatherCategoriesTreeView";
-            treeNode1.Name = "windNode";
-            treeNode1.Text = "Wind";
-            treeNode2.Name = "cloudsNode";
-            treeNode2.Text = "Clouds";
-            treeNode3.Name = "tempraturesNode";
-            treeNode3.Text = "Tempratures";
+            treeNode7.Name = "windNode";
+            treeNode7.Text = "Wind";
+            treeNode8.Name = "cloudsNode";
+            treeNode8.Text = "Clouds";
+            treeNode9.Name = "tempraturesNode";
+            treeNode9.Text = "Tempratures";
             this.weatherCategoriesTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode7,
+            treeNode8,
+            treeNode9});
             this.weatherCategoriesTreeView.Size = new System.Drawing.Size(300, 742);
             this.weatherCategoriesTreeView.TabIndex = 0;
             this.weatherCategoriesTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.weatherCategoriesTreeView_AfterSelect);
@@ -80,7 +80,7 @@
             // 
             // WeatherCenterForm
             // 
-            this.AccessibleName = "Weather center";
+            this.AccessibleName = "";
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
@@ -95,8 +95,8 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "WeatherCenterForm";
-            this.Text = "Weather center";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.WeatherCenterForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WeatherCenterForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -75,6 +75,7 @@ namespace tfm
         private static System.Timers.Timer flightFollowingTimer;
         private static readonly System.Timers.Timer ilsTimer = new System.Timers.Timer(TimeSpan.FromSeconds(double.Parse(Properties.Settings.Default.ILSAnnouncementTimeInterval)).TotalMilliseconds);
         private static readonly System.Timers.Timer waypointTransitionTimer = new System.Timers.Timer(5000);
+        private static readonly System.Timers.Timer weatherTimer = new System.Timers.Timer(TimeSpan.FromMinutes(Properties.Weather.Default.weather_refresh_rate).TotalMilliseconds);
         private double HdgRight;
         private double HdgLeft;
 
@@ -275,6 +276,8 @@ namespace tfm
             GroundSpeedTimer.Elapsed += onGroundSpeedTimerTick;
             ilsTimer.Elapsed += onILSTimerTick;
             waypointTransitionTimer.Elapsed += onWaypointTransitionTimerTick;
+            weatherTimer.Elapsed += OnWeatherRefreshTimerTick;
+            weatherTimer.Start();
             WarningsTimer.Elapsed += WarningsTimer_Tick;
             // start the flight following timer if it is enabled in settings
             SetupFlightFollowing();
@@ -1036,6 +1039,13 @@ namespace tfm
                 gsDetected = false;
             }
         }
+
+        private void OnWeatherRefreshTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
+        {
+            utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            utility.CurrentWeather.Name = "Weather auto refresh";
+            utility.WeatherLastUpdated = elapsedEventArgs.SignalTime;
+                                }
 
         private void onILSTimerTick(object sender, ElapsedEventArgs e)
         {
@@ -2633,6 +2643,9 @@ else                    if (PMDG747Detected)
                 case "Wind_Information":
                     onWindKey();
                     break;
+                case "cloud_info":
+                    OnCloudKey();
+                    break;
                 case "Runway_Guidance_Mode":
                     onRunwayGuidanceKey();
                     break;
@@ -2973,6 +2986,269 @@ else                    if (PMDG747Detected)
                 
                     }
 
+        private void OnCloudKey()
+        {
+
+            /*
+             * Base the ability to ascend or descend through
+             * clouds based on the vertical speed of the aircraft. If the VS is below 0, we are
+             * descending through the clouds, if any. If the VS
+             * is above 0, then we are ascending through the clouds, if any. In cases where VS is 0, requesting
+             * the cloud report should give the current cloud, if any.
+             */
+
+            if(Autopilot.VerticalSpeed >= 0)
+            {
+                AscendThroughClouds();
+            }
+            else
+            {
+                DescendThroughClouds();
+            }
+        }
+
+        private void AscendThroughClouds()
+        {
+
+            StringBuilder cloudOutput = new StringBuilder();
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+
+            // Select the current cloud layer if any.
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+
+            // Select the next cloud if any.
+            var nextCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude <= x.LowerAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+
+            // Select the previous cloud if any.
+            var previousCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+            // Flags for previous/next/current clouds.
+            bool isCloudsAbove = nextCloud != null ? true : false;
+            bool isCloudsBelow = previousCloud != null ? true : false;
+            bool inCloud = currentCloud != null ? true : false;
+
+            // Current cloud.
+            #region "Current cloud"
+            if (inCloud)
+            {
+
+
+                if (Properties.Weather.Default.CloudLayer_InCloud)
+                {
+                    cloudOutput.Append("In cloud. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_CloudType)
+                {
+                    cloudOutput.Append($"Type: {currentCloud.CloudType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_CloudCoverage)
+                {
+                    cloudOutput.Append($"Coverage: {currentCloud.CoverageOctas}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Icing)
+                {
+                    cloudOutput.Append($"Icing: {currentCloud.Icing}. ");
+                }
+
+                if (currentCloud.PrecipitationType != FsPrecipitationType.None)
+                {
+                    if (Properties.Weather.Default.CloudLayer_PrecipitationRate)
+                    {
+                        cloudOutput.Append($"Precipitation rate: {currentCloud.PrecipitationRate}. ");
+                    }
+                }
+
+                if (Properties.Weather.Default.CloudLayer_PrecipitationType)
+                {
+                    cloudOutput.Append($"Precipitation: {currentCloud.PrecipitationType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Turbulence)
+                {
+                    cloudOutput.Append($"Turbulence: {currentCloud.Turbulence}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToTop)
+                {
+                    cloudOutput.Append($"Top: {currentCloud.UpperAltitudeFeet - Autopilot.AslAltitude} feet. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToBottom)
+                {
+                    cloudOutput.Append($"Bottom: {Autopilot.AslAltitude - currentCloud.LowerAltitudeFeet} feet. ");
+                }
+            }
+            else
+            {
+                // Check if clouds are above/below.
+                if (inCloud == false)
+                {
+                    if (Properties.Weather.Default.CloudLayer_OutOfCloud)
+                    {
+                        cloudOutput.Append("Not in a cloud. ");
+                    }
+                }
+
+                if (isCloudsAbove)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudAbove)
+                    {
+                        cloudOutput.Append($"Cloud {nextCloud.LowerAltitudeFeet - Autopilot.AslAltitude} feet above. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsAbove)
+                    {
+                        cloudOutput.Append("No clouds above. ");
+                    }
+                }
+
+                if (isCloudsBelow)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudBelow)
+                    {
+                        cloudOutput.Append($"Cloud {Autopilot.AslAltitude - previousCloud.UpperAltitudeFeet} feet below. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsBelow)
+                    {
+                        cloudOutput.Append("No clouds below. ");
+                    }
+                }
+                            }
+            #endregion
+
+            if(cloudOutput.Length == 0)
+            {
+                cloudOutput.Append("You must choose cloud elements in settings.");
+            }
+                                                           Output(isGauge: false, output: cloudOutput.ToString());
+                    }
+
+private void DescendThroughClouds()
+        {
+
+            StringBuilder cloudOutput = new StringBuilder();
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+
+            // Select the current cloud layer if any.
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+            // Select the next cloud if any.
+            var nextCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+            // Select the previous cloud if any.
+            var previousCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude <= x.LowerAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+
+            // Flags for previous/next/current clouds.
+            bool isCloudsAbove = previousCloud!= null ? true : false;
+            bool isCloudsBelow = nextCloud!= null ? true : false;
+            bool inCloud = currentCloud != null ? true : false;
+
+            // Current cloud.
+            #region "Current cloud"
+            if (inCloud)
+            {
+
+                if (Properties.Weather.Default.CloudLayer_CloudType)
+                {
+                    cloudOutput.Append($"Type: {currentCloud.CloudType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_CloudCoverage)
+                {
+                    cloudOutput.Append($"Coverage: {currentCloud.CoverageOctas}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Icing)
+                {
+                    cloudOutput.Append($"Icing: {currentCloud.Icing}. ");
+                }
+
+                if (currentCloud.PrecipitationType != FsPrecipitationType.None)
+                {
+                    if (Properties.Weather.Default.CloudLayer_PrecipitationRate)
+                    {
+                        cloudOutput.Append($"Precipitation rate: {currentCloud.PrecipitationRate}. ");
+                    }
+                }
+
+                if (Properties.Weather.Default.CloudLayer_PrecipitationType)
+                {
+                    cloudOutput.Append($"Precipitation: {currentCloud.PrecipitationType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Turbulence)
+                {
+                    cloudOutput.Append($"Turbulence: {currentCloud.Turbulence}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToTop)
+                {
+                    cloudOutput.Append($"Top: {currentCloud.UpperAltitudeFeet - Autopilot.AslAltitude} feet. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToBottom)
+                {
+                    cloudOutput.Append($"Bottom: {Autopilot.AslAltitude - currentCloud.LowerAltitudeFeet} feet. ");
+                }
+            }
+            else
+            {
+
+                // Check if clouds are above/below.
+                if (inCloud == false)
+                {
+                    if (Properties.Weather.Default.CloudLayer_OutOfCloud)
+                    {
+                        cloudOutput.Append("Not in a cloud. ");
+                    }
+                }
+
+                if (isCloudsAbove)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudAbove)
+                    {
+                        cloudOutput.Append($"Cloud {previousCloud.LowerAltitudeFeet - Autopilot.AslAltitude} feet above. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsAbove)
+                    {
+                        cloudOutput.Append("No clouds above. ");
+                    }
+                }
+
+                if (isCloudsBelow)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudBelow)
+                    {
+                        cloudOutput.Append($"Cloud {Autopilot.AslAltitude - nextCloud.UpperAltitudeFeet} feet below. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsBelow)
+                    {
+                        cloudOutput.Append("No clouds below. ");
+                    }
+                    }
+                           }
+            #endregion
+
+            if(cloudOutput.Length == 0)
+            {
+                cloudOutput.Append("You must choose cloud elements in settings.");
+            }
+                       Output(isGauge: false, output: cloudOutput.ToString());
+                                }
 
         private void onNearbyAircraft()
         {
@@ -4885,12 +5161,15 @@ else if(currentLocation.Airport == null)
             {
                 Properties.Settings.Default.Save();
                 Properties.pmdg737_offsets.Default.Save();
+                Properties.pmdg747_offsets.Default.Save();
+                Properties.Weather.Default.Save();
             }
             else
             {
                 Properties.Settings.Default.Reload();
                 Properties.pmdg737_offsets.Default.Reload();
-
+                Properties.pmdg747_offsets.Default.Reload();
+                Properties.Weather.Default.Reload();
             }
         } // DisplayApplicationSettings.
 
@@ -4928,5 +5207,6 @@ else if(currentLocation.Airport == null)
         {
             System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
         } // ReportIssue
-    } // End IOSubsystem class
+
+            } // End IOSubsystem class
 } // End TFM namespace.

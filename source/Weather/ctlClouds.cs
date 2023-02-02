@@ -28,7 +28,16 @@ namespace tfm.Weather
         private void ctlClouds_Load(object sender, EventArgs e)
         {
             Tolk.Load();
-            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            FsWeather weather = null;
+            if(utility.CurrentWeather == null)
+            {
+                weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            }
+            else
+            {
+                weather = utility.CurrentWeather;
+            }
+            
             var layerNumber = 0;
 
             for (int i = 0; i <= weather.CloudLayers.Count - 1; i++)

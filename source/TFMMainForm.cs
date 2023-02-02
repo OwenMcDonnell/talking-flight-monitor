@@ -55,8 +55,14 @@ namespace tfm
             if (Properties.Settings.Default.SettingsRequiresUpgrade)
             {
                 Properties.Settings.Default.Upgrade();
+                Properties.pmdg737_offsets.Default.Upgrade();
+                Properties.pmdg747_offsets.Default.Upgrade();
+                Properties.Weather.Default.Upgrade();
                 Properties.Settings.Default.SettingsRequiresUpgrade = false;
                 Properties.Settings.Default.Save();
+                Properties.pmdg737_offsets.Default.Save();
+                Properties.pmdg747_offsets.Default.Save();
+                Properties.Weather.Default.Save();
                 Application.Restart();
             }
             this.trayIcon.Visible = true;

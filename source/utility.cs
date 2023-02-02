@@ -1,6 +1,5 @@
 ﻿using DavyKager;
 using FSUIPC;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,9 @@ namespace tfm
 
         public static InstrumentPanel InstrumentPanel { get => new InstrumentPanel(); }
         public static TFMMainForm TFMMainForm { get; internal set; } 
-                public static bool DebugEnabled { get; internal set; }
+        public static FsWeather CurrentWeather { get; internal set; }
+        public static DateTime WeatherLastUpdated { get; internal set; }
+                                public static bool DebugEnabled { get; internal set; }
 
         public static void UpdateControl(bool toggleStateOn, CheckBox ctrl)
         {
