@@ -3126,7 +3126,7 @@ else                    if (PMDG747Detected)
 
             if(cloudOutput.Length == 0)
             {
-                cloudOutput.Append("You must choose cloud elements in settings.");
+                cloudOutput.Append("Nothing to announce.");
             }
                                                            Output(isGauge: false, output: cloudOutput.ToString());
                     }
@@ -3245,7 +3245,7 @@ private void DescendThroughClouds()
 
             if(cloudOutput.Length == 0)
             {
-                cloudOutput.Append("You must choose cloud elements in settings.");
+                cloudOutput.Append("Nothing to announce.");
             }
                        Output(isGauge: false, output: cloudOutput.ToString());
                                 }
