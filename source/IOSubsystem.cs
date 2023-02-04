@@ -76,6 +76,8 @@ namespace tfm
         private static readonly System.Timers.Timer ilsTimer = new System.Timers.Timer(TimeSpan.FromSeconds(double.Parse(Properties.Settings.Default.ILSAnnouncementTimeInterval)).TotalMilliseconds);
         private static readonly System.Timers.Timer waypointTransitionTimer = new System.Timers.Timer(5000);
         private static readonly System.Timers.Timer weatherTimer = new System.Timers.Timer(TimeSpan.FromMinutes(Properties.Weather.Default.weather_refresh_rate).TotalMilliseconds);
+        private System.Timers.Timer cloudTrackingTimer = new System.Timers.Timer(300);
+        private string oldCloudType = string.Empty;
         private double HdgRight;
         private double HdgLeft;
 
@@ -125,7 +127,12 @@ namespace tfm
         private bool groundSpeedActive;
         private bool takeOffAssistantActive = false;
         private bool isTakeoffComplete = true; // Always true unless takeoff assist is Active.
-        private double OldElevatorTrim = 0;
+        bool isCloudTrackingEnabled = false;
+        bool inCloudDescending = false;
+        bool wasInCloudDescending = false;
+        bool inCloudAscending = false;
+        bool wasInCloudAscending = false;        
+                private double OldElevatorTrim = 0;
         private bool TrimEnabled = true;
                 private bool FlapsMoving;
         private bool pmdg777SpeedBrakeMoving = false;
@@ -278,6 +285,7 @@ namespace tfm
             waypointTransitionTimer.Elapsed += onWaypointTransitionTimerTick;
             weatherTimer.Elapsed += OnWeatherRefreshTimerTick;
             weatherTimer.Start();
+            cloudTrackingTimer.Elapsed += CloudTrackingTimerTick;
             WarningsTimer.Elapsed += WarningsTimer_Tick;
             // start the flight following timer if it is enabled in settings
             SetupFlightFollowing();
@@ -2341,6 +2349,21 @@ else                    if (PMDG747Detected)
         {
             switch (Name)
             {
+                case "CloudTracking":
+
+                    if (isCloudTrackingEnabled)
+                    {
+                        cloudTrackingTimer.Stop();
+                        isCloudTrackingEnabled = false;
+                        Output(isGauge: false, output: "Cloud tracking off.");
+                                            }
+                    else
+                    {
+                        cloudTrackingTimer.Start();
+                        isCloudTrackingEnabled = true;
+                        Output(isGauge: false, output: "Cloud tracking on.");
+                                            }
+                    break;
                 case "SetTrim":
                     if (PMDG737Detected)
                     {
@@ -2985,6 +3008,82 @@ else                    if (PMDG747Detected)
                         Output(isGauge: false, output: windOutput.ToString());
                 
                     }
+
+        private void TrackCloudsOnClimb()
+        {
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+            inCloudAscending = currentCloud != null ? true : false;
+
+            if (inCloudAscending == true && wasInCloudAscending == false)
+            {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "In cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "In cloud.");
+                }
+                wasInCloudAscending = true;
+                }
+                else if(inCloudAscending == false && wasInCloudAscending == true)
+                {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "Out of cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "Out of cloud.");
+                }
+                wasInCloudAscending = false;
+                }
+                                                           }
+
+        private void TrackCloudsOnDescent()
+        {
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+            inCloudDescending = currentCloud != null ? true : false;
+
+            if (inCloudDescending == true && wasInCloudDescending == false)
+            {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "In cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "In cloud.");
+                }
+                wasInCloudDescending = true;
+            }
+            else if (inCloudDescending == false && wasInCloudDescending == true)
+            {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "Out of cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "Out of cloud.");
+                }
+                wasInCloudDescending = false;
+            }
+
+        }
+        private void CloudTrackingTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
+        {
+            if(Autopilot.VerticalSpeed >= 0)
+            {
+                TrackCloudsOnClimb();
+            }
+            else
+            {
+                TrackCloudsOnDescent();
+            }
+        }
 
         private void OnCloudKey()
         {

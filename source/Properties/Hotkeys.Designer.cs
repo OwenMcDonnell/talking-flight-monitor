@@ -1267,5 +1267,17 @@ namespace tfm.Properties {
                 this["weather_center"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+O")]
+        public global::System.Windows.Forms.Keys CloudTracking {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["CloudTracking"]));
+            }
+            set {
+                this["CloudTracking"] = value;
+            }
+        }
     }
 }

@@ -286,5 +286,29 @@ namespace tfm.Properties {
                 this["CloudLayer_NoCloudsBelow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCloudTrackingEnabled {
+            get {
+                return ((bool)(this["IsCloudTrackingEnabled"]));
+            }
+            set {
+                this["IsCloudTrackingEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloudLayers_UseSAPI {
+            get {
+                return ((bool)(this["CloudLayers_UseSAPI"]));
+            }
+            set {
+                this["CloudLayers_UseSAPI"] = value;
+            }
+        }
     }
 }

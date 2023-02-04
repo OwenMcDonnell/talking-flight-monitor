@@ -314,5 +314,8 @@
     <Setting Name="weather_center" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+W</Value>
     </Setting>
+    <Setting Name="CloudTracking" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+O</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

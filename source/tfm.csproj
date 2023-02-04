@@ -1126,6 +1126,12 @@
     <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.Designer.cs">
       <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\Weather\ctlAutomaticAnnouncements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlAutomaticAnnouncements.Designer.cs">
+      <DependentUpon>ctlAutomaticAnnouncements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\Weather\ctlCloudSnapshot.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1704,6 +1710,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.resx">
       <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlAutomaticAnnouncements.resx">
+      <DependentUpon>ctlAutomaticAnnouncements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\Weather\ctlCloudSnapshot.resx">
       <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
