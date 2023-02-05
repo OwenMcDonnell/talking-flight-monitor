@@ -1279,5 +1279,17 @@ namespace tfm.Properties {
                 this["CloudTracking"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F2")]
+        public global::System.Windows.Forms.Keys LookAroundMode {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["LookAroundMode"]));
+            }
+            set {
+                this["LookAroundMode"] = value;
+            }
+        }
     }
 }

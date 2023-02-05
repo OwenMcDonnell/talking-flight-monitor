@@ -317,5 +317,8 @@
     <Setting Name="CloudTracking" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+O</Value>
     </Setting>
+    <Setting Name="LookAroundMode" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
