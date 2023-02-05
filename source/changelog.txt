@@ -10,13 +10,10 @@
 #### Weather
 
 * Pressing the keyboard command for wind will now give basic wind layer info. Go to TFM settings/Weather/Wind command to include or exclude them from the wind command's output.
-    * Upper altitude
-    * Direction
-    * Speed
-    * Gusts.
-    * visibility
-    * Wind turbulence (different than cloud turbulence).
-    * Shear level.
+* Added a new feature called cloud command. It provides access to cloud information on demand. Access with right bracket, SHIFT+O.
+* The cloud command (above) is customizable. Navigate to TFM settings/weather/cloud command to see its available options.
+* Added a new feature named cloud tracking. It automatically announces in/out of cloud status messages when the aircraft enters/exits a cloud layer. Toggle it on/off with right bracket, CONTROL+O.
+* Added a new setting for cloud tracking (above) that toggles between SAPI or screen reader output.
 * Weather center. The weather center is TFM's WX radar. With it, pilots can check the weather conditions at their aircraft's current location. For more information, see *insert blog post.* Access with right bracket, CONTROL+W.
 
 #### Other changes
