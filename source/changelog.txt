@@ -15,6 +15,7 @@
 * Added a new feature named cloud tracking. It automatically announces in/out of cloud status messages when the aircraft enters/exits a cloud layer. Toggle it on/off with right bracket, CONTROL+O.
 * Added a new setting for cloud tracking (above) that toggles between SAPI or screen reader output.
 * Weather center. The weather center is TFM's WX radar. With it, pilots can check the weather conditions at their aircraft's current location. For more information, see *insert blog post.* Access with right bracket, CONTROL+W.
+* Added refresh rate setting to the weather center. Navigate to TFM settings/weather to adjust its value.
 
 #### Other changes
 
@@ -29,9 +30,10 @@
 
 ### Known issues
 * PMDG 747: Some panels are excluded from TFM because the controls are write-only with no clear explanation on the control's settings. Those panels will appear in this section. We will keep everyone updated if the state of the panels change.
-* PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future release.
-* PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future release.
+* PMDG 747: The Overhead Maint/Hydraulics panel is not included, even though its settings are present. It will be in a future preview.
+* PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future preview.
+* PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future preview.
 * PMDG737: The audio/comms panels are not finished yet. Use the ACP panel at your own risk.
 * PMDG 737: There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
 * TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
-* PMDG737/PMDG747: Old versions of aircraft announcements are still turned on. They will be permanently turned off in a future release.
+* PMDG737/PMDG747: Old versions of aircraft announcements are still turned on. They will be permanently turned off in a future preview.

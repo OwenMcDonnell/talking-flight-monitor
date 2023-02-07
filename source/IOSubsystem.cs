@@ -1854,20 +1854,21 @@ else              if (PMDG777Detected)
                     if (PMDG737Detected)
                     {
                         gaugeValue = PMDG737Aircraft.GetMCPAltitudeComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     } // PMDG737
-                    if (PMDG777Detected)
+else                   if (PMDG777Detected)
                     {
                         gaugeValue = PMDG777Aircraft.GetMCPAltitudeComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     }
                     else
                     {
 
                         gaugeValue = Autopilot.ApAltitude.ToString();
                         if (Autopilot.ApAltitudeLock) gaugeValue = " hold " + gaugeValue;
+                        Output(gaugeName, gaugeValue, isGauge);
                     }
-
-                    Output(gaugeName, gaugeValue, isGauge);
-                    break;
+                                                            break;
                 case "ap_Set_Altitude":
                     if (PMDG737Detected)
                     {
@@ -1959,18 +1960,20 @@ else                    if (PMDG777Detected)
                     if (PMDG737Detected)
                     {
                         gaugeValue = PMDG737Aircraft.GetMCPHeadingComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     } // PMDG 737
-                    if (PMDG777Detected)
+else                    if (PMDG777Detected)
                     {
                         gaugeValue = PMDG777Aircraft.GetMCPHeadingComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     }
                     else
                     {
                         gaugeValue = Autopilot.ApHeading.ToString();
                         if (Autopilot.ApHeadingLock) gaugeValue = " hold " + gaugeValue;
+                        Output(gaugeName, gaugeValue, isGauge);
                     } // Freeware
-                    Output(gaugeName, gaugeValue, isGauge);
-                    break;
+                                        break;
                 case "ap_Set_Heading":
                     if (PMDG737Detected)
                     {
@@ -2020,11 +2023,13 @@ else                    if (PMDG747Detected)
                         if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
                         {
                             gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
+                            Output(isGauge: false, output: gaugeValue);
                         }
                     } // PMDG737
-                    if (PMDG777Detected)
+else                    if (PMDG777Detected)
                     {
                         gaugeValue = PMDG777Aircraft.GetMCPSpeedComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     }
 
                     // freeware.
@@ -2032,10 +2037,9 @@ else                    if (PMDG747Detected)
                     {
                         gaugeValue = Autopilot.ApAirspeed.ToString();
                         if (Autopilot.ApAirspeedHold) gaugeValue = " hold " + gaugeValue;
+                        Output(gaugeName, gaugeValue, isGauge);
                     } // freeware
-
-                    Output(gaugeName, gaugeValue, isGauge);
-                    break;
+                                                            break;
 
                 case "ap_Set_Airspeed":
                     if (PMDG737Detected)
@@ -2088,6 +2092,7 @@ else                    if (PMDG747Detected)
                         if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
                         {
                             gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
+                            Output(isGauge: false, output: gaugeValue);
                         } // MachSpeed
                     } // PMDG737
 
