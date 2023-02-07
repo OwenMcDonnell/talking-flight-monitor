@@ -91,6 +91,7 @@ namespace tfm
             pages.Add("overheadMaintHydNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Hydraulics());
 
             // Weather
+            pages.Add("weatherNode", new tfm.Settings_panels.Weather.ctlWeather());
             pages.Add("weather_WindNode", new tfm.Settings_panels.Weather.WindSnadshot());
             pages.Add("weatherCloudCommandNode", new tfm.Settings_panels.Weather.ctlCloudSnapshot());
             pages.Add("weather_AutomaticAnnouncementsNode", new tfm.Settings_panels.Weather.ctlAutomaticAnnouncements());

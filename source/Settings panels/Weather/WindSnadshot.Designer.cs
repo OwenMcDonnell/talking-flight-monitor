@@ -58,7 +58,7 @@
             // 
             // upperAltitudeCheckBox
             // 
-            this.upperAltitudeCheckBox.AccessibleName = "Upper altitude (feet).";
+            this.upperAltitudeCheckBox.AccessibleName = "Include upper altitude.";
             this.upperAltitudeCheckBox.AutoSize = true;
             this.upperAltitudeCheckBox.Location = new System.Drawing.Point(3, 3);
             this.upperAltitudeCheckBox.Name = "upperAltitudeCheckBox";
@@ -70,7 +70,7 @@
             // 
             // directionCheckBox
             // 
-            this.directionCheckBox.AccessibleName = "Direction (compass heading).";
+            this.directionCheckBox.AccessibleName = "Include wind direction.";
             this.directionCheckBox.AutoSize = true;
             this.directionCheckBox.Location = new System.Drawing.Point(209, 3);
             this.directionCheckBox.Name = "directionCheckBox";
@@ -81,7 +81,7 @@
             // 
             // speedCheckBox
             // 
-            this.speedCheckBox.AccessibleName = "Speed (knotts).";
+            this.speedCheckBox.AccessibleName = "Include wind speed.";
             this.speedCheckBox.AutoSize = true;
             this.speedCheckBox.Location = new System.Drawing.Point(361, 3);
             this.speedCheckBox.Name = "speedCheckBox";
@@ -92,7 +92,7 @@
             // 
             // gustsCheckBox
             // 
-            this.gustsCheckBox.AccessibleName = "Gusts (knotts).";
+            this.gustsCheckBox.AccessibleName = "Include wind gusts.";
             this.gustsCheckBox.AutoSize = true;
             this.gustsCheckBox.Location = new System.Drawing.Point(476, 3);
             this.gustsCheckBox.Name = "gustsCheckBox";
@@ -103,7 +103,7 @@
             // 
             // visibilityCheckBox
             // 
-            this.visibilityCheckBox.AccessibleName = "Visibility (knautical miles).";
+            this.visibilityCheckBox.AccessibleName = "Include visibility.";
             this.visibilityCheckBox.AutoSize = true;
             this.visibilityCheckBox.Location = new System.Drawing.Point(586, 3);
             this.visibilityCheckBox.Name = "visibilityCheckBox";
@@ -114,7 +114,7 @@
             // 
             // turbulenceCheckBox
             // 
-            this.turbulenceCheckBox.AccessibleName = "Turbulence (textual scale).";
+            this.turbulenceCheckBox.AccessibleName = "Include wind turbulence.";
             this.turbulenceCheckBox.AutoSize = true;
             this.turbulenceCheckBox.Location = new System.Drawing.Point(737, 3);
             this.turbulenceCheckBox.Name = "turbulenceCheckBox";
@@ -125,7 +125,7 @@
             // 
             // shearCheckBox
             // 
-            this.shearCheckBox.AccessibleName = "Shear (textual scale).";
+            this.shearCheckBox.AccessibleName = "Include wind shear.";
             this.shearCheckBox.AutoSize = true;
             this.shearCheckBox.Location = new System.Drawing.Point(908, 3);
             this.shearCheckBox.Name = "shearCheckBox";

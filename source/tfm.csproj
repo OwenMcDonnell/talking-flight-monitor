@@ -1138,6 +1138,12 @@
     <Compile Include="Settings panels\Weather\ctlCloudSnapshot.Designer.cs">
       <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\Weather\ctlWeather.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlWeather.Designer.cs">
+      <DependentUpon>ctlWeather.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\Weather\WindSnadshot.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1716,6 +1722,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\Weather\ctlCloudSnapshot.resx">
       <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlWeather.resx">
+      <DependentUpon>ctlWeather.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\Weather\WindSnadshot.resx">
       <DependentUpon>WindSnadshot.cs</DependentUpon>
