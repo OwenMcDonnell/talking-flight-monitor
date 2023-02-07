@@ -24,6 +24,7 @@
 
 ### Bug fixes
 
+* PMDG 737: Pressing any of the MCP keys; left bracket h, s, and a now state the FDU readout such as MCP heading 300 HDGSEL.
 * PMDG 747 and weather center settings now save as expected.
 * The PMDG 737 shows its own heading box instead of the freeware aircraft set heading window.
 * The build database will only be visible when a simulator is loaded.
