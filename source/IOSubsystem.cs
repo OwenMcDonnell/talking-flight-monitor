@@ -2356,18 +2356,25 @@ else                    if (PMDG777Detected)
             {
                 case "CloudTracking":
 
-                    if (isCloudTrackingEnabled)
+                    if (FSUIPCConnection.FSUIPCVersion.Major >= 7)
                     {
-                        cloudTrackingTimer.Stop();
-                        isCloudTrackingEnabled = false;
-                        Output(isGauge: false, output: "Cloud tracking off.");
-                                            }
+                        Output(isGauge: false, output: "Cloud tracking is only available in P3D 4 and later.");
+                    }
                     else
                     {
-                        cloudTrackingTimer.Start();
-                        isCloudTrackingEnabled = true;
-                        Output(isGauge: false, output: "Cloud tracking on.");
-                                            }
+                        if (isCloudTrackingEnabled)
+                        {
+                            cloudTrackingTimer.Stop();
+                            isCloudTrackingEnabled = false;
+                            Output(isGauge: false, output: "Cloud tracking off.");
+                        }
+                        else
+                        {
+                            cloudTrackingTimer.Start();
+                            isCloudTrackingEnabled = true;
+                            Output(isGauge: false, output: "Cloud tracking on.");
+                        }
+                    }
                     break;
                 case "SetTrim":
                     if (PMDG737Detected)
@@ -2678,7 +2685,15 @@ else                    if (PMDG777Detected)
                     onWindKey();
                     break;
                 case "cloud_info":
-                    OnCloudKey();
+                    if(FSUIPCConnection.FSUIPCVersion.Major >= 7)
+                    {
+                        Output(isGauge: false, output: "Cloud tracking is only available in P3d 4 and later.");
+                    }
+                    else
+                    {
+                        OnCloudKey();
+                    }
+                    
                     break;
                 case "Runway_Guidance_Mode":
                     onRunwayGuidanceKey();
