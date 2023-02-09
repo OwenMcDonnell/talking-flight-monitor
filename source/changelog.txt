@@ -1,40 +1,21 @@
-﻿## Talking flight monitor 23.2 Preview release notes
+﻿## Talking flight monitor 23.2 release notes
 
 ### What's new?
 
-#### PMDG 747
+* Full support for the PMDG 737 series of aircraft in P3D and MSFS.
+* Started support for the PMDG 747 series of aircraft for P3D 4 and later.
+* Airports database improvements for MSFS.
+* Weather center where pilots can see the weather at their current location. Access with right bracket CONTROL+W.
+* New Cloud tracking command that automatically announces in/out of cloud. Turn on/off with right bracket CONTROL+O.
+* New customizable cloud command (Right bracket SHIFT+O) that announces information about clouds surrounding the aircraft.
+* New mute TFM command (Right bracket SHIFT+M) stops TFM from automatically announcing aircraft and weather changes.
+* New keyboard help command (right bracket question mark) announces basic descriptions of key presses.
+* New TFM database feature that stores speech history across TFM restarts. There is more planned for this feature, so stay tuned!
+* New quick help dialog that appears on first run of a new TFM install. It provides a few hints on how to get help with keyboard commands.
+* New settings to control what is announced in supported PMDG aircraft.
+* The wind command (right bracket I) is now customizable.
+* Where am I? (right bracket SHIFT+C) now announces runway length when the aircraft is positioned on a runway.
+* Where am I? (right bracket SHIFT+C) now announces the airport ICAO code when on the airport grounds if not on a taxiway, gate, or runway.
+* Removed Navigraph support.
+* Removed the freeware flight planner and related components. They were not compatible with the new airports database.
 
-* The Overhead Maint/Electrical panel controls now work.
-* Added Overhead Maint/Fuel panel.
-
-#### Weather
-
-* Pressing the keyboard command for wind will now give basic wind layer info. Go to TFM settings/Weather/Wind command to include or exclude them from the wind command's output.
-* Added a new feature called cloud command. It provides access to cloud information on demand. Access with right bracket, SHIFT+O.
-* The cloud command (above) is customizable. Navigate to TFM settings/weather/cloud command to see its available options.
-* Added a new feature named cloud tracking. It automatically announces in/out of cloud status messages when the aircraft enters/exits a cloud layer. Toggle it on/off with right bracket, CONTROL+O.
-* Added a new setting for cloud tracking (above) that toggles between SAPI or screen reader output.
-* Weather center. The weather center is TFM's WX radar. With it, pilots can check the weather conditions at their aircraft's current location. For more information, see *insert blog post.* Access with right bracket, CONTROL+W.
-* Added refresh rate setting to the weather center. Navigate to TFM settings/weather to adjust its value.
-
-#### Other changes
-
-* Removed the keyboard command for aircraft profiles (right bracket, Ctrl+I). It was never used.
-* Removed the navigraph cycle 1908.
-
-### Bug fixes
-
-* PMDG 737: Pressing any of the MCP keys; left bracket h, s, and a now state the FDU readout such as MCP heading 300 HDGSEL.
-* PMDG 747 and weather center settings now save as expected.
-* The PMDG 737 shows its own heading box instead of the freeware aircraft set heading window.
-* The build database will only be visible when a simulator is loaded.
-
-### Known issues
-* PMDG 747: Some panels are excluded from TFM because the controls are write-only with no clear explanation on the control's settings. Those panels will appear in this section. We will keep everyone updated if the state of the panels change.
-* PMDG 747: The Overhead Maint/Hydraulics panel is not included, even though its settings are present. It will be in a future preview.
-* PMDG747: The Glare Shield/MCP is not included in the cockpit panels window. It will be added in a future preview.
-* PMDG747: The Glare Shield/MCP is not included in TFM settings. It will be added in a future preview.
-* PMDG737: The audio/comms panels are not finished yet. Use the ACP panel at your own risk.
-* PMDG 737: There is no way to disengage auto pilot or auto throttle. This will come in a future preview.
-* TFM: Vatsim mode is unstable at best. We feel it has something to do with Vatsim servers. Use at your own risk.
-* PMDG737/PMDG747: Old versions of aircraft announcements are still turned on. They will be permanently turned off in a future preview.
