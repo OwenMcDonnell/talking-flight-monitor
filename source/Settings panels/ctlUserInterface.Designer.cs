@@ -31,6 +31,7 @@
             this.ctlFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.chkPlayStartupSound = new System.Windows.Forms.CheckBox();
             this.chkPlayShutdownSound = new System.Windows.Forms.CheckBox();
+            this.vatsimModeCheckBox = new System.Windows.Forms.CheckBox();
             this.ctlFlowLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,10 +41,12 @@
             this.ctlFlowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ctlFlowLayout.Controls.Add(this.chkPlayStartupSound);
             this.ctlFlowLayout.Controls.Add(this.chkPlayShutdownSound);
+            this.ctlFlowLayout.Controls.Add(this.vatsimModeCheckBox);
             this.ctlFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctlFlowLayout.Location = new System.Drawing.Point(0, 0);
+            this.ctlFlowLayout.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.ctlFlowLayout.Name = "ctlFlowLayout";
-            this.ctlFlowLayout.Size = new System.Drawing.Size(548, 45);
+            this.ctlFlowLayout.Size = new System.Drawing.Size(719, 45);
             this.ctlFlowLayout.TabIndex = 0;
             // 
             // chkPlayStartupSound
@@ -69,6 +72,19 @@
             this.chkPlayShutdownSound.UseVisualStyleBackColor = true;
             this.chkPlayShutdownSound.CheckedChanged += new System.EventHandler(this.chkPlayShutdownSound_CheckedChanged);
             // 
+            // vatsimModeCheckBox
+            // 
+            this.vatsimModeCheckBox.AccessibleName = "Use Vatsim";
+            this.vatsimModeCheckBox.AutoSize = true;
+            this.vatsimModeCheckBox.Checked = global::tfm.Properties.Settings.Default.VatsimMode;
+            this.vatsimModeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::tfm.Properties.Settings.Default, "VatsimMode", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.vatsimModeCheckBox.Location = new System.Drawing.Point(551, 3);
+            this.vatsimModeCheckBox.Name = "vatsimModeCheckBox";
+            this.vatsimModeCheckBox.Size = new System.Drawing.Size(165, 37);
+            this.vatsimModeCheckBox.TabIndex = 4;
+            this.vatsimModeCheckBox.Text = "Use Vatsim";
+            this.vatsimModeCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ctlUserInterface
             // 
             this.AccessibleName = "User interface settings";
@@ -79,8 +95,9 @@
             this.Controls.Add(this.ctlFlowLayout);
             this.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "ctlUserInterface";
-            this.Size = new System.Drawing.Size(548, 45);
+            this.Size = new System.Drawing.Size(719, 45);
             this.Load += new System.EventHandler(this.ctlUserInterface_Load);
             this.ctlFlowLayout.ResumeLayout(false);
             this.ctlFlowLayout.PerformLayout();
@@ -94,5 +111,6 @@
         private System.Windows.Forms.FlowLayoutPanel ctlFlowLayout;
         private System.Windows.Forms.CheckBox chkPlayStartupSound;
         private System.Windows.Forms.CheckBox chkPlayShutdownSound;
+        private System.Windows.Forms.CheckBox vatsimModeCheckBox;
     }
 }

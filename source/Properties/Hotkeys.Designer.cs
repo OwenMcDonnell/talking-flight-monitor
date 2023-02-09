@@ -12,7 +12,7 @@ namespace tfm.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Hotkeys : global::System.Configuration.ApplicationSettingsBase {
         
         private static Hotkeys defaultInstance = ((Hotkeys)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Hotkeys())));
@@ -1078,7 +1078,7 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Oemcomma")]
         public global::System.Windows.Forms.Keys application_settings {
             get {
                 return ((global::System.Windows.Forms.Keys)(this["application_settings"]));
@@ -1097,18 +1097,6 @@ namespace tfm.Properties {
             }
             set {
                 this["A2A_manager"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+I")]
-        public global::System.Windows.Forms.Keys aircraft_profiles {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["aircraft_profiles"]));
-            }
-            set {
-                this["aircraft_profiles"] = value;
             }
         }
         
@@ -1138,7 +1126,7 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+F")]
         public global::System.Windows.Forms.Keys ap_NavigationBox {
             get {
                 return ((global::System.Windows.Forms.Keys)(this["ap_NavigationBox"]));
@@ -1169,6 +1157,138 @@ namespace tfm.Properties {
             }
             set {
                 this["destination_runway"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+X")]
+        public global::System.Windows.Forms.Keys ApplicationRestart {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ApplicationRestart"]));
+            }
+            set {
+                this["ApplicationRestart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+G")]
+        public global::System.Windows.Forms.Keys JumpToGate {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["JumpToGate"]));
+            }
+            set {
+                this["JumpToGate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+R")]
+        public global::System.Windows.Forms.Keys JumpToRunway {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["JumpToRunway"]));
+            }
+            set {
+                this["JumpToRunway"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+K")]
+        public global::System.Windows.Forms.Keys keyboard_manager {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["keyboard_manager"]));
+            }
+            set {
+                this["keyboard_manager"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+OemQuestion")]
+        public global::System.Windows.Forms.Keys toggle_help_mode {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["toggle_help_mode"]));
+            }
+            set {
+                this["toggle_help_mode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+T")]
+        public global::System.Windows.Forms.Keys SetTrim {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SetTrim"]));
+            }
+            set {
+                this["SetTrim"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+M")]
+        public global::System.Windows.Forms.Keys Toggle_Global_Mute {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["Toggle_Global_Mute"]));
+            }
+            set {
+                this["Toggle_Global_Mute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+O")]
+        public global::System.Windows.Forms.Keys cloud_info {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["cloud_info"]));
+            }
+            set {
+                this["cloud_info"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+W")]
+        public global::System.Windows.Forms.Keys weather_center {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["weather_center"]));
+            }
+            set {
+                this["weather_center"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+O")]
+        public global::System.Windows.Forms.Keys CloudTracking {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["CloudTracking"]));
+            }
+            set {
+                this["CloudTracking"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F2")]
+        public global::System.Windows.Forms.Keys LookAroundMode {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["LookAroundMode"]));
+            }
+            set {
+                this["LookAroundMode"] = value;
             }
         }
     }

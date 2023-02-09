@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('packages\SQLite.3.13.0\build\net45\SQLite.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -76,101 +77,92 @@
     <Reference Include="BingMapsSDSToolkit, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BingMapsSDSToolkit.1.0.5\lib\net45\BingMapsSDSToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="fsuipcClient, Version=3.2.10.379, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
-      <HintPath>packages\FSUIPCClientDLL.3.2.10\lib\net40\fsuipcClient.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="fsuipcClient, Version=3.3.2.402, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
+      <HintPath>packages\FSUIPCClientDLL.3.3.2\lib\net462\fsuipcClient.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\KdTree.1.4.1\lib\net471\KdTreeLib.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.Sqlite, Version=5.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Data.Sqlite.Core.5.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    <Reference Include="Microsoft.Data.Sqlite, Version=7.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Sqlite.Core.7.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=3.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.DotNet.PlatformAbstractions.3.1.6\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Memory.7.0.0\lib\net462\Microsoft.Extensions.Caching.Memory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Design, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Design.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Design.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.7.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Relational.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Sqlite, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Sqlite.Core.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Sqlite.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=7.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.7.0.2\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Caching.Memory.5.0.0\lib\net461\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Configuration.5.0.0\lib\net461\Microsoft.Extensions.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyModel.7.0.0\lib\net462\Microsoft.Extensions.DependencyModel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.7.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.5.0.0\lib\net461\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.DependencyInjection.5.0.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Options, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.7.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyModel, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.DependencyModel.5.0.0\lib\net461\Microsoft.Extensions.DependencyModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Primitives.5.0.1\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.7.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.2.0.0\lib\netstandard2.0\NAudio.dll</HintPath>
+    <Reference Include="NAudio, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.2.1.0\lib\net472\NAudio.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.Asio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.Asio.2.0.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    <Reference Include="NAudio.Asio, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Asio.2.1.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.Core.2.0.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    <Reference Include="NAudio.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Core.2.1.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.Midi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.Midi.2.0.0\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    <Reference Include="NAudio.Midi, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Midi.2.1.0\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.Wasapi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.Wasapi.2.0.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    <Reference Include="NAudio.Wasapi, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Wasapi.2.1.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.WinForms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.WinForms.2.0.0\lib\net472\NAudio.WinForms.dll</HintPath>
+    <Reference Include="NAudio.WinForms, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinForms.2.1.0\lib\net472\NAudio.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.WinMM, Version=2.0.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>packages\NAudio.WinMM.2.0.0\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    <Reference Include="NAudio.WinMM, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinMM.2.1.0\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NGeoNames, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\NGeoNames.1.5.1\lib\net471\NGeoNames.dll</HintPath>
@@ -181,27 +173,30 @@
     <Reference Include="NHotkey.WindowsForms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a76ffb086700b11c, processorArchitecture=MSIL">
       <HintPath>packages\NHotkey.WindowsForms.2.1.0\lib\net45\NHotkey.WindowsForms.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>packages\NLog.4.7.10\lib\net45\NLog.dll</HintPath>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.5.1.1\lib\net46\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.4.976, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    <Reference Include="protobuf-net, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>packages\protobuf-net.3.1.26\lib\net462\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.core, Version=2.0.4.976, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.core.2.0.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    <Reference Include="protobuf-net.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>packages\protobuf-net.Core.3.1.26\lib\net462\protobuf-net.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.nativelibrary, Version=2.0.4.976, Culture=neutral, PublicKeyToken=502ed628492ab262, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.4\lib\net461\SQLitePCLRaw.nativelibrary.dll</HintPath>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.0.4.976, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.provider.dynamic_cdecl.2.0.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    <Reference Include="SQLitePCLRaw.core, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.core.2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.provider.dynamic_cdecl.2.1.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Collections.Immutable.5.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
@@ -209,24 +204,35 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.EF6.1.0.117.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.117.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
@@ -234,19 +240,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
-    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=7.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.7.0.1\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -255,6 +261,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -263,8 +270,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TimeZoneConverter, Version=3.5.0.0, Culture=neutral, PublicKeyToken=e20ab7d0d9479841, processorArchitecture=MSIL">
-      <HintPath>packages\TimeZoneConverter.3.5.0\lib\net471\TimeZoneConverter.dll</HintPath>
+    <Reference Include="TimeZoneConverter, Version=6.0.1.0, Culture=neutral, PublicKeyToken=e20ab7d0d9479841, processorArchitecture=MSIL">
+      <HintPath>packages\TimeZoneConverter.6.0.1\lib\net462\TimeZoneConverter.dll</HintPath>
     </Reference>
     <Reference Include="TolkDotNet">
       <HintPath>.\TolkDotNet.dll</HintPath>
@@ -284,16 +291,15 @@
     <Compile Include="Autopilot\frmAltimeter.Designer.cs">
       <DependentUpon>frmAltimeter.cs</DependentUpon>
     </Compile>
+    <Compile Include="commandHelp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>commandHelp.resx</DependentUpon>
+    </Compile>
     <Compile Include="ComparisonTypes.cs" />
     <Compile Include="Events\PMDGPanelUpdateEvent.cs" />
     <Compile Include="Events\PMDGPanelUpdateEventArgs.cs" />
     <Compile Include="ExpressionBuilder.cs" />
-    <Compile Include="Flight planning\AirportsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Flight planning\AirportsForm.Designer.cs">
-      <DependentUpon>AirportsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Flight planning\DestinationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,11 +307,11 @@
       <DependentUpon>DestinationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Flight planning\FlightPlan.cs" />
-    <Compile Include="Flight planning\FlightPlanForm.cs">
+    <Compile Include="frmFirstRunHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Flight planning\FlightPlanForm.Designer.cs">
-      <DependentUpon>FlightPlanForm.cs</DependentUpon>
+    <Compile Include="frmFirstRunHelp.Designer.cs">
+      <DependentUpon>frmFirstRunHelp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFuelManager.cs">
       <SubType>Form</SubType>
@@ -314,6 +320,23 @@
       <DependentUpon>frmFuelManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="JumpTo\GatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JumpTo\GatesForm.Designer.cs">
+      <DependentUpon>GatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JumpTo\RunwaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JumpTo\RunwaysForm.Designer.cs">
+      <DependentUpon>RunwaysForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboard manager\KeyNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KeyNames.resx</DependentUpon>
+    </Compile>
     <Compile Include="OutputHistory\frmOutputHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,31 +348,326 @@
     <Compile Include="PMDG\Enums\AircraftVerbosity.cs" />
     <Compile Include="PMDG\Enums\PanelObjectType.cs" />
     <Compile Include="PMDG\Enums\AircraftSpeed.cs" />
+    <Compile Include="PMDG\Enums\PMDG737SpeedBrake.cs" />
     <Compile Include="PMDG\PanelObjects\NumericDisplay.cs" />
     <Compile Include="PMDG\PanelObjects\SingleStateToggle.cs" />
-    <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.cs">
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.Designer.cs">
+      <DependentUpon>ctlCaptainACP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.Designer.cs">
+      <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlDomeLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlDomeLights.Designer.cs">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.Designer.cs">
+      <DependentUpon>ctlEEC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlFlightRecorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlFlightRecorder.Designer.cs">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlGear.Designer.cs">
+      <DependentUpon>ctlGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlOxygen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlOxygen.Designer.cs">
+      <DependentUpon>ctlOxygen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.Designer.cs">
+      <DependentUpon>ctlPSEU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.Designer.cs">
+      <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.Designer.cs">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.Designer.cs">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.Designer.cs">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.Designer.cs">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.Designer.cs">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.Designer.cs">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlCargoFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlCargoFire.Designer.cs">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.Designer.cs">
+      <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.Designer.cs">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlFire.Designer.cs">
+      <DependentUpon>ctlFire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.Designer.cs">
+      <DependentUpon>ctlPedestal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.Designer.cs">
+      <DependentUpon>ctlXponder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAFS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAFS.Designer.cs">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.Designer.cs">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.Designer.cs">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlBusses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlBusses.Designer.cs">
+      <DependentUpon>ctlBusses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.Designer.cs">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.Designer.cs">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFuel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFuel.Designer.cs">
+      <DependentUpon>ctlFuel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.Designer.cs">
+      <DependentUpon>ctlNav_displays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.Designer.cs">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.Designer.cs">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlFlaps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlFlaps.Designer.cs">
+      <DependentUpon>ctlFlaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.Designer.cs">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardGear.Designer.cs">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMcp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMcp.Designer.cs">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardSpeed.Designer.cs">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlStandby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlStandby.Designer.cs">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.Designer.cs">
+      <DependentUpon>ctlWarnings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpAltitude.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpAltitude.Designer.cs">
+      <DependentUpon>ctlMcpAltitude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.Designer.cs">
+      <DependentUpon>ctlMcpHeading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMCPPower.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMCPPower.Designer.cs">
+      <DependentUpon>ctlMCPPower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.Designer.cs">
+      <DependentUpon>ctlMcpSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.Designer.cs">
+      <DependentUpon>ctlMcpVerticalSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.Designer.cs">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\Forms\CDU.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\AltitudeBox.Designer.cs">
-      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\Forms\CDU.Designer.cs">
+      <DependentUpon>CDU.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\HeadingBox.cs">
+    <Compile Include="PMDG\PMDG 737\Forms\TransponderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\HeadingBox.Designer.cs">
-      <DependentUpon>HeadingBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\Forms\TransponderForm.Designer.cs">
+      <DependentUpon>TransponderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\SpeedBox.cs">
+    <Compile Include="PMDG\PMDG 737\Forms\TrimForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\SpeedBox.Designer.cs">
-      <DependentUpon>SpeedBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\Forms\TrimForm.Designer.cs">
+      <DependentUpon>TrimForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.cs">
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpAltitude.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.Designer.cs">
-      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpAltitude.Designer.cs">
+      <DependentUpon>mcpAltitude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpHeading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpHeading.Designer.cs">
+      <DependentUpon>mcpHeading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpNavigation.Designer.cs">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpSpeed.Designer.cs">
+      <DependentUpon>mcpSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpVerticalSpeed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 737\McpComponents\mcpVerticalSpeed.Designer.cs">
+      <DependentUpon>mcpVerticalSpeed.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\PMDG737Aircraft.cs" />
     <Compile Include="PMDG\PMDG 747\747CDU.cs">
@@ -357,60 +675,6 @@
     </Compile>
     <Compile Include="PMDG\PMDG 747\747CDU.Designer.cs">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.Designer.cs">
-      <DependentUpon>ctlAirSystems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.Designer.cs">
-      <DependentUpon>ctlAntiIce.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlElectrical.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlElectrical.Designer.cs">
-      <DependentUpon>ctlElectrical.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.Designer.cs">
-      <DependentUpon>ctlEngines.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlFuel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlFuel.Designer.cs">
-      <DependentUpon>ctlFuel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.Designer.cs">
-      <DependentUpon>ctlHydraulics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlInertialReferenceUnit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlInertialReferenceUnit.Designer.cs">
-      <DependentUpon>ctlInertialReferenceUnit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.Designer.cs">
-      <DependentUpon>ctlMCP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.Designer.cs">
-      <DependentUpon>ctlPressurization.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.cs">
       <SubType>Form</SubType>
@@ -443,6 +707,48 @@
     <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.Designer.cs">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Electric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Fuel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Fuel.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\AltitudeBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\AltitudeBox.Designer.cs">
+      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\HeadingBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\HeadingBox.Designer.cs">
+      <DependentUpon>HeadingBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\NavigationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\NavigationBox.Designer.cs">
+      <DependentUpon>NavigationBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\SpeedBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\SpeedBox.Designer.cs">
+      <DependentUpon>SpeedBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\VerticalSpeedBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\McpComponents\VerticalSpeedBox.Designer.cs">
+      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 747\PMDG747Aircraft.cs" />
     <Compile Include="PMDG\pmdg.cs" />
     <Compile Include="PMDG\PMDG747.cs" />
@@ -465,11 +771,29 @@
     <Compile Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.Designer.cs">
       <DependentUpon>ctlElectrical_777.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlEngines_777.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlEngines_777.Designer.cs">
+      <DependentUpon>ctlEngines_777.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlFuel_777.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlFuel_777.Designer.cs">
+      <DependentUpon>ctlFuel_777.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG777\CockpitPanels\ctlHydraulics_777.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PMDG\PMDG777\CockpitPanels\ctlHydraulics_777.Designer.cs">
       <DependentUpon>ctlHydraulics_777.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlIRU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG777\CockpitPanels\ctlIRU.Designer.cs">
+      <DependentUpon>ctlIRU.cs</DependentUpon>
     </Compile>
     <Compile Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.cs">
       <SubType>UserControl</SubType>
@@ -510,6 +834,22 @@
     <Compile Include="PMDG\PMDG777\PMDG777Aircraft.cs" />
     <Compile Include="PMDG\PmDGIndicator.cs" />
     <Compile Include="PMDG\PMDGLight.cs" />
+    <Compile Include="Properties\pmdg737-offsets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>pmdg737-offsets.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\pmdg747-offsets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>pmdg747-offsets.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\TFMDatabase.cs" />
+    <Compile Include="Properties\Weather.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Weather.settings</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\ctlAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -533,6 +873,282 @@
     </Compile>
     <Compile Include="Settings panels\ctlUserInterface.Designer.cs">
       <DependentUpon>ctlUserInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlADIRU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlADIRU.Designer.cs">
+      <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAFS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAFS.Designer.cs">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAirSystems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAirSystems.Designer.cs">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAntiIce.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAntiIce.Designer.cs">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAPU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlAPU.Designer.cs">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlBuses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlBuses.Designer.cs">
+      <DependentUpon>ctlBuses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCargoFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCargoFire.Designer.cs">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCenterMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlCenterMain.Designer.cs">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandCDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandCDU.Designer.cs">
+      <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandPedestal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandPedestal.Designer.cs">
+      <DependentUpon>ctlControlStandPedestal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandTrim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlControlStandTrim.Designer.cs">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDomeLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDomeLights.Designer.cs">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlDU.Designer.cs">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEEC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEEC.Designer.cs">
+      <DependentUpon>ctlEEC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlElectrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlElectrical.Designer.cs">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEngines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlEngines.Designer.cs">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFire.Designer.cs">
+      <DependentUpon>ctlFire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightControls.Designer.cs">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFlightRecorder.Designer.cs">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardBrakes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardBrakes.Designer.cs">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardFlaps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardFlaps.Designer.cs">
+      <DependentUpon>ctlForwardFlaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardGear.Designer.cs">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMain.Designer.cs">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMcp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardMcp.Designer.cs">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardSpeed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlForwardSpeed.Designer.cs">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFuel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlFuel.Designer.cs">
+      <DependentUpon>ctlFuel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlGear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlGear.Designer.cs">
+      <DependentUpon>ctlGear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlHydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlHydraulics.Designer.cs">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLights.Designer.cs">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLowerForward.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlLowerForward.Designer.cs">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlMCP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlMCP.Designer.cs">
+      <DependentUpon>ctlMCP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlNav_Dis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlNav_Dis.Designer.cs">
+      <DependentUpon>ctlNav_Dis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlOxygen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlOxygen.Designer.cs">
+      <DependentUpon>ctlOxygen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlPSEU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlPSEU.Designer.cs">
+      <DependentUpon>ctlPSEU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlServiceInterPhone.Designer.cs">
+      <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlStandby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlStandby.Designer.cs">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlTransponder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlTransponder.Designer.cs">
+      <DependentUpon>ctlTransponder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlWarnings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlWarnings.Designer.cs">
+      <DependentUpon>ctlWarnings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlWipers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG737\ctlWipers.Designer.cs">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.Designer.cs">
+      <DependentUpon>ctlOverHeadMaint_Electrical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlAutomaticAnnouncements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlAutomaticAnnouncements.Designer.cs">
+      <DependentUpon>ctlAutomaticAnnouncements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlCloudSnapshot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlCloudSnapshot.Designer.cs">
+      <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlWeather.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlWeather.Designer.cs">
+      <DependentUpon>ctlWeather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\WindSnadshot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\WindSnadshot.Designer.cs">
+      <DependentUpon>WindSnadshot.cs</DependentUpon>
     </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
@@ -581,7 +1197,6 @@
     <Compile Include="Keyboard manager\frmModifyKey.Designer.cs">
       <DependentUpon>frmModifyKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="navigraph\navigraphContext.cs" />
     <Compile Include="Settings panels\ctlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -607,32 +1222,6 @@
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\iSettingsPage.cs" />
-    <Compile Include="navigraph\TblAirportCommunication.cs" />
-    <Compile Include="navigraph\TblAirportMsa.cs" />
-    <Compile Include="navigraph\TblAirports.cs" />
-    <Compile Include="navigraph\TblControlledAirspace.cs" />
-    <Compile Include="navigraph\TblCruisingTables.cs" />
-    <Compile Include="navigraph\TblEnrouteAirwayRestriction.cs" />
-    <Compile Include="navigraph\TblEnrouteAirways.cs" />
-    <Compile Include="navigraph\TblEnrouteCommunication.cs" />
-    <Compile Include="navigraph\TblEnrouteNdbnavaids.cs" />
-    <Compile Include="navigraph\TblEnrouteWaypoints.cs" />
-    <Compile Include="navigraph\TblFirUir.cs" />
-    <Compile Include="navigraph\TblGate.cs" />
-    <Compile Include="navigraph\TblGls.cs" />
-    <Compile Include="navigraph\TblGridMora.cs" />
-    <Compile Include="navigraph\TblHeader.cs" />
-    <Compile Include="navigraph\TblHoldings.cs" />
-    <Compile Include="navigraph\TblIaps.cs" />
-    <Compile Include="navigraph\TblLocalizerMarker.cs" />
-    <Compile Include="navigraph\TblLocalizersGlideslopes.cs" />
-    <Compile Include="navigraph\TblRestrictiveAirspace.cs" />
-    <Compile Include="navigraph\TblRunways.cs" />
-    <Compile Include="navigraph\TblSids.cs" />
-    <Compile Include="navigraph\TblStars.cs" />
-    <Compile Include="navigraph\TblTerminalNdbnavaids.cs" />
-    <Compile Include="navigraph\TblTerminalWaypoints.cs" />
-    <Compile Include="navigraph\TblVhfnavaids.cs" />
     <Compile Include="TemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -656,6 +1245,38 @@
     </Compile>
     <Compile Include="sounds\SineWaveProvider.cs" />
     <Compile Include="utility.cs" />
+    <Compile Include="Vatsim\Vatsim.cs" />
+    <Compile Include="Vatsim\VatsimRadar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vatsim\VatsimRadar.Designer.cs">
+      <DependentUpon>VatsimRadar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vatsim\VatsimUtilities.cs" />
+    <Compile Include="Weather\ctlClouds.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlClouds.Designer.cs">
+      <DependentUpon>ctlClouds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\ctlTempratures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlTempratures.Designer.cs">
+      <DependentUpon>ctlTempratures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\ctlWindLayers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlWindLayers.Designer.cs">
+      <DependentUpon>ctlWindLayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\WeatherCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Weather\WeatherCenterForm.Designer.cs">
+      <DependentUpon>WeatherCenterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -668,17 +1289,24 @@
     <EmbeddedResource Include="Autopilot\frmComRadios.resx">
       <DependentUpon>frmComRadios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Flight planning\AirportsForm.resx">
-      <DependentUpon>AirportsForm.cs</DependentUpon>
+    <EmbeddedResource Include="commandHelp.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>commandHelp.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Flight planning\DestinationForm.resx">
       <DependentUpon>DestinationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Flight planning\FlightPlanForm.resx">
-      <DependentUpon>FlightPlanForm.cs</DependentUpon>
+    <EmbeddedResource Include="frmFirstRunHelp.resx">
+      <DependentUpon>frmFirstRunHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFuelManager.resx">
       <DependentUpon>frmFuelManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JumpTo\GatesForm.resx">
+      <DependentUpon>GatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JumpTo\RunwaysForm.resx">
+      <DependentUpon>RunwaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Keyboard manager\frmKeyboardHelp.resx">
       <DependentUpon>frmKeyboardHelp.cs</DependentUpon>
@@ -695,50 +1323,174 @@
     <EmbeddedResource Include="Keyboard manager\frmModifyKey.resx">
       <DependentUpon>frmModifyKey.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Keyboard manager\KeyNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>KeyNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="OutputHistory\frmOutputHistory.resx">
       <DependentUpon>frmOutputHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\AltitudeBox.resx">
-      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftElectronic\ctlCaptainACP.resx">
+      <DependentUpon>ctlCaptainACP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\HeadingBox.resx">
-      <DependentUpon>HeadingBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlADIRU.resx">
+      <DependentUpon>ctlADIRU.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\SpeedBox.resx">
-      <DependentUpon>SpeedBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlDomeLights.resx">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\VerticalSpeedBox.resx">
-      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlEEC.resx">
+      <DependentUpon>ctlEEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlFlightRecorder.resx">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlGear.resx">
+      <DependentUpon>ctlGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlOxygen.resx">
+      <DependentUpon>ctlOxygen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlPSEU.resx">
+      <DependentUpon>ctlPSEU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\AftOverhead\ctlServiceInterphone.resx">
+      <DependentUpon>ctlServiceInterphone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlEngines.resx">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\BottomOverhead\ctlLights.resx">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAirSystems.resx">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlAntiIce.resx">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlCenterMain.resx">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\CenterOverhead\ctlHydraulics.resx">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlCargoFire.resx">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandCDU.resx">
+      <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlControlStandTrim.resx">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlFire.resx">
+      <DependentUpon>ctlFire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlPedestal.resx">
+      <DependentUpon>ctlPedestal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ControlStand\ctlXponder.resx">
+      <DependentUpon>ctlXponder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAFS.resx">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlLowerForward.resx">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlAPU.resx">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlBusses.resx">
+      <DependentUpon>ctlBusses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlElectrical.resx">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFlightControls.resx">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlFuel.resx">
+      <DependentUpon>ctlFuel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlNav_displays.resx">
+      <DependentUpon>ctlNav_displays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ForwardOverhead\ctlWipers.resx">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlDU.resx">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlFlaps.resx">
+      <DependentUpon>ctlFlaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardBrakes.resx">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardGear.resx">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardMcp.resx">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlForwardSpeed.resx">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\Forward\ctlStandby.resx">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\ctlWarnings.resx">
+      <DependentUpon>ctlWarnings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpAltitude.resx">
+      <DependentUpon>ctlMcpAltitude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpHeading.resx">
+      <DependentUpon>ctlMcpHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMCPPower.resx">
+      <DependentUpon>ctlMCPPower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpSpeed.resx">
+      <DependentUpon>ctlMcpSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\ctlMcpVerticalSpeed.resx">
+      <DependentUpon>ctlMcpVerticalSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\GlareShield\MCP\mcpNavigation.resx">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\Forms\CDU.resx">
+      <DependentUpon>CDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\Forms\TransponderForm.resx">
+      <DependentUpon>TransponderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\Forms\TrimForm.resx">
+      <DependentUpon>TrimForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpAltitude.resx">
+      <DependentUpon>mcpAltitude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpHeading.resx">
+      <DependentUpon>mcpHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpNavigation.resx">
+      <DependentUpon>mcpNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpSpeed.resx">
+      <DependentUpon>mcpSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 737\McpComponents\mcpVerticalSpeed.resx">
+      <DependentUpon>mcpVerticalSpeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\747CDU.resx">
       <DependentUpon>747CDU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAirSystems.resx">
-      <DependentUpon>ctlAirSystems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlAntiIce.resx">
-      <DependentUpon>ctlAntiIce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlElectrical.resx">
-      <DependentUpon>ctlElectrical.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlEngines.resx">
-      <DependentUpon>ctlEngines.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlFuel.resx">
-      <DependentUpon>ctlFuel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlHydraulics.resx">
-      <DependentUpon>ctlHydraulics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlInertialReferenceUnit.resx">
-      <DependentUpon>ctlInertialReferenceUnit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlMCP.resx">
-      <DependentUpon>ctlMCP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\ctlPressurization.resx">
-      <DependentUpon>ctlPressurization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 737\CockpitPanels\frmCockpitPanels.resx">
       <DependentUpon>frmCockpitPanels.cs</DependentUpon>
@@ -755,6 +1507,27 @@
     <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlMCP_747.resx">
       <DependentUpon>ctlMCP_747.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.resx">
+      <DependentUpon>ctlOverheadMaint_Electric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Fuel.resx">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\AltitudeBox.resx">
+      <DependentUpon>AltitudeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\HeadingBox.resx">
+      <DependentUpon>HeadingBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\NavigationBox.resx">
+      <DependentUpon>NavigationBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\SpeedBox.resx">
+      <DependentUpon>SpeedBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\VerticalSpeedBox.resx">
+      <DependentUpon>VerticalSpeedBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\777CDU.resx">
       <DependentUpon>777CDU.cs</DependentUpon>
     </EmbeddedResource>
@@ -764,8 +1537,17 @@
     <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlElectrical_777.resx">
       <DependentUpon>ctlElectrical_777.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlEngines_777.resx">
+      <DependentUpon>ctlEngines_777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlFuel_777.resx">
+      <DependentUpon>ctlFuel_777.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlHydraulics_777.resx">
       <DependentUpon>ctlHydraulics_777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlIRU.resx">
+      <DependentUpon>ctlIRU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG777\CockpitPanels\ctlMCP_777.resx">
       <DependentUpon>ctlMCP_777.cs</DependentUpon>
@@ -809,6 +1591,144 @@
     <EmbeddedResource Include="Settings panels\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlADIRU.resx">
+      <DependentUpon>ctlADIRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAFS.resx">
+      <DependentUpon>ctlAFS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAirSystems.resx">
+      <DependentUpon>ctlAirSystems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAntiIce.resx">
+      <DependentUpon>ctlAntiIce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlAPU.resx">
+      <DependentUpon>ctlAPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlBuses.resx">
+      <DependentUpon>ctlBuses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlCargoFire.resx">
+      <DependentUpon>ctlCargoFire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlCenterMain.resx">
+      <DependentUpon>ctlCenterMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlControlStandCDU.resx">
+      <DependentUpon>ctlControlStandCDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlControlStandPedestal.resx">
+      <DependentUpon>ctlControlStandPedestal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlControlStandTrim.resx">
+      <DependentUpon>ctlControlStandTrim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlDomeLights.resx">
+      <DependentUpon>ctlDomeLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlDU.resx">
+      <DependentUpon>ctlDU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlEEC.resx">
+      <DependentUpon>ctlEEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlElectrical.resx">
+      <DependentUpon>ctlElectrical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlEngines.resx">
+      <DependentUpon>ctlEngines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFire.resx">
+      <DependentUpon>ctlFire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightControls.resx">
+      <DependentUpon>ctlFlightControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFlightRecorder.resx">
+      <DependentUpon>ctlFlightRecorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardBrakes.resx">
+      <DependentUpon>ctlForwardBrakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardFlaps.resx">
+      <DependentUpon>ctlForwardFlaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardGear.resx">
+      <DependentUpon>ctlForwardGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMain.resx">
+      <DependentUpon>ctlForwardMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardMcp.resx">
+      <DependentUpon>ctlForwardMcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlForwardSpeed.resx">
+      <DependentUpon>ctlForwardSpeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlFuel.resx">
+      <DependentUpon>ctlFuel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlGear.resx">
+      <DependentUpon>ctlGear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlHydraulics.resx">
+      <DependentUpon>ctlHydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlLights.resx">
+      <DependentUpon>ctlLights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlLowerForward.resx">
+      <DependentUpon>ctlLowerForward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlMCP.resx">
+      <DependentUpon>ctlMCP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlNav_Dis.resx">
+      <DependentUpon>ctlNav_Dis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlOxygen.resx">
+      <DependentUpon>ctlOxygen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlPSEU.resx">
+      <DependentUpon>ctlPSEU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlServiceInterPhone.resx">
+      <DependentUpon>ctlServiceInterPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlStandby.resx">
+      <DependentUpon>ctlStandby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlTransponder.resx">
+      <DependentUpon>ctlTransponder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlWarnings.resx">
+      <DependentUpon>ctlWarnings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG737\ctlWipers.resx">
+      <DependentUpon>ctlWipers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.resx">
+      <DependentUpon>ctlOverHeadMaint_Electrical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.resx">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.resx">
+      <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlAutomaticAnnouncements.resx">
+      <DependentUpon>ctlAutomaticAnnouncements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlCloudSnapshot.resx">
+      <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlWeather.resx">
+      <DependentUpon>ctlWeather.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\WindSnadshot.resx">
+      <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -825,6 +1745,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vatsim\VatsimRadar.resx">
+      <DependentUpon>VatsimRadar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlClouds.resx">
+      <DependentUpon>ctlClouds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlTempratures.resx">
+      <DependentUpon>ctlTempratures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlWindLayers.resx">
+      <DependentUpon>ctlWindLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\WeatherCenterForm.resx">
+      <DependentUpon>WeatherCenterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -837,6 +1772,14 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Hotkeys.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Properties\pmdg737-offsets.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>pmdg737-offsets.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\pmdg747-offsets.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>pmdg747-offsets.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -846,6 +1789,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Properties\Weather.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Weather.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -911,6 +1858,9 @@
     <Content Include="sounds\TFM-Startup.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="sounds\tick.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tolk.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -942,12 +1892,15 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
-    <Error Condition="!Exists('packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props'))" />
     <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
-  <Import Project="packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

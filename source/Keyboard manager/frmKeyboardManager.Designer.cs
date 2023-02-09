@@ -41,6 +41,7 @@
             this.tabA2A = new System.Windows.Forms.TabPage();
             this.lvA2AKeys = new System.Windows.Forms.ListView();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnExecute = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -82,7 +83,7 @@
             this.tabGeneral.Controls.Add(this.lvKeys);
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabGeneral.Size = new System.Drawing.Size(192, 74);
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
@@ -120,7 +121,7 @@
             this.tabAutopilot.Controls.Add(this.lvAutopilotKeys);
             this.tabAutopilot.Location = new System.Drawing.Point(4, 22);
             this.tabAutopilot.Name = "tabAutopilot";
-            this.tabAutopilot.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAutopilot.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabAutopilot.Size = new System.Drawing.Size(192, 74);
             this.tabAutopilot.TabIndex = 1;
             this.tabAutopilot.Text = "Autopilot";
@@ -154,7 +155,7 @@
             this.tabA2A.Controls.Add(this.lvA2AKeys);
             this.tabA2A.Location = new System.Drawing.Point(4, 22);
             this.tabA2A.Name = "tabA2A";
-            this.tabA2A.Padding = new System.Windows.Forms.Padding(3);
+            this.tabA2A.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabA2A.Size = new System.Drawing.Size(192, 74);
             this.tabA2A.TabIndex = 2;
             this.tabA2A.Text = "A2A";
@@ -171,6 +172,7 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Controls.Add(this.btnExecute);
             this.flowLayoutPanel2.Controls.Add(this.btnModify);
             this.flowLayoutPanel2.Controls.Add(this.btnOk);
             this.flowLayoutPanel2.Controls.Add(this.btnCancel);
@@ -180,12 +182,23 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 100);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
+            // btnExecute
+            // 
+            this.btnExecute.Location = new System.Drawing.Point(2, 2);
+            this.btnExecute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExecute.Name = "btnExecute";
+            this.btnExecute.Size = new System.Drawing.Size(50, 15);
+            this.btnExecute.TabIndex = 0;
+            this.btnExecute.Text = "&Execute";
+            this.btnExecute.UseVisualStyleBackColor = true;
+            this.btnExecute.Click += new System.EventHandler(this.btnExecute_Click);
+            // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(3, 3);
+            this.btnModify.Location = new System.Drawing.Point(57, 3);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(75, 23);
-            this.btnModify.TabIndex = 0;
+            this.btnModify.TabIndex = 1;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
@@ -193,20 +206,20 @@
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(84, 3);
+            this.btnOk.Location = new System.Drawing.Point(3, 32);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
+            this.btnOk.TabIndex = 2;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(3, 32);
+            this.btnCancel.Location = new System.Drawing.Point(84, 32);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -254,5 +267,6 @@
         private System.Windows.Forms.ColumnHeader hdrKey;
         private System.Windows.Forms.ColumnHeader hdrApName;
         private System.Windows.Forms.ColumnHeader hdrApKey;
+        private System.Windows.Forms.Button btnExecute;
     }
 }

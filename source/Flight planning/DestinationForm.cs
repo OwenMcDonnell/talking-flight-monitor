@@ -40,11 +40,11 @@ namespace tfm
                         if(e.KeyCode == Keys.Enter)
             {
                 var database = FSUIPCConnection.AirportsDatabase;
-                database.SetReferenceLocation();
-
+                airport = database.Airports[airportTextBox.Text.ToUpper()];
+                airport.LoadComponents(AirportComponents.Runways);
                 try
                 {
-                                                    FlightPlan.Destination = database.Airports.Where(x => x.ICAO == airportTextBox.Text).ToArray()[0];
+                    FlightPlan.Destination = airport;
                                         runwayComboBox.Items.Clear();
                                                     foreach(FsRunway runway in FlightPlan.Destination.Runways)
                     {
@@ -74,7 +74,7 @@ namespace tfm
         {
             try
             {
-                FlightPlan.DestinationRunway = FlightPlan.Destination.Runways.Where(x => x.ID.ToString() == (string)runwayComboBox.SelectedItem).ToArray()[0];
+                                FlightPlan.DestinationRunway = FlightPlan.Destination.Runways[runwayComboBox.SelectedItem.ToString()];
                 this.Close();
             }
             catch(IndexOutOfRangeException ex)
@@ -89,7 +89,8 @@ namespace tfm
             {
                 Tolk.Output(runwayComboBox.SelectedItem.ToString());
             }
-            var runway = FlightPlan.Destination.Runways.Where(x => x.ID.ToString() == (string)runwayComboBox.SelectedItem).ToArray()[0];
+            //var runway = FlightPlan.Destination.Runways.Where(x => x.ID.ToString() == (string)runwayComboBox.SelectedItem).ToArray()[0];
+            var runway = FlightPlan.Destination.Runways[runwayComboBox.SelectedItem.ToString()];
             StringBuilder ilsInfo = new StringBuilder();
             ilsInfo.AppendLine($"Identifier: {runway.ILSInfo.ID}");
             ilsInfo.AppendLine($"Name: {runway.ILSInfo.Name}");

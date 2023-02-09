@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DavyKager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Configuration;
@@ -13,10 +14,16 @@ namespace tfm
 
         public void AddItem(string item)
         {
+            if (Properties.Settings.Default.UseDatabase)
+            {
+                Properties.TFMDatabase.InsertSpeechHistoryItem(item);
+            }
+            else
+            {
             int maxHistory = (int)Properties.Settings.Default.OutputHistoryLength;
             if (History.Count >= maxHistory)
             {
-                int removeItems = History.Count - maxHistory+ 1;
+                int removeItems = History.Count - maxHistory + 1;
                 History.RemoveRange(0, removeItems);
                 History.Add(item);
 
@@ -25,15 +32,34 @@ namespace tfm
             {
                 History.Add(item);
             }
+        }
 
         }
         public List<string> GetItems()
         {
-            return History;
+            if (Properties.Settings.Default.UseDatabase)
+            {
+                return Properties.TFMDatabase.GetAllSpeechHistoryItems();
+            }
+            else
+            {
+                return History;
+            }
         }
         public void Clear()
         {
-            History.Clear();
+            if (Properties.Settings.Default.UseDatabase)
+            {
+                var result = Properties.TFMDatabase.DeleteAllSpeechHistoryItems();
+                Tolk.Output($"{result} items deleted.");
+            }
+            else
+            {
+                var result = History.Count();
+                History.Clear();
+                Tolk.Output($"{result} items deleted.");
+            }
+            
         }
     }
 }

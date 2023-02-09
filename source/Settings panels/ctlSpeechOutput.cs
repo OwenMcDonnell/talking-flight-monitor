@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DavyKager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -29,6 +30,21 @@ namespace tfm
         }
         private void CtlSpeechOutput_Load(object sender, EventArgs e)
         {
+            Tolk.Load();
+            sapiILSAnnouncementsCheckBox.Checked = Properties.Settings.Default.SapiILSAnnouncements;
+            UseDatabaseCheckBox.Checked = Properties.Settings.Default.UseDatabase;
+            speechHistoryTimestampsCheckBox.Checked = Properties.Settings.Default.SpeechHistoryTimestamps;
+
+            if (UseDatabaseCheckBox.Checked)
+            {
+                numericUpDown1.Hide();
+                speechHistoryTimestampsCheckBox.Show();
+            }
+            else
+            {
+                numericUpDown1.Show();
+                speechHistoryTimestampsCheckBox.Hide();
+            }
 switch (Properties.Settings.Default.AttitudeAnnouncementMode)
             {
                 case 1:
@@ -197,6 +213,62 @@ if (rb.Checked)
                         break;
 
                 }
+            }
+        }
+
+        private void UseDatabaseCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UseDatabaseCheckBox.Checked)
+            {
+                Properties.Settings.Default.UseDatabase = true;
+                if (numericUpDown1.Visible)
+                {
+                    numericUpDown1.Visible = false;
+                    Tolk.Output("Speech history limit selector not available.");
+                }
+                if(speechHistoryTimestampsCheckBox.Visible == false)
+                {
+                    speechHistoryTimestampsCheckBox.Visible = true;
+                    Tolk.Output("Include timestamps in speech history option available.");
+                }
+                                           }
+            else
+            {
+                Properties.Settings.Default.UseDatabase = false;
+                if(numericUpDown1.Visible == false)
+                {
+                    numericUpDown1.Visible = true;
+                    Tolk.Output("Speech output limit selector available.");
+                }
+                if(speechHistoryTimestampsCheckBox.Visible == true)
+                {
+                    speechHistoryTimestampsCheckBox.Visible = false;
+                    Tolk.Output("Include timestamps in speech history not available.");
+                }
+            }
+        }
+
+        private void speechHistoryTimestampsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (speechHistoryTimestampsCheckBox.Checked)
+            {
+                Properties.Settings.Default.SpeechHistoryTimestamps = true;
+            }
+            else
+            {
+                Properties.Settings.Default.SpeechHistoryTimestamps = false;
+            }
+        }
+
+        private void sapiILSAnnouncementsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(sapiILSAnnouncementsCheckBox.Checked == true)
+            {
+                Properties.Settings.Default.SapiILSAnnouncements = true;
+            }
+            else
+            {
+                Properties.Settings.Default.SapiILSAnnouncements = false;
             }
         }
     }

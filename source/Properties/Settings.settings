@@ -8,10 +8,7 @@
     <Setting Name="FlightFollowing" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="avionics_tab" Type="System.String" Scope="User">
-      <Value Profile="(Default)">simplified</Value>
-    </Setting>
-    <Setting Name="ReadInstrumentation" Type="System.Boolean" Scope="User">
+    <Setting Name="AutomaticAnnouncements" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ReadSimconnectMessages" Type="System.Boolean" Scope="User">
@@ -115,6 +112,27 @@
     </Setting>
     <Setting Name="ReadGSAltitude" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UseDatabase" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SpeechHistoryTimestamps" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SapiILSAnnouncements" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="VatsimMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="avionics_tab" Type="System.String" Scope="User">
+      <Value Profile="(Default)">simplified</Value>
+    </Setting>
+    <Setting Name="ShowFirstRunDialog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MSFSAirportsDatabasePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

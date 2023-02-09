@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace tfm
 {
@@ -19,6 +18,23 @@ static class PMDG777Aircraft
                 public static  bool is200LR { get => Aircraft.pmdg777.AircraftModel.Value == 4 ? true : false; }
                 public static bool isFreighter { get => Aircraft.pmdg777.AircraftModel.Value ==5? true : false;}
         public static  bool is300ER { get => Aircraft.pmdg777.AircraftModel.Value == 6 ? true : false; }
+        public static AircraftSystem SpeedMode { get => Aircraft.pmdg777.MCP_IASBlan.Value == 1 ? AircraftSystem.FMC : AircraftSystem.MCP; }
+public static AircraftSpeed SpeedType { get => Aircraft.pmdg777.MCP_IASMach.Value < 10 ? AircraftSpeed.Mach : AircraftSpeed.Indicated; }
+
+        public static double MachSpeed
+        {
+            get
+            {
+                double speed = 0;
+                if(Aircraft.pmdg777.MCP_IASMach.Value < 10)
+                {
+                    speed = Math.Round((Aircraft.pmdg777.MCP_IASMach.Value % 1), 2);
+                }
+                return speed;
+            }
+        }
+
+        public static double IndicatedAirSpeed { get => Aircraft.pmdg777.MCP_IASMach.Value > 10 ? Aircraft.pmdg777.MCP_IASMach.Value : 0; }
 
         public static string tunedNavAid
         {
@@ -732,5 +748,71 @@ public static byte CurrentFlapsPosition
                 return flapPosition;
             }
         } // End CurrentFlapsPosition.
+
+        public static string GetMCPHeadingComponents()
+        {
+            string navigationAid = string.Empty;
+
+            if(Aircraft.pmdg777.MCP_annunHDG_HOLD.Value == 1 && Aircraft.pmdg777.MCP_annunLNAV.Value == 1)
+            {
+                navigationAid = "combined";
+            }
+            else if(Aircraft.pmdg777.MCP_annunHDG_HOLD.Value == 1)
+            {
+                navigationAid = "heading hold";
+            }
+            else if(Aircraft.pmdg777.MCP_annunLNAV.Value == 1)
+            {
+                navigationAid = "LNav";
+            }
+            return $"MCP heading {Aircraft.pmdg777.MCP_Heading.Value} {navigationAid}";
+        }
+
+        public static string GetMCPAltitudeComponents()
+        {
+            string navigationAid = string.Empty;
+
+            if(Aircraft.pmdg777.MCP_annunALT_HOLD.Value == 1)
+            {
+                navigationAid = "hold";
+            }
+            else if(Aircraft.pmdg777.MCP_annunFLCH.Value == 1)
+            {
+                navigationAid = "level change";
+            }
+            else if(Aircraft.pmdg777.MCP_annunVNAV.Value == 1)
+            {
+                navigationAid = "VNav";
+            }
+            return $"MCP altitude {Aircraft.pmdg777.MCP_Altitude.Value} {navigationAid}";
+        }
+
+        public static string GetMCPSpeedComponents()
+        {
+                        string controllingComponent = string.Empty;
+            string FDUOutput = string.Empty;
+            double speed = 0.0;
+
+            if(SpeedMode == AircraftSystem.FMC)
+            {
+                FDUOutput = "FMC speed active";
+            }
+            else if(SpeedMode == AircraftSystem.MCP)
+            {
+                controllingComponent = "MCP";
+                    if(SpeedType == AircraftSpeed.Indicated)
+                {
+                    speed = IndicatedAirSpeed;
+                }
+                    else if(SpeedType == AircraftSpeed.Mach)
+                {
+                    speed = MachSpeed;
+                }
+                FDUOutput = $"{controllingComponent} speed {speed}";
+            }
+            return FDUOutput;
+                    }
+
+
     } // End PMDG777 class.
 } // End namespace.

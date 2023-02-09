@@ -15,7 +15,12 @@ namespace tfm
         // =====================================
         // DECLARE OFFSETS YOU WANT TO USE HERE
         // =====================================
-        public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
+        public static Offset<float> ambientTurbulance = new Offset<float>(0x8638);
+        public static Offset<float> ambientVisibilityMeters = new Offset<float>(0x863C);
+        public static Offset<byte> precipitationType = new Offset<byte>(0x8640);
+        public static Offset<byte> precipitationRate = new Offset<byte>(0x8641);
+        public static Offset<byte> inCloud = new Offset<byte>(0x8642);
+                public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
         public static Offset<byte> simulatorTimeMinutes = new Offset<byte>(0x0239);
         public static Offset<byte> simulatorTimeSeconds = new Offset<byte>(0x023A);
         public static Offset<short> SimPauseControl = new Offset<short>(0x0262);
@@ -259,7 +264,7 @@ namespace tfm
         // PMDG offsets. These are all read-only. Writing is done via the PMDG control codes.
         public static PMDG_737_NGX_Offsets pmdg737 = new PMDG_737_NGX_Offsets();
         public static PMDG_747QOTSII_Offsets pmdg747 = new PMDG_747QOTSII_Offsets();
-        public static PMDG_777X_Offsets pmdg777 = new PMDG_777X_Offsets();
+       public static PMDG_777X_Offsets pmdg777 = new PMDG_777X_Offsets();
         // define a few PMDG offsets that aren't included in the .net library.
         public static Offset<string> AIR_DisplayFltAlt = new Offset<string>(0x6C82, 6);
         public static Offset<string> AIR_DisplayLandAlt = new Offset<string>(0x6C88, 6);

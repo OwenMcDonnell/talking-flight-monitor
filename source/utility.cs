@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DavyKager;
+using FSUIPC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +11,12 @@ namespace tfm
 {
     public static class utility
     {
+
+        public static InstrumentPanel InstrumentPanel { get => new InstrumentPanel(); }
         public static TFMMainForm TFMMainForm { get; internal set; } 
-                public static bool DebugEnabled { get; internal set; }
+        public static FsWeather CurrentWeather { get; internal set; }
+        public static DateTime WeatherLastUpdated { get; internal set; }
+                                public static bool DebugEnabled { get; internal set; }
 
         public static void UpdateControl(bool toggleStateOn, CheckBox ctrl)
         {
@@ -75,13 +81,32 @@ namespace tfm
             return height;
         }
 
-        public static  TblHeader LoadAiracCycle()
+                public static async void LoadAirportsDatabase()
         {
-            // Get the navigraph database header. No checks against the array index because we already know
-            // That there is only 1 header returned.
-            var airacCycle = new navigraphContext().TblHeader.ToArray()[0];
-            return airacCycle;
-        } // End LoadAiracCycle method.
 
+            if (FSUIPCConnection.IsOpen)
+            {
+                AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
+
+                if(FSUIPCConnection.FSUIPCVersion.Major <= 6)
+                {
+                    database.MakeRunwaysFolder = Properties.Settings.Default.P3DAirportsDatabasePath;
+                }
+                else
+                {
+                    database.MakeRunwaysFolder = Properties.Settings.Default.MSFSAirportsDatabasePath;
+                }
+
+                if (database.DatabaseFilesExist)
+                {
+                    database.Load();
+                    Tolk.Output("Airports database loaded.");
+                }
+                else
+                {
+                    Tolk.Output("Database failed to load. see the log for more details.");
+                }
+                                                                                                            } // open connection.
+        } // LoadAirportsDatabase
     }
 }
