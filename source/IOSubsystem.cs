@@ -2960,58 +2960,68 @@ else                    if (PMDG777Detected)
 
         private void onWindKey()
         {
-            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+if(FSUIPCConnection.FSUIPCVersion.Major >= 7)
+            {
+                double WindSpeed = (double)Aircraft.WindSpeed.Value;
+                double WindDirection = (double)Aircraft.WindDirection.Value * 360d / 65536d;
+                WindDirection = Math.Round(WindDirection);
+                double WindGust = (double)Aircraft.WindGust.Value;
+                Output(isGauge: false, output: $"Wind: {WindDirection} at {WindSpeed} knotts. Gusts at {WindGust} knotts.");
+            }
+            else
+            {
+                var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
 
-            // StringBuilder used in wind command output.
-            StringBuilder windOutput = new StringBuilder();
+                // StringBuilder used in wind command output.
+                StringBuilder windOutput = new StringBuilder();
 
-            // Get the current wind layer at aircraft location.
-            var windLayer = weather.WindLayers.Where(x => x.UpperAltitudeFeet >= Autopilot.AslAltitude).OrderBy(x => x.UpperAltitudeFeet).FirstOrDefault();
+                // Get the current wind layer at aircraft location.
+                var windLayer = weather.WindLayers.Where(x => x.UpperAltitudeFeet >= Autopilot.AslAltitude).OrderBy(x => x.UpperAltitudeFeet).FirstOrDefault();
 
-// No matching wind layers, so assume the layer just above surface level.
-            if(windLayer == null)
-            {
-                windLayer = weather.WindLayers[0];
-            }
+                // No matching wind layers, so assume the layer just above surface level.
+                if (windLayer == null)
+                {
+                    windLayer = weather.WindLayers[0];
+                }
 
-            // Build the output string based on user settings.
-            if (Properties.Weather.Default.WindLayer_UpperAltitude)
-            {
-                windOutput.Append($"Upper altitude: {windLayer.UpperAltitudeFeet}. ");
-            }
-            if (Properties.Weather.Default.WindLayer_Direction)
-            {
-                windOutput.Append($"Direction: {((int)windLayer.Direction)}. ");
-            }
-            if (Properties.Weather.Default.WindLayer_Speed)
-            {
-                windOutput.Append($"Speed: {windLayer.SpeedKnots} Knots. ");
-            }
-            if (Properties.Weather.Default.WindLayer_Gust)
-            {
-                windOutput.Append($"Gust: {windLayer.GustKnots} knots. ");
-            }
-            if (Properties.Weather.Default.WindLayer_Visibility)
-            {
-                windOutput.Append($"Visibility: {weather.Visibility.RangeNauticalMiles} knautical miles. ");
-            }
-            if (Properties.Weather.Default.WindLayer_Turbulence)
-            {
-                windOutput.Append($"Turbulence: {windLayer.Turbulence}. ");
-            }
-            if (Properties.Weather.Default.WindLayer_Shear)
-            {
-                windOutput.Append($"Shear: {windLayer.Shear}.");
-            }
-            
-            // No settings are selected, so show a short message.
-            if(windOutput.Length == 0)
-            {
-                windOutput.Append("You must choose at least one wind element in settings.");
-            }
+                // Build the output string based on user settings.
+                if (Properties.Weather.Default.WindLayer_UpperAltitude)
+                {
+                    windOutput.Append($"Upper altitude: {windLayer.UpperAltitudeFeet}. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Direction)
+                {
+                    windOutput.Append($"Direction: {((int)windLayer.Direction)}. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Speed)
+                {
+                    windOutput.Append($"Speed: {windLayer.SpeedKnots} Knots. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Gust)
+                {
+                    windOutput.Append($"Gust: {windLayer.GustKnots} knots. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Visibility)
+                {
+                    windOutput.Append($"Visibility: {weather.Visibility.RangeNauticalMiles} knautical miles. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Turbulence)
+                {
+                    windOutput.Append($"Turbulence: {windLayer.Turbulence}. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Shear)
+                {
+                    windOutput.Append($"Shear: {windLayer.Shear}.");
+                }
 
-                        Output(isGauge: false, output: windOutput.ToString());
-                
+                // No settings are selected, so show a short message.
+                if (windOutput.Length == 0)
+                {
+                    windOutput.Append("You must choose at least one wind element in settings.");
+                }
+
+                Output(isGauge: false, output: windOutput.ToString());
+            }
                     }
 
         private void TrackCloudsOnClimb()
