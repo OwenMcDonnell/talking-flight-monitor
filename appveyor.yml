@@ -12,25 +12,30 @@ for:
   branches:
     only:
       - master
-  before_build:
+        before_build:
   - cmd: nuget restore source\tfm.sln
   build:
     project: source\tfm.sln
     verbosity: minimal
   after_build:
-  - ps: >-
-      makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm.nsi
-
-      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
+  - ps: |
+      if ($env:APPVEYOR_REPO_TAG -eq "true") {
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm-release.iss
+      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
+      } else {
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=test-$env:APPVEYOR_BUILD_NUMBER installer\tfm.iss
+      appveyor PushArtifact installer\tfm-test-$env:APPVEYOR_BUILD_NUMBER.EXE
+      }
+      
 
   deploy_script:
    - ps: |
       if ($env:APPVEYOR_REPO_TAG -eq "true") {
       
       $token = $env:gh_token
-      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
+      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
       $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
-      $repo = 'jfayre/talking-flight-monitor'
+      $repo = 'talking-flight-monitor/talking-flight-monitor'
       $tag = $env:appveyor_repo_tag_name
       $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
 
@@ -69,7 +74,9 @@ for:
         $host.SetShouldExit(1)
       }
       }
--
+
+
+
   branches:
     only:
       - preview
