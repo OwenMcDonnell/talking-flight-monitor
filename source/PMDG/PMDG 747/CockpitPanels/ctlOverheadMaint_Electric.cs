@@ -247,5 +247,50 @@ namespace tfm.PMDG.PMDG_747.CockpitPanels
             } // Towing power.
 
         }
+
+        private void gen1ResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.Gen1ResetToggle();
+        }
+
+        private void gen2ResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.Gen2ResetToggle();
+        }
+
+        private void gen3ResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.Gen3ResetToggle();
+        }
+
+        private void gen4ResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.Gen4ResetToggle();
+        }
+
+        private void apu1FieldResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.APU1ResetToggle();
+        }
+
+        private void apu2FieldResetButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.APU2ResetToggle();
+        }
+
+        private void splitSystemBreakerButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.SplitSystemBreakerToggle();
+        }
+
+        private void groundPwrTestButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.GroundPowerTest();
+        }
+
+        private void towingPwrButton_Click(object sender, EventArgs e)
+        {
+            PMDG747Aircraft.TowingPower();
+        }
     }
 }

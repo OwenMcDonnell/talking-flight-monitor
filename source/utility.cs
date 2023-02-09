@@ -1,6 +1,5 @@
 ﻿using DavyKager;
 using FSUIPC;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,9 @@ namespace tfm
 
         public static InstrumentPanel InstrumentPanel { get => new InstrumentPanel(); }
         public static TFMMainForm TFMMainForm { get; internal set; } 
-                public static bool DebugEnabled { get; internal set; }
+        public static FsWeather CurrentWeather { get; internal set; }
+        public static DateTime WeatherLastUpdated { get; internal set; }
+                                public static bool DebugEnabled { get; internal set; }
 
         public static void UpdateControl(bool toggleStateOn, CheckBox ctrl)
         {
@@ -80,15 +81,7 @@ namespace tfm
             return height;
         }
 
-        public static  TblHeader LoadAiracCycle()
-        {
-            // Get the navigraph database header. No checks against the array index because we already know
-            // That there is only 1 header returned.
-            var airacCycle = new navigraphContext().TblHeader.ToArray()[0];
-            return airacCycle;
-        } // End LoadAiracCycle method.
-
-        public static async void LoadAirportsDatabase()
+                public static async void LoadAirportsDatabase()
         {
 
             if (FSUIPCConnection.IsOpen)

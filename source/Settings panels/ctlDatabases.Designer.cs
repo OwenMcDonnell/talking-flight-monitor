@@ -36,9 +36,11 @@
             this.msfsLabel = new System.Windows.Forms.Label();
             this.msfsTextBox = new System.Windows.Forms.TextBox();
             this.msfsBrowseButton = new System.Windows.Forms.Button();
+            this.databaseFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.rebuildAirportsDatabaseButton = new System.Windows.Forms.Button();
             this.p3dFlowLayoutPanel.SuspendLayout();
             this.msfsFlowLayoutPanel.SuspendLayout();
+            this.databaseFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // p3dFlowLayoutPanel
@@ -128,16 +130,27 @@
             this.msfsBrowseButton.UseVisualStyleBackColor = true;
             this.msfsBrowseButton.Click += new System.EventHandler(this.msfsBrowseButton_Click);
             // 
+            // databaseFlowLayoutPanel
+            // 
+            this.databaseFlowLayoutPanel.AccessibleName = "Database tools";
+            this.databaseFlowLayoutPanel.AutoSize = true;
+            this.databaseFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.databaseFlowLayoutPanel.Controls.Add(this.rebuildAirportsDatabaseButton);
+            this.databaseFlowLayoutPanel.Location = new System.Drawing.Point(0, 130);
+            this.databaseFlowLayoutPanel.Name = "databaseFlowLayoutPanel";
+            this.databaseFlowLayoutPanel.Size = new System.Drawing.Size(115, 49);
+            this.databaseFlowLayoutPanel.TabIndex = 3;
+            // 
             // rebuildAirportsDatabaseButton
             // 
-            this.rebuildAirportsDatabaseButton.AccessibleName = "Rebuild airports database";
+            this.rebuildAirportsDatabaseButton.AccessibleName = "Build airports database";
             this.rebuildAirportsDatabaseButton.AutoSize = true;
             this.rebuildAirportsDatabaseButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rebuildAirportsDatabaseButton.Location = new System.Drawing.Point(269, 130);
+            this.rebuildAirportsDatabaseButton.Location = new System.Drawing.Point(3, 3);
             this.rebuildAirportsDatabaseButton.Name = "rebuildAirportsDatabaseButton";
-            this.rebuildAirportsDatabaseButton.Size = new System.Drawing.Size(216, 43);
-            this.rebuildAirportsDatabaseButton.TabIndex = 2;
-            this.rebuildAirportsDatabaseButton.Text = "Reb&uild database";
+            this.rebuildAirportsDatabaseButton.Size = new System.Drawing.Size(109, 43);
+            this.rebuildAirportsDatabaseButton.TabIndex = 3;
+            this.rebuildAirportsDatabaseButton.Text = "B&uild...";
             this.rebuildAirportsDatabaseButton.UseVisualStyleBackColor = true;
             this.rebuildAirportsDatabaseButton.Click += new System.EventHandler(this.rebuildAirportsDatabaseButton_Click);
             // 
@@ -148,18 +161,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.rebuildAirportsDatabaseButton);
+            this.Controls.Add(this.databaseFlowLayoutPanel);
             this.Controls.Add(this.msfsFlowLayoutPanel);
             this.Controls.Add(this.p3dFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ctlDatabases";
-            this.Size = new System.Drawing.Size(754, 176);
+            this.Size = new System.Drawing.Size(754, 182);
             this.Load += new System.EventHandler(this.ctlDatabases_Load);
             this.p3dFlowLayoutPanel.ResumeLayout(false);
             this.p3dFlowLayoutPanel.PerformLayout();
             this.msfsFlowLayoutPanel.ResumeLayout(false);
             this.msfsFlowLayoutPanel.PerformLayout();
+            this.databaseFlowLayoutPanel.ResumeLayout(false);
+            this.databaseFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +190,7 @@
         private System.Windows.Forms.Label msfsLabel;
         private System.Windows.Forms.TextBox msfsTextBox;
         private System.Windows.Forms.Button msfsBrowseButton;
+        private System.Windows.Forms.FlowLayoutPanel databaseFlowLayoutPanel;
         private System.Windows.Forms.Button rebuildAirportsDatabaseButton;
     }
 }

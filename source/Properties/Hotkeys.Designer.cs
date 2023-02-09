@@ -1102,18 +1102,6 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+I")]
-        public global::System.Windows.Forms.Keys aircraft_profiles {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["aircraft_profiles"]));
-            }
-            set {
-                this["aircraft_profiles"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+W")]
         public global::System.Windows.Forms.Keys display_website {
             get {
@@ -1241,6 +1229,66 @@ namespace tfm.Properties {
             }
             set {
                 this["SetTrim"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+M")]
+        public global::System.Windows.Forms.Keys Toggle_Global_Mute {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["Toggle_Global_Mute"]));
+            }
+            set {
+                this["Toggle_Global_Mute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shift+O")]
+        public global::System.Windows.Forms.Keys cloud_info {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["cloud_info"]));
+            }
+            set {
+                this["cloud_info"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+W")]
+        public global::System.Windows.Forms.Keys weather_center {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["weather_center"]));
+            }
+            set {
+                this["weather_center"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+O")]
+        public global::System.Windows.Forms.Keys CloudTracking {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["CloudTracking"]));
+            }
+            set {
+                this["CloudTracking"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F2")]
+        public global::System.Windows.Forms.Keys LookAroundMode {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["LookAroundMode"]));
+            }
+            set {
+                this["LookAroundMode"] = value;
             }
         }
     }

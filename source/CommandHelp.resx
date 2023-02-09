@@ -417,4 +417,16 @@
   <data name="ap_Get_Nav_Radios" xml:space="preserve">
     <value>Get nav radio info</value>
   </data>
+  <data name="CloudTracking" xml:space="preserve">
+    <value>Turns cloud tracking on and off.</value>
+  </data>
+  <data name="LookAroundMode" xml:space="preserve">
+    <value>Turns look around mode on and off.</value>
+  </data>
+  <data name="cloud_info" xml:space="preserve">
+    <value>Cloud information.</value>
+  </data>
+  <data name="weather_center" xml:space="preserve">
+    <value>Opens the weather center.</value>
+  </data>
 </root>

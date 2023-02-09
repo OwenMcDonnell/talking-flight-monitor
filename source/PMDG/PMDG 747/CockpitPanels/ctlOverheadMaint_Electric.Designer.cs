@@ -38,6 +38,7 @@
             this.apuFieldResetGroupBox = new System.Windows.Forms.GroupBox();
             this.apuFieldResetFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.apu1FieldResetButton = new System.Windows.Forms.Button();
+            this.apu2FieldResetButton = new System.Windows.Forms.Button();
             this.splitSystemBreakerButton = new System.Windows.Forms.Button();
             this.groundPwrTestButton = new System.Windows.Forms.Button();
             this.towingPwrButton = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.apu2FieldTextBox = new System.Windows.Forms.TextBox();
             this.splitBreakerLabel = new System.Windows.Forms.Label();
             this.splitSystemBreakerTextBox = new System.Windows.Forms.TextBox();
-            this.apu2FieldResetButton = new System.Windows.Forms.Button();
             this.switchesFlowLayoutPanel.SuspendLayout();
             this.genResetSwitchesGroupBox.SuspendLayout();
             this.genResetFlowLayoutPanel.SuspendLayout();
@@ -124,6 +124,7 @@
             this.gen1ResetButton.TabIndex = 0;
             this.gen1ResetButton.Text = "button1";
             this.gen1ResetButton.UseVisualStyleBackColor = true;
+            this.gen1ResetButton.Click += new System.EventHandler(this.gen1ResetButton_Click);
             // 
             // gen2ResetButton
             // 
@@ -135,6 +136,7 @@
             this.gen2ResetButton.TabIndex = 1;
             this.gen2ResetButton.Text = "button2";
             this.gen2ResetButton.UseVisualStyleBackColor = true;
+            this.gen2ResetButton.Click += new System.EventHandler(this.gen2ResetButton_Click);
             // 
             // gen3ResetButton
             // 
@@ -146,6 +148,7 @@
             this.gen3ResetButton.TabIndex = 2;
             this.gen3ResetButton.Text = "button3";
             this.gen3ResetButton.UseVisualStyleBackColor = true;
+            this.gen3ResetButton.Click += new System.EventHandler(this.gen3ResetButton_Click);
             // 
             // gen4ResetButton
             // 
@@ -157,6 +160,7 @@
             this.gen4ResetButton.TabIndex = 3;
             this.gen4ResetButton.Text = "button4";
             this.gen4ResetButton.UseVisualStyleBackColor = true;
+            this.gen4ResetButton.Click += new System.EventHandler(this.gen4ResetButton_Click);
             // 
             // apuFieldResetGroupBox
             // 
@@ -192,6 +196,19 @@
             this.apu1FieldResetButton.TabIndex = 0;
             this.apu1FieldResetButton.Text = "button1";
             this.apu1FieldResetButton.UseVisualStyleBackColor = true;
+            this.apu1FieldResetButton.Click += new System.EventHandler(this.apu1FieldResetButton_Click);
+            // 
+            // apu2FieldResetButton
+            // 
+            this.apu2FieldResetButton.AutoSize = true;
+            this.apu2FieldResetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.apu2FieldResetButton.Location = new System.Drawing.Point(120, 3);
+            this.apu2FieldResetButton.Name = "apu2FieldResetButton";
+            this.apu2FieldResetButton.Size = new System.Drawing.Size(111, 43);
+            this.apu2FieldResetButton.TabIndex = 1;
+            this.apu2FieldResetButton.Text = "button1";
+            this.apu2FieldResetButton.UseVisualStyleBackColor = true;
+            this.apu2FieldResetButton.Click += new System.EventHandler(this.apu2FieldResetButton_Click);
             // 
             // splitSystemBreakerButton
             // 
@@ -203,6 +220,7 @@
             this.splitSystemBreakerButton.TabIndex = 2;
             this.splitSystemBreakerButton.Text = "button1";
             this.splitSystemBreakerButton.UseVisualStyleBackColor = true;
+            this.splitSystemBreakerButton.Click += new System.EventHandler(this.splitSystemBreakerButton_Click);
             // 
             // groundPwrTestButton
             // 
@@ -215,6 +233,7 @@
             this.groundPwrTestButton.TabIndex = 3;
             this.groundPwrTestButton.Text = "G&nd test";
             this.groundPwrTestButton.UseVisualStyleBackColor = true;
+            this.groundPwrTestButton.Click += new System.EventHandler(this.groundPwrTestButton_Click);
             // 
             // towingPwrButton
             // 
@@ -227,6 +246,7 @@
             this.towingPwrButton.TabIndex = 4;
             this.towingPwrButton.Text = "&Tow Pwr";
             this.towingPwrButton.UseVisualStyleBackColor = true;
+            this.towingPwrButton.Click += new System.EventHandler(this.towingPwrButton_Click);
             // 
             // indicatorsFlowLayoutPanel
             // 
@@ -443,17 +463,6 @@
             this.splitSystemBreakerTextBox.Size = new System.Drawing.Size(100, 40);
             this.splitSystemBreakerTextBox.TabIndex = 3;
             this.splitSystemBreakerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // apu2FieldResetButton
-            // 
-            this.apu2FieldResetButton.AutoSize = true;
-            this.apu2FieldResetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.apu2FieldResetButton.Location = new System.Drawing.Point(120, 3);
-            this.apu2FieldResetButton.Name = "apu2FieldResetButton";
-            this.apu2FieldResetButton.Size = new System.Drawing.Size(111, 43);
-            this.apu2FieldResetButton.TabIndex = 1;
-            this.apu2FieldResetButton.Text = "button1";
-            this.apu2FieldResetButton.UseVisualStyleBackColor = true;
             // 
             // ctlOverheadMaint_Electric
             // 

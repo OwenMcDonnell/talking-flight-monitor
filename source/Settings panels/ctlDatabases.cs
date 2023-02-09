@@ -35,7 +35,28 @@ namespace tfm
 
         private void ctlDatabases_Load(object sender, EventArgs e)
         {
+            if (FSUIPCConnection.IsOpen)
+            {
 
+                if (FSUIPCConnection.FSUIPCVersion.Major <= 6)
+                {
+                    rebuildAirportsDatabaseButton.Text = "B&uild/P3D";
+                    rebuildAirportsDatabaseButton.AccessibleName = "Build P3D airports database";
+                    rebuildAirportsDatabaseButton.Enabled = true;
+                }
+                else if (FSUIPCConnection.FSUIPCVersion.Major >= 7)
+                {
+                    rebuildAirportsDatabaseButton.Text = "B&uild/MSFS";
+                    rebuildAirportsDatabaseButton.AccessibleName = "Build MSFS airports database";
+                    rebuildAirportsDatabaseButton.Enabled = true;
+                }
+            }
+            else
+            {
+                rebuildAirportsDatabaseButton.Text = "Sim not found";
+                rebuildAirportsDatabaseButton.AccessibleName = "Load into a cockpit first";
+                rebuildAirportsDatabaseButton.Enabled = false;
+            }
             // P3D
             if(Properties.Settings.Default.P3DAirportsDatabasePath == String.Empty || string.IsNullOrWhiteSpace(Properties.Settings.Default.P3DAirportsDatabasePath))
             {
@@ -75,5 +96,5 @@ namespace tfm
 
             MessageBox.Show($"Done loading from {FSUIPCConnection.AirportsDatabase.MakeRunwaysFolder}");
         }
-    }
+                   }
 }

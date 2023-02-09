@@ -367,6 +367,24 @@ namespace tfm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cloud information..
+        /// </summary>
+        internal static string cloud_info {
+            get {
+                return ResourceManager.GetString("cloud_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turns cloud tracking on and off..
+        /// </summary>
+        internal static string CloudTracking {
+            get {
+                return ResourceManager.GetString("CloudTracking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Command key.
         /// </summary>
         internal static string Command_Key {
@@ -709,6 +727,15 @@ namespace tfm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turns look around mode on and off..
+        /// </summary>
+        internal static string LookAroundMode {
+            get {
+                return ResourceManager.GetString("LookAroundMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to get Mach speed.
         /// </summary>
         internal static string Mach_Speed {
@@ -930,6 +957,15 @@ namespace tfm {
         internal static string Vertical_Speed {
             get {
                 return ResourceManager.GetString("Vertical_Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the weather center..
+        /// </summary>
+        internal static string weather_center {
+            get {
+                return ResourceManager.GetString("weather_center", resourceCulture);
             }
         }
         

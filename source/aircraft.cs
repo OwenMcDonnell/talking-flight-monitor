@@ -15,7 +15,12 @@ namespace tfm
         // =====================================
         // DECLARE OFFSETS YOU WANT TO USE HERE
         // =====================================
-        public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
+        public static Offset<float> ambientTurbulance = new Offset<float>(0x8638);
+        public static Offset<float> ambientVisibilityMeters = new Offset<float>(0x863C);
+        public static Offset<byte> precipitationType = new Offset<byte>(0x8640);
+        public static Offset<byte> precipitationRate = new Offset<byte>(0x8641);
+        public static Offset<byte> inCloud = new Offset<byte>(0x8642);
+                public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
         public static Offset<byte> simulatorTimeMinutes = new Offset<byte>(0x0239);
         public static Offset<byte> simulatorTimeSeconds = new Offset<byte>(0x023A);
         public static Offset<short> SimPauseControl = new Offset<short>(0x0262);

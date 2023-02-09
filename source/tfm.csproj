@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('packages\SQLite.3.13.0\build\net45\SQLite.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -76,8 +77,14 @@
     <Reference Include="BingMapsSDSToolkit, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BingMapsSDSToolkit.1.0.5\lib\net45\BingMapsSDSToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="fsuipcClient, Version=3.3.1.401, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
-      <HintPath>packages\FSUIPCClientDLL.3.3.1\lib\net462\fsuipcClient.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="fsuipcClient, Version=3.3.2.402, Culture=neutral, PublicKeyToken=7e7559b53e380b17, processorArchitecture=MSIL">
+      <HintPath>packages\FSUIPCClientDLL.3.3.2\lib\net462\fsuipcClient.dll</HintPath>
     </Reference>
     <Reference Include="KdTreeLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\KdTree.1.4.1\lib\net471\KdTreeLib.dll</HintPath>
@@ -88,26 +95,11 @@
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.Sqlite, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Data.Sqlite.Core.7.0.0\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    <Reference Include="Microsoft.Data.Sqlite, Version=7.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Sqlite.Core.7.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=3.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.DotNet.PlatformAbstractions.3.1.6\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Design, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Design.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Relational.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Sqlite, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.EntityFrameworkCore.Sqlite.Core.3.1.8\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
@@ -121,8 +113,8 @@
     <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.7.0.0\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=7.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.7.0.2\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
@@ -170,7 +162,7 @@
       <HintPath>packages\NAudio.WinMM.2.1.0\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NGeoNames, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\NGeoNames.1.5.1\lib\net471\NGeoNames.dll</HintPath>
@@ -182,7 +174,7 @@
       <HintPath>packages\NHotkey.WindowsForms.2.1.0\lib\net45\NHotkey.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>packages\NLog.5.0.5\lib\net46\NLog.dll</HintPath>
+      <HintPath>packages\NLog.5.1.1\lib\net46\NLog.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>packages\protobuf-net.3.1.26\lib\net462\protobuf-net.dll</HintPath>
@@ -190,14 +182,14 @@
     <Reference Include="protobuf-net.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>packages\protobuf-net.Core.3.1.26\lib\net462\protobuf-net.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.2\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.core, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.core.2.1.2\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    <Reference Include="SQLitePCLRaw.core, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.core.2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
-      <HintPath>packages\SQLitePCLRaw.provider.dynamic_cdecl.2.1.2\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.provider.dynamic_cdecl.2.1.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -212,8 +204,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    <Reference Include="System.Data.SQLite, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.EF6.1.0.117.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.117.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -715,6 +713,12 @@
     <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.Designer.cs">
       <DependentUpon>ctlOverheadMaint_Electric.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Fuel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Fuel.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDG\PMDG 747\McpComponents\AltitudeBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -841,6 +845,11 @@
       <DependentUpon>pmdg747-offsets.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\TFMDatabase.cs" />
+    <Compile Include="Properties\Weather.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Weather.settings</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\ctlAircraft.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1099,6 +1108,48 @@
     <Compile Include="Settings panels\PMDG737\ctlWipers.Designer.cs">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.Designer.cs">
+      <DependentUpon>ctlOverHeadMaint_Electrical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.Designer.cs">
+      <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlAutomaticAnnouncements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlAutomaticAnnouncements.Designer.cs">
+      <DependentUpon>ctlAutomaticAnnouncements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlCloudSnapshot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlCloudSnapshot.Designer.cs">
+      <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlWeather.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\ctlWeather.Designer.cs">
+      <DependentUpon>ctlWeather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings panels\Weather\WindSnadshot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\Weather\WindSnadshot.Designer.cs">
+      <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
     <Compile Include="Autopilot\InstrumentPanel.cs" />
@@ -1146,7 +1197,6 @@
     <Compile Include="Keyboard manager\frmModifyKey.Designer.cs">
       <DependentUpon>frmModifyKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="navigraph\navigraphContext.cs" />
     <Compile Include="Settings panels\ctlGeneral.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1172,32 +1222,6 @@
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings panels\iSettingsPage.cs" />
-    <Compile Include="navigraph\TblAirportCommunication.cs" />
-    <Compile Include="navigraph\TblAirportMsa.cs" />
-    <Compile Include="navigraph\TblAirports.cs" />
-    <Compile Include="navigraph\TblControlledAirspace.cs" />
-    <Compile Include="navigraph\TblCruisingTables.cs" />
-    <Compile Include="navigraph\TblEnrouteAirwayRestriction.cs" />
-    <Compile Include="navigraph\TblEnrouteAirways.cs" />
-    <Compile Include="navigraph\TblEnrouteCommunication.cs" />
-    <Compile Include="navigraph\TblEnrouteNdbnavaids.cs" />
-    <Compile Include="navigraph\TblEnrouteWaypoints.cs" />
-    <Compile Include="navigraph\TblFirUir.cs" />
-    <Compile Include="navigraph\TblGate.cs" />
-    <Compile Include="navigraph\TblGls.cs" />
-    <Compile Include="navigraph\TblGridMora.cs" />
-    <Compile Include="navigraph\TblHeader.cs" />
-    <Compile Include="navigraph\TblHoldings.cs" />
-    <Compile Include="navigraph\TblIaps.cs" />
-    <Compile Include="navigraph\TblLocalizerMarker.cs" />
-    <Compile Include="navigraph\TblLocalizersGlideslopes.cs" />
-    <Compile Include="navigraph\TblRestrictiveAirspace.cs" />
-    <Compile Include="navigraph\TblRunways.cs" />
-    <Compile Include="navigraph\TblSids.cs" />
-    <Compile Include="navigraph\TblStars.cs" />
-    <Compile Include="navigraph\TblTerminalNdbnavaids.cs" />
-    <Compile Include="navigraph\TblTerminalWaypoints.cs" />
-    <Compile Include="navigraph\TblVhfnavaids.cs" />
     <Compile Include="TemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1229,6 +1253,30 @@
       <DependentUpon>VatsimRadar.cs</DependentUpon>
     </Compile>
     <Compile Include="Vatsim\VatsimUtilities.cs" />
+    <Compile Include="Weather\ctlClouds.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlClouds.Designer.cs">
+      <DependentUpon>ctlClouds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\ctlTempratures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlTempratures.Designer.cs">
+      <DependentUpon>ctlTempratures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\ctlWindLayers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Weather\ctlWindLayers.Designer.cs">
+      <DependentUpon>ctlWindLayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weather\WeatherCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Weather\WeatherCenterForm.Designer.cs">
+      <DependentUpon>WeatherCenterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -1462,6 +1510,9 @@
     <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Electric.resx">
       <DependentUpon>ctlOverheadMaint_Electric.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMDG\PMDG 747\CockpitPanels\ctlOverheadMaint_Fuel.resx">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PMDG\PMDG 747\McpComponents\AltitudeBox.resx">
       <DependentUpon>AltitudeBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -1657,6 +1708,27 @@
     <EmbeddedResource Include="Settings panels\PMDG737\ctlWipers.resx">
       <DependentUpon>ctlWipers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverHeadMaint_Electrical.resx">
+      <DependentUpon>ctlOverHeadMaint_Electrical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Fuel.resx">
+      <DependentUpon>ctlOverheadMaint_Fuel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\PMDG747\ctlOverheadMaint_Hydraulics.resx">
+      <DependentUpon>ctlOverheadMaint_Hydraulics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlAutomaticAnnouncements.resx">
+      <DependentUpon>ctlAutomaticAnnouncements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlCloudSnapshot.resx">
+      <DependentUpon>ctlCloudSnapshot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\ctlWeather.resx">
+      <DependentUpon>ctlWeather.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\Weather\WindSnadshot.resx">
+      <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1675,6 +1747,18 @@
     </Compile>
     <EmbeddedResource Include="Vatsim\VatsimRadar.resx">
       <DependentUpon>VatsimRadar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlClouds.resx">
+      <DependentUpon>ctlClouds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlTempratures.resx">
+      <DependentUpon>ctlTempratures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\ctlWindLayers.resx">
+      <DependentUpon>ctlWindLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Weather\WeatherCenterForm.resx">
+      <DependentUpon>WeatherCenterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="changelog.txt">
@@ -1705,6 +1789,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Properties\Weather.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Weather.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -1804,12 +1892,15 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.EntityFrameworkCore.Design.3.1.8\build\net461\Microsoft.EntityFrameworkCore.Design.props'))" />
     <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
   <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
