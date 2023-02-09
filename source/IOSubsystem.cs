@@ -2487,16 +2487,22 @@ else                    if (PMDG777Detected)
                     DisplayWebsite();
                     break;
                 case "weather_center":
-                    tfm.Weather.WeatherCenterForm weatherCenter = new Weather.WeatherCenterForm();
-                    if (weatherCenter.Visible)
+                    if (FSUIPCConnection.FSUIPCVersion.Major >= 7)
                     {
-                        Output(isGauge: false, output: "The weather center is already open!");
+                        Output(isGauge: false, output: "The weather center only works in P3d 4 and later.");
                     }
                     else
                     {
-                        weatherCenter.ShowDialog();
+                        tfm.Weather.WeatherCenterForm weatherCenter = new Weather.WeatherCenterForm();
+                        if (weatherCenter.Visible)
+                        {
+                            Output(isGauge: false, output: "The weather center is already open!");
+                        }
+                        else
+                        {
+                            weatherCenter.ShowDialog();
+                        }
                     }
-                    
                     break;
                               case "A2A_manager":
                     DisplayA2AManager();
