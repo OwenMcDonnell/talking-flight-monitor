@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -84,6 +84,17 @@ namespace tfm
 
             // --panel: AFS
             pages.Add("737AfsNode", new tfm.Settings_panels.PMDG737.ctlAFS());
+
+            // ---747 settings
+            pages.Add("overheadMaint_ElectricalNode", new tfm.Settings_panels.PMDG747.ctlOverHeadMaint_Electrical());
+            pages.Add("overheadMaintFuelNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Fuel());
+            pages.Add("overheadMaintHydNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Hydraulics());
+
+            // Weather
+            pages.Add("weatherNode", new tfm.Settings_panels.Weather.ctlWeather());
+            pages.Add("weather_WindNode", new tfm.Settings_panels.Weather.WindSnadshot());
+            pages.Add("weatherCloudCommandNode", new tfm.Settings_panels.Weather.ctlCloudSnapshot());
+            pages.Add("weather_AutomaticAnnouncementsNode", new tfm.Settings_panels.Weather.ctlAutomaticAnnouncements());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

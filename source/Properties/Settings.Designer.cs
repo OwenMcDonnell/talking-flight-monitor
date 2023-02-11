@@ -50,12 +50,12 @@ namespace tfm.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ReadInstrumentation {
+        public bool AutomaticAnnouncements {
             get {
-                return ((bool)(this["ReadInstrumentation"]));
+                return ((bool)(this["AutomaticAnnouncements"]));
             }
             set {
-                this["ReadInstrumentation"] = value;
+                this["AutomaticAnnouncements"] = value;
             }
         }
         
@@ -541,13 +541,13 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool PreflightAlignIRS {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MSFSAirportsDatabasePath {
             get {
-                return ((bool)(this["PreflightAlignIRS"]));
+                return ((string)(this["MSFSAirportsDatabasePath"]));
             }
             set {
-                this["PreflightAlignIRS"] = value;
+                this["MSFSAirportsDatabasePath"] = value;
             }
         }
     }

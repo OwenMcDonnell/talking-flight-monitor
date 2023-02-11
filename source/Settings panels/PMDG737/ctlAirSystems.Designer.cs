@@ -130,7 +130,7 @@
             settings1.ReadGroundSpeed = true;
             settings1.ReadGSAltitude = false;
             settings1.ReadILS = true;
-            settings1.ReadInstrumentation = true;
+            settings1.AutomaticAnnouncements = true;
             settings1.ReadLocaliserHeadingOffsets = false;
             settings1.ReadNavRadios = false;
             settings1.ReadSimconnectMessages = true;
