@@ -293,6 +293,13 @@
       <DependentUpon>commandHelp.resx</DependentUpon>
     </Compile>
     <Compile Include="ComparisonTypes.cs" />
+    <Compile Include="copilot\flows\preflight737.cs" />
+    <Compile Include="copilot\forms\frmPMDG737Flows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="copilot\forms\frmPMDG737Flows.Designer.cs">
+      <DependentUpon>frmPMDG737Flows.cs</DependentUpon>
+    </Compile>
     <Compile Include="Events\PMDGPanelUpdateEvent.cs" />
     <Compile Include="Events\PMDGPanelUpdateEventArgs.cs" />
     <Compile Include="ExpressionBuilder.cs" />
@@ -1204,6 +1211,9 @@
     <EmbeddedResource Include="commandHelp.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>commandHelp.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="copilot\forms\frmPMDG737Flows.resx">
+      <DependentUpon>frmPMDG737Flows.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Flight planning\AirportsForm.resx">
       <DependentUpon>AirportsForm.cs</DependentUpon>

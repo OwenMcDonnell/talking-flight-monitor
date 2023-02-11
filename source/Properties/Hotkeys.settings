@@ -308,5 +308,8 @@
     <Setting Name="SetTrim" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+T</Value>
     </Setting>
+    <Setting Name="Aircraft_Flows" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Shift+L</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -38,7 +38,8 @@ using System.CodeDom;
 using System.Speech.Synthesis;
 using System.ComponentModel.Design;
 using tfm.Keyboard_manager;
-using tfm.PMDG.PMDG_737.flows;
+using tfm.copilot;
+
 // using Microsoft.CognitiveServices.Speech;
 // using Microsoft.CognitiveServices.Speech.Audio;
 
@@ -2297,6 +2298,12 @@ else              if (PMDG777Detected)
                     tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
                     gatesForm.ShowDialog();
                     break;
+                case "Aircraft_Flows":
+                    frmPMDG737Flows frmFlows = new frmPMDG737Flows();
+                    frmFlows.ShowDialog();
+                    break;
+                    
+
                 case "toggle_help_mode":
                     // enabling command help is handled here. Since command functions are bypassed when help is on, we handle turning it off in the key pressed event.
                     if (helpModeEnabled == false)
