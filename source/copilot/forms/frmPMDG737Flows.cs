@@ -25,7 +25,7 @@ namespace tfm.copilot
         
         private void btnAPU_Click(object sender, EventArgs e)
         {
-            var flow = Task.Run(() => preflight.PreflightFlow(0));
+            var flow = Task.Run(() => preflight.ElectricalFlow(0));
         }
 
         private void tmrFlowStatus_Tick(object sender, EventArgs e)
@@ -35,6 +35,16 @@ namespace tfm.copilot
                 txtStatus.Text = FlowStatusMessage;
             }
 
+        }
+
+        private void btnGPU_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.ElectricalFlow(1));
+        }
+
+        private void btnIRS_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.AlignIRS());    
         }
     }
 }

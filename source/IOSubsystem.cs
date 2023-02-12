@@ -305,7 +305,7 @@ namespace tfm
         {
             e.Handled = true;
             Preflight737 pf = new Preflight737();
-            var flow = Task.Run(() => pf.PreflightFlow(1))    ;
+            var flow = Task.Run(() => pf.ElectricalFlow(1))    ;
 
         }
 
@@ -1831,6 +1831,11 @@ else              if (PMDG777Detected)
 
             switch (Name)
             {
+                case "ap_Aircraft_Flows":
+                    frmPMDG737Flows frmFlows = new frmPMDG737Flows();
+                    frmFlows.ShowDialog();
+                    break;
+
                 case "toggle_help_mode":
                     // enabling command help is handled here. Since command functions are bypassed when help is on, we handle turning it off in the key pressed event.
                     if (helpModeEnabled == false)
@@ -2397,10 +2402,6 @@ else                    if (PMDG777Detected)
 
                     tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
                     gatesForm.ShowDialog();
-                    break;
-                case "Aircraft_Flows":
-                    frmPMDG737Flows frmFlows = new frmPMDG737Flows();
-                    frmFlows.ShowDialog();
                     break;
                     
 

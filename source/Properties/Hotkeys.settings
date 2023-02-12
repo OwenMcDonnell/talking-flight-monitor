@@ -320,5 +320,8 @@
     <Setting Name="LookAroundMode" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">F2</Value>
     </Setting>
+    <Setting Name="ap_Aircraft_Flows" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+F</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

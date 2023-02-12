@@ -67,7 +67,7 @@
             this.enginesFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(5);
             this.enginesFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.enginesFlowLayoutPanel.Name = "enginesFlowLayoutPanel";
-            this.enginesFlowLayoutPanel.Size = new System.Drawing.Size(1617, 128);
+            this.enginesFlowLayoutPanel.Size = new System.Drawing.Size(1373, 97);
             this.enginesFlowLayoutPanel.TabIndex = 0;
             // 
             // apuLabel
@@ -76,7 +76,7 @@
             this.apuLabel.Location = new System.Drawing.Point(10, 0);
             this.apuLabel.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.apuLabel.Name = "apuLabel";
-            this.apuLabel.Size = new System.Drawing.Size(69, 33);
+            this.apuLabel.Size = new System.Drawing.Size(47, 21);
             this.apuLabel.TabIndex = 0;
             this.apuLabel.Text = "&APU";
             // 
@@ -89,10 +89,10 @@
             "off",
             "on",
             "start"});
-            this.apuSelectorComboBox.Location = new System.Drawing.Point(87, 3);
+            this.apuSelectorComboBox.Location = new System.Drawing.Point(65, 3);
             this.apuSelectorComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.apuSelectorComboBox.Name = "apuSelectorComboBox";
-            this.apuSelectorComboBox.Size = new System.Drawing.Size(121, 41);
+            this.apuSelectorComboBox.Size = new System.Drawing.Size(121, 29);
             this.apuSelectorComboBox.TabIndex = 1;
             this.apuSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.apuSelectorComboBox_SelectedIndexChanged);
             // 
@@ -102,9 +102,9 @@
             this.engine1GroupBox.AutoSize = true;
             this.engine1GroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.engine1GroupBox.Controls.Add(this.engine1FlowLayoutPanel);
-            this.engine1GroupBox.Location = new System.Drawing.Point(214, 3);
+            this.engine1GroupBox.Location = new System.Drawing.Point(192, 3);
             this.engine1GroupBox.Name = "engine1GroupBox";
-            this.engine1GroupBox.Size = new System.Drawing.Size(575, 122);
+            this.engine1GroupBox.Size = new System.Drawing.Size(482, 91);
             this.engine1GroupBox.TabIndex = 2;
             this.engine1GroupBox.TabStop = false;
             this.engine1GroupBox.Text = "Engine #&1";
@@ -119,7 +119,7 @@
             this.engine1FlowLayoutPanel.Controls.Add(this.engFuel1ComboBox);
             this.engine1FlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.engine1FlowLayoutPanel.Name = "engine1FlowLayoutPanel";
-            this.engine1FlowLayoutPanel.Size = new System.Drawing.Size(566, 47);
+            this.engine1FlowLayoutPanel.Size = new System.Drawing.Size(473, 27);
             this.engine1FlowLayoutPanel.TabIndex = 0;
             // 
             // engine1Label
@@ -128,7 +128,7 @@
             this.engine1Label.Location = new System.Drawing.Point(20, 0);
             this.engine1Label.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.engine1Label.Name = "engine1Label";
-            this.engine1Label.Size = new System.Drawing.Size(128, 33);
+            this.engine1Label.Size = new System.Drawing.Size(84, 21);
             this.engine1Label.TabIndex = 3;
             this.engine1Label.Text = "Engine #&1";
             // 
@@ -142,20 +142,20 @@
             "auto",
             "cont",
             "flt"});
-            this.engine1SelectorComboBox.Location = new System.Drawing.Point(156, 3);
+            this.engine1SelectorComboBox.Location = new System.Drawing.Point(112, 3);
             this.engine1SelectorComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.engine1SelectorComboBox.Name = "engine1SelectorComboBox";
-            this.engine1SelectorComboBox.Size = new System.Drawing.Size(121, 41);
+            this.engine1SelectorComboBox.Size = new System.Drawing.Size(121, 29);
             this.engine1SelectorComboBox.TabIndex = 4;
             this.engine1SelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.engine1SelectorComboBox_SelectedIndexChanged);
             // 
             // engFuel1Label
             // 
             this.engFuel1Label.AutoSize = true;
-            this.engFuel1Label.Location = new System.Drawing.Point(290, 0);
+            this.engFuel1Label.Location = new System.Drawing.Point(246, 0);
             this.engFuel1Label.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.engFuel1Label.Name = "engFuel1Label";
-            this.engFuel1Label.Size = new System.Drawing.Size(144, 33);
+            this.engFuel1Label.Size = new System.Drawing.Size(95, 21);
             this.engFuel1Label.TabIndex = 5;
             this.engFuel1Label.Text = "Eng fuel #1";
             // 
@@ -167,10 +167,10 @@
             this.engFuel1ComboBox.Items.AddRange(new object[] {
             "idle",
             "cutoff"});
-            this.engFuel1ComboBox.Location = new System.Drawing.Point(442, 3);
+            this.engFuel1ComboBox.Location = new System.Drawing.Point(349, 3);
             this.engFuel1ComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.engFuel1ComboBox.Name = "engFuel1ComboBox";
-            this.engFuel1ComboBox.Size = new System.Drawing.Size(121, 41);
+            this.engFuel1ComboBox.Size = new System.Drawing.Size(121, 29);
             this.engFuel1ComboBox.TabIndex = 6;
             this.engFuel1ComboBox.SelectedIndexChanged += new System.EventHandler(this.engFuel1ComboBox_SelectedIndexChanged);
             // 
@@ -180,9 +180,9 @@
             this.engine2GroupBox.AutoSize = true;
             this.engine2GroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.engine2GroupBox.Controls.Add(this.engine2FlowLayoutPanel);
-            this.engine2GroupBox.Location = new System.Drawing.Point(795, 3);
+            this.engine2GroupBox.Location = new System.Drawing.Point(680, 3);
             this.engine2GroupBox.Name = "engine2GroupBox";
-            this.engine2GroupBox.Size = new System.Drawing.Size(565, 122);
+            this.engine2GroupBox.Size = new System.Drawing.Size(472, 91);
             this.engine2GroupBox.TabIndex = 7;
             this.engine2GroupBox.TabStop = false;
             this.engine2GroupBox.Text = "Engine #&2";
@@ -197,7 +197,7 @@
             this.engine2FlowLayoutPanel.Controls.Add(this.engFuel2ComboBox);
             this.engine2FlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.engine2FlowLayoutPanel.Name = "engine2FlowLayoutPanel";
-            this.engine2FlowLayoutPanel.Size = new System.Drawing.Size(556, 47);
+            this.engine2FlowLayoutPanel.Size = new System.Drawing.Size(463, 27);
             this.engine2FlowLayoutPanel.TabIndex = 0;
             // 
             // engine2Label
@@ -206,7 +206,7 @@
             this.engine2Label.Location = new System.Drawing.Point(10, 0);
             this.engine2Label.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.engine2Label.Name = "engine2Label";
-            this.engine2Label.Size = new System.Drawing.Size(128, 33);
+            this.engine2Label.Size = new System.Drawing.Size(84, 21);
             this.engine2Label.TabIndex = 8;
             this.engine2Label.Text = "Engine #&2";
             // 
@@ -220,20 +220,20 @@
             "auto",
             "cont",
             "flt"});
-            this.engine2SelectorComboBox.Location = new System.Drawing.Point(146, 3);
+            this.engine2SelectorComboBox.Location = new System.Drawing.Point(102, 3);
             this.engine2SelectorComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.engine2SelectorComboBox.Name = "engine2SelectorComboBox";
-            this.engine2SelectorComboBox.Size = new System.Drawing.Size(121, 41);
+            this.engine2SelectorComboBox.Size = new System.Drawing.Size(121, 29);
             this.engine2SelectorComboBox.TabIndex = 9;
             this.engine2SelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.engine2SelectorComboBox_SelectedIndexChanged);
             // 
             // engFuel2Label
             // 
             this.engFuel2Label.AutoSize = true;
-            this.engFuel2Label.Location = new System.Drawing.Point(280, 0);
+            this.engFuel2Label.Location = new System.Drawing.Point(236, 0);
             this.engFuel2Label.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.engFuel2Label.Name = "engFuel2Label";
-            this.engFuel2Label.Size = new System.Drawing.Size(144, 33);
+            this.engFuel2Label.Size = new System.Drawing.Size(95, 21);
             this.engFuel2Label.TabIndex = 10;
             this.engFuel2Label.Text = "Eng fuel #2";
             // 
@@ -245,20 +245,20 @@
             this.engFuel2ComboBox.Items.AddRange(new object[] {
             "idle",
             "cutoff"});
-            this.engFuel2ComboBox.Location = new System.Drawing.Point(432, 3);
+            this.engFuel2ComboBox.Location = new System.Drawing.Point(339, 3);
             this.engFuel2ComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.engFuel2ComboBox.Name = "engFuel2ComboBox";
-            this.engFuel2ComboBox.Size = new System.Drawing.Size(121, 41);
+            this.engFuel2ComboBox.Size = new System.Drawing.Size(121, 29);
             this.engFuel2ComboBox.TabIndex = 11;
             this.engFuel2ComboBox.SelectedIndexChanged += new System.EventHandler(this.engFuel2ComboBox_SelectedIndexChanged);
             // 
             // ignitionLabel
             // 
             this.ignitionLabel.AutoSize = true;
-            this.ignitionLabel.Location = new System.Drawing.Point(1383, 0);
+            this.ignitionLabel.Location = new System.Drawing.Point(1175, 0);
             this.ignitionLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.ignitionLabel.Name = "ignitionLabel";
-            this.ignitionLabel.Size = new System.Drawing.Size(102, 33);
+            this.ignitionLabel.Size = new System.Drawing.Size(66, 21);
             this.ignitionLabel.TabIndex = 12;
             this.ignitionLabel.Text = "&Ignition";
             // 
@@ -271,16 +271,16 @@
             "ign L",
             "both",
             "ign R"});
-            this.ignitionSelectorComboBox.Location = new System.Drawing.Point(1493, 3);
+            this.ignitionSelectorComboBox.Location = new System.Drawing.Point(1249, 3);
             this.ignitionSelectorComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.ignitionSelectorComboBox.Name = "ignitionSelectorComboBox";
-            this.ignitionSelectorComboBox.Size = new System.Drawing.Size(121, 41);
+            this.ignitionSelectorComboBox.Size = new System.Drawing.Size(121, 29);
             this.ignitionSelectorComboBox.TabIndex = 13;
             this.ignitionSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.ignitionSelectorComboBox_SelectedIndexChanged);
             // 
             // ctlEngines
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -289,7 +289,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(3200, 1782);
             this.Name = "ctlEngines";
-            this.Size = new System.Drawing.Size(1622, 133);
+            this.Size = new System.Drawing.Size(1378, 102);
             this.Load += new System.EventHandler(this.ctlEngines_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlEngines_VisibleChanged);
             this.enginesFlowLayoutPanel.ResumeLayout(false);

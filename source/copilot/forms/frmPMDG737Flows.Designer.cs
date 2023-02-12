@@ -33,13 +33,15 @@
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.HorizontalFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.GrpElectricalPower = new System.Windows.Forms.GroupBox();
-            this.ElectricalFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.PreflightFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAPU = new System.Windows.Forms.Button();
+            this.btnGPU = new System.Windows.Forms.Button();
             this.tmrFlowStatus = new System.Windows.Forms.Timer(this.components);
+            this.btnIRS = new System.Windows.Forms.Button();
             this.VerticalFlowPanel.SuspendLayout();
             this.HorizontalFlowPanel.SuspendLayout();
             this.GrpElectricalPower.SuspendLayout();
-            this.ElectricalFlowPanel.SuspendLayout();
+            this.PreflightFlowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // VerticalFlowPanel
@@ -76,21 +78,23 @@
             // 
             this.GrpElectricalPower.AutoSize = true;
             this.GrpElectricalPower.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GrpElectricalPower.Controls.Add(this.ElectricalFlowPanel);
+            this.GrpElectricalPower.Controls.Add(this.PreflightFlowPanel);
             this.GrpElectricalPower.Location = new System.Drawing.Point(3, 3);
             this.GrpElectricalPower.Name = "GrpElectricalPower";
-            this.GrpElectricalPower.Size = new System.Drawing.Size(209, 165);
+            this.GrpElectricalPower.Size = new System.Drawing.Size(209, 156);
             this.GrpElectricalPower.TabIndex = 0;
             this.GrpElectricalPower.TabStop = false;
-            this.GrpElectricalPower.Text = "Electrical Poer";
+            this.GrpElectricalPower.Text = "preflight";
             // 
-            // ElectricalFlowPanel
+            // PreflightFlowPanel
             // 
-            this.ElectricalFlowPanel.Controls.Add(this.btnAPU);
-            this.ElectricalFlowPanel.Location = new System.Drawing.Point(3, 31);
-            this.ElectricalFlowPanel.Name = "ElectricalFlowPanel";
-            this.ElectricalFlowPanel.Size = new System.Drawing.Size(200, 100);
-            this.ElectricalFlowPanel.TabIndex = 0;
+            this.PreflightFlowPanel.Controls.Add(this.btnAPU);
+            this.PreflightFlowPanel.Controls.Add(this.btnGPU);
+            this.PreflightFlowPanel.Controls.Add(this.btnIRS);
+            this.PreflightFlowPanel.Location = new System.Drawing.Point(3, 31);
+            this.PreflightFlowPanel.Name = "PreflightFlowPanel";
+            this.PreflightFlowPanel.Size = new System.Drawing.Size(200, 100);
+            this.PreflightFlowPanel.TabIndex = 0;
             // 
             // btnAPU
             // 
@@ -103,14 +107,35 @@
             this.btnAPU.UseVisualStyleBackColor = true;
             this.btnAPU.Click += new System.EventHandler(this.btnAPU_Click);
             // 
+            // btnGPU
+            // 
+            this.btnGPU.AutoSize = true;
+            this.btnGPU.Location = new System.Drawing.Point(3, 48);
+            this.btnGPU.Name = "btnGPU";
+            this.btnGPU.Size = new System.Drawing.Size(301, 39);
+            this.btnGPU.TabIndex = 1;
+            this.btnGPU.Text = "Electrical Power with GPU";
+            this.btnGPU.UseVisualStyleBackColor = true;
+            this.btnGPU.Click += new System.EventHandler(this.btnGPU_Click);
+            // 
             // tmrFlowStatus
             // 
             this.tmrFlowStatus.Interval = 500;
             this.tmrFlowStatus.Tick += new System.EventHandler(this.tmrFlowStatus_Tick);
             // 
+            // btnIRS
+            // 
+            this.btnIRS.Location = new System.Drawing.Point(3, 93);
+            this.btnIRS.Name = "btnIRS";
+            this.btnIRS.Size = new System.Drawing.Size(75, 23);
+            this.btnIRS.TabIndex = 2;
+            this.btnIRS.Text = "Setup IRS";
+            this.btnIRS.UseVisualStyleBackColor = true;
+            this.btnIRS.Click += new System.EventHandler(this.btnIRS_Click);
+            // 
             // frmPMDG737Flows
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -127,8 +152,8 @@
             this.HorizontalFlowPanel.ResumeLayout(false);
             this.HorizontalFlowPanel.PerformLayout();
             this.GrpElectricalPower.ResumeLayout(false);
-            this.ElectricalFlowPanel.ResumeLayout(false);
-            this.ElectricalFlowPanel.PerformLayout();
+            this.PreflightFlowPanel.ResumeLayout(false);
+            this.PreflightFlowPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,8 +165,10 @@
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.FlowLayoutPanel HorizontalFlowPanel;
         private System.Windows.Forms.GroupBox GrpElectricalPower;
-        private System.Windows.Forms.FlowLayoutPanel ElectricalFlowPanel;
+        private System.Windows.Forms.FlowLayoutPanel PreflightFlowPanel;
         private System.Windows.Forms.Button btnAPU;
         private System.Windows.Forms.Timer tmrFlowStatus;
+        private System.Windows.Forms.Button btnGPU;
+        private System.Windows.Forms.Button btnIRS;
     }
 }

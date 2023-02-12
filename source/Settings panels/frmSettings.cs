@@ -29,6 +29,7 @@ namespace tfm
             pages.Add("nodTiming", new ctlTiming());
             pages.Add("airportsDatabaseNode", new ctlDatabases());
             pages.Add("nodAircraft", new ctlAircraft());
+            pages.Add("nodFlows", new ctlAircraftFlows());
             pages.Add("nodeUserInterface", new ctlUserInterface());
             pages.Add("nodPMDG", new ctlPMDG());
             pages.Add("737AdiruNode", new Settings_panels.PMDG737.ctlADIRU());

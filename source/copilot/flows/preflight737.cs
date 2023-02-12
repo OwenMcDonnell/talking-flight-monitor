@@ -15,7 +15,7 @@ namespace tfm.copilot
         private bool PowerEstablished;
         private bool FirstFlight;
 
-        public void PreflightFlow(int Power)
+        public void ElectricalFlow(int Power)
         {
             if (Aircraft.pmdg737.ELEC_BatSelector.Value == 0)
             {
@@ -46,31 +46,8 @@ namespace tfm.copilot
                     FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_DOME_SWITCH, Aircraft.ClkL);
                 }
                 Thread.Sleep(1000);
-                Tolk.Output("Setting IRS Switches. ");
-                PMDG737Aircraft.IRULeftNav();
-                Thread.Sleep(1000);
-                PMDG737Aircraft.IRURightNav();
-
-                if (Properties.Settings.Default.PreflightAlignIRS)
-                {
-                    Tolk.Output("Setting last position");
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_CLR, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_MENU, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L1, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R6, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R1, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R4, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_MENU, Aircraft.ClkL);
-                    Thread.Sleep(1000);
-
-                }
-
+                
+                
             }
         }
 
@@ -122,28 +99,57 @@ namespace tfm.copilot
                 
                 if (Aircraft.pmdg737.APU_Selector.Value != 1)
                 {
-                    PMDG737Aircraft.APUSelector(2);
-                    frmPMDG737Flows.FlowStatusMessage = "waiting 2 minutes for APU to start";
-                    Thread.Sleep(TimeSpan.FromSeconds(120));
-                        PMDG737Aircraft.ApuGenerator1On();
-                        Thread.Sleep(250);
-                        PMDG737Aircraft.ApuGenerator2On();
-                    }
+                Thread.Sleep(2000);
+                PMDG737Aircraft.APUSelector(1);
+                Thread.Sleep(1000);
+                PMDG737Aircraft.APUSelector(2);
+
+
+                frmPMDG737Flows.FlowStatusMessage = "waiting 2 minutes for APU to start";
+                Thread.Sleep(TimeSpan.FromSeconds(120));
+                PMDG737Aircraft.ApuGenerator1On();
+                Thread.Sleep(250);
+                PMDG737Aircraft.ApuGenerator2On();
+            }
                     if (Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value == 0)
                     {
                         FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, Aircraft.ClkL);
                         Thread.Sleep(1);
                     }
-                    if (Aircraft.pmdg737.APU_annunFAULT.Value == 0)
-                    {
-
-
-                        Thread.Sleep(2000);
-                    }
                 }
 
-                
+        public void AlignIRS()
+        {
+            if (Properties.Settings.Default.PreflightAlignIRS)
+            {
+                Tolk.Output("Setting IRS Switches. ");
+                PMDG737Aircraft.IRULeftNav();
+                Thread.Sleep(1000);
+                PMDG737Aircraft.IRURightNav();
+                Thread.Sleep(3000);
+
+                Tolk.Output("Setting last position");
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_CLR, Aircraft.ClkL);
+                Thread.Sleep(1000);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_MENU, Aircraft.ClkL);
+                Thread.Sleep(1000);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L1, Aircraft.ClkL);
+                Thread.Sleep(1000);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R6, Aircraft.ClkL);
+                Thread.Sleep(1000);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R1, Aircraft.ClkL);
+                Thread.Sleep(1000);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R4, Aircraft.ClkL);
+                Thread.Sleep(1000);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_MENU, Aircraft.ClkL);
+                Thread.Sleep(1000);
+
             }
+
+        }
+
+
+    }
 
 
         }

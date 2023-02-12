@@ -550,5 +550,29 @@ namespace tfm.Properties {
                 this["MSFSAirportsDatabasePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PreflightAlignIRS {
+            get {
+                return ((bool)(this["PreflightAlignIRS"]));
+            }
+            set {
+                this["PreflightAlignIRS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FlowMuteSpeech {
+            get {
+                return ((bool)(this["FlowMuteSpeech"]));
+            }
+            set {
+                this["FlowMuteSpeech"] = value;
+            }
+        }
     }
 }
