@@ -17,6 +17,7 @@ namespace tfm
         public static FsWeather CurrentWeather { get; internal set; }
         public static DateTime WeatherLastUpdated { get; internal set; }
                                 public static bool DebugEnabled { get; internal set; }
+        public static bool flgMuteFlows { get; internal set; }
 
         public static void UpdateControl(bool toggleStateOn, CheckBox ctrl)
         {

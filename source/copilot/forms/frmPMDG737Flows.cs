@@ -32,7 +32,7 @@ namespace tfm.copilot
         {
             if (txtStatus.Text != FlowStatusMessage)
             {
-                txtStatus.Text = FlowStatusMessage;
+                txtStatus.Text = FlowStatusMessage + "\n";
             }
 
         }
@@ -45,6 +45,41 @@ namespace tfm.copilot
         private void btnIRS_Click(object sender, EventArgs e)
         {
             var flow = Task.Run(() => preflight.AlignIRS());    
+        }
+
+        private void btnFireTest_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.systemTestFire());
+        }
+
+        private void frmPMDG737Flows_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGPWS_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.systemTestGPWS());
+        }
+
+        private void btnCVRTest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOverspeed_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.SystemTestOverspeed());
+        }
+
+        private void btnStallTest_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.SystemTestStallWarning());
+        }
+
+        private void btnPanelSetup_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.PreflightPanelSetup());
         }
     }
 }

@@ -270,11 +270,12 @@ namespace tfm
         public static Offset<string> AIR_DisplayLandAlt = new Offset<string>(0x6C88, 6);
 
 
-        // cons                                                           ntants for PMDG mouse click parameters
+        // Constants for PMDG mouse click parameters
         public const int ClkL = 536870912;
         public const int ClkR = -2147483648;
         public const int Inc = 16384;
         public const int Dec = 8192;
+        public const int LeftRelease = 131072;
 
         public static void InitOffsets()
         {
