@@ -323,5 +323,8 @@
     <Setting Name="ap_Aircraft_Flows" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+F</Value>
     </Setting>
+    <Setting Name="ShowSimBriefFlightPlan" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+Shift+B</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -297,7 +297,19 @@ namespace tfm
                 altitudeCalloutFlags.Add(i, false);
             }
             pmdg = new PMDGPanelUpdateEvent();
-            
+
+            // Setup SimBrief support.
+            if (Properties.Settings.Default.IsSimBriefUserIDValid)
+            {
+                logger.Debug("Starting SimBrief support.");
+                Output(isGauge: false, output: "Starting SimBrief support.");
+                FlightPlan.LoadFromXMLAsync();
+            }
+            else
+            {
+                logger.Debug("SimBrief support not loaded");
+                Output(isGauge: false, output: "SimBrief support not loaded.");
+            }
            
         }
 
@@ -2359,6 +2371,32 @@ else                    if (PMDG777Detected)
         {
             switch (Name)
             {
+                case "ShowSimBriefFlightPlan":
+
+                    var isSimBriefPlanOpen = false;
+                    foreach(Form sb in Application.OpenForms)
+                    {
+                        if(sb is SimBrief.SimBriefForm)
+                        {
+                            isSimBriefPlanOpen = true;
+                            break;
+                        }
+                    } // loop
+
+                    if (isSimBriefPlanOpen)
+                    {
+                        Output(isGauge: false, output: "The SimBrief flight plan window is already open!");
+                        break;
+                    }
+                    else
+                    {
+                        SimBrief.SimBriefForm sb = new SimBrief.SimBriefForm();
+                        sb.ShowDialog();
+                        isSimBriefPlanOpen = true;
+                        break;
+                    }
+                    isSimBriefPlanOpen = false;
+                    break;
                 case "CloudTracking":
 
                     if (FSUIPCConnection.FSUIPCVersion.Major >= 7)

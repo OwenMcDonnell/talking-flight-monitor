@@ -314,6 +314,12 @@
       <DependentUpon>DestinationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Flight planning\FlightPlan.cs" />
+    <Compile Include="Flight planning\SimBrief\AirportBlock.cs" />
+    <Compile Include="Flight planning\SimBrief\Atis.cs" />
+    <Compile Include="Flight planning\SimBrief\Fix.cs" />
+    <Compile Include="Flight planning\SimBrief\GeneralBlock.cs" />
+    <Compile Include="Flight planning\SimBrief\ParameterBlock.cs" />
+    <Compile Include="Flight planning\SimBrief\WindLevel.cs" />
     <Compile Include="frmFirstRunHelp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -881,6 +887,12 @@
     <Compile Include="Settings panels\ctlPMDG.Designer.cs">
       <DependentUpon>ctlPMDG.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings panels\ctlSimBrief.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings panels\ctlSimBrief.Designer.cs">
+      <DependentUpon>ctlSimBrief.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings panels\ctlUserInterface.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1162,6 +1174,18 @@
     </Compile>
     <Compile Include="Settings panels\Weather\WindSnadshot.Designer.cs">
       <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimBrief\ctlNavlog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimBrief\ctlNavlog.Designer.cs">
+      <DependentUpon>ctlNavlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimBrief\SimBriefForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimBrief\SimBriefForm.Designer.cs">
+      <DependentUpon>SimBriefForm.cs</DependentUpon>
     </Compile>
     <Compile Include="sounds\AudioPlaybackEngine.cs" />
     <Compile Include="AutoDisposeFileReader.cs" />
@@ -1598,6 +1622,9 @@
     <EmbeddedResource Include="Settings panels\ctlPMDG.resx">
       <DependentUpon>ctlPMDG.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings panels\ctlSimBrief.resx">
+      <DependentUpon>ctlSimBrief.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\ctlSpeechOutput.resx">
       <DependentUpon>ctlSpeechOutput.cs</DependentUpon>
     </EmbeddedResource>
@@ -1747,6 +1774,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\Weather\WindSnadshot.resx">
       <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimBrief\ctlNavlog.resx">
+      <DependentUpon>ctlNavlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimBrief\SimBriefForm.resx">
+      <DependentUpon>SimBriefForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
