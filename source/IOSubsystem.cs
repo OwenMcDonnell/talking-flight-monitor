@@ -4013,14 +4013,44 @@ private void DescendThroughClouds()
 
         private void OnWaypointKey()
         {
-            if (Aircraft.AircraftName.Value.Contains("PMDG"))
+            if(Properties.Settings.Default.IsSimBriefEnabled && Properties.Settings.Default.IsSimBriefUserIDValid)
             {
-                Output(isGauge: false, output: "Not supported in PMDG aircraft. Please see the legs page of your FMC for the next waypoint.");
-                return;
+                ReadSimBriefWaypoint();
             }
-            ReadWayPoint();
+            else
+            {
+                ReadWayPoint();
+            }
         }
 
+
+        private void ReadSimBriefWaypoint()
+        {
+            double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
+                                    FsLatLonPoint currentLocation = new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value);
+            var target = new FsLatLonPoint(FlightPlan.Navlog[0].Latitude, FlightPlan.Navlog[0].Longitude);
+            var distance = Math.Round(currentLocation.DistanceFromInNauticalMiles(target), 0);
+            var bearing = Math.Round(currentLocation.BearingTo(target), 0);
+
+            try
+            {
+
+                groundSpeed = Math.Round(groundSpeed, 0);
+                double time = distance / groundSpeed;
+                var timeToNext = TimeSpan.FromHours(time);
+
+                Output(isGauge: false, output: $"Next waypoint: {FlightPlan.Navlog[0].Name}. Bearing {bearing} degrees. Distance {distance} nautical miles. Time: {timeToNext.ToString(@"d\:h\:m\:s")}");
+            }
+            catch (DivideByZeroException)
+            {
+                Output(isGauge: false, output: $"Next waypoint: {FlightPlan.Navlog[0].Name}. Bearing {bearing} degrees. Distance {distance} nautical miles. Time: Not available.");
+            }
+                        catch (OverflowException)
+            {
+                Output(isGauge: false, output: $"Next waypoint: {FlightPlan.Navlog[0].Name}. Bearing {bearing} degrees. Distance {distance} nautical miles. Time: Not available.");
+            }    
+                    }
+        
         private void OnCityKey()
         {
             double lat = Aircraft.aircraftLat.Value.DecimalDegrees;
