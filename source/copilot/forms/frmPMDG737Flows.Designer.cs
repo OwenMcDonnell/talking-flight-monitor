@@ -182,6 +182,7 @@
             this.btnGPWS.TabIndex = 4;
             this.btnGPWS.Text = "GPWS test";
             this.btnGPWS.UseVisualStyleBackColor = true;
+            this.btnGPWS.Click += new System.EventHandler(this.btnGPWS_Click);
             // 
             // btnFireTest
             // 
@@ -193,6 +194,7 @@
             this.btnFireTest.TabIndex = 3;
             this.btnFireTest.Text = "Fire tests";
             this.btnFireTest.UseVisualStyleBackColor = true;
+            this.btnFireTest.Click += new System.EventHandler(this.btnFireTest_Click);
             // 
             // btnCVRTest
             // 
@@ -211,6 +213,7 @@
             this.btnOverspeed.TabIndex = 6;
             this.btnOverspeed.Text = "Overspeed Test";
             this.btnOverspeed.UseVisualStyleBackColor = true;
+            this.btnOverspeed.Click += new System.EventHandler(this.btnOverspeed_Click);
             // 
             // btnStallTest
             // 
@@ -220,6 +223,7 @@
             this.btnStallTest.TabIndex = 7;
             this.btnStallTest.Text = "Stall Warning Test";
             this.btnStallTest.UseVisualStyleBackColor = true;
+            this.btnStallTest.Click += new System.EventHandler(this.btnStallTest_Click);
             // 
             // tmrFlowStatus
             // 

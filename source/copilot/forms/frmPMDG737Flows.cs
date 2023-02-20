@@ -62,9 +62,9 @@ namespace tfm.copilot
             var flow = Task.Run(() => preflight.systemTestGPWS());
         }
 
-        private void btnCVRTest_Click(object sender, EventArgs e)
+        private void btnPanelSetup_Click(object sender, EventArgs e)
         {
-
+            var flow = Task.Run(() => preflight.PreflightPanelSetup());
         }
 
         private void btnOverspeed_Click(object sender, EventArgs e)
@@ -75,11 +75,6 @@ namespace tfm.copilot
         private void btnStallTest_Click(object sender, EventArgs e)
         {
             var flow = Task.Run(() => preflight.SystemTestStallWarning());
-        }
-
-        private void btnPanelSetup_Click(object sender, EventArgs e)
-        {
-            var flow = Task.Run(() => preflight.PreflightPanelSetup());
         }
     }
 }

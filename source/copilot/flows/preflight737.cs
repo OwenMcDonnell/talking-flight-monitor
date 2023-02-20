@@ -235,7 +235,33 @@ namespace tfm.copilot
 
         public void PreflightPanelSetup()
         {
+            if (Properties.Settings.Default.FlowMuteSpeech && ! Properties.Settings.Default.AutomaticAnnouncements)
+            {
+                Properties.Settings.Default.AutomaticAnnouncements = false;
+            }
+            Pf_YawDamper();
+            Pf_NavDisplay();
+            Pf_FuelPanel();
+            Pf_ElectricalPanel();
+            Pf_EquipmentCooling();
+            Pf_EmergencyExit();
+            Pf_PassengerSigns();
+            Pf_WindowHeat();
+            Pf_ProbeHeat();
+            Pf_AntiIce();
+            Pf_Hydraulics();
+            Pf_AirSystems();
+            Pf_EngStartSwitches();
+            Pf_AutoBrake();
+            Pf_Transponder();
+            Properties.Settings.Default.AutomaticAnnouncements = true;
+
+        }
+
+        public void Pf_YawDamper()
+        {
             // yaw damper
+            Tolk.Output("checking yaw damper...");
             if (Aircraft.pmdg737.FCTL_YawDamper_Sw.Value != 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_YAW_DAMPER, 1);
@@ -243,7 +269,12 @@ namespace tfm.copilot
 
             }
 
+        }
+
+        public void Pf_NavDisplay ()
+        {
             // nav display
+            Tolk.Output("checking nav display");
             if (Aircraft.pmdg737.NAVDIS_ControlPaneSelector.Value != 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_NAVDSP_CONTROL_PANEL_SEL, 1);
@@ -255,7 +286,13 @@ namespace tfm.copilot
             }
             Thread.Sleep(1000);
 
+
+        }
+
+        public void Pf_FuelPanel()
+        {
             // fuel panel
+            Tolk.Output("checking fule panel.");
             if (Aircraft.pmdg737.FUEL_PumpAftSw[0].Value != 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_FUEL_PUMP_1_AFT, Aircraft.ClkL);
@@ -292,7 +329,12 @@ namespace tfm.copilot
                 Thread.Sleep(1000);
             }
 
+        }
+
+        public void Pf_ElectricalPanel ()
+        {
             // check electrical panel
+            Tolk.Output("checking electrical panel.");
             if (Aircraft.pmdg737.ELEC_CabUtilSw.Value != 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_CAB_UTIL, Aircraft.ClkL);
@@ -309,7 +351,12 @@ namespace tfm.copilot
                 Thread.Sleep(1000);
             }
 
+        }
+
+        public void Pf_EquipmentCooling ()
+        {
             // Equipment cooling
+            Tolk.Output("checking equipment cooling.");
             if (Aircraft.pmdg737.AIR_EquipCoolingSupplyNORM.Value != 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EC_SUPPLY_SWITCH, Aircraft.ClkL);
@@ -321,7 +368,40 @@ namespace tfm.copilot
                 Thread.Sleep(1000);
             }
 
+        }
+
+        public void Pf_EmergencyExit ()
+        {
+            // emergency exit
+            Tolk.Output("checking emergency exit.");
+            if (Aircraft.pmdg737.LTS_EmerExitSelector.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_EMER_EXIT_LIGHT_GUARD, Aircraft.ClkL);
+                Thread.Sleep(1000);
+            }
+
+        }
+
+        public void Pf_PassengerSigns ()
+        {
+            // passenger signs
+            Tolk.Output("Checking passenger signs.");
+            if (Aircraft.pmdg737.COMM_FastenBeltsSelector.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_FASTEN_BELTS_LIGHT_SWITCH, Aircraft.ClkL);
+            }
+            if (Aircraft.pmdg737.COMM_FastenBeltsSelector.Value == 2)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_FASTEN_BELTS_LIGHT_SWITCH, Aircraft.ClkR);
+            }
+
+
+        }
+
+        public void Pf_WindowHeat ()
+        {
             // check window heat
+            Tolk.Output("checking window heat.");
             if (Aircraft.pmdg737.ICE_WindowHeatSw[0].Value != 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, Aircraft.ClkL);
@@ -343,7 +423,13 @@ namespace tfm.copilot
                 Thread.Sleep(500);
             }
 
+
+        }
+
+        public void Pf_ProbeHeat ()
+        {
             // probe heat
+            Tolk.Output("checking probe heat.");
             if (Aircraft.pmdg737.ICE_TestProbeHeatSw[0].Value != 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_1, Aircraft.ClkL);
@@ -354,7 +440,13 @@ namespace tfm.copilot
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_2, Aircraft.ClkL);
                 Thread.Sleep(500);
             }
+
+        }
+
+        public void Pf_AntiIce ()
+        {
             // anti-ice
+            Tolk.Output("checking anti-ice.");
             if (Aircraft.pmdg737.ICE_EngAntiIceSw[0].Value != 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_ENGINE_ANTIICE_1, Aircraft.ClkL);
@@ -371,7 +463,14 @@ namespace tfm.copilot
                 Thread.Sleep(1000);
             }
 
+
+        }
+
+        public void Pf_Hydraulics ()
+        {
             // hydraulics
+            Tolk.Output("checking hydraulics panel...");
+
             if (Aircraft.pmdg737.HYD_PumpSw_eng[0].Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ENG1, Aircraft.ClkL);
@@ -393,10 +492,16 @@ namespace tfm.copilot
                 Thread.Sleep(500);
             }
 
+
+        }
+
+        public void Pf_AirSystems ()
+        {
             // air systems panel
+            Tolk.Output("Checking air systems panel.");
             PMDG737Aircraft.LeftRecircFanOn();
             Thread.Sleep(1000);
-            
+
             PMDG737Aircraft.RightRecircFanOn();
             Thread.Sleep(1000);
             PMDG737Aircraft.IsolationValveSelector(1);
@@ -413,10 +518,35 @@ namespace tfm.copilot
 
 
 
+        }
+
+        public void Pf_EngStartSwitches ()
+        {
+            // engine start switches
+            Tolk.Output("checking engine start switches.");
+            PMDG737Aircraft.Engine1StartSelector(1);
+            Thread.Sleep(1000);
+            PMDG737Aircraft.Engine2StartSelector(1);
 
 
-            
+        }
 
+        public void Pf_AutoBrake ()
+        {
+            // autobrake
+            Tolk.Output("setting auto brake.");
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_AUTOBRAKE_SELECTOR, 0);
+            Thread.Sleep(1000);
+
+
+        }
+
+        public void Pf_Transponder ()
+        {
+            // transponder
+            Tolk.Output("checking transponder.");
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, 0);
+            Thread.Sleep(1000);
 
         }
 
