@@ -76,5 +76,25 @@ namespace tfm.copilot
         {
             var flow = Task.Run(() => preflight.SystemTestStallWarning());
         }
+
+        private void tabPreflight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCVRTest_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.SystemTestVoiceRecorder());
+        }
+
+        private void btnOxygen_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.SystemTestOxygen    ());
+        }
+
+        private void btnApDisc_Click(object sender, EventArgs e)
+        {
+            var flow = Task.Run(() => preflight.SystemTestAutopilotDisconnect());
+        }
     }
 }

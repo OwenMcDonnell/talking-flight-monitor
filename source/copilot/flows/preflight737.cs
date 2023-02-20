@@ -233,6 +233,38 @@ namespace tfm.copilot
 
         }
 
+        public void SystemTestVoiceRecorder ()
+        {
+            Tolk.Output("starting voice recorder test.");
+            for (int v = 0; v != 5; v++)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CVR_TEST, Aircraft.ClkL);
+            }
+            Thread.Sleep(5000);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CVR_TEST, Aircraft.LeftRelease);
+            Tolk.Output("voice recorder test completed.");
+            Thread.Sleep(1000);
+
+
+        }
+
+        public void SystemTestOxygen ()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_OXY_TEST_RESET_SWITCH_R, Aircraft.ClkR);
+            Thread.Sleep(3000);
+
+        }
+
+        public void SystemTestAutopilotDisconnect ()
+        {
+            Tolk.Output("Starting Autopilot disconnect test.");
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_DISENGAGE_TEST_SWITCH, Aircraft.ClkL);
+            Thread.Sleep(3000);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_FO_DISENGAGE_TEST_SWITCH, Aircraft.LeftRelease);
+            Tolk.Output("test completed.");
+
+        }
+
         public void PreflightPanelSetup()
         {
             if (Properties.Settings.Default.FlowMuteSpeech && ! Properties.Settings.Default.AutomaticAnnouncements)

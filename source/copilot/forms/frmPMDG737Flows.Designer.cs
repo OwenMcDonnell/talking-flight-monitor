@@ -46,12 +46,21 @@
             this.btnOverspeed = new System.Windows.Forms.Button();
             this.btnStallTest = new System.Windows.Forms.Button();
             this.tmrFlowStatus = new System.Windows.Forms.Timer(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPreflight = new System.Windows.Forms.TabPage();
+            this.tabBeforeStart = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnOxygen = new System.Windows.Forms.Button();
+            this.btnApDisc = new System.Windows.Forms.Button();
             this.VerticalFlowPanel.SuspendLayout();
             this.HorizontalFlowPanel.SuspendLayout();
             this.GrpElectricalPower.SuspendLayout();
             this.ElectricalFlowPanel.SuspendLayout();
             this.grpTests.SuspendLayout();
             this.TestFlowPanel.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPreflight.SuspendLayout();
+            this.tabBeforeStart.SuspendLayout();
             this.SuspendLayout();
             // 
             // VerticalFlowPanel
@@ -59,7 +68,7 @@
             this.VerticalFlowPanel.AutoSize = true;
             this.VerticalFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.VerticalFlowPanel.Controls.Add(this.txtStatus);
-            this.VerticalFlowPanel.Controls.Add(this.HorizontalFlowPanel);
+            this.VerticalFlowPanel.Controls.Add(this.tabControl1);
             this.VerticalFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.VerticalFlowPanel.Location = new System.Drawing.Point(0, 0);
             this.VerticalFlowPanel.Name = "VerticalFlowPanel";
@@ -80,7 +89,7 @@
             // 
             this.HorizontalFlowPanel.Controls.Add(this.GrpElectricalPower);
             this.HorizontalFlowPanel.Controls.Add(this.grpTests);
-            this.HorizontalFlowPanel.Location = new System.Drawing.Point(3, 309);
+            this.HorizontalFlowPanel.Location = new System.Drawing.Point(0, 0);
             this.HorizontalFlowPanel.Name = "HorizontalFlowPanel";
             this.HorizontalFlowPanel.Size = new System.Drawing.Size(200, 100);
             this.HorizontalFlowPanel.TabIndex = 1;
@@ -167,6 +176,8 @@
             this.TestFlowPanel.Controls.Add(this.btnCVRTest);
             this.TestFlowPanel.Controls.Add(this.btnOverspeed);
             this.TestFlowPanel.Controls.Add(this.btnStallTest);
+            this.TestFlowPanel.Controls.Add(this.btnOxygen);
+            this.TestFlowPanel.Controls.Add(this.btnApDisc);
             this.TestFlowPanel.Location = new System.Drawing.Point(3, 32);
             this.TestFlowPanel.Name = "TestFlowPanel";
             this.TestFlowPanel.Size = new System.Drawing.Size(200, 100);
@@ -204,6 +215,7 @@
             this.btnCVRTest.TabIndex = 5;
             this.btnCVRTest.Text = "Cockpit Voice Recorder Test";
             this.btnCVRTest.UseVisualStyleBackColor = true;
+            this.btnCVRTest.Click += new System.EventHandler(this.btnCVRTest_Click);
             // 
             // btnOverspeed
             // 
@@ -229,6 +241,68 @@
             // 
             this.tmrFlowStatus.Interval = 500;
             this.tmrFlowStatus.Tick += new System.EventHandler(this.tmrFlowStatus_Tick);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPreflight);
+            this.tabControl1.Controls.Add(this.tabBeforeStart);
+            this.tabControl1.Location = new System.Drawing.Point(3, 309);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(200, 100);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPreflight
+            // 
+            this.tabPreflight.Controls.Add(this.HorizontalFlowPanel);
+            this.tabPreflight.Location = new System.Drawing.Point(4, 38);
+            this.tabPreflight.Name = "tabPreflight";
+            this.tabPreflight.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPreflight.Size = new System.Drawing.Size(192, 58);
+            this.tabPreflight.TabIndex = 0;
+            this.tabPreflight.Text = "Preflight";
+            this.tabPreflight.UseVisualStyleBackColor = true;
+            this.tabPreflight.Click += new System.EventHandler(this.tabPreflight_Click);
+            // 
+            // tabBeforeStart
+            // 
+            this.tabBeforeStart.Controls.Add(this.button1);
+            this.tabBeforeStart.Location = new System.Drawing.Point(4, 38);
+            this.tabBeforeStart.Name = "tabBeforeStart";
+            this.tabBeforeStart.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBeforeStart.Size = new System.Drawing.Size(192, 58);
+            this.tabBeforeStart.TabIndex = 1;
+            this.tabBeforeStart.Text = "Before Start";
+            this.tabBeforeStart.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnOxygen
+            // 
+            this.btnOxygen.Location = new System.Drawing.Point(84, 122);
+            this.btnOxygen.Name = "btnOxygen";
+            this.btnOxygen.Size = new System.Drawing.Size(75, 23);
+            this.btnOxygen.TabIndex = 8;
+            this.btnOxygen.Text = "Oxygen test";
+            this.btnOxygen.UseVisualStyleBackColor = true;
+            this.btnOxygen.Click += new System.EventHandler(this.btnOxygen_Click);
+            // 
+            // btnApDisc
+            // 
+            this.btnApDisc.Location = new System.Drawing.Point(3, 151);
+            this.btnApDisc.Name = "btnApDisc";
+            this.btnApDisc.Size = new System.Drawing.Size(75, 23);
+            this.btnApDisc.TabIndex = 9;
+            this.btnApDisc.Text = "Autopilot Disconnect Test";
+            this.btnApDisc.UseVisualStyleBackColor = true;
+            this.btnApDisc.Click += new System.EventHandler(this.btnApDisc_Click);
             // 
             // frmPMDG737Flows
             // 
@@ -257,6 +331,9 @@
             this.grpTests.ResumeLayout(false);
             this.TestFlowPanel.ResumeLayout(false);
             this.TestFlowPanel.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPreflight.ResumeLayout(false);
+            this.tabBeforeStart.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +358,11 @@
         private System.Windows.Forms.Button btnCVRTest;
         private System.Windows.Forms.Button btnOverspeed;
         private System.Windows.Forms.Button btnStallTest;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPreflight;
+        private System.Windows.Forms.TabPage tabBeforeStart;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOxygen;
+        private System.Windows.Forms.Button btnApDisc;
     }
 }
