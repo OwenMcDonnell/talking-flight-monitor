@@ -1665,6 +1665,12 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
         public static void Battery(int position)
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_SWITCH, Aircraft.pmdg737.ELEC_BatSelector.Value, position, true);
+            Thread.Sleep(1000);
+            if (Aircraft.pmdg737.ELEC_BatSelector.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_GUARD, Aircraft.ClkL);
+            }
+
         } // BatterySelector
 
         public static void GroundPower()
