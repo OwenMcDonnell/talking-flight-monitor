@@ -2,20 +2,7 @@
 
 ### What's new?
 
-* Full support for the PMDG 737 series of aircraft in P3D and MSFS.
-* Started support for the PMDG 747 series of aircraft for P3D 4 and later.
-* Airports database improvements for MSFS.
-* Weather center where pilots can see the weather at their current location. Access with right bracket CONTROL+W.
-* New Cloud tracking command that automatically announces in/out of cloud. Turn on/off with right bracket CONTROL+O.
-* New customizable cloud command (Right bracket SHIFT+O) that announces information about clouds surrounding the aircraft.
-* New mute TFM command (Right bracket SHIFT+M) stops TFM from automatically announcing aircraft and weather changes.
-* New keyboard help command (right bracket question mark) announces basic descriptions of key presses.
-* New TFM database feature that stores speech history across TFM restarts. There is more planned for this feature, so stay tuned!
-* New quick help dialog that appears on first run of a new TFM install. It provides a few hints on how to get help with keyboard commands.
-* New settings to control what is announced in supported PMDG aircraft.
-* The wind command (right bracket I) is now customizable.
-* Where am I? (right bracket SHIFT+C) now announces runway length when the aircraft is positioned on a runway.
-* Where am I? (right bracket SHIFT+C) now announces the airport ICAO code when on the airport grounds if not on a taxiway, gate, or runway.
-* Removed Navigraph support.
-* Removed the freeware flight planner and related components. They were not compatible with the new airports database.
-
+* Initial support for SimBrief flight planning service.
+    * Navlog - A static list of waypoints and some basic information for each waypoint.
+* Started the infrastructure for the PMDG 737 first officer and manual flows.
+* Removed the old PMDG 737 offsets.
