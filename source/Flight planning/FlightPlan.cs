@@ -91,10 +91,65 @@ namespace tfm
         #endregion
 
 #region "private methods"
+        private static  async void LoadSimBriefOriginAsync()
+        {
+            if(SimbriefOrigin != null)
+            {
+                SimbriefOrigin = null;
+            }
+
+            var client = new HttpClient();
+            var rawXML = await client.GetStringAsync(SimBriefURL);
+            var xmlFlightPlan = XDocument.Parse(rawXML);
+
+            var origin = new AirportBlock();
+            origin.IcaoCode = xmlFlightPlan.Root.Element("origin").Element("icao_code").Value;
+            origin.IataCode = xmlFlightPlan.Root.Element("origin").Element("iata_code").Value;
+            origin.Elevation = int.Parse(xmlFlightPlan.Root.Element("origin").Element("elevation").Value);
+            origin.PosLat = new FsLatitude(double.Parse(xmlFlightPlan.Root.Element("origin").Element("pos_lat").Value), true);
+            origin.PosLong = new FsLongitude(double.Parse(xmlFlightPlan.Root.Element("origin").Element("pos_long").Value), true);
+            origin.Name = xmlFlightPlan.Root.Element("origin").Element("name").Value;
+            origin.PlanRwy = xmlFlightPlan.Root.Element("origin").Element("plan_rwy").Value;
+            origin.TransAltitude = int.Parse(xmlFlightPlan.Root.Element("origin").Element("trans_alt").Value);
+            origin.TransLevel = int.Parse(xmlFlightPlan.Root.Element("origin").Element("trans_level").Value);
+            origin.Metar = xmlFlightPlan.Root.Element("origin").Element("metar").Value;
+            origin.MetarTime = DateTime.Parse(xmlFlightPlan.Root.Element("origin").Element("metar_time").Value);
+            origin.MetarCategory = xmlFlightPlan.Root.Element("origin").Element("metar_category").Value;
+            origin.MetarVisibility = int.Parse(xmlFlightPlan.Root.Element("origin").Element("metar_visibility").Value);
+            origin.MetarCeiling = int.Parse(xmlFlightPlan.Root.Element("origin").Element("metar_ceiling").Value);
+            origin.Taf = xmlFlightPlan.Root.Element("origin").Element("taf").Value;
+            origin.TaffTime = DateTime.Parse(xmlFlightPlan.Root.Element("origin").Element("taf_time").Value);
+            var atisNetworks = xmlFlightPlan.Root.Element("origin").Descendants("atis");
+
+            if (atisNetworks.Count() > 0)
+                origin.Atis = new List<Atis>();
+            {
+                foreach(XElement element in atisNetworks)
+                {
+
+                    Atis network = new Atis();
+
+                    network.Network = element.Element("network").Value;
+                    network.Issued = DateTime.Parse(element.Element("issued").Value);
+                    network.Letter = char.Parse(element.Element("letter").Value);
+                    network.Phonetic = element.Element("phonetic").Value;
+                    network.Type = element.Element("type").Value;
+                    network.Message = element.Element("message").Value;
+                    origin.Atis.Add(network);
+                                    }
+            }
+
+                                    origin.Notams = xmlFlightPlan.Root.Element("origin").Element("notam").Value;
+            SimbriefOrigin = origin;
+                                                                    } // LoadSimBriefOrigin
 
 private static async void LoadSimbriefNavlogAsync()
         {
 
+            if(Navlog != null)
+            {
+                Navlog.Clear();
+            }
             Navlog = new List<Fix>();
             // Get the simbrief flight plan in raw xml format.
             HttpClient client = new HttpClient();
@@ -158,6 +213,7 @@ private static async void LoadSimbriefNavlogAsync()
         #region "public methods"
         public static async void LoadFromXMLAsync()
         {
+            LoadSimBriefOriginAsync();
             LoadSimbriefNavlogAsync();
                    } // LoadFromXMLAsync
 

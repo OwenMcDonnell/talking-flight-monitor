@@ -1175,6 +1175,12 @@
     <Compile Include="Settings panels\Weather\WindSnadshot.Designer.cs">
       <DependentUpon>WindSnadshot.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimBrief\ctlAirports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimBrief\ctlAirports.Designer.cs">
+      <DependentUpon>ctlAirports.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimBrief\ctlNavlog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1774,6 +1780,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings panels\Weather\WindSnadshot.resx">
       <DependentUpon>WindSnadshot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimBrief\ctlAirports.resx">
+      <DependentUpon>ctlAirports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimBrief\ctlNavlog.resx">
       <DependentUpon>ctlNavlog.cs</DependentUpon>
