@@ -119,27 +119,27 @@ namespace tfm
             origin.MetarCeiling = int.Parse(xmlFlightPlan.Root.Element("origin").Element("metar_ceiling").Value);
             origin.Taf = xmlFlightPlan.Root.Element("origin").Element("taf").Value;
             origin.TaffTime = DateTime.Parse(xmlFlightPlan.Root.Element("origin").Element("taf_time").Value);
-            var atisNetworks = xmlFlightPlan.Root.Element("origin").Descendants("atis");
+                                               
+            // Fix notams since it is a collection.
+            origin.Notams = xmlFlightPlan.Root.Element("origin").Element("notam").Value;
 
-            if (atisNetworks.Count() > 0)
-                origin.Atis = new List<Atis>();
+            origin.AirportType = "origin";
+            IEnumerable<XElement> atisElements = xmlFlightPlan.Root.Element("origin").Descendants("atis");
+
+            if(atisElements.Elements().Count() > 0)
             {
-                foreach(XElement element in atisNetworks)
+                foreach(XElement element in atisElements)
                 {
-
-                    Atis network = new Atis();
-
-                    network.Network = element.Element("network").Value;
-                    network.Issued = DateTime.Parse(element.Element("issued").Value);
-                    network.Letter = char.Parse(element.Element("letter").Value);
-                    network.Phonetic = element.Element("phonetic").Value;
-                    network.Type = element.Element("type").Value;
-                    network.Message = element.Element("message").Value;
-                    origin.Atis.Add(network);
-                                    }
+                    Atis atis = new Atis();
+                    atis.Network = element.Element("network").Value;
+                    atis.Issued = DateTime.Parse(element.Element("issued").Value);
+                    atis.Message = element.Element("message").Value;
+                    atis.Letter = char.Parse(element.Element("letter").Value);
+                    atis.Phonetic = element.Element("phonetic").Value;
+                    atis.Type = element.Element("type").Value;
+                    origin.Atis.Add(atis);
+                }
             }
-
-                                    origin.Notams = xmlFlightPlan.Root.Element("origin").Element("notam").Value;
             SimbriefOrigin = origin;
                                                                     } // LoadSimBriefOrigin
 
