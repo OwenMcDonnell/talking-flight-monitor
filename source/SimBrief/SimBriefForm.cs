@@ -24,7 +24,7 @@ namespace tfm.SimBrief
         private void LoadPages()
         {
             pages.Add("navlogNode", new tfm.SimBrief.ctlNavlog());
-            
+            pages.Add("airportsNode", new SimBrief.ctlAirports());
             // Set parent and hide pages.
             foreach (iPanelsPage page in this.pages.Values)
             {

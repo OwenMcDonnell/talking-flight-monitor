@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Navlog");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Airports");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Navlog");
             this.contentPanel = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.flightPlanCategoriesTreeView = new System.Windows.Forms.TreeView();
@@ -63,10 +64,13 @@
             this.flightPlanCategoriesTreeView.Location = new System.Drawing.Point(0, 0);
             this.flightPlanCategoriesTreeView.Margin = new System.Windows.Forms.Padding(8);
             this.flightPlanCategoriesTreeView.Name = "flightPlanCategoriesTreeView";
-            treeNode1.Name = "navlogNode";
-            treeNode1.Text = "Navlog";
+            treeNode1.Name = "airportsNode";
+            treeNode1.Text = "Airports";
+            treeNode2.Name = "navlogNode";
+            treeNode2.Text = "Navlog";
             this.flightPlanCategoriesTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode1,
+            treeNode2});
             this.flightPlanCategoriesTreeView.Size = new System.Drawing.Size(299, 742);
             this.flightPlanCategoriesTreeView.TabIndex = 3;
             this.flightPlanCategoriesTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.flightPlanCategoriesTreeView_AfterSelect);
