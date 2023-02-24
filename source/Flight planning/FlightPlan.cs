@@ -90,10 +90,10 @@ namespace tfm
         public static string SimBriefURL { get => _url; }
         #endregion
 
-#region "private methods"
-        private static  async void LoadSimBriefOriginAsync()
+        #region "private methods"
+        private static async void LoadSimBriefOriginAsync()
         {
-            if(SimbriefOrigin != null)
+            if (SimbriefOrigin != null)
             {
                 SimbriefOrigin = null;
             }
@@ -119,16 +119,22 @@ namespace tfm
             origin.MetarCeiling = int.Parse(xmlFlightPlan.Root.Element("origin").Element("metar_ceiling").Value);
             origin.Taf = xmlFlightPlan.Root.Element("origin").Element("taf").Value;
             origin.TaffTime = DateTime.Parse(xmlFlightPlan.Root.Element("origin").Element("taf_time").Value);
-                                               
+
             // Fix notams since it is a collection.
             origin.Notams = xmlFlightPlan.Root.Element("origin").Element("notam").Value;
-
             origin.AirportType = "origin";
-            IEnumerable<XElement> atisElements = xmlFlightPlan.Root.Element("origin").Descendants("atis");
 
-            if(atisElements.Elements().Count() > 0)
+            IEnumerable<XElement> list = xmlFlightPlan.Root.Element("origin").Descendants("atis");
+
+            if (list.Count() > 0)
             {
-                foreach(XElement element in atisElements)
+// Clear items before adding a new set.
+if(origin.Atis != null)
+                {
+                    origin.Atis = null;
+                }
+                origin.Atis = new List<Atis>();
+                foreach (XElement element in list)
                 {
                     Atis atis = new Atis();
                     atis.Network = element.Element("network").Value;
@@ -139,7 +145,8 @@ namespace tfm
                     atis.Type = element.Element("type").Value;
                     origin.Atis.Add(atis);
                 }
-            }
+                }
+                            
             SimbriefOrigin = origin;
                                                                     } // LoadSimBriefOrigin
 
