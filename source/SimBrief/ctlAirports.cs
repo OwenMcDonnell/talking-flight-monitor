@@ -28,8 +28,13 @@ namespace tfm.SimBrief
             foreach(PropertyInfo property in FlightPlan.SimbriefOrigin.GetType().GetProperties())
             {
                 textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.SimbriefOrigin, null)}\n\n";
-            
                        }
+
+            foreach (PropertyInfo property in FlightPlan.SimbriefOrigin.Atis[0].GetType().GetProperties())
+            {
+                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.SimbriefOrigin.Atis[0], null)}\n\n";
+            }
+
         }
     }
 }

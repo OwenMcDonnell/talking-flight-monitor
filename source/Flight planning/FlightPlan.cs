@@ -90,10 +90,10 @@ namespace tfm
         public static string SimBriefURL { get => _url; }
         #endregion
 
-#region "private methods"
-        private static  async void LoadSimBriefOriginAsync()
+        #region "private methods"
+        private static async void LoadSimBriefOriginAsync()
         {
-            if(SimbriefOrigin != null)
+            if (SimbriefOrigin != null)
             {
                 SimbriefOrigin = null;
             }
@@ -119,27 +119,34 @@ namespace tfm
             origin.MetarCeiling = int.Parse(xmlFlightPlan.Root.Element("origin").Element("metar_ceiling").Value);
             origin.Taf = xmlFlightPlan.Root.Element("origin").Element("taf").Value;
             origin.TaffTime = DateTime.Parse(xmlFlightPlan.Root.Element("origin").Element("taf_time").Value);
-            var atisNetworks = xmlFlightPlan.Root.Element("origin").Descendants("atis");
 
-            if (atisNetworks.Count() > 0)
-                origin.Atis = new List<Atis>();
+            // Fix notams since it is a collection.
+            origin.Notams = xmlFlightPlan.Root.Element("origin").Element("notam").Value;
+            origin.AirportType = "origin";
+
+            IEnumerable<XElement> list = xmlFlightPlan.Root.Element("origin").Descendants("atis");
+
+            if (list.Count() > 0)
             {
-                foreach(XElement element in atisNetworks)
+// Clear items before adding a new set.
+if(origin.Atis != null)
                 {
-
-                    Atis network = new Atis();
-
-                    network.Network = element.Element("network").Value;
-                    network.Issued = DateTime.Parse(element.Element("issued").Value);
-                    network.Letter = char.Parse(element.Element("letter").Value);
-                    network.Phonetic = element.Element("phonetic").Value;
-                    network.Type = element.Element("type").Value;
-                    network.Message = element.Element("message").Value;
-                    origin.Atis.Add(network);
-                                    }
-            }
-
-                                    origin.Notams = xmlFlightPlan.Root.Element("origin").Element("notam").Value;
+                    origin.Atis = null;
+                }
+                origin.Atis = new List<Atis>();
+                foreach (XElement element in list)
+                {
+                    Atis atis = new Atis();
+                    atis.Network = element.Element("network").Value;
+                    atis.Issued = DateTime.Parse(element.Element("issued").Value);
+                    atis.Message = element.Element("message").Value;
+                    atis.Letter = char.Parse(element.Element("letter").Value);
+                    atis.Phonetic = element.Element("phonetic").Value;
+                    atis.Type = element.Element("type").Value;
+                    origin.Atis.Add(atis);
+                }
+                }
+                            
             SimbriefOrigin = origin;
                                                                     } // LoadSimBriefOrigin
 
