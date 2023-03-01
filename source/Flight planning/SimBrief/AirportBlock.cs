@@ -28,7 +28,7 @@ namespace tfm.Flight_planning.SimBrief
         private string _taf = string.Empty;
         private DateTime _taffTime = DateTime.Now;
         private List<Atis> _atis;
-        private string _notams = string.Empty;
+        private List<Notam> _notams;
         private string _airportType = string.Empty; // Not in XML. Origin, destination, alternate ...
         #endregion
 
@@ -45,7 +45,7 @@ namespace tfm.Flight_planning.SimBrief
         public string Metar { get => _metar; set => _metar = value; }
         public string Taf { get => _taf; set => _taf = value; }
         public List<Atis> Atis { get => _atis; set => _atis = value; }
-        public string Notams { get => _notams; set => _notams = value; }
+        public List<Notam> Notams { get => _notams; set => _notams = value; }
         public DateTime MetarTime { get => _metarTime; set => _metarTime = value; }
         public string MetarCategory { get => _metarCategory; set => _metarCategory = value; }
         public int MetarVisibility { get => _metarVisibility; set => _metarVisibility = value; }

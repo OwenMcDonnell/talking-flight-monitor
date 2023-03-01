@@ -25,16 +25,13 @@ namespace tfm.SimBrief
 
         private void ctlAirports_Load(object sender, EventArgs e)
         {
-            foreach(PropertyInfo property in FlightPlan.SimbriefOrigin.GetType().GetProperties())
+            textBox1.Text += $"atis: {FlightPlan.SimbriefDestination.Atis.Count()}\r\n";
+            textBox1.Text += $"notams: {FlightPlan.SimbriefDestination.Notams.Count()}\r\n";
+            foreach(PropertyInfo property in FlightPlan.SimbriefDestination.GetType().GetProperties())
             {
-                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.SimbriefOrigin, null)}\n\n";
+                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.SimbriefDestination, null)}\r\n";
                        }
 
-            foreach (PropertyInfo property in FlightPlan.SimbriefOrigin.Atis[0].GetType().GetProperties())
-            {
-                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.SimbriefOrigin.Atis[0], null)}\n\n";
-            }
-
-        }
+                   }
     }
 }
