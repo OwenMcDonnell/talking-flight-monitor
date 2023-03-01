@@ -21,6 +21,7 @@ namespace tfm
         private static AirportBlock _simbriefDestination = null;
         private static AirportBlock _simbriefAlternate = null;
         private static FuelBlock _fuel = null;
+        private static WeightsBlock _weights = null;
         private static List<Fix> _navlog = null;
         private static string _title = string.Empty;
         private static FsAirport _departureAirport = null;
@@ -89,6 +90,7 @@ namespace tfm
         public static AirportBlock SimbriefAlternate { get => _simbriefAlternate; set => _simbriefAlternate = value; }
         public static string SimBriefURL { get => _url; }
         public static FuelBlock Fuel { get => _fuel; set => _fuel = value; }
+        public static WeightsBlock Weights { get => _weights; set => _weights = value; }
         #endregion
 
         #region "private methods"
@@ -448,7 +450,45 @@ if(element.Elements().Count() == 0)
             Fuel.MaxFuel = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("max_tanks").Value);
 
         } // LoadSimBriefFuel
-#endregion
+
+        private static async void LoadSimBriefWeightsAsync()
+        {
+
+            HttpClient client = new HttpClient();
+            var rawXML = await client.GetStringAsync(SimBriefURL);
+            var XMLFlightPlan = XDocument.Parse(rawXML);
+
+            if(Weights != null)
+            {
+                Weights = null;
+            }
+
+            WeightsBlock weights = new WeightsBlock();
+
+            var weightsElement = XMLFlightPlan.Root.Element("weights");
+            weights.OEW = double.Parse(weightsElement.Element("oew").Value);
+            weights.PaxCount = double.Parse(weightsElement.Element("pax_count").Value);
+            weights.BagCount = double.Parse(weightsElement.Element("bag_count").Value);
+            weights.PaxCountActual = double.Parse(weightsElement.Element("pax_count_actual").Value);
+            weights.BagCountActual = double.Parse(weightsElement.Element("bag_count_actual").Value);
+            weights.PaxWeight = double.Parse(weightsElement.Element("pax_weight").Value);
+            weights.BagWeight = double.Parse(weightsElement.Element("bag_weight").Value);
+            weights.FreightAdded = double.Parse(weightsElement.Element("freight_added").Value);
+            weights.Cargo = double.Parse(weightsElement.Element("cargo").Value);
+            weights.Payload = double.Parse(weightsElement.Element("payload").Value);
+            weights.EstimatedZFW = double.Parse(weightsElement.Element("est_zfw").Value);
+            weights.MaxZFW = double.Parse(weightsElement.Element("max_zfw").Value);
+            weights.EstimatedTOW = double.Parse(weightsElement.Element("max_tow").Value);
+            weights.MaxTOW = double.Parse(weightsElement.Element("max_tow").Value);
+            weights.MaxTOWStruct = double.Parse(weightsElement.Element("max_tow_struct").Value);
+            weights.MaxTOWLimitCode = weightsElement.Element("tow_limit_code").Value;
+            weights.EstimatedLDW = double.Parse(weightsElement.Element("est_ldw").Value);
+            weights.MaxLDW = double.Parse(weightsElement.Element("max_ldw").Value);
+            weights.EstimatedRamp = double.Parse(weightsElement.Element("est_ramp").Value);
+
+            Weights = weights;
+        } // LoadSimBriefWeightsAsync
+        #endregion
 
         #region "public methods"
         public static async void LoadFromXMLAsync()
@@ -456,6 +496,7 @@ if(element.Elements().Count() == 0)
             LoadSimBriefOriginAsync();
             LoadSimBriefDestinationAsync();
             LoadSimBriefFuelAsync();
+            LoadSimBriefWeightsAsync();
             LoadSimbriefNavlogAsync();
                    } // LoadFromXMLAsync
 

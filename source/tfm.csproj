@@ -321,6 +321,7 @@
     <Compile Include="Flight planning\SimBrief\GeneralBlock.cs" />
     <Compile Include="Flight planning\SimBrief\Notam.cs" />
     <Compile Include="Flight planning\SimBrief\ParameterBlock.cs" />
+    <Compile Include="Flight planning\SimBrief\WeightsBlock.cs" />
     <Compile Include="Flight planning\SimBrief\WindLevel.cs" />
     <Compile Include="frmFirstRunHelp.cs">
       <SubType>Form</SubType>
