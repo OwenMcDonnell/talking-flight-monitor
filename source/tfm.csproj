@@ -317,6 +317,7 @@
     <Compile Include="Flight planning\SimBrief\AirportBlock.cs" />
     <Compile Include="Flight planning\SimBrief\Atis.cs" />
     <Compile Include="Flight planning\SimBrief\Fix.cs" />
+    <Compile Include="Flight planning\SimBrief\FuelBlock.cs" />
     <Compile Include="Flight planning\SimBrief\GeneralBlock.cs" />
     <Compile Include="Flight planning\SimBrief\Notam.cs" />
     <Compile Include="Flight planning\SimBrief\ParameterBlock.cs" />

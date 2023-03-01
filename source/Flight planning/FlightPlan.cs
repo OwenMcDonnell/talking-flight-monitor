@@ -15,20 +15,20 @@ namespace tfm
     {
         #region Private fields
         private static string _url = $"https://www.simbrief.com/api/xml.fetcher.php?userid={Properties.Settings.Default.SimBriefUserID}";
-        
-
         private static ParameterBlock _parameters = null;
         private static GeneralBlock _general = null;
         private static AirportBlock _simbriefOrigin = null;
         private static AirportBlock _simbriefDestination = null;
         private static AirportBlock _simbriefAlternate = null;
+        private static FuelBlock _fuel = null;
         private static List<Fix> _navlog = null;
         private static string _title = string.Empty;
         private static FsAirport _departureAirport = null;
         private static FsAirport _destinationAirport = null;
         private static FsRunway _destinationRunway = null;
         #endregion
-        #region Public properties
+
+                #region Public properties
         static public string Title
         {
             get
@@ -88,6 +88,7 @@ namespace tfm
         public static AirportBlock SimbriefDestination { get => _simbriefDestination; set => _simbriefDestination = value; }
         public static AirportBlock SimbriefAlternate { get => _simbriefAlternate; set => _simbriefAlternate = value; }
         public static string SimBriefURL { get => _url; }
+        public static FuelBlock Fuel { get => _fuel; set => _fuel = value; }
         #endregion
 
         #region "private methods"
@@ -417,6 +418,36 @@ if(element.Elements().Count() == 0)
                 // wind levels
             } // loop through fixes.
         }         // LoadSimbriefNavlogAsync
+
+        private static async void LoadSimBriefFuelAsync()
+        {
+
+            HttpClient client = new HttpClient();
+            var rawXML = await client.GetStringAsync(SimBriefURL);
+            var XMLFlightPlan = XDocument.Parse(rawXML);
+
+            if(Fuel != null)
+            {
+                Fuel = null;
+            }
+
+            Fuel = new FuelBlock();
+
+            Fuel.Taxi = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("taxi").Value);
+            Fuel.EnrouteBurn = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("enroute_burn").Value);
+            Fuel.Contingency = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("contingency").Value);
+            Fuel.AlternateBurn = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("alternate_burn").Value);
+            Fuel.Reserve = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("reserve").Value);
+            Fuel.Etops = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("etops").Value);
+            Fuel.Extra = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("extra").Value);
+            Fuel.MinTakeoff = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("min_takeoff").Value);
+            Fuel.PlanTakeoff = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("plan_takeoff").Value);
+            Fuel.PlanRamp = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("plan_ramp").Value);
+            Fuel.PlanLanding = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("plan_landing").Value);
+            Fuel.AverageFuelFlow = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("avg_fuel_flow").Value);
+            Fuel.MaxFuel = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("max_tanks").Value);
+
+        } // LoadSimBriefFuel
 #endregion
 
         #region "public methods"
@@ -424,6 +455,7 @@ if(element.Elements().Count() == 0)
         {
             LoadSimBriefOriginAsync();
             LoadSimBriefDestinationAsync();
+            LoadSimBriefFuelAsync();
             LoadSimbriefNavlogAsync();
                    } // LoadFromXMLAsync
 

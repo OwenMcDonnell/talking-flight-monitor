@@ -25,11 +25,11 @@ namespace tfm.SimBrief
 
         private void ctlAirports_Load(object sender, EventArgs e)
         {
-            textBox1.Text += $"atis: {FlightPlan.SimbriefDestination.Atis.Count()}\r\n";
-            textBox1.Text += $"notams: {FlightPlan.SimbriefDestination.Notams.Count()}\r\n";
-            foreach(PropertyInfo property in FlightPlan.SimbriefDestination.GetType().GetProperties())
+            //textBox1.Text += $"atis: {FlightPlan.SimbriefDestination.Atis.Count()}\r\n";
+            //textBox1.Text += $"notams: {FlightPlan.SimbriefDestination.Notams.Count()}\r\n";
+            foreach(PropertyInfo property in FlightPlan.Fuel.GetType().GetProperties())
             {
-                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.SimbriefDestination, null)}\r\n";
+                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.Fuel, null)}\r\n";
                        }
 
                    }
