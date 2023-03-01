@@ -7,6 +7,7 @@ using FSUIPC;
 using DavyKager;
 using System.Threading;
 using System.Drawing;
+using NLog;
 
 namespace tfm.copilot
 {
@@ -14,6 +15,7 @@ namespace tfm.copilot
     {
         private bool PowerEstablished;
         private bool FirstFlight;
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public void ElectricalFlow(int Power)
         {
