@@ -91,6 +91,7 @@ namespace tfm
         public static string SimBriefURL { get => _url; }
         public static FuelBlock Fuel { get => _fuel; set => _fuel = value; }
         public static WeightsBlock Weights { get => _weights; set => _weights = value; }
+        public static GeneralBlock General { get => _general; set => _general = value; }
         #endregion
 
         #region "private methods"
@@ -488,6 +489,54 @@ if(element.Elements().Count() == 0)
 
             Weights = weights;
         } // LoadSimBriefWeightsAsync
+
+        private async static void LoadSimBriefGeneralBlock()
+        {
+
+            HttpClient client = new HttpClient();
+            var rawXML = await client.GetStringAsync(SimBriefURL);
+            var XMLFlightPlan = XDocument.Parse(rawXML);
+
+            if(General != null)
+            {
+                General = null;
+            }
+
+            GeneralBlock general = new GeneralBlock();
+
+            var generalElement = XMLFlightPlan.Root.Element("general");
+            general.Release = byte.Parse(generalElement.Element("release").Value);
+            general.AirlineICAO = generalElement.Element("icao_airline").Value;
+            general.FlightNumber = generalElement.Element("flight_number").Value;
+            general.IsEtops = generalElement.Element("is_etops").Value == "1" ? true : false;
+            general.DxRemarks = generalElement.Element("dx_rmk").Value;
+            general.IsDetailedProfile = generalElement.Element("is_detailed_profile").Value == "1" ? true : false;
+            general.CruiseProfile = generalElement.Element("cruise_profile").Value;
+            general.ClimbProfile = generalElement.Element("climb_profile").Value;
+            general.DescentProfile = generalElement.Element("descent_profile").Value;
+            general.AlternateProfile = generalElement.Element("alternate_profile").Value;
+            general.ReserveProfile = generalElement.Element("reserve_profile").Value;
+            general.CostIndex = double.Parse(generalElement.Element("costindex").Value);
+            general.ContRule = generalElement.Element("cont_rule").Value;
+            general.InitialAltitude = double.Parse(generalElement.Element("initial_altitude").Value);
+            general.StepClimbString = generalElement.Element("stepclimb_string").Value;
+            general.Avg_temp_dev = double.Parse(generalElement.Element("avg_temp_dev").Value);
+            general.AvgTropoPause = double.Parse(generalElement.Element("avg_tropopause").Value);
+            general.AvgWindComp = double.Parse(generalElement.Element("avg_wind_comp").Value);
+            general.AvgWindDirection = double.Parse(generalElement.Element("avg_wind_dir").Value);
+            general.AvgWindSpeed = double.Parse(generalElement.Element("avg_wind_spd").Value);
+            general.GcDistance = double.Parse(generalElement.Element("gc_distance").Value);
+            general.RouteDistance = double.Parse(generalElement.Element("route_distance").Value);
+            general.AirDistance = double.Parse(generalElement.Element("air_distance").Value);
+            general.TotalBurn = double.Parse(generalElement.Element("total_burn").Value);
+            general.CruiseTas = double.Parse(generalElement.Element("cruise_tas").Value);
+            general.CruiseMach = double.Parse(generalElement.Element("cruise_mach").Value);
+            general.Passenger = double.Parse(generalElement.Element("passengers").Value);
+            general.Route = generalElement.Element("route").Value;
+            general.RouteIFPS = generalElement.Element("route_ifps").Value;
+            general.RouteNavigraph = generalElement.Element("route_navigraph").Value;
+            General = general;
+        } // LoadSimBriefGeneralBlock
         #endregion
 
         #region "public methods"
@@ -497,6 +546,7 @@ if(element.Elements().Count() == 0)
             LoadSimBriefDestinationAsync();
             LoadSimBriefFuelAsync();
             LoadSimBriefWeightsAsync();
+            LoadSimBriefGeneralBlock();
             LoadSimbriefNavlogAsync();
                    } // LoadFromXMLAsync
 

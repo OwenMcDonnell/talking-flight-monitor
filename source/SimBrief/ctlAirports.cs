@@ -27,9 +27,9 @@ namespace tfm.SimBrief
         {
             //textBox1.Text += $"atis: {FlightPlan.SimbriefDestination.Atis.Count()}\r\n";
             //textBox1.Text += $"notams: {FlightPlan.SimbriefDestination.Notams.Count()}\r\n";
-            foreach(PropertyInfo property in FlightPlan.Weights.GetType().GetProperties())
+            foreach(PropertyInfo property in FlightPlan.General.GetType().GetProperties())
             {
-                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.Weights, null)}\r\n";
+                textBox1.Text += $"{property.Name}: {property.GetValue(FlightPlan.General, null)}\r\n";
                        }
 
                    }
