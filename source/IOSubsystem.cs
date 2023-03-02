@@ -303,7 +303,7 @@ namespace tfm
             {
                 logger.Debug("Starting SimBrief support.");
                 Output(isGauge: false, output: "Starting SimBrief support.");
-                FlightPlan.LoadFromXMLAsync();
+                FlightPlan.LoadFromXML();
             }
             else
             {

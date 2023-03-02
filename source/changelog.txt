@@ -1,4 +1,4 @@
-﻿## Talking flight monitor 23.2 release notes
+﻿## Talking flight monitor 23.3 release notes
 
 ### What's new?
 
