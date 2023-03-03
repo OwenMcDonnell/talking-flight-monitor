@@ -24,6 +24,8 @@ namespace tfm.Flight_planning.SimBrief
         private string _averageTDV = string.Empty;
         private double _timeEnroute = 0;
         private double _burn = 0;
+        private string _route = string.Empty;
+        private string _routeIfps = string.Empty;
         #endregion
 
         #region "public properties"
@@ -42,6 +44,8 @@ namespace tfm.Flight_planning.SimBrief
         public string AverageTDV { get => _averageTDV; set => _averageTDV = value; }
         public double TimeEnroute { get => _timeEnroute; set => _timeEnroute = value; }
         public double Burn { get => _burn; set => _burn = value; }
+        public string Route { get => _route; set => _route = value; }
+        public string RouteIfps { get => _routeIfps; set => _routeIfps = value; }
 
         #endregion
 
