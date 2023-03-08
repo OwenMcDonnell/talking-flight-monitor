@@ -106,125 +106,95 @@ namespace tfm
         #region "private methods"
         private static void LoadSimBriefOrigin()
         {
-            if (SimbriefOrigin != null)
+            #region "origin airport"
+            var origin = new AirportBlock()
             {
-                SimbriefOrigin = null;
-            }
-
-                                                #region "origin airport"
-            var origin = new AirportBlock();
-            origin.IcaoCode = XMLFlightPlan.Root.Element("origin").Element("icao_code").Value;
-            origin.IataCode = XMLFlightPlan.Root.Element("origin").Element("iata_code").Value;
-            origin.Elevation = int.Parse(XMLFlightPlan.Root.Element("origin").Element("elevation").Value);
-            origin.PosLat = new FsLatitude(double.Parse(XMLFlightPlan.Root.Element("origin").Element("pos_lat").Value), true);
-            origin.PosLong = new FsLongitude(double.Parse(XMLFlightPlan.Root.Element("origin").Element("pos_long").Value), true);
-            origin.Name = XMLFlightPlan.Root.Element("origin").Element("name").Value;
-            origin.PlanRwy = XMLFlightPlan.Root.Element("origin").Element("plan_rwy").Value;
-            origin.TransAltitude = int.Parse(XMLFlightPlan.Root.Element("origin").Element("trans_alt").Value);
-            origin.TransLevel = int.Parse(XMLFlightPlan.Root.Element("origin").Element("trans_level").Value);
-            origin.Metar = XMLFlightPlan.Root.Element("origin").Element("metar").Value;
-            origin.MetarTime = DateTime.Parse(XMLFlightPlan.Root.Element("origin").Element("metar_time").Value);
-            origin.MetarCategory = XMLFlightPlan.Root.Element("origin").Element("metar_category").Value;
-            origin.MetarVisibility = int.Parse(XMLFlightPlan.Root.Element("origin").Element("metar_visibility").Value);
-            origin.MetarCeiling = int.Parse(XMLFlightPlan.Root.Element("origin").Element("metar_ceiling").Value);
-            origin.Taf = XMLFlightPlan.Root.Element("origin").Element("taf").Value;
-            origin.TaffTime = DateTime.Parse(XMLFlightPlan.Root.Element("origin").Element("taf_time").Value);
-            origin.AirportType = "origin";
-            #endregion
+                IcaoCode = XMLFlightPlan.Root.Element("origin").Element("icao_code").Value,
+            IataCode = XMLFlightPlan.Root.Element("origin").Element("iata_code").Value,
+            Elevation = int.Parse(XMLFlightPlan.Root.Element("origin").Element("elevation").Value),
+            PosLat = new FsLatitude(double.Parse(XMLFlightPlan.Root.Element("origin").Element("pos_lat").Value), true),
+            PosLong = new FsLongitude(double.Parse(XMLFlightPlan.Root.Element("origin").Element("pos_long").Value), true),
+            Name = XMLFlightPlan.Root.Element("origin").Element("name").Value,
+            PlanRwy = XMLFlightPlan.Root.Element("origin").Element("plan_rwy").Value,
+            TransAltitude = int.Parse(XMLFlightPlan.Root.Element("origin").Element("trans_alt").Value),
+            TransLevel = int.Parse(XMLFlightPlan.Root.Element("origin").Element("trans_level").Value),
+            Metar = XMLFlightPlan.Root.Element("origin").Element("metar").Value,
+            MetarTime = DateTime.Parse(XMLFlightPlan.Root.Element("origin").Element("metar_time").Value),
+            MetarCategory = XMLFlightPlan.Root.Element("origin").Element("metar_category").Value,
+            MetarVisibility = int.Parse(XMLFlightPlan.Root.Element("origin").Element("metar_visibility").Value),
+            MetarCeiling = int.Parse(XMLFlightPlan.Root.Element("origin").Element("metar_ceiling").Value),
+            Taf = XMLFlightPlan.Root.Element("origin").Element("taf").Value,
+            TaffTime = DateTime.Parse(XMLFlightPlan.Root.Element("origin").Element("taf_time").Value),
+            AirportType = "origin",
+                    };
+                       #endregion
 
             #region "notams"
-            IEnumerable<XElement> notamList = XMLFlightPlan.Root.Element("origin").Descendants("notam");
-            if(notamList.Count() > 0)
-            {
-                if(origin.Notams != null)
-                {
-                    origin.Notams = null;
-                }
-
-                origin.Notams = new List<Notam>();
+            var notamList = XMLFlightPlan.Root.Element("origin").Elements("notam");
+                            origin.Notams = new List<Notam>();
 
                 foreach(XElement element in notamList)
                 {
 
                     // Skip empty notam elements.
-                    if(element.Elements().Count() == 0)
+                    if(element.IsEmpty)
                     {
-                        break;
+                        continue;
                     }
-                    Notam notam = new Notam();
 
-                    notam.SourceID = element.Element("source_id").Value;
-                    notam.AccountID = element.Element("account_id").Value;
-                    notam.ID = element.Element("notam_id").Value;
-                    notam.LocationID = element.Element("location_id").Value;
-                    notam.LocationICAO = element.Element("location_icao").Value;
-                    notam.LocationName = element.Element("location_name").Value;
-                    notam.LocationType = element.Element("location_type").Value;
-                    notam.DateCreated = DateTime.Parse(element.Element("date_created").Value);
-                    notam.DateEffective = DateTime.Parse(element.Element("date_effective").Value);
-                    notam.DateExpire = DateTime.Parse(element.Element("date_expire").Value);
-                    if(string.IsNullOrEmpty(element.Element("date_expire_is_estimated").Value) || element.Element("date_expire_is_estimated").Value == "0")
-                    {
-                        notam.IsExpireDateEstimated = false;
-                    }
-                    else
-                    {
-                        notam.IsExpireDateEstimated = true;
-                    }
-                    
-                    notam.DateModified = DateTime.Parse(element.Element("date_modified").Value);
-                    notam.Schedule = element.Element("notam_schedule").Value;
-                    notam.HTML = element.Element("notam_html").Value;
-                    notam.Text = element.Element("notam_text").Value;
-                    notam.Raw = element.Element("notam_raw").Value;
-                    notam.Nrc = element.Element("notam_nrc").Value;
-                    notam.Code = element.Element("notam_qcode").Value;
-                    notam.Category = element.Element("notam_qcode_category").Value;
-                    notam.Subject = element.Element("notam_qcode_subject").Value;
-                    notam.Status = element.Element("notam_qcode_status").Value;
-                    
-                    if(string.IsNullOrEmpty(element.Element("notam_is_obstacle").Value) || element.Element("notam_is_obstacle").Value == "0")
-                    {
-                        notam.IsObstacle = false;
-                    }
-                    else
-                    {
-                        notam.IsObstacle = true;
-                    }
-                    origin.Notams.Add(notam);
-                }
-            }
+                Notam notam = new Notam()
+                {
+                    SourceID = element.Element("source_id").Value,
+                AccountID = element.Element("account_id").Value,
+                ID = element.Element("notam_id").Value,
+                LocationID = element.Element("location_id").Value,
+                LocationICAO = element.Element("location_icao").Value,
+                LocationName = element.Element("location_name").Value,
+                LocationType = element.Element("location_type").Value,
+                DateCreated = DateTime.TryParse(element.Element("date_created").Value, out DateTime dateCreated)? dateCreated : default,
+                DateEffective = DateTime.TryParse(element.Element("date_effective").Value, out DateTime dateEffective)? dateEffective : default,
+                DateExpire = DateTime.TryParse(element.Element("date_expire").Value, out DateTime  dateExpire)? dateExpire : default,
+                                    IsExpireDateEstimated = bool.TryParse(element.Element("date_expire_is_estimated").Value, out bool isExpireDateEstimated)? isExpireDateEstimated : false,
+                               DateModified = DateTime.TryParse(element.Element("date_modified").Value, out DateTime dateModified)? dateModified : default,
+                Schedule = element.Element("notam_schedule").Value,
+                HTML = element.Element("notam_html").Value,
+                Text = element.Element("notam_text").Value,
+                Raw = element.Element("notam_raw").Value,
+                Nrc = element.Element("notam_nrc").Value,
+                Code = element.Element("notam_qcode").Value,
+                Category = element.Element("notam_qcode_category").Value,
+                Subject = element.Element("notam_qcode_subject").Value,
+                Status = element.Element("notam_qcode_status").Value,
+                                                                   IsObstacle = bool.TryParse(element.Element("notam_is_obstacle").Value, out bool isObsticle)? isObsticle : false,
+                                                                                              };
+
+                                       origin.Notams.Add(notam);
+                            }
             #endregion
             
                                     #region "atis"
-            IEnumerable<XElement> list = XMLFlightPlan.Root.Element("origin").Descendants("atis");
-
-            if (list.Count() > 0)
-            {
-// Clear items before adding a new set.
-if(origin.Atis != null)
-                {
-                    origin.Atis = null;
-                }
-                origin.Atis = new List<Atis>();
-                foreach (XElement element in list)
+            var list = XMLFlightPlan.Root.Element("origin").Elements("atis");
+                                       origin.Atis = new List<Atis>();
+                foreach (XElement atisElement in list)
                 {
 
                     // Skip empty atis elements.
-                    if(element.Elements().Count() == 0)
+                    if(atisElement.IsEmpty)
                     {
-                        break;
+                    continue;
                     }
-                    Atis atis = new Atis();
-                    atis.Network = element.Element("network").Value;
-                    atis.Issued = DateTime.Parse(element.Element("issued").Value);
-                    atis.Message = element.Element("message").Value;
-                    atis.Letter = char.Parse(element.Element("letter").Value);
-                    atis.Phonetic = element.Element("phonetic").Value;
-                    atis.Type = element.Element("type").Value;
-                    origin.Atis.Add(atis);
-                }
-                }
+                    Atis atis = new Atis()
+                    {
+                        Network = atisElement.Element("network").Value,
+                Issued = DateTime.TryParse(atisElement.Element("issued").Value, out DateTime issued)? issued : default,
+                Message = atisElement.Element("message").Value,
+                Letter = char.TryParse(atisElement.Element("letter").Value, out char letter)? letter : default,
+                Phonetic = atisElement.Element("phonetic").Value,
+                Type = atisElement.Element("type").Value,
+            };
+
+            origin.Atis.Add(atis);
+                                }
             #endregion
             SimbriefOrigin = origin;
                                                                     } // LoadSimBriefOrigin
