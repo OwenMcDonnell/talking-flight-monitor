@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.navlogListView = new System.Windows.Forms.ListView();
-            this.identColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.nameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.distanceColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.altitudeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.typeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.navlogContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.columsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.typeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nameMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distanceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altitudeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.navlogContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // navlogListView
             // 
             this.navlogListView.AccessibleName = "Navlog";
-            this.navlogListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.identColumnHeader,
-            this.typeColumnHeader,
-            this.nameColumnHeader,
-            this.distanceColumnHeader,
-            this.altitudeColumnHeader});
+            this.navlogListView.ContextMenuStrip = this.navlogContextMenu;
             this.navlogListView.HideSelection = false;
             this.navlogListView.Location = new System.Drawing.Point(0, 0);
             this.navlogListView.Name = "navlogListView";
@@ -53,34 +51,59 @@
             this.navlogListView.UseCompatibleStateImageBehavior = false;
             this.navlogListView.View = System.Windows.Forms.View.Details;
             // 
-            // identColumnHeader
+            // navlogContextMenu
             // 
-            this.identColumnHeader.Text = "Ident";
-            this.identColumnHeader.Width = 100;
+            this.navlogContextMenu.AccessibleName = "Navlog menu";
+            this.navlogContextMenu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navlogContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.navlogContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.columsMenuItem});
+            this.navlogContextMenu.Name = "navlogContextMenu";
+            this.navlogContextMenu.Size = new System.Drawing.Size(191, 44);
             // 
-            // nameColumnHeader
+            // columsMenuItem
             // 
-            this.nameColumnHeader.DisplayIndex = 1;
-            this.nameColumnHeader.Text = "Name";
-            this.nameColumnHeader.Width = 100;
+            this.columsMenuItem.AccessibleName = "Show/hide columns";
+            this.columsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.typeMenuItem,
+            this.nameMenuItem,
+            this.distanceMenuItem,
+            this.altitudeMenuItem});
+            this.columsMenuItem.Name = "columsMenuItem";
+            this.columsMenuItem.Size = new System.Drawing.Size(190, 40);
+            this.columsMenuItem.Text = "Columns";
             // 
-            // distanceColumnHeader
+            // typeMenuItem
             // 
-            this.distanceColumnHeader.DisplayIndex = 2;
-            this.distanceColumnHeader.Text = "Distance";
-            this.distanceColumnHeader.Width = 100;
+            this.typeMenuItem.CheckOnClick = true;
+            this.typeMenuItem.Name = "typeMenuItem";
+            this.typeMenuItem.Size = new System.Drawing.Size(270, 42);
+            this.typeMenuItem.Text = "&Type";
+            this.typeMenuItem.CheckStateChanged += new System.EventHandler(this.typeMenuItem_CheckStateChanged);
             // 
-            // altitudeColumnHeader
+            // nameMenuItem
             // 
-            this.altitudeColumnHeader.DisplayIndex = 3;
-            this.altitudeColumnHeader.Text = "Altitude";
-            this.altitudeColumnHeader.Width = 100;
+            this.nameMenuItem.CheckOnClick = true;
+            this.nameMenuItem.Name = "nameMenuItem";
+            this.nameMenuItem.Size = new System.Drawing.Size(270, 42);
+            this.nameMenuItem.Text = "&Name";
+            this.nameMenuItem.CheckStateChanged += new System.EventHandler(this.nameMenuItem_CheckStateChanged);
             // 
-            // typeColumnHeader
+            // distanceMenuItem
             // 
-            this.typeColumnHeader.DisplayIndex = 0;
-            this.typeColumnHeader.Text = "Type";
-            this.typeColumnHeader.Width = 100;
+            this.distanceMenuItem.CheckOnClick = true;
+            this.distanceMenuItem.Name = "distanceMenuItem";
+            this.distanceMenuItem.Size = new System.Drawing.Size(270, 42);
+            this.distanceMenuItem.Text = "&Distance";
+            this.distanceMenuItem.CheckStateChanged += new System.EventHandler(this.distanceMenuItem_CheckStateChanged);
+            // 
+            // altitudeMenuItem
+            // 
+            this.altitudeMenuItem.CheckOnClick = true;
+            this.altitudeMenuItem.Name = "altitudeMenuItem";
+            this.altitudeMenuItem.Size = new System.Drawing.Size(270, 42);
+            this.altitudeMenuItem.Text = "&Altitude";
+            this.altitudeMenuItem.CheckStateChanged += new System.EventHandler(this.altitudeMenuItem_CheckStateChanged);
             // 
             // ctlNavlog
             // 
@@ -95,6 +118,7 @@
             this.Name = "ctlNavlog";
             this.Size = new System.Drawing.Size(1103, 670);
             this.Load += new System.EventHandler(this.ctlNavlog_Load);
+            this.navlogContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -102,10 +126,11 @@
         #endregion
 
         private System.Windows.Forms.ListView navlogListView;
-        private System.Windows.Forms.ColumnHeader identColumnHeader;
-        private System.Windows.Forms.ColumnHeader nameColumnHeader;
-        private System.Windows.Forms.ColumnHeader distanceColumnHeader;
-        private System.Windows.Forms.ColumnHeader altitudeColumnHeader;
-        private System.Windows.Forms.ColumnHeader typeColumnHeader;
+        private System.Windows.Forms.ContextMenuStrip navlogContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem columsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem typeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nameMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem distanceMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altitudeMenuItem;
     }
 }

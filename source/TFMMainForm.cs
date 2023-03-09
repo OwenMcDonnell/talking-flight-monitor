@@ -58,6 +58,7 @@ namespace tfm
                 Properties.pmdg737_offsets.Default.Upgrade();
                 Properties.pmdg747_offsets.Default.Upgrade();
                 Properties.Weather.Default.Upgrade();
+                Properties.NavlogColumns.Default.Upgrade();
                 Properties.Settings.Default.SettingsRequiresUpgrade = false;
 
                 // Disable vatsim mode for now.

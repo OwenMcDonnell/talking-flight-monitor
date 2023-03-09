@@ -1,8 +1,11 @@
-﻿using System;
+﻿using System.Xml;
+using System.Xml.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FSUIPC;
 
 namespace tfm.Flight_planning.SimBrief
 {
@@ -49,5 +52,63 @@ namespace tfm.Flight_planning.SimBrief
 
         #endregion
 
-    }
+        #region "public methods"
+        public static List<AlternateAirportBlock> LoadFromXElement(IEnumerable<XElement> alternateAirports, string airportType)
+        {
+
+            var airports = new List<AlternateAirportBlock>();
+
+            foreach (XElement alternateElement in alternateAirports)
+            {
+                // Skip empty alternat elements.
+                if (alternateElement.IsEmpty)
+                {
+                    continue;
+                }
+
+                var alternateAirport = new AlternateAirportBlock()
+                {
+                    IcaoCode = alternateElement.Element("icao_code").Value,
+                    IataCode = alternateElement.Element("iata_code").Value,
+                    Elevation = int.TryParse(alternateElement.Element("elevation").Value, out int elevation) ? elevation : default,
+                    PosLat = new FsLatitude(double.TryParse(alternateElement.Element("pos_lat").Value, out double latitude) ? latitude : default, true),
+                    PosLong = new FsLongitude(double.TryParse(alternateElement.Element("pos_long").Value, out double longitude) ? longitude : default, true),
+                    Name = alternateElement.Element("name").Value,
+                    PlanRwy = alternateElement.Element("plan_rwy").Value,
+                    TransAltitude = int.TryParse(alternateElement.Element("trans_alt").Value, out int transAltitude) ? transAltitude : -1,
+                    TransLevel = int.TryParse(alternateElement.Element("trans_level").Value, out int transLevel) ? transLevel : -1,
+                    CruiseAltitude = int.TryParse(alternateElement.Element("cruise_altitude").Value, out int cruiseAltitude) ? cruiseAltitude : -1,
+                    Distance = int.TryParse(alternateElement.Element("distance").Value, out int distance) ? distance : -1,
+                    GcDistance = int.TryParse(alternateElement.Element("gc_distance").Value, out int gcDistance) ? gcDistance : -1,
+                    AirDistance = int.TryParse(alternateElement.Element("air_distance").Value, out int airDistance) ? airDistance : -1,
+                    TrackTrue = int.TryParse(alternateElement.Element("track_true").Value, out int trackTrue) ? trackTrue : -1,
+                    TrackMag = int.TryParse(alternateElement.Element("track_mag").Value, out int trackMag) ? trackMag : -1,
+                    Tas = int.TryParse(alternateElement.Element("tas").Value, out int tas) ? tas : -1,
+                    GroundSpeed = int.TryParse(alternateElement.Element("gs").Value, out int groundSpeed) ? groundSpeed : -1,
+                AverageWindComposition = alternateElement.Element("avg_wind_comp").Value,
+                AverageWindDirection = int.TryParse(alternateElement.Element("avg_wind_dir").Value, out int averageWindDirection)? averageWindDirection : -1,
+                AverageWindSpeed = int.TryParse(alternateElement.Element("avg_wind_spd").Value, out int averageWindSpeed)? averageWindSpeed : -1,
+                AverageTropopause = int.TryParse(alternateElement.Element("avg_tropopause").Value, out int averageTropopause)? averageTropopause : -1,
+                AverageTDV = alternateElement.Element("avg_tdv").Value,
+                TimeEnroute = int.TryParse(alternateElement.Element("ete").Value, out int timeEnroute)? timeEnroute : -1,
+                Burn = int.TryParse(alternateElement.Element("burn").Value, out int burn)? burn : -1,
+                Route = alternateElement.Element("route").Value,
+                RouteIfps = alternateElement.Element("route_ifps").Value,
+                Metar = alternateElement.Element("metar").Value,
+                MetarTime = DateTime.TryParse(alternateElement.Element("metar_time").Value, out DateTime metarTime)? metarTime : default,
+                MetarCategory = alternateElement.Element("metar_category").Value,
+                MetarVisibility = int.TryParse(alternateElement.Element("metar_visibility").Value, out int metarVisibility)? metarVisibility : -1,
+                MetarCeiling = int.TryParse(alternateElement.Element("metar_ceiling").Value, out int metarCeiling)? metarCeiling : -1,
+                Taf = alternateElement.Element("taf").Value,
+                TaffTime = DateTime.TryParse(alternateElement.Element("taf_time").Value, out DateTime tafTime)? tafTime : default,
+                AirportType = airportType,
+                Notams = Notam.LoadFromXElement(alternateElement.Elements("notam")),
+                Atis = SimBrief.Atis.LoadFromXElement(alternateElement.Elements("atis")),
+                };
+                airports.Add(alternateAirport);
+                    }
+            return airports;
+            }
+            #endregion
+        }
 }
