@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Xml;
+using System.Xml.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +53,36 @@ namespace tfm.Flight_planning.SimBrief
         public double EstimatedLDW { get => _estimatedLDW; set => _estimatedLDW = value; }
         public double MaxLDW { get => _maxLDW; set => _maxLDW = value; }
         public double EstimatedRamp { get => _estimatedRamp; set => _estimatedRamp = value; }
-                #endregion
+        #endregion
+
+        #region "public methods"
+        public static WeightsBlock LoadFromXElement(XElement weightsElement)
+        {
+            var loadSheet = new WeightsBlock()
+            {
+                OEW = double.TryParse(weightsElement.Element("oew").Value, out double oew)? oew : -1,
+            PaxCount = double.TryParse(weightsElement.Element("pax_count").Value, out double paxCount)? paxCount : -1,
+            BagCount = double.TryParse(weightsElement.Element("bag_count").Value, out double bagCount)? bagCount : -1,
+            PaxCountActual = double.TryParse(weightsElement.Element("pax_count_actual").Value, out double paxCountActual)? paxCountActual : -1,
+            BagCountActual = double.TryParse(weightsElement.Element("bag_count_actual").Value, out double bagCountActual)? bagCountActual : -1,
+            PaxWeight = double.TryParse(weightsElement.Element("pax_weight").Value, out double paxWeight)? paxWeight : -1,
+            BagWeight = double.TryParse(weightsElement.Element("bag_weight").Value, out double bagWeight)? bagWeight : -1,
+            FreightAdded = double.TryParse(weightsElement.Element("freight_added").Value, out double freightAdded)? freightAdded : -1,
+            Cargo = double.TryParse(weightsElement.Element("cargo").Value, out double cargo)? cargo : -1,
+            Payload = double.TryParse(weightsElement.Element("payload").Value, out double payload)? payload : -1,
+            EstimatedZFW = double.TryParse(weightsElement.Element("est_zfw").Value, out double estimatedZFW)? estimatedZFW : -1,
+            MaxZFW = double.TryParse(weightsElement.Element("max_zfw").Value, out double maxZFW)? maxZFW : -1,
+            EstimatedTOW = double.TryParse(weightsElement.Element("max_tow").Value, out double estimatedTOW)? estimatedTOW : -1,
+            MaxTOW = double.TryParse(weightsElement.Element("max_tow").Value, out double maxTOW)? maxTOW : -1,
+            MaxTOWStruct = double.TryParse(weightsElement.Element("max_tow_struct").Value, out double maxTOWStruct)? maxTOWStruct : -1,
+            MaxTOWLimitCode = weightsElement.Element("tow_limit_code").Value,
+            EstimatedLDW = double.TryParse(weightsElement.Element("est_ldw").Value, out double estimatedLDW)? estimatedLDW : -1,
+            MaxLDW = double.TryParse(weightsElement.Element("max_ldw").Value, out double maxLDW)? maxLDW : -1,
+            EstimatedRamp = double.TryParse(weightsElement.Element("est_ramp").Value, out double estimatedRamp)? estimatedRamp : -1,
+        };
+
+            return loadSheet;
+        }
+        #endregion
     }
 }

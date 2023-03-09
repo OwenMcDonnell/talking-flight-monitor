@@ -118,112 +118,29 @@ namespace tfm
 
         private static void LoadSimbriefNavlog()
         {
+
             var navlogElement = XMLFlightPlan.Root.Element("navlog");
             Navlog = Fix.LoadNavlogFromXElement(navlogElement);
        }         // LoadSimbriefNavlog
 
         private static void LoadSimBriefFuel()
         {
-
-                       if(Fuel != null)
-            {
-                Fuel = null;
-            }
-
-            Fuel = new FuelBlock();
-
-            Fuel.Taxi = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("taxi").Value);
-            Fuel.EnrouteBurn = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("enroute_burn").Value);
-            Fuel.Contingency = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("contingency").Value);
-            Fuel.AlternateBurn = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("alternate_burn").Value);
-            Fuel.Reserve = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("reserve").Value);
-            Fuel.Etops = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("etops").Value);
-            Fuel.Extra = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("extra").Value);
-            Fuel.MinTakeoff = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("min_takeoff").Value);
-            Fuel.PlanTakeoff = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("plan_takeoff").Value);
-            Fuel.PlanRamp = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("plan_ramp").Value);
-            Fuel.PlanLanding = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("plan_landing").Value);
-            Fuel.AverageFuelFlow = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("avg_fuel_flow").Value);
-            Fuel.MaxFuel = double.Parse(XMLFlightPlan.Root.Element("fuel").Element("max_tanks").Value);
-
+            var fuelElement = XMLFlightPlan.Root.Element("fuel");
+            Fuel = FuelBlock.LoadFromXElement(fuelElement);
         } // LoadSimBriefFuel
 
         private static void LoadSimBriefWeights()
         {
 
-                                                if(Weights != null)
-            {
-                Weights = null;
-            }
+                                                                        var weightsElement = XMLFlightPlan.Root.Element("weights");
 
-            WeightsBlock weights = new WeightsBlock();
-
-            var weightsElement = XMLFlightPlan.Root.Element("weights");
-            weights.OEW = double.Parse(weightsElement.Element("oew").Value);
-            weights.PaxCount = double.Parse(weightsElement.Element("pax_count").Value);
-            weights.BagCount = double.Parse(weightsElement.Element("bag_count").Value);
-            weights.PaxCountActual = double.Parse(weightsElement.Element("pax_count_actual").Value);
-            weights.BagCountActual = double.Parse(weightsElement.Element("bag_count_actual").Value);
-            weights.PaxWeight = double.Parse(weightsElement.Element("pax_weight").Value);
-            weights.BagWeight = double.Parse(weightsElement.Element("bag_weight").Value);
-            weights.FreightAdded = double.Parse(weightsElement.Element("freight_added").Value);
-            weights.Cargo = double.Parse(weightsElement.Element("cargo").Value);
-            weights.Payload = double.Parse(weightsElement.Element("payload").Value);
-            weights.EstimatedZFW = double.Parse(weightsElement.Element("est_zfw").Value);
-            weights.MaxZFW = double.Parse(weightsElement.Element("max_zfw").Value);
-            weights.EstimatedTOW = double.Parse(weightsElement.Element("max_tow").Value);
-            weights.MaxTOW = double.Parse(weightsElement.Element("max_tow").Value);
-            weights.MaxTOWStruct = double.Parse(weightsElement.Element("max_tow_struct").Value);
-            weights.MaxTOWLimitCode = weightsElement.Element("tow_limit_code").Value;
-            weights.EstimatedLDW = double.Parse(weightsElement.Element("est_ldw").Value);
-            weights.MaxLDW = double.Parse(weightsElement.Element("max_ldw").Value);
-            weights.EstimatedRamp = double.Parse(weightsElement.Element("est_ramp").Value);
-
-            Weights = weights;
+            Weights = WeightsBlock.LoadFromXElement(weightsElement);
         } // LoadSimBriefWeights
 
         private static void LoadSimBriefGeneralBlock()
         {
-
-                        if(General != null)
-            {
-                General = null;
-            }
-
-            GeneralBlock general = new GeneralBlock();
-
-            var generalElement = XMLFlightPlan.Root.Element("general");
-            general.Release = byte.Parse(generalElement.Element("release").Value);
-            general.AirlineICAO = generalElement.Element("icao_airline").Value;
-            general.FlightNumber = generalElement.Element("flight_number").Value;
-            general.IsEtops = generalElement.Element("is_etops").Value == "1" ? true : false;
-            general.DxRemarks = generalElement.Element("dx_rmk").Value;
-            general.IsDetailedProfile = generalElement.Element("is_detailed_profile").Value == "1" ? true : false;
-            general.CruiseProfile = generalElement.Element("cruise_profile").Value;
-            general.ClimbProfile = generalElement.Element("climb_profile").Value;
-            general.DescentProfile = generalElement.Element("descent_profile").Value;
-            general.AlternateProfile = generalElement.Element("alternate_profile").Value;
-            general.ReserveProfile = generalElement.Element("reserve_profile").Value;
-            general.CostIndex = double.Parse(generalElement.Element("costindex").Value);
-            general.ContRule = generalElement.Element("cont_rule").Value;
-            general.InitialAltitude = double.Parse(generalElement.Element("initial_altitude").Value);
-            general.StepClimbString = generalElement.Element("stepclimb_string").Value;
-            general.Avg_temp_dev = double.Parse(generalElement.Element("avg_temp_dev").Value);
-            general.AvgTropoPause = double.Parse(generalElement.Element("avg_tropopause").Value);
-            general.AvgWindComp = double.Parse(generalElement.Element("avg_wind_comp").Value);
-            general.AvgWindDirection = double.Parse(generalElement.Element("avg_wind_dir").Value);
-            general.AvgWindSpeed = double.Parse(generalElement.Element("avg_wind_spd").Value);
-            general.GcDistance = double.Parse(generalElement.Element("gc_distance").Value);
-            general.RouteDistance = double.Parse(generalElement.Element("route_distance").Value);
-            general.AirDistance = double.Parse(generalElement.Element("air_distance").Value);
-            general.TotalBurn = double.Parse(generalElement.Element("total_burn").Value);
-            general.CruiseTas = double.Parse(generalElement.Element("cruise_tas").Value);
-            general.CruiseMach = double.Parse(generalElement.Element("cruise_mach").Value);
-            general.Passenger = double.Parse(generalElement.Element("passengers").Value);
-            general.Route = generalElement.Element("route").Value;
-            general.RouteIFPS = generalElement.Element("route_ifps").Value;
-            general.RouteNavigraph = generalElement.Element("route_navigraph").Value;
-            General = general;
+                                                            var generalElement = XMLFlightPlan.Root.Element("general");
+            General = GeneralBlock.LoadFromXElement(generalElement);
         } // LoadSimBriefGeneralBlock
 
         private static void LoadSimBriefAlternateAirports()

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using System.Xml;
+using System.Xml.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FSUIPC;
 
 namespace tfm.Flight_planning.SimBrief
 {
@@ -24,6 +27,36 @@ namespace tfm.Flight_planning.SimBrief
         public string Phonetic { get => _phonetic; set => _phonetic = value; }
         public string Type { get => _type; set => _type = value; }
         public string Message { get => _message; set => _message = value; }
+        #endregion
+
+        #region "public methods"
+        public static List<Atis> LoadFromXElement(IEnumerable<XElement> atisList)
+        {
+
+            var atisElements = new List<Atis>();
+
+            foreach (XElement atisElement in atisList)
+            {
+
+                // Skip empty atis elements.
+                if (atisElement.IsEmpty)
+                {
+                    continue;
+                }
+                Atis atis = new Atis()
+                {
+                    Network = atisElement.Element("network").Value,
+                    Issued = DateTime.TryParse(atisElement.Element("issued").Value, out DateTime issued) ? issued : default,
+                    Message = atisElement.Element("message").Value,
+                    Letter = char.TryParse(atisElement.Element("letter").Value, out char letter) ? letter : default,
+                    Phonetic = atisElement.Element("phonetic").Value,
+                    Type = atisElement.Element("type").Value,
+                };
+
+                atisElements.Add(atis);
+            }
+            return atisElements;
+        }
         #endregion
     }
 }

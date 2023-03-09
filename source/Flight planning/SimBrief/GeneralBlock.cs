@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Xml;
+using System.Xml.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,6 +76,47 @@ namespace tfm.Flight_planning.SimBrief
         public string RouteIFPS { get => _routeIFPS; set => _routeIFPS = value; }
         public string RouteNavigraph { get => _routeNavigraph; set => _routeNavigraph = value; }
 
+        #endregion
+
+        #region "public methods"
+        public static GeneralBlock LoadFromXElement(XElement generalElement)
+        {
+            var general = new GeneralBlock()
+            {
+                Release = byte.TryParse(generalElement.Element("release").Value, out byte release) ? release : default,
+            AirlineICAO = generalElement.Element("icao_airline").Value,
+            FlightNumber = generalElement.Element("flight_number").Value,
+            IsEtops = bool.TryParse(generalElement.Element("is_etops").Value, out bool isEtops)? isEtops : false,
+            DxRemarks = generalElement.Element("dx_rmk").Value,
+            IsDetailedProfile = bool.TryParse(generalElement.Element("is_detailed_profile").Value, out bool isDetailedProfile)? isDetailedProfile : false,
+            CruiseProfile = generalElement.Element("cruise_profile").Value,
+            ClimbProfile = generalElement.Element("climb_profile").Value,
+            DescentProfile = generalElement.Element("descent_profile").Value,
+            AlternateProfile = generalElement.Element("alternate_profile").Value,
+            ReserveProfile = generalElement.Element("reserve_profile").Value,
+            CostIndex = double.TryParse(generalElement.Element("costindex").Value, out double costIndex)? costIndex : -1,
+            ContRule = generalElement.Element("cont_rule").Value,
+            InitialAltitude = double.TryParse(generalElement.Element("initial_altitude").Value, out double initialAltitude)? initialAltitude : -1,
+            StepClimbString = generalElement.Element("stepclimb_string").Value,
+            Avg_temp_dev = double.TryParse(generalElement.Element("avg_temp_dev").Value, out double averageTempDev)? averageTempDev : -1,
+            AvgTropoPause = double.TryParse(generalElement.Element("avg_tropopause").Value, out double averageTropopause)? averageTropopause : -1,
+            AvgWindComp = double.TryParse(generalElement.Element("avg_wind_comp").Value, out double avgWindComp)? avgWindComp : -1,
+            AvgWindDirection = double.TryParse(generalElement.Element("avg_wind_dir").Value, out double averageWindDirection)? averageWindDirection : -1,
+            AvgWindSpeed = double.TryParse(generalElement.Element("avg_wind_spd").Value, out double averageWindSpeed)? averageWindSpeed : -1,
+            GcDistance = double.TryParse(generalElement.Element("gc_distance").Value, out double gcDistance)? gcDistance : -1,
+            RouteDistance = double.TryParse(generalElement.Element("route_distance").Value, out double routeDistance)? routeDistance : -1,
+            AirDistance = double.TryParse(generalElement.Element("air_distance").Value, out double airDistance)? airDistance : -1,
+            TotalBurn = double.TryParse(generalElement.Element("total_burn").Value, out double totalBurn)? totalBurn : -1,
+            CruiseTas = double.TryParse(generalElement.Element("cruise_tas").Value, out double cruiseTAS)? cruiseTAS : -1,
+            CruiseMach = double.TryParse(generalElement.Element("cruise_mach").Value, out double cruiseMach)? cruiseMach : -1,
+            Passenger = double.TryParse(generalElement.Element("passengers").Value, out double passenger)? passenger : -1,
+            Route = generalElement.Element("route").Value,
+            RouteIFPS = generalElement.Element("route_ifps").Value,
+            RouteNavigraph = generalElement.Element("route_navigraph").Value,
+        };
+
+            return general;
+        }
         #endregion
     }
 }

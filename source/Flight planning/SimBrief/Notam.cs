@@ -1,8 +1,11 @@
-﻿using System;
+﻿using System.Xml;
+using System.Xml.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FSUIPC;
 
 namespace tfm.Flight_planning.SimBrief
 {
@@ -58,6 +61,53 @@ namespace tfm.Flight_planning.SimBrief
         public DateTime? DateEffective { get => _dateEffective; set => _dateEffective = value; }
         public DateTime? DateExpire { get => _dateExpire; set => _dateExpire = value; }
         public DateTime? DateModified { get => _dateModified; set => _dateModified = value; }
+        #endregion
+
+        #region "public methods"
+        public static List<Notam> LoadFromXElement(IEnumerable<XElement> notamList)
+        {
+
+            var notams = new List<Notam>();
+
+            foreach (XElement notamElement in notamList)
+            {
+
+                // Skip empty notam elements.
+                if (notamElement.IsEmpty)
+                {
+                    continue;
+                }
+
+                Notam notam = new Notam()
+                {
+                    SourceID = notamElement.Element("source_id").Value,
+                    AccountID = notamElement.Element("account_id").Value,
+                    ID = notamElement.Element("notam_id").Value,
+                    LocationID = notamElement.Element("location_id").Value,
+                    LocationICAO = notamElement.Element("location_icao").Value,
+                    LocationName = notamElement.Element("location_name").Value,
+                    LocationType = notamElement.Element("location_type").Value,
+                    DateCreated = DateTime.TryParse(notamElement.Element("date_created").Value, out DateTime dateCreated) ? dateCreated : default,
+                    DateEffective = DateTime.TryParse(notamElement.Element("date_effective").Value, out DateTime dateEffective) ? dateEffective : default,
+                    DateExpire = DateTime.TryParse(notamElement.Element("date_expire").Value, out DateTime dateExpire) ? dateExpire : default,
+                    IsExpireDateEstimated = bool.TryParse(notamElement.Element("date_expire_is_estimated").Value, out bool isExpireDateEstimated) ? isExpireDateEstimated : false,
+                    DateModified = DateTime.TryParse(notamElement.Element("date_modified").Value, out DateTime dateModified) ? dateModified : default,
+                    Schedule = notamElement.Element("notam_schedule").Value,
+                    HTML = notamElement.Element("notam_html").Value,
+                    Text = notamElement.Element("notam_text").Value,
+                    Raw = notamElement.Element("notam_raw").Value,
+                    Nrc = notamElement.Element("notam_nrc").Value,
+                    Code = notamElement.Element("notam_qcode").Value,
+                    Category = notamElement.Element("notam_qcode_category").Value,
+                    Subject = notamElement.Element("notam_qcode_subject").Value,
+                    Status = notamElement.Element("notam_qcode_status").Value,
+                    IsObstacle = bool.TryParse(notamElement.Element("notam_is_obstacle").Value, out bool isObsticle) ? isObsticle : false,
+                };
+
+                notams.Add(notam);
+            }
+            return notams;
+        }
         #endregion
     }
 }

@@ -61,17 +61,18 @@ namespace tfm.Flight_planning.SimBrief
         public static AirportBlock LoadFromXElement(XElement airportElement, string airportType)
         {
 
-            #region "airport"
+            var atisList = airportElement.Elements("atis");
+            var notamList = airportElement.Elements("notam");
+
+            // Load the airport.
             var airport = new AirportBlock()
             {
                 IcaoCode = airportElement.Element("icao_code").Value,
                 IataCode = airportElement.Element("iata_code").Value,
                 Elevation = int.TryParse(airportElement.Element("elevation").Value, out int elevation) ? elevation : 0,
-
-                                PosLat = new FsLatitude(double.TryParse(airportElement.Element("pos_lat").Value, out double latitude) ? latitude : 0, true),
+                                                PosLat = new FsLatitude(double.TryParse(airportElement.Element("pos_lat").Value, out double latitude) ? latitude : 0, true),
                                                                 PosLong = new FsLongitude(double.TryParse(airportElement.Element("pos_long").Value, out double longitude) ? longitude : 0, true),
-
-                Name = airportElement.Element("name").Value,
+                                                                                Name = airportElement.Element("name").Value,
                 PlanRwy = airportElement.Element("plan_rwy").Value,
                 TransAltitude = int.TryParse(airportElement.Element("trans_alt").Value, out int transAltitude)? transAltitude : 0,
                 TransLevel = int.TryParse(airportElement.Element("trans_level").Value, out int transLevel)? transLevel : 0,
@@ -84,79 +85,14 @@ namespace tfm.Flight_planning.SimBrief
                 TaffTime = DateTime.TryParse(airportElement.Element("taf_time").Value, out DateTime tafTime)? tafTime : default,
                 AirportType = airportType,
             };
-            #endregion
 
-            #region "notams"
-            var notamList = airportElement.Elements("notam");
-            airport.Notams = new List<Notam>();
+            // Load notams for the airport.
+            airport.Notams = Notam.LoadFromXElement(notamList);
 
-            foreach (XElement notamElement in notamList)
-            {
-
-                // Skip empty notam elements.
-                if (notamElement.IsEmpty)
-                {
-                    continue;
-                }
-
-                Notam notam = new Notam()
-                {
-                    SourceID = notamElement.Element("source_id").Value,
-                    AccountID = notamElement.Element("account_id").Value,
-                    ID = notamElement.Element("notam_id").Value,
-                    LocationID = notamElement.Element("location_id").Value,
-                    LocationICAO = notamElement.Element("location_icao").Value,
-                    LocationName = notamElement.Element("location_name").Value,
-                    LocationType = notamElement.Element("location_type").Value,
-                    DateCreated = DateTime.TryParse(notamElement.Element("date_created").Value, out DateTime dateCreated) ? dateCreated : default,
-                    DateEffective = DateTime.TryParse(notamElement.Element("date_effective").Value, out DateTime dateEffective) ? dateEffective : default,
-                    DateExpire = DateTime.TryParse(notamElement.Element("date_expire").Value, out DateTime dateExpire) ? dateExpire : default,
-                    IsExpireDateEstimated = bool.TryParse(notamElement.Element("date_expire_is_estimated").Value, out bool isExpireDateEstimated) ? isExpireDateEstimated : false,
-                    DateModified = DateTime.TryParse(notamElement.Element("date_modified").Value, out DateTime dateModified) ? dateModified : default,
-                    Schedule = notamElement.Element("notam_schedule").Value,
-                    HTML = notamElement.Element("notam_html").Value,
-                    Text = notamElement.Element("notam_text").Value,
-                    Raw = notamElement.Element("notam_raw").Value,
-                    Nrc = notamElement.Element("notam_nrc").Value,
-                    Code = notamElement.Element("notam_qcode").Value,
-                    Category = notamElement.Element("notam_qcode_category").Value,
-                    Subject = notamElement.Element("notam_qcode_subject").Value,
-                    Status = notamElement.Element("notam_qcode_status").Value,
-                    IsObstacle = bool.TryParse(notamElement.Element("notam_is_obstacle").Value, out bool isObsticle) ? isObsticle : false,
-                };
-
-                airport.Notams.Add(notam);
-            }
-
-            #endregion
-
-            #region "atis"
-            var atisList= airportElement.Elements("atis");
-            airport.Atis = new List<Atis>();
-            
-            foreach (XElement atisElement in atisList)
-            {
-
-                // Skip empty atis elements.
-                if (atisElement.IsEmpty)
-                {
-                    continue;
-                }
-                Atis atis = new Atis()
-                {
-                    Network = atisElement.Element("network").Value,
-                    Issued = DateTime.TryParse(atisElement.Element("issued").Value, out DateTime issued) ? issued : default,
-                    Message = atisElement.Element("message").Value,
-                    Letter = char.TryParse(atisElement.Element("letter").Value, out char letter) ? letter : default,
-                    Phonetic = atisElement.Element("phonetic").Value,
-                    Type = atisElement.Element("type").Value,
-                };
-
-                airport.Atis.Add(atis);
-            }
-            #endregion
-
-            return airport;
+            // Load atis elements.
+            // Fully qualify Atis to avoid conflict with the airport property.
+            airport.Atis = SimBrief.Atis.LoadFromXElement(atisList);
+                                                                                   return airport;
         }
         #endregion
     }

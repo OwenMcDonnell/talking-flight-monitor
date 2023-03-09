@@ -105,7 +105,7 @@ namespace tfm.Flight_planning.SimBrief
         public static List<Fix> LoadNavlogFromXElement(XElement navlogElement)
         {
             var navlog = new List<Fix>();
-
+                        
             // Get the navlog.
             foreach(XElement fixElement in navlogElement.Elements())
             {
@@ -151,6 +151,7 @@ namespace tfm.Flight_planning.SimBrief
                 Fir = fixElement.Element("fir").Value,
                 FirUnits = fixElement.Element("fir_units").Value,
                 FirCrossing = fixElement.Element("fir_crossing").Value,
+                WindData = WindLevel.LoadFromXElement(fixElement.Element("wind_data")),
                             };
                 navlog.Add(fix);
             }
