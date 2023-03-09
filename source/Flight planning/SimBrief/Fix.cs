@@ -1,4 +1,6 @@
-﻿using FSUIPC;
+﻿using System.Xml;
+using System.Xml.Linq;
+using FSUIPC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,6 +99,63 @@ namespace tfm.Flight_planning.SimBrief
         public List<WindLevel> WindData { get => _windData; set => _windData = value; }
         public string FirCrossing { get => _firCrossing; set => _firCrossing = value; }
 
+        #endregion
+
+        #region "public methods"
+        public static List<Fix> LoadNavlogFromXElement(XElement navlogElement)
+        {
+            var navlog = new List<Fix>();
+
+            // Get the navlog.
+            foreach(XElement fixElement in navlogElement.Elements())
+            {
+
+                var fix = new Fix()
+                {
+                    Ident = fixElement.Element("ident").Value,
+                    Name = fixElement.Element("name").Value,
+                    Type = fixElement.Element("type").Value,
+                    Frequency = fixElement.Element("frequency").Value,
+                    Latitude = new FsLatitude(double.TryParse(fixElement.Element("pos_lat").Value, out double latitude) ? latitude : default, true),
+                    Longitude = new FsLongitude(double.TryParse(fixElement.Element("pos_long").Value, out double longitude) ? longitude : default, true),
+                    Stage = fixElement.Element("stage").Value,
+                    ViaAirway = fixElement.Element("via_airway").Value,
+                    IsSidOrStar = bool.TryParse(fixElement.Element("is_sid_star").Value, out bool isSidStar) ? isSidStar : false,
+                Distance = int.TryParse(fixElement.Element("distance").Value, out int distance)? distance : default,
+                TrackTrue = int.TryParse(fixElement.Element("track_true").Value, out int trackTrue)? trackTrue : default,
+                TrackMag = int.TryParse(fixElement.Element("track_mag").Value, out  int trackMag)? trackMag : default,
+                HeadingTrue = int.TryParse(fixElement.Element("heading_true").Value, out int headingTrue)? headingTrue : default,
+                HeadingMag = int.TryParse(fixElement.Element("heading_mag").Value, out int headingMag)? headingMag : default,
+                AltitudeFeet = int.TryParse(fixElement.Element("altitude_feet").Value, out int altitudeFeet)? altitudeFeet : default,
+                IndicatedAirSpeed = int.TryParse(fixElement.Element("ind_airspeed").Value, out int ias)? ias : default,
+                TrueAirSpeed = int.TryParse(fixElement.Element("true_airspeed").Value, out int trueAirSpeed)? trueAirSpeed : default,
+                MachSpeed = float.TryParse(fixElement.Element("mach").Value, out float mach)? mach : default,
+                MachThousanths = float.TryParse(fixElement.Element("mach_thousandths").Value, out float machThousandths)? machThousandths : default,
+                WindComponent = int.TryParse(fixElement.Element("wind_component").Value, out int windComponent)? windComponent : default,
+                GroundSpeed = int.TryParse(fixElement.Element("groundspeed").Value, out int groundSpeed)? groundSpeed : default,
+                TimeLeg = int.TryParse(fixElement.Element("time_leg").Value, out int timeLeg)? timeLeg : default,
+                TimeTotal = int.TryParse(fixElement.Element("time_total").Value, out int timeTotal)? timeTotal : default,
+                FuelFlow = int.TryParse(fixElement.Element("fuel_flow").Value, out int fuelFlow)? fuelFlow : default,
+                FuelLeg = int.TryParse(fixElement.Element("fuel_leg").Value, out int fuelLeg)? fuelLeg : default,
+                FuelTotalUsed = int.TryParse(fixElement.Element("fuel_totalused").Value, out int fuelTotalUsed)? fuelTotalUsed : default,
+                FuelMinOnBoard = int.TryParse(fixElement.Element("fuel_min_onboard").Value, out int fuelMinOnboard)? fuelMinOnboard : default,
+                FuelPlanOnBoard = int.TryParse(fixElement.Element("fuel_plan_onboard").Value, out int fuelPlanOnboard)? fuelPlanOnboard : default,
+                Oat = int.TryParse(fixElement.Element("oat").Value, out int oat)? oat : default,
+                OatIsaDev = int.TryParse(fixElement.Element("oat_isa_dev").Value, out int oatIsaDev)? oatIsaDev : default,
+                WindDirection = int.TryParse(fixElement.Element("wind_dir").Value, out int windDirection)? windDirection : default,
+                WindShear = int.TryParse(fixElement.Element("shear").Value, out int windShear)? windShear : default,
+                WindSpeed = int.TryParse(fixElement.Element("wind_spd").Value, out int windSpeed)? windSpeed : default,
+                TropoPauseFeet = int.TryParse(fixElement.Element("tropopause_feet").Value, out int tropoPause)? tropoPause : default,
+                GroundHeight = int.TryParse(fixElement.Element("ground_height").Value, out int groundHeight)? groundHeight : default,
+                Mora = int.TryParse(fixElement.Element("mora").Value, out int mora)? mora : default,
+                Fir = fixElement.Element("fir").Value,
+                FirUnits = fixElement.Element("fir_units").Value,
+                FirCrossing = fixElement.Element("fir_crossing").Value,
+                            };
+                navlog.Add(fix);
+            }
+            return navlog;
+        }
         #endregion
     }
 }
