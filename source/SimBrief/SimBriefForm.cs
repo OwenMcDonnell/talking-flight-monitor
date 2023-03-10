@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Xml;
+using System.Xml.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +20,11 @@ namespace tfm.SimBrief
         public SimBriefForm()
         {
             InitializeComponent();
+            if(FlightPlan.XMLFlightPlan.Root.Element("fetch").Element("status").Value != "Success")
+            {
+                MessageBox.Show("There was a problem downloading your most recent flight plan. Try generating it again, or creating a new one before trying next time.");
+                this.Close();
+            }
             LoadPages();
         }
 

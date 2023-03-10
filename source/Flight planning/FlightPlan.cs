@@ -156,6 +156,8 @@ namespace tfm
         #region "public methods"
         public static async void LoadFromXML()
         {
+
+
             var originTask = Task.Run(() => LoadSimBriefOrigin());
             var destinationTask = Task.Run(() => LoadSimBriefDestination());
             var alternateAirportsTask = Task.Run(() => LoadSimBriefAlternateAirports());
