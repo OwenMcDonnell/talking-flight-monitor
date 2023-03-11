@@ -42,65 +42,38 @@ namespace tfm.SimBrief
             altitudeMenuItem.Checked = navlogColumns.Altitude ? true : false;
             altitudeMenuItem.AccessibleName = navlogColumns.Altitude ? "Hide altitude" : "Show altitude";
             #endregion
-            navlogListView.BeginUpdate();
+            
             navlogListView.Items.Clear();
             navlogListView.Columns.Clear();
-                                       ColumnHeader identColumnHeader = new ColumnHeader("Ident");
-            identColumnHeader.Text = "Ident";
-                identColumnHeader.Width = -2;
-                navlogListView.Columns.Add(identColumnHeader);
-            if (Properties.NavlogColumns.Default.Type)
-            {
-                ColumnHeader typeColumnHeader = new ColumnHeader("Type");
-                typeColumnHeader.Text = "Type";
-                typeColumnHeader.Width = -2;
-                navlogListView.Columns.Add(typeColumnHeader);
-            }
-            if (Properties.NavlogColumns.Default.Name)
-            {
-                ColumnHeader nameColumnHeader = new ColumnHeader("Name");
-                nameColumnHeader.Text = "Name";
-                nameColumnHeader.Width = -2;
-                navlogListView.Columns.Add(nameColumnHeader);
-            }
-            if (Properties.NavlogColumns.Default.Distance)
-            {
-                ColumnHeader distanceColumnHeader = new ColumnHeader("Distance");
-                distanceColumnHeader.Text = "Distance";
-                distanceColumnHeader.Width = -2;
-                navlogListView.Columns.Add(distanceColumnHeader);
-            }
-            if (Properties.NavlogColumns.Default.Altitude)
-            {
-                ColumnHeader altitudeColumnHeader = new ColumnHeader("Altitude");
-                altitudeColumnHeader.Text = "Altitude";
-                altitudeColumnHeader.Width = -2;
-                navlogListView.Columns.Add(altitudeColumnHeader);
-            }
-
+                                                                                   
+            // Ident is a required column.
+            navlogListView.Columns.Add(CreateColumnHeader("Ident", -2));
+            
+            // Optional columns.
+            _ = navlogColumns.Type ? navlogListView.Columns.Add(CreateColumnHeader("Type", -2)) : default;
+            _ = navlogColumns.Name ? navlogListView.Columns.Add(CreateColumnHeader("Name", -2)) : default;
+            _ = navlogColumns.Distance ? navlogListView.Columns.Add(CreateColumnHeader("Distance", -2)) : default;
+            _ = navlogColumns.Altitude ? navlogListView.Columns.Add(CreateColumnHeader("Altitude", -2)) : default;
+            navlogListView.BeginUpdate();
             foreach (Fix entry in FlightPlan.Navlog)
             {
                 var item = new ListViewItem(entry.Ident);
-                if (Properties.NavlogColumns.Default.Type)
-                {
-                    item.SubItems.Add(entry.Type);
-                }
-                if (Properties.NavlogColumns.Default.Name)
-                {
-                    item.SubItems.Add(entry.Name);
-                }
-                if (Properties.NavlogColumns.Default.Distance)
-                {
-                    item.SubItems.Add(entry.Distance.ToString());
-                }
-                if (Properties.NavlogColumns.Default.Altitude)
-                {
-                    item.SubItems.Add(entry.AltitudeFeet.ToString());
-                }
+                _ = navlogColumns.Type ? item.SubItems.Add(entry.Type) : default;
+                _ = navlogColumns.Name ? item.SubItems.Add(entry.Name) : default;
+                _ = navlogColumns.Distance ? item.SubItems.Add(entry.Distance.ToString()) : default;
+                _ = navlogColumns.Altitude ? item.SubItems.Add(entry.AltitudeFeet.ToString()) : default;
                 navlogListView.Items.Add(item);
             }
             navlogListView.EndUpdate();
+                    }
 
+        private ColumnHeader CreateColumnHeader(string text, int width)
+        {
+            return new ColumnHeader()
+            {
+                Text = text,
+                Width = width,
+            };
         }
 
         private void altitudeMenuItem_CheckStateChanged(object sender, EventArgs e)
