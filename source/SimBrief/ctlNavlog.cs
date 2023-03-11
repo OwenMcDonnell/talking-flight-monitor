@@ -25,24 +25,23 @@ namespace tfm.SimBrief
 
         private async  void ctlNavlog_Load(object sender, EventArgs e)
         {
-            if (Properties.NavlogColumns.Default.Type)
-            {
-                typeMenuItem.Checked = true;
-                typeMenuItem.AccessibleName = "Hide type";
-            }
-            else
-            {
-                typeMenuItem.Checked = false;
-                typeMenuItem.AccessibleName = "Show type";
-            }
-            distanceMenuItem.Checked = Properties.NavlogColumns.Default.Distance;
-            altitudeMenuItem.Checked = Properties.NavlogColumns.Default.Altitude;
-            nameMenuItem.Checked = Properties.NavlogColumns.Default.Name;
-            LoadNavlogListView();
+                        LoadNavlogListView();
                     }
 
         private async void LoadNavlogListView()
         {
+            var navlogColumns = Properties.NavlogColumns.Default;
+
+            #region "Context menu"
+            typeMenuItem.Checked = navlogColumns.Type ? true : false;
+            typeMenuItem.AccessibleName = navlogColumns.Type ? "Hide type" : "Show type";
+            nameMenuItem.Checked = navlogColumns.Name ? true : false;
+            nameMenuItem.AccessibleName = navlogColumns.Name ? "Hide name" : "Show name";
+            distanceMenuItem.Checked = navlogColumns.Distance ? true : false;
+            distanceMenuItem.AccessibleName = navlogColumns.Distance ? "Hide distance" : "Show distance";
+            altitudeMenuItem.Checked = navlogColumns.Altitude ? true : false;
+            altitudeMenuItem.AccessibleName = navlogColumns.Altitude ? "Hide altitude" : "Show altitude";
+            #endregion
             navlogListView.BeginUpdate();
             navlogListView.Items.Clear();
             navlogListView.Columns.Clear();
