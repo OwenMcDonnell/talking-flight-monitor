@@ -26,7 +26,8 @@ namespace tfm.SimBrief
         private async  void ctlNavlog_Load(object sender, EventArgs e)
         {
                         LoadNavlogListView();
-                    }
+            SetMenuState();
+                               }
 
         private async void LoadNavlogListView()
         {
@@ -62,6 +63,7 @@ namespace tfm.SimBrief
                 _ = navlogColumns.Name ? item.SubItems.Add(entry.Name) : default;
                 _ = navlogColumns.Distance ? item.SubItems.Add(entry.Distance.ToString()) : default;
                 _ = navlogColumns.Altitude ? item.SubItems.Add(entry.AltitudeFeet.ToString()) : default;
+                item.Tag = (object)entry;
                 navlogListView.Items.Add(item);
             }
             navlogListView.EndUpdate();
@@ -138,6 +140,26 @@ namespace tfm.SimBrief
             }
             Properties.NavlogColumns.Default.Save();
             LoadNavlogListView();
+        }
+
+        private void navlogListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetMenuState();
+                    }
+
+        private void SetMenuState()
+        {
+            if (navlogListView.SelectedItems.Count > 0)
+            {
+                moreDetailsMenuItem.Enabled = true;
+                windDataMenuItem.Enabled = true;
+            }
+            else
+            {
+                windDataMenuItem.Enabled = false;
+                moreDetailsMenuItem.Enabled = false;
+            }
+
         }
     }
 }

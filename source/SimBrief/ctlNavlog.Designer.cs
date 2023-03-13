@@ -36,6 +36,8 @@
             this.nameMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distanceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altitudeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moreDetailsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windDataMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navlogContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +52,7 @@
             this.navlogListView.TabIndex = 0;
             this.navlogListView.UseCompatibleStateImageBehavior = false;
             this.navlogListView.View = System.Windows.Forms.View.Details;
+            this.navlogListView.SelectedIndexChanged += new System.EventHandler(this.navlogListView_SelectedIndexChanged);
             // 
             // navlogContextMenu
             // 
@@ -57,9 +60,11 @@
             this.navlogContextMenu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navlogContextMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.navlogContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.columsMenuItem});
+            this.columsMenuItem,
+            this.moreDetailsMenuItem,
+            this.windDataMenuItem});
             this.navlogContextMenu.Name = "navlogContextMenu";
-            this.navlogContextMenu.Size = new System.Drawing.Size(191, 44);
+            this.navlogContextMenu.Size = new System.Drawing.Size(347, 124);
             // 
             // columsMenuItem
             // 
@@ -70,7 +75,7 @@
             this.distanceMenuItem,
             this.altitudeMenuItem});
             this.columsMenuItem.Name = "columsMenuItem";
-            this.columsMenuItem.Size = new System.Drawing.Size(190, 40);
+            this.columsMenuItem.Size = new System.Drawing.Size(346, 40);
             this.columsMenuItem.Text = "Columns";
             // 
             // typeMenuItem
@@ -105,6 +110,22 @@
             this.altitudeMenuItem.Text = "&Altitude";
             this.altitudeMenuItem.CheckStateChanged += new System.EventHandler(this.altitudeMenuItem_CheckStateChanged);
             // 
+            // moreDetailsMenuItem
+            // 
+            this.moreDetailsMenuItem.AccessibleName = "More details...";
+            this.moreDetailsMenuItem.Name = "moreDetailsMenuItem";
+            this.moreDetailsMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.moreDetailsMenuItem.Size = new System.Drawing.Size(346, 40);
+            this.moreDetailsMenuItem.Text = "More &details...";
+            // 
+            // windDataMenuItem
+            // 
+            this.windDataMenuItem.AccessibleName = "Wind data...";
+            this.windDataMenuItem.Name = "windDataMenuItem";
+            this.windDataMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.windDataMenuItem.Size = new System.Drawing.Size(346, 40);
+            this.windDataMenuItem.Text = "&Wind data";
+            // 
             // ctlNavlog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
@@ -132,5 +153,7 @@
         private System.Windows.Forms.ToolStripMenuItem nameMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distanceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altitudeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moreDetailsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windDataMenuItem;
     }
 }
