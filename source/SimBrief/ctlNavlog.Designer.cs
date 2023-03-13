@@ -64,7 +64,7 @@
             this.moreDetailsMenuItem,
             this.windDataMenuItem});
             this.navlogContextMenu.Name = "navlogContextMenu";
-            this.navlogContextMenu.Size = new System.Drawing.Size(347, 124);
+            this.navlogContextMenu.Size = new System.Drawing.Size(347, 157);
             // 
             // columsMenuItem
             // 
@@ -117,6 +117,7 @@
             this.moreDetailsMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.moreDetailsMenuItem.Size = new System.Drawing.Size(346, 40);
             this.moreDetailsMenuItem.Text = "More &details...";
+            this.moreDetailsMenuItem.Click += new System.EventHandler(this.moreDetailsMenuItem_Click);
             // 
             // windDataMenuItem
             // 

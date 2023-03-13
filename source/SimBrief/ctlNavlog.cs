@@ -1,4 +1,5 @@
-﻿using tfm.Flight_planning.SimBrief;
+﻿using DavyKager;
+using tfm.Flight_planning.SimBrief;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace tfm.SimBrief
 
         private async  void ctlNavlog_Load(object sender, EventArgs e)
         {
+            Tolk.Load();
                         LoadNavlogListView();
             SetMenuState();
                                }
@@ -161,5 +163,30 @@ namespace tfm.SimBrief
             }
 
         }
+
+        private void moreDetailsMenuItem_Click(object sender, EventArgs e)
+        {
+            if (navlogListView.SelectedItems.Count > 0)
+            {
+                var selectedWaypoint = (Fix)navlogListView.SelectedItems[0].Tag;
+                foreach (Form f in Application.OpenForms)
+                {
+                    if (f is SimBrief.Forms.WaypointMoreDetails)
+                    {
+                        Tolk.Output("The more details window is already open. Close it before selecting another waypoint.");
+                    }
+                    else
+                    {
+                        var md = new SimBrief.Forms.WaypointMoreDetails(selectedWaypoint);
+                        md.ShowDialog();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Tolk.Output("Choose a waypoint first.");
+           }
+            }
+        }
     }
-}

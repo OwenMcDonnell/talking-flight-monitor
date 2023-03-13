@@ -1196,6 +1196,12 @@
     <Compile Include="SimBrief\ctlNavlog.Designer.cs">
       <DependentUpon>ctlNavlog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimBrief\Forms\WaypointMoreDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimBrief\Forms\WaypointMoreDetails.Designer.cs">
+      <DependentUpon>WaypointMoreDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimBrief\SimBriefForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1795,6 +1801,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SimBrief\ctlNavlog.resx">
       <DependentUpon>ctlNavlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimBrief\Forms\WaypointMoreDetails.resx">
+      <DependentUpon>WaypointMoreDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimBrief\SimBriefForm.resx">
       <DependentUpon>SimBriefForm.cs</DependentUpon>
