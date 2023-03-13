@@ -65,7 +65,7 @@ namespace tfm.SimBrief
                 navlogListView.Items.Add(item);
             }
             navlogListView.EndUpdate();
-                    }
+                                                                    }
 
         private ColumnHeader CreateColumnHeader(string text, int width)
         {

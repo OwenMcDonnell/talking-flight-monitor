@@ -109,5 +109,36 @@ namespace tfm
                 }
                                                                                                             } // open connection.
         } // LoadAirportsDatabase
+
+        public static string AddSpacesToMixedCaseStringAndLowercaseFirstChar(string mixedCaseString)
+        {
+            string result = "";
+            bool isFirstCharOfWord = true;
+            for (int i = 0; i < mixedCaseString.Length; i++)
+            {
+                char currentChar = mixedCaseString[i];
+                if (currentChar == '_')
+                {
+                    result += " "; // replace underscore with a space
+                    isFirstCharOfWord = true;
+                }
+                else if (i > 0 && char.IsUpper(currentChar))
+                {
+                    if (!isFirstCharOfWord)
+                    {
+                        result += " ";
+                    }
+                    result += char.ToLower(currentChar);
+                    isFirstCharOfWord = false;
+                }
+                else
+                {
+                    result += isFirstCharOfWord ? char.ToUpper(currentChar) : currentChar;
+                    isFirstCharOfWord = false;
+                }
+            }
+            return result;
+        }
+
     }
 }
