@@ -23,6 +23,10 @@ namespace tfm.SimBrief.Forms
             InitializeComponent();
 
             this.waypoint = waypoint;
+            this.Text = $"{waypoint.Name} - More details";
+            waypointDetailsTextBox.AccessibleName = $"{waypoint.Name} details.";
+            waypointDetailsTextBox.SelectionStart = waypointDetailsTextBox.TextLength - waypointDetailsTextBox.SelectionLength;
+            
         }
 
         private void WaypointMoreDetails_Load(object sender, EventArgs e)
@@ -31,7 +35,24 @@ namespace tfm.SimBrief.Forms
             // Dynamically get the properties from the Fix object.
             foreach (PropertyInfo property in this.waypoint.GetType().GetProperties())
             {
-                waypointDetailsTextBox.Text += $"{utility.AddSpacesToMixedCaseStringAndLowercaseFirstChar(property.Name)}: {property.GetValue(this.waypoint, null)}\r\n";
+                var propertyValue = property.GetValue(this.waypoint, null);
+                // Skip properties already displayed in the navlog listview.
+                if (property.Name == "Ident" || property.Name == "Type" || property.Name == "Name" || property.Name == "Distance" || property.Name == "AltitudeFeet" || property.Name == "WindData")
+                {
+                    continue;
+                }
+                // if property values are empty, skip the property.
+                if(propertyValue == null || string.IsNullOrEmpty(propertyValue.ToString()))
+                {
+                    continue;
+                }
+
+                // round mach speed.
+                if(property.Name == "MachSpeed" || property.Name == "MachThousanths")
+                {
+                    propertyValue =(float)Math.Round((double)propertyValue, 2);
+                }
+                waypointDetailsTextBox.Text += $"{utility.AddSpacesToMixedCaseStringAndLowercaseFirstChar(property.Name)}: {propertyValue}\r\n";
             }
 
         }
@@ -43,7 +64,7 @@ namespace tfm.SimBrief.Forms
 
         private void waypointDetailsTextBox_Enter(object sender, EventArgs e)
         {
-            waypointDetailsTextBox.SelectionLength = 0;
+            
         }
     }
 }

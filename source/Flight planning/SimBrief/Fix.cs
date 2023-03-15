@@ -90,7 +90,7 @@ namespace tfm.Flight_planning.SimBrief
         public int WindDirection { get => _windDirection; set => _windDirection = value; }
         public int WindSpeed { get => _windSpeed; set => _windSpeed = value; }
         public int WindShear { get => _windShear; set => _windShear = value; }
-        public int TropoPauseFeet { get => _tropoPauseFeet; set => _tropoPauseFeet = value; }
+        public int TropopauseFeet { get => _tropoPauseFeet; set => _tropoPauseFeet = value; }
         public int GroundHeight { get => _groundHeight; set => _groundHeight = value; }
         public int Mora { get => _mora; set => _mora = value; }
         public string Fir { get => _fir; set => _fir = value; }
@@ -145,7 +145,7 @@ namespace tfm.Flight_planning.SimBrief
                 WindDirection = int.TryParse(fixElement.Element("wind_dir").Value, out int windDirection)? windDirection : default,
                 WindShear = int.TryParse(fixElement.Element("shear").Value, out int windShear)? windShear : default,
                 WindSpeed = int.TryParse(fixElement.Element("wind_spd").Value, out int windSpeed)? windSpeed : default,
-                TropoPauseFeet = int.TryParse(fixElement.Element("tropopause_feet").Value, out int tropoPause)? tropoPause : default,
+                TropopauseFeet = int.TryParse(fixElement.Element("tropopause_feet").Value, out int tropoPause)? tropoPause : default,
                 GroundHeight = int.TryParse(fixElement.Element("ground_height").Value, out int groundHeight)? groundHeight : default,
                 Mora = int.TryParse(fixElement.Element("mora").Value, out int mora)? mora : default,
                 Fir = fixElement.Element("fir").Value,
