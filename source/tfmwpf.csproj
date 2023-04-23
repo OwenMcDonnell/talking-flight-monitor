@@ -74,6 +74,9 @@
     <None Update="data\cities1000.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="nvdaControllerClient64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

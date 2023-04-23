@@ -1,0 +1,24 @@
+﻿<Window x:Class="tfmwpf.firstRunHelp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfmwpf"
+        mc:Ignorable="d"
+        Title="firstRunHelp" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox IsReadOnly="True">
+            Welcome to Talking Flight Monitor (TFM)!
+TFM is controlled entirely through keyboard commands. All commands start with either the left or right Square Bracket keys.
+Left Square Bracket: autopilot commands
+Right square bracket: aircraft information
+Right Bracket, then Question Mark: Turns on help mode, pressing any command will read it's function.
+Right Bracket, then Ctrl+K: keyboard manager";
+
+        </TextBox>
+    </Grid>
+</Window>

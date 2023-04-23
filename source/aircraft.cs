@@ -279,7 +279,16 @@ namespace tfm
 
         public static void InitOffsets()
         {
-            // forces static fields to be initialised.
+            // force the offsets to be initialized
+            // this is necessary because the offsets are static and will only be initialized once.
+            // if the offsets are not initialized, the first time they are used, they will be initialized
+            // on a different thread, which will cause an exception.
+            // this is a workaround for that problem.
+            var dummy = AttitudeBank.Value;
+
+
+
+            
         }
         public static double ConvertRadiansToDegrees(double radians)
         {

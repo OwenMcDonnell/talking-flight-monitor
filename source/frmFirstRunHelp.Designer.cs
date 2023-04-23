@@ -28,93 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtHelpMessage = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.chkDoNotShow = new System.Windows.Forms.CheckBox();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.SuspendLayout();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            txtHelpMessage = new TextBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            chkDoNotShow = new CheckBox();
+            btnOk = new Button();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.txtHelpMessage);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(606, 412);
-            this.flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel1.Controls.Add(txtHelpMessage);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Margin = new Padding(7);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(606, 412);
+            flowLayoutPanel1.TabIndex = 0;
             // 
             // txtHelpMessage
             // 
-            this.txtHelpMessage.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtHelpMessage.Location = new System.Drawing.Point(3, 3);
-            this.txtHelpMessage.Multiline = true;
-            this.txtHelpMessage.Name = "txtHelpMessage";
-            this.txtHelpMessage.ReadOnly = true;
-            this.txtHelpMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtHelpMessage.Size = new System.Drawing.Size(600, 300);
-            this.txtHelpMessage.TabIndex = 0;
+            txtHelpMessage.Cursor = Cursors.IBeam;
+            txtHelpMessage.Location = new Point(3, 3);
+            txtHelpMessage.Multiline = true;
+            txtHelpMessage.Name = "txtHelpMessage";
+            txtHelpMessage.ReadOnly = true;
+            txtHelpMessage.ScrollBars = ScrollBars.Vertical;
+            txtHelpMessage.Size = new Size(600, 300);
+            txtHelpMessage.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.chkDoNotShow);
-            this.flowLayoutPanel2.Controls.Add(this.btnOk);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 309);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 100);
-            this.flowLayoutPanel2.TabIndex = 1;
+            flowLayoutPanel2.Controls.Add(chkDoNotShow);
+            flowLayoutPanel2.Controls.Add(btnOk);
+            flowLayoutPanel2.Location = new Point(3, 309);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(200, 100);
+            flowLayoutPanel2.TabIndex = 1;
             // 
             // chkDoNotShow
             // 
-            this.chkDoNotShow.AutoSize = true;
-            this.chkDoNotShow.Location = new System.Drawing.Point(3, 3);
-            this.chkDoNotShow.Name = "chkDoNotShow";
-            this.chkDoNotShow.Size = new System.Drawing.Size(378, 37);
-            this.chkDoNotShow.TabIndex = 0;
-            this.chkDoNotShow.Text = "Don\'t show this message again";
-            this.chkDoNotShow.UseVisualStyleBackColor = true;
-            this.chkDoNotShow.CheckedChanged += new System.EventHandler(this.chkDoNotShow_CheckedChanged);
+            chkDoNotShow.AutoSize = true;
+            chkDoNotShow.Location = new Point(3, 3);
+            chkDoNotShow.Name = "chkDoNotShow";
+            chkDoNotShow.Size = new Size(378, 37);
+            chkDoNotShow.TabIndex = 0;
+            chkDoNotShow.Text = "Don't show this message again";
+            chkDoNotShow.UseVisualStyleBackColor = true;
+            chkDoNotShow.CheckedChanged += chkDoNotShow_CheckedChanged;
             // 
             // btnOk
             // 
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(3, 46);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
+            btnOk.DialogResult = DialogResult.OK;
+            btnOk.Location = new Point(3, 46);
+            btnOk.Name = "btnOk";
+            btnOk.Size = new Size(75, 23);
+            btnOk.TabIndex = 1;
+            btnOk.Text = "Ok";
+            btnOk.UseVisualStyleBackColor = true;
             // 
             // frmFirstRunHelp
             // 
-            this.AcceptButton = this.btnOk;
-            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Dialog;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1924, 1050);
-            this.ControlBox = false;
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.Name = "frmFirstRunHelp";
-            this.ShowInTaskbar = false;
-            this.Text = "TFM First Run";
-            this.Load += new System.EventHandler(this.frmFirstRunHelp_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton = btnOk;
+            AccessibleRole = AccessibleRole.Dialog;
+            AutoScaleDimensions = new SizeF(15F, 33F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(1924, 1050);
+            ControlBox = false;
+            Controls.Add(flowLayoutPanel1);
+            Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(7);
+            Name = "frmFirstRunHelp";
+            ShowInTaskbar = false;
+            Text = "TFM First Run";
+            Load += frmFirstRunHelp_Load;
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

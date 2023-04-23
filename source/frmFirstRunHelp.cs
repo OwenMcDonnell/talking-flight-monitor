@@ -26,14 +26,15 @@ Right square bracket: aircraft information
 Right Bracket, then Question Mark: Turns on help mode, pressing any command will read it's function.
 Right Bracket, then Ctrl+K: keyboard manager";
             txtHelpMessage.SelectionStart = 0;
-            
+
         }
 
-private void chkDoNotShow_CheckedChanged(object sender, EventArgs e)
+        private void chkDoNotShow_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkDoNotShow.Checked) {
+            if (chkDoNotShow.Checked)
+            {
                 Properties.Settings.Default.ShowFirstRunDialog = false;
-                    }
+            }
         }
     }
 }

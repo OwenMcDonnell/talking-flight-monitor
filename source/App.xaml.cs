@@ -1,6 +1,7 @@
 ﻿using DavyKager;
 using FSUIPC;
 using NLog;
+using NLog.Config;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +33,7 @@ namespace tfm
         // get a logger object for this class
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         // set up timers
-        System.Timers.Timer TimerMain = new(100);
+        System.Timers.Timer TimerMain = new(500);
         System.Timers.Timer TimerConnection = new(1000);
         System.Timers.Timer TimerLowPriority = new(1000);
 
@@ -42,7 +43,7 @@ namespace tfm
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-
+            
             if (e.Args.Length == 1)
             {
                 if (e.Args[0] == "/debug")
@@ -117,10 +118,12 @@ namespace tfm
 
                 // If there was no problem, stop this timer and start the main timer
                 this.TimerConnection.Stop();
-                Aircraft.InitOffsets();
+                
                 // this.SetCommandKeyMenuText();
                 this.TimerMain.Elapsed += TimerMain_Tick;
                 this.TimerMain.AutoReset = true;
+                // Initialize aircraft offsets
+                Aircraft.InitOffsets();
                 this.TimerMain.Start();
                 this.TimerLowPriority.Elapsed += TimerLowPriority_Tick;
                 this.TimerLowPriority.AutoReset = true;
