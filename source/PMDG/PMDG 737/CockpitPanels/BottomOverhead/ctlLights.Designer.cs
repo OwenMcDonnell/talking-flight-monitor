@@ -304,9 +304,9 @@
             this.Controls.Add(this.lightsFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.Name = "ctlLights";
-            this.Size = new System.Drawing.Size(1868, 134);
+            this.Size = new System.Drawing.Size(1600, 134);
             this.Load += new System.EventHandler(this.ctlLights_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlLights_VisibleChanged);
             this.lightsFlowLayoutPanel.ResumeLayout(false);

@@ -96,7 +96,7 @@
             this.panelBrightnessLabel.Name = "panelBrightnessLabel";
             this.panelBrightnessLabel.Size = new System.Drawing.Size(95, 33);
             this.panelBrightnessLabel.TabIndex = 2;
-            this.panelBrightnessLabel.Text = "&Ped brt";
+            this.panelBrightnessLabel.Text = "Ped &brt";
             // 
             // panelBrightnessTextBox
             // 

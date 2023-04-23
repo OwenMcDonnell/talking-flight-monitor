@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
     public partial class navigationBox : Form
     {
 
-        private Timer navigationTimer = new Timer();
+        private System.Windows.Forms.Timer navigationTimer = new System.Windows.Forms.Timer();
 
         public navigationBox()
         {

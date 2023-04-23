@@ -38,9 +38,7 @@ using System.CodeDom;
 using System.Speech.Synthesis;
 using System.ComponentModel.Design;
 using tfm.Keyboard_manager;
-// using Microsoft.CognitiveServices.Speech;
-// using Microsoft.CognitiveServices.Speech.Audio;
-
+using tfm.copilot;
 namespace tfm
 {
     /// <summary>
@@ -63,8 +61,8 @@ namespace tfm
         private SineWaveProvider pitchSineProvider;
 
 
-
         // load command help resources
+
         private ResourceManager rm = new ResourceManager(typeof(commandHelp));
 
         // timers
@@ -75,6 +73,9 @@ namespace tfm
         private static System.Timers.Timer flightFollowingTimer;
         private static readonly System.Timers.Timer ilsTimer = new System.Timers.Timer(TimeSpan.FromSeconds(double.Parse(Properties.Settings.Default.ILSAnnouncementTimeInterval)).TotalMilliseconds);
         private static readonly System.Timers.Timer waypointTransitionTimer = new System.Timers.Timer(5000);
+        private static readonly System.Timers.Timer weatherTimer = new System.Timers.Timer(TimeSpan.FromMinutes(Properties.Weather.Default.weather_refresh_rate).TotalMilliseconds);
+        private System.Timers.Timer cloudTrackingTimer = new System.Timers.Timer(300);
+        private string oldCloudType = string.Empty;
         private double HdgRight;
         private double HdgLeft;
 
@@ -124,7 +125,12 @@ namespace tfm
         private bool groundSpeedActive;
         private bool takeOffAssistantActive = false;
         private bool isTakeoffComplete = true; // Always true unless takeoff assist is Active.
-        private double OldElevatorTrim = 0;
+        bool isCloudTrackingEnabled = false;
+        bool inCloudDescending = false;
+        bool wasInCloudDescending = false;
+        bool inCloudAscending = false;
+        bool wasInCloudAscending = false;        
+                private double OldElevatorTrim = 0;
         private bool TrimEnabled = true;
                 private bool FlapsMoving;
         private bool pmdg777SpeedBrakeMoving = false;
@@ -266,7 +272,7 @@ namespace tfm
             var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
             HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
             HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            // HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
+            //HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
 
             runwayGuidanceEnabled = false;
 
@@ -275,6 +281,9 @@ namespace tfm
             GroundSpeedTimer.Elapsed += onGroundSpeedTimerTick;
             ilsTimer.Elapsed += onILSTimerTick;
             waypointTransitionTimer.Elapsed += onWaypointTransitionTimerTick;
+            weatherTimer.Elapsed += OnWeatherRefreshTimerTick;
+            weatherTimer.Start();
+            cloudTrackingTimer.Elapsed += CloudTrackingTimerTick;
             WarningsTimer.Elapsed += WarningsTimer_Tick;
             // start the flight following timer if it is enabled in settings
             SetupFlightFollowing();
@@ -284,19 +293,29 @@ namespace tfm
                 altitudeCalloutFlags.Add(i, false);
             }
             pmdg = new PMDGPanelUpdateEvent();
-            
+
+            // Setup SimBrief support.
+            if (Properties.Settings.Default.IsSimBriefUserIDValid)
+            {
+                logger.Debug("Starting SimBrief support.");
+                Output(isGauge: false, output: "Starting SimBrief support.");
+                FlightPlan.LoadFromXML();
+            }
+            else
+            {
+                logger.Debug("SimBrief support not loaded");
+                Output(isGauge: false, output: "SimBrief support not loaded.");
+            }
            
         }
 
         private void RunTest(object sender, HotkeyEventArgs e)
         {
             e.Handled = true;
-            Tolk.Output(FSUIPCConnection.ReadLVar("switch_28_73X").ToString("f2"));
-             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_APU_GEN1_SWITCH, Aircraft.ClkL);
-
-
+            Preflight737 pf = new Preflight737();
 
         }
+
 
 
         /*private void SetupAzureSpeech()
@@ -477,7 +496,7 @@ namespace tfm
                         }
                     }
 
-                    //ReadPMDG747Toggles();
+                    ReadPMDG747Toggles();
                     ReadPmdgFMCMessage();
                 } // End read 747 toggles.
                 if (PMDG777Detected)
@@ -1037,8 +1056,16 @@ namespace tfm
             }
         }
 
+        private void OnWeatherRefreshTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
+        {
+            utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            utility.CurrentWeather.Name = "Weather auto refresh";
+            utility.WeatherLastUpdated = elapsedEventArgs.SignalTime;
+                                }
+
         private void onILSTimerTick(object sender, ElapsedEventArgs e)
         {
+            FlightPlan.Destination.SetReferenceLocation(AirportComponents.Runways);
             double gsNeedle = (double)Aircraft.Nav1GSNeedle.Value;
             double locNeedle = (double)Aircraft.Nav1LocNeedle.Value;
             double locPercent;
@@ -1812,6 +1839,11 @@ else              if (PMDG777Detected)
 
             switch (Name)
             {
+                case "ap_Aircraft_Flows":
+                    frmPMDG737Flows frmFlows = new frmPMDG737Flows();
+                    frmFlows.ShowDialog();
+                    break;
+
                 case "toggle_help_mode":
                     // enabling command help is handled here. Since command functions are bypassed when help is on, we handle turning it off in the key pressed event.
                     if (helpModeEnabled == false)
@@ -1835,20 +1867,21 @@ else              if (PMDG777Detected)
                     if (PMDG737Detected)
                     {
                         gaugeValue = PMDG737Aircraft.GetMCPAltitudeComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     } // PMDG737
-                    if (PMDG777Detected)
+else                   if (PMDG777Detected)
                     {
                         gaugeValue = PMDG777Aircraft.GetMCPAltitudeComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     }
                     else
                     {
 
                         gaugeValue = Autopilot.ApAltitude.ToString();
                         if (Autopilot.ApAltitudeLock) gaugeValue = " hold " + gaugeValue;
+                        Output(gaugeName, gaugeValue, isGauge);
                     }
-
-                    Output(gaugeName, gaugeValue, isGauge);
-                    break;
+                                                            break;
                 case "ap_Set_Altitude":
                     if (PMDG737Detected)
                     {
@@ -1862,7 +1895,18 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowAltitudeBox();
                         }
                     } // PMDG 737
-                    else if (PMDG777Detected)
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["altitude"].Visible)
+                        {
+                            Output(isGauge: false, output: "The altitude box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowAltitudeBox();
+                        }
+                    }
+                                        else if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["altitude"].Visible)
                         {
@@ -1893,8 +1937,18 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowNavigationBox();
                         }
                     }
-
-                    if (PMDG777Detected)
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["navigation"].Visible)
+                        {
+                            Output(isGauge: false, output: "The MCP flight controls window is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowNavigationBox();
+                        }
+                    }
+else                    if (PMDG777Detected)
                     {
                         if (PMDG777Aircraft.McpComponents["navigation"].Visible)
                         {
@@ -1919,18 +1973,20 @@ else              if (PMDG777Detected)
                     if (PMDG737Detected)
                     {
                         gaugeValue = PMDG737Aircraft.GetMCPHeadingComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     } // PMDG 737
-                    if (PMDG777Detected)
+else                    if (PMDG777Detected)
                     {
                         gaugeValue = PMDG777Aircraft.GetMCPHeadingComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     }
                     else
                     {
                         gaugeValue = Autopilot.ApHeading.ToString();
                         if (Autopilot.ApHeadingLock) gaugeValue = " hold " + gaugeValue;
+                        Output(gaugeName, gaugeValue, isGauge);
                     } // Freeware
-                    Output(gaugeName, gaugeValue, isGauge);
-                    break;
+                                        break;
                 case "ap_Set_Heading":
                     if (PMDG737Detected)
                     {
@@ -1941,6 +1997,17 @@ else              if (PMDG777Detected)
                         else
                         {
                             PMDG737Aircraft.ShowHeadingBox();
+                        }
+                    }
+else                    if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["heading"].Visible)
+                        {
+                            Output(isGauge: false, output: "The heading box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowHeadingBox();
                         }
                     }
                     else if (PMDG777Detected)
@@ -1969,11 +2036,13 @@ else              if (PMDG777Detected)
                         if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Indicated)
                         {
                             gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
+                            Output(isGauge: false, output: gaugeValue);
                         }
                     } // PMDG737
-                    if (PMDG777Detected)
+else                    if (PMDG777Detected)
                     {
                         gaugeValue = PMDG777Aircraft.GetMCPSpeedComponents();
+                        Output(isGauge: false, output: gaugeValue);
                     }
 
                     // freeware.
@@ -1981,10 +2050,9 @@ else              if (PMDG777Detected)
                     {
                         gaugeValue = Autopilot.ApAirspeed.ToString();
                         if (Autopilot.ApAirspeedHold) gaugeValue = " hold " + gaugeValue;
+                        Output(gaugeName, gaugeValue, isGauge);
                     } // freeware
-
-                    Output(gaugeName, gaugeValue, isGauge);
-                    break;
+                                                            break;
 
                 case "ap_Set_Airspeed":
                     if (PMDG737Detected)
@@ -1998,6 +2066,17 @@ else              if (PMDG777Detected)
                             PMDG737Aircraft.ShowSpeedBox();
                         }
                     }
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["speed"].Visible)
+                        {
+                            Output(isGauge: false, output: "The speed box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowSpeedBox();
+                        }
+                    } // PMDG747
                     else if (PMDG777Detected)
                     {
 
@@ -2026,6 +2105,7 @@ else              if (PMDG777Detected)
                         if (PMDG737Aircraft.SpeedType == PMDG.AircraftSpeed.Mach)
                         {
                             gaugeValue = PMDG737Aircraft.GetMCPSpeedComponents();
+                            Output(isGauge: false, output: gaugeValue);
                         } // MachSpeed
                     } // PMDG737
 
@@ -2075,6 +2155,17 @@ else              if (PMDG777Detected)
                         else
                         {
                             PMDG737Aircraft.ShowVerticalSpeedBox();
+                        }
+                    }
+                    else if (PMDG747Detected)
+                    {
+                        if (PMDG747Aircraft.MCPComponents["vertical"].Visible)
+                        {
+                            Output(isGauge: false, output: "The vertical speed box is already open!");
+                        }
+                        else
+                        {
+                            PMDG747Aircraft.ShowVerticalSpeedBox();
                         }
                     }
                     else if (PMDG777Detected)
@@ -2143,8 +2234,18 @@ else              if (PMDG777Detected)
                     Output(gaugeName, gaugeValue, isGauge);
                     break;
                 case "ap_Set_Transponder":
-                    ap = new frmAutopilot("Transponder");
-                    ap.ShowDialog();
+
+                    if (PMDG737Detected)
+                    {
+                        var transponderForm = new tfm.PMDG.PMDG_737.Forms.TransponderForm();
+                        transponderForm.ShowDialog();
+                    }
+                    else
+                    {
+                        ap = new frmAutopilot("Transponder");
+                        ap.ShowDialog();
+
+                    }
                     break;
 
                 case "ap_Set_Throttle":
@@ -2266,6 +2367,54 @@ else              if (PMDG777Detected)
         {
             switch (Name)
             {
+                case "ShowSimBriefFlightPlan":
+
+                    var isSimBriefPlanOpen = false;
+                    foreach(Form sb in Application.OpenForms)
+                    {
+                        if(sb is SimBrief.SimBriefForm)
+                        {
+                            isSimBriefPlanOpen = true;
+                            break;
+                        }
+                    } // loop
+
+                    if (isSimBriefPlanOpen)
+                    {
+                        Output(isGauge: false, output: "The SimBrief flight plan window is already open!");
+                        break;
+                    }
+                    else
+                    {
+                        SimBrief.SimBriefForm sb = new SimBrief.SimBriefForm();
+                        sb.ShowDialog();
+                        isSimBriefPlanOpen = true;
+                        break;
+                    }
+                    isSimBriefPlanOpen = false;
+                    break;
+                case "CloudTracking":
+
+                    if (FSUIPCConnection.FSUIPCVersion.Major >= 7)
+                    {
+                        Output(isGauge: false, output: "Cloud tracking is only available in P3D 4 and later.");
+                    }
+                    else
+                    {
+                        if (isCloudTrackingEnabled)
+                        {
+                            cloudTrackingTimer.Stop();
+                            isCloudTrackingEnabled = false;
+                            Output(isGauge: false, output: "Cloud tracking off.");
+                        }
+                        else
+                        {
+                            cloudTrackingTimer.Start();
+                            isCloudTrackingEnabled = true;
+                            Output(isGauge: false, output: "Cloud tracking on.");
+                        }
+                    }
+                    break;
                 case "SetTrim":
                     if (PMDG737Detected)
                     {
@@ -2288,6 +2437,8 @@ else              if (PMDG777Detected)
                     tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
                     gatesForm.ShowDialog();
                     break;
+                    
+
                 case "toggle_help_mode":
                     // enabling command help is handled here. Since command functions are bypassed when help is on, we handle turning it off in the key pressed event.
                     if (helpModeEnabled == false)
@@ -2339,6 +2490,32 @@ else              if (PMDG777Detected)
                         Output(isGauge: false, output: speedBrakeValue);
                     }
 
+                    if (PMDG747Detected)
+                    {
+                        var speedBrakeValue = string.Empty;
+                        switch (PMDG747Aircraft.CurrentSpeedBrakePosition)
+                        {
+                            case 0:
+                                speedBrakeValue = "down";
+                                break;
+                            case 25:
+                                speedBrakeValue = "armed";
+                                break;
+                            case 62:
+                                speedBrakeValue = "flt";
+                                break;
+                            case 100:
+                                speedBrakeValue = "up";
+                                break;
+                            default:
+                                speedBrakeValue = PMDG747Aircraft.CurrentSpeedBrakePosition.ToString();
+                                break;
+                        }
+
+                        Output(isGauge: false, output: speedBrakeValue);
+
+                    }
+
                     if (PMDG777Detected)
                     {
                         foreach (tfm.PMDG.PanelObjects.SingleStateToggle toggle in PMDG777Aircraft.PanelControls)
@@ -2357,10 +2534,25 @@ else              if (PMDG777Detected)
                 case "display_website":
                     DisplayWebsite();
                     break;
-                case "aircraft_profiles":
-                    DisplayAircraftProfiles();
+                case "weather_center":
+                    if (FSUIPCConnection.FSUIPCVersion.Major >= 7)
+                    {
+                        Output(isGauge: false, output: "The weather center only works in P3d 4 and later.");
+                    }
+                    else
+                    {
+                        tfm.Weather.WeatherCenterForm weatherCenter = new Weather.WeatherCenterForm();
+                        if (weatherCenter.Visible)
+                        {
+                            Output(isGauge: false, output: "The weather center is already open!");
+                        }
+                        else
+                        {
+                            weatherCenter.ShowDialog();
+                        }
+                    }
                     break;
-                case "A2A_manager":
+                              case "A2A_manager":
                     DisplayA2AManager();
                     break;
                 case "application_settings":
@@ -2388,7 +2580,7 @@ else              if (PMDG777Detected)
                     break;
 
                 case "flight_planner":
-                    var isPlannerActive = false;
+                    /*var isPlannerActive = false;
                     foreach (Form form in Application.OpenForms)
                     {
                         if (form is FlightPlanForm)
@@ -2410,6 +2602,8 @@ else              if (PMDG777Detected)
                         break;
                     }
                     isPlannerActive = false;
+                    break;*/
+                    Output(isGauge: false, output: "Feature not yet implemented.");
                     break;
                 case "takeoff_assist":
                     onTakeOffAssistant();
@@ -2485,6 +2679,10 @@ else              if (PMDG777Detected)
                 case "Mute_Simconnect_Messages":
                     OnMuteSimconnectKey();
                     break;
+                case "Toggle_Global_Mute":
+                    OnGlobalMuteKey();
+                    break;
+
                 case "Repeat_Last_Simconnect_Message":
                     onRepeatLastSimconnectMessage();
                     break;
@@ -2526,6 +2724,17 @@ else              if (PMDG777Detected)
 
                 case "Wind_Information":
                     onWindKey();
+                    break;
+                case "cloud_info":
+                    if(FSUIPCConnection.FSUIPCVersion.Major >= 7)
+                    {
+                        Output(isGauge: false, output: "Cloud tracking is only available in P3d 4 and later.");
+                    }
+                    else
+                    {
+                        OnCloudKey();
+                    }
+                    
                     break;
                 case "Runway_Guidance_Mode":
                     onRunwayGuidanceKey();
@@ -2619,6 +2828,21 @@ else              if (PMDG777Detected)
 
             }
         }
+
+        private void OnGlobalMuteKey()
+        {
+            if (Properties.Settings.Default.AutomaticAnnouncements == true)
+            {
+                Properties.Settings.Default.AutomaticAnnouncements = false;
+                Output(isGauge: false, output: "Automatic announcements disabled.");
+            }
+            else
+            {
+                Properties.Settings.Default.AutomaticAnnouncements = true;
+                Output(isGauge: false, output: "Automatic announcements enabled.");
+            }
+        }
+
         private void onKeyPressed(object sender, HotkeyEventArgs e)
         {
 
@@ -2798,14 +3022,409 @@ else              if (PMDG777Detected)
 
         private void onWindKey()
         {
-            double WindSpeed = (double)Aircraft.WindSpeed.Value;
-            double WindDirection = (double)Aircraft.WindDirection.Value * 360d / 65536d;
-            WindDirection = Math.Round(WindDirection);
-            double WindGust = (double)Aircraft.WindGust.Value;
-            Output(isGauge: false, output: $"Wind: {WindDirection} at {WindSpeed} knotts. Gusts at {WindGust} knotts.");
+if(FSUIPCConnection.FSUIPCVersion.Major >= 7)
+            {
+                double WindSpeed = (double)Aircraft.WindSpeed.Value;
+                double WindDirection = (double)Aircraft.WindDirection.Value * 360d / 65536d;
+                WindDirection = Math.Round(WindDirection);
+                double WindGust = (double)Aircraft.WindGust.Value;
+                Output(isGauge: false, output: $"Wind: {WindDirection} at {WindSpeed} knotts. Gusts at {WindGust} knotts.");
+            }
+            else
+            {
+                var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+
+                // StringBuilder used in wind command output.
+                StringBuilder windOutput = new StringBuilder();
+
+                // Get the current wind layer at aircraft location.
+                var windLayer = weather.WindLayers.Where(x => x.UpperAltitudeFeet >= Autopilot.AslAltitude).OrderBy(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+                // No matching wind layers, so assume the layer just above surface level.
+                if (windLayer == null)
+                {
+                    windLayer = weather.WindLayers[0];
+                }
+
+                // Build the output string based on user settings.
+                if (Properties.Weather.Default.WindLayer_UpperAltitude)
+                {
+                    windOutput.Append($"Upper altitude: {windLayer.UpperAltitudeFeet}. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Direction)
+                {
+                    windOutput.Append($"Direction: {((int)windLayer.Direction)}. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Speed)
+                {
+                    windOutput.Append($"Speed: {windLayer.SpeedKnots} Knots. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Gust)
+                {
+                    windOutput.Append($"Gust: {windLayer.GustKnots} knots. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Visibility)
+                {
+                    windOutput.Append($"Visibility: {weather.Visibility.RangeNauticalMiles} knautical miles. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Turbulence)
+                {
+                    windOutput.Append($"Turbulence: {windLayer.Turbulence}. ");
+                }
+                if (Properties.Weather.Default.WindLayer_Shear)
+                {
+                    windOutput.Append($"Shear: {windLayer.Shear}.");
+                }
+
+                // No settings are selected, so show a short message.
+                if (windOutput.Length == 0)
+                {
+                    windOutput.Append("You must choose at least one wind element in settings.");
+                }
+
+                Output(isGauge: false, output: windOutput.ToString());
+            }
+                    }
+
+        private void TrackCloudsOnClimb()
+        {
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+            inCloudAscending = currentCloud != null ? true : false;
+
+            if (inCloudAscending == true && wasInCloudAscending == false)
+            {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "In cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "In cloud.");
+                }
+                wasInCloudAscending = true;
+                }
+                else if(inCloudAscending == false && wasInCloudAscending == true)
+                {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "Out of cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "Out of cloud.");
+                }
+                wasInCloudAscending = false;
+                }
+                                                           }
+
+        private void TrackCloudsOnDescent()
+        {
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+            inCloudDescending = currentCloud != null ? true : false;
+
+            if (inCloudDescending == true && wasInCloudDescending == false)
+            {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "In cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "In cloud.");
+                }
+                wasInCloudDescending = true;
+            }
+            else if (inCloudDescending == false && wasInCloudDescending == true)
+            {
+                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "Out of cloud.");
+                }
+                else
+                {
+                    Output(isGauge: false, output: "Out of cloud.");
+                }
+                wasInCloudDescending = false;
+            }
 
         }
+        private void CloudTrackingTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
+        {
+            if(Autopilot.VerticalSpeed >= 0)
+            {
+                TrackCloudsOnClimb();
+            }
+            else
+            {
+                TrackCloudsOnDescent();
+            }
+        }
 
+        private void OnCloudKey()
+        {
+
+            /*
+             * Base the ability to ascend or descend through
+             * clouds based on the vertical speed of the aircraft. If the VS is below 0, we are
+             * descending through the clouds, if any. If the VS
+             * is above 0, then we are ascending through the clouds, if any. In cases where VS is 0, requesting
+             * the cloud report should give the current cloud, if any.
+             */
+
+            if(Autopilot.VerticalSpeed >= 0)
+            {
+                AscendThroughClouds();
+            }
+            else
+            {
+                DescendThroughClouds();
+            }
+        }
+
+        private void AscendThroughClouds()
+        {
+
+            StringBuilder cloudOutput = new StringBuilder();
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+
+            // Select the current cloud layer if any.
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+
+            // Select the next cloud if any.
+            var nextCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude <= x.LowerAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+
+            // Select the previous cloud if any.
+            var previousCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+            // Flags for previous/next/current clouds.
+            bool isCloudsAbove = nextCloud != null ? true : false;
+            bool isCloudsBelow = previousCloud != null ? true : false;
+            bool inCloud = currentCloud != null ? true : false;
+
+            // Current cloud.
+            #region "Current cloud"
+            if (inCloud)
+            {
+
+
+                if (Properties.Weather.Default.CloudLayer_InCloud)
+                {
+                    cloudOutput.Append("In cloud. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_CloudType)
+                {
+                    cloudOutput.Append($"Type: {currentCloud.CloudType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_CloudCoverage)
+                {
+                    cloudOutput.Append($"Coverage: {currentCloud.CoverageOctas}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Icing)
+                {
+                    cloudOutput.Append($"Icing: {currentCloud.Icing}. ");
+                }
+
+                if (currentCloud.PrecipitationType != FsPrecipitationType.None)
+                {
+                    if (Properties.Weather.Default.CloudLayer_PrecipitationRate)
+                    {
+                        cloudOutput.Append($"Precipitation rate: {currentCloud.PrecipitationRate}. ");
+                    }
+                }
+
+                if (Properties.Weather.Default.CloudLayer_PrecipitationType)
+                {
+                    cloudOutput.Append($"Precipitation: {currentCloud.PrecipitationType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Turbulence)
+                {
+                    cloudOutput.Append($"Turbulence: {currentCloud.Turbulence}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToTop)
+                {
+                    cloudOutput.Append($"Top: {currentCloud.UpperAltitudeFeet - Autopilot.AslAltitude} feet. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToBottom)
+                {
+                    cloudOutput.Append($"Bottom: {Autopilot.AslAltitude - currentCloud.LowerAltitudeFeet} feet. ");
+                }
+            }
+            else
+            {
+                // Check if clouds are above/below.
+                if (inCloud == false)
+                {
+                    if (Properties.Weather.Default.CloudLayer_OutOfCloud)
+                    {
+                        cloudOutput.Append("Not in a cloud. ");
+                    }
+                }
+
+                if (isCloudsAbove)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudAbove)
+                    {
+                        cloudOutput.Append($"Cloud {nextCloud.LowerAltitudeFeet - Autopilot.AslAltitude} feet above. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsAbove)
+                    {
+                        cloudOutput.Append("No clouds above. ");
+                    }
+                }
+
+                if (isCloudsBelow)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudBelow)
+                    {
+                        cloudOutput.Append($"Cloud {Autopilot.AslAltitude - previousCloud.UpperAltitudeFeet} feet below. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsBelow)
+                    {
+                        cloudOutput.Append("No clouds below. ");
+                    }
+                }
+                            }
+            #endregion
+
+            if(cloudOutput.Length == 0)
+            {
+                cloudOutput.Append("Nothing to announce.");
+            }
+                                                           Output(isGauge: false, output: cloudOutput.ToString());
+                    }
+
+private void DescendThroughClouds()
+        {
+
+            StringBuilder cloudOutput = new StringBuilder();
+            var weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+
+            // Select the current cloud layer if any.
+            var currentCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.LowerAltitudeFeet && Autopilot.AslAltitude <= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+            // Select the next cloud if any.
+            var nextCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude >= x.UpperAltitudeFeet).OrderByDescending(x => x.UpperAltitudeFeet).FirstOrDefault();
+
+            // Select the previous cloud if any.
+            var previousCloud = weather.CloudLayers.Where(x => Autopilot.AslAltitude <= x.LowerAltitudeFeet).OrderBy(x => x.LowerAltitudeFeet).FirstOrDefault();
+
+            // Flags for previous/next/current clouds.
+            bool isCloudsAbove = previousCloud!= null ? true : false;
+            bool isCloudsBelow = nextCloud!= null ? true : false;
+            bool inCloud = currentCloud != null ? true : false;
+
+            // Current cloud.
+            #region "Current cloud"
+            if (inCloud)
+            {
+
+                if (Properties.Weather.Default.CloudLayer_CloudType)
+                {
+                    cloudOutput.Append($"Type: {currentCloud.CloudType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_CloudCoverage)
+                {
+                    cloudOutput.Append($"Coverage: {currentCloud.CoverageOctas}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Icing)
+                {
+                    cloudOutput.Append($"Icing: {currentCloud.Icing}. ");
+                }
+
+                if (currentCloud.PrecipitationType != FsPrecipitationType.None)
+                {
+                    if (Properties.Weather.Default.CloudLayer_PrecipitationRate)
+                    {
+                        cloudOutput.Append($"Precipitation rate: {currentCloud.PrecipitationRate}. ");
+                    }
+                }
+
+                if (Properties.Weather.Default.CloudLayer_PrecipitationType)
+                {
+                    cloudOutput.Append($"Precipitation: {currentCloud.PrecipitationType}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_Turbulence)
+                {
+                    cloudOutput.Append($"Turbulence: {currentCloud.Turbulence}. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToTop)
+                {
+                    cloudOutput.Append($"Top: {currentCloud.UpperAltitudeFeet - Autopilot.AslAltitude} feet. ");
+                }
+
+                if (Properties.Weather.Default.CloudLayer_DistanceToBottom)
+                {
+                    cloudOutput.Append($"Bottom: {Autopilot.AslAltitude - currentCloud.LowerAltitudeFeet} feet. ");
+                }
+            }
+            else
+            {
+
+                // Check if clouds are above/below.
+                if (inCloud == false)
+                {
+                    if (Properties.Weather.Default.CloudLayer_OutOfCloud)
+                    {
+                        cloudOutput.Append("Not in a cloud. ");
+                    }
+                }
+
+                if (isCloudsAbove)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudAbove)
+                    {
+                        cloudOutput.Append($"Cloud {previousCloud.LowerAltitudeFeet - Autopilot.AslAltitude} feet above. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsAbove)
+                    {
+                        cloudOutput.Append("No clouds above. ");
+                    }
+                }
+
+                if (isCloudsBelow)
+                {
+                    if (Properties.Weather.Default.CloudLayer_DistanceToCloudBelow)
+                    {
+                        cloudOutput.Append($"Cloud {Autopilot.AslAltitude - nextCloud.UpperAltitudeFeet} feet below. ");
+                    }
+                }
+                else
+                {
+                    if (Properties.Weather.Default.CloudLayer_NoCloudsBelow)
+                    {
+                        cloudOutput.Append("No clouds below. ");
+                    }
+                    }
+                           }
+            #endregion
+
+            if(cloudOutput.Length == 0)
+            {
+                cloudOutput.Append("Nothing to announce.");
+            }
+                       Output(isGauge: false, output: cloudOutput.ToString());
+                                }
 
         private void onNearbyAircraft()
         {
@@ -3390,14 +4009,44 @@ else              if (PMDG777Detected)
 
         private void OnWaypointKey()
         {
-            if (Aircraft.AircraftName.Value.Contains("PMDG"))
+            if(Properties.Settings.Default.IsSimBriefEnabled && Properties.Settings.Default.IsSimBriefUserIDValid)
             {
-                Output(isGauge: false, output: "Not supported in PMDG aircraft. Please see the legs page of your FMC for the next waypoint.");
-                return;
+                ReadSimBriefWaypoint();
             }
-            ReadWayPoint();
+            else
+            {
+                ReadWayPoint();
+            }
         }
 
+
+        private void ReadSimBriefWaypoint()
+        {
+            double groundSpeed = ((double)Aircraft.GroundSpeed.Value * 3600d) / (65536d * 1852d);
+                                    FsLatLonPoint currentLocation = new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value);
+            var target = new FsLatLonPoint(FlightPlan.Navlog[0].Latitude, FlightPlan.Navlog[0].Longitude);
+            var distance = Math.Round(currentLocation.DistanceFromInNauticalMiles(target), 0);
+            var bearing = Math.Round(currentLocation.BearingTo(target), 0);
+
+            try
+            {
+
+                groundSpeed = Math.Round(groundSpeed, 0);
+                double time = distance / groundSpeed;
+                var timeToNext = TimeSpan.FromHours(time);
+
+                Output(isGauge: false, output: $"Next waypoint: {FlightPlan.Navlog[0].Name}. Bearing {bearing} degrees. Distance {distance} nautical miles. Time: {timeToNext.ToString(@"d\:h\:m\:s")}");
+            }
+            catch (DivideByZeroException)
+            {
+                Output(isGauge: false, output: $"Next waypoint: {FlightPlan.Navlog[0].Name}. Bearing {bearing} degrees. Distance {distance} nautical miles. Time: Not available.");
+            }
+                        catch (OverflowException)
+            {
+                Output(isGauge: false, output: $"Next waypoint: {FlightPlan.Navlog[0].Name}. Bearing {bearing} degrees. Distance {distance} nautical miles. Time: Not available.");
+            }    
+                    }
+        
         private void OnCityKey()
         {
             double lat = Aircraft.aircraftLat.Value.DecimalDegrees;
@@ -3812,54 +4461,38 @@ else              if (PMDG777Detected)
 
         }
 
+        /// <summary>
+        /// TODO: Rework current location feature.
+        /// </summary>
         private async void OnCurrentLocation()
         {
             var database = FSUIPCConnection.AirportsDatabase;
-            database.SetReferenceLocation();
-            FsGate currentGate = null;
-            FsTaxiway currentTaxiWay = null;
-            FsRunway currentRunway = null;
+            var currentLocation = database.Airports.GetPlayerLocation(AirportComponents.Gates | AirportComponents.Runways | AirportComponents.Taxiways);
 
-            foreach (FsAirport airport in database.Airports)
+            // Check to see if we are on the ground
+            if(currentLocation != null && currentLocation.OnGround)
             {
-                foreach (FsGate gate in airport.Gates)
+                                if (currentLocation.Runway != null && currentLocation.Runway.IsPlayerOnRunway)
                 {
-                    if (gate.IsPlayerAtGate)
-                    {
-                        currentGate = gate;
-                        break;
-                    }
-                } // Loop gates.
-                foreach (FsRunway runway in airport.Runways)
+                    Output(isGauge: false, output: $"Runway {currentLocation.Runway.ID}@{currentLocation.Airport.ICAO}/{currentLocation.Runway.LengthFeet}");
+                }
+else if (currentLocation.Gate != null && currentLocation.Gate.IsPlayerAtGate)
                 {
-                    if (runway.IsPlayerOnRunway)
-                    {
-                        currentRunway = runway;
-                        break;
-                    }
-                } //Loop through runways.
-                foreach (FsTaxiway taxiway in airport.Taxiways)
+                    Output(isGauge: false, output: $"Gate {currentLocation.Gate.ID}@{currentLocation.Airport.ICAO}");
+                }
+else if(currentLocation.Taxiway != null && currentLocation.Taxiway.IsPlayerOnTaxiway)
                 {
-                    if (taxiway.IsPlayerOnTaxiway)
-                    {
-                        currentTaxiWay = taxiway;
-                        break;
-                    }
-                } // Loop through taxiways.
-            } // loop through airports.
-
-            if (currentTaxiWay != null && currentGate == null)
-            {
-                Output(isGauge: false, output: $"taxi way {currentTaxiWay.Name}@{currentTaxiWay.Airport.ICAO}");
-            }
-            else if (currentRunway != null)
-            {
-                Output(isGauge: false, output: $"runway {currentRunway.ID}@{currentRunway.Airport.ICAO}");
-            }
-            else if (currentGate != null)
-            {
-                Output(isGauge: false, output: $"gate {currentGate.ID}@{currentGate.Airport.ICAO}");
-            }
+                    Output(isGauge: false, output: $"Taxiway {currentLocation.Taxiway.Name}@{currentLocation.Airport.ICAO}");
+                }
+else if(currentLocation.Gate == null && currentLocation.Taxiway == null && currentLocation.Runway == null && currentLocation.Airport.IsPlayerAtAirport)
+                {
+                    Output(isGauge: false, output: $"@{currentLocation.Airport.ICAO}");
+                }
+else if(currentLocation.Airport == null)
+                {
+                    Output(isGauge: false, output: "Not at an airport.");
+                }
+                                                               }
             else
             {
                 if (string.IsNullOrEmpty(Properties.Settings.Default.bingMapsAPIKey))
@@ -4211,170 +4844,20 @@ else              if (PMDG777Detected)
             }
 
 
-            ReadToggle(Aircraft.pmdg737.HGS_annun_FLARE, Aircraft.pmdg737.HGS_annun_FLARE.Value > 0, "Flare light", "on", "off");
-            // electrical panel
-            ReadPMDGToggle(Aircraft.pmdg737.ELEC_BatSelector, Aircraft.pmdg737.ELEC_BatSelector.Value > 0, "Battery", "active", "off");
-            ReadToggle(Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE, Aircraft.pmdg737.ELEC_annunBAT_DISCHARGE.Value > 0, "bat discharge light", "on", "off");
-            ReadToggle(Aircraft.pmdg737.ELEC_annunGRD_POWER_AVAILABLE, Aircraft.pmdg737.ELEC_annunGRD_POWER_AVAILABLE.Value > 0, "ground power", "available", "not available");
-            ReadToggle(Aircraft.pmdg737.ELEC_CabUtilSw, Aircraft.pmdg737.ELEC_CabUtilSw.Value > 0, "cabin utility switch", "on", "off");
-            ReadToggle(Aircraft.pmdg737.ELEC_IFEPassSeatSw, Aircraft.pmdg737.ELEC_IFEPassSeatSw.Value > 0, "passenger seat power", "on", "off");
-            ReadToggle(Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS, Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS.Value > 0, "APU Gen 1 off bus light", "on", "off");
-            ReadToggle(Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS, Aircraft.pmdg737.ELEC_annunAPU_GEN_OFF_BUS.Value > 0, "engine generator off bus light", "on", "off");
-            ReadToggle(Aircraft.pmdg737.APU_annunLOW_OIL_PRESSURE, Aircraft.pmdg737.APU_annunLOW_OIL_PRESSURE.Value > 0, "APU low oil pressure light", "on", "off");
-            ReadToggle(Aircraft.pmdg737.ELEC_BusTransSw_AUTO, Aircraft.pmdg737.ELEC_BusTransSw_AUTO.Value > 0, "auto bus transfer", "on", "off");
-            // standby power switch
-            if (Aircraft.pmdg737.ELEC_StandbyPowerSelector.ValueChanged)
-            {
-                switch (Aircraft.pmdg737.ELEC_StandbyPowerSelector.Value)
-                {
-                    case 0:
-                        Output(isGauge: false, output: "Standby power: Battery");
-                        break;
-                    case 1:
-                        Output(isGauge: false, output: "Standby power: Off");
-                        break;
-                    case 2:
-                        Output(isGauge: false, output: "Standby power: Auto");
-                        break;
-                }
-
-            }
-            // ADIRU
-            ReadToggle(Aircraft.pmdg737.IRS_aligned, Aircraft.pmdg737.IRS_aligned.Value > 0, "IRS", "aligned", "");
-
-            // MCP
-
-            // flight director
-            ReadToggle(Aircraft.pmdg737.MCP_FDSw[0], Aircraft.pmdg737.MCP_FDSw[0].Value > 0, "left flight director", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_FDSw[1], Aircraft.pmdg737.MCP_FDSw[1].Value > 0, "right flight director", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_annunFD[0], Aircraft.pmdg737.MCP_annunFD[0].Value > 0, "left fd master", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_annunFD[1], Aircraft.pmdg737.MCP_annunFD[1].Value > 0, "right   fd master", "on", "off");
-            // auto throttle arm
-            ReadToggle(Aircraft.pmdg737.MCP_ATArmSw, Aircraft.pmdg737.MCP_ATArmSw.Value > 0, "autothrottle arm switch", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_annunATArm, Aircraft.pmdg737.MCP_annunATArm.Value > 0, "Auto throttle light", "on", "off");
-            // N1 button
-            ReadToggle(Aircraft.pmdg737.MCP_annunN1, Aircraft.pmdg737.MCP_annunN1.Value > 0, "N1 light", "on", "off");
-            // speed
-            ReadToggle(Aircraft.pmdg737.MCP_annunSPEED, Aircraft.pmdg737.MCP_annunSPEED.Value > 0, "speed light", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_IASBlank, Aircraft.pmdg737.MCP_IASBlank.Value > 0, "speed box", "blank", "visible");
-            // LNAV
-            ReadToggle(Aircraft.pmdg737.MCP_annunLNAV, Aircraft.pmdg737.MCP_annunLNAV.Value > 0, "L Nav light", "on", "off");
-            // VNAV
-            ReadToggle(Aircraft.pmdg737.MCP_annunVNAV, Aircraft.pmdg737.MCP_annunVNAV.Value > 0, "V Nav light", "on", "off");
-            // Autopilot CMD buttons
-            ReadToggle(Aircraft.pmdg737.MCP_annunCMD_A, Aircraft.pmdg737.MCP_annunCMD_A.Value > 0, "CMD A", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_annunCMD_B, Aircraft.pmdg737.MCP_annunCMD_B.Value > 0, "CMD B", "on", "off");
-            // autopilot heading select
-            ReadToggle(Aircraft.pmdg737.MCP_annunHDG_SEL, Aircraft.pmdg737.MCP_annunHDG_SEL.Value > 0, "heading select", "on", "off");
-            // level change
-            ReadToggle(Aircraft.pmdg737.MCP_annunLVL_CHG, Aircraft.pmdg737.MCP_annunLVL_CHG.Value > 0, "level change", "on", "off");
-            // altitude hold
-            ReadToggle(Aircraft.pmdg737.MCP_annunALT_HOLD, Aircraft.pmdg737.MCP_annunALT_HOLD.Value > 0, "Altitude hold", "on", "off");
-            // approach mode
-            ReadToggle(Aircraft.pmdg737.MCP_annunAPP, Aircraft.pmdg737.MCP_annunAPP.Value > 0, "approach", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_annunVOR_LOC, Aircraft.pmdg737.MCP_annunVOR_LOC.Value > 0, "vor loc", "on", "off");
-            // CWS mode
-            ReadToggle(Aircraft.pmdg737.MCP_annunCWS_A, Aircraft.pmdg737.MCP_annunCWS_A.Value > 0, "CWS A", "on", "off");
-            ReadToggle(Aircraft.pmdg737.MCP_annunCWS_B, Aircraft.pmdg737.MCP_annunCWS_B.Value > 0, "CWS B", "on", "off");
-            // CDU exec button light
-            ReadToggle(Aircraft.pmdg737.CDU_annunEXEC[0], Aircraft.pmdg737.CDU_annunEXEC[0].Value > 0, "execute key", "available", "off");
-            // CDU message light
-            ReadToggle(Aircraft.pmdg737.CDU_annunMSG[0], Aircraft.pmdg737.CDU_annunMSG[0].Value > 0, "CDU message", "displayed", "cleared", SAPI: true);
-            // auto land lights
-            ReadToggle(Aircraft.pmdg737.HGS_annun_AIII, Aircraft.pmdg737.HGS_annun_AIII.Value > 0, "auto land", "active", "off");
-            ReadToggle(Aircraft.pmdg737.HGS_annun_FLARE, Aircraft.pmdg737.HGS_annun_FLARE.Value > 0, "flare", "active", "off");
-            ReadToggle(Aircraft.pmdg737.HGS_annun_RO, Aircraft.pmdg737.HGS_annun_RO.Value > 0, "roll out", "active", "off");
-
-            // fuel panel
-            ReadToggle(Aircraft.pmdg737.FUEL_CrossFeedSw, Aircraft.pmdg737.FUEL_CrossFeedSw.Value > 0, "fuel cross feed", "on", "off");
-            ReadToggle(Aircraft.pmdg737.FUEL_PumpFwdSw[0], Aircraft.pmdg737.FUEL_PumpFwdSw[0].Value > 0, "left forward fuel pump", "on", "off");
-            ReadToggle(Aircraft.pmdg737.FUEL_PumpFwdSw[1], Aircraft.pmdg737.FUEL_PumpFwdSw[1].Value > 0, "right forward fuel pump", "on", "off");
-            ReadToggle(Aircraft.pmdg737.FUEL_PumpAftSw[1], Aircraft.pmdg737.FUEL_PumpAftSw[1].Value > 0, "right aft fuel pump", "on", "off");
-            ReadToggle(Aircraft.pmdg737.FUEL_PumpAftSw[0], Aircraft.pmdg737.FUEL_PumpAftSw[0].Value > 0, "left aft fuel pump", "on", "off");
-            ReadToggle(Aircraft.pmdg737.FUEL_PumpCtrSw[0], Aircraft.pmdg737.FUEL_PumpCtrSw[0].Value > 0, "center left fuel pump");
-            ReadToggle(Aircraft.pmdg737.FUEL_PumpCtrSw[1], Aircraft.pmdg737.FUEL_PumpCtrSw[1].Value > 0, "center right fuel pump");
-
-            // fuel crossfeed valve
-            if (Aircraft.pmdg737.FUEL_annunXFEED_VALVE_OPEN.ValueChanged)
-
-            {
-                switch (Aircraft.pmdg737.FUEL_annunXFEED_VALVE_OPEN.Value)
-                {
-                    case 0:
-                        Output(isGauge: false, output: "fuel cross feed valve closed");
-                        break;
-                    case 1:
-                        Output(isGauge: false, output: "fuel cross feed valve open");
-                        break;
-                    case 2:
-                        Output(isGauge: false, output: "fuel cross feed valve in transit");
-                        break;
-                }
-
-            }
-            // hydraulics
-            ReadToggle(Aircraft.pmdg737.HYD_PumpSw_elec[1], Aircraft.pmdg737.HYD_PumpSw_elec[1].Value > 0, "electrical hydraulic pump 1", "on", "off");
-            ReadToggle(Aircraft.pmdg737.HYD_PumpSw_elec[0], Aircraft.pmdg737.HYD_PumpSw_elec[0].Value > 0, "electrical hydraulic pump 2", "on", "off");
-            if (Aircraft.pmdg737.AIR_PackSwitch[0].ValueChanged)
-            {
-                string pck = null;
-                switch (Aircraft.pmdg737.AIR_PackSwitch[0].Value)
-                {
-                    case 0:
-                        pck = "off";
-                        break;
-                    case 1:
-                        pck = "auto";
-                        break;
-                    case 2:
-                        pck = "high";
-                        break;
-
-                }
-                Output(isGauge: false, output: $"left pack {pck}");
-            }
-            if (Aircraft.pmdg737.AIR_IsolationValveSwitch.ValueChanged)
-            {
-                string isol = null;
-                switch (Aircraft.pmdg737.AIR_IsolationValveSwitch.Value)
-                {
-                    case 0:
-                        isol = "off";
-                        break;
-                    case 1:
-                        isol = "auto";
-                        break;
-                    case 2:
-                        isol = "on";
-                        break;
-
-                }
-                Output(isGauge: false, output: $"isolation valve {isol}");
-            }
-            if (Aircraft.pmdg737.AIR_PackSwitch[1].ValueChanged)
-            {
-                string pck = null;
-                switch (Aircraft.pmdg737.AIR_PackSwitch[1].Value)
-                {
-                    case 0:
-                        pck = "off";
-                        break;
-                    case 1:
-                        pck = "auto";
-                        break;
-                    case 2:
-                        pck = "high";
-                        break;
-
-                }
-                Output(isGauge: false, output: $"right pack {pck}");
-            }
-            ReadToggle(Aircraft.pmdg737.AIR_BleedAirSwitch[1], Aircraft.pmdg737.AIR_BleedAirSwitch[1].Value > 0, "engine 2 bleed", "on", "off");
-            ReadToggle(Aircraft.pmdg737.AIR_BleedAirSwitch[0], Aircraft.pmdg737.AIR_BleedAirSwitch[0].Value > 0, "engine 1 bleed", "on", "off");
-            ReadToggle(Aircraft.pmdg737.AIR_APUBleedAirSwitch, Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value > 0, "APU bleed", "on", "off");
-        } // End ReadPMDG737Toggles.
+             } // End ReadPMDG737Toggles.
         private void ReadPMDG747Toggles()
         {
+
+            foreach(PanelObject toggle in PMDG747Aircraft.PanelControls)
+            {
+                if (toggle.shouldSpeak == true)
+                {
+                    if (toggle.Offset.ValueChanged)
+                    {
+                        Output(isGauge: false, output: toggle.ToString());
+                    }
+                }
+            }
             // Overhead Maintenance
             // Electrical
             ReadToggle(Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0], Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0].Value > 0, "Gen. #1 field", "Off", "On");
@@ -4723,12 +5206,15 @@ else              if (PMDG777Detected)
             {
                 Properties.Settings.Default.Save();
                 Properties.pmdg737_offsets.Default.Save();
+                Properties.pmdg747_offsets.Default.Save();
+                Properties.Weather.Default.Save();
             }
             else
             {
                 Properties.Settings.Default.Reload();
                 Properties.pmdg737_offsets.Default.Reload();
-
+                Properties.pmdg747_offsets.Default.Reload();
+                Properties.Weather.Default.Reload();
             }
         } // DisplayApplicationSettings.
 
@@ -4766,5 +5252,6 @@ else              if (PMDG777Detected)
         {
             System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
         } // ReportIssue
-    } // End IOSubsystem class
+
+            } // End IOSubsystem class
 } // End TFM namespace.

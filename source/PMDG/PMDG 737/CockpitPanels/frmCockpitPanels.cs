@@ -16,6 +16,7 @@ using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield;
 using tfm.PMDG.PMDG_737.CockpitPanels.GlareShield.MCP;
 using tfm.PMDG.PMDG_737.CockpitPanels.Forward;
 using tfm.PMDG.PMDG_737.CockpitPanels.ControlStand;
+using tfm.PMDG.PMDG_737.CockpitPanels.AftElectronic;
 
 namespace tfm
 {
@@ -50,6 +51,7 @@ namespace tfm
             pages.Add("navDisNode", new ctlNav_displays());
             pages.Add("fuelNode", new ctlFuel());
             pages.Add("electricalNode", new ctlElectrical());
+            pages.Add("busesNode", new ctlBusses());
             pages.Add("apuNode", new ctlAPU());
             pages.Add("wipersNode", new ctlWipers());
 
@@ -65,6 +67,7 @@ namespace tfm
 
             // --panel: glare shield
             pages.Add("warningsNode", new ctlWarnings());
+            pages.Add("mcpNode", new ctlMCPPower());
             pages.Add("mcpAltitudeNode", new ctlMcpAltitude());
             pages.Add("mcpHeadingNode", new ctlMcpHeading());
             pages.Add("mcpSpeedNode", new ctlMcpSpeed());
@@ -90,6 +93,13 @@ namespace tfm
             pages.Add("pedestalNode", new ctlPedestal());
             pages.Add("fireNode", new ctlFire());
             pages.Add("cargoFireNode", new ctlCargoFire());
+            pages.Add("transponderNode", new ctlXponder());
+
+            // --panel: AFS
+            pages.Add("afsNode", new ctlAFS());
+
+            // --panel: AFT electronic
+            pages.Add("captainACPNode", new ctlCaptainACP());
                                                 // set the parent and hide them all
                                     foreach (iPanelsPage page in this.pages.Values)
             {

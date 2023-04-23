@@ -1098,9 +1098,9 @@
             this.Controls.Add(this.airSystemsFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.Name = "ctlAirSystems";
-            this.Size = new System.Drawing.Size(1893, 663);
+            this.Size = new System.Drawing.Size(1600, 663);
             this.Load += new System.EventHandler(this.ctlAirSystems_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlAirSystems_VisibleChanged);
             this.airSystemsFlowLayoutPanel.ResumeLayout(false);

@@ -54,7 +54,7 @@ namespace tfm.PMDG.PMDG737.McpComponents
             {
                 if (Aircraft.pmdg737.MCP_VertSpeed.ValueChanged)
                 {
-                    verticalSpeedTextBox.ReadOnly = true;
+                    verticalSpeedTextBox.ReadOnly = false;
                     verticalSpeedTextBox.Text = Aircraft.pmdg737.MCP_VertSpeed.Value.ToString();
                 }
 
@@ -76,6 +76,9 @@ namespace tfm.PMDG.PMDG737.McpComponents
 
         private void mcpVerticalSpeed_Load(object sender, EventArgs e)
         {
+            vsTimer.Elapsed += VSTimerTick;
+            
+            vsTimer.Start();
             foreach (PanelObject control in PMDG737Aircraft.PanelControls)
             {
                 var toggle = (SingleStateToggle)control;

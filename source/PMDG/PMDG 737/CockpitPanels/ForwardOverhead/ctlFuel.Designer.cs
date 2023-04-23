@@ -88,9 +88,9 @@
             this.mainFlowLayoutPanel.Controls.Add(this.centerGroupBox);
             this.mainFlowLayoutPanel.Controls.Add(this.xferGroupBox);
             this.mainFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.mainFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.mainFlowLayoutPanel.Name = "mainFlowLayoutPanel";
-            this.mainFlowLayoutPanel.Size = new System.Drawing.Size(1839, 260);
+            this.mainFlowLayoutPanel.Size = new System.Drawing.Size(1278, 390);
             this.mainFlowLayoutPanel.TabIndex = 0;
             // 
             // label1
@@ -231,7 +231,7 @@
             this.fwdGroupBox.AutoSize = true;
             this.fwdGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.fwdGroupBox.Controls.Add(this.fwdFlowLayoutPanel);
-            this.fwdGroupBox.Location = new System.Drawing.Point(1052, 3);
+            this.fwdGroupBox.Location = new System.Drawing.Point(3, 133);
             this.fwdGroupBox.Name = "fwdGroupBox";
             this.fwdGroupBox.Size = new System.Drawing.Size(784, 124);
             this.fwdGroupBox.TabIndex = 3;
@@ -340,7 +340,7 @@
             this.centerGroupBox.AutoSize = true;
             this.centerGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.centerGroupBox.Controls.Add(this.CenterFlowLayoutPanel);
-            this.centerGroupBox.Location = new System.Drawing.Point(3, 133);
+            this.centerGroupBox.Location = new System.Drawing.Point(793, 133);
             this.centerGroupBox.Name = "centerGroupBox";
             this.centerGroupBox.Size = new System.Drawing.Size(482, 124);
             this.centerGroupBox.TabIndex = 4;
@@ -412,7 +412,7 @@
             this.xferGroupBox.AutoSize = true;
             this.xferGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.xferGroupBox.Controls.Add(this.xferFlowLayoutPanel);
-            this.xferGroupBox.Location = new System.Drawing.Point(491, 133);
+            this.xferGroupBox.Location = new System.Drawing.Point(3, 263);
             this.xferGroupBox.Name = "xferGroupBox";
             this.xferGroupBox.Size = new System.Drawing.Size(1013, 124);
             this.xferGroupBox.TabIndex = 5;
@@ -547,9 +547,9 @@
             this.Controls.Add(this.mainFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.MaximumSize = new System.Drawing.Size(3200, 1782);
+            this.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.Name = "ctlFuel";
-            this.Size = new System.Drawing.Size(1842, 263);
+            this.Size = new System.Drawing.Size(1281, 393);
             this.Load += new System.EventHandler(this.ctlFuel_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlFuel_VisibleChanged);
             this.mainFlowLayoutPanel.ResumeLayout(false);

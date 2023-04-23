@@ -1,9 +1,8 @@
 ﻿using DavyKager;
-using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+// using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +16,7 @@ namespace tfm
         {
             if (Properties.Settings.Default.UseDatabase)
             {
-                Properties.TFMDatabase.InsertSpeechHistoryItem(item);
+                TFMDatabase.InsertSpeechHistoryItem(item);
             }
             else
             {
@@ -40,7 +39,7 @@ namespace tfm
         {
             if (Properties.Settings.Default.UseDatabase)
             {
-                return Properties.TFMDatabase.GetAllSpeechHistoryItems();
+                return TFMDatabase.GetAllSpeechHistoryItems();
             }
             else
             {
@@ -51,7 +50,7 @@ namespace tfm
         {
             if (Properties.Settings.Default.UseDatabase)
             {
-                var result = Properties.TFMDatabase.DeleteAllSpeechHistoryItems();
+                var result = TFMDatabase.DeleteAllSpeechHistoryItems();
                 Tolk.Output($"{result} items deleted.");
             }
             else

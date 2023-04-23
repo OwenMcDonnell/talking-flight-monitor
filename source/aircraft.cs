@@ -15,7 +15,12 @@ namespace tfm
         // =====================================
         // DECLARE OFFSETS YOU WANT TO USE HERE
         // =====================================
-        public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
+        public static Offset<float> ambientTurbulance = new Offset<float>(0x8638);
+        public static Offset<float> ambientVisibilityMeters = new Offset<float>(0x863C);
+        public static Offset<byte> precipitationType = new Offset<byte>(0x8640);
+        public static Offset<byte> precipitationRate = new Offset<byte>(0x8641);
+        public static Offset<byte> inCloud = new Offset<byte>(0x8642);
+                public static Offset<byte> simulatorTimeHours = new Offset<byte>(0x0238);
         public static Offset<byte> simulatorTimeMinutes = new Offset<byte>(0x0239);
         public static Offset<byte> simulatorTimeSeconds = new Offset<byte>(0x023A);
         public static Offset<short> SimPauseControl = new Offset<short>(0x0262);
@@ -265,11 +270,12 @@ namespace tfm
         public static Offset<string> AIR_DisplayLandAlt = new Offset<string>(0x6C88, 6);
 
 
-        // cons                                                           ntants for PMDG mouse click parameters
+        // Constants for PMDG mouse click parameters
         public const int ClkL = 536870912;
         public const int ClkR = -2147483648;
         public const int Inc = 16384;
         public const int Dec = 8192;
+        public const int LeftRelease = 131072;
 
         public static void InitOffsets()
         {

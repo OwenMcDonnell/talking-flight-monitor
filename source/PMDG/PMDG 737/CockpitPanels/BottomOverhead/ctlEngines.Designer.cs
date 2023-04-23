@@ -65,9 +65,9 @@
             this.enginesFlowLayoutPanel.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enginesFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.enginesFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(5);
-            this.enginesFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.enginesFlowLayoutPanel.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.enginesFlowLayoutPanel.Name = "enginesFlowLayoutPanel";
-            this.enginesFlowLayoutPanel.Size = new System.Drawing.Size(1617, 128);
+            this.enginesFlowLayoutPanel.Size = new System.Drawing.Size(1488, 149);
             this.enginesFlowLayoutPanel.TabIndex = 0;
             // 
             // apuLabel
@@ -104,7 +104,7 @@
             this.engine1GroupBox.Controls.Add(this.engine1FlowLayoutPanel);
             this.engine1GroupBox.Location = new System.Drawing.Point(214, 3);
             this.engine1GroupBox.Name = "engine1GroupBox";
-            this.engine1GroupBox.Size = new System.Drawing.Size(575, 122);
+            this.engine1GroupBox.Size = new System.Drawing.Size(575, 109);
             this.engine1GroupBox.TabIndex = 2;
             this.engine1GroupBox.TabStop = false;
             this.engine1GroupBox.Text = "Engine #&1";
@@ -119,7 +119,7 @@
             this.engine1FlowLayoutPanel.Controls.Add(this.engFuel1ComboBox);
             this.engine1FlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.engine1FlowLayoutPanel.Name = "engine1FlowLayoutPanel";
-            this.engine1FlowLayoutPanel.Size = new System.Drawing.Size(566, 47);
+            this.engine1FlowLayoutPanel.Size = new System.Drawing.Size(566, 34);
             this.engine1FlowLayoutPanel.TabIndex = 0;
             // 
             // engine1Label
@@ -182,7 +182,7 @@
             this.engine2GroupBox.Controls.Add(this.engine2FlowLayoutPanel);
             this.engine2GroupBox.Location = new System.Drawing.Point(795, 3);
             this.engine2GroupBox.Name = "engine2GroupBox";
-            this.engine2GroupBox.Size = new System.Drawing.Size(565, 122);
+            this.engine2GroupBox.Size = new System.Drawing.Size(565, 109);
             this.engine2GroupBox.TabIndex = 7;
             this.engine2GroupBox.TabStop = false;
             this.engine2GroupBox.Text = "Engine #&2";
@@ -197,7 +197,7 @@
             this.engine2FlowLayoutPanel.Controls.Add(this.engFuel2ComboBox);
             this.engine2FlowLayoutPanel.Location = new System.Drawing.Point(3, 36);
             this.engine2FlowLayoutPanel.Name = "engine2FlowLayoutPanel";
-            this.engine2FlowLayoutPanel.Size = new System.Drawing.Size(556, 47);
+            this.engine2FlowLayoutPanel.Size = new System.Drawing.Size(556, 34);
             this.engine2FlowLayoutPanel.TabIndex = 0;
             // 
             // engine2Label
@@ -271,7 +271,7 @@
             "ign L",
             "both",
             "ign R"});
-            this.ignitionSelectorComboBox.Location = new System.Drawing.Point(1493, 3);
+            this.ignitionSelectorComboBox.Location = new System.Drawing.Point(5, 118);
             this.ignitionSelectorComboBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.ignitionSelectorComboBox.Name = "ignitionSelectorComboBox";
             this.ignitionSelectorComboBox.Size = new System.Drawing.Size(121, 41);
@@ -287,9 +287,9 @@
             this.Controls.Add(this.enginesFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.MaximumSize = new System.Drawing.Size(3200, 1782);
+            this.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.Name = "ctlEngines";
-            this.Size = new System.Drawing.Size(1622, 133);
+            this.Size = new System.Drawing.Size(1493, 154);
             this.Load += new System.EventHandler(this.ctlEngines_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlEngines_VisibleChanged);
             this.enginesFlowLayoutPanel.ResumeLayout(false);

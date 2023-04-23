@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Diagnostics.Metrics;
 
 namespace tfm
 {
@@ -18,7 +19,7 @@ namespace tfm
 
         private static tfm.PMDG.PMDG737.McpComponents.mcpAltitude altitudeBox = new tfm.PMDG.PMDG737.McpComponents.mcpAltitude();
         private static tfm.PMDG.PMDG737.McpComponents.mcpSpeed speedBox = new tfm.PMDG.PMDG737.McpComponents.mcpSpeed();
-        private static tfm.PMDG.PMDG737.McpComponents.mcpHeading  headingBox = new tfm.PMDG.PMDG737.McpComponents.mcpHeading();
+        private static tfm.PMDG.PMDG737.McpComponents.mcpHeading headingBox = new tfm.PMDG.PMDG737.McpComponents.mcpHeading();
         private static tfm.PMDG.PMDG737.McpComponents.mcpVerticalSpeed verticalSpeedBox = new tfm.PMDG.PMDG737.McpComponents.mcpVerticalSpeed();
         private static tfm.PMDG.PMDG737.McpComponents.mcpNavigation navigationBox = new tfm.PMDG.PMDG737.McpComponents.mcpNavigation();
 
@@ -32,7 +33,7 @@ namespace tfm
         public const int DBLCLKL = 0x04000000;
         public const int Inc = 16384;
         public const int Dec = 8192;
-        
+
         public static void CalculateSwitchPosition(PMDG_737_NGX_Control control, int pos, int sel, bool useClicks = false)
         {
             // there are several PMDG controls that cannot be set by direct parameter entry.
@@ -103,7 +104,7 @@ namespace tfm
             {1, "on" },
         };
 
-        private static  Dictionary<uint, string> _onOrOffInt32States = new Dictionary<uint, string>()
+        private static Dictionary<uint, string> _onOrOffInt32States = new Dictionary<uint, string>()
         {
             {0, "off" },
             {1, "on" },
@@ -460,13 +461,13 @@ namespace tfm
             {4, "30" },
                     };
 
-        private static  Dictionary<byte, string> _noseWheelSteeringStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _noseWheelSteeringStates = new Dictionary<byte, string>()
         {
             {0, "Alt" },
             {1, "Normal" },
         };
 
-        private static  Dictionary<byte, string> _captPanelDuSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _captPanelDuSelectorStates = new Dictionary<byte, string>()
         {
             {0, "o-pfd" },
             {1, "normal" },
@@ -475,7 +476,7 @@ namespace tfm
             {4, "i-mfd" },
         };
 
-        private static  Dictionary<byte, string> _foPanelDuSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _foPanelDuSelectorStates = new Dictionary<byte, string>()
         {
             {0, "i-mfd" },
             {1, "i-pfd" },
@@ -484,35 +485,35 @@ namespace tfm
             {4, "o-pfd" },
         };
 
-        private static  Dictionary<byte, string> _captLowerDuSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _captLowerDuSelectorStates = new Dictionary<byte, string>()
         {
             {0, "eng" },
             {1, "normal" },
             {2, "nd" },
         };
 
-        private static  Dictionary<byte, string> _foLowerDuSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _foLowerDuSelectorStates = new Dictionary<byte, string>()
         {
             {0, "nd" },
             {1, "normal" },
             {2, "eng" },
         };
 
-        private static  Dictionary<byte, string> _disengageTestSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _disengageTestSelectorStates = new Dictionary<byte, string>()
         {
             {0, "1" },
             {1, "off" },
             {2, "2" },
         };
 
-        private static  Dictionary<byte, string> _lightsSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _lightsSelectorStates = new Dictionary<byte, string>()
         {
             {0, "test" },
             {1, "bright" },
             {2, "dim" },
         };
 
-        private static  Dictionary<byte, string> _speedRefSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _speedRefSelectorStates = new Dictionary<byte, string>()
         {
             {0, "set" },
             {1, "auto" },
@@ -523,35 +524,35 @@ namespace tfm
             {6, "bug" },
         };
 
-        private static  Dictionary<byte, string> _fuelFlowSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _fuelFlowSelectorStates = new Dictionary<byte, string>()
         {
             {0, "reset" },
             {1, "rate" },
             {2, "used" },
         };
 
-        private static  Dictionary<byte, string> _gearLeverStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _gearLeverStates = new Dictionary<byte, string>()
         {
             {0, "up" },
             {1, "off" },
             {2, "down" },
         };
 
-        private static  Dictionary<byte, string> _fireOvhtDetStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _fireOvhtDetStates = new Dictionary<byte, string>()
         {
             {0, "A" },
             {1, "normal" },
             {2, "B" },
         };
 
-        private static  Dictionary<byte, string> _fireTestDetStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _fireTestDetStates = new Dictionary<byte, string>()
         {
             {0, "fault/inop" },
             {1, "neutral" },
             {2, "fire/overheat" },
         };
 
-        private static  Dictionary<byte, string> _fireHandlePosStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _fireHandlePosStates = new Dictionary<byte, string>()
         {
             {0, "pushed in" },
             {1, "blocked" },
@@ -560,14 +561,14 @@ namespace tfm
             {4, "turned right" },
         };
 
-        private static  Dictionary<byte, string> _fireExtinguisherTestStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _fireExtinguisherTestStates = new Dictionary<byte, string>()
         {
             {0, "1" },
             {1, "neutral" },
             {2, "2" },
         };
 
-        private static  Dictionary<byte, string> _cargoDetSelectorStates = new Dictionary<byte, string>()
+        private static Dictionary<byte, string> _cargoDetSelectorStates = new Dictionary<byte, string>()
         {
             {0, "A" },
             {1, "normal" },
@@ -588,10 +589,10 @@ namespace tfm
 
         private static Dictionary<byte, string> _xponderModeSelectorStates = new Dictionary<byte, string>()
         {
-            {0, "standby" },
-            {1, "altitude reporting off" },
-            {2, "transponder" },
-            {3, "TA only" },
+            {0, "STBY" },
+            {1, "ALT off" },
+            {2, "XPNDR" },
+            {3, "TA" },
             {4, "TA/RA" },
         };
 
@@ -605,15 +606,33 @@ namespace tfm
 
         private static Dictionary<byte, string> _micSelectorStates = new Dictionary<byte, string>()
         {
-            {0, "vhf1" },
-            {1, "vhf2" },
-            {2, "vhf3" },
-            {3, "hf1" },
-            {4, "hf2" },
-            {5, "flt" },
-            {6, "svc" },
-            {7, "pa" },
+            {0, "VHF1" },
+            {1, "VHF2" },
+            {2, "VHF3" },
+            {3, "HF1" },
+            {4, "HF2" },
+            {5, "FLT" },
+            {6, "SVC" },
+            {7, "PA" },
         };
+
+        private static Dictionary<byte, string> _comReceiverStates = new Dictionary<byte, string>()
+        {
+            { 0, "VHF1" },
+            {1, "VHF2" },
+            {2, "VHF3" },
+            {3, "HF1" },
+            {4, "HF2" },
+            {5, "FLT" },
+            {6, "SVC" },
+            {7, "PA" },
+            {8, "NAV1" },
+            {9, "NAV2" },
+            {10, "ADF1" },
+            {11, "ADF2" },
+            {12, "MKR" },
+            {13, "SPKR" },
+                    };
 
         private static Dictionary<byte, string> _aircraftModels = new Dictionary<byte, string>()
         {
@@ -646,7 +665,7 @@ namespace tfm
             {2, "B" },
         };
 
-        
+
         public static List<PanelObject> PanelControls
         {
             get => new List<PanelObject>()
@@ -926,6 +945,7 @@ new SingleStateToggle { Name = "Overhead warning light", PanelName = "Glare Shie
 new SingleStateToggle { Name = "Air Systems warning light", PanelName = "Glare Shield", PanelSection = "Warnings", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.WARN_annunAIR_COND, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.WARN_annunAIR_COND},
 
 // --section: MCP
+new SingleStateToggle { Name = "MCP power", PanelName = "MCP", PanelSection = "MCP", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_indication_powered, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_indication_powered},
 new SingleStateToggle { Name = "Speed intervene", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASBlank, AvailableStates = _offOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASBlank},
 new SingleStateToggle { Name = "MCP Overspeed warning", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASOverspeedFlash, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASOverspeedFlash},
 new SingleStateToggle { Name = "MCP underspeed warning", PanelName = "Glare Shield", PanelSection = "MCP-SPEED", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.MCP_IASUnderspeedFlash, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.MCP_IASUnderspeedFlash},
@@ -1088,6 +1108,36 @@ new SingleStateToggle { Name = "Transponder alternate source", PanelName = "Cont
 new SingleStateToggle { Name = "Transponder mode", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_ModeSel, AvailableStates = _xponderModeSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_ModeSel},
 new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control Stand", PanelSection = "XPONDER", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.XPDR_annunFAIL, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.XPDR_annunFAIL},
 
+// --panel: AFS
+new SingleStateToggle { Name = "Auto throttle servos", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_AutothrottleServosConnected, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_AutothrottleServosConnected},
+new SingleStateToggle { Name = "Auto pitch", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_ControlsPitch, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_ControlsPitch},
+new SingleStateToggle { Name = "Auto roll", PanelName = "AFS", PanelSection = "AFS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.AFS_ControlsRoll, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.AFS_ControlsRoll},
+
+// ---panel: buses
+new SingleStateToggle {Name = "DC bus: hot battery", PanelName = "Electrical", PanelSection = "BUSeS", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[0], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_HOT_BAT},
+new SingleStateToggle { Name = "DC bus: hot battery switched", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[1], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_HOT_BAT_SWITCHED},
+new SingleStateToggle { Name = "DC bus: battery", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[2], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_BUS1},
+new SingleStateToggle {Name = "DC bus: standby", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.ELEC_BusPowered[3], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_STANDBY_BUS},
+new SingleStateToggle { Name = "DC bus: bus #1", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[4], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_BUS1},
+new SingleStateToggle { Name = "DC bus: bus #2", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[5], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_BUS2},
+new SingleStateToggle { Name = "DC bus: ground svc", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[6], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_DC_GROUND_SVC},
+new SingleStateToggle { Name = "AC bus: transfer #1", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[7], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_TRANSFER1},
+new SingleStateToggle { Name = "AC bus: transfer #2", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[8], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_TRANSFER2},
+new SingleStateToggle { Name = "AC bus: ground svc #1", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[9], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_GROUND_SVC1},
+new SingleStateToggle { Name = "AC bus: ground svc #2", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[10], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_GROUND_SVC2},
+new SingleStateToggle { Name = "AC bus: main #1", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[11], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_MAIN1},
+new SingleStateToggle { Name = "AC bus: main #2", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[12], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_MAIN2},
+new SingleStateToggle { Name = "AC bus: galley #1", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[13], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_GALLEY1},
+new SingleStateToggle { Name = "AC bus: galley #2", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[14], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_GALLEY2},
+new SingleStateToggle { Name = "AC bus: standby", PanelName = "Electrical", PanelSection = "BUSES", Type = PanelObjectType.Annunciator, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.ELEC_BusPowered[15], AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.BUSSES_AC_STANDBY},
+
+// Microphones and comms receivers. Uses a dictionary of <int, string> for the receiver bitmask.
+new SingleStateToggle {Name = "Captain's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[0], AvailableStates = _micSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic1},
+new SingleStateToggle {Name = "First officer's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[1], AvailableStates = _micSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic2},
+new SingleStateToggle {Name = "Observer's microphone", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_SelectedMic[2], AvailableStates = _micSelectorStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_SelectedMic3},
+new SingleStateToggle {Name = "Captain's comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[0], AvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches1},
+new SingleStateToggle {Name = "First officer's comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[1], AvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches2},
+new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", PanelSection = "AUDIO", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.COMM_ReceiverSwitches[2], AvailableStates = _comReceiverStates, shouldSpeak = Properties.pmdg737_offsets.Default.COMM_ReceiverSwitches3},
 // --end-panel-controls                              
             };
         }
@@ -1191,7 +1241,7 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
              * 400: 100% deployed.
              */
             get => FSUIPCConnection.ReadLVar("SWITCH_679_73X");
-                                               }
+        }
 
         public static double CurrentFlapsPosition
         {
@@ -1255,7 +1305,7 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
 
         public static void VerticalSpeedIntervene()
         {
-            if(Aircraft.pmdg737.MCP_VertSpeedBlank.Value == 1)
+            if (Aircraft.pmdg737.MCP_VertSpeedBlank.Value == 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, ClkR);
             }
@@ -1264,15 +1314,15 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SWITCH, ClkL);
             }
         } // VerticalSpeedIntervene
-    
+
         public static void SetVerticalSpeed(string verticalSpeedText)
         {
-            if(int.TryParse(verticalSpeedText, out int speed))
+            if (int.TryParse(verticalSpeedText, out int speed)) 
             {
                 speed = speed - 10000;
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VS_SET, speed);
             }
-                    } // SetVerticalSpeed
+        } // SetVerticalSpeed
 
         public static void ShowVerticalSpeedBox()
         {
@@ -1289,7 +1339,7 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
             MCPComponents["navigation"].Show();
         }
 
-                public static void ShowSpeedBox()
+        public static void ShowSpeedBox()
         {
             MCPComponents["speed"].Show();
         } // ShowSpeedBox
@@ -1615,11 +1665,17 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
         public static void Battery(int position)
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_SWITCH, Aircraft.pmdg737.ELEC_BatSelector.Value, position, true);
+            Thread.Sleep(1000);
+            if (Aircraft.pmdg737.ELEC_BatSelector.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_BATTERY_GUARD, Aircraft.ClkL);
+            }
+
         } // BatterySelector
 
         public static void GroundPower()
         {
-            if(FSUIPCConnection.ReadLVar("7X7X_Ground_Power_Light_Connected") == 0)
+            if (FSUIPCConnection.ReadLVar("7X7X_Ground_Power_Light_Connected") == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_GRD_PWR_SWITCH, ClkL);
             }
@@ -1701,12 +1757,12 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkR);
                 Thread.Sleep(250);
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_STBY_PWR_SWITCH, ClkR);
-                    }
-    }
+            }
+        }
 
         public static void Idg1Disconnect(int position)
         {
-                                    CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_DISCONNECT_1_SWITCH, Aircraft.pmdg737.ELEC_IDGDisconnectSw[0].Value, position, true);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_ELEC_DISCONNECT_1_SWITCH, Aircraft.pmdg737.ELEC_IDGDisconnectSw[0].Value, position, true);
         } // Idg1Disconnect
 
         public static void Idg2Disconnect(int position)
@@ -1753,7 +1809,7 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ELEC_APU_GEN2_SWITCH, ClkR);
         } // ApuGenerator2Off
-        
+
         public static void BusTransferOff()
         {
             if (FSUIPCConnection.ReadLVar("switch_18_73X") != 0)
@@ -1789,7 +1845,7 @@ new SingleStateToggle { Name = "Transponder failure light", PanelName = "Control
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_WIPER_RIGHT_CONTROL, Aircraft.pmdg737.OH_WiperRSelector.Value, position);
         } // RightWiperSelector
 
-public static void EmergencyLightSelector(int position)
+        public static void EmergencyLightSelector(int position)
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_EMER_EXIT_LIGHT_SWITCH, Aircraft.pmdg737.LTS_EmerExitSelector.Value, position, true);
         } // EmergencyLightsSelector
@@ -1806,7 +1862,7 @@ public static void EmergencyLightSelector(int position)
         public static void NoSmokingSelector(int position)
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_NO_SMOKING_LIGHT_SWITCH, Aircraft.pmdg737.COMM_NoSmokingSelector.Value, position, true);
-                                                } // NoSmokingSelector
+        } // NoSmokingSelector
 
 
 
@@ -1837,18 +1893,18 @@ public static void EmergencyLightSelector(int position)
 
         public static void LeftSideWindowHeatOn()
         {
-                                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, ClkL);
-                    } // LeftSideWindowHeatOn
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, ClkL);
+        } // LeftSideWindowHeatOn
 
         public static void LeftSideWindowHeatOff()
         {
-                                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, ClkR);
-            
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_1, ClkR);
+
         } // LeftSideWindowHeatOff
 
         public static void LeftSideWindowHeatToggle()
         {
-        if (Aircraft.pmdg737.ICE_WindowHeatSw[0].Value == 0)
+            if (Aircraft.pmdg737.ICE_WindowHeatSw[0].Value == 0)
             {
                 LeftSideWindowHeatOn();
             }
@@ -1861,17 +1917,17 @@ public static void EmergencyLightSelector(int position)
 
         public static void LeftForwardWindowHeatOn()
         {
-                                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_2, ClkL);
-                    } // LeftForwardWindowHeatOn
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_2, ClkL);
+        } // LeftForwardWindowHeatOn
 
         public static void LeftForwardWindowHeatOff()
         {
-                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_2, ClkR);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_2, ClkR);
         } // LeftForwardWindowHeatOff
 
         public static void LeftForwardWindowHeatToggle()
         {
-        if (Aircraft.pmdg737.ICE_WindowHeatSw[1].Value == 0)
+            if (Aircraft.pmdg737.ICE_WindowHeatSw[1].Value == 0)
             {
                 LeftForwardWindowHeatOn();
             }
@@ -1883,9 +1939,9 @@ public static void EmergencyLightSelector(int position)
 
         public static void WindowHeatTestOn()
         {
-            if(Aircraft.pmdg737.ICE_WindowHeatTestSw.Value == 0)
+            if (Aircraft.pmdg737.ICE_WindowHeatTestSw.Value == 0)
             {
-                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkL);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkL);
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkL);
             }
         } // WindowHeatTestOn
@@ -1896,9 +1952,9 @@ public static void EmergencyLightSelector(int position)
 
         public static void WindowOverHeatTest()
         {
-//            var switchPosition = FSUIPCConnection.ReadLVar("switch_137_73X");
+            //            var switchPosition = FSUIPCConnection.ReadLVar("switch_137_73X");
 
-            if(Aircraft.pmdg737.ICE_WindowHeatTestSw.Value == 1)
+            if (Aircraft.pmdg737.ICE_WindowHeatTestSw.Value == 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkR);
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_TEST, ClkR);
@@ -1907,15 +1963,15 @@ public static void EmergencyLightSelector(int position)
 
         public static void RightForwardWindowHeatOn()
         {
-                                        FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_3, ClkL);
-                    } // RightForwardWindowHeatOn
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_3, ClkL);
+        } // RightForwardWindowHeatOn
 
         public static void RightForwardWindowHeatOff()
         {
-                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_3, ClkR);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WINDOW_HEAT_3, ClkR);
         } // RightForwardWindowHeatOff
 
-    public static void RightForwardWindowHeatToggle()
+        public static void RightForwardWindowHeatToggle()
         {
             if (Aircraft.pmdg737.ICE_WindowHeatSw[2].Value == 0)
             {
@@ -1948,18 +2004,18 @@ public static void EmergencyLightSelector(int position)
                 RightSideWindowHeatOff();
             }
         } // RightSideWindowHeatToggle.
-    
+
         public static void LeftProbeHeatOn()
         {
-            if(FSUIPCConnection.ReadLVar("switch_140_73X") == 100)
+            if (FSUIPCConnection.ReadLVar("switch_140_73X") == 100)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_1, ClkL);
             }
-                    } // LeftProbeHeatOn
+        } // LeftProbeHeatOn
 
         public static void LeftProbeHeatOff()
         {
-            if(FSUIPCConnection.ReadLVar("switch_140_73X") == 0)
+            if (FSUIPCConnection.ReadLVar("switch_140_73X") == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_1, ClkR);
             }
@@ -1967,7 +2023,7 @@ public static void EmergencyLightSelector(int position)
 
         public static void RightProbeHeatOn()
         {
-            if(FSUIPCConnection.ReadLVar("switch_141_73X") == 100)
+            if (FSUIPCConnection.ReadLVar("switch_141_73X") == 100)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_2, ClkL);
             }
@@ -1975,7 +2031,7 @@ public static void EmergencyLightSelector(int position)
 
         public static void RightProbeHeatOff()
         {
-            if(FSUIPCConnection.ReadLVar("switch_141_73X") == 0)
+            if (FSUIPCConnection.ReadLVar("switch_141_73X") == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_PROBE_HEAT_2, ClkR);
             }
@@ -1983,14 +2039,14 @@ public static void EmergencyLightSelector(int position)
 
         public static void WingAntiIceOn()
         {
-            if(Aircraft.pmdg737.ICE_WingAntiIceSw.Value == 0)
+            if (Aircraft.pmdg737.ICE_WingAntiIceSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WING_ANTIICE, ClkL);
             }
         } // WingAntiIceOn
         public static void WingAntiIceOff()
         {
-            if(Aircraft.pmdg737.ICE_WingAntiIceSw.Value == 1)
+            if (Aircraft.pmdg737.ICE_WingAntiIceSw.Value == 1)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_ICE_WING_ANTIICE, ClkR);
             }
@@ -2042,7 +2098,7 @@ public static void EmergencyLightSelector(int position)
 
         public static void HydraulicElectricalPump2()
         {
-               if (Aircraft.pmdg737.HYD_PumpSw_elec[0].Value == 0)
+            if (Aircraft.pmdg737.HYD_PumpSw_elec[0].Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_HYD_ELEC2, ClkL);
             }
@@ -2108,52 +2164,92 @@ public static void EmergencyLightSelector(int position)
 
         public static void LeftBleedOff()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkR);
+            if (Aircraft.pmdg737.AIR_BleedAirSwitch[0].Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkR);
+            }
+
         } // LeftBleedOff
 
         public static void LeftBleedOn()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkL);
+            if (Aircraft.pmdg737.AIR_BleedAirSwitch[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_1_SWITCH, ClkL);
+            }
+
         } // LeftBleedOn.
 
         public static void RightBleedOff()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkR);
+            if (Aircraft.pmdg737.AIR_BleedAirSwitch[1].Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkR);
+            }
+
         } // RightBleedOff
 
         public static void RightBleedOn()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkL);
+            if (Aircraft.pmdg737.AIR_BleedAirSwitch[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ENG_2_SWITCH, ClkL);
+            }
+
         } // RightBleedOn
 
         public static void APUBleedOn()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkL);
+            if (Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkL);
+            }
+
         } // APUBleedOn
 
         public static void APUBleedOff()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkR);
+            if (Aircraft.pmdg737.AIR_APUBleedAirSwitch.Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_APU_SWITCH, ClkR);
+            }
+
         } // APUBleedOff
 
         public static void LeftRecircFanOn()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkL);
+            if (Aircraft.pmdg737.AIR_RecircFanSwitch[0].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkL);
+            }
+
         } // LeftRecircFanOn
 
         public static void LeftRecircFanOff()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkR);
+            if (Aircraft.pmdg737.AIR_RecircFanSwitch[0].Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_L_SWITCH, ClkR);
+            }
+
         } // LeftRecircFanOff
 
         public static void RightRecircFanOn()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkL);
+            if (Aircraft.pmdg737.AIR_RecircFanSwitch[1].Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkL);
+            }
+
         } // RightRecircFanOn
 
         public static void RightRecircFanOff()
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkR);
+            if (Aircraft.pmdg737.AIR_RecircFanSwitch[1].Value == 1)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_RECIRC_FAN_R_SWITCH, ClkR);
+            }
+
 
 
         } // RightRecircFanOff
@@ -2171,14 +2267,14 @@ public static void EmergencyLightSelector(int position)
         public static void OutflowValveSelector(int position)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_PRESS_VALVE_SWITCH, position);
-        } // OutflowValveSelector
 
+        } // OutflowValveSelector
         public static void IsolationValveSelector(int position)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_BLEED_ISOLATION_VALVE_SWITCH, position);
         } // IsolationValveSelector
 
-public static void APUSelector(int position)
+        public static void APUSelector(int position)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_APU_START, position);
         } // APUSelector
@@ -2240,9 +2336,9 @@ public static void APUSelector(int position)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_R_FIXED, ClkR);
             }
-                    } // RightFixedLandingLights
+        } // RightFixedLandingLights
 
-public static void LeftTurnOffLights()
+        public static void LeftTurnOffLights()
         {
             if (Aircraft.pmdg737.LTS_RunwayTurnoffSw[0].Value == 0)
             {
@@ -2269,7 +2365,7 @@ public static void LeftTurnOffLights()
 
         public static void TaxiLights()
         {
-            if(Aircraft.pmdg737.LTS_TaxiSw.Value == 0)
+            if (Aircraft.pmdg737.LTS_TaxiSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_TAXI, ClkL);
             }
@@ -2278,15 +2374,15 @@ public static void LeftTurnOffLights()
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_TAXI, ClkR);
             }
         } // TaxiLights
-// PositionLights is the main function that cycles through the different light modes.
-// Each mode has its own function to make it easier to read.
+          // PositionLights is the main function that cycles through the different light modes.
+          // Each mode has its own function to make it easier to read.
         public static void PositionLights()
         {
-            if(FSUIPCConnection.ReadLVar("switch_123_73X") == 0)
+            if (FSUIPCConnection.ReadLVar("switch_123_73X") == 0)
             {
                 PositionLightsOff();
             }
-            else if(FSUIPCConnection.ReadLVar("switch_123_73X") == 50)
+            else if (FSUIPCConnection.ReadLVar("switch_123_73X") == 50)
             {
                 PositionLightsSteady();
             }
@@ -2294,14 +2390,14 @@ public static void LeftTurnOffLights()
             {
                 PositionLightsStrobe();
             }
-                    } // PositionLights
+        } // PositionLights
 
         private static void PositionLightsStrobe()
         {
-            if(FSUIPCConnection.ReadLVar("switch_123_73X") != 0)
+            if (FSUIPCConnection.ReadLVar("switch_123_73X") != 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
-                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
             }
         } // PositionLightsStrobe
 
@@ -2309,26 +2405,26 @@ public static void LeftTurnOffLights()
         {
             if (FSUIPCConnection.ReadLVar("switch_123_73X") > 50)
             {
-                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkR);
             }
-else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
+            else if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
             {
-                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
             }
         } // PositionLightsOff
 
         public static void PositionLightsSteady()
         {
-            if(FSUIPCConnection.ReadLVar("switch_123_73X") != 100)
+            if (FSUIPCConnection.ReadLVar("switch_123_73X") != 100)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
-                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_POS_STROBE, ClkL);
             }
         } // PositionLightsSteady
 
         public static void LogoLights()
         {
-            if(Aircraft.pmdg737.LTS_LogoSw.Value == 0)
+            if (Aircraft.pmdg737.LTS_LogoSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_LOGO, ClkL);
             }
@@ -2340,7 +2436,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void AntiCollisionLights()
         {
-            if(Aircraft.pmdg737.LTS_AntiCollisionSw.Value == 0)
+            if (Aircraft.pmdg737.LTS_AntiCollisionSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_ANT_COL, ClkL);
             }
@@ -2352,7 +2448,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void WingLights()
         {
-            if(Aircraft.pmdg737.LTS_WingSw.Value == 0)
+            if (Aircraft.pmdg737.LTS_WingSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WING, ClkL);
             }
@@ -2364,7 +2460,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void WheelWellLights()
         {
-            if(Aircraft.pmdg737.LTS_WheelWellSw.Value == 0)
+            if (Aircraft.pmdg737.LTS_WheelWellSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_LIGHTS_WHEEL_WELL, ClkL);
             }
@@ -2381,7 +2477,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void AutoThrottle()
         {
-            if(Aircraft.pmdg737.MCP_ATArmSw.Value == 0)
+            if (Aircraft.pmdg737.MCP_ATArmSw.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_AT_ARM_SWITCH, ClkL);
             }
@@ -2393,7 +2489,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void N1SetSelector()
         {
-            if(FSUIPCConnection.ReadLVar("L:switch_466_73X") < 30)
+            if (FSUIPCConnection.ReadLVar("L:switch_466_73X") < 30)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_N1SET_SELECTOR, Inc);
             }
@@ -2405,7 +2501,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void N1()
         {
-            if(Aircraft.pmdg737.MCP_annunN1.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunN1.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_N1_SWITCH, ClkL);
             }
@@ -2417,7 +2513,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void SpeedHold()
         {
-            if(Aircraft.pmdg737.MCP_annunSPEED.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunSPEED.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_SPEED_SWITCH, ClkL);
             }
@@ -2538,7 +2634,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void ApproachMode()
         {
-            if(Aircraft.pmdg737.MCP_annunAPP.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunAPP.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_APP_SWITCH, ClkL);
             }
@@ -2550,7 +2646,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void LocalizerHold()
         {
-            if(Aircraft.pmdg737.MCP_annunVOR_LOC.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunVOR_LOC.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_VOR_LOC_SWITCH, ClkL);
             }
@@ -2562,7 +2658,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void CMDA()
         {
-            if(Aircraft.pmdg737.MCP_annunCMD_A.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunCMD_A.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CMD_A_SWITCH, ClkL);
             }
@@ -2574,7 +2670,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void CWSA()
         {
-            if(Aircraft.pmdg737.MCP_annunCWS_A.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunCWS_A.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CWS_A_SWITCH, ClkL);
             }
@@ -2586,7 +2682,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void CMDB()
         {
-            if(Aircraft.pmdg737.MCP_annunCMD_B.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunCMD_B.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CMD_B_SWITCH, ClkL);
             }
@@ -2598,7 +2694,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void CWSB()
         {
-            if(Aircraft.pmdg737.MCP_annunCWS_B.Value == 0)
+            if (Aircraft.pmdg737.MCP_annunCWS_B.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_CWS_B_SWITCH, ClkL);
             }
@@ -2610,7 +2706,7 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
 
         public static void DisengageBar()
         {
-            if(Aircraft.pmdg737.MCP_DisengageBar.Value == 0)
+            if (Aircraft.pmdg737.MCP_DisengageBar.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_DISENGAGE_BAR, ClkL);
             }
@@ -2623,19 +2719,19 @@ else            if (FSUIPCConnection.ReadLVar("switch_123_73X") < 50)
         public static void BankLimiter()
         {
             var counter = Aircraft.pmdg737.MCP_BankLimitSel.Value;
-            if(counter == 4)
+            if (counter == 4)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_BANK_ANGLE_SELECTOR, 0);
             }
             else
             {
-                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_BANK_ANGLE_SELECTOR, counter+1);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MCP_BANK_ANGLE_SELECTOR, counter + 1);
             }
-                                                        } // BankLimiter
+        } // BankLimiter
 
         public static void NoseWheelSteering()
         {
-if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
+            if (Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_NOSE_WHEEL_STEERING_SWITCH, ClkL);
             }
@@ -2671,7 +2767,7 @@ if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
 
         public static void Lights()
         {
-            if(Aircraft.pmdg737.MAIN_LightsSelector.Value != 2)
+            if (Aircraft.pmdg737.MAIN_LightsSelector.Value != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_DSP_CPT_MASTER_LIGHTS_SWITCH, ClkL);
             }
@@ -2683,11 +2779,11 @@ if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
 
         public static void FuelFlow()
         {
-                if(Aircraft.pmdg737.MAIN_FuelFlowSelector.Value != 2)
+            if (Aircraft.pmdg737.MAIN_FuelFlowSelector.Value != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_FUEL_FLOW_SWITCH, ClkL);
             }
-                else
+            else
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_FUEL_FLOW_SWITCH, 0);
             }
@@ -2743,7 +2839,7 @@ if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
 
         public static void RMI1()
         {
-            if(Aircraft.pmdg737.MAIN_RMISelector1_VOR.Value == 0)
+            if (Aircraft.pmdg737.MAIN_RMISelector1_VOR.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_RMI_LEFT_SELECTOR, ClkL);
             }
@@ -2755,7 +2851,7 @@ if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
 
         public static void RMI2()
         {
-            if(Aircraft.pmdg737.MAIN_RMISelector2_VOR.Value == 0)
+            if (Aircraft.pmdg737.MAIN_RMISelector2_VOR.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_RMI_RIGHT_SELECTOR, ClkL);
             }
@@ -2767,7 +2863,7 @@ if(Aircraft.pmdg737.MAIN_NoseWheelSteeringSwNORM.Value == 0)
 
         public static void SpeedRef()
         {
-if(Aircraft.pmdg737.MAIN_SpdRefSelector.Value != 6)
+            if (Aircraft.pmdg737.MAIN_SpdRefSelector.Value != 6)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_MPM_SPEED_REFERENCE_SELECTOR, Aircraft.pmdg737.MAIN_SpdRefSelector.Value + 1);
             }
@@ -2777,9 +2873,9 @@ if(Aircraft.pmdg737.MAIN_SpdRefSelector.Value != 6)
             }
         } // SpeedRef
 
-public static void Gear()
+        public static void Gear()
         {
-            if(Aircraft.pmdg737.MAIN_GearLever.Value != 2)
+            if (Aircraft.pmdg737.MAIN_GearLever.Value != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GEAR_LEVER, ClkL);
             }
@@ -2789,7 +2885,7 @@ public static void Gear()
             }
         } // Gear
 
-public static void LeftLowerMainPanelLightIncrease()
+        public static void LeftLowerMainPanelLightIncrease()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_MAIN_PANEL_BRT, Inc);
         } // LeftLowerMainPanelLightIncrease
@@ -2799,7 +2895,7 @@ public static void LeftLowerMainPanelLightIncrease()
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_CAPT_MAIN_PANEL_BRT, Dec);
         } // LeftLowerMainPanelLightDecrease
 
-public static void RightMainPanelLightIncrease()
+        public static void RightMainPanelLightIncrease()
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_LWRMAIN_FO_MAIN_PANEL_BRT, Inc);
         } // RightMainPanelLightIncrease
@@ -2831,7 +2927,7 @@ public static void RightMainPanelLightIncrease()
 
         public static void FlapsInhibit()
         {
-            if(Aircraft.pmdg737.GPWS_FlapInhibitSw_NORM.Value == 0)
+            if (Aircraft.pmdg737.GPWS_FlapInhibitSw_NORM.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_FLAP_INHIBIT_SWITCH, ClkL);
             }
@@ -2843,7 +2939,7 @@ public static void RightMainPanelLightIncrease()
 
         public static void GearInhibit()
         {
-            if(Aircraft.pmdg737.GPWS_GearInhibitSw_NORM.Value == 0)
+            if (Aircraft.pmdg737.GPWS_GearInhibitSw_NORM.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_GEAR_INHIBIT_SWITCH, ClkL);
             }
@@ -2855,7 +2951,7 @@ public static void RightMainPanelLightIncrease()
 
         public static void TerrainInhibit()
         {
-            if(Aircraft.pmdg737.GPWS_TerrInhibitSw_NORM.Value == 0)
+            if (Aircraft.pmdg737.GPWS_TerrInhibitSw_NORM.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_GPWS_TERR_INHIBIT_SWITCH, ClkL);
             }
@@ -3027,7 +3123,7 @@ public static void RightMainPanelLightIncrease()
 
         public static void StabTrimElectrical()
         {
-            if(Aircraft.pmdg737.TRIM_StabTrimMainElecSw_NORMAL.Value == 0)
+            if (Aircraft.pmdg737.TRIM_StabTrimMainElecSw_NORMAL.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_STABTRIM_ELEC_SWITCH, ClkL);
             }
@@ -3037,9 +3133,9 @@ public static void RightMainPanelLightIncrease()
             }
         } // StabTrimElectrical
 
-public static void StabTrimAutoPilot()
+        public static void StabTrimAutoPilot()
         {
-            if(Aircraft.pmdg737.TRIM_StabTrimAutoPilotSw_NORMAL.Value == 0)
+            if (Aircraft.pmdg737.TRIM_StabTrimAutoPilotSw_NORMAL.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_STABTRIM_AP_SWITCH, ClkL);
             }
@@ -3051,7 +3147,7 @@ public static void StabTrimAutoPilot()
 
         public static void StabTrim()
         {
-            if(Aircraft.pmdg737.TRIM_StabTrimSw_NORMAL.Value == 0)
+            if (Aircraft.pmdg737.TRIM_StabTrimSw_NORMAL.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_STAB_TRIM_OVRD_SWITCH, ClkL);
             }
@@ -3083,7 +3179,7 @@ public static void StabTrimAutoPilot()
 
         public static void ParkingBrake()
         {
-            if(Aircraft.pmdg737.PED_annunParkingBrake.Value == 0)
+            if (Aircraft.pmdg737.PED_annunParkingBrake.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_PARK_BRAKE_LEVER, ClkL);
             }
@@ -3102,7 +3198,7 @@ public static void StabTrimAutoPilot()
         {
             var counter = Aircraft.pmdg737.FIRE_DetTestSw.Value;
 
-            if(counter != 2)
+            if (counter != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_DETECTION_TEST_SWITCH, counter + 1);
             }
@@ -3116,7 +3212,7 @@ public static void StabTrimAutoPilot()
         {
             var counter = Aircraft.pmdg737.FIRE_OvhtDetSw[0].Value;
 
-            if(counter != 2)
+            if (counter != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_1, counter + 1);
             }
@@ -3130,7 +3226,7 @@ public static void StabTrimAutoPilot()
         {
             var counter = Aircraft.pmdg737.FIRE_OvhtDetSw[1].Value;
 
-            if(counter != 2)
+            if (counter != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_OVHT_DET_SWITCH_2, counter + 1);
             }
@@ -3144,7 +3240,7 @@ public static void StabTrimAutoPilot()
         {
             var counter = Aircraft.pmdg737.FIRE_ExtinguisherTestSw.Value;
 
-            if(counter != 2)
+            if (counter != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_FIRE_EXTINGUISHER_TEST_SWITCH, counter + 1);
             }
@@ -3210,7 +3306,7 @@ public static void StabTrimAutoPilot()
         {
             var counter = Aircraft.pmdg737.CARGO_DetSelect[0].Value;
 
-if(counter != 2)
+            if (counter != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_FWD, counter + 1);
             }
@@ -3224,7 +3320,7 @@ if(counter != 2)
         {
             var counter = Aircraft.pmdg737.CARGO_DetSelect[1].Value;
 
-            if(counter != 2)
+            if (counter != 2)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DET_SEL_SWITCH_AFT, counter + 1);
             }
@@ -3248,9 +3344,9 @@ if(counter != 2)
 
         public static void AftCargoFireArm()
         {
-                        if (Aircraft.pmdg737.CARGO_ArmedSw[1].Value == 0)
+            if (Aircraft.pmdg737.CARGO_ArmedSw[1].Value == 0)
             {
-                                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_AFT, ClkL);
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_ARM_SWITCH_AFT, ClkL);
             }
             else
             {
@@ -3260,7 +3356,7 @@ if(counter != 2)
 
         public static void CargoFireDischarge()
         {
-            if(Aircraft.pmdg737.CARGO_annunDISCH.Value == 0)
+            if (Aircraft.pmdg737.CARGO_annunDISCH.Value == 0)
             {
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkL);
             }
@@ -3269,5 +3365,347 @@ if(counter != 2)
                 FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CARGO_FIRE_DISC_SWITCH, ClkR);
             }
         } // CargoFireDischarge
-    } // End PMDG737Aircraft.
+
+        public static void SetTransponder(string code)
+        {
+            int.TryParse(code, out int transponderCode);
+            utility.InstrumentPanel.Transponder = transponderCode;
+        } // SetTransponder
+
+        public static void TransponderSource()
+        {
+            if (Aircraft.pmdg737.XPDR_XpndrSelector_2.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_XPNDR, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_XPNDR, ClkR);
+            }
+        } // TransponderSource
+
+        public static void TransponderAlternateSource()
+        {
+            if (Aircraft.pmdg737.XPDR_AltSourceSel_2.Value == 0)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_ALTSOURCE, ClkL);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_ALTSOURCE, ClkR);
+            }
+        } // TransponderAlternateSource
+
+        public static void TransponderMode()
+        {
+            var counter = Aircraft.pmdg737.XPDR_ModeSel.Value;
+
+            if (counter != 4)
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, counter + 1);
+            }
+            else
+            {
+                FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_MODE, 0);
+            }
+        } // TransponderMode
+
+        public static void TransponderIdent()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_IDENT, ClkL);
+        } // TransponderIdent
+
+        public static void TransponderTest()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_TCAS_TEST, ClkL);
+        } // TransponderTest
+
+        public static void CaptainMicrophoneSelector(string mode)
+        {
+            switch (mode)
+            {
+                case "vhf1":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF1, ClkL);
+                    break;
+                case "vhf2":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF2, ClkR);
+                    break;
+                case "vhf3":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_VHF3, ClkL);
+                    break;
+                case "hf1":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_HF1, ClkL);
+                    break;
+                case "hf2":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_HF2, ClkL);
+                    break;
+                case "flt":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_FLT, ClkL);
+                    break;
+                case "svc":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_SVC, ClkL);
+                    break;
+                case "pa":
+                    FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_ACP_CAPT_MIC_PA, ClkL);
+                    break;
+            }
+        } // CaptainMicrophoneSelector.
+
+        public static void EnterCDUText(int cdu, string text)
+        {
+            // convert the entered text to an array so we can get at each character
+            char[] charArray = text.ToUpper().ToCharArray();
+            foreach (char ch in charArray)
+            {
+                if (cdu == 1)
+                {
+                    switch (ch)
+                    {
+                        case 'A':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_A, Aircraft.ClkL);
+                            break;
+                        case 'B':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_B, Aircraft.ClkL);
+                            break;
+                        case 'C':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_C, Aircraft.ClkL);
+                            break;
+                        case 'D':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_D, Aircraft.ClkL);
+                            break;
+                        case 'E':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_E, Aircraft.ClkL);
+                            break;
+                        case 'F':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_F, Aircraft.ClkL);
+                            break;
+                        case 'G':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_G, Aircraft.ClkL);
+                            break;
+                        case 'H':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_H, Aircraft.ClkL);
+                            break;
+                        case 'I':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_I, Aircraft.ClkL);
+                            break;
+                        case 'J':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_J, Aircraft.ClkL);
+                            break;
+                        case 'K':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_K, Aircraft.ClkL);
+                            break;
+                        case 'L':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L, Aircraft.ClkL);
+                            break;
+                        case 'M':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_M, Aircraft.ClkL);
+                            break;
+                        case 'N':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_N, Aircraft.ClkL);
+                            break;
+                        case 'O':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_O, Aircraft.ClkL);
+                            break;
+                        case 'P':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_P, Aircraft.ClkL);
+                            break;
+                        case 'Q':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_Q, Aircraft.ClkL);
+                            break;
+                        case 'R':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R, Aircraft.ClkL);
+                            break;
+                        case 'S':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_S, Aircraft.ClkL);
+                            break;
+                        case 'T':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_T, Aircraft.ClkL);
+                            break;
+                        case 'U':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_U, Aircraft.ClkL);
+                            break;
+                        case 'V':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_V, Aircraft.ClkL);
+                            break;
+                        case 'W':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_W, Aircraft.ClkL);
+                            break;
+                        case 'X':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_X, Aircraft.ClkL);
+                            break;
+                        case 'Y':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_Y, Aircraft.ClkL);
+                            break;
+                        case 'Z':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_Z, Aircraft.ClkL);
+                            break;
+                        case '1':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_1, Aircraft.ClkL);
+                            break;
+                        case '2':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_2, Aircraft.ClkL);
+                            break;
+                        case '3':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_3, Aircraft.ClkL);
+                            break;
+                        case '4':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_4, Aircraft.ClkL);
+                            break;
+                        case '5':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_5, Aircraft.ClkL);
+                            break;
+                        case '6':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_6, Aircraft.ClkL);
+                            break;
+                        case '7':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_7, Aircraft.ClkL);
+                            break;
+                        case '8':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_8, Aircraft.ClkL);
+                            break;
+                        case '9':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_9, Aircraft.ClkL);
+                            break;
+                        case '0':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_0, Aircraft.ClkL);
+                            break;
+                        case '.':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DOT, Aircraft.ClkL);
+                            break;
+
+
+                    }
+                    Thread.Sleep(1000);
+
+
+                }
+                if (cdu == 2)
+                {
+                    switch (ch)
+                    {
+                        case 'A':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_A, Aircraft.ClkL);
+                            break;
+                        case 'B':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_B, Aircraft.ClkL);
+                            break;
+                        case 'C':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_C, Aircraft.ClkL);
+                            break;
+                        case 'D':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_D, Aircraft.ClkL);
+                            break;
+                        case 'E':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_E, Aircraft.ClkL);
+                            break;
+                        case 'F':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_F, Aircraft.ClkL);
+                            break;
+                        case 'G':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_G, Aircraft.ClkL);
+                            break;
+                        case 'H':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_H, Aircraft.ClkL);
+                            break;
+                        case 'I':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_I, Aircraft.ClkL);
+                            break;
+                        case 'J':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_J, Aircraft.ClkL);
+                            break;
+                        case 'K':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_K, Aircraft.ClkL);
+                            break;
+                        case 'L':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L, Aircraft.ClkL);
+                            break;
+                        case 'M':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_M, Aircraft.ClkL);
+                            break;
+                        case 'N':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_N, Aircraft.ClkL);
+                            break;
+                        case 'O':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_O, Aircraft.ClkL);
+                            break;
+                        case 'P':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_P, Aircraft.ClkL);
+                            break;
+                        case 'Q':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_Q, Aircraft.ClkL);
+                            break;
+                        case 'R':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R, Aircraft.ClkL);
+                            break;
+                        case 'S':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_S, Aircraft.ClkL);
+                            break;
+                        case 'T':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_T, Aircraft.ClkL);
+                            break;
+                        case 'U':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_U, Aircraft.ClkL);
+                            break;
+                        case 'V':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_V, Aircraft.ClkL);
+                            break;
+                        case 'W':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_W, Aircraft.ClkL);
+                            break;
+                        case 'X':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_X, Aircraft.ClkL);
+                            break;
+                        case 'Y':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_Y, Aircraft.ClkL);
+                            break;
+                        case 'Z':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_Z, Aircraft.ClkL);
+                            break;
+                        case '1':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_1, Aircraft.ClkL);
+                            break;
+                        case '2':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_2, Aircraft.ClkL);
+                            break;
+                        case '3':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_3, Aircraft.ClkL);
+                            break;
+                        case '4':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_4, Aircraft.ClkL);
+                            break;
+                        case '5':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_5, Aircraft.ClkL);
+                            break;
+                        case '6':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_6, Aircraft.ClkL);
+                            break;
+                        case '7':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_7, Aircraft.ClkL);
+                            break;
+                        case '8':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_8, Aircraft.ClkL);
+                            break;
+                        case '9':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_9, Aircraft.ClkL);
+                            break;
+                        case '0':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_0, Aircraft.ClkL);
+                            break;
+                        case '.':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_DOT, Aircraft.ClkL);
+                            break;
+
+
+                    }
+                    Thread.Sleep(1000);
+
+
+                }
+            }
+
+        }
+
+
+
+        } // End PMDG737Aircraft.
             } // End namespace.

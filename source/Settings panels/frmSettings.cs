@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +29,7 @@ namespace tfm
             pages.Add("nodTiming", new ctlTiming());
             pages.Add("airportsDatabaseNode", new ctlDatabases());
             pages.Add("nodAircraft", new ctlAircraft());
+            pages.Add("nodFlows", new ctlAircraftFlows());
             pages.Add("nodeUserInterface", new ctlUserInterface());
             pages.Add("nodPMDG", new ctlPMDG());
             pages.Add("737AdiruNode", new Settings_panels.PMDG737.ctlADIRU());
@@ -43,6 +44,7 @@ namespace tfm
             pages.Add("737NavDisNode", new Settings_panels.PMDG737.ctlNav_Dis());
             pages.Add("737FuelNode", new Settings_panels.PMDG737.ctlFuel());
             pages.Add("737ElectricalNode", new Settings_panels.PMDG737.ctlElectrical());
+            pages.Add("737BusesNode", new tfm.Settings_panels.PMDG737.ctlBuses());
             pages.Add("737ApuNode", new Settings_panels.PMDG737.ctlAPU());
             pages.Add("737WipersNode", new Settings_panels.PMDG737.ctlWipers());
 
@@ -72,6 +74,31 @@ namespace tfm
 
             // --panel: Lower forward
             pages.Add("737LowerForwardNode", new tfm.Settings_panels.PMDG737.ctlLowerForward());
+
+            // --panel: Control Stand
+            pages.Add("737ControlStandCDUNode", new tfm.Settings_panels.PMDG737.ctlControlStandCDU());
+            pages.Add("737ControlStandTrimNode", new tfm.Settings_panels.PMDG737.ctlControlStandTrim());
+            pages.Add("737PedestalNode", new tfm.Settings_panels.PMDG737.ctlControlStandPedestal());
+            pages.Add("737FireNode", new tfm.Settings_panels.PMDG737.ctlFire());
+            pages.Add("737CargoFireNode", new tfm.Settings_panels.PMDG737.ctlCargoFire());
+            pages.Add("737TransponderNode", new tfm.Settings_panels.PMDG737.ctlTransponder());
+
+            // --panel: AFS
+            pages.Add("737AfsNode", new tfm.Settings_panels.PMDG737.ctlAFS());
+
+            // ---747 settings
+            pages.Add("overheadMaint_ElectricalNode", new tfm.Settings_panels.PMDG747.ctlOverHeadMaint_Electrical());
+            pages.Add("overheadMaintFuelNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Fuel());
+            pages.Add("overheadMaintHydNode", new tfm.Settings_panels.PMDG747.ctlOverheadMaint_Hydraulics());
+
+            // Weather
+            pages.Add("weatherNode", new tfm.Settings_panels.Weather.ctlWeather());
+            pages.Add("weather_WindNode", new tfm.Settings_panels.Weather.WindSnadshot());
+            pages.Add("weatherCloudCommandNode", new tfm.Settings_panels.Weather.ctlCloudSnapshot());
+            pages.Add("weather_AutomaticAnnouncementsNode", new tfm.Settings_panels.Weather.ctlAutomaticAnnouncements());
+
+            // SimBrief
+            pages.Add("simBriefNode", new tfm.Settings_panels.ctlSimBrief());
                         // set the parent and hide them all
             foreach (iSettingsPage page in this.pages.Values)
             {

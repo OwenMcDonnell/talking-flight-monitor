@@ -23,6 +23,9 @@ namespace tfm
         }
         private void LoadPages()
         {
+            // ---panel: Overhead Maint
+            pages.Add("overheadMaintElectricalNode", new tfm.PMDG.PMDG_747.CockpitPanels.ctlOverheadMaint_Electric());
+            pages.Add("overheadMaintFuelNode", new tfm.PMDG.PMDG_747.CockpitPanels.ctlOverheadMaint_Fuel());
             pages.Add("electricalNode", new ctlElectrical_747());
             pages.Add("MCPNode", new ctlMCP_747());
             foreach(iPanelsPage page in this.pages.Values)

@@ -14,7 +14,7 @@ namespace tfm.PMDG.PMDG777.McpComponents
 {
     public partial class SpeedBox : Form
     {
-        Timer speedTimer = new Timer();
+        System.Windows.Forms.Timer speedTimer = new System.Windows.Forms.Timer();
         
 
                 public SpeedBox()

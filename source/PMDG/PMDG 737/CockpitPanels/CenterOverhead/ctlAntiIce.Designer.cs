@@ -1280,9 +1280,9 @@
             this.Controls.Add(this.antiIceFlowLayoutPanel);
             this.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MaximumSize = new System.Drawing.Size(1600, 1080);
             this.Name = "ctlAntiIce";
-            this.Size = new System.Drawing.Size(1803, 621);
+            this.Size = new System.Drawing.Size(1600, 621);
             this.Load += new System.EventHandler(this.ctlAntiIce_Load);
             this.VisibleChanged += new System.EventHandler(this.ctlAntiIce_VisibleChanged);
             this.antiIceFlowLayoutPanel.ResumeLayout(false);
