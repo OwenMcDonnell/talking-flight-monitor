@@ -10,7 +10,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TFMMainForm.cs" />
+    <Compile Remove="TFMMainForm.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="TFMMainForm.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="sounds\100.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TFMMainForm.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TFMMainForm.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TFMMainForm.cs" />
   </ItemGroup>
 
   <ItemGroup>

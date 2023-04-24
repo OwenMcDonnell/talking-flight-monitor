@@ -51,10 +51,6 @@ namespace tfm
         // get a speech synthesis object for SAPI output
         public static System.Speech.Synthesis.SpeechSynthesizer synth = new System.Speech.Synthesis.SpeechSynthesizer();
 
-        // objects for cognative speech services
-        // private SpeechConfig azureConfig;
-        // private Microsoft.CognitiveServices.Speech.SpeechSynthesizer azureSynth;
-        // speech history class
         private readonly OutputHistory history = new OutputHistory();
         public PMDGPanelUpdateEvent pmdg;
         
@@ -88,8 +84,6 @@ namespace tfm
         private static MixingSampleProvider mixer;
 
         // initialize sound objects
-        // readonly SoundPlayer cmdSound = new SoundPlayer(@"sounds\command.wav");
-        // readonly SoundPlayer apCmdSound = new SoundPlayer(@"sounds\ap_command.wav");
         private static WaveFileReader cmdSound;
         private static WaveFileReader apCmdSound;
         private static WaveFileReader tickSound;
@@ -4746,7 +4740,7 @@ else if(currentLocation.Airport == null)
             } // End switch
         } // End MonitorN1Limit.
 
-        public void ReadPmdgFMCMessage(string type = null)
+        public void ReadPmdgFMCMessage(string? type = null)
         {
             PMDG_NGX_CDU_Screen cDU_Screen = new PMDG_NGX_CDU_Screen(0x5400);
             string message = string.Empty;
