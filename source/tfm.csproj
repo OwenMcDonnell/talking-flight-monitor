@@ -7,6 +7,8 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>tfm.App</StartupObject>
+    <RootNamespace>tfm</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
