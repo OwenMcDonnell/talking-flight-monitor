@@ -111,6 +111,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>NavlogColumns.Designer.cs</LastGenOutput>
     </None>
+    <None Update="Properties\TFM_icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\pmdg737-offsets.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>pmdg737-offsets.Designer.cs</LastGenOutput>

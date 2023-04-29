@@ -1,4 +1,7 @@
-﻿using DavyKager;
+﻿using TrayIcon = System.Windows.Forms.NotifyIcon;
+using ContextMenu = System.Windows.Forms.ContextMenuStrip;
+using MenuItem = System.Windows.Forms.ToolStripMenuItem;
+using DavyKager;
 using FSUIPC;
 using NLog;
 using NLog.Config;
@@ -25,11 +28,7 @@ using System.Windows.Navigation;
 
 namespace tfm
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// 
-    /// </summary>
-    public partial class App : System.Windows.Application
+        public partial class App : System.Windows.Application
     {
         // get a logger object for this class
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
@@ -104,6 +103,7 @@ namespace tfm
 
 
         }
+        
         // This method is called every 1 second by the connection timer.
         private void TimerConnection_Tick(object sender, ElapsedEventArgs e)
         {
@@ -214,6 +214,7 @@ namespace tfm
             // we're finished this tick, so restart the timer
             TimerMain.Start();
         }
+
         // second 200 MS timer for lower priority instruments, or instruments that don't work well on 100 MS
         private void TimerLowPriority_Tick(object sender, ElapsedEventArgs e)
         {
@@ -240,7 +241,120 @@ namespace tfm
             TimerLowPriority.Start();
         }
 
+private void LoadTrayIcon()
+        {
 
+            // Load the system tray icon and assign all of the context menu items to it.
 
+            // Settings menu item.
+            MenuItem SettingsMenuItem = new MenuItem
+            {
+                Name = "SettingsMenuItem",
+                Text = "&Settings...",
+            };
+
+            // Keyboard manager menu item.
+            MenuItem KeyboardManagerMenuItem = new MenuItem
+            {
+                Name = "KeyboardManagerMenuItem",
+                Text = "&Keyboard manager...",
+            };
+
+            // Restart menu item.
+            MenuItem RestartMenuItem = new MenuItem
+            {
+                Name = "RestartMenuItem",
+                Text = "&Restart",
+            };
+
+            // Shutdown menu item.
+            MenuItem ShutdownMenuItem = new MenuItem
+            {
+                Name = "ShutdownMenuItem",
+                Text = "&Shutdown",
+            };
+
+            // Issue tracker menu item.
+            MenuItem IssueTrackerMenuItem = new MenuItem
+            {
+                Name = "IssueTrackerMenuItem",
+                Text = "&Issue tracker...",
+            };
+
+            // Website menu item.
+            MenuItem WebsiteMenuItem = new MenuItem
+            {
+                Name = "WebsiteMenuItem",
+                Text = "&Website...",
+            };
+
+            // About menu item.
+            MenuItem AboutMenuItem = new MenuItem
+            {
+                Name = "AboutMenuItem",
+                Text = "&About...",
+            };
+
+            // The context menu.
+            ContextMenu TFMContextMenu = new ContextMenu
+            {
+                Name = "TFMContextMenu",
+                AccessibleName = "TFM context menu",
+                Items =
+                {
+SettingsMenuItem,
+KeyboardManagerMenuItem,
+RestartMenuItem,
+ShutdownMenuItem,
+IssueTrackerMenuItem,
+WebsiteMenuItem,
+AboutMenuItem,
+                }
+            };
+
+            // The tray icon.
+            TrayIcon icon = new TrayIcon
+            {
+                Text = "Talking flight monitor",
+                Icon = new Icon("TFM_icon.ico"),
+                ContextMenuStrip = TFMContextMenu,
+                Visible = true,
+            };
+        }
+
+        private void SettingsMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void KeyboardManagerMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void RestartMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void ShutdownMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void IssueTrackerMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void WebsiteMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void AboutMenuItem_Click(object? sender, EventArgs e)
+        {
+
+        }
     }
 }
