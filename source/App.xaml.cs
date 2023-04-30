@@ -43,7 +43,7 @@ namespace tfm
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            
+            LoadTrayIcon();
             if (e.Args.Length == 1)
             {
                 if (e.Args[0] == "/debug")
@@ -252,6 +252,7 @@ private void LoadTrayIcon()
                 Name = "SettingsMenuItem",
                 Text = "&Settings...",
             };
+            SettingsMenuItem.Click += new EventHandler(SettingsMenuItem_Click);
 
             // Keyboard manager menu item.
             MenuItem KeyboardManagerMenuItem = new MenuItem
@@ -259,6 +260,7 @@ private void LoadTrayIcon()
                 Name = "KeyboardManagerMenuItem",
                 Text = "&Keyboard manager...",
             };
+            KeyboardManagerMenuItem.Click += new EventHandler(KeyboardManagerMenuItem_Click);
 
             // Restart menu item.
             MenuItem RestartMenuItem = new MenuItem
@@ -266,6 +268,7 @@ private void LoadTrayIcon()
                 Name = "RestartMenuItem",
                 Text = "&Restart",
             };
+            RestartMenuItem.Click += new EventHandler(RestartMenuItem_Click);
 
             // Shutdown menu item.
             MenuItem ShutdownMenuItem = new MenuItem
@@ -273,6 +276,7 @@ private void LoadTrayIcon()
                 Name = "ShutdownMenuItem",
                 Text = "&Shutdown",
             };
+            ShutdownMenuItem.Click += new EventHandler(ShutdownMenuItem_Click);
 
             // Issue tracker menu item.
             MenuItem IssueTrackerMenuItem = new MenuItem
@@ -280,6 +284,7 @@ private void LoadTrayIcon()
                 Name = "IssueTrackerMenuItem",
                 Text = "&Issue tracker...",
             };
+            IssueTrackerMenuItem.Click += new EventHandler(IssueTrackerMenuItem_Click);
 
             // Website menu item.
             MenuItem WebsiteMenuItem = new MenuItem
@@ -287,6 +292,7 @@ private void LoadTrayIcon()
                 Name = "WebsiteMenuItem",
                 Text = "&Website...",
             };
+            WebsiteMenuItem.Click += new EventHandler(WebsiteMenuItem_Click);
 
             // About menu item.
             MenuItem AboutMenuItem = new MenuItem
@@ -294,6 +300,7 @@ private void LoadTrayIcon()
                 Name = "AboutMenuItem",
                 Text = "&About...",
             };
+            AboutMenuItem.Click += new EventHandler(AboutMenuItem_Click);
 
             // The context menu.
             ContextMenu TFMContextMenu = new ContextMenu
@@ -316,7 +323,7 @@ AboutMenuItem,
             TrayIcon icon = new TrayIcon
             {
                 Text = "Talking flight monitor",
-                Icon = new Icon("TFM_icon.ico"),
+                Icon = new Icon("Properties/TFM_icon.ico"),
                 ContextMenuStrip = TFMContextMenu,
                 Visible = true,
             };
@@ -334,13 +341,13 @@ AboutMenuItem,
 
         private void RestartMenuItem_Click(object? sender, EventArgs e)
         {
-
+            
         }
 
         private void ShutdownMenuItem_Click(object? sender, EventArgs e)
         {
-
-        }
+            App.Current.Shutdown();
+                    }
 
         private void IssueTrackerMenuItem_Click(object? sender, EventArgs e)
         {
