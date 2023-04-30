@@ -40,6 +40,9 @@ namespace tfm
         // Create a counter for the connection timer.
         private int connectionCounter = 0;
         private readonly IOSubsystem inst = new IOSubsystem();
+        bool _TFMKeysEnabled = false;        
+        
+        public bool TFMKeysEnabled { get => _TFMKeysEnabled; set => _TFMKeysEnabled = value; }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -95,13 +98,6 @@ namespace tfm
                 SoundPlayer sound = new SoundPlayer(soundFile);
                 sound.Play();
             }
-
-
-
-
-
-
-
         }
         
         // This method is called every 1 second by the connection timer.
