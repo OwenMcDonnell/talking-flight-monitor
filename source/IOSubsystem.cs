@@ -89,8 +89,8 @@ namespace tfm
         private static WaveFileReader tickSound;
 
         // list to store registered hotkey identifiers
-        //readonly List<string> hotkeys = new List<string>();
-        //readonly List<string> autopilotHotkeys = new List<string>();
+        readonly List<string> hotkeys = new List<string>();
+       readonly List<string> autopilotHotkeys = new List<string>();
         FsFuelTanksCollection FuelTanks = null;
 
         // list to store fuel tanks present on the aircraft

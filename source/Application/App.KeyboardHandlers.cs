@@ -13,8 +13,8 @@ namespace tfm
     {
 
         // list to store registered hotkey identifiers
-        readonly List<string> hotkeys = new List<string>();
-        readonly List<string> autopilotHotkeys = new List<string>();
+        //readonly List<string> hotkeys = new List<string>();
+        //readonly List<string> autopilotHotkeys = new List<string>();
 
         bool _TFMKeysEnabled = false;
 
