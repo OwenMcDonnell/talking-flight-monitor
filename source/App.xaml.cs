@@ -1,6 +1,8 @@
 ﻿using TrayIcon = System.Windows.Forms.NotifyIcon;
 using ContextMenu = System.Windows.Forms.ContextMenuStrip;
 using MenuItem = System.Windows.Forms.ToolStripMenuItem;
+using NHotkey;
+using NHotkey.WindowsForms;
 using DavyKager;
 using FSUIPC;
 using NLog;
@@ -40,13 +42,11 @@ namespace tfm
         // Create a counter for the connection timer.
         private int connectionCounter = 0;
         private readonly IOSubsystem inst = new IOSubsystem();
-        bool _TFMKeysEnabled = false;        
         
-        public bool TFMKeysEnabled { get => _TFMKeysEnabled; set => _TFMKeysEnabled = value; }
-
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             LoadTrayIcon();
+            RegisterTFMGlobalCommands();
             if (e.Args.Length == 1)
             {
                 if (e.Args[0] == "/debug")

@@ -55,6 +55,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="TolkDotNet">
       <HintPath>..\..\GetAudioDuration\GetAudioDuration\TolkDotNet.dll</HintPath>
     </Reference>
