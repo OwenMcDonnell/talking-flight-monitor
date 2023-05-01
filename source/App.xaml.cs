@@ -46,7 +46,7 @@ namespace tfm
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             LoadTrayIcon();
-            RegisterTFMGlobalCommands();
+            //RegisterTFMGlobalCommands();
             if (e.Args.Length == 1)
             {
                 if (e.Args[0] == "/debug")

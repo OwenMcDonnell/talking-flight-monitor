@@ -2253,9 +2253,9 @@ else                    if (PMDG777Detected)
                     if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737"))
                     {
                         var is737CDUOpen = false;
-                        foreach (Form form in Application.OpenForms)
+                        foreach (System.Windows.Window w in App.Current.Windows)
                         {
-                            if (form is _737CDU)
+                            if (w is tfm.PMDG.PMDG_737.Forms.CduDialog)
                             {
                                 is737CDUOpen = true;
                                 break;
@@ -2269,8 +2269,8 @@ else                    if (PMDG777Detected)
                         } // End what to do when CDU is already open.
                         else
                         {
-                            _737CDU _737 = new _737CDU();
-                            _737.Show();
+                            tfm.PMDG.PMDG_737.Forms.CduDialog cdu = new PMDG.PMDG_737.Forms.CduDialog();
+                            cdu.ShowDialog();
                             is737CDUOpen = true;
                             break;
                         } // End what to do if FMC isn't open.
