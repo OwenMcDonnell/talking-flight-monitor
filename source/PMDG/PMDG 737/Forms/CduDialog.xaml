@@ -15,7 +15,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="cduDisplay" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutomationProperties.Name="FMC display" AutomationProperties.AccessKey="ALt+HOME" AutomationProperties.AcceleratorKey="ALT+HOME"/>
+        <TextBox x:Name="cduDisplay" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutomationProperties.Name="FMC display" AutomationProperties.AccessKey="ALT+HOME" AutomationProperties.AcceleratorKey="ALT+HOME" AcceptsReturn="True" TextWrapping="Wrap" Focusable="True" IsReadOnlyCaretVisible="True"/>
 
         <ToolBar Name="cduToolbar" Grid.Row="1" Grid.Column="0" Focusable="True">
             <AutomationProperties.Name>FMC toolbar</AutomationProperties.Name>
