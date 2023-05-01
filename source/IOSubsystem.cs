@@ -39,6 +39,8 @@ using System.Speech.Synthesis;
 using System.ComponentModel.Design;
 using tfm.Keyboard_manager;
 using tfm.copilot;
+using tfm.Settings_panels;
+
 namespace tfm
 {
     /// <summary>
@@ -5193,10 +5195,11 @@ else if(currentLocation.Airport == null)
             /// TODO: IoSubsystem: Remove avionics tab from settings.
             /// TODO: IoSubSystem: Make displaying settings reusable code in the global scope.
             /// 
-            frmSettings settings = new frmSettings();
+            // frmSettings settings = new frmSettings();
+            dlgSettings settings = new();
 
             settings.ShowDialog();
-            if (settings.DialogResult == DialogResult.OK)
+/*            if (settings.DialogResult == DialogResult.OK)
             {
                 Properties.Settings.Default.Save();
                 Properties.pmdg737_offsets.Default.Save();
@@ -5210,7 +5213,7 @@ else if(currentLocation.Airport == null)
                 Properties.pmdg747_offsets.Default.Reload();
                 Properties.Weather.Default.Reload();
             }
-        } // DisplayApplicationSettings.
+*/        } // DisplayApplicationSettings.
 
         private void DisplayKeyboardManager()
         {

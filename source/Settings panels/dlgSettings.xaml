@@ -1,0 +1,104 @@
+﻿<Window x:Class="tfm.Settings_panels.dlgSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfm.Settings_panels"
+        mc:Ignorable="d"
+                Title="TreeView Example" 
+        SizeToContent="WidthAndHeight" 
+        WindowStartupLocation="CenterScreen" 
+        ShowInTaskbar="False" 
+        ResizeMode="NoResize"
+        AutomationProperties.IsDialog="True">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=treeView}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TreeView x:Name="tvCategories" Grid.Column="0" SelectedItemChanged="Options_SelectedItemChanged" AutomationProperties.Name="category">
+            <TreeViewItem Header="General" x:Name="General" />
+            <TreeViewItem Header="Output" x:Name="Output" />
+            <TreeViewItem Header="Timing (requires TFM restart)" x:Name="Timing" />
+            <TreeViewItem Header="Airports Database" x:Name="AirportsDatabase" />
+            <TreeViewItem Header="Aircraft" x:Name="Aircraft" />
+            <TreeViewItem Header="User interface" x:Name="UserInterface" />
+            <TreeViewItem Header="Weather" x:Name="Weather">
+                <TreeViewItem Header="Automatic announcements" x:Name="AutomaticAnnouncements" />
+                <TreeViewItem Header="wind command" x:Name="WindCommand" />
+                <TreeViewItem Header="Clouds command" x:Name="CloudsCommand" />
+            </TreeViewItem>
+            <TreeViewItem Header="PMDG" x:Name="PMDG">
+                <TreeViewItem Header="737 speech events" x:Name="SpeechEvents737">
+                    <TreeViewItem Header="Aft overhead" x:Name="AftOverhead737">
+                        <TreeViewItem Header="ADIRU" x:Name="ADIRU737" />
+                        <TreeViewItem Header="PSEU" x:Name="PSEU737" />
+                        <TreeViewItem Header="service Interphone" x:Name="ServiceInterphone737" />
+                        <TreeViewItem Header="Dome lights" x:Name="DomeLights737" />
+                        <TreeViewItem Header="EEC" x:Name="EEC737" />
+                        <TreeViewItem Header="Oxygen" x:Name="Oxygen737" />
+                        <TreeViewItem Header="Gear" x:Name="Gear737" />
+                        <TreeViewItem Header="Flight recorder" x:Name="FlightRecorder737" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Forward overhead" x:Name="ForwardOverhead737">
+                        <TreeViewItem Header="Flight controls" x:Name="FlightControls737" />
+                        <TreeViewItem Header="Navigation displays" x:Name="NavigationDisplays737" />
+                        <TreeViewItem Header="Fuel" x:Name="Fuel737" />
+                        <TreeViewItem Header="Electrical" x:Name="Electrical737" />
+                        <TreeViewItem Header="APU" x:Name="APU737" />
+                        <TreeViewItem Header="Wipers" x:Name="Wipers737" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Center overhead" x:Name="CenterOverhead737">
+                        <TreeViewItem Header="Anti-ice" x:Name="AntiIce737" />
+                        <TreeViewItem Header="Hydraulics" x:Name="Hydraulics737" />
+                        <TreeViewItem Header="Air systems" x:Name="AirSystems737" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Bottom Overhead" x:Name="BottomOverhead737">
+                        <TreeViewItem Header="Engines" x:Name="Engines737" />
+                        <TreeViewItem Header="Lights" x:Name="Lights737" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="AFS" x:Name="AFS737" />
+                    <TreeViewItem Header="Glare Shield" x:Name="GlareShield737">
+                        <TreeViewItem Header="Warnings" x:Name="Warnings737" />
+                        <TreeViewItem Header="MCP" x:Name="MCP737" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Forward" x:Name="Forward737" />
+                    <TreeViewItem Header="MCP" x:Name="MCP737_2">
+                        <TreeViewItem Header="DU" x:Name="DU737" />
+                        <TreeViewItem Header="Standby" x:Name="Standby737" />
+                        <TreeViewItem Header="Speed" x:Name="Speed737" />
+                        <TreeViewItem Header="Brakes" x:Name="Brakes737" />
+                        <TreeViewItem Header="Flaps" x:Name="Flaps737" />
+                        <TreeViewItem Header="Gear" x:Name="Gear737_2" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Lower forward" x:Name="LowerForward737" />
+                    <TreeViewItem Header="Control stand" x:Name="ControlStand737">
+                        <TreeViewItem Header="CDU" x:Name="CDU737" />
+                        <TreeViewItem Header="Trim" x:Name="Trim737" />
+                        <TreeViewItem Header="Pedestal" x:Name="Pedestal737" />
+                        <TreeViewItem Header="Fire Protection" x:Name="FireProtection737" />
+                        <TreeViewItem Header="Cargo fire protection" x:Name="CargoFireProtection737" />
+                        <TreeViewItem Header="Transponder" x:Name="Transponder737" />
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="747 speech events" x:Name="SpeechEvents747">
+                    <TreeViewItem Header="Overhead maint" x:Name="OverheadMaint747">
+                        <TreeViewItem Header="Electrical" x:Name="Electrical747" />
+                        <TreeViewItem Header="Fuel" x:Name="Fuel747" />
+                        <TreeViewItem Header="Hydraulics" x:Name="Hydraulics747" />
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+
+        <UserControl Name="contentArea" Grid.Column="1" />
+        <StackPanel Grid.Column="2" Orientation="Vertical">
+            <Button Name="btnOk" IsDefault="True" Click="btnOk_Click">Ok</Button>
+            <Button Name="btnCancel" IsCancel="True">Cancel</Button>
+
+        </StackPanel>
+    </Grid>
+
+</Window>
