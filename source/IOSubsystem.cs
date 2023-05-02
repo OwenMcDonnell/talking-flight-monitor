@@ -3748,7 +3748,9 @@ private void DescendThroughClouds()
         }
         private void OnAttitudeModeTickEvent(Object source, ElapsedEventArgs e)
         {
-            attitudeModeSelect = Properties.Settings.Default.AttitudeAnnouncementMode;
+            string attitudeModeSelect = Properties.Settings.Default.AttitudeAnnouncementMode;
+            
+
             // pan = new PanningSampleProvider(bankSineProvider);
             FSUIPCConnection.Process("attitude");
             double Pitch = Math.Round((double)Aircraft.AttitudePitch.Value * 360d / (65536d * 65536d));
@@ -3756,16 +3758,16 @@ private void DescendThroughClouds()
             // pitch down
             if (Pitch > 0 && Pitch < 20)
             {
-                if (attitudeModeSelect == 2 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Speech" || attitudeModeSelect == "Both")
                 {
                     if (Pitch != oldPitch)
                     {
                         Output(isGauge: false, textOutput: false, interruptSpeech: true, output: $"down {Pitch}");
                         oldPitch = Pitch;
-                        if (attitudeModeSelect == 2) return;
+                        if (attitudeModeSelect == "Speech") return;
                     }
                 }
-                if (attitudeModeSelect == 1 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Tones" || attitudeModeSelect == "Both")
                 {
                     if (!AttitudePitchPlaying)
                     {
@@ -3782,17 +3784,17 @@ private void DescendThroughClouds()
             // pitch up
             if (Pitch < 0 && Pitch > -20)
             {
-                if (attitudeModeSelect == 2 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Speech" || attitudeModeSelect == "Both")
                 {
                     if (Pitch != oldPitch)
                     {
                         Output(interruptSpeech: true, isGauge: false, textOutput: false, output: $"up {Math.Abs(Pitch)}");
                         oldPitch = Pitch;
-                        if (attitudeModeSelect == 2) return;
+                        if (attitudeModeSelect == "Speech") return;
                     }
                 }
 
-                if (attitudeModeSelect == 1 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Tones" || attitudeModeSelect == "Both")
                 {
                     if (!AttitudePitchPlaying)
                     {
@@ -3808,16 +3810,16 @@ private void DescendThroughClouds()
             // bank left
             if (Bank > 0 && Bank < 90)
             {
-                if (attitudeModeSelect == 2 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Speech" || attitudeModeSelect == "Both")
                 {
                     if (Bank != OldBank)
                     {
                         Output(interruptSpeech: true, isGauge: false, textOutput: false, output: $"left {Bank}");
                         OldBank = Bank;
-                        if (attitudeModeSelect == 2) return;
+                        if (attitudeModeSelect == "Speech") return;
                     }
                 }
-                if (attitudeModeSelect == 1 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Tones" || attitudeModeSelect == "Both")
                 {
                     double freq = mapOneRangeToAnother(Bank, 1, 90, 400, 800, 0);
                     // bankSineProvider.Frequency = freq;
@@ -3840,17 +3842,17 @@ private void DescendThroughClouds()
             if (Bank < 0 && Bank > -90)
             {
                 Bank = Math.Abs(Bank);
-                if (attitudeModeSelect == 2 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Speech" || attitudeModeSelect == "Both")
                 {
                     if (Bank != OldBank)
                     {
                         Output(interruptSpeech: true, isGauge: false, textOutput: false, output: $"right {Bank}");
                         OldBank = Bank;
-                        if (attitudeModeSelect == 2) return;
+                        if (attitudeModeSelect == "Speech") return;
                     }
                 }
 
-                if (attitudeModeSelect == 1 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Tones" || attitudeModeSelect == "Both")
                 {
                     double freq = mapOneRangeToAnother(Bank, 1, 90, 400, 800, 0);
                     // bankSineProvider.Frequency = freq;
@@ -3869,7 +3871,7 @@ private void DescendThroughClouds()
             }
             if (Bank == 0)
             {
-                if (attitudeModeSelect == 1 || attitudeModeSelect == 3)
+                if (attitudeModeSelect == "Tones" || attitudeModeSelect == "Both")
                 {
                     mixer.RemoveAllMixerInputs();
                     mixer.AddMixerInput(new SampleToWaveProvider(pitchSineProvider.ToStereo()));

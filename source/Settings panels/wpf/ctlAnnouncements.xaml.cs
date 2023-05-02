@@ -13,14 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UserControl = System.Windows.Controls.UserControl;
-namespace tfm.Settings_panels
+
+namespace tfm.Settings_panels.wpf
 {
     /// <summary>
-    /// Interaction logic for usrGeneral.xaml
+    /// Interaction logic for ctlAnnouncements.xaml
     /// </summary>
-    public partial class usrGeneral : UserControl
+    public partial class ctlAnnouncements : UserControl
     {
-        public usrGeneral()
+        public ctlAnnouncements()
         {
             InitializeComponent();
         }

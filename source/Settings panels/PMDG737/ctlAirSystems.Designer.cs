@@ -102,7 +102,7 @@
             settings1.AltitudeAnnouncements = true;
             settings1.AnnouncePerfInitComplete = true;
             settings1.AnnounceTakeoffConfigComplete = true;
-            settings1.AttitudeAnnouncementMode = 1;
+            settings1.AttitudeAnnouncementMode = "Tones";
             settings1.AzureAPIKey = "";
             settings1.AzureServiceRegion = "";
             settings1.AzureVoice = "";
@@ -113,7 +113,7 @@
             settings1.FlightFollowingTimeInterval = "10";
             settings1.GeonamesUsername = "";
             settings1.ILSAnnouncementTimeInterval = "5";
-            settings1.NewAvionicsTab = "";
+
             settings1.OutputBraille = true;
             settings1.OutputHistoryLength = new decimal(new int[] {
             50,

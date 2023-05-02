@@ -19,9 +19,9 @@ namespace tfm.Settings_panels
     /// <summary>
     /// Interaction logic for usrOutput.xaml
     /// </summary>
-    public partial class usrOutput : UserControl
+    public partial class ctlOutput : UserControl
     {
-        public usrOutput()
+        public ctlOutput()
         {
             InitializeComponent();
         }

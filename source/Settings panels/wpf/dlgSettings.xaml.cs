@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tfm.Settings_panels.wpf;
 using UserControl = System.Windows.Controls.UserControl;
 
 namespace tfm.Settings_panels
@@ -26,8 +27,10 @@ namespace tfm.Settings_panels
         {
             InitializeComponent();
             // Initialize the user controls and add them to the dictionary
-            pageMappings["General"] = new usrGeneral();
-                        pageMappings["Output"] = new usrOutput();
+            pageMappings["General"] = new ctlGeneral();
+                        pageMappings["Output"] = new ctlOutput();
+            pageMappings["Announcements"] = new ctlAnnouncements();
+
                         /* pageMappings["Timing"] = new TimingPage();
                         pageMappings["AirportsDatabase"] = new AirportsDatabasePage();
                         pageMappings["Aircraft"] = new AircraftPage();

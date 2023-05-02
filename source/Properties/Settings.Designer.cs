@@ -145,10 +145,10 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int AttitudeAnnouncementMode {
+        [global::System.Configuration.DefaultSettingValueAttribute("Tones")]
+        public string AttitudeAnnouncementMode {
             get {
-                return ((int)(this["AttitudeAnnouncementMode"]));
+                return ((string)(this["AttitudeAnnouncementMode"]));
             }
             set {
                 this["AttitudeAnnouncementMode"] = value;
@@ -224,30 +224,6 @@ namespace tfm.Properties {
             }
             set {
                 this["ReadNavRadios"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string NewAvionicsTab {
-            get {
-                return ((string)(this["NewAvionicsTab"]));
-            }
-            set {
-                this["NewAvionicsTab"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AvionicsTabChangeFlag {
-            get {
-                return ((bool)(this["AvionicsTabChangeFlag"]));
-            }
-            set {
-                this["AvionicsTabChangeFlag"] = value;
             }
         }
         
