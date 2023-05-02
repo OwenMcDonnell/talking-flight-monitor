@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfm.Settings_panels"
         mc:Ignorable="d"
-                Title="TreeView Example" 
+                Title="TFM Settings" 
         SizeToContent="WidthAndHeight" 
         WindowStartupLocation="CenterScreen" 
         ShowInTaskbar="False" 
         ResizeMode="NoResize"
         AutomationProperties.IsDialog="True">
-    <Grid FocusManager.FocusedElement="{Binding ElementName=treeView}">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=tvCategories}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>

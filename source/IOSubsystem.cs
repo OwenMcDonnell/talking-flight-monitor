@@ -1054,9 +1054,13 @@ namespace tfm
 
         private void OnWeatherRefreshTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
-            utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
-            utility.CurrentWeather.Name = "Weather auto refresh";
-            utility.WeatherLastUpdated = elapsedEventArgs.SignalTime;
+            if (FSUIPCConnection.IsOpen)
+            {
+                utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+                utility.CurrentWeather.Name = "Weather auto refresh";
+                utility.WeatherLastUpdated = elapsedEventArgs.SignalTime;
+            }
+
                                 }
 
         private void onILSTimerTick(object sender, ElapsedEventArgs e)

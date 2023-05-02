@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "tfm": {
+      "commandName": "Project",
+      "commandLineArgs": "/debug"
+    }
+  }
+}
