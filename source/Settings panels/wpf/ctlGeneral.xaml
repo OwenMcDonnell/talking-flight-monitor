@@ -20,6 +20,7 @@
         <StackPanel Orientation="Horizontal" Width="Auto" Height="Auto">
             <Label Content="Bing Maps API key:" Name="lblBing"/>
             <TextBox Width="Auto" Height="Auto"
+                     Text="{s:SettingBinding bingMapsAPIKey}"
                      AutomationProperties.Name="{Binding Path=Content, ElementName=lblBing}"/>
         </StackPanel>
     </StackPanel>

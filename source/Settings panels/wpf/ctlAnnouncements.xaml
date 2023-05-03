@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <CheckBox Content="Automatically announce aircraft switches and instrumentation" IsChecked="{s:SettingBinding AutomaticAnnouncements}" Grid.Column="0" Grid.Row="0"/>
         <CheckBox Content="Read SimConnect messages" IsChecked="{s:SettingBinding ReadSimconnectMessages}" Grid.Column="1" Grid.Row="0"/>
-        <CheckBox Content="Read flight following information" IsChecked="{s:SettingBinding ReadInstrumentation}" Grid.Column="2" Grid.Row="0"/>
+        <CheckBox Content="Read flight following information" IsChecked="{s:SettingBinding FlightFollowing}" Grid.Column="2" Grid.Row="0"/>
         <CheckBox Content="Ground proximity warning system (GPWS) announcements" IsChecked="{s:SettingBinding ReadGPWS}" Grid.Column="0" Grid.Row="1"/>
         <CheckBox Content="Read altitude every 1000 feet  " IsChecked="{s:SettingBinding AltitudeAnnouncements}" Grid.Column="1" Grid.Row="1"/>
         <CheckBox Content="Read ILS information on approach" IsChecked="{s:SettingBinding ReadILS}" Grid.Column="2" Grid.Row="1"/>
