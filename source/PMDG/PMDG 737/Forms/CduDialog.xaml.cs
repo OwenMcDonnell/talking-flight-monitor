@@ -20,15 +20,72 @@ namespace tfm.PMDG.PMDG_737.Forms
         public partial class CduDialog : Window
     {
 
+        private CancellationTokenSource cduTimerCancellationTokenSource;
         private System.Timers.Timer cduTimer = new System.Timers.Timer();
+        private string oldLineSelectMode;
+        private string oldCDUScreen;
 
         public CduDialog()
         {
             InitializeComponent();
-
             RefreshCDU();
+            // Update the line select indicator.
+           lineSelectModeTextBox.Text = Properties.Settings.Default.PMDGCDUKeyLayout == "1" ? "D" : "A";
+
             cduDisplay.Focus();
+            StartAutoRefreshCDUAsync();
+                                                                                }
+
+        // Task methods.
+        #region "tasks"
+        private async Task AutoRefreshCDUAsync()
+        {
+            cduTimerCancellationTokenSource = new CancellationTokenSource();
+            CancellationToken cancellationToken = cduTimerCancellationTokenSource.Token;
+
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                try
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(30000), cancellationToken);
+
+                    Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        // Check to see if the CDU display changes, if so, show the new display.
+                        if (cduDisplay.Text != oldCDUScreen)
+                        {
+                            RefreshCDU();
+                        }
+
+                        // Update the line select mode. a= alternate; d = default.
+                        if (oldLineSelectMode != lineSelectModeTextBox.Text)
+                        {
+                            lineSelectModeTextBox.Text = Properties.Settings.Default.PMDGCDUKeyLayout == "1" ? "D" : "A";
+                        }
+
+                        oldLineSelectMode = lineSelectModeTextBox.Text;
+                        oldCDUScreen = cduDisplay.Text;
+                    }));
+                }
+                catch (TaskCanceledException)
+                {
+                    // Task was cancelled, handle the cancellation if necessary.
+                    break;
+                }
+            }
         }
+
+        public async void StartAutoRefreshCDUAsync()
+        {
+            await AutoRefreshCDUAsync();
+        }
+
+                public void StopAutoRefreshCDUAsync()
+        {
+            cduTimerCancellationTokenSource.Cancel();
+        }
+
+        #endregion
 
         private void RefreshCDU()
         {
