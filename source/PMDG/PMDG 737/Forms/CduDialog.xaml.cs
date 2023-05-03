@@ -89,7 +89,7 @@ namespace tfm.PMDG.PMDG_737.Forms
 
         private void RefreshCDU()
         {
-
+            int currentCaretPosition = cduDisplay.CaretIndex;
             cduDisplay.Clear();
 
             Thread.Sleep(500);
@@ -100,6 +100,7 @@ namespace tfm.PMDG.PMDG_737.Forms
             {
                 this.Title = PMDG737Aircraft.cdu0.Rows[0].ToString().Trim();
                 cduDisplay.Text = displayText;
+                cduDisplay.CaretIndex = Math.Min(currentCaretPosition, displayText.Length);
             }
             else
             {
@@ -217,8 +218,8 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
         }
         #endregion
         
-        // Button click events.
-        #region "button click events"
+        // Control events.
+        #region "Control events"
         private void initRefButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_INIT_REF, Aircraft.ClkL);
@@ -320,6 +321,13 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DEL, Aircraft.ClkL);
             RefreshCDU();
         }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            StopAutoRefreshCDUAsync();
+        }
+
         #endregion
+
     }
 }
