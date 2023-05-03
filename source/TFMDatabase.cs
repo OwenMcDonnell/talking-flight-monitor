@@ -1,4 +1,4 @@
-﻿// using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 using System.Data.SQLite;
 using NLog;
 using NLog.Common;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace tfm
 {

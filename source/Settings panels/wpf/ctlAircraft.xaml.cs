@@ -19,9 +19,9 @@ namespace tfm.Settings_panels.wpf
     /// <summary>
     /// Interaction logic for ctlAnnouncements.xaml
     /// </summary>
-    public partial class ctlAnnouncements : UserControl
+    public partial class ctlAircraft: UserControl
     {
-        public ctlAnnouncements()
+        public ctlAircraft()
         {
             InitializeComponent();
         }

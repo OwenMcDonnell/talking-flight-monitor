@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="tfm.Settings_panels.wpf.ctlAircraft"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.Settings_panels.wpf"
+             xmlns:s="clr-namespace:tfm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <WrapPanel Orientation="Horizontal" Width="Auto" Height="Auto">
+        <CheckBox Content="Automatically announce aircraft switches and instrumentation" IsChecked="{s:SettingBinding AutomaticAnnouncements}"/>
+        <CheckBox Content="Read SimConnect messages" IsChecked="{s:SettingBinding ReadSimconnectMessages}"/>
+        <CheckBox Content="Read flight following information" IsChecked="{s:SettingBinding FlightFollowing}" />
+        <CheckBox Content="Ground proximity warning system (GPWS) announcements" IsChecked="{s:SettingBinding ReadGPWS}" />
+        <CheckBox Content="Read altitude every 1000 feet  " IsChecked="{s:SettingBinding AltitudeAnnouncements}" />
+        <CheckBox Content="Read ILS information on approach" IsChecked="{s:SettingBinding ReadILS}" />
+        <CheckBox Content="Read ground speed periodically while on ground" IsChecked="{s:SettingBinding ReadGroundSpeed}" />
+        <CheckBox Content="Read autopilot instrument changes" IsChecked="{s:SettingBinding ReadAutopilot}" />
+        <CheckBox Content="Read glide slope altitude" IsChecked="{s:SettingBinding ReadGSAltitude}"/>
+        <CheckBox Content="Read localiser heading" IsChecked="{s:SettingBinding ReadLocaliserHeadingOffsets}"/>
+    </WrapPanel>
+</UserControl>

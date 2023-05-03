@@ -18,11 +18,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TreeView x:Name="tvCategories" Grid.Column="0" SelectedItemChanged="Options_SelectedItemChanged" AutomationProperties.Name="category">
+        <TreeView x:Name="tvCategories" Grid.Column="0" 
+                  SelectedItemChanged="Options_SelectedItemChanged"
+                  Loaded="tvCategories_Loaded"
+                  AutomationProperties.Name="category" >
             <TreeViewItem Header="General" x:Name="General" />
-            <TreeViewItem Header="Output" x:Name="Output">
-                    <TreeViewItem Header="Announcements" x:Name="Announcements" />
-                </TreeViewItem>
+            <TreeViewItem Header="Output" x:Name="Output"/>
             <TreeViewItem Header="Timing (requires TFM restart)" x:Name="Timing" />
             <TreeViewItem Header="Airports Database" x:Name="AirportsDatabase" />
             <TreeViewItem Header="Aircraft" x:Name="Aircraft" />

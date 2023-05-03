@@ -119,9 +119,6 @@
     <Setting Name="VatsimMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="avionics_tab" Type="System.String" Scope="User">
-      <Value Profile="(Default)">simplified</Value>
-    </Setting>
     <Setting Name="ShowFirstRunDialog" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
