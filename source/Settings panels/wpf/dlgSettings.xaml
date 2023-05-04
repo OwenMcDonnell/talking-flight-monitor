@@ -10,8 +10,9 @@
         WindowStartupLocation="CenterScreen" 
         ShowInTaskbar="False" 
         ResizeMode="NoResize"
+        Loaded="Window_Loaded"
         AutomationProperties.IsDialog="True">
-    <Grid FocusManager.FocusedElement="{Binding ElementName=tvCategories}">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*"/>

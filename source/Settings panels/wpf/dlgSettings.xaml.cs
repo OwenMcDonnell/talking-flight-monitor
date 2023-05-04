@@ -109,5 +109,10 @@ namespace tfm.Settings_panels
                 firstItem.IsSelected = true;
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            tvCategories.Focus();
+        }
     }
 }
