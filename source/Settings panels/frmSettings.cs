@@ -24,7 +24,7 @@ namespace tfm
 
         private void loadPages()
         {
-            pages.Add("nodTiming", new ctlTiming());
+            
             pages.Add("airportsDatabaseNode", new ctlDatabases());
             pages.Add("nodAircraft", new ctlAircraft());
             pages.Add("nodFlows", new ctlAircraftFlows());

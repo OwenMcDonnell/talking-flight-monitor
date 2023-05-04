@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="tfm.Settings_panels.ctlTiming"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.Settings_panels"
+             xmlns:s="clr-namespace:tfm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Vertical" Width="Auto" Height="Auto">
+        <StackPanel Orientation="Horizontal" Width="Auto" Height="Auto">
+            <Label Content="Flight Following announcement interval (in minutes):" Name="lblFlightFollowing"/>
+            <TextBox Name="txtFlightFollowing"
+                     Width="Auto" Height="Auto"
+                     Text="{s:SettingBinding FlightFollowingTimeInterval}"
+                     AutomationProperties.Name="{Binding Path=Content, ElementName=lblFlightFollowing}"/>
+
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Width="Auto" Height="Auto">
+            <Label Content="ILS announcement interval (in seconds):" Name="lblILSTime"/>
+            <TextBox Width="Auto" Height="Auto"
+                     
+                     Text="{s:SettingBinding ILSAnnouncementTimeInterval}"
+                     AutomationProperties.Name="{Binding Path=Content, ElementName=lblILSTime}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

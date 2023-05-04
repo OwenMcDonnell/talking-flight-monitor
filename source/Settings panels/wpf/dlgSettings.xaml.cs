@@ -31,8 +31,8 @@ namespace tfm.Settings_panels
                         pageMappings["Output"] = new ctlOutput();
             pageMappings["Aircraft"] = new tfm.Settings_panels.wpf.ctlAircraft();
 
-            /* pageMappings["Timing"] = new TimingPage();
-            pageMappings["AirportsDatabase"] = new AirportsDatabasePage();
+            pageMappings["Timing"] = new ctlTiming();
+            /* pageMappings["AirportsDatabase"] = new AirportsDatabasePage();
 
             pageMappings["UserInterface"] = new UserInterfacePage();
             pageMappings["AutomaticAnnouncements"] = new AutomaticAnnouncementsPage();
