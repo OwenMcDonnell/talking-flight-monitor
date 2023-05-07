@@ -4298,7 +4298,7 @@ private void DescendThroughClouds()
 
         private void OnASLKey()
         {
-            double asl = Math.Round((double)Aircraft.Altitude.Value, 0);
+               double asl = Math.Round((double)Aircraft.Altitude.Value, 0);
             var gaugeName = "ASL altitude";
             var gaugeValue = asl.ToString("F0");
             var isGauge = true;

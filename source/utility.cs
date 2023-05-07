@@ -82,7 +82,7 @@ namespace tfm
             return height;
         }
 
-                public static async void LoadAirportsDatabase()
+                public static async void LoadAirportsDatabase(string MakeRunwaysPath = null)
         {
 
             if (FSUIPCConnection.IsOpen)
@@ -91,11 +91,26 @@ namespace tfm
 
                 if(FSUIPCConnection.FSUIPCVersion.Major <= 6)
                 {
-                    database.MakeRunwaysFolder = Properties.Settings.Default.P3DAirportsDatabasePath;
+                    if (MakeRunwaysPath != null)
+                    {
+                        database.MakeRunwaysFolder = MakeRunwaysPath;
+                    }
+                    else
+                    {
+                        database.MakeRunwaysFolder = Properties.Settings.Default.P3DAirportsDatabasePath;
+                    }
                 }
                 else
                 {
-                    database.MakeRunwaysFolder = Properties.Settings.Default.MSFSAirportsDatabasePath;
+                    if (MakeRunwaysPath != null)
+                    {
+                        database.MakeRunwaysFolder = MakeRunwaysPath;
+                    }
+                    else
+                    {
+                        database.MakeRunwaysFolder = Properties.Settings.Default.MSFSAirportsDatabasePath;
+                    }
+
                 }
 
                 if (database.DatabaseFilesExist)

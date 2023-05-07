@@ -25,16 +25,15 @@ namespace tfm.Settings_panels
         private readonly Dictionary<string, UserControl> pageMappings = new Dictionary<string, UserControl>();
         public dlgSettings()
         {
-            InitializeComponent();
             // Initialize the user controls and add them to the dictionary
             pageMappings["General"] = new ctlGeneral();
                         pageMappings["Output"] = new ctlOutput();
             pageMappings["Aircraft"] = new tfm.Settings_panels.wpf.ctlAircraft();
 
             pageMappings["Timing"] = new ctlTiming();
-            /* pageMappings["AirportsDatabase"] = new AirportsDatabasePage();
+            pageMappings["AirportsDatabase"] = new tfm.Settings_panels.wpf.ctlAirportsDatabase();
 
-            pageMappings["UserInterface"] = new UserInterfacePage();
+            /* pageMappings["UserInterface"] = new UserInterfacePage();
             pageMappings["AutomaticAnnouncements"] = new AutomaticAnnouncementsPage();
             pageMappings["WindCommand"] = new WindCommandPage();
             pageMappings["CloudsCommand"] = new CloudsCommandPage();
@@ -78,6 +77,8 @@ namespace tfm.Settings_panels
             pageMappings["Fuel747"] = new Fuel747Page();
             pageMappings["Hydraulics747"] = new Hydraulics747Page();
 */            // Add more user controls to the dictionary as needed
+            InitializeComponent();
+            tvCategories.Focus();
 
         }
 
@@ -112,7 +113,7 @@ namespace tfm.Settings_panels
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            tvCategories.Focus();
+            
         }
     }
 }
