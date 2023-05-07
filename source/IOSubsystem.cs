@@ -1885,14 +1885,19 @@ else                   if (PMDG777Detected)
                 case "ap_Set_Altitude":
                     if (PMDG737Detected)
                     {
-                        if (PMDG737Aircraft.MCPComponents["altitude"].Visible)
+                        if (PMDG737Aircraft.MCPComponents["altitude"].Visibility == System.Windows.Visibility.Visible)
                         {
-                            Output(isGauge: false, output: "The altitude box is already open!");
-                            PMDG737Aircraft.MCPComponents["altitude"].Focus();
-                        }
+                                                        Output(isGauge: false, output: "The altitude box is already open!");
+System.Windows.Application.Current.Dispatcher.Invoke(() =>{
+                                PMDG737Aircraft.MCPComponents["altitude"].Focus();
+                            });
+                                                    }
                         else
                         {
-                            PMDG737Aircraft.ShowAltitudeBox();
+                            System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                PMDG737Aircraft.ShowAltitudeBox();
+                            });
                         }
                     } // PMDG 737
                     else if (PMDG747Detected)
@@ -1928,7 +1933,7 @@ else                   if (PMDG777Detected)
 
                     if (PMDG737Detected)
                     {
-                        if (PMDG737Aircraft.MCPComponents["navigation"].Visible == true)
+                        if (PMDG737Aircraft.MCPComponents["navigation"].Visibility == System.Windows.Visibility.Visible)
                         {
                             Output(isGauge: false, output: "The navigation box is already open!");
                         }
@@ -1990,7 +1995,7 @@ else                    if (PMDG777Detected)
                 case "ap_Set_Heading":
                     if (PMDG737Detected)
                     {
-                        if (PMDG737Aircraft.MCPComponents["heading"].Visible)
+                        if (PMDG737Aircraft.MCPComponents["heading"].Visibility == System.Windows.Visibility.Visible)
                         {
                             Output(isGauge: false, output: "The heading box is already open!");
                         }
@@ -2057,7 +2062,7 @@ else                    if (PMDG777Detected)
                 case "ap_Set_Airspeed":
                     if (PMDG737Detected)
                     {
-                        if (PMDG737Aircraft.MCPComponents["speed"].Visible)
+                        if (PMDG737Aircraft.MCPComponents["speed"].Visibility == System.Windows.Visibility.Visible)
                         {
                             Output(isGauge: false, output: "The speed box is already open!");
                         }
@@ -2122,13 +2127,13 @@ else                    if (PMDG777Detected)
 
                     if (PMDG737Detected)
                     {
-                        if (PMDG737Aircraft.MCPComponents["speed"].Visible == false)
-                        {
-                            PMDG737Aircraft.ShowSpeedBox();
-                        }
-                        else
+                        if (PMDG737Aircraft.MCPComponents["speed"].Visibility == System.Windows.Visibility.Visible)
                         {
                             Output(isGauge: false, output: "The speed box is already open!");
+                                                    }
+                        else
+                        {
+                            PMDG737Aircraft.ShowSpeedBox();
                         }
                     } // PMDG737
                     else
@@ -2148,7 +2153,7 @@ else                    if (PMDG777Detected)
                 case "ap_Set_Vertical_Speed":
                     if (PMDG737Detected)
                     {
-                        if (PMDG737Aircraft.MCPComponents["vertical"].Visible)
+                        if (PMDG737Aircraft.MCPComponents["vertical"].Visibility == System.Windows.Visibility.Visible)
                         {
                             Output(isGauge: false, output: "The vertical speed box is already open!");
                         }
