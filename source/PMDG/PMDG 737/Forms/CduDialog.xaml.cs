@@ -1,4 +1,5 @@
-﻿using FSUIPC;
+﻿using DavyKager;
+using FSUIPC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,20 +22,31 @@ namespace tfm.PMDG.PMDG_737.Forms
     {
 
         private CancellationTokenSource cduTimerCancellationTokenSource;
-        private System.Timers.Timer cduTimer = new System.Timers.Timer();
-        private string oldLineSelectMode;
+                private string oldLineSelectMode;
         private string oldCDUScreen;
 
         public CduDialog()
         {
             InitializeComponent();
             RefreshCDU();
+
+            // Load the line select keys...
+            if(tfm.Properties.Settings.Default.PMDGCDUKeyLayout == "1")
+            {
+                RemoveAlternateLskSet();
+                LoadDefaultLskSet();
+            }
+            else
+            {
+                RemoveDefaultLskSet();
+                LoadAlternateLskSet();
+            }
             // Update the line select indicator.
            lineSelectModeTextBox.Text = Properties.Settings.Default.PMDGCDUKeyLayout == "1" ? "D" : "A";
 
             cduDisplay.Focus();
             StartAutoRefreshCDUAsync();
-                                                                                }
+                                                                                            }
 
         // Task methods.
         #region "tasks"
@@ -47,16 +59,13 @@ namespace tfm.PMDG.PMDG_737.Forms
             {
                 try
                 {
-                    await Task.Delay(TimeSpan.FromMilliseconds(30000), cancellationToken);
+                    await Task.Delay(TimeSpan.FromMilliseconds(10000), cancellationToken);
 
                     Dispatcher.BeginInvoke((Action)(() =>
                     {
                         // Check to see if the CDU display changes, if so, show the new display.
-                        if (cduDisplay.Text != oldCDUScreen)
-                        {
-                            RefreshCDU();
-                        }
-
+                                                                            RefreshCDU();
+                        
                         // Update the line select mode. a= alternate; d = default.
                         if (oldLineSelectMode != lineSelectModeTextBox.Text)
                         {
@@ -114,17 +123,17 @@ namespace tfm.PMDG.PMDG_737.Forms
 
         private void FocusCDUDisplay(object sender, ExecutedRoutedEventArgs e)
         {
-            cduDisplay.Focus();
+            Keyboard.Focus(cduDisplay);
         }
 
         private void FocusScratchpadExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            ScratchpadTextBox.Focus();
+            Keyboard.Focus(ScratchpadTextBox);
         }
 
         private void FocusLineSelectMode(object sender, ExecutedRoutedEventArgs e)
         {
-            lineSelectModeTextBox.Focus();
+            Keyboard.Focus(lineSelectModeTextBox);
         }
 
         private void ActivateInitRefPage(object sender, ExecutedRoutedEventArgs e)
@@ -145,6 +154,11 @@ private void ActivateClbPage(object sender, ExecutedRoutedEventArgs e)
 private void ActivateCrzPage(object sender, ExecutedRoutedEventArgs e)
         {
             crzButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+                private void ActivateDesPage(object sender, ExecutedRoutedEventArgs e)
+        {
+            desButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
         }
 
         private void ActivateLegsPage(object sender, ExecutedRoutedEventArgs e)
@@ -214,89 +228,209 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
 
         private void ChangeLineSelectKeys(object sender, ExecutedRoutedEventArgs e)
         {
+            if(tfm.Properties.Settings.Default.PMDGCDUKeyLayout == "1")
+            {
+                tfm.Properties.Settings.Default.PMDGCDUKeyLayout = "2";
+                tfm.Properties.Settings.Default.Save();
+                RemoveDefaultLskSet();
+                LoadAlternateLskSet();
+                lineSelectModeTextBox.Text = "A";
+                Tolk.Output("Alternate  line select keys active.");
+            }
+            else
+            {
+                tfm.Properties.Settings.Default.PMDGCDUKeyLayout = "1";
+                tfm.Properties.Settings.Default.Save();
+                RemoveAlternateLskSet();
+                LoadDefaultLskSet();
+                lineSelectModeTextBox.Text = "D";
+                Tolk.Output("Default line select keys active.");
+            }
+        }
 
+        private void ActivateLsk1Left(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L1, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk2Left(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L2, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk3Left(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L3, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk4Left(object sender, ExecutedRoutedEventArgs executed)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L4, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk5Left(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L5, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk6Left(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L6, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk1Right(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R1, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+
+        private void ActivateLsk2Right(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R2, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk3Right(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R3, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk4Right(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R4, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk5Right(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R5, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+        
+        private void ActivateLsk6Right(object sender, ExecutedRoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R6, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
         #endregion
-        
+
         // Control events.
         #region "Control events"
         private void initRefButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_INIT_REF, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
                                         private void rteButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_RTE, Aircraft.ClkL);
             RefreshCDU();
-
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void clbButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_CLB, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void crzButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_CRZ, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
-        private void legsButton_Click(object sender, RoutedEventArgs e)
+        private void desButton_Click(object sender, RoutedEventArgs e)
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DES, Aircraft.ClkL);
+            RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
+        }
+
+                private void legsButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_LEGS, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void depArButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DEP_ARR, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void holdButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_HOLD, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void progButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_PROG, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void n1LimitButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_N1_LIMIT, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void fixButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_FIX, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void prevButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_PREV_PAGE, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_NEXT_PAGE, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void menuButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_MENU, Aircraft.ClkL);
             RefreshCDU();
+            Tolk.Output(PMDG737Aircraft.cdu0.Rows[0].ToString());
         }
 
         private void execButton_Click(object sender, RoutedEventArgs e)
@@ -308,6 +442,8 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_CLR, Aircraft.ClkL);
+            ScratchpadTextBox.Clear();
+            Tolk.Output("Scratchpad cleared.");
             RefreshCDU();
         }
 
@@ -322,12 +458,97 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
             RefreshCDU();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private void ScratchpadTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                PMDG737Aircraft.EnterCDUText(1, ScratchpadTextBox.Text);
+                                            }
+        }
+
+                private void Window_Closing(object sender, CancelEventArgs e)
         {
             StopAutoRefreshCDUAsync();
         }
 
         #endregion
 
-    }
+        // Methods to change line select key sets.
+        #region "Change line select methods"
+        private void LoadDefaultLskSet()
+        {
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk1Left, ActivateLsk1Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk2Left, ActivateLsk2Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk3Left, ActivateLsk3Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk4Left, ActivateLsk4Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk5Left, ActivateLsk5Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk6Left, ActivateLsk6Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk1Right, ActivateLsk1Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk2Right, ActivateLsk2Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk3Right, ActivateLsk3Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk4Right, ActivateLsk4Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk5Right, ActivateLsk5Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.lsk6Right, ActivateLsk6Right));
+        }
+        
+        private void LoadAlternateLskSet()
+        {
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk1Left, ActivateLsk1Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk2Left, ActivateLsk2Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk3Left, ActivateLsk3Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk4Left, ActivateLsk4Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk5Left, ActivateLsk5Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk6Left, ActivateLsk6Left));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk1Right, ActivateLsk1Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk2Right, ActivateLsk2Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk3Right, ActivateLsk3Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk4Right, ActivateLsk4Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk5Right, ActivateLsk5Right));
+            CommandBindings.Add(new CommandBinding(CDUKeyCommands.altLsk6Right, ActivateLsk6Right));
+        }
+
+        private void RemoveDefaultLskSet()
+        {
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk1Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk2Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk3Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk4Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk5Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk6Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk1Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk2Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk3Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk4Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk5Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.lsk6Right);
+        }
+
+        private void RemoveAlternateLskSet()
+        {
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk1Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk2Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk3Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk4Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk5Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk6Left);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk1Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk2Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk3Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk4Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk5Right);
+            RemoveCommandBinding(CommandBindings, CDUKeyCommands.altLsk6Right);
+        }
+
+        private void RemoveCommandBinding(CommandBindingCollection commandBindings, ICommand command)
+        {
+            var commandBinding = commandBindings.OfType<CommandBinding>().FirstOrDefault(cb => cb.Command == command);
+            if (commandBinding != null)
+            {
+                commandBindings.Remove(commandBinding);
+            }
+        }
+
+        #endregion
+
+            }
 }
