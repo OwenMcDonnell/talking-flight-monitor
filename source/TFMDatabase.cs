@@ -29,9 +29,9 @@ namespace tfm
             {
 if(Exists() == true)
                 {
-                    _connection.Open();
-                    var version = string.Empty;
+                                                            var version = string.Empty;
                     _connection = new SQLiteConnection(_connectionString);
+                    _connection.Open();
                     using(var command = new SQLiteCommand(_connection))
                     {
                         command.CommandText = "select sqlite_version()";
