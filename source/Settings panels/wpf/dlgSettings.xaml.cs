@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tfm.Settings_panels.wpf;
+using TreeView = System.Windows.Controls.TreeView;
 using UserControl = System.Windows.Controls.UserControl;
 
 namespace tfm.Settings_panels
@@ -127,30 +128,43 @@ namespace tfm.Settings_panels
                 searchterm = "";
 
         }
-
         private void tvCategories_TextInput(object sender, TextCompositionEventArgs e)
         {
-            if ((DateTime.Now - LastSearch).Seconds > 1)
-                searchterm = "";
+          TreeView treeView = sender as TreeView;
+            if (treeView == null || string.IsNullOrEmpty(e.Text)) return;
 
-            LastSearch = DateTime.Now;
-            searchterm += e.Text;
-            searchstartfound = tvCategories.SelectedItem == null;
-            // Search for top-level items
-            foreach (TreeViewItem item in tvCategories.Items)
+            char firstChar = Char.ToUpperInvariant(e.Text[0]);
+            SelectItemByFirstCharacter(treeView, firstChar);
+            e.Handled = true;
+        }
+
+        private void SelectItemByFirstCharacter(ItemsControl itemsControl, char firstChar)
+        {
+            if (itemsControl == null) return;
+
+            for (int i = 0; i < itemsControl.Items.Count; i++)
             {
-                if (searchstartfound && item.Header.ToString().ToLower().StartsWith(searchterm))
+                object item = itemsControl.Items[i];
+                TreeViewItem treeViewItem = itemsControl.ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
+
+                if (treeViewItem == null) continue;
+
+                string headerText = treeViewItem.Header.ToString().ToUpperInvariant();
+
+                if (headerText.Length > 0 && headerText[0] == firstChar)
                 {
-                    item.IsSelected = true;
-                    item.BringIntoView();
+                    treeViewItem.IsSelected = true;
+                    treeViewItem.Focus();
                     break;
                 }
+                else
+                {
+                    SelectItemByFirstCharacter(treeViewItem, firstChar);
+                }
             }
-
-            foreach (var t in tvCategories.Items)
-                if (SearchTreeView((TreeViewItem)t, searchterm.ToLower()))
-                    break;
         }
+
+
 
         private bool SearchTreeView(TreeViewItem node, string searchterm)
         {
