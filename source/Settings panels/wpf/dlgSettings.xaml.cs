@@ -23,6 +23,10 @@ namespace tfm.Settings_panels
     {
         // Add a new UserControl for each settings panel
         private readonly Dictionary<string, UserControl> pageMappings = new Dictionary<string, UserControl>();
+        private bool searchdeep = true;             // Searches in subitems
+        private bool searchstartfound = false;      // true when current selected item is found. Ensures that you don't seach backwards and that you only search on the current level (if not searchdeep is true)
+        private string searchterm = "";             // what to search for
+        private DateTime LastSearch = DateTime.Now; // resets searchterm if last input is older than 1 second.
         public dlgSettings()
         {
             // Initialize the user controls and add them to the dictionary
@@ -114,6 +118,83 @@ namespace tfm.Settings_panels
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void tvCategories_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            // reset searchterm if any "special" key is pressed
+            if (e.Key < Key.A)
+                searchterm = "";
+
+        }
+
+        private void tvCategories_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            if ((DateTime.Now - LastSearch).Seconds > 1)
+                searchterm = "";
+
+            LastSearch = DateTime.Now;
+            searchterm += e.Text;
+            searchstartfound = tvCategories.SelectedItem == null;
+            // Search for top-level items
+            foreach (TreeViewItem item in tvCategories.Items)
+            {
+                if (searchstartfound && item.Header.ToString().ToLower().StartsWith(searchterm))
+                {
+                    item.IsSelected = true;
+                    item.BringIntoView();
+                    break;
+                }
+            }
+
+            foreach (var t in tvCategories.Items)
+                if (SearchTreeView((TreeViewItem)t, searchterm.ToLower()))
+                    break;
+        }
+
+        private bool SearchTreeView(TreeViewItem node, string searchterm)
+        {
+            if (node.IsSelected)
+                searchstartfound = true; 
+
+            // Search current level first
+            foreach (TreeViewItem subnode in node.Items)
+            {
+                // Search subnodes to the current node first
+                if (subnode.IsSelected)
+                {
+                    searchstartfound = true;
+                    if (subnode.IsExpanded)
+                        foreach (TreeViewItem subsubnode in subnode.Items)
+                            if (searchstartfound && subsubnode.Header.ToString().ToLower().StartsWith(searchterm))
+                            {
+                                subsubnode.IsSelected = true;
+                                subsubnode.IsExpanded = true;
+                                subsubnode.BringIntoView();
+                                return true;
+                            }
+                }
+                // Then search nodes on the same level
+                if (searchstartfound && subnode.Header.ToString().ToLower().StartsWith(searchterm))
+                {
+                    subnode.IsSelected = true;
+                    subnode.BringIntoView();
+                    return true;
+                }
+            }
+
+            // If not found, search subnodes
+            foreach (TreeViewItem subnode in node.Items)
+            {
+                if (!searchstartfound || searchdeep)
+                    if (SearchTreeView(subnode, searchterm))
+                    {
+                        node.IsExpanded = true;
+                        return true;
+                    }
+            }
+
+            return false;
         }
     }
 }

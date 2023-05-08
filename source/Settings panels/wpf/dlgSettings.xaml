@@ -22,6 +22,8 @@
         <TreeView x:Name="tvCategories" Grid.Column="0" 
                   SelectedItemChanged="Options_SelectedItemChanged"
                   Loaded="tvCategories_Loaded"
+                  KeyUp="tvCategories_KeyUp"
+                  TextInput="tvCategories_TextInput"
                   AutomationProperties.Name="category" >
             <TreeViewItem Header="General" x:Name="General" />
             <TreeViewItem Header="Output" x:Name="Output"/>
