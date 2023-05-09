@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Globalization;
 
 namespace tfm.PMDG.PMDG_737.McpComponents
@@ -26,18 +27,56 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         public McpAltitudeWindow()
         {
             InitializeComponent();
+            altitudeTextBox.Focus();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var vNavToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunVNAV).ToArray()[0] as SingleStateToggle;
             var lvlChangeToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunLVL_CHG).ToArray()[0] as SingleStateToggle;
             var holdToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunALT_HOLD).ToArray()[0] as SingleStateToggle;
-
-            BuildToggleButton(vNavButton, vNavToggle, "Vnav");
+            altitudeTextBox.Text = Aircraft.pmdg737.MCP_Altitude.Value.ToString();
+            BuildToggleButton(vNavButton, vNavToggle, "VNav");
             BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
             BuildToggleButton(holdButton, holdToggle, "Hold");
+
+            var timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(300)
+            };
+            timer.Tick += async (s, args) => await UpdatePanelControlsAsync();
+            timer.Start();
+        }
+
+        private async Task UpdatePanelControlsAsync()
+        {
+            await Task.Run(() =>
+            {
+                var vNavToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunVNAV).ToArray()[0] as SingleStateToggle;
+                var lvlChangeToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunLVL_CHG).ToArray()[0] as SingleStateToggle;
+                var holdToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunALT_HOLD).ToArray()[0] as SingleStateToggle;
+
+                Dispatcher.Invoke(() =>
+                {
+                    if (Aircraft.pmdg737.MCP_Altitude.ValueChanged)
+                    {
+                        altitudeTextBox.Text = Aircraft.pmdg737.MCP_Altitude.Value.ToString();
                     }
+                    if (vNavToggle.Offset.ValueChanged)
+                    {
+                        BuildToggleButton(vNavButton, vNavToggle, "VNav");
+                    }
+                    if (lvlChangeToggle.Offset.ValueChanged)
+                    {
+                        BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
+                    }
+                    if (holdToggle.Offset.ValueChanged)
+                    {
+                        BuildToggleButton(holdButton, holdToggle, "Hold");
+                    }
+                                    });
+            });
+        }
 
         private void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
         {
@@ -47,5 +86,46 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             control.IsChecked = reverse? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
             AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
                                 }
+
+        private void interveneButton_Click(object sender, RoutedEventArgs e)
+        {
+            PMDG737Aircraft.AltitudeIntervene();
+        }
+
+        private void vNavButton_Click(object sender, RoutedEventArgs e)
+        {
+            PMDG737Aircraft.ToggleVNav();
+        }
+
+        private void lvlChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            PMDG737Aircraft.ToggleLevelChange();
+        }
+
+        private void holdButton_Click(object sender, RoutedEventArgs e)
+        {
+            PMDG737Aircraft.ToggleAltitudeHold();
+        }
+
+        private void altitudeTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                PMDG737Aircraft.SetAltitude(altitudeTextBox.Text);
+            }
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(((e.Key == Key.LeftAlt || e.Key == Key.RightAlt) && e.Key == Key.F4) || e.Key == Key.Escape)
+            {
+                this.Hide();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
