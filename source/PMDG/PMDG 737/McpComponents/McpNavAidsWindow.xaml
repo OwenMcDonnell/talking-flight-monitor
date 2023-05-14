@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
-        Title="McpNavAidsWindow" Height="450" Width="800">
+        Title="MCP - Navaids" SizeToContent="WidthAndHeight">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 5, 3, 5" Grid.Row="0" Grid.Column="0">
+            <ToggleButton x:Name="fdLToggleButton" Width="auto" Content="FD/L" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="FD/L" AutomationProperties.AutomationId="FdLToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="fdRToggleButton" Width="auto" Content="FD/R" AutomationProperties.AcceleratorKey="ALT+R" AutomationProperties.AccessKey="ALT+R" AutomationProperties.Name="FD/R" AutomationProperties.AutomationId="FdRToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="cmdAToggleButton" Width="auto" Content="CMD/A" AutomationProperties.AcceleratorKey="ALT+A" AutomationProperties.AccessKey="ALT+A" AutomationProperties.Name="CMD/A" AutomationProperties.AutomationId="CmdAToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="cmdBToggleButton" Width="auto" Content="CMD/B" AutomationProperties.AcceleratorKey="ALT+B" AutomationProperties.AccessKey="ALT+B" AutomationProperties.Name="CMD/B" AutomationProperties.AutomationId="CmdBToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="appModeToggleButton" Width="auto" Content="APP mode" AutomationProperties.AcceleratorKey="ALT+P" AutomationProperties.AccessKey="ALT+P" AutomationProperties.Name="APP mode" AutomationProperties.AutomationId="AppModeToggleButton" Margin="3, 3, 3, 3"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 5, 3, 5" Grid.Row="1" Grid.Column="0">
+            <Button x:Name="bankLimitButton" Width="auto" Content="Bank limit" AutomationProperties.AcceleratorKey="ALT+K" AutomationProperties.AccessKey="ALT+K" AutomationProperties.Name="Bank limit" AutomationProperties.AutomationId="BankLimitButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="vorLocToggleButton" Width="auto" Content="VOR/LOC" AutomationProperties.AcceleratorKey="ALT+V" AutomationProperties.AccessKey="ALT+V" AutomationProperties.Name="VOR/LOC" AutomationProperties.AutomationId="VorLocToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="cwsAToggleButton" Width="auto" Content="CWS/A" AutomationProperties.AcceleratorKey="ALT+C" AutomationProperties.AccessKey="ALT+C" AutomationProperties.Name="CWS/A" AutomationProperties.AutomationId="CwsAToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="cwsBToggleButton" Width="auto" Content="CWS/B" AutomationProperties.AcceleratorKey="ALT+W" AutomationProperties.AccessKey="ALT+W" AutomationProperties.Name="CWS/B" AutomationProperties.AutomationId="CwsBToggleButton" Margin="3, 3, 3, 3"/>
+            <ToggleButton x:Name="disengageBarToggleButton" Width="auto" Content="Disengage bar" AutomationProperties.AcceleratorKey="ALT+I" AutomationProperties.AccessKey="ALT+I" AutomationProperties.Name="Disengage bar" AutomationProperties.AutomationId="DisengageBarToggleButton" Margin="3, 3, 3, 3"/>
+        </StackPanel>
     </Grid>
 </Window>

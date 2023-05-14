@@ -81,10 +81,10 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         private void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
         {
             string name = alternateName == null ? toggle.Name : alternateName;
-
-            control.Content = $"{name} {toggle.CurrentState.Value}";
+                        control.Content = $"{name}";
+            
             control.IsChecked = reverse? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
-            AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
+            AutomationProperties.SetName(control, $"{name}");
                                 }
 
         private void interveneButton_Click(object sender, RoutedEventArgs e)
@@ -95,6 +95,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         private void vNavButton_Click(object sender, RoutedEventArgs e)
         {
             PMDG737Aircraft.ToggleVNav();
+            System.Windows.MessageBox.Show(vNavButton.Background.ToString());
         }
 
         private void lvlChangeButton_Click(object sender, RoutedEventArgs e)

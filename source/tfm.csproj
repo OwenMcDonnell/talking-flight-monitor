@@ -25,6 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Resources\Styles.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Styles.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <None Include="TFMMainForm.Designer.cs" />
   </ItemGroup>
 

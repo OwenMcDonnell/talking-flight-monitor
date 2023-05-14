@@ -72,10 +72,10 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             string name = alternateName == null ? toggle.Name : alternateName;
 
-            control.Content = $"{name} {toggle.CurrentState.Value}";
+            control.Content = $"{name}";
             control.IsChecked = reverse ? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
             AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
-        }
+                    }
 
         private void hdgSelToggleButton_Click(object sender, RoutedEventArgs e)
         {

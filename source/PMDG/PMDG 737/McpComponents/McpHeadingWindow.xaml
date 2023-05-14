@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - heading" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" KeyDown="Window_KeyDown" Closing="Window_Closing">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
