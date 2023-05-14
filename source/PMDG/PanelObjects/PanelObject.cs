@@ -18,6 +18,7 @@ namespace tfm.PMDG.PanelObjects
         private PanelObjectType _type;
         private Offset _offset;
         private bool _shouldSpeak = true;
+        private string _settingKey = string.Empty;
 
 
                                         public string Name { get => _name; set => _name = value; }
@@ -25,7 +26,37 @@ namespace tfm.PMDG.PanelObjects
         public string PanelSection { get => _panelSection; set => _panelSection = value; }
 public AircraftVerbosity Verbosity { get => _verbosity; set => _verbosity = value; }
         public virtual  PanelObjectType Type { get => _type; set => this._type = value; }
-        public  virtual  Offset Offset { get => _offset; set => _offset = value; }
+        public  virtual  Offset Offset
+        {
+            get
+            {
+                if (FSUIPCConnection.IsOpen)
+                {
+                    return _offset;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+
+            }
+            set
+            {
+                if (FSUIPCConnection.IsOpen)
+                {
+                    _offset = value;
+                }
+                else
+                {
+                    _offset = null;
+                }
+            }
+        }
         public bool shouldSpeak { get => _shouldSpeak; set => _shouldSpeak = value; }
-                   } // End PanelObject.
+        public string SettingKey { get => _settingKey; set => _settingKey = value; }
+        
+        
+    } // End PanelObject.
 } // End namespace.

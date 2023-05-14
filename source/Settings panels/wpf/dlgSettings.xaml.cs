@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tfm.Settings_panels.wpf;
+using tfm.Settings_panels.wpf.pmdg737;
 using TreeView = System.Windows.Controls.TreeView;
 using UserControl = System.Windows.Controls.UserControl;
 
@@ -38,8 +39,9 @@ namespace tfm.Settings_panels
             pageMappings["Timing"] = new ctlTiming();
             pageMappings["AirportsDatabase"] = new tfm.Settings_panels.wpf.ctlAirportsDatabase();
 
-            /* pageMappings["UserInterface"] = new UserInterfacePage();
-            pageMappings["AutomaticAnnouncements"] = new AutomaticAnnouncementsPage();
+            pageMappings["UserInterface"] = new ctlPMDG737Verbosity();
+            pageMappings["UserInterface"].DataContext = new tfm.Settings_panels.wpf.pmdg737.ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "ADIRU");
+            /* pageMappings["AutomaticAnnouncements"] = new AutomaticAnnouncementsPage();
             pageMappings["WindCommand"] = new WindCommandPage();
             pageMappings["CloudsCommand"] = new CloudsCommandPage();
             pageMappings["ADIRU"] = new ADIRUPage();

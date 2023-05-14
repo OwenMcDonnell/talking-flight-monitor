@@ -89,7 +89,15 @@ namespace tfm.PMDG.PanelObjects
         {
             get
             {
-                return _offset;
+                if (FSUIPCConnection.IsOpen)
+                {
+                    return _offset;
+                }
+                else
+                {
+                    return null;
+                }
+                
                             }
             set
             {
@@ -98,6 +106,7 @@ namespace tfm.PMDG.PanelObjects
             }
         }
 
+        public string SettingKey { get; set; }
 
         public override string ToString()
         {
