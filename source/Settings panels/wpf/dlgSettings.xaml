@@ -44,7 +44,7 @@
                         <TreeViewItem Header="PSEU" x:Name="PSEU737" />
                         <TreeViewItem Header="service Interphone" x:Name="ServiceInterphone737" />
                         <TreeViewItem Header="Dome lights" x:Name="DomeLights737" />
-                        <TreeViewItem Header="EEC" x:Name="EEC737" />
+                        <TreeViewItem Header="Engines" x:Name="Engines737" />
                         <TreeViewItem Header="Oxygen" x:Name="Oxygen737" />
                         <TreeViewItem Header="Gear" x:Name="Gear737" />
                         <TreeViewItem Header="Flight recorder" x:Name="FlightRecorder737" />
@@ -63,7 +63,7 @@
                         <TreeViewItem Header="Air systems" x:Name="AirSystems737" />
                     </TreeViewItem>
                     <TreeViewItem Header="Bottom Overhead" x:Name="BottomOverhead737">
-                        <TreeViewItem Header="Engines" x:Name="Engines737" />
+                        <TreeViewItem Header="Engines" x:Name="Engines737_2" />
                         <TreeViewItem Header="Lights" x:Name="Lights737" />
                     </TreeViewItem>
                     <TreeViewItem Header="AFS" x:Name="AFS737" />

@@ -49,14 +49,38 @@ namespace tfm.Settings_panels
             {
                 DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "ADIRU")
             };
-            //pageMappings["PSEU"] = new PSEUPage();
-            //pageMappings["ServiceInterphone"] = new ServiceInterphonePage();
-            //pageMappings["DomeLights"] = new DomeLightsPage();
-            //pageMappings["EEC"] = new EECPage();
-            //pageMappings["Oxygen"] = new OxygenPage();
-            //pageMappings["Gear737"] = new Gear737Page();
-            //pageMappings["FlightRecorder"] = new FlightRecorderPage();
-            //pageMappings["FlightControls"] = new FlightControlsPage();
+            pageMappings["PSEU737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "PSEU")
+            };
+            pageMappings["ServiceInterphone737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "Service interphone")
+            };
+            pageMappings["DomeLights737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "Lights")
+            };
+            pageMappings["Engines737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "Engines")
+            };
+            pageMappings["Oxygen737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "Oxygen")
+            };
+            pageMappings["Gear737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "Gear")
+            };
+            pageMappings["FlightRecorder737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "Flight recorder")
+            };
+            pageMappings["FlightControls737"] = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Flight controls")
+            };
             //pageMappings["NavigationDisplays"] = new NavigationDisplaysPage();
             //pageMappings["Fuel737"] = new Fuel737Page();
             //pageMappings["Electrical737"] = new Electrical737Page();
