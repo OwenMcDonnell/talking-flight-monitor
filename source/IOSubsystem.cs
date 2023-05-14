@@ -4011,7 +4011,7 @@ private void DescendThroughClouds()
         
         private void OnCityKey()
         {
-            double lat = Aircraft.aircraftLat.Value.DecimalDegrees;
+                         double lat = Aircraft.aircraftLat.Value.DecimalDegrees;
             double lon = Aircraft.aircraftLon.Value.DecimalDegrees;
             // double lat = -48.876667;
             // double lon = -123.393333;
