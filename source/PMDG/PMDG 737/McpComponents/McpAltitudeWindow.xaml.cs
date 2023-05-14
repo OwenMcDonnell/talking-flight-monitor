@@ -36,9 +36,9 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             var lvlChangeToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunLVL_CHG).ToArray()[0] as SingleStateToggle;
             var holdToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunALT_HOLD).ToArray()[0] as SingleStateToggle;
             altitudeTextBox.Text = Aircraft.pmdg737.MCP_Altitude.Value.ToString();
-            BuildToggleButton(vNavButton, vNavToggle, "VNav");
-            BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
-            BuildToggleButton(holdButton, holdToggle, "Hold");
+            App.UI.BuildToggleButton(vNavButton, vNavToggle, "VNav");
+            App.UI.BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
+            App.UI.BuildToggleButton(holdButton, holdToggle, "Hold");
 
             var timer = new DispatcherTimer
             {
@@ -62,32 +62,14 @@ namespace tfm.PMDG.PMDG_737.McpComponents
                     {
                         altitudeTextBox.Text = Aircraft.pmdg737.MCP_Altitude.Value.ToString();
                     }
-                    if (vNavToggle.Offset.ValueChanged)
-                    {
-                        BuildToggleButton(vNavButton, vNavToggle, "VNav");
-                    }
-                    if (lvlChangeToggle.Offset.ValueChanged)
-                    {
-                        BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
-                    }
-                    if (holdToggle.Offset.ValueChanged)
-                    {
-                        BuildToggleButton(holdButton, holdToggle, "Hold");
-                    }
-                                    });
+                                                                App.UI.BuildToggleButton(vNavButton, vNavToggle, "VNav");
+                                                                                    App.UI.BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
+                                                                                    App.UI.BuildToggleButton(holdButton, holdToggle, "Hold");
+                                                        });
             });
         }
 
-        private void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
-        {
-            string name = alternateName == null ? toggle.Name : alternateName;
-                        control.Content = $"{name}";
-            
-            control.IsChecked = reverse? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
-            AutomationProperties.SetName(control, $"{name}");
-                                }
-
-        private void interveneButton_Click(object sender, RoutedEventArgs e)
+                private void interveneButton_Click(object sender, RoutedEventArgs e)
         {
             PMDG737Aircraft.AltitudeIntervene();
         }
