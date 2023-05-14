@@ -86,6 +86,13 @@ namespace tfm
             {
                 System.Windows.MessageBox.Show("Geonames username has not been configured. Flight following features will not function.\nGo to the General section in settings to add your Geonames user name\n", "error", MessageBoxButton.OK);
             }
+            // show the first run dialog
+            if (tfm.Properties.Settings.Default.ShowFirstRunDialog)
+            {
+                firstRunHelp firstRun = new firstRunHelp();
+                firstRun.ShowDialog();
+            }
+
             // Start the connection timer to look for a flight sim
             TimerConnection.Elapsed += TimerConnection_Tick;
             this.TimerConnection.AutoReset = true;

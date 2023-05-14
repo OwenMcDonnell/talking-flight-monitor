@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace tfmwpf
+namespace tfm
 {
     /// <summary>
     /// Interaction logic for firstRunHelp.xaml
@@ -22,6 +22,20 @@ namespace tfmwpf
         public firstRunHelp()
         {
             InitializeComponent();
+txtFirstRun.Text= @"Welcome to Talking Flight Monitor (TFM)!
+TFM is controlled entirely through keyboard commands. All commands start with either the left or right Square Bracket keys.
+Left Square Bracket: autopilot commands
+Right square bracket: aircraft information
+Right Bracket, then Question Mark: Turns on help mode, pressing any command will read it's function.
+Right Bracket, then Ctrl+K: keyboard manager";
+
+        
+        }
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            DialogResult = true;
         }
     }
 }

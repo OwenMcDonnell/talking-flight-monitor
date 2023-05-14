@@ -47,7 +47,7 @@
         <Label Content="Output history entries to keep" Name="lblHistory" Grid.Column="2" Grid.Row="0"/>
         <TextBox AutomationProperties.LabeledBy="{Binding ElementName=lblHistory}" Text="{s:SettingBinding OutputHistoryLength}" Grid.Column="3" Grid.Row="0"/>
         <CheckBox Content="Output tfm messages to Braile display" IsChecked="{s:SettingBinding OutputBraille}" Grid.Column="3" Grid.Row="8"/>
-        <CheckBox Content="Save TFM data in database" IsChecked="{s:SettingBinding UseDatabase}" Grid.Column="3" Grid.Row="9"/>
+        
         <CheckBox Content="Use SAPI with ILS readouts" IsChecked="{s:SettingBinding SapiILSAnnouncements}" Grid.Column="3" Grid.Row="10"/>
         
         

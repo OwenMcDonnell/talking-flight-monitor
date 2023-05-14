@@ -23,5 +23,6 @@
                      Text="{s:SettingBinding bingMapsAPIKey}"
                      AutomationProperties.Name="{Binding Path=Content, ElementName=lblBing}"/>
         </StackPanel>
+        <CheckBox Content="Save TFM data in database" IsChecked="{s:SettingBinding UseDatabase}"/>
     </StackPanel>
 </UserControl>
