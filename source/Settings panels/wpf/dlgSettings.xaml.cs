@@ -38,6 +38,7 @@ namespace tfm.Settings_panels
             pageMappings["Aircraft"] = new wpf.ctlAircraft();
 
             pageMappings["Timing"] = new ctlTiming();
+            pageMappings["Simbrief"] = new ctlSimbrief();
             pageMappings["AirportsDatabase"] = new ctlAirportsDatabase();
 
             // pageMappings["UserInterface"] = new ctlPMDG737Verbosity();

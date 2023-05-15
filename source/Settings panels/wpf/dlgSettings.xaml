@@ -28,6 +28,8 @@
             <TreeViewItem Header="General" x:Name="General" />
             <TreeViewItem Header="Output" x:Name="Output"/>
             <TreeViewItem Header="Sound" x:Name="Sound"/>
+            <TreeViewItem Header="Simbrief" x:Name="Simbrief"/>
+            
             <TreeViewItem Header="Timing" x:Name="Timing" />
             <TreeViewItem Header="Airports Database" x:Name="AirportsDatabase" />
             <TreeViewItem Header="Aircraft" x:Name="Aircraft" />
