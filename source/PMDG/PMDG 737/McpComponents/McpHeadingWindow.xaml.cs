@@ -24,8 +24,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             public partial class McpHeadingWindow : Window
     {
 
-        private ByteToBoolConverter converter = new ByteToBoolConverter();
-        public McpHeadingWindow()
+                public McpHeadingWindow()
         {
             InitializeComponent();
 
@@ -38,8 +37,8 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             var hdgSelSwitch = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunHDG_SEL).ToArray()[0] as SingleStateToggle;
             var lNavSwitch = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunLNAV).ToArray()[0] as SingleStateToggle;
             headingTextBox.Text = Aircraft.pmdg737.MCP_Heading.Value.ToString();
-            BuildToggleButton(hdgSelToggleButton, hdgSelSwitch, "Heading select");
-            BuildToggleButton(lNavToggleButton, lNavSwitch, "LNav");
+            App.UI.BuildToggleButton(hdgSelToggleButton, hdgSelSwitch, "Heading select");
+            App.UI.BuildToggleButton(lNavToggleButton, lNavSwitch, "LNav");
 
             var timer = new DispatcherTimer
             {
@@ -62,22 +61,13 @@ namespace tfm.PMDG.PMDG_737.McpComponents
                     {
                         headingTextBox.Text = Aircraft.pmdg737.MCP_Heading.Value.ToString();
                     }
-                                                                BuildToggleButton(hdgSelToggleButton, hdgSelSwitch, "Heading select");
-                                                                BuildToggleButton(lNavToggleButton, lNavSwitch, "LNav");
+                                                                App.UI.BuildToggleButton(hdgSelToggleButton, hdgSelSwitch, "Heading select");
+                                                                App.UI.BuildToggleButton(lNavToggleButton, lNavSwitch, "LNav");
                                                        });
             });
         }
 
-        private void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
-        {
-            string name = alternateName == null ? toggle.Name : alternateName;
-
-            control.Content = $"{name}";
-            control.IsChecked = reverse ? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
-            AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
-                    }
-
-        private void hdgSelToggleButton_Click(object sender, RoutedEventArgs e)
+                private void hdgSelToggleButton_Click(object sender, RoutedEventArgs e)
         {
             PMDG737Aircraft.ToggleHeadingSelect();
         }
