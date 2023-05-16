@@ -97,5 +97,10 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             this.Hide();
         }
+
+        private void headingTextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            headingTextBox.SelectAll();
+        }
     }
 }
