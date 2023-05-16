@@ -77,8 +77,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         private void vNavButton_Click(object sender, RoutedEventArgs e)
         {
             PMDG737Aircraft.ToggleVNav();
-            System.Windows.MessageBox.Show(vNavButton.Background.ToString());
-        }
+                    }
 
         private void lvlChangeButton_Click(object sender, RoutedEventArgs e)
         {

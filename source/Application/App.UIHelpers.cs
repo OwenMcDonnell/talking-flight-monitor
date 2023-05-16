@@ -32,7 +32,13 @@ namespace tfm
             control.IsChecked = reverse ? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
             AutomationProperties.SetName(control, $"{name}");
         }
+
+        public void BuildButton(System.Windows.Controls.Button control, SingleStateToggle toggle, string alternateName = null)
+        {
+            string name = alternateName == null ? toggle.Name : alternateName;
+            control.Content = $"{name} {toggle.CurrentState.Value}";
+                                    AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
+        }
+
     }
-
-
 }

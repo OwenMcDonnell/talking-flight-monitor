@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - altitude" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" KeyDown="Window_KeyDown" Closing="Window_Closing">
-       
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,11 +22,11 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
             <Label Name="altitudeLabel" Content="Altitude" AutomationProperties.Name="Altitude" AutomationProperties.AutomationId="AltitudeLabel" Target="{Binding ElementName=altitudeTextBox}" Margin="10, 0, 0, 0"/>
-            <TextBox x:Name="altitudeTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Altitude input" AutomationProperties.AutomationId="AltitudeTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="altitudeTextBox_KeyDown"/>
-            <Button x:Name="interveneButton" Content="Intervene" AutomationProperties.AcceleratorKey="ALT+I" AutomationProperties.AccessKey="ALT+I" AutomationProperties.Name="Intervene" AutomationProperties.AutomationId="InterveneButton" Margin="7, 3, 3, 3" Click="interveneButton_Click"/>
-            <ToggleButton x:Name="vNavButton" Width="auto" Content="V-Nav" AutomationProperties.AcceleratorKey="ALT+V" AutomationProperties.AccessKey="ALT+V" AutomationProperties.Name="VNav" AutomationProperties.AutomationId="VnavButton" Margin="3, 3, 3, 3" Click="vNavButton_Click"/>
-            <ToggleButton x:Name="lvlChangeButton" Width="auto" Content="LVL CHG" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="Level change" AutomationProperties.AutomationId="LvlChangeButton" Margin="3, 3, 3, 3" Click="lvlChangeButton_Click"/>
-            <ToggleButton x:Name="holdButton" Width="auto" Content="Hold" AutomationProperties.AcceleratorKey="ALT+H" AutomationProperties.AccessKey="ALT+H" AutomationProperties.Name="Hold" AutomationProperties.AutomationId="HoldButton" Margin="3, 3, 3, 3" Click="holdButton_Click"/>
+            <TextBox x:Name="altitudeTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Altitude input" AutomationProperties.AutomationId="AltitudeTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="altitudeTextBox_KeyDown" Focusable="True"/>
+            <Button x:Name="interveneButton" Content="Intervene" AutomationProperties.AcceleratorKey="ALT+I" AutomationProperties.AccessKey="ALT+I" AutomationProperties.Name="Intervene" AutomationProperties.AutomationId="InterveneButton" Margin="7, 3, 3, 3" Click="interveneButton_Click" Focusable="True"/>
+            <ToggleButton x:Name="vNavButton" Width="auto" Content="V-Nav" AutomationProperties.AcceleratorKey="ALT+V" AutomationProperties.AccessKey="ALT+V" AutomationProperties.Name="VNav" AutomationProperties.AutomationId="VnavButton" Margin="3, 3, 3, 3" Click="vNavButton_Click" Focusable="True"/>
+            <ToggleButton x:Name="lvlChangeButton" Width="auto" Content="LVL CHG" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="Level change" AutomationProperties.AutomationId="LvlChangeButton" Margin="3, 3, 3, 3" Click="lvlChangeButton_Click" Focusable="True"/>
+            <ToggleButton x:Name="holdButton" Width="auto" Content="Hold" AutomationProperties.AcceleratorKey="ALT+H" AutomationProperties.AccessKey="ALT+H" AutomationProperties.Name="Hold" AutomationProperties.AutomationId="HoldButton" Margin="3, 3, 3, 3" Click="holdButton_Click" Focusable="True"/>
         </StackPanel>
     </Grid>
 </Window>
