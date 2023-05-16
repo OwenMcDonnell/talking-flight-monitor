@@ -550,5 +550,9 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
 
         #endregion
 
-            }
+        private void ScratchpadTextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ScratchpadTextBox.SelectAll();
+        }
+    }
 }
