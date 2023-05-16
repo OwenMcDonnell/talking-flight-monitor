@@ -109,5 +109,10 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             this.Hide();
         }
+
+        private void altitudeTextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            altitudeTextBox.SelectAll();
+        }
     }
 }
