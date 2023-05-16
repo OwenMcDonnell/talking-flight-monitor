@@ -90,7 +90,7 @@ namespace tfm
             if (tfm.Properties.Settings.Default.ShowFirstRunDialog)
             {
                 firstRunHelp firstRun = new firstRunHelp();
-                firstRun.ShowDialog();
+                firstRun.Show();
             }
 
             // Start the connection timer to look for a flight sim

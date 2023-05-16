@@ -29,13 +29,14 @@ Right square bracket: aircraft information
 Right Bracket, then Question Mark: Turns on help mode, pressing any command will read it's function.
 Right Bracket, then Ctrl+K: keyboard manager";
 
-        
+            this.BringIntoView();
+            txtFirstRun.Focus();
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            DialogResult = true;
+            this.Close();
         }
     }
 }
