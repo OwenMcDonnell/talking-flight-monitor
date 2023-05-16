@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.Forms"
-        xmlns:global="clr-namespace:tfm"
+        xmlns:converters="clr-namespace:tfm.Converters"
         mc:Ignorable="d"
         Title="PMDG 737 CDU" Height="600" Width="800" AutomationProperties.IsDialog="True" SizeToContent="Width" Closing="Window_Closing">
     <Window.CommandBindings>
@@ -31,10 +31,7 @@
         <CommandBinding Command="{x:Static local:CDUKeyCommands.focusLineSelectMode}" Executed="FocusLineSelectMode"/>
         <CommandBinding Command="{x:Static local:CDUKeyCommands.changeLineSelectKeys}" Executed="ChangeLineSelectKeys"/>
     </Window.CommandBindings>
-    <Window.Resources>
-        <global:FontSizeConverter x:Key="FontSizeConverter" />
-    </Window.Resources>
-    
+                    
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -44,15 +41,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="cduDisplay" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutomationProperties.Name="FMC display" AutomationProperties.AccessKey="ALT+HOME" AutomationProperties.AcceleratorKey="ALT+HOME" AcceptsReturn="True" TextWrapping="Wrap" Focusable="True" IsReadOnlyCaretVisible="True">
-            <TextBox.FontSize>
-                <MultiBinding Converter="{StaticResource FontSizeConverter}">
-                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Window}" />
-                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Window}" />
-                </MultiBinding>
-            </TextBox.FontSize>
-        </TextBox>
-
+        <TextBox x:Name="cduDisplay" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutomationProperties.Name="FMC display" AutomationProperties.AccessKey="ALT+HOME" AutomationProperties.AcceleratorKey="ALT+HOME" AcceptsReturn="True" TextWrapping="Wrap" Focusable="True" IsReadOnlyCaretVisible="True"/>
         <StackPanel Name="cduToolbar" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <AutomationProperties.Name>FMC toolbar</AutomationProperties.Name>
             <AutomationProperties.AutomationId>FMCToolbar</AutomationProperties.AutomationId>

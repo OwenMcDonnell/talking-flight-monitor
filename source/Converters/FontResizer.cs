@@ -2,9 +2,9 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace tfm
+namespace tfm.Converters
 {
-    public class FontSizeConverter : IMultiValueConverter
+    public class FontResizer : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

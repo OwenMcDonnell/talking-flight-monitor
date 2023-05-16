@@ -6,6 +6,12 @@
              Startup="Application_Startup"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
-                <converters:ByteToBoolConverter x:Key="ByteToBoolConverter" />
-            </Application.Resources>
+                                        
+        <ResourceDictionary>
+            <converters:ByteToBoolConverter x:Key="ByteToBoolConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+                                                    </Application.Resources>
 </Application>

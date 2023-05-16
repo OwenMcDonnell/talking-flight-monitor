@@ -25,13 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="Resources\Styles.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\Styles.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <None Include="TFMMainForm.Designer.cs" />
   </ItemGroup>
 
@@ -198,6 +191,12 @@
     <None Update="TolkDotNet.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resources\Styles.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>
