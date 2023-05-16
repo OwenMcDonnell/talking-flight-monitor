@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                 xmlns:properties="clr-namespace:tfm.Properties"
                     xmlns:converters="clr-namespace:tfm.Converters">
-    <converters:FontResizer x:Key="FontResizer"/>
-    <Style TargetType="{x:Type Control}">
-        <Setter Property="FontSize">
-            <Setter.Value>
-                <MultiBinding Converter="{DynamicResource FontResizer}">
-                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Window}" />
-                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Window}" />
-                </MultiBinding>
-            </Setter.Value>
-        </Setter>
+    <properties:Settings x:Key="Settings"/>
+    <Style x:Key="BaseStyle" TargetType="{x:Type Control}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize}" />
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontName}" />
     </Style>
+
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}" />
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}" />
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" />
+    
     <Style TargetType="ToggleButton">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
@@ -19,6 +19,8 @@
                 <Setter Property="Foreground" Value="White" />
             </Trigger>
         </Style.Triggers>
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize}" />
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontName}" />
     </Style>
 
 </ResourceDictionary>

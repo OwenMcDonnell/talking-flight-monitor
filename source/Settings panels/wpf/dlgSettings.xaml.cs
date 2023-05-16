@@ -40,6 +40,7 @@ namespace tfm.Settings_panels
             pageMappings["Timing"] = new ctlTiming();
             pageMappings["Simbrief"] = new ctlSimbrief();
             pageMappings["AirportsDatabase"] = new ctlAirportsDatabase();
+            pageMappings["UserInterface"] = new ctlUserInterface(); 
 
             // pageMappings["UserInterface"] = new ctlPMDG737Verbosity();
 
