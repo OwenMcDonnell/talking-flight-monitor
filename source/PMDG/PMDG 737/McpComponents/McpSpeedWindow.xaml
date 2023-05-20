@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
-        Title="McpSpeedWindow" Height="450" Width="800">
+        Title="MCP - Speed" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Closing="Window_Closing" KeyDown="Window_KeyDown">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
+            <Label Name="speedLabel" Content="Speed" AutomationProperties.Name="Speed" AutomationProperties.AutomationId="SpeedLabel" Target="{Binding ElementName=speedTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="speedTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Speed input" AutomationProperties.AutomationId="SpeedTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="speedTextBox_KeyDown"/>
+            <ToggleButton x:Name="interveneToggleButton" Content="Intervene" AutomationProperties.AcceleratorKey="ALT+I" AutomationProperties.AccessKey="ALT+I" AutomationProperties.Name="Intervene" AutomationProperties.AutomationId="InterveneToggleButton" Margin="3, 3, 3, 3"                      Click="interveneToggleButton_Click"/>
+            <Button x:Name="changeOverButton" Content="C/O" AutomationProperties.AcceleratorKey="ALT+C" AutomationProperties.AccessKey="ALT+C" AutomationProperties.Name="C/O" AutomationProperties.AutomationId="ChangeOverButton" Margin="3, 3, 3, 3"  Click="changeOverButton_Click"/>
+            <ToggleButton x:Name="autoThrottleToggleButton" Content="Auto throttle" AutomationProperties.AcceleratorKey="ALT+U" AutomationProperties.AccessKey="ALT+U" AutomationProperties.Name="Auto throttle" AutomationProperties.AutomationId="AutoThrottleToggleButton" Margin="3, 3, 3, 3"  Click="autoThrottleToggleButton_Click"/>
+            <Button x:Name="n1SelectorButton" Content="N1 selector" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="N1 selector" AutomationProperties.AutomationId="N1SelectorButton" Margin="3, 3, 3, 3"  Click="n1SelectorButton_Click"/>
+            <ToggleButton x:Name="n1ToggleButton" Content="N1" AutomationProperties.AcceleratorKey="ALT+N" AutomationProperties.AccessKey="ALT+N" AutomationProperties.Name="N1" AutomationProperties.AutomationId="N1ToggleButton" Margin="3, 3, 3, 3"  Click="n1ToggleButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1">
+            <ToggleButton x:Name="speedToggleButton" Content="Speed" AutomationProperties.AcceleratorKey="ALT+S" AutomationProperties.AccessKey="ALT+S" AutomationProperties.Name="Speed" AutomationProperties.AutomationId="SpeedToggleButton" Margin="3, 3, 3, 3"  Click="speedToggleButton_Click"/>
+            <Button x:Name="atDisengageButton" Content="A/T disengage" AutomationProperties.AcceleratorKey="ALT+D" AutomationProperties.AccessKey="ALT+D" AutomationProperties.Name="A/T disengage" AutomationProperties.AutomationId="AutoThrottleDisengageButton" Margin="3, 3, 3, 3" Click="atDisengageButton_Click"/>
+            <ToggleButton x:Name="spoilerAToggleButton" Content="Spoiler/A" AutomationProperties.AcceleratorKey="ALT+A" AutomationProperties.AccessKey="ALT+A" AutomationProperties.Name="Spoiler/A" AutomationProperties.AutomationId="SpoilerAToggleButton" Margin="3, 3, 3, 3"  Click="spoilerAToggleButton_Click"/>
+            <ToggleButton x:Name="spoilerBToggleButton" Content="Spoiler/B" AutomationProperties.AcceleratorKey="ALT+B" AutomationProperties.AccessKey="ALT+B" AutomationProperties.Name="Spoiler/B" AutomationProperties.AutomationId="SpoilerBToggleButton" Margin="3, 3, 3, 3"  Click="spoilerBToggleButton_Click"/>
+            <Label Name="speedBrakeLabel" Content="Speed brake" AutomationProperties.Name="Speed brake" AutomationProperties.AutomationId="SpeedBrakeLabel" Target="{Binding ElementName=speedBrakeTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="speedBrakeTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" Focusable="True" IsReadOnly="True" IsReadOnlyCaretVisible="True" AutomationProperties.Name="Speed brake" AutomationProperties.AutomationId="SpeedBrakeTextBox" AutomationProperties.AcceleratorKey="ALT+K" AutomationProperties.AccessKey="ALT+K" />
+            <Label Name="autoBrakeLabel" Content="Auto brake" AutomationProperties.Name="Auto brake" AutomationProperties.AutomationId="AutoBrakeLabel" Target="{Binding ElementName=autoBrakeTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="autoBrakeTextBox" Margin="3, 3, 3, 3" Focusable="True" IsReadOnly="True" IsReadOnlyCaretVisible="True" TextWrapping="NoWrap" AutomationProperties.Name="Auto brake" AutomationProperties.AutomationId="AutoBrakeTextBox" AutomationProperties.AcceleratorKey="ALT+T" AutomationProperties.AccessKey="ALT+T" />
+
+        </StackPanel>
     </Grid>
 </Window>

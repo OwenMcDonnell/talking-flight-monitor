@@ -3808,6 +3808,13 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
 
         }
 
+        public static  void AutoThrottleDisengage()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_AT1_DISENGAGE_SWITCH, Aircraft.ClkL);
+            Thread.Sleep(250);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CONTROL_STAND_AT2_DISENGAGE_SWITCH, Aircraft.ClkL);
+        } // AutoThrottleDisengage
+
 
     } // End PMDG737Aircraft.
 } // End namespace.
