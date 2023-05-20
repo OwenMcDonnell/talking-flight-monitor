@@ -70,8 +70,12 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         public static readonly RoutedUICommand autoBrake1 = new RoutedUICommand("Auto brake 1", "AutoBrake1", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.D1, ModifierKeys.Control) });
         public static readonly RoutedUICommand autoBrake2 = new RoutedUICommand("Auto brake 2", "AutoBrake2", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.D2, ModifierKeys.Control) });
         public static readonly RoutedUICommand autoBrake3 = new RoutedUICommand("Auto brake 3", "AutoBrake3", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.D3, ModifierKeys.Control) });
-                #endregion
-    
-    
+        #endregion
+
+        // Vertical speed.
+        #region "Vertical speed"
+        public static readonly RoutedUICommand focusVerticalSpeedInput = new RoutedUICommand("Focus vertical speed input", "FocusVerticalSpeedInput", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.E, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleVerticalSpeedMode = new RoutedUICommand("Toggle vertical speed mode", "ToggleVerticalSpeedMode", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.V, ModifierKeys.Alt) });
+        #endregion
     }
 }
