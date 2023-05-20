@@ -12,6 +12,37 @@ namespace tfm.PMDG.PMDG_737.McpComponents
     public static class MCPKeyCommands
     {
 
+        // Altitude window
+        #region "Altitude"
+        public static readonly RoutedUICommand focusAltitudeInput = new RoutedUICommand("Focus altitude input", "FocusAltitudeInput", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.E, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand altitudeIntervene = new RoutedUICommand("Activate altitude intervene", "AltitudeIntervene", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.I, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleVNav = new RoutedUICommand("Toggle V-Nav", "ToggleVNav", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.V, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleLvlChange = new RoutedUICommand("Toggle level change", "ToggleLvlChange", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.L, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleAltitudeHold = new RoutedUICommand("Toggle altitude hold", "ToggleAltitudeHold", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.H, ModifierKeys.Alt) });
+
+        #endregion
+
+        //Heading
+        #region "Heading"
+        public static readonly RoutedUICommand focusHeadingInput = new RoutedUICommand("Focus heading input", "FocusHeadingInput", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.E, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleHdgSel = new RoutedUICommand("Toggle HDG SEL", "ToggleHdgSel", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.H, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleLNav = new RoutedUICommand("Toggle L-Nav", "ToggleLNav", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.L, ModifierKeys.Alt) });
+        #endregion
+
+        //Navaids
+        #region "Navaids"
+        public static readonly RoutedUICommand toggleFDL = new RoutedUICommand("Toggle FD/L", "ToggleFDL", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.L, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleFDR = new RoutedUICommand("Toggle FD/R", "ToggleFDR", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.R, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleCMDA = new RoutedUICommand("Toggle CMD/A", "ToggleCMDA", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.A, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleCMDB = new RoutedUICommand("Toggle CMD/B", "ToggleCMDB", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.B, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleAppMode = new RoutedUICommand("Toggle APP mode", "ToggleAppMode", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.P, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand cycleBankLimit = new RoutedUICommand("Cycle bank limit", "CycleBankLimit", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.K, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleVorLoc = new RoutedUICommand("Toggle VOR/LOC", "ToggleVorLoc", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.V, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleCWSA = new RoutedUICommand("Toggle CWS/A", "ToggleCWSA", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.C, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleCWSB = new RoutedUICommand("Toggle CWS/B", "ToggleCWSB", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.W, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand toggleDisengageBar = new RoutedUICommand("Toggle disengage bar", "ToggleDisengageBar", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.I, ModifierKeys.Alt) });
+        #endregion
+
         // Speed window.
         #region "Speed"
         public static readonly RoutedUICommand focusSpeedInput = new RoutedUICommand("Focus speed input", "FocusSpeedInput", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.E, ModifierKeys.Alt) });
@@ -40,5 +71,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         public static readonly RoutedUICommand autoBrake2 = new RoutedUICommand("Auto brake 2", "AutoBrake2", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.D2, ModifierKeys.Control) });
         public static readonly RoutedUICommand autoBrake3 = new RoutedUICommand("Auto brake 3", "AutoBrake3", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.D3, ModifierKeys.Control) });
                 #endregion
+    
+    
     }
 }
