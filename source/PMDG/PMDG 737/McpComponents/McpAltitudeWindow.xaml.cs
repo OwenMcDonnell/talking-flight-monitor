@@ -36,9 +36,9 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             var lvlChangeToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunLVL_CHG).ToArray()[0] as SingleStateToggle;
             var holdToggle = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.MCP_annunALT_HOLD).ToArray()[0] as SingleStateToggle;
             altitudeTextBox.Text = Aircraft.pmdg737.MCP_Altitude.Value.ToString();
-            App.UI.BuildToggleButton(vNavButton, vNavToggle, "VNav");
-            App.UI.BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
-            App.UI.BuildToggleButton(holdButton, holdToggle, "Hold");
+            App.UI.BuildToggleButton(vNavToggleButton, vNavToggle, "VNav");
+            App.UI.BuildToggleButton(lvlChangeToggleButton, lvlChangeToggle, "Level change");
+            App.UI.BuildToggleButton(holdToggleButton, holdToggle, "Hold");
 
             var timer = new DispatcherTimer
             {
@@ -62,9 +62,9 @@ namespace tfm.PMDG.PMDG_737.McpComponents
                     {
                         altitudeTextBox.Text = Aircraft.pmdg737.MCP_Altitude.Value.ToString();
                     }
-                                                                App.UI.BuildToggleButton(vNavButton, vNavToggle, "VNav");
-                                                                                    App.UI.BuildToggleButton(lvlChangeButton, lvlChangeToggle, "Level change");
-                                                                                    App.UI.BuildToggleButton(holdButton, holdToggle, "Hold");
+                                                                App.UI.BuildToggleButton(vNavToggleButton, vNavToggle, "VNav");
+                                                                                    App.UI.BuildToggleButton(lvlChangeToggleButton, lvlChangeToggle, "Level change");
+                                                                                    App.UI.BuildToggleButton(holdToggleButton, holdToggle, "Hold");
                                                         });
             });
         }
@@ -114,5 +114,30 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             altitudeTextBox.SelectAll();
         }
-    }
+
+        private void FocusAltitudeInputExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(altitudeTextBox);
+        }
+
+        private void ActivateAltitudeIntervene(object sender, ExecutedRoutedEventArgs e)
+        {
+            interveneButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleVNav(object sender, ExecutedRoutedEventArgs e)
+        {
+            vNavToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));            
+        }
+
+        private void ToggleLevelChange(object sender, ExecutedRoutedEventArgs e)
+        {
+            lvlChangeToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));            
+        }
+
+        private void ToggleAltitudeHold(object sender, ExecutedRoutedEventArgs e)
+        {
+            holdToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+            }
 }

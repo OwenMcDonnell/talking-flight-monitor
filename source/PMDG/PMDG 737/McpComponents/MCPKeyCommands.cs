@@ -19,7 +19,6 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         public static readonly RoutedUICommand toggleVNav = new RoutedUICommand("Toggle V-Nav", "ToggleVNav", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.V, ModifierKeys.Alt) });
         public static readonly RoutedUICommand toggleLvlChange = new RoutedUICommand("Toggle level change", "ToggleLvlChange", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.L, ModifierKeys.Alt) });
         public static readonly RoutedUICommand toggleAltitudeHold = new RoutedUICommand("Toggle altitude hold", "ToggleAltitudeHold", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.H, ModifierKeys.Alt) });
-
         #endregion
 
         //Heading

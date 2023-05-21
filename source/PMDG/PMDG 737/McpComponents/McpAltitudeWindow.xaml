@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - altitude" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" KeyDown="Window_KeyDown" Closing="Window_Closing">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.focusAltitudeInput}" Executed="FocusAltitudeInputExecuted"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.altitudeIntervene}" Executed="ActivateAltitudeIntervene"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleVNav}" Executed="ToggleVNav"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleLvlChange}" Executed="ToggleLevelChange"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleAltitudeHold}" Executed="ToggleAltitudeHold"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,9 +31,9 @@
             <Label Name="altitudeLabel" Content="Altitude" AutomationProperties.Name="Altitude" AutomationProperties.AutomationId="AltitudeLabel" Target="{Binding ElementName=altitudeTextBox}" Margin="10, 0, 0, 0"/>
             <TextBox x:Name="altitudeTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Altitude input" AutomationProperties.AutomationId="AltitudeTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="altitudeTextBox_KeyDown" Focusable="True" GotKeyboardFocus="altitudeTextBox_GotKeyboardFocus"/>
             <Button x:Name="interveneButton" Content="Intervene" AutomationProperties.AcceleratorKey="ALT+I" AutomationProperties.AccessKey="ALT+I" AutomationProperties.Name="Intervene" AutomationProperties.AutomationId="InterveneButton" Margin="7, 3, 3, 3" Click="interveneButton_Click" Focusable="True"/>
-            <ToggleButton x:Name="vNavButton" Width="auto" Content="V-Nav" AutomationProperties.AcceleratorKey="ALT+V" AutomationProperties.AccessKey="ALT+V" AutomationProperties.Name="VNav" AutomationProperties.AutomationId="VnavButton" Margin="3, 3, 3, 3" Click="vNavButton_Click" Focusable="True"/>
-            <ToggleButton x:Name="lvlChangeButton" Width="auto" Content="LVL CHG" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="Level change" AutomationProperties.AutomationId="LvlChangeButton" Margin="3, 3, 3, 3" Click="lvlChangeButton_Click" Focusable="True"/>
-            <ToggleButton x:Name="holdButton" Width="auto" Content="Hold" AutomationProperties.AcceleratorKey="ALT+H" AutomationProperties.AccessKey="ALT+H" AutomationProperties.Name="Hold" AutomationProperties.AutomationId="HoldButton" Margin="3, 3, 3, 3" Click="holdButton_Click" Focusable="True"/>
+            <ToggleButton x:Name="vNavToggleButton" Width="auto" Content="V-Nav" AutomationProperties.AcceleratorKey="ALT+V" AutomationProperties.AccessKey="ALT+V" AutomationProperties.Name="VNav" AutomationProperties.AutomationId="VnavButton" Margin="3, 3, 3, 3" Click="vNavButton_Click" Focusable="True"/>
+            <ToggleButton x:Name="lvlChangeToggleButton" Width="auto" Content="LVL CHG" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="Level change" AutomationProperties.AutomationId="LvlChangeButton" Margin="3, 3, 3, 3" Click="lvlChangeButton_Click" Focusable="True"/>
+            <ToggleButton x:Name="holdToggleButton" Width="auto" Content="Hold" AutomationProperties.AcceleratorKey="ALT+H" AutomationProperties.AccessKey="ALT+H" AutomationProperties.Name="Hold" AutomationProperties.AutomationId="HoldButton" Margin="3, 3, 3, 3" Click="holdButton_Click" Focusable="True"/>
         </StackPanel>
     </Grid>
 </Window>
