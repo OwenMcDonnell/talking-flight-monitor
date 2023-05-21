@@ -102,5 +102,20 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             headingTextBox.SelectAll();
         }
+
+        private void FocusHeadingInput(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(headingTextBox);
+        }
+
+        private void ToggleHdgSel(object sender, ExecutedRoutedEventArgs e)
+        {
+            hdgSelToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleLNav(object sender, ExecutedRoutedEventArgs e)
+        {
+            lNavToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
     }
 }

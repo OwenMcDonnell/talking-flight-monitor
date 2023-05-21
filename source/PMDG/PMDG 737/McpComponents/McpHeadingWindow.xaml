@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - heading" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" KeyDown="Window_KeyDown" Closing="Window_Closing">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.focusHeadingInput}" Executed="FocusHeadingInput"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleHdgSel}" Executed="ToggleHdgSel"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleLNav}" Executed="ToggleLNav"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,7 +28,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
             <Label Name="headingLabel" Content="Heading" AutomationProperties.Name="Heading" AutomationProperties.AutomationId="HeadingLabel" Target="{Binding ElementName=headingTextBox}" Margin="10, 0, 0, 0"/>
-            <TextBox x:Name="headingTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" Width="50" AutomationProperties.Name="Heading input" AutomationProperties.AutomationId="HeadingTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="headingTextBox_KeyDown" GotKeyboardFocus="headingTextBox_GotKeyboardFocus"/>
+            <TextBox x:Name="headingTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Heading input" AutomationProperties.AutomationId="HeadingTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="headingTextBox_KeyDown" GotKeyboardFocus="headingTextBox_GotKeyboardFocus" Focusable="True"/>
             <ToggleButton x:Name="hdgSelToggleButton" Width="auto" Content="HDG SEL" AutomationProperties.AcceleratorKey="ALT+H" AutomationProperties.AccessKey="ALT+H" AutomationProperties.Name="Heading select" AutomationProperties.AutomationId="HdgSelToggleButton" Margin="3, 3, 3, 3" Click="hdgSelToggleButton_Click"/>
             <ToggleButton x:Name="lNavToggleButton" Width="auto" Content="L-NAV" AutomationProperties.AcceleratorKey="ALT+L" AutomationProperties.AccessKey="ALT+L" AutomationProperties.Name="L nav" AutomationProperties.AutomationId="LNavToggleButton" Margin="3, 3, 3, 3" Click="lNavToggleButton_Click"/>
         </StackPanel>
