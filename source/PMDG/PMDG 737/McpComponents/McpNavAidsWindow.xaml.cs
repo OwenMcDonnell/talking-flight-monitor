@@ -129,6 +129,11 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             PMDG737Aircraft.LocalizerHold();
         }
 
+        private void autoPilotDisconnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            PMDG737Aircraft.DisengageAutoPilot();
+        }
+
         private void cwsAToggleButton_Click(object sender, RoutedEventArgs e)
         {
             PMDG737Aircraft.CWSA();
@@ -157,5 +162,60 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             this.Hide();
         }
-    }
+
+        private void ToggleFDL(object sender, ExecutedRoutedEventArgs e)
+        {
+            fdLToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleFDR(object sender, ExecutedRoutedEventArgs e)
+        {
+            fdRToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleCMDA(object sender, ExecutedRoutedEventArgs e)
+        {
+            cmdAToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleCMDB(object sender, ExecutedRoutedEventArgs e)
+        {
+            cmdBToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleApproachMode(object sender, ExecutedRoutedEventArgs e)
+        {
+            appModeToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void CycleBankLimit(object sender, ExecutedRoutedEventArgs e)
+        {
+            bankLimitButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleVorLoc(object sender, ExecutedRoutedEventArgs e)
+        {
+            vorLocToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleCWSA(object sender, ExecutedRoutedEventArgs e)
+        {
+            cwsAToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleCWSB(object sender, ExecutedRoutedEventArgs e)
+        {
+            cwsBToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleDisengageBar(object sender, ExecutedRoutedEventArgs e)
+        {
+            disengageBarToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void DisconnectAutoPilot(object sender, ExecutedRoutedEventArgs e)
+        {
+            autoPilotDisconnectButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+            }
 }

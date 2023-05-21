@@ -40,6 +40,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         public static readonly RoutedUICommand toggleCWSA = new RoutedUICommand("Toggle CWS/A", "ToggleCWSA", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.C, ModifierKeys.Alt) });
         public static readonly RoutedUICommand toggleCWSB = new RoutedUICommand("Toggle CWS/B", "ToggleCWSB", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.W, ModifierKeys.Alt) });
         public static readonly RoutedUICommand toggleDisengageBar = new RoutedUICommand("Toggle disengage bar", "ToggleDisengageBar", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.I, ModifierKeys.Alt) });
+        public static readonly RoutedUICommand disconnectAutoPilot = new RoutedUICommand("Disconnect autopilot", "DisconnectAutoPilot", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.D, ModifierKeys.Alt) });
         #endregion
 
         // Speed window.

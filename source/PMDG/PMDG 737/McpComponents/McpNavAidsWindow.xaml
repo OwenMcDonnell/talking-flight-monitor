@@ -6,6 +6,19 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - Navaids" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" KeyDown="Window_KeyDown" Closing="Window_Closing">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleFDL}" Executed="ToggleFDL"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleFDR}" Executed="ToggleFDR"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleCMDA}" Executed="ToggleCMDA"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleCMDB}" Executed="ToggleCMDB"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleAppMode}" Executed="ToggleApproachMode"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.cycleBankLimit}" Executed="CycleBankLimit"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleVorLoc}" Executed="ToggleVorLoc"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleCWSA}" Executed="ToggleCWSA"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleCWSB}" Executed="ToggleCWSB"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleDisengageBar}" Executed="ToggleDisengageBar"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.disconnectAutoPilot}" Executed="DisconnectAutoPilot"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,6 +41,7 @@
             <ToggleButton x:Name="cmdAToggleButton" Content="CMD/A" AutomationProperties.AcceleratorKey="ALT+A" AutomationProperties.AccessKey="ALT+A" AutomationProperties.Name="CMD/A" AutomationProperties.AutomationId="CmdAToggleButton" Margin="3, 3, 3, 3" Click="cmdAToggleButton_Click"/>
             <ToggleButton x:Name="cmdBToggleButton" Content="CMD/B" AutomationProperties.AcceleratorKey="ALT+B" AutomationProperties.AccessKey="ALT+B" AutomationProperties.Name="CMD/B" AutomationProperties.AutomationId="CmdBToggleButton" Margin="3, 3, 3, 3" Click="cmdBToggleButton_Click"/>
             <ToggleButton x:Name="appModeToggleButton" Content="APP mode" AutomationProperties.AcceleratorKey="ALT+P" AutomationProperties.AccessKey="ALT+P" AutomationProperties.Name="APP mode" AutomationProperties.AutomationId="AppModeToggleButton" Margin="3, 3, 3, 3" Click="appModeToggleButton_Click"/>
+            <Button x:Name="autoPilotDisconnectButton" Content="AP disconnect" AutomationProperties.AcceleratorKey="ALT+D" AutomationProperties.AccessKey="ALT+D" AutomationProperties.Name="Disconnect autopilot" AutomationProperties.AutomationId="DisconnectAutoPilotButton" Margin="3, 3, 3, 3" Click="autoPilotDisconnectButton_Click"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3, 5, 3, 5" Grid.Row="1" Grid.Column="0">
