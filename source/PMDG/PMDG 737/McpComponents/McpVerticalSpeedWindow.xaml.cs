@@ -103,5 +103,20 @@ namespace tfm.PMDG.PMDG_737.McpComponents
                 Hide();
             }
         }
-    }
+
+        private void vertSpeedTextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            vertSpeedTextBox.SelectAll();
+        }
+
+        private void FocusVerticalSpeedInput(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(vertSpeedTextBox);
+        }
+
+        private void ToggleVerticalSpeedMode(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.VerticalSpeedIntervene();
+        }
+           }
 }

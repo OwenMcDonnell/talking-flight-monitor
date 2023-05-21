@@ -6,6 +6,34 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - Speed" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Closing="Window_Closing" KeyDown="Window_KeyDown">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.focusSpeedInput}" Executed="FocusSpeedInput"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.focusSpeedBrake}" Executed="FocusSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.focusAutoBrake}" Executed="FocusAutoBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.speedIntervene}" Executed="ActivateSpeedIntervene"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.changeOver}" Executed="ActivateChangeOver"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoThrottle}" Executed="ToggleAutoThrottle"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.n1Selector}" Executed="ActivateN1Selector"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.n1Switch}" Executed="ToggleN1"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.speedSwitch}" Executed="ToggleSpeedHold"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoThrottleDisengage}" Executed="DisengageAutoThrottle"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.spoilerA}" Executed="ToggleSpoilerA"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.spoilerB}" Executed="ToggleSpoilerB"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.increaseSpeedBrake}" Executed="IncreaseSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.decreaseSpeedBrake}" Executed="DecreaseSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.armSpeedBrake}" Executed="ArmSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.fltSpeedBrake}" Executed="FltSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.fullSpeedBrake}" Executed="FullSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.halfSpeedBrake}" Executed="HalfSpeedBrake"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.speedBrakeOff}" Executed="SpeedBrakeOff"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrakeOff}" Executed="AutoBrakeOff"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrakeRTO}" Executed="AutoBrakeRTO"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrakeDisarm}" Executed="AutoBrakeDisarm"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrake1}" Executed="AutoBrake1"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrake2}" Executed="AutoBrake2"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrake3}" Executed="AutoBrake3"/>
+    </Window.CommandBindings>
+    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,7 +53,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
             <Label Name="speedLabel" Content="Speed" AutomationProperties.Name="Speed" AutomationProperties.AutomationId="SpeedLabel" Target="{Binding ElementName=speedTextBox}" Margin="10, 0, 0, 0"/>
-            <TextBox x:Name="speedTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Speed input" AutomationProperties.AutomationId="SpeedTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="speedTextBox_KeyDown"/>
+            <TextBox x:Name="speedTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Speed input" AutomationProperties.AutomationId="SpeedTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" KeyDown="speedTextBox_KeyDown" GotKeyboardFocus="speedTextBox_GotKeyboardFocus"/>
             <ToggleButton x:Name="interveneToggleButton" Content="Intervene" AutomationProperties.AcceleratorKey="ALT+I" AutomationProperties.AccessKey="ALT+I" AutomationProperties.Name="Intervene" AutomationProperties.AutomationId="InterveneToggleButton" Margin="3, 3, 3, 3"                      Click="interveneToggleButton_Click"/>
             <Button x:Name="changeOverButton" Content="C/O" AutomationProperties.AcceleratorKey="ALT+C" AutomationProperties.AccessKey="ALT+C" AutomationProperties.Name="C/O" AutomationProperties.AutomationId="ChangeOverButton" Margin="3, 3, 3, 3"  Click="changeOverButton_Click"/>
             <ToggleButton x:Name="autoThrottleToggleButton" Content="Auto throttle" AutomationProperties.AcceleratorKey="ALT+U" AutomationProperties.AccessKey="ALT+U" AutomationProperties.Name="Auto throttle" AutomationProperties.AutomationId="AutoThrottleToggleButton" Margin="3, 3, 3, 3"  Click="autoThrottleToggleButton_Click"/>

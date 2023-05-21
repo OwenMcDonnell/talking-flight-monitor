@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.McpComponents"
         mc:Ignorable="d"
         Title="MCP - Vertical speed" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Closing="Window_Closing" KeyDown="Window_KeyDown">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.focusVerticalSpeedInput}" Executed="FocusVerticalSpeedInput"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleVerticalSpeedMode}" Executed="ToggleVerticalSpeedMode"/>
+
+    </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,7 +30,7 @@
                 <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
 
                     <Label Name="vertSpeedLabel" Content="Vertical speed" AutomationProperties.Name="Vertical speed" AutomationProperties.AutomationId="VerticalSpeedLabel" Target="{Binding ElementName=vertSpeedTextBox}" Margin="10, 0, 0, 0"/>
-                    <TextBox x:Name="vertSpeedTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Vertical speed" AutomationProperties.AutomationId="VertSpeedTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" Focusable="True" KeyDown="vertSpeedTextBox_KeyDown"/>
+                    <TextBox x:Name="vertSpeedTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Vertical speed" AutomationProperties.AutomationId="VertSpeedTextBox" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" Focusable="True" KeyDown="vertSpeedTextBox_KeyDown" GotKeyboardFocus="vertSpeedTextBox_GotKeyboardFocus"/>
                     <ToggleButton x:Name="vertSpeedToggleButton" AutomationProperties.AcceleratorKey="ALT+V" AutomationProperties.AccessKey="ALT+V" AutomationProperties.AutomationId="VerticalSpeedToggleButton" Margin="7, 3, 3, 3 " Focusable="True" Click="vertSpeedToggleButton_Click"/>
                 </StackPanel>
     </Grid>

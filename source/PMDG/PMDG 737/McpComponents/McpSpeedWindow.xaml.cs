@@ -1,4 +1,5 @@
-﻿using tfm.PMDG.PanelObjects;
+﻿using DavyKager;
+using tfm.PMDG.PanelObjects;
 using System.Windows.Automation;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         public McpSpeedWindow()
         {
             InitializeComponent();
-
+            Tolk.Load();
             speedTextBox.Focus();
         }
 
@@ -269,6 +270,185 @@ namespace tfm.PMDG.PMDG_737.McpComponents
             {
                 Hide();
             }
+        }
+
+        private void speedTextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            speedTextBox.SelectAll();
+        }
+
+        private void FocusSpeedInput(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(speedTextBox);
+        }
+
+        private void FocusSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(speedBrakeTextBox);
+        }
+
+        private void FocusAutoBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(autoBrakeTextBox);
+        }
+
+        private void ActivateSpeedIntervene(object sender, ExecutedRoutedEventArgs e)
+        {
+            interveneToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ActivateChangeOver(object sender, ExecutedRoutedEventArgs e)
+        {
+            changeOverButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleAutoThrottle(object sender, ExecutedRoutedEventArgs e)
+        {
+            autoThrottleToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ActivateN1Selector(object sender, ExecutedRoutedEventArgs e)
+        {
+            n1SelectorButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleN1(object sender, ExecutedRoutedEventArgs e)
+        {
+            n1ToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleSpeedHold(object sender, ExecutedRoutedEventArgs e)
+        {
+            speedToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void DisengageAutoThrottle(object sender, ExecutedRoutedEventArgs e)
+        {
+            atDisengageButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleSpoilerA(object sender, ExecutedRoutedEventArgs e)
+        {
+            spoilerAToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ToggleSpoilerB(object sender, ExecutedRoutedEventArgs e)
+        {
+            spoilerBToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void IncreaseSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.SpeedBrakeIncrease();
+            switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
+            {
+                case 0:
+                    Tolk.Output("Speed brake off.");
+                    break;
+                case 100:
+                    Tolk.Output("Speed brake armed.");
+                    break;
+                case 250:
+                    Tolk.Output("Speed brake 50%.");
+                    break;
+                case 272:
+                    Tolk.Output("Speed brake FLT.");
+                    break;
+                case 400:
+                    Tolk.Output("Speed brake 100%.");
+                    break;
+                default:
+                    Tolk.Output($"Speed brake {PMDG737Aircraft.CurrentSpeedBrakePosition}.");
+                    break;
+            }
+
+        }
+
+        private void DecreaseSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+
+            PMDG737Aircraft.SpeedBrakeDecrease();
+            switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
+            {
+                case 0:
+                    Tolk.Output("Speed brake off.");
+                    break;
+                case 100:
+                    Tolk.Output("Speed brake armed.");
+                    break;
+                case 250:
+                    Tolk.Output("Speed brake 50%.");
+                    break;
+                case 272:
+                    Tolk.Output("Speed brake FLT.");
+                    break;
+                case 400:
+                    Tolk.Output("Speed brake 100%.");
+                    break;
+                default:
+                    Tolk.Output($"Speed brake {PMDG737Aircraft.CurrentSpeedBrakePosition}.");
+                    break;
+            }
+        }
+
+private void ArmSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.SpeedBrakeArm();
+            Tolk.Output("Speed brake armed.");
+        }
+
+private void FltSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.SpeedBrakeFlight();
+            Tolk.Output("Speed brake FLT.");
+        }
+
+private void FullSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.SpeedBrakeFull();
+            Tolk.Output("Speed brake full.");
+        }
+
+private void HalfSpeedBrake(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.SpeedBrakeHalf();
+            Tolk.Output("Speed brake 50%.");
+        }
+
+private void SpeedBrakeOff(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.SpeedBrakeOff();
+            Tolk.Output("Speed brake off.");
+        }
+
+private void AutoBrakeOff(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.AutoBrake(1);
+        }
+
+        private void AutoBrakeRTO(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.AutoBrake(0);
+        }
+
+        private void AutoBrakeDisarm(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.AutoBrake(2);
+        }
+
+        private void AutoBrake1(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.AutoBrake(3);
+        }
+
+private void AutoBrake2(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.AutoBrake(4);
+        }
+
+        private void AutoBrake3(object sender, ExecutedRoutedEventArgs e)
+        {
+            PMDG737Aircraft.AutoBrake(5);
         }
     }
 }
