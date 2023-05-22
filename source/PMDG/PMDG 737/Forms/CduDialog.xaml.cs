@@ -554,5 +554,11 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
         {
             ScratchpadTextBox.SelectAll();
         }
+
+        private void ActivateKeyCommandHelp(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowBindingsHelp w = new WindowBindingsHelp(CommandBindings);
+            w.Show();
+        }
     }
 }

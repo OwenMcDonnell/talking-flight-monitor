@@ -62,8 +62,51 @@ namespace tfm
             {
                 ModifierKeysConverter modifierConverter = new ModifierKeysConverter();
                 string modifiers = modifierConverter.ConvertToString(keyGesture.Modifiers);
-                string key = keyGesture.Key.ToString();
-
+                string key = string.Empty;
+                if(keyGesture.Key.ToString() == "D1")
+                {
+                    key = "1";
+                }
+                else if(keyGesture.Key.ToString() == "D2")
+                {
+                    key = "2";
+                }
+                else if(keyGesture.Key.ToString() == "D3")
+                {
+                    key = "3";
+                }
+                else if(keyGesture.Key.ToString() == "D4")
+                {
+                    key = "4";
+                }
+                else if(keyGesture.Key.ToString() == "D5")
+                {
+                    key = "5";
+                }
+                else if(keyGesture.Key.ToString() == "D6")
+                {
+                    key = "6";
+                }
+                else if(keyGesture.Key.ToString() == "D7")
+                {
+                    key = "7";
+                }
+                else if(keyGesture.Key.ToString() == "D8")
+                {
+                    key = "8";
+                }
+                else if(keyGesture.Key.ToString() == "D9")
+                {
+                    key = "9";
+                }
+                else if(keyGesture.Key.ToString() == "D0")
+                {
+                    key = "0";
+                }
+                else
+                {
+                    key = keyGesture.Key.ToString();
+                }
                 if (!string.IsNullOrEmpty(modifiers))
                 {
                     return modifiers + " + " + key;

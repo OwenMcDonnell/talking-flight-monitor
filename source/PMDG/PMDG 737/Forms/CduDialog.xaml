@@ -30,6 +30,7 @@
         <CommandBinding Command="{x:Static local:CDUKeyCommands.deleteCDUAction}" Executed="DeleteAction"/>
         <CommandBinding Command="{x:Static local:CDUKeyCommands.focusLineSelectMode}" Executed="FocusLineSelectMode"/>
         <CommandBinding Command="{x:Static local:CDUKeyCommands.changeLineSelectKeys}" Executed="ChangeLineSelectKeys"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.commandBindingHelp}" Executed="ActivateKeyCommandHelp"/>
     </Window.CommandBindings>
                     
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
