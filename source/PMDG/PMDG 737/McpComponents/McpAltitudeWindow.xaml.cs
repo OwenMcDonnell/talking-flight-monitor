@@ -139,5 +139,11 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             holdToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
         }
-            }
+
+        private void ActivateKeyCommandHelp(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowBindingsHelp w = new WindowBindingsHelp(CommandBindings);
+            w.Show();
+                    }
+    }
 }

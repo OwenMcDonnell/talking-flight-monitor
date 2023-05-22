@@ -9,7 +9,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.focusVerticalSpeedInput}" Executed="FocusVerticalSpeedInput"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleVerticalSpeedMode}" Executed="ToggleVerticalSpeedMode"/>
-
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.commandBindingHelp}" Executed="ActivateKeyCommandHelp"/>
     </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>

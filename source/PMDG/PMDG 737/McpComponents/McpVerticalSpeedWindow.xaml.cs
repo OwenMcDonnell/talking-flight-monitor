@@ -118,5 +118,12 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             PMDG737Aircraft.VerticalSpeedIntervene();
         }
-           }
+
+        private void ActivateKeyCommandHelp(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowBindingsHelp w = new WindowBindingsHelp(CommandBindings);
+            w.Show();
+        }
+
+    }
 }

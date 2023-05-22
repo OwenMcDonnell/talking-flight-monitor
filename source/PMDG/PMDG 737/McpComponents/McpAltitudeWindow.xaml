@@ -12,6 +12,7 @@
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleVNav}" Executed="ToggleVNav"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleLvlChange}" Executed="ToggleLevelChange"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleAltitudeHold}" Executed="ToggleAltitudeHold"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.commandBindingHelp}" Executed="ActivateKeyCommandHelp"/>
     </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>

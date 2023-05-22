@@ -32,6 +32,7 @@
         <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrake1}" Executed="AutoBrake1"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrake2}" Executed="AutoBrake2"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.autoBrake3}" Executed="AutoBrake3"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.commandBindingHelp}" Executed="ActivateKeyCommandHelp"/>
     </Window.CommandBindings>
     
     <Window.Resources>

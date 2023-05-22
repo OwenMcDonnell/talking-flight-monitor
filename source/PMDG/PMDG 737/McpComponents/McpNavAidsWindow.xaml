@@ -18,6 +18,7 @@
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleCWSB}" Executed="ToggleCWSB"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleDisengageBar}" Executed="ToggleDisengageBar"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.disconnectAutoPilot}" Executed="DisconnectAutoPilot"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.commandBindingHelp}" Executed="ActivateKeyCommandHelp"/>
     </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>

@@ -450,5 +450,12 @@ private void AutoBrake2(object sender, ExecutedRoutedEventArgs e)
         {
             PMDG737Aircraft.AutoBrake(5);
         }
+
+        private void ActivateKeyCommandHelp(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowBindingsHelp w = new WindowBindingsHelp(CommandBindings);
+            w.Show();
+        }
+
     }
 }
