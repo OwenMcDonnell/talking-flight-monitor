@@ -340,6 +340,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         private void IncreaseSpeedBrake(object sender, ExecutedRoutedEventArgs e)
         {
             PMDG737Aircraft.SpeedBrakeIncrease();
+            Thread.Sleep(250);
             switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
             {
                 case 0:
@@ -361,13 +362,14 @@ namespace tfm.PMDG.PMDG_737.McpComponents
                     Tolk.Output($"Speed brake {PMDG737Aircraft.CurrentSpeedBrakePosition}.");
                     break;
             }
-
+            
         }
 
         private void DecreaseSpeedBrake(object sender, ExecutedRoutedEventArgs e)
         {
 
             PMDG737Aircraft.SpeedBrakeDecrease();
+            Thread.Sleep(250);
             switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
             {
                 case 0:
