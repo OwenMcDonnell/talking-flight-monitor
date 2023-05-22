@@ -117,5 +117,12 @@ namespace tfm.PMDG.PMDG_737.McpComponents
         {
             lNavToggleButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowBindingsHelp w = new WindowBindingsHelp(CommandBindings);
+            w.Show();
+            
+        }
     }
 }

@@ -10,6 +10,7 @@
         <CommandBinding Command="{x:Static local:MCPKeyCommands.focusHeadingInput}" Executed="FocusHeadingInput"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleHdgSel}" Executed="ToggleHdgSel"/>
         <CommandBinding Command="{x:Static local:MCPKeyCommands.toggleLNav}" Executed="ToggleLNav"/>
+        <CommandBinding Command="{x:Static local:MCPKeyCommands.commandBindingHelp}" Executed="CommandBinding_Executed"/>
     </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>

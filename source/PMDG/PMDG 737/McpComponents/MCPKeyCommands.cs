@@ -11,6 +11,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
 {
     public static class MCPKeyCommands
     {
+        public static readonly RoutedUICommand commandBindingHelp = new RoutedUICommand("Get command help", "Get command help", typeof(MCPKeyCommands), new InputGestureCollection { new KeyGesture(Key.F1, ModifierKeys.None) });
 
         // Altitude window
         #region "Altitude"
