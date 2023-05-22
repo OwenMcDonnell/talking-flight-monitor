@@ -2197,9 +2197,25 @@ else                    if (PMDG777Detected)
 
                     if (PMDG737Detected)
                     {
-                        var transponderForm = new tfm.PMDG.PMDG_737.Forms.TransponderForm();
-                        transponderForm.ShowDialog();
-                    }
+                        bool isTransponderOpen = false;
+                        foreach(var w in App.Current.Windows)
+                        {
+                            if(w is tfm.PMDG.PMDG_737.Forms.TransponderDialog)
+                            {
+                                isTransponderOpen = true;
+                            }
+                        }
+
+                        if (isTransponderOpen)
+                        {
+                            Output(isGauge: false, output: "The transponder window is already open!");
+                                                    }
+                        else
+                        {
+                            tfm.PMDG.PMDG_737.Forms.TransponderDialog t = new PMDG.PMDG_737.Forms.TransponderDialog();
+                            t.Show();
+                                                    }
+                                            }
                     else
                     {
                         ap = new frmAutopilot("Transponder");
