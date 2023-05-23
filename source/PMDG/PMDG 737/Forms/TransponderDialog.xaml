@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.Forms"
         mc:Ignorable="d"
         Title="Transponder" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.focusTransponderCodeInput}" Executed="FocusTransponderCodeInput"/>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.cycleSource}" Executed="CycleSource" />
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.cycleAlternateSource}" Executed="CycleAlternateSource"/>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.cycleModes}" Executed="CycleModes"/>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.activateIdent}" Executed="ActivateIdent"/>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.activateTests}" Executed="ActivateTest"/>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.focusFailureLight}" Executed="FocusFailureLight"/>
+        <CommandBinding Command="{x:Static local:TransponderDialogKeyCommands.commandBindingHelp}" Executed="ActivateKeyboardHelp"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

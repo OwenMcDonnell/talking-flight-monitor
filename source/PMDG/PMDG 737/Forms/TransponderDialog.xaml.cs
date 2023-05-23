@@ -103,5 +103,46 @@ namespace tfm.PMDG.PMDG_737.Forms
         {
             PMDG737Aircraft.TransponderTest();
         }
+
+        private void FocusTransponderCodeInput(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(transponderCodeTextBox);
+        }
+
+        private void CycleSource(object sender, ExecutedRoutedEventArgs e)
+        {
+            sourceButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void CycleAlternateSource(object sender, ExecutedRoutedEventArgs e)
+        {
+            altSourceButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void CycleModes(object sender, ExecutedRoutedEventArgs e)
+        {
+            modeButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ActivateIdent(object sender, ExecutedRoutedEventArgs e)
+        {
+            identButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void ActivateTest(object sender, ExecutedRoutedEventArgs e)
+        {
+            testButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+        }
+
+        private void FocusFailureLight(object sender, ExecutedRoutedEventArgs e)
+        {
+            Keyboard.Focus(failLightTextBox);
+        }
+
+        private void ActivateKeyboardHelp(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowBindingsHelp w = new WindowBindingsHelp(CommandBindings);
+            w.Show();
+        }
     }
 }
