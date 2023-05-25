@@ -28,7 +28,8 @@ namespace tfm.PMDG.PMDG_737.Forms
 
         private void TrimTimerTick(object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
-            if (PMDG737Aircraft.CurrentElevatorTrim != oldElevatorTrim)
+
+                        if (PMDG737Aircraft.CurrentElevatorTrim != oldElevatorTrim)
             {
                 trimTextBox.Text = PMDG737Aircraft.CurrentElevatorTrim.ToString();
                 oldElevatorTrim = PMDG737Aircraft.CurrentElevatorTrim;
@@ -72,7 +73,7 @@ namespace tfm.PMDG.PMDG_737.Forms
                 {
                     if (toggle.Offset.ValueChanged)
                     {
-                        stabTrimButton.Text = $"&Stab trim {toggle.CurrentState.Value}";
+                            stabTrimButton.Text = $"&Stab trim {toggle.CurrentState.Value}";
                         stabTrimButton.AccessibleName = $"Stab trim {toggle.CurrentState.Value}";
                     }
                 } // Stab trim

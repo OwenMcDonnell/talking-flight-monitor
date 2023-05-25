@@ -1,0 +1,55 @@
+﻿<Window x:Class="tfm.PMDG.PMDG_737.Forms.TrimDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.Forms"
+        mc:Ignorable="d"
+        Title="Trim" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.focusElevatorTrim}" Executed="FocusElevatorTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.focusAileronTrim}" Executed="FocusAileronTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.focusStabTrim}" Executed="FocusStabTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.ElectricalTrim}" Executed="ActivateElectricalTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.autoPilotTrim}" Executed="ActivateAutoPilotTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.stabTrim}" Executed="ActivateStabTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.FocusOutOfTrimIndicator}" Executed="FocusOutOfTrimIndicator"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.commandBindingHelp}" Executed="ActivateKeyboardHelp"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.increaseElevatorTrim}" Executed="IncreaseElevatorTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.decreaseElevatorTrim}" Executed="DecreaseElevatorTrim"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.aileronTrimLeft}" Executed="AileronTrimLeft"/>
+        <CommandBinding Command="{x:Static local:TrimDialogKeyCommands.aileronTrimRight}" Executed="AileronTrimRight"/>
+    </Window.CommandBindings>
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
+            <Label Name="elevatorTrimLabel" Content="Elevator trim" AutomationProperties.Name="Elevator trim" AutomationProperties.AutomationId="ElevatorTrimLabel" Target="{Binding ElementName=elevatorTrimTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="elevatorTrimTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Elevator trim" AutomationProperties.AutomationId="ElevatorTrimTextBox" AutomationProperties.AcceleratorKey="ALT+T" AutomationProperties.AccessKey="ALT+T" Focusable="True" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+            <Label Name="aileronTrimLabel" Content="aileron trim" AutomationProperties.Name="aileron trim" AutomationProperties.AutomationId="AileronTrimLabel" Target="{Binding ElementName=aileronTrimTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="aileronTrimTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Aileron trim" AutomationProperties.AutomationId="AileronTrimTextBox" AutomationProperties.AcceleratorKey="ALT+A" AutomationProperties.AccessKey="ALT+A" Focusable="True" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+            <Label Name="stabTrimLabel" Content="Stab trim" AutomationProperties.Name="Stab trim" AutomationProperties.AutomationId="StabTrimLabel" Target="{Binding ElementName=stabTrimTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="stabTrimTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Stab trim" AutomationProperties.AutomationId="StabTrimTextBox" AutomationProperties.AcceleratorKey="ALT+B" AutomationProperties.AccessKey="ALT+B" Focusable="True" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+            <Button x:Name="elecStabButton" Content="Elec stab trim" AutomationProperties.AcceleratorKey="ALT+E" AutomationProperties.AccessKey="ALT+E" AutomationProperties.Name="Elect stab trim" AutomationProperties.AutomationId="ElecStabTrimButton" Margin="7, 3, 3, 3" Focusable="True" Click="elecStabButton_Click"/>
+            <Button x:Name="apStabButton" Content="A/P stab trim" AutomationProperties.AcceleratorKey="ALT+U" AutomationProperties.AccessKey="ALT+U" AutomationProperties.Name="ap stab trim" AutomationProperties.AutomationId="ApStabTrimButton" Margin="7, 3, 3, 3" Focusable="True" Click="apStabButton_Click"/>
+            <Button x:Name="stabButton" Content="stab" AutomationProperties.AcceleratorKey="ALT+S" AutomationProperties.AccessKey="ALT+S" AutomationProperties.Name="Stab" AutomationProperties.AutomationId="StabButton" Margin="7, 3, 3, 3" Focusable="True" Click="stabButton_Click"/>
+
+            <Label Name="stabOutOfTrimLabel" Content="Stab out of trim" AutomationProperties.Name="Stab out of trim" AutomationProperties.AutomationId="StabOutOfTrimLabel" Target="{Binding ElementName=stabOutOfTrimLightTextBox}" Margin="10, 0, 0, 0"/>
+            <TextBox x:Name="stabOutOfTrimLightTextBox" Margin="3, 3, 3, 3" TextWrapping="NoWrap" AutomationProperties.Name="Stab out of trim indicator" AutomationProperties.AutomationId="StabOutOfTrimTextBox" AutomationProperties.AcceleratorKey="ALT+O" AutomationProperties.AccessKey="ALT+O" Focusable="True" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -2394,9 +2394,25 @@ else                    if (PMDG777Detected)
                 case "SetTrim":
                     if (PMDG737Detected)
                     {
-                        tfm.PMDG.PMDG_737.Forms.TrimForm trimForm = new PMDG.PMDG_737.Forms.TrimForm();
-                        trimForm.ShowDialog();
+                        bool isTrimWindowOpen = false;
+                        foreach(var w in App.Current.Windows)
+                        {
+                            if(w is tfm.PMDG.PMDG_737.Forms.TrimDialog)
+                            {
+                                isTrimWindowOpen = true;
+                                break;
+                            }
+                        }
 
+                        if (isTrimWindowOpen)
+                        {
+                            Output(isGauge: false, output: "The trim window is already open!");
+                        }
+                        else
+                        {
+                            tfm.PMDG.PMDG_737.Forms.TrimDialog t = new PMDG.PMDG_737.Forms.TrimDialog();
+                            t.Show();
+                        }
                     }
                     else
                     {
