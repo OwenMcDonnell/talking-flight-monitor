@@ -2315,11 +2315,28 @@ else                    if (PMDG777Detected)
 
                 case "ap_PMDG_Panels":
 
-                    if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737"))
+                    if (PMDG737Detected)
                     {
-                        frmCockpitPanels pnl = new frmCockpitPanels();
-                        pnl.Show();
-                    }
+                        bool panelsOpen = false;
+
+                        foreach(var w in App.Current.Windows)
+                        {
+                            if(w is tfm.PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog)
+                            {
+                                panelsOpen = true;
+                            }
+                        }
+
+                        if (panelsOpen)
+                        {
+                            Output(isGauge: false, output: "The cockpit dialog is already open!");
+                        }
+                        else
+                        {
+                            tfm.PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog cockpitPanels = new PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog();
+                            cockpitPanels.Show();
+                        }
+                                            }
                     else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747"))
                     {
                         CockPitPanels_747 cp = new CockPitPanels_747();

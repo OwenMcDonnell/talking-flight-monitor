@@ -1,0 +1,96 @@
+﻿<Window x:Class="tfm.PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
+        mc:Ignorable="d"
+        Title="Cockpit panels" SizeToContent="WidthAndHeight" ResizeMode="NoResize" AutomationProperties.IsDialog="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TreeView x:Name="panelsTreeView"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  AutomationProperties.Name="Cockpit panels"
+                  AutomationProperties.AutomationId="CockpitPanelsTreeView"
+                  Margin="5, 5, 5, 5"
+                  IsTextSearchEnabled="True"
+                  Grid.RowSpan="2">
+            <TreeViewItem Name="overhead" Header="Overhead">
+                <TreeViewItem x:Name="adiru" Header="ADIRU"/>
+                <TreeViewItem x:Name="domeLights" Header="Dome lights"/>
+                <TreeViewItem x:Name="eec" Header="EEC"/>
+                <TreeViewItem x:Name="flightRecorder" Header="Flight recorder"/>
+                <TreeViewItem x:Name="gear" Header="Gear"/>
+                <TreeViewItem x:Name="oxygen" Header="Oxygen"/>
+                <TreeViewItem x:Name="pseu" Header="PSEU"/>
+                <TreeViewItem x:Name="servicePhone" Header="Service phone"/>
+                <TreeViewItem x:Name="engines" Header="Engines"/>
+                <TreeViewItem x:Name="lights" Header="Lights"/>
+                <TreeViewItem x:Name="airSystems" Header="Air systems"/>
+                <TreeViewItem x:Name="antiIce" Header="Anti-ice"/>
+                <TreeViewItem x:Name="main" Header="Main"/>
+                <TreeViewItem x:Name="hydraulics" Header="Hydraulics"/>
+                <TreeViewItem x:Name="apu" Header="APU"/>
+                <TreeViewItem x:Name="electrical" Header="Electrical"/>
+                <TreeViewItem x:Name="flightControls" Header="Flight controls"/>
+                <TreeViewItem x:Name="fuel" Header="Fuel"/>
+                <TreeViewItem x:Name="navDisplays" Header="Navigation displays"/>
+                <TreeViewItem x:Name="wipers" Header="Wipers"/>
+            </TreeViewItem>
+            <TreeViewItem x:Name="controlStand" Header="Control stand">
+                <TreeViewItem x:Name="cargoFire" Header="Cargo fire"/>
+                <TreeViewItem x:Name="cdu" Header="CDU"/>
+                <TreeViewItem x:Name="trim" Header="Trim"/>
+                <TreeViewItem x:Name="fire" Header="Fire"/>
+                <TreeViewItem x:Name="pedestal" Header="Pedestal"/>
+                <TreeViewItem x:Name="transponder" Header="Transponder"/>
+                            </TreeViewItem>
+            <TreeViewItem x:Name="forward" Header="Forward">
+                <TreeViewItem x:Name="displayUnits" Header="Display units"/>
+                <TreeViewItem x:Name="flaps" Header="Flaps"/>
+                <TreeViewItem x:Name="brakes" Header="Brakes"/>
+                <TreeViewItem x:Name="gear_forward" Header="Gear"/>
+                <TreeViewItem x:Name="main_forward" Header="Main"/>
+                <TreeViewItem x:Name="mcp" Header="MCP"/>
+                <TreeViewItem x:Name="speed_forward" Header="Speed"/>
+                <TreeViewItem x:Name="standby" Header="Standby"/>
+            </TreeViewItem>
+            <TreeViewItem x:Name="glareShield" Header="Glare shield">
+                <TreeViewItem x:Name="mcpGS" Header="MCP">
+                    <TreeViewItem x:Name="mcpAltitude" Header="Altitude"/>
+                    <TreeViewItem x:Name="mcpHeading" Header="Heading"/>
+                    <TreeViewItem x:Name="mcpNavigation" Header="Navigation"/>
+                    <TreeViewItem x:Name="mcpPower" Header="Power"/>
+                    <TreeViewItem x:Name="mcpSpeed" Header="Speed"/>
+                    <TreeViewItem x:Name="mcpVerticalSpeed" Header="Vertical speed"/>
+                                    </TreeViewItem>
+                <TreeViewItem x:Name="warningsGS" Header="Warnings"/>
+            </TreeViewItem>
+            <TreeViewItem x:Name="afs" Header="AFS"/>
+            <TreeViewItem x:Name="lowerForward" Header="Lower forward"/>
+        </TreeView>
+
+        <UserControl x:Name="contentArea"
+                     Grid.Column="1"
+                     Grid.Row="0"
+                     AutomationProperties.Name="Content area"
+                     AutomationProperties.AutomationId="ContentArea"/>
+        <Button x:Name="closeButton"
+                Content="Close"
+                AutomationProperties.Name="Close"
+                AutomationProperties.AutomationId="CloseButton"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Grid.Column="1"
+                Grid.Row="1"/>
+    </Grid>
+</Window>
