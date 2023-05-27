@@ -5,8 +5,210 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <TabControl x:Name="adiruTabControl"
+                                                                                AutomationProperties.Name="ADIRU"
+                    AutomationProperties.AutomationId="AdiruTabControl"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+        <TabItem x:Name="displayTabItem"
+                     Header="Display"
+                                              AutomationProperties.Name="Display"
+                     AutomationProperties.AutomationId="AdiruDisplayTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="displayModeLabel"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Content="Display mode"
+                           Margin="3,3,3,3"
+                           AutomationProperties.Name="Display mode"
+                           AutomationProperties.AutomationId="DisplayModeLabel"
+                           Target="{Binding ElementName=displayModeComboBox}"/>
+                <ComboBox x:Name="displayModeComboBox"
+                    Margin=" 3,3,3,3"
+                              AutomationProperties.Name="Display mode"
+                              AutomationProperties.AutomationId="DisplayModeComboBox"
+                              AutomationProperties.AcceleratorKey="ALT+D"
+                              AutomationProperties.AccessKey="ALT+D"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                          SelectionChanged="displayModeComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="trkGsComboBoxItem" Content="TRK/GS"/>
+                    <ComboBoxItem x:Name="pPosComboBoxItem" Content="PPOS"/>
+                    <ComboBoxItem x:Name="windComboBoxItem" Content="Wind"/>
+                    <ComboBoxItem x:Name="hdgStatComboBoxItem" Content="HDG/STAT"/>
+                </ComboBox>
+
+                <Label x:Name="leftDisplayLabel"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Content="Left display"
+                           Margin="3,3,3,3"
+                           AutomationProperties.Name="Left display"
+                           AutomationProperties.AutomationId="LeftDisplayLabel"
+                           Target="{Binding ElementName=leftDisplayTextBox}"/>
+                <TextBox x:Name="leftDisplayTextBox"
+                         Grid.Column="1"
+                         Grid.Row="1"
+         IsReadOnly="True"
+         IsReadOnlyCaretVisible="True"
+         Focusable="True"
+         Margin="3, 3, 3, 3"
+         AutomationProperties.AcceleratorKey="ALT+L"
+         AutomationProperties.AccessKey="ALT+L"
+                         AutomationProperties.AutomationId="LeftDisplayTextBox"
+         AutomationProperties.Name="Left display"/>
+
+                <Label x:Name="rightDisplayLabel"
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           Content="Right display"
+                           Margin="3,3,3,3"
+                           AutomationProperties.Name="Right display"
+                           AutomationProperties.AutomationId="RightDisplayLabel"
+                           Target="{Binding ElementName=rightDisplayTextBox}"/>
+                <TextBox x:Name="rightDisplayTextBox"
+                         Grid.Column="1"
+                         Grid.Row="2"
+         IsReadOnly="True"
+         IsReadOnlyCaretVisible="True"
+         Focusable="True"
+         Margin="3, 3, 3, 3"
+         AutomationProperties.AcceleratorKey="ALT+R"
+         AutomationProperties.AccessKey="ALT+R"
+                         AutomationProperties.AutomationId="RightDisplayTextBox"
+         AutomationProperties.Name="Right display"/>
+
+            </Grid>
+
+        </TabItem>
+
+        <TabItem x:Name="modeTabItem"
+                     Header="Modes"
+                                              AutomationProperties.Name="Modes"
+                     AutomationProperties.AutomationId="AdiruModesTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                <Label x:Name="leftModeLabel"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Content="Left mode selector"
+                           Margin="3,3,3,3"
+                           AutomationProperties.Name="Left mode selector"
+                           AutomationProperties.AutomationId="LeftModeLabel"
+                           Target="{Binding ElementName=leftModeSelectorComboBox}"/>
+                <ComboBox x:Name="leftModeSelectorComboBox"
+                    Margin=" 3,3,3,3"
+                              AutomationProperties.Name="Left mode selector"
+                              AutomationProperties.AutomationId="LeftModeSelectorComboBox"
+                              AutomationProperties.AcceleratorKey="ALT+L"
+                              AutomationProperties.AccessKey="ALT+L"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                          SelectionChanged="leftModeSelectorComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="leftSelectorOffComboBoxItem" Content="off"/>
+                    <ComboBoxItem x:Name="leftModeAlignComboBoxItem" Content="align"/>
+                    <ComboBoxItem x:Name="leftModeNavComboBoxItem" Content="nav"/>
+                    <ComboBoxItem x:Name="leftModeAttComboBoxItem" Content="att"/>
+                </ComboBox>
+
+                    <Label x:Name="rightModeLabel"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Content="Right mode selector"
+                           Margin="3,3,3,3"
+                           AutomationProperties.Name="Right mode selector"
+                           AutomationProperties.AutomationId="RightModeLabel"
+                           Target="{Binding ElementName=rightModeSelectorComboBox}"/>
+                        <ComboBox x:Name="rightModeSelectorComboBox"
+                    Margin=" 3,3,3,3"
+                              AutomationProperties.Name="Right mode selector"
+                              AutomationProperties.AutomationId="RightModeSelectorComboBox"
+                              AutomationProperties.AcceleratorKey="ALT+R"
+                              AutomationProperties.AccessKey="ALT+R"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                                  SelectionChanged="rightModeSelectorComboBox_SelectionChanged">
+                            <ComboBoxItem x:Name="rightSelectorOffComboBoxItem" Content="off"/>
+                            <ComboBoxItem x:Name="rightModeAlignComboBoxItem" Content="align"/>
+                            <ComboBoxItem x:Name="rightModeNavComboBoxItem" Content="nav"/>
+                            <ComboBoxItem x:Name="rightModeAttComboBoxItem" Content="att"/>
+                </ComboBox>
+
+                            </Grid>
+
+        </TabItem>
+
+        <TabItem x:Name="indicatorsTabItem"
+                     Header="Indicators"
+                     AutomationProperties.Name="Indicators"
+                     AutomationProperties.AutomationId="IndicatorsTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                    <Label x:Name="gpsLabel" Content="GPS" AutomationProperties.Name="GPS" AutomationProperties.AutomationId="GpsLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=gpsTextBox}"/>
+                    <TextBox x:Name="gpsTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+1" AutomationProperties.AccessKey="ALT+1" AutomationProperties.Name="GPS indicator" AutomationProperties.AutomationId="GpsTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="iruLeftLabel" Content="IRU/L" AutomationProperties.Name="IRU/L" AutomationProperties.AutomationId="IruLeftLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=iruLeftTextBox}"/>
+                    <TextBox x:Name="iruLeftTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+2" AutomationProperties.AccessKey="ALT+2" AutomationProperties.Name="Left IRU indicator" AutomationProperties.AutomationId="IruLeftTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="iruRightLabel" Content="IRU/R" AutomationProperties.Name="IRU/R" AutomationProperties.AutomationId="IruRightLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=iruRightTextBox}"/>
+                    <TextBox x:Name="iruRightTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+3" AutomationProperties.AccessKey="ALT+3" AutomationProperties.Name="Right IRU indicator" AutomationProperties.AutomationId="IruRightTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="dcLeftLabel" Content="DC/L" AutomationProperties.Name="DC/L" AutomationProperties.AutomationId="DcLeftLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=dcLeftTextBox}"/>
+                    <TextBox x:Name="dcLeftTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+4" AutomationProperties.AccessKey="ALT+4" AutomationProperties.Name="Left DC indicator" AutomationProperties.AutomationId="DcLeftTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="dcRightLabel" Content="DC/R" AutomationProperties.Name="DC/R" AutomationProperties.AutomationId="DcRightLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=dcRightTextBox}"/>
+                    <TextBox x:Name="dcRightTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+5" AutomationProperties.AccessKey="ALT+5" AutomationProperties.Name="Right DC indicator" AutomationProperties.AutomationId="DcRightTextBox" Margin="3, 3, 3, 3"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                    <Label x:Name="faultLeftLabel" Content="FAULT/L" AutomationProperties.Name="FAULT/L" AutomationProperties.AutomationId="FaultLeftLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=faultLeftTextBox}"/>
+                    <TextBox x:Name="faultLeftTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+6" AutomationProperties.AccessKey="ALT+6" AutomationProperties.Name="Left fault indicator" AutomationProperties.AutomationId="FaultLeftTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="faultRightLabel" Content="FAULT/R" AutomationProperties.Name="FAULT/R" AutomationProperties.AutomationId="FaultRightLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=faultRightTextBox}"/>
+                    <TextBox x:Name="faultRightTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+7" AutomationProperties.AccessKey="ALT+7" AutomationProperties.Name="Right fault indicator" AutomationProperties.AutomationId="FaultRightTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="dcFailLeftLabel" Content="DC FAIL/L" AutomationProperties.Name="DC FAIL/L" AutomationProperties.AutomationId="DcFailLeftLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=dcFailLeftTextBox}"/>
+                    <TextBox x:Name="dcFailLeftTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+8" AutomationProperties.AccessKey="ALT+8" AutomationProperties.Name="Left DC fail indicator" AutomationProperties.AutomationId="DcFailLeftTextBox" Margin="3, 3, 3, 3"/>
+
+                    <Label x:Name="dcFailRightLabel" Content="DC FAIL/R" AutomationProperties.Name="DC FAIL/R" AutomationProperties.AutomationId="DcFailRightLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=dcFailRightTextBox}"/>
+                    <TextBox x:Name="dcFailRightTextBox" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+9" AutomationProperties.AccessKey="ALT+9" AutomationProperties.Name="Right DC fail indicator" AutomationProperties.AutomationId="DcFailRightTextBox" Margin="3, 3, 3, 3"/>
+
+                </StackPanel>
+                
+            </Grid>
+        </TabItem>
+    </TabControl>
+
 </UserControl>

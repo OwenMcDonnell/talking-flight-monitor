@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
         mc:Ignorable="d"
-        Title="Cockpit panels" SizeToContent="WidthAndHeight" ResizeMode="NoResize" AutomationProperties.IsDialog="True">
+        Title="Cockpit panels" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -23,7 +30,8 @@
                   AutomationProperties.AutomationId="CockpitPanelsTreeView"
                   Margin="5, 5, 5, 5"
                   IsTextSearchEnabled="True"
-                  Grid.RowSpan="2">
+                  Grid.RowSpan="2"
+                  SelectedItemChanged="panelsTreeView_SelectedItemChanged">
             <TreeViewItem Name="overhead" Header="Overhead">
                 <TreeViewItem x:Name="adiru" Header="ADIRU"/>
                 <TreeViewItem x:Name="domeLights" Header="Dome lights"/>
@@ -80,6 +88,8 @@
         </TreeView>
 
         <UserControl x:Name="contentArea"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
                      Grid.Column="1"
                      Grid.Row="0"
                      AutomationProperties.Name="Content area"

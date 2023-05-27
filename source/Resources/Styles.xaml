@@ -3,15 +3,16 @@
                                  xmlns:properties="clr-namespace:tfm.Properties"
                     xmlns:converters="clr-namespace:tfm.Converters">
     <properties:Settings x:Key="Settings"/>
-    <Style x:Key="BaseStyle" TargetType="{x:Type Control}">
+    <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize}" />
         <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontName}" />
     </Style>
 
-    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}" />
-    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}" />
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" />
-    
+    <Style TargetType="TextBox" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="Button" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="TreeView" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="ComboBox" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="ToggleButton">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
