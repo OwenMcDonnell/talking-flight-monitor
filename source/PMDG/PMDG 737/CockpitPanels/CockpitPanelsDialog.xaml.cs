@@ -33,6 +33,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         {
 
             panelMappings["adiru"] = new adiru();
+            panelMappings["domeLights"] = new DomeLights();
         }
 
         private void SelectFirstTreeviewItem()

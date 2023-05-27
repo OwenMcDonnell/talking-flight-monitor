@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="tfm.PMDG.PMDG_737.CockpitPanels.DomeLights"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             AutomationProperties.Name="Dome lights panel"
+             AutomationProperties.AutomationId="DomeLightsPanel"
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="domeLightsLabel"
+                   Content="Dome lights"
+Grid.Column="0"
+               Grid.Row="0"
+               AutomationProperties.Name="Dome lights label"
+               AutomationProperties.AutomationId="DomeLightsLabel"
+               Margin="7, 3, 3, 3"
+               Target="{Binding ElementName=domeLightsComboBox}"/>
+        <ComboBox x:Name="domeLightsComboBox"
+                  Grid.Column="1"
+                  Grid.Row="0"
+                  Margin="3, 3, 3, 3"
+                  AutomationProperties.AcceleratorKey="ALT+D"
+                  AutomationProperties.AccessKey="ALT+D"
+                  AutomationProperties.Name="Dome lights"
+                  SelectionChanged="domeLightsComboBox_SelectionChanged">
+            <ComboBoxItem x:Name="offComboBoxItem" Content="off"/>
+            <ComboBoxItem x:Name="dimComboboxItem" Content="dim"/>
+            <ComboBoxItem x:Name="brightComboBoxItem" Content="bright"/>
+        </ComboBox>
+
+    </Grid>
+</UserControl>
