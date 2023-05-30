@@ -7,6 +7,14 @@
              xmlns:s="clr-namespace:tfm"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <WrapPanel Orientation="Horizontal" Width="Auto" Height="Auto">
         <CheckBox Content="Automatically announce aircraft switches and instrumentation" IsChecked="{s:SettingBinding AutomaticAnnouncements}"/>
         <CheckBox Content="Read SimConnect messages" IsChecked="{s:SettingBinding ReadSimconnectMessages}"/>

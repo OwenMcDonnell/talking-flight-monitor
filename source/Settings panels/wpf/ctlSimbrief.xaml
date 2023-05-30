@@ -7,6 +7,14 @@
              xmlns:s="clr-namespace:tfm"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <StackPanel Orientation="Vertical">
         <CheckBox x:Name="chkSimbrief" Content="Enable Simbrief support" IsChecked="{s:SettingBinding IsSimBriefEnabled}"/>
         <StackPanel Orientation="Horizontal" >
