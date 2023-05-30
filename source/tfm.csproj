@@ -95,6 +95,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Weather.settings</DependentUpon>
     </Compile>
+    <Compile Update="Settings panels\Weather\ctlWeather.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -196,6 +199,9 @@
   <ItemGroup>
     <Page Update="Resources\Styles.xaml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Settings panels\Weather\ctlWeather.xaml">
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 
