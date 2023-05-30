@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tfm.Settings_panels.wpf;
 using tfm.Settings_panels.wpf.pmdg737;
+using tfm.Settings_panels.wpf.weather;
 using TreeView = System.Windows.Controls.TreeView;
 using UserControl = System.Windows.Controls.UserControl;
 
@@ -37,9 +38,7 @@ namespace tfm.Settings_panels
             pageMappings["Simbrief"] = new ctlSimbrief();
             pageMappings["AirportsDatabase"] = new ctlAirportsDatabase();
             pageMappings["UserInterface"] = new ctlUserInterface(); 
-
-            // pageMappings["UserInterface"] = new ctlPMDG737Verbosity();
-
+            pageMappings["Weather"] = new ctlWeather(); 
             //pageMappings["AutomaticAnnouncements"] = new AutomaticAnnouncementsPage();
             //pageMappings["WindCommand"] = new WindCommandPage();
             //pageMappings["CloudsCommand"] = new CloudsCommandPage();
