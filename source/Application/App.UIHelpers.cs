@@ -32,6 +32,57 @@ namespace tfm
     {
         private ByteToBoolConverter converter = new ByteToBoolConverter();
 
+
+        public void SortTreeViewItemChildrenAscending(TreeView treeView, TreeViewItem rootItem)
+        {
+            if (treeView == null || rootItem == null)
+                return;
+
+            // Get the children of the root TreeViewItem
+            List<TreeViewItem> children = rootItem.Items.Cast<TreeViewItem>().ToList();
+
+            // Sort the children alphabetically by their header text
+            List<TreeViewItem> sortedChildren = children.OrderBy(child => child.Header.ToString()).ToList();
+
+            // Clear the existing children
+            rootItem.Items.Clear();
+
+            // Add the sorted children back to the root TreeViewItem
+            foreach (TreeViewItem sortedChild in sortedChildren)
+            {
+                rootItem.Items.Add(sortedChild);
+            }
+
+            // Update the TreeView to reflect the changes
+            treeView.UpdateLayout();
+            SaveTreeViewStateToDisk(treeView);
+        }
+
+        public void SortTreeViewItemChildrenDescending(TreeView treeView, TreeViewItem rootItem)
+        {
+            if (treeView == null || rootItem == null)
+                return;
+
+            // Get the children of the root TreeViewItem
+            List<TreeViewItem> children = rootItem.Items.Cast<TreeViewItem>().ToList();
+
+            // Sort the children alphabetically in descending order by their header text
+            List<TreeViewItem> sortedChildren = children.OrderByDescending(child => child.Header.ToString()).ToList();
+
+            // Clear the existing children
+            rootItem.Items.Clear();
+
+            // Add the sorted children back to the root TreeViewItem
+            foreach (TreeViewItem sortedChild in sortedChildren)
+            {
+                rootItem.Items.Add(sortedChild);
+            }
+
+            // Update the TreeView to reflect the changes
+            treeView.UpdateLayout();
+            SaveTreeViewStateToDisk(treeView);
+        }
+
         public bool MoveTreeViewItemUp(TreeView treeView, TreeViewItem item)
         {
             if (item == null || item.Parent == null || !(item.Parent is ItemsControl parentItemsControl))

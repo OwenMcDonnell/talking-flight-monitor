@@ -53,6 +53,16 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
                 {
                     contentArea.Content = info.control;
                 }
+                if (!selectedItem.HasItems)
+                {
+                    sortAscendingMenuItem.Visibility = Visibility.Collapsed;
+                    sortDescendingMenuItem.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    sortAscendingMenuItem.Visibility = Visibility.Visible;
+                    sortDescendingMenuItem.Visibility = Visibility.Visible;
+                                                    }
             }
         }
 
@@ -116,5 +126,26 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
 
             #endregion
         }
-    }
+
+        private void sortAscendingMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = panelsTreeView.SelectedItem as TreeViewItem;
+
+            if(selectedItem != null && selectedItem.Items.Count > 0)
+            {
+                App.UI.SortTreeViewItemChildrenAscending(panelsTreeView, selectedItem);
+            }
+        }
+
+        private void sortDescendingMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = panelsTreeView.SelectedItem as TreeViewItem;
+
+            if (selectedItem != null && selectedItem.HasItems)
+            {
+                App.UI.SortTreeViewItemChildrenDescending(panelsTreeView, selectedItem);
+            }
+
+        }
+                    }
 }
