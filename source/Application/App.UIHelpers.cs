@@ -15,6 +15,8 @@ using System.Windows.Markup;
 using tfm.Properties;
 using System.Windows.Media;
 using System.Windows;
+using System.IO;
+using System.Windows.Input;
 
 namespace tfm
 {
@@ -30,7 +32,110 @@ namespace tfm
     {
         private ByteToBoolConverter converter = new ByteToBoolConverter();
 
-        public void SelectFirstTreeViewItem(TreeView tree)
+        public bool MoveTreeViewItemUp(TreeView treeView, TreeViewItem item)
+        {
+            if (item == null || item.Parent == null || !(item.Parent is ItemsControl parentItemsControl))
+                return false;
+
+            int currentIndex = parentItemsControl.Items.IndexOf(item);
+            if (currentIndex > 0)
+            {
+                parentItemsControl.Items.RemoveAt(currentIndex);
+                parentItemsControl.Items.Insert(currentIndex - 1, item);
+
+                // Save the treeView state to disk
+                SaveTreeViewStateToDisk(treeView);
+
+                // Disable focusability and hit test on the moved item
+                item.Focusable = false;
+                item.IsHitTestVisible = false;
+
+                // Set focus to the treeView to restore keyboard access
+                treeView.Focus();
+
+                // Enable focusability and hit test on the moved item
+                item.Focusable = true;
+                item.IsHitTestVisible = true;
+
+                // Set focus back to the moved item
+                item.Focus();
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool MoveTreeViewItemDown(TreeView treeView, TreeViewItem item)
+        {
+            if (item == null || item.Parent == null || !(item.Parent is ItemsControl parentItemsControl))
+                return false;
+
+            int currentIndex = parentItemsControl.Items.IndexOf(item);
+            int maxIndex = parentItemsControl.Items.Count - 1;
+            if (currentIndex < maxIndex)
+            {
+                parentItemsControl.Items.RemoveAt(currentIndex);
+                parentItemsControl.Items.Insert(currentIndex + 1, item);
+
+                // Save the treeView state to disk
+                SaveTreeViewStateToDisk(treeView);
+
+                // Set focus to the moved item
+                item.Focus();
+
+                return true;
+            }
+
+            return false;
+        }
+
+
+        public void LoadTreeViewStateFromDisk(TreeView treeView)
+        {
+            string fileName = $"{treeView.Name}.xml";
+
+            if (File.Exists(fileName))
+            {
+                using (FileStream stream = new FileStream(fileName, FileMode.Open))
+                {
+                    TreeView loadedTreeView = XamlReader.Load(stream) as TreeView;
+
+                    if (loadedTreeView != null)
+                    {
+                        treeView.Items.Clear();
+
+                        foreach (object item in loadedTreeView.Items)
+                        {
+                            if (item is TreeViewItem treeViewItem)
+                            {
+                                string itemContent = treeViewItem.Header as string;
+                                if (itemContent != null)
+                                {
+                                    itemContent = itemContent.Trim('(', ')');
+                                    treeViewItem.Header = itemContent;
+                                }
+                            }
+                            var originalItem = item as TreeViewItem;
+                            var clonedItem = CloneTreeViewItem(originalItem);
+                            treeView.Items.Add(clonedItem);
+                        }
+                   }
+                }
+            }
+        }
+
+        private void SaveTreeViewStateToDisk(TreeView treeView)
+        {
+            string fileName = $"{treeView.Name}.xml";
+
+            using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            {
+                XamlWriter.Save(treeView, stream);
+            }
+                                }
+
+                        public void SelectFirstTreeViewItem(TreeView tree)
         {
             if(tree.Items != null)
             {
@@ -205,7 +310,7 @@ namespace tfm
             string rootParentHeader = GetItemHeader(rootParentItem);
 
             // Add root parent's header to the cloned item's header
-            clonedItem.Header = $"{originalHeader} ({rootParentHeader})";
+            clonedItem.Header = $"{originalHeader}";
 
             return clonedItem;
         }

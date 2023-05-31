@@ -27,7 +27,7 @@
             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
                 <TextBox x:Name="searchTextBox"
                                                                            Width="100"
-                                                  Margin="3, 3, 3, 3"
+                                                  Margin="5, 5, 5, 5"
                                                                                                                                                                                                  AutomationProperties.AcceleratorKey="CONTROL+E"
                  AutomationProperties.AccessKey="CONTROL+E"
                  AutomationProperties.Name="Search for panels"
@@ -35,14 +35,17 @@
             KeyDown="searchTextBox_KeyDown"/>
                 <Button x:Name="clearSearchButton"
                                                         Content="Clear"
+                        Margin="5, 5, 5, 5"
                                                                                                                                                         AutomationProperties.Name="Clear search results"
         AutomationProperties.AutomationId="ClearSearchButton"
         AutomationProperties.AcceleratorKey="F4"
-        AutomationProperties.AccessKey="F4"/>
+        AutomationProperties.AccessKey="F4"
+                        Click="clearSearchButton_Click"/>
 
                 <Button x:Name="resetButton"
+                        Margin="5, 5, 5, 5"
                                                         Content="Reset"
-                                                                                                                                                                                    AutomationProperties.Name="Reset to defaults"
+                                                                                                                                                                                    AutomationProperties.Name="Reset panel order"
         AutomationProperties.AutomationId="ResetButton"
         AutomationProperties.AcceleratorKey="F2"
         AutomationProperties.AccessKey="F2"/>
@@ -55,7 +58,8 @@
                   AutomationProperties.AutomationId="CockpitPanelsTreeView"
                   Margin="5, 15, 5, 5"
                   IsTextSearchEnabled="True"
-                                    SelectedItemChanged="panelsTreeView_SelectedItemChanged">
+                                    SelectedItemChanged="panelsTreeView_SelectedItemChanged"
+                      PreviewKeyDown="panelsTreeView_PreviewKeyDown">
                 <TreeViewItem Name="overhead" Header="Overhead">
                     <TreeViewItem x:Name="adiru" Header="ADIRU"/>
                     <TreeViewItem x:Name="domeLights" Header="Dome lights"/>

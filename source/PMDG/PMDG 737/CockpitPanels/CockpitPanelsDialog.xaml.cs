@@ -29,6 +29,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
             App.UI.SelectFirstTreeViewItem(panelsTreeView);
             LoadPanels();
             originalTreeViewItems = App.UI.GetOriginalTreeViewItems(panelsTreeView);
+            App.UI.LoadTreeViewStateFromDisk(panelsTreeView);
             panelsTreeView.Focus();
                                                         }
 
@@ -64,6 +65,15 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
 
         private void clearSearchButton_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void panelsTreeView_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if ((Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) && e.Key == Key.Up)
+            {
+                App.UI.MoveTreeViewItemUp(panelsTreeView, panelsTreeView.SelectedItem as TreeViewItem);
+            }
 
         }
     }
