@@ -60,6 +60,12 @@
                   IsTextSearchEnabled="True"
                                     SelectedItemChanged="panelsTreeView_SelectedItemChanged"
                       PreviewKeyDown="panelsTreeView_PreviewKeyDown">
+                <TreeView.ContextMenu>
+                    <ContextMenu x:Name="panelsContextMenu">
+                        <MenuItem x:Name="sortAscendingMenuItem" Click="sortAscendingMenuItem_Click" Header="Sort children ascending"/>
+                        <MenuItem x:Name="sortDescendingMenuItem" Click="sortDescendingMenuItem_Click" Header="Sort children descending"/>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
                 <TreeViewItem Name="overhead" Header="Overhead">
                     <TreeViewItem x:Name="adiru" Header="ADIRU"/>
                     <TreeViewItem x:Name="domeLights" Header="Dome lights"/>
