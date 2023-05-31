@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="tfm.Settings_panels.Weather.ctlCloudSnapshot"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.Settings_panels.Weather"
+             xmlns:s="clr-namespace:tfm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <GroupBox Header="Cloud snapshot">
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <CheckBox Content="In cloud" IsChecked="{s:WeatherSettingBinding CloudLayer_InCloud}" />
+            <CheckBox Content="Cloud type" IsChecked="{s:WeatherSettingBinding CloudLayer_CloudType}" />
+            <CheckBox Content="Cloud coverage" IsChecked="{s:WeatherSettingBinding CloudLayer_CloudCoverage}" />
+            <CheckBox Content="Icing" IsChecked="{s:WeatherSettingBinding CloudLayer_Icing}" />
+            <CheckBox Content="Precipitation rate" IsChecked="{s:WeatherSettingBinding CloudLayer_PrecipitationRate}" />
+            <CheckBox Content="Precipitation type" IsChecked="{s:WeatherSettingBinding CloudLayer_PrecipitationType}" />
+            <CheckBox Content="Turbulance" IsChecked="{s:WeatherSettingBinding CloudLayer_Turbulence}" />
+            <CheckBox Content="Distance to top" IsChecked="{s:WeatherSettingBinding CloudLayer_DistanceToTop}" />
+            <CheckBox Content="Distance to bottom" IsChecked="{s:WeatherSettingBinding CloudLayer_DistanceToBottom}" />
+            <CheckBox Content="Out of cloud" IsChecked="{s:WeatherSettingBinding CloudLayer_OutOfCloud}" />
+            <CheckBox Content="Distance to cloud above" IsChecked="{s:WeatherSettingBinding CloudLayer_DistanceToCloudAbove}" />
+            <CheckBox Content="No clouds above" IsChecked="{s:WeatherSettingBinding CloudLayer_NoCloudsAbove}" />
+            <CheckBox Content="Distance to cloud below" IsChecked="{s:WeatherSettingBinding CloudLayer_DistanceToCloudBelow}" />
+            <CheckBox Content="No clouds below" IsChecked="{s:WeatherSettingBinding CloudLayer_NoCloudsBelow}" />
+
+        </WrapPanel>
+    </GroupBox>
+</UserControl>

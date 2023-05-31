@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tfm.Settings_panels.Weather;
 using tfm.Settings_panels.wpf;
 using tfm.Settings_panels.wpf.pmdg737;
 using tfm.Settings_panels.wpf.weather;
@@ -39,9 +40,9 @@ namespace tfm.Settings_panels
             pageMappings["AirportsDatabase"] = new ctlAirportsDatabase();
             pageMappings["UserInterface"] = new ctlUserInterface(); 
             pageMappings["Weather"] = new ctlWeather(); 
-            //pageMappings["AutomaticAnnouncements"] = new AutomaticAnnouncementsPage();
-            //pageMappings["WindCommand"] = new WindCommandPage();
-            //pageMappings["CloudsCommand"] = new CloudsCommandPage();
+            pageMappings["AutomaticAnnouncements"] = new ctlAutomaticAnnouncements();
+            pageMappings["WindCommand"] = new ctlWindSnapshot();
+            pageMappings["CloudsCommand"] = new ctlCloudSnapshot();
             pageMappings["ADIRU737"] = new ctlPMDG737Verbosity
             {
                 DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Aft Overhead", PanelSection: "ADIRU")
