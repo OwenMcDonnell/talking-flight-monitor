@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="tfm.PMDG.PMDG_737.CockpitPanels.EEC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <TabControl x:Name="eecTabControl"
+AutomationProperties.Name="EEC"
+                AutomationProperties.AutomationId="EecTabControl">
+        <TabItem x:Name="controlsTabItem"
+                 Header="Engine controls"
+                 AutomationProperties.Name="Engine controls"
+                 AutomationProperties.AutomationId="EngineControlsTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <ToggleButton x:Name="leftControlToggleButton"
+Content="Control/L"
+                      Grid.Column="0"
+                      Grid.Row="0"
+                              Margin="3, 3, 3, 3"
+                      AutomationProperties.AcceleratorKey="ALT+1"
+                      AutomationProperties.AccessKey="ALT+1"
+                      AutomationProperties.Name="Control #1"
+                      AutomationProperties.AutomationId="LeftControlToggleButton"
+                              Click="leftControlToggleButton_Click"/>
+
+                <ToggleButton x:Name="rightControlToggleButton"
+Content="Control/R"
+                      Grid.Column="1"
+                      Grid.Row="0"
+                              Margin="3, 3, 3, 3"
+                      AutomationProperties.AcceleratorKey="ALT+2"
+                      AutomationProperties.AccessKey="ALT+2"
+                      AutomationProperties.Name="Control #2"
+                      AutomationProperties.AutomationId="RightControlToggleButton"
+                              Click="rightControlToggleButton_Click"/>
+            </Grid>
+
+        </TabItem>
+
+        <TabItem x:Name="indicatorsTabControl"
+                 Header="Indicators"
+                 AutomationProperties.Name="Indicators"
+                 AutomationProperties.AutomationId="IndicatorsTabControl">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="leftControlLabel" Content="Control/L" Grid.Column="0" Grid.Row="0" AutomationProperties.Name="Control/L" AutomationProperties.AutomationId="LeftControlLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=leftControlTextBox}"/>
+                <TextBox x:Name="leftControlTextBox" Grid.Row="1" Grid.Column="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+1" AutomationProperties.AccessKey="ALT+1" AutomationProperties.Name="Control #1 indicator" AutomationProperties.AutomationId="LeftControlTextBox" Margin="3, 3, 3, 3"/>
+
+                <Label x:Name="rightControlLabel" Content="Control/R" Grid.Column="1" Grid.Row="0" AutomationProperties.Name="Control/R" AutomationProperties.AutomationId="RightControlLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=rightControlTextBox}"/>
+                <TextBox x:Name="rightControlTextBox" Grid.Row="1" Grid.Column="1" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+2" AutomationProperties.AccessKey="ALT+2" AutomationProperties.Name="Control #2 indicator" AutomationProperties.AutomationId="RightControlTextBox" Margin="3, 3, 3, 3"/>
+
+                <Label x:Name="leftAlternateLabel" Content="Alternate/L" Grid.Column="2" Grid.Row="0" AutomationProperties.Name="Alternate/L" AutomationProperties.AutomationId="LeftAlternateLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=leftAlternateTextBox}"/>
+                <TextBox x:Name="leftAlternateTextBox" Grid.Row="1" Grid.Column="2" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+3" AutomationProperties.AccessKey="ALT+3" AutomationProperties.Name="Alternate #1 indicator" AutomationProperties.AutomationId="LeftAlternateTextBox" Margin="3, 3, 3, 3"/>
+
+                <Label x:Name="rightAlternateLabel" Content="Alternate/R" Grid.Column="3" Grid.Row="0" AutomationProperties.Name="Alternate/R" AutomationProperties.AutomationId="RightAlternateLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=rightAlternateTextBox}"/>
+                <TextBox x:Name="rightAlternateTextBox" Grid.Row="10" Grid.Column="3" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+4" AutomationProperties.AccessKey="ALT+4" AutomationProperties.Name="Alternate #2 indicator" AutomationProperties.AutomationId="RightAlternateTextBox" Margin="3, 3, 3, 3"/>
+
+                <Label x:Name="leftReverserLabel" Content="Reverser/L" Grid.Column="4" Grid.Row="0" AutomationProperties.Name="Reverser/L" AutomationProperties.AutomationId="LeftReverserLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=leftReverserTextBox}"/>
+                <TextBox x:Name="leftReverserTextBox" Grid.Row="1" Grid.Column="4" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+5" AutomationProperties.AccessKey="ALT+5" AutomationProperties.Name="Reverser #1 indicator" AutomationProperties.AutomationId="LeftReverserTextBox" Margin="3, 3, 3, 3"/>
+
+                <Label x:Name="rightReverserLabel" Content="Reverser/R" Grid.Column="5" Grid.Row="0" AutomationProperties.Name="Reverser/R" AutomationProperties.AutomationId="RightReverserLabel" Margin="7, 3, 3, 3" Target="{Binding ElementName=RightReverserTextBox}"/>
+                <TextBox x:Name="RightReverserTextBox" Grid.Row="1" Grid.Column="5" IsReadOnly="True" IsReadOnlyCaretVisible="True" Focusable="True" AutomationProperties.AcceleratorKey="ALT+6" AutomationProperties.AccessKey="ALT+6" AutomationProperties.Name="Reverser #2 indicator" AutomationProperties.AutomationId="RightReverserTextBox" Margin="3, 3, 3, 3"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using tfm.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,42 +20,51 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         public partial class CockpitPanelsDialog : Window
     {
 
-        private readonly Dictionary<string, UserControl> panelMappings = new Dictionary<string, UserControl>();
+        private readonly Dictionary<string, UserControlInfo> panelMappings = new Dictionary<string, UserControlInfo>();
+        private readonly List<TreeViewItem> originalTreeViewItems;
 
         public CockpitPanelsDialog()
         {
             InitializeComponent();
-            SelectFirstTreeviewItem();
+            App.UI.SelectFirstTreeViewItem(panelsTreeView);
             LoadPanels();
+            originalTreeViewItems = App.UI.GetOriginalTreeViewItems(panelsTreeView);
             panelsTreeView.Focus();
-                                            }
+                                                        }
 
         private void LoadPanels()
         {
 
-            panelMappings["adiru"] = new adiru();
-            panelMappings["domeLights"] = new DomeLights();
+            panelMappings["adiru"] = new UserControlInfo { control = new adiru(), Keywords = new[] { "gps", "reference", "unit", "navigation" } };
+            panelMappings["domeLights"] = new UserControlInfo { control = new DomeLights(), Keywords = new[] { "dome", "lights", "interior" } };
+            panelMappings["eec"] = new UserControlInfo { control = new EEC(), Keywords = new[] { "electrical", "engines", "power", "navigation" } };
         }
-
-        private void SelectFirstTreeviewItem()
-        {
-            if(panelsTreeView.Items != null)
-            {
-                var firstItem = panelsTreeView.Items[0] as TreeViewItem;
-                firstItem.IsSelected = true;
-            }
-        }
-
-        private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+              
+                private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
 
             contentArea.Content = null;
             var selectedItem = e.NewValue as TreeViewItem;
-
-            if(panelMappings.TryGetValue(selectedItem.Name, out UserControl userControl))
+            if (selectedItem != null)
             {
-                contentArea.Content = userControl;
+                if (panelMappings.TryGetValue(selectedItem.Name, out UserControlInfo info))
+                {
+                    contentArea.Content = info.control;
+                }
             }
+        }
+
+        private void searchTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                App.UI.SearchTreeView(searchTextBox.Text, panelsTreeView, originalTreeViewItems, panelMappings);
+                            }
+        }
+
+        private void clearSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
