@@ -1,4 +1,5 @@
-﻿using tfm.Properties;
+﻿using DavyKager;
+using tfm.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,12 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         public CockpitPanelsDialog()
         {
             InitializeComponent();
-            App.UI.SelectFirstTreeViewItem(panelsTreeView);
+            Tolk.Load();
             LoadPanels();
             originalTreeViewItems = App.UI.GetOriginalTreeViewItems(panelsTreeView);
-            App.UI.LoadTreeViewStateFromDisk(panelsTreeView);
-            panelsTreeView.Focus();
-                                                        }
+            App.UI.LoadTreeViewStateFromDisk(panelsTreeView);            panelsTreeView.Focus();
+            App.UI.SelectFirstTreeViewItem(panelsTreeView);
+        }
 
         private void LoadPanels()
         {
@@ -70,11 +71,50 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
 
         private void panelsTreeView_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            // Move the item up.
+            #region "Move up"
             if ((Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) && e.Key == Key.Up)
             {
-                App.UI.MoveTreeViewItemUp(panelsTreeView, panelsTreeView.SelectedItem as TreeViewItem);
+                var selectedItem = panelsTreeView.SelectedItem as TreeViewItem;
+
+                if(selectedItem != null)
+                {
+                    var isMoved = App.UI.MoveTreeViewItemUp(panelsTreeView, selectedItem);
+// Moved the item successfully.
+                    if (isMoved)
+                    {
+                        Tolk.Output($"{selectedItem.Header} moved up.");
+                    }
+                    else
+                    {
+                        Tolk.Output($"Could not move {selectedItem.Header}.");
+                    }
+                }
+            }
+            #endregion
+
+            // Move the item down.
+            #region "Move down"
+            if ((Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) && e.Key == Key.Down)
+            {
+                var selectedItem = panelsTreeView.SelectedItem as TreeViewItem;
+
+                if (selectedItem != null)
+                {
+                    var isMoved = App.UI.MoveTreeViewItemDown(panelsTreeView, selectedItem);
+                    // Moved the item successfully.
+                    if (isMoved)
+                    {
+                        Tolk.Output($"{selectedItem.Header} moved down.");
+                    }
+                    else
+                    {
+                        Tolk.Output($"Could not move {selectedItem.Header}.");
+                    }
+                }
             }
 
+            #endregion
         }
     }
 }

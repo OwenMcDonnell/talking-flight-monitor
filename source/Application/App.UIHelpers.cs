@@ -81,7 +81,18 @@ namespace tfm
                 // Save the treeView state to disk
                 SaveTreeViewStateToDisk(treeView);
 
-                // Set focus to the moved item
+                // Disable focusability and hit test on the moved item
+                item.Focusable = false;
+                item.IsHitTestVisible = false;
+
+                // Set focus to the treeView to restore keyboard access
+                treeView.Focus();
+
+                // Enable focusability and hit test on the moved item
+                item.Focusable = true;
+                item.IsHitTestVisible = true;
+
+                // Set focus back to the moved item
                 item.Focus();
 
                 return true;
