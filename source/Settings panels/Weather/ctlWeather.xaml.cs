@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UserControl = System.Windows.Controls.UserControl;
 
-namespace tfm.Settings_panels.wpf.weather
+namespace tfm.Settings_panels.weather
 {
     /// <summary>
     /// Interaction logic for ctlWeather.xaml

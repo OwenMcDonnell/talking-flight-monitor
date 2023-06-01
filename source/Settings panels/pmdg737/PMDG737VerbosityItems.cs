@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tfm.Settings_panels.wpf
+namespace tfm.Settings_panels
 {
     public static class PMDG737VerbosityItems
     {

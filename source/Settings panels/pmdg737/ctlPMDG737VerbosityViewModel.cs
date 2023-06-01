@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using tfm.PMDG.PanelObjects;
 using tfm.PMDG;
 
-namespace tfm.Settings_panels.wpf.pmdg737
+namespace tfm.Settings_panels
 {
     public class ctlPMDG737VerbosityViewModel
     {

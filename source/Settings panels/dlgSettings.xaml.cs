@@ -12,10 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tfm.Properties;
+using tfm.Settings_panels.weather;
 using tfm.Settings_panels.Weather;
-using tfm.Settings_panels.wpf;
-using tfm.Settings_panels.wpf.pmdg737;
-using tfm.Settings_panels.wpf.weather;
 using TreeView = System.Windows.Controls.TreeView;
 using UserControl = System.Windows.Controls.UserControl;
 

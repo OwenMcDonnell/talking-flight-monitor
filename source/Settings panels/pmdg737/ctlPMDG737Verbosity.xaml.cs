@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UserControl = System.Windows.Controls.UserControl;
 
-namespace tfm.Settings_panels.wpf.pmdg737
+namespace tfm.Settings_panels
 {
     /// <summary>
     /// Interaction logic for ctlPMDG737Verbosity.xaml

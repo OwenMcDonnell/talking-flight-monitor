@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace tfm.Settings_panels.wpf
+namespace tfm.Settings_panels
 {
         public partial class ctlUserInterface : System.Windows.Controls.UserControl
     {

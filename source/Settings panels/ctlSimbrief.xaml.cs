@@ -17,7 +17,7 @@ using System.Xml.Linq;
 using MessageBox = System.Windows.MessageBox;
 using UserControl = System.Windows.Controls.UserControl;
 
-namespace tfm.Settings_panels.wpf
+namespace tfm.Settings_panels
 {
     /// <summary>
     /// Interaction logic for ctlSimbrief.xaml
