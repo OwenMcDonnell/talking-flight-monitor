@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
         mc:Ignorable="d"
-        Title="Cockpit panels" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True" ResizeMode="NoResize">
+        Title="Cockpit panels" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True" ResizeMode="NoResize" Closing="Window_Closing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,6 +13,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:CockpitPanelsDialog.focusSearchBox}" Executed="FocusSearchBox"/>
+        <CommandBinding Command="{x:Static local:CockpitPanelsDialog.focusPanelsTreeView}" Executed="FocusPanelsTreeView"/>
+        <CommandBinding Command="{x:Static local:CockpitPanelsDialog.clearSearchResults}" Executed="ClearSearchResults"/>
+        <CommandBinding Command="{x:Static local:CockpitPanelsDialog.resetTreeView}" Executed="ResetPanelsTreeView"/>
+    </Window.CommandBindings>
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -28,8 +34,8 @@
                 <TextBox x:Name="searchTextBox"
                                                                            Width="100"
                                                   Margin="5, 5, 5, 5"
-                                                                                                                                                                                                 AutomationProperties.AcceleratorKey="CONTROL+E"
-                 AutomationProperties.AccessKey="CONTROL+E"
+                                                                                                                                                                                                 AutomationProperties.AcceleratorKey="F2"
+                 AutomationProperties.AccessKey="F2"
                  AutomationProperties.Name="Search for panels"
                  AutomationProperties.AutomationId="SearchTextBox"
             KeyDown="searchTextBox_KeyDown"/>
@@ -47,13 +53,16 @@
                                                         Content="Reset"
                                                                                                                                                                                     AutomationProperties.Name="Reset panel order"
         AutomationProperties.AutomationId="ResetButton"
-        AutomationProperties.AcceleratorKey="F2"
-        AutomationProperties.AccessKey="F2"/>
+        AutomationProperties.AcceleratorKey="F5"
+        AutomationProperties.AccessKey="F5"
+                        Click="resetButton_Click"/>
             </StackPanel>
             <TreeView x:Name="panelsTreeView"
                                                                                                             Grid.Column="0"
                                                                                                             Grid.Row="1"
                       Grid.ColumnSpan="3"
+                      AutomationProperties.AcceleratorKey="F3"
+                      AutomationProperties.AccessKey="F3"
                                                                                                                                                                                                AutomationProperties.Name="Cockpit panels"
                   AutomationProperties.AutomationId="CockpitPanelsTreeView"
                   Margin="5, 15, 5, 5"
@@ -62,8 +71,9 @@
                       PreviewKeyDown="panelsTreeView_PreviewKeyDown">
                 <TreeView.ContextMenu>
                     <ContextMenu x:Name="panelsContextMenu">
-                        <MenuItem x:Name="sortAscendingMenuItem" Click="sortAscendingMenuItem_Click" Header="Sort children ascending"/>
-                        <MenuItem x:Name="sortDescendingMenuItem" Click="sortDescendingMenuItem_Click" Header="Sort children descending"/>
+                        <MenuItem x:Name="savePanelLayoutMenuItem" Header="_Save layout" Click="savePanelLayoutMenuItem_Click"/>
+                        <MenuItem x:Name="sortAscendingMenuItem" Click="sortAscendingMenuItem_Click" Header="Sort children _ascending"/>
+                        <MenuItem x:Name="sortDescendingMenuItem" Click="sortDescendingMenuItem_Click" Header="Sort children _descending"/>
                     </ContextMenu>
                 </TreeView.ContextMenu>
                 <TreeViewItem Name="overhead" Header="Overhead">

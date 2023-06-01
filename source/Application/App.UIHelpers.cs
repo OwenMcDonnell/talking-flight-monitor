@@ -1,4 +1,5 @@
-﻿using tfm.Converters;
+﻿using Newtonsoft.Json;
+using tfm.Converters;
 using tfm.PMDG.PanelObjects;
 using tfm.Properties;
 using System;
@@ -17,6 +18,18 @@ using System.Windows.Media;
 using System.Windows;
 using System.IO;
 using System.Windows.Input;
+using System.Xaml;
+using XamlWriter = System.Windows.Markup.XamlWriter;
+using BingMapsRESTToolkit;
+using static System.Data.Entity.Infrastructure.Design.Executor;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.ComponentModel;
+using System.Drawing;
+using System.Reflection.Metadata;
+using System.Security.AccessControl;
+using System.Windows.Documents;
+using System.Xml;
+using Newtonsoft.Json;
 
 namespace tfm
 {
@@ -32,6 +45,40 @@ namespace tfm
     {
         private ByteToBoolConverter converter = new ByteToBoolConverter();
 
+public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
+
+                public void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
+        {
+            string name = alternateName == null ? toggle.Name : alternateName;
+            control.Content = $"{name}";
+
+            control.IsChecked = reverse ? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
+            AutomationProperties.SetName(control, $"{name}");
+        }
+
+        public void BuildButton(System.Windows.Controls.Button control, SingleStateToggle toggle, string alternateName = null)
+        {
+            string name = alternateName == null ? toggle.Name : alternateName;
+            control.Content = $"{name} {toggle.CurrentState.Value}";
+                                    AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
+        }
+
+    }
+
+    public class TreeViewState
+    {
+        public List<TreeViewItemState> Items { get; set; }
+    }
+
+    public class TreeViewItemState
+    {
+        public string Name { get; set; }
+        public string Header { get; set; }
+        public List<TreeViewItemState> Children { get; set; }
+    }
+
+    public class TreeViewSerializer
+    {
 
         public void SortTreeViewItemChildrenAscending(TreeView treeView, TreeViewItem rootItem)
         {
@@ -55,7 +102,6 @@ namespace tfm
 
             // Update the TreeView to reflect the changes
             treeView.UpdateLayout();
-            SaveTreeViewStateToDisk(treeView);
         }
 
         public void SortTreeViewItemChildrenDescending(TreeView treeView, TreeViewItem rootItem)
@@ -80,7 +126,6 @@ namespace tfm
 
             // Update the TreeView to reflect the changes
             treeView.UpdateLayout();
-            SaveTreeViewStateToDisk(treeView);
         }
 
         public bool MoveTreeViewItemUp(TreeView treeView, TreeViewItem item)
@@ -93,10 +138,6 @@ namespace tfm
             {
                 parentItemsControl.Items.RemoveAt(currentIndex);
                 parentItemsControl.Items.Insert(currentIndex - 1, item);
-
-                // Save the treeView state to disk
-                SaveTreeViewStateToDisk(treeView);
-
                 // Disable focusability and hit test on the moved item
                 item.Focusable = false;
                 item.IsHitTestVisible = false;
@@ -129,9 +170,6 @@ namespace tfm
                 parentItemsControl.Items.RemoveAt(currentIndex);
                 parentItemsControl.Items.Insert(currentIndex + 1, item);
 
-                // Save the treeView state to disk
-                SaveTreeViewStateToDisk(treeView);
-
                 // Disable focusability and hit test on the moved item
                 item.Focusable = false;
                 item.IsHitTestVisible = false;
@@ -152,54 +190,9 @@ namespace tfm
             return false;
         }
 
-
-        public void LoadTreeViewStateFromDisk(TreeView treeView)
+        public void SelectFirstTreeViewItem(TreeView tree)
         {
-            string fileName = $"{treeView.Name}.xml";
-
-            if (File.Exists(fileName))
-            {
-                using (FileStream stream = new FileStream(fileName, FileMode.Open))
-                {
-                    TreeView loadedTreeView = XamlReader.Load(stream) as TreeView;
-
-                    if (loadedTreeView != null)
-                    {
-                        treeView.Items.Clear();
-
-                        foreach (object item in loadedTreeView.Items)
-                        {
-                            if (item is TreeViewItem treeViewItem)
-                            {
-                                string itemContent = treeViewItem.Header as string;
-                                if (itemContent != null)
-                                {
-                                    itemContent = itemContent.Trim('(', ')');
-                                    treeViewItem.Header = itemContent;
-                                }
-                            }
-                            var originalItem = item as TreeViewItem;
-                            var clonedItem = CloneTreeViewItem(originalItem);
-                            treeView.Items.Add(clonedItem);
-                        }
-                   }
-                }
-            }
-        }
-
-        private void SaveTreeViewStateToDisk(TreeView treeView)
-        {
-            string fileName = $"{treeView.Name}.xml";
-
-            using (FileStream stream = new FileStream(fileName, FileMode.Create))
-            {
-                XamlWriter.Save(treeView, stream);
-            }
-                                }
-
-                        public void SelectFirstTreeViewItem(TreeView tree)
-        {
-            if(tree.Items != null)
+            if (tree.Items != null)
             {
                 var firstItem = tree.Items[0] as TreeViewItem;
                 firstItem.IsSelected = true;
@@ -214,7 +207,7 @@ namespace tfm
             // Reset the treeview if no search is provided.
             if (string.IsNullOrEmpty(keyword))
             {
-                App.UI.ResetTreeView(tree, originalTreeViewItems);
+                ResetTreeView(tree, originalTreeViewItems);
                 return;
             }
 
@@ -235,7 +228,7 @@ namespace tfm
             // Look for TreeViewItems matching each key found.
             foreach (var key in matchingKeys)
             {
-                var match = App.UI.GetTreeViewItemByName(originalTreeViewItems, key);
+                var match = GetTreeViewItemByName(originalTreeViewItems, key);
 
                 if (match != null)
                 {
@@ -245,7 +238,7 @@ namespace tfm
                     {
                         // Remove any existing '(' and ')' characters from the root header.
                         rootHeader = rootHeader.Replace("(", "").Replace(")", "").Trim();
-                        match.Header= match.Header.ToString().Replace("(", "").Replace(")", "").Trim();
+                        match.Header = match.Header.ToString().Replace("(", "").Replace(")", "").Trim();
                         match.Header = $"{match.Header} [{rootHeader}]";
                     }
 
@@ -314,29 +307,49 @@ namespace tfm
 
         public void ResetTreeView(TreeView treeView, List<TreeViewItem> items)
         {
-            
+
             treeView.Items.Clear();
             foreach (TreeViewItem item in items)
             {
                 treeView.Items.Add(item);
             }
-        }
+            treeView.Items.Refresh();
+            treeView.UpdateLayout();
+                                }
 
         public List<TreeViewItem> GetOriginalTreeViewItems(TreeView treeView)
         {
             List<TreeViewItem> originalItems = new List<TreeViewItem>();
-
-            foreach (object item in treeView.Items)
+            foreach (TreeViewItem item in treeView.Items)
             {
-                if (item is TreeViewItem treeViewItem)
+                TreeViewItem clonedItem = CloneTreeViewItem(item);
+                originalItems.Add(clonedItem);
+            }
+            return originalItems;
+        }
+
+        private TreeViewItem CloneTreeViewItem(TreeViewItem originalItem)
+        {
+            TreeViewItem clonedItem = new TreeViewItem();
+            clonedItem.Header = originalItem.Header;
+            clonedItem.Name = originalItem.Name;
+
+            CloneChildTreeViewItems(originalItem, clonedItem);
+
+            return clonedItem;
+        }
+
+        private void CloneChildTreeViewItems(TreeViewItem originalItem, TreeViewItem clonedItem)
+        {
+            foreach (object item in originalItem.Items)
+            {
+                if (item is TreeViewItem childItem)
                 {
-                    TreeViewItem clonedItem = CloneTreeViewItem(treeViewItem);
-                    originalItems.Add(clonedItem);
-                    AddChildTreeViewItems(treeViewItem, clonedItem);
+                    TreeViewItem clonedChildItem = CloneTreeViewItem(childItem);
+                    clonedItem.Items.Add(clonedChildItem);
+                    CloneChildTreeViewItems(childItem, clonedChildItem);
                 }
             }
-
-            return originalItems;
         }
 
         private void AddChildTreeViewItems(TreeViewItem parentItem, TreeViewItem clonedParent)
@@ -350,31 +363,6 @@ namespace tfm
                     AddChildTreeViewItems(childItem, clonedChildItem);
                 }
             }
-        }
-
-        private TreeViewItem CloneTreeViewItem(TreeViewItem originalItem)
-        {
-            string originalHeader = GetItemHeader(originalItem);
-
-            TreeViewItem clonedItem = new TreeViewItem();
-            clonedItem.Header = originalItem.Header;
-            clonedItem.Name = originalItem.Name;
-
-            // Clone child items recursively
-            foreach (TreeViewItem childItem in originalItem.Items)
-            {
-                TreeViewItem clonedChild = CloneTreeViewItem(childItem);
-                clonedItem.Items.Add(clonedChild);
-            }
-
-            // Retrieve the root parent's header
-            TreeViewItem rootParentItem = FindRootParentItem(originalItem);
-            string rootParentHeader = GetItemHeader(rootParentItem);
-
-            // Add root parent's header to the cloned item's header
-            clonedItem.Header = $"{originalHeader}";
-
-            return clonedItem;
         }
 
         private TreeViewItem FindRootParentItem(TreeViewItem item)
@@ -394,21 +382,84 @@ namespace tfm
             return item?.Header?.ToString() ?? string.Empty;
         }
 
-        public void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
+        public void SaveTreeViewStateToDisk(TreeView treeView, string fileName)
         {
-            string name = alternateName == null ? toggle.Name : alternateName;
-            control.Content = $"{name}";
-
-            control.IsChecked = reverse ? !(bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture) : (bool?)converter.Convert(toggle.CurrentState.Key, typeof(bool?), null, CultureInfo.InvariantCulture);
-            AutomationProperties.SetName(control, $"{name}");
+            TreeViewState state = CreateTreeViewState(treeView);
+            SerializeTreeViewState(state, fileName);
         }
 
-        public void BuildButton(System.Windows.Controls.Button control, SingleStateToggle toggle, string alternateName = null)
+        public void LoadTreeViewStateFromDisk(TreeView treeView, string fileName)
         {
-            string name = alternateName == null ? toggle.Name : alternateName;
-            control.Content = $"{name} {toggle.CurrentState.Value}";
-                                    AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
+            TreeViewState state = DeserializeTreeViewState(fileName);
+            if (state != null)
+            {
+                RestoreTreeViewState(treeView, state);
+                treeView.UpdateLayout();
+            }
         }
 
+        private TreeViewState CreateTreeViewState(TreeView treeView)
+        {
+            TreeViewState state = new TreeViewState();
+            state.Items = treeView.Items.Cast<TreeViewItem>().Select(item => CreateTreeViewItemState(item)).ToList();
+            return state;
+        }
+
+        private TreeViewItemState CreateTreeViewItemState(TreeViewItem treeViewItem)
+        {
+            TreeViewItemState itemState = new TreeViewItemState();
+            itemState.Name = treeViewItem.Name;
+            itemState.Header = treeViewItem.Header.ToString();
+            itemState.Children = treeViewItem.Items.Cast<TreeViewItem>().Select(item => CreateTreeViewItemState(item)).ToList();
+            return itemState;
+        }
+
+        private void SerializeTreeViewState(TreeViewState state, string fileName)
+        {
+            string json = JsonConvert.SerializeObject(state, Newtonsoft.Json.Formatting.Indented);
+            File.WriteAllText(fileName, json);
+        }
+
+        private TreeViewState DeserializeTreeViewState(string fileName)
+        {
+            try
+            {
+                string json = File.ReadAllText(fileName);
+                return JsonConvert.DeserializeObject<TreeViewState>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred while deserializing TreeView state: " + ex.Message);
+                return null;
+            }
+        }
+
+        private void RestoreTreeViewState(TreeView treeView, TreeViewState state)
+        {
+            treeView.Items.Clear();
+            foreach (TreeViewItemState itemState in state.Items)
+            {
+                TreeViewItem treeViewItem = CreateTreeViewItem(itemState);
+                treeView.Items.Add(treeViewItem);
+            }
+        }
+
+        private TreeViewItem CreateTreeViewItem(TreeViewItemState itemState)
+        {
+            TreeViewItem treeViewItem = new TreeViewItem();
+            treeViewItem.Name = itemState.Name;
+            treeViewItem.Header = itemState.Header;
+
+            if (itemState.Children != null)
+            {
+                foreach (TreeViewItemState childState in itemState.Children)
+                {
+                    TreeViewItem childTreeViewItem = CreateTreeViewItem(childState);
+                    treeViewItem.Items.Add(childTreeViewItem);
+                }
+            }
+
+            return treeViewItem;
+        }
     }
 }
