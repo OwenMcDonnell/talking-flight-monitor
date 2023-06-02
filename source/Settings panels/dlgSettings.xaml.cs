@@ -27,14 +27,16 @@ namespace tfm.Settings_panels
         // Add a new UserControl for each settings panel
         private readonly Dictionary<string, UserControlInfo> pageMappings = new Dictionary<string, UserControlInfo>();
         private readonly List<TreeViewItem> originalTreeViewItems;
+        private string fileName = "settings_panels.json";
+        private TreeViewSerializer treeHelper = new TreeViewSerializer();
         public dlgSettings()
         {
             InitializeComponent();
             LoadPanels();
-            originalTreeViewItems = App.UI.GetOriginalTreeViewItems(tvCategories);
-            App.UI.LoadTreeViewStateFromDisk(tvCategories); 
+            originalTreeViewItems = treeHelper.GetOriginalTreeViewItems(tvCategories);
+            treeHelper.LoadTreeViewStateFromDisk(tvCategories, fileName); 
             tvCategories.Focus();
-            App.UI.SelectFirstTreeViewItem(tvCategories);
+            treeHelper.SelectFirstTreeViewItem(tvCategories);
 
         }
 
@@ -229,6 +231,7 @@ namespace tfm.Settings_panels
         {
             DialogResult = true;
             Properties.Settings.Default.Save();
+            Properties.Weather.Default.Save();
         }
 
         private void tvCategories_Loaded(object sender, RoutedEventArgs e)
@@ -249,7 +252,10 @@ namespace tfm.Settings_panels
         {
             if (e.Key == Key.Enter)
             {
-                App.UI.SearchTreeView(searchTextBox.Text, tvCategories, originalTreeViewItems, pageMappings);
+                treeHelper.SearchTreeView(searchTextBox.Text, tvCategories, originalTreeViewItems, pageMappings);
+                treeHelper.SelectFirstTreeViewItem(tvCategories);
+                tvCategories.UpdateLayout();
+                tvCategories.Focus();
             }
 
         }
