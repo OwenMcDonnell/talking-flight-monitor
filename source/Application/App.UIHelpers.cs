@@ -232,16 +232,6 @@ public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
 
                 if (match != null)
                 {
-                    // Append the root treeview item's header to the found item's header.
-                    var rootHeader = originalTreeViewItems.FirstOrDefault()?.Header?.ToString();
-                    if (rootHeader != null)
-                    {
-                        // Remove any existing '(' and ')' characters from the root header.
-                        rootHeader = rootHeader.Replace("(", "").Replace(")", "").Trim();
-                        match.Header = match.Header.ToString().Replace("(", "").Replace(")", "").Trim();
-                        match.Header = $"{match.Header} [{rootHeader}]";
-                    }
-
                     matchingTreeViewItems.Add(match);
                 }
             }
