@@ -76,11 +76,11 @@
                         <MenuItem x:Name="sortDescendingMenuItem" Click="sortDescendingMenuItem_Click" Header="Sort children _descending"/>
                     </ContextMenu>
                 </TreeView.ContextMenu>
-                <TreeViewItem Name="overhead" Header="Overhead">
-                    <TreeViewItem x:Name="adiru" Header="ADIRU"/>
+                <TreeViewItem Name="overhead" Header="Overhead" IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True">
+                    <TreeViewItem x:Name="adiru" Header="ADIRU" IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True"/>
                     <TreeViewItem x:Name="domeLights" Header="Dome lights"/>
                     <TreeViewItem x:Name="eec" Header="EEC"/>
-                    <TreeViewItem x:Name="flightRecorder" Header="Flight recorder"/>
+                    <TreeViewItem x:Name="cvr" Header="CVR" IsTextSearchEnabled="True"/>
                     <TreeViewItem x:Name="gear" Header="Gear"/>
                     <TreeViewItem x:Name="oxygen" Header="Oxygen"/>
                     <TreeViewItem x:Name="pseu" Header="PSEU"/>

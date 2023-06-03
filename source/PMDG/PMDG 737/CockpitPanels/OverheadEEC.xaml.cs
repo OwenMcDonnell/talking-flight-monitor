@@ -19,9 +19,9 @@ using UserControl = System.Windows.Controls.UserControl;
 
 namespace tfm.PMDG.PMDG_737.CockpitPanels
 {
-        public partial class EEC : UserControl
+        public partial class OverheadEEC : UserControl
     {
-        public EEC()
+        public OverheadEEC()
         {
             InitializeComponent();
         }

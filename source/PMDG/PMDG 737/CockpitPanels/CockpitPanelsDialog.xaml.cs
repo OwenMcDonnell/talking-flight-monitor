@@ -51,10 +51,10 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         private void LoadPanels()
         {
 
-            panelMappings["adiru"] = new UserControlInfo { control = new adiru(), Keywords = new[] { "gps", "reference", "unit", "navigation" } };
-            panelMappings["domeLights"] = new UserControlInfo { control = new DomeLights(), Keywords = new[] { "dome", "lights", "interior" } };
-            panelMappings["eec"] = new UserControlInfo { control = new EEC(), Keywords = new[] { "electrical", "engines", "power", "navigation" } };
-            panelMappings["flightRecorder"] = new UserControlInfo { control = new FlightRecorder(), Keywords = new[] { "cvr", "CVR", "voice recorder", "flight recorder", "data recorder", "test" } };
+            panelMappings["adiru"] = new UserControlInfo { control = new OverheadAdiru(), Keywords = new[] { "Overhead", "gps", "reference", "unit", "navigation", "align", "nav", "position", "IRU", "ADIRU", "IRS" } };
+            panelMappings["domeLights"] = new UserControlInfo { control = new OverheadDomeLights(), Keywords = new[] { "Overhead", "dome", "lights", "interior", "Cockpit" } };
+            panelMappings["eec"] = new UserControlInfo { control = new OverheadEEC(), Keywords = new[] { "electrical", "engines", "power", "navigation", "reversers" } };
+            panelMappings["cvr"] = new UserControlInfo { control = new OverheadCvr(), Keywords = new[] { "cvr", "CVR", "voice recorder", "flight recorder", "data recorder", "test" } };
         }
               
                 private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

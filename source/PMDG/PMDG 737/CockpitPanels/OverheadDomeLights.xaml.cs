@@ -20,12 +20,9 @@ using FSUIPC;
 
 namespace tfm.PMDG.PMDG_737.CockpitPanels
 {
-    /// <summary>
-    /// Interaction logic for DomeLights.xaml
-    /// </summary>
-    public partial class DomeLights : UserControl
+        public partial class OverheadDomeLights : UserControl
     {
-        public DomeLights()
+        public OverheadDomeLights()
         {
             InitializeComponent();
         }

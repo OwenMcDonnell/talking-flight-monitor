@@ -20,9 +20,9 @@ using System.Windows.Threading;
 
 namespace tfm.PMDG.PMDG_737.CockpitPanels
 {
-        public partial class adiru : UserControl
+        public partial class OverheadAdiru : UserControl
     {
-        public adiru()
+        public OverheadAdiru()
         {
             InitializeComponent();
         }

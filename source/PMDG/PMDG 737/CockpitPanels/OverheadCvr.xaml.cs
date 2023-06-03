@@ -20,13 +20,13 @@ using UserControl = System.Windows.Controls.UserControl;
 
 namespace tfm.PMDG.PMDG_737.CockpitPanels
 {
-        public partial class FlightRecorder : UserControl
+        public partial class OverheadCvr: UserControl
     {
 
         private SingleStateToggle cvrSwitch = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.FLTREC_SwNormal).First() as SingleStateToggle;
         private SingleStateToggle cvrLight = PMDG737Aircraft.PanelControls.Where(x => x.Offset == Aircraft.pmdg737.FLTREC_annunOFF).First() as SingleStateToggle;
 
-        public FlightRecorder()
+        public OverheadCvr()
         {
             InitializeComponent();
         }
