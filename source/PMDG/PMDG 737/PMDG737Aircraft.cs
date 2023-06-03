@@ -1534,6 +1534,11 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FLTREC_SWITCH, Aircraft.pmdg737.FLTREC_SwNormal.Value, 1, true);
         } // FlightRecorderNormal.
 
+        public static void FlightRecorderErase()
+        {
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_OH_CVR_ERASE, Aircraft.ClkL);
+        } // FlightRecorderErase.
+
         public static void FlightControlA(int position)
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_FCTL_A_SWITCH, Aircraft.pmdg737.FCTL_FltControl_Sw[0].Value, position, true);

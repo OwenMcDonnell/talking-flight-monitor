@@ -63,6 +63,17 @@ public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
                                     AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
         }
 
+        public void BuildIndicatorTextBox(System.Windows.Controls.TextBox control, SingleStateToggle toggle, string alternateName = null)
+        {
+            string name = alternateName == null ? toggle.Name : alternateName;
+            control.Text = toggle.CurrentState.Value;
+            control.IsReadOnly = true;
+            control.IsReadOnlyCaretVisible = true;
+            control.Focusable = true;
+            AutomationProperties.SetName(control, $"{name}");
+
+        }
+
     }
 
     public class TreeViewState
