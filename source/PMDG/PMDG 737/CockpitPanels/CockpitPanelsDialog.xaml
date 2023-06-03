@@ -58,6 +58,7 @@
                         Click="resetButton_Click"/>
             </StackPanel>
             <TreeView x:Name="panelsTreeView"
+                      Height="400"
                                                                                                             Grid.Column="0"
                                                                                                             Grid.Row="1"
                       Grid.ColumnSpan="3"
@@ -141,7 +142,7 @@
             </Grid.RowDefinitions>
             <UserControl x:Name="contentArea"
                      HorizontalAlignment="Stretch"
-                     VerticalAlignment="Stretch"
+                     VerticalAlignment="Center"
                      Grid.Column="0"
                      Grid.Row="0"
                      AutomationProperties.Name="Content area"
