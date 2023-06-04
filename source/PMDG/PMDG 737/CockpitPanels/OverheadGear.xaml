@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="tfm.PMDG.PMDG_737.CockpitPanels.OverheadGear"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="noseGearLabel"
+               Content="Nose gear"
+               Margin="5, 5, 5, 5"
+               Grid.Column="0"
+               Grid.Row="0"
+               AutomationProperties.Name="Nose gear"
+               AutomationProperties.AutomationId="NoseGearLabel"
+               Target="{Binding ElementName=noseGearTextBox}"/>
+        <TextBox x:Name="noseGearTextBox"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 Margin="5, 5, 5, 5"
+                 AutomationProperties.AcceleratorKey="ALT+1"
+                 AutomationProperties.AccessKey="ALT+1"
+                 AutomationProperties.AutomationId="NoseGearTextBox"/>
+
+        <Label x:Name="leftGearLabel"
+               Content="Left gear"
+               Margin="5, 5, 5, 5"
+               Grid.Column="0"
+               Grid.Row="1"
+               AutomationProperties.Name="Left gear"
+               AutomationProperties.AutomationId="LeftGearLabel"
+               Target="{Binding ElementName=leftGearTextBox}"/>
+        <TextBox x:Name="leftGearTextBox"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 Margin="5, 5, 5, 5"
+                 AutomationProperties.AcceleratorKey="ALT+2"
+                 AutomationProperties.AccessKey="ALT+2"
+                 AutomationProperties.AutomationId="LeftGearTextBox"/>
+
+        <Label x:Name="rightGearLabel"
+               Content="Right gear"
+               Margin="5, 5, 5, 5"
+               Grid.Column="0"
+               Grid.Row="2"
+               AutomationProperties.Name="Right gear"
+               AutomationProperties.AutomationId="RightGearLabel"
+               Target="{Binding ElementName=rightGearTextBox}"/>
+        <TextBox x:Name="rightGearTextBox"
+                 Grid.Column="1"
+                 Grid.Row="2"
+                 Margin="5, 5, 5, 5"
+                 AutomationProperties.AcceleratorKey="ALT+3"
+                 AutomationProperties.AccessKey="ALT+3"
+                 AutomationProperties.AutomationId="RightGearTextBox"/>
+    </Grid>
+</UserControl>
