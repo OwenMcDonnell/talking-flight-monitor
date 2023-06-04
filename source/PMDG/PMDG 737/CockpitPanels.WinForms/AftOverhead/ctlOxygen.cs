@@ -65,7 +65,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.AftOverhead
             }
             else
             {
-                PMDG737Aircraft.PassengerOxygenOff();
+                //PMDG737Aircraft.PassengerOxygenOff();
                 
             }
         }

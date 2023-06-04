@@ -56,6 +56,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
             panelMappings["eec"] = new UserControlInfo { control = new OverheadEEC(), Keywords = new[] { "electrical", "engines", "power", "navigation", "reversers" } };
             panelMappings["cvr"] = new UserControlInfo { control = new OverheadCvr(), Keywords = new[] { "cvr", "CVR", "voice recorder", "flight recorder", "data recorder", "test" } };
             panelMappings["gear"] = new UserControlInfo { control = new OverheadGear(), Keywords = new[] { "Overhead", "lights", "Landing gear", "gear" } };
+            panelMappings["oxygen"] = new UserControlInfo { control = new OverheadOxygen(), Keywords = new[] { "Overhead", "Passenger", "pacx", "oxygen", "cabin" } };
         }
               
                 private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

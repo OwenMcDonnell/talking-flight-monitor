@@ -272,6 +272,12 @@ namespace tfm
             {0, "off" },
             {1, "normal" },
         };
+
+        private static Dictionary<byte, string> _normalOrOnStates = new Dictionary<byte, string>()
+        {
+            {0, "on" },
+            {1, "normal" },
+        };
         private static Dictionary<byte, string> _downOrUpStates = new Dictionary<byte, string>()
 {
     {0, "up" },
@@ -708,7 +714,7 @@ new SingleStateToggle { Name = "Engine #2 alternate control light", PanelName = 
 
 // --section: Oxygen
 new SingleStateToggle { Name = "Oxygen level", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Slider, Verbosity = AircraftVerbosity.Medium, Offset = Aircraft.pmdg737.OXY_Needle, AvailableStates = null, shouldSpeak = Properties.pmdg737_offsets.Default.OXY_Needle, SettingKey = "OXY_Needle" },
-new SingleStateToggle { Name = "Oxygen", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OXY_SwNormal, AvailableStates = _normalOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.OXY_Needle, SettingKey = "OXY_Needle"},
+new SingleStateToggle { Name = "Oxygen", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OXY_SwNormal, AvailableStates = _normalOrOnStates, shouldSpeak = Properties.pmdg737_offsets.Default.OXY_Needle, SettingKey = "OXY_Needle"},
 new SingleStateToggle { Name = "Passenger oxygen light", PanelName = "Aft Overhead", PanelSection = "Oxygen", Type = PanelObjectType.Switch, Verbosity = AircraftVerbosity.Low, Offset = Aircraft.pmdg737.OXY_annunPASS_OXY_ON, AvailableStates = _onOrOffStates, shouldSpeak = Properties.pmdg737_offsets.Default.OXY_annunPASS_OXY_ON, SettingKey = "OXY_annunPASS_OXY_ON" },
 
 // --section: Gear
@@ -1514,7 +1520,7 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
 
         } // EngineEEC2Off.
 
-        public static void PassengerOxygenOff()
+        public static void PassengerOxygenOn()
         {
             CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_OXY_PASS_SWITCH, Aircraft.pmdg737.OXY_SwNormal.Value, 0, true);
         } // PassengerOxyOn.
