@@ -41,8 +41,8 @@ Grid.Column="0"
                   AutomationProperties.AccessKey="ALT+D"
                   AutomationProperties.Name="Dome lights"
                   SelectionChanged="domeLightsComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="dimComboboxItem" Content="dim"/>
             <ComboBoxItem x:Name="offComboBoxItem" Content="off"/>
-            <ComboBoxItem x:Name="dimComboboxItem" Content="dim"/>
             <ComboBoxItem x:Name="brightComboBoxItem" Content="bright"/>
         </ComboBox>
 
