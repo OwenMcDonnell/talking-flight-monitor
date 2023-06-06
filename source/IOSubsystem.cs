@@ -2460,10 +2460,10 @@ else                    if (PMDG777Detected)
                 case "keyboard_manager":
                     DisplayKeyboardManager();
                     break;
-
-
-                case "ApplicationRestart":
-                    Application.Restart();
+                                    case "ApplicationRestart":
+                    string appPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+                    System.Diagnostics.Process.Start(appPath);
+                    App.Current.Shutdown();
                     break;
                 case "destination_runway":
                     DestinationForm df = new DestinationForm();
@@ -2581,7 +2581,7 @@ else                    if (PMDG777Detected)
                     break;
                 case "application_quit":
                     Tolk.Output("TFM is shutting down...");
-                    Application.Exit();
+                    App.Current.Shutdown();
                     break;
 
                 case "get_spoilers":

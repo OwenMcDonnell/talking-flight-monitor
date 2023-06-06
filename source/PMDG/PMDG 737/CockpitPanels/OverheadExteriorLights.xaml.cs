@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using UserControl = System.Windows.Controls.UserControl;
+
+
 namespace tfm.PMDG.PMDG_737.CockpitPanels
 {
     /// <summary>
