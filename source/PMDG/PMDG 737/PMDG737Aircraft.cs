@@ -1480,12 +1480,12 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
 
         public static void ServiceInterPhoneOn()
         {
-            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 1);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 1, true);
         }
 
         public static void ServiceInterPhoneOff()
         {
-            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 0);
+            CalculateSwitchPosition(PMDG_737_NGX_Control.EVT_OH_SERVICE_INTERPHONE_SWITCH, Aircraft.pmdg737.COMM_ServiceInterphoneSw.Value, 0, true);
         }
 
         // --Engine EEC switches.
