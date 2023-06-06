@@ -1,0 +1,200 @@
+﻿<UserControl x:Class="tfm.PMDG.PMDG_737.CockpitPanels.OverheadEngines"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+<!--APU starter switch-->
+        <Label x:Name="apuLabel"
+               Grid.Column="0"
+               Grid.Row="0"
+               Content="Apu starter"
+               Margin="10, 5, 5, 5"
+               AutomationProperties.Name="Apu starter label"
+               AutomationProperties.AutomationId="ApuStarterLabel"
+               Target="{Binding ElementName=apuStarterComboBox}"/>
+        <ComboBox x:Name="apuStarterComboBox"
+                  Grid.Column="1"
+                  Grid.Row="0"
+                  Margin="5, 5, 5, 5"
+                  AutomationProperties.Name="APU starter"
+                  AutomationProperties.AutomationId="ApuStarterComboBox"
+                  AutomationProperties.AcceleratorKey="ALT+A"
+                  AutomationProperties.AccessKey="ALT+A"
+                  SelectionChanged="apuStarterComboBox_SelectionChanged">
+            <ComboBoxItem x:Name="apuOffComboBoxItem" Content="off"/>
+            <ComboBoxItem x:Name="apuOnComboBoxItem" Content="on"/>
+            <ComboBoxItem x:Name="apuStartComboBoxItem" Content="start"/>
+        </ComboBox>
+
+        <!--Ignition switch-->
+        <Label x:Name="ignitionLabel"
+               Grid.Column="0"
+               Grid.Row="1"
+               Content="Ignition"
+               Margin="10, 5, 5, 5"
+               AutomationProperties.Name="Ignition label"
+               AutomationProperties.AutomationId="IgnitionLabel"
+               Target="{Binding ElementName=apuStarterComboBox}"/>
+        <ComboBox x:Name="ignitionComboBox"
+                  Grid.Column="1"
+                  Grid.Row="1"
+                  Margin="5, 5, 5, 5"
+                  AutomationProperties.Name="Ignition"
+                  AutomationProperties.AutomationId="IgnitionComboBox"
+                  AutomationProperties.AcceleratorKey="ALT+I"
+                  AutomationProperties.AccessKey="ALT+I"
+                  SelectionChanged="ignitionComboBox_SelectionChanged">
+            <ComboBoxItem x:Name="leftIgnitionComboBoxItem" Content="left"/>
+            <ComboBoxItem x:Name="bothIgnitionComboBoxItem" Content="both"/>
+            <ComboBoxItem x:Name="rightIgnitionComboBoxItem" Content="right"/>
+        </ComboBox>
+
+        <!--Engine/fuel starter switches. Put in tabs for ease of use and to keep the screen from getting cluttered.-->
+        <TabControl x:Name="enginesTabControl"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    AutomationProperties.Name="Engine switches"
+                    AutomationProperties.AutomationId="EnginesTabControl"
+                    Margin="10, 10, 10, 10"
+                    SelectedIndex="1">
+            
+            <!--Engine #1-->
+            <TabItem x:Name="engine1TabItem"
+                     Header="Engine #1"
+                     AutomationProperties.Name="#1"
+                     AutomationProperties.AutomationId="Engine1TabItem">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="engine1Label"
+                           Content="Engine #1"
+                           Margin="10, 5, 5, 5"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           AutomationProperties.Name="Engine #1 label"
+                           AutomationProperties.AutomationId="Engine1Label"/>
+                    <ComboBox x:Name="engineStarter1ComboBox"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AcceleratorKey="CONTROL+1"
+                              AutomationProperties.AccessKey="CONTROL+1"
+                              AutomationProperties.Name="engine #1 starter"
+                              AutomationProperties.AutomationId="EngineStarter1ComboBox"
+                              SelectionChanged="engineStarter1ComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="grd1ComboBoxItem" Content="grd"/>
+                        <ComboBoxItem x:Name="auto1ComboBoxItem" Content="auto"/>
+                        <ComboBoxItem x:Name="cont1ComboBoxItem" Content="cont"/>
+                        <ComboBoxItem x:Name="flt1ComboBoxItem" Content="flt"/>
+                    </ComboBox>
+
+                    <Label x:Name="fuel1Label"
+                           Content="Fuel switch #1"
+                           Margin="10, 5, 5, 5"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           AutomationProperties.Name="Fuel switch #1 label"
+                           AutomationProperties.AutomationId="Fuel1Label"/>
+                    <ComboBox x:Name="fuelFlow1ComboBox"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              AutomationProperties.AcceleratorKey="ALT+1"
+                              AutomationProperties.AccessKey="ALT+1"
+                              AutomationProperties.Name="#1 fuel flow"
+                              AutomationProperties.AutomationId="FuelFlow1ComboBox"
+                              SelectionChanged="fuelFlow1ComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="idle1ComboBoxItem" Content="idle"/>
+                        <ComboBoxItem x:Name="cutOff1ComboBoxItem" Content="cutoff"/>
+                                                                    </ComboBox>
+
+                </Grid>
+            </TabItem>
+
+            <!--Engine #2-->
+            <TabItem x:Name="engine2TabItem"
+                     Header="Engine #2"
+                     AutomationProperties.Name="#2"
+                     AutomationProperties.AutomationId="Engine2TabItem">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="engine2Label"
+                           Content="Engine #2"
+                           Margin="10, 5, 5, 5"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           AutomationProperties.Name="Engine #2 label"
+                           AutomationProperties.AutomationId="Engine2Label"/>
+                    <ComboBox x:Name="engineStarter2ComboBox"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AcceleratorKey="CONTROL+2"
+                              AutomationProperties.AccessKey="CONTROL+2"
+                              AutomationProperties.Name="engine #2 starter"
+                              AutomationProperties.AutomationId="EngineStarter2ComboBox"
+                              SelectionChanged="engineStarter2ComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="grd2ComboBoxItem" Content="grd"/>
+                        <ComboBoxItem x:Name="auto2ComboBoxItem" Content="auto"/>
+                        <ComboBoxItem x:Name="cont2ComboBoxItem" Content="cont"/>
+                        <ComboBoxItem x:Name="flt2ComboBoxItem" Content="flt"/>
+                    </ComboBox>
+
+                    <Label x:Name="fuel2Label"
+                           Content="Fuel switch #2"
+                           Margin="10, 5, 5, 5"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           AutomationProperties.Name="Fuel switch #2 label"
+                           AutomationProperties.AutomationId="Fuel2Label"/>
+                    <ComboBox x:Name="fuelFlow2ComboBox"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              AutomationProperties.AcceleratorKey="ALT+2"
+                              AutomationProperties.AccessKey="ALT+2"
+                              AutomationProperties.Name="#2 fuel flow"
+                              AutomationProperties.AutomationId="FuelFlow2ComboBox"
+                              SelectionChanged="fuelFlow2ComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="idle2ComboBoxItem" Content="idle"/>
+                        <ComboBoxItem x:Name="cutOff2ComboBoxItem" Content="cutoff"/>
+                    </ComboBox>
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</UserControl>
