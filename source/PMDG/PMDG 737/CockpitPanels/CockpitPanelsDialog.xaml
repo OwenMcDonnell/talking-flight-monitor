@@ -87,7 +87,7 @@
                     <TreeViewItem x:Name="pseu" Header="PSEU"/>
                     <TreeViewItem x:Name="servicePhone" Header="Service phone"/>
                     <TreeViewItem x:Name="engines" Header="Engines"/>
-                    <TreeViewItem x:Name="lights" Header="Lights"/>
+                    <TreeViewItem x:Name="exteriorLights" Header="Exterior lights"/>
                     <TreeViewItem x:Name="airSystems" Header="Air systems"/>
                     <TreeViewItem x:Name="antiIce" Header="Anti-ice"/>
                     <TreeViewItem x:Name="main" Header="Main"/>

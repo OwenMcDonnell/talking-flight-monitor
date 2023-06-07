@@ -60,6 +60,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
             panelMappings["pseu"] = new UserControlInfo { control = new OverheadPseu(), Keywords = new[] { "Overhead", "Maintenance", "PSEU", "warnings" } };
             panelMappings["servicePhone"] = new UserControlInfo { control = new OverheadServicePhone(), Keywords = new[] { "Overhead", "PA", "intercom", "call" } };
             panelMappings["engines"] = new UserControlInfo { control = new OverheadEngines(), Keywords = new[] { "Overhead", "engines", "APU starter", "ignition", "fuel start switch", "engine start switch", "idle", "cutoff", "grd", "ground", "continuous", "flt", "flight", "engine #1", "engine #2", "left engine", "right engine" } };
+            panelMappings["exteriorLights"] = new UserControlInfo { control = new OverheadExteriorLights(), Keywords = new[] { "Overhead", "exterior lights", "landing", "runway", "turn off", "taxi", "logo", "anti-collision", "position", "wing", "wheel well", "strobe" } };
         }
               
                 private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
