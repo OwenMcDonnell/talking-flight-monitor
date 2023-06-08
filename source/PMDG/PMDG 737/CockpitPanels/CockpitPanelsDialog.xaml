@@ -88,6 +88,7 @@
                     <TreeViewItem x:Name="servicePhone" Header="Service phone"/>
                     <TreeViewItem x:Name="engines" Header="Engines"/>
                     <TreeViewItem x:Name="exteriorLights" Header="Exterior lights"/>
+                    <TreeViewItem x:Name="pressurization" Header="Pressurization"/>
                     <TreeViewItem x:Name="airSystems" Header="Air systems"/>
                     <TreeViewItem x:Name="antiIce" Header="Anti-ice"/>
                     <TreeViewItem x:Name="main" Header="Main"/>
