@@ -2334,7 +2334,12 @@ else                    if (PMDG777Detected)
                         else
                         {
                             tfm.PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog cockpitPanels = new PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog();
+                            cockpitPanels.Topmost = true;                                                        
                             cockpitPanels.Show();
+                            cockpitPanels.Activate();
+                            cockpitPanels.panelsTreeView.Focus();
+                            System.Windows.Input.Keyboard.Focus(cockpitPanels.panelsTreeView);
+                            cockpitPanels.BringIntoView();
                         }
                                             }
                     else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747"))

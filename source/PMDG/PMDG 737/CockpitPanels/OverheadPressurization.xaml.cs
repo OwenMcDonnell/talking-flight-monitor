@@ -28,10 +28,14 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         public OverheadPressurization()
         {
             InitializeComponent();
-        }
+                                }
 
         private async  void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            pressurizationModeComboBox.SelectedIndex = pressurizationModeSelector.CurrentState.Key;
+            landingAltitudeTextBox.Text = landingAltitude.Offset.GetValue<string>();
+            flightAltitudeTextBox.Text = flightAltitude.Offset.GetValue<string>();
+
             var timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(300)
@@ -47,9 +51,18 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
 
                 Dispatcher.Invoke(() =>
                 {
-                    pressurizationModeComboBox.SelectedIndex = pressurizationModeSelector.CurrentState.Key;
-                    landingAltitudeTextBox.Text = landingAltitude.Offset.GetValue<string>();
-                    flightAltitudeTextBox.Text = flightAltitude.Offset.GetValue<string>();
+                    if (pressurizationModeSelector.Offset.ValueChanged)
+                    {
+                        pressurizationModeComboBox.SelectedIndex = pressurizationModeSelector.CurrentState.Key;
+                    }
+                    if (landingAltitude.Offset.ValueChanged)
+                    {
+                        landingAltitudeTextBox.Text = landingAltitude.Offset.GetValue<string>();
+                    }
+                    if (flightAltitude.Offset.ValueChanged)
+                    {
+                        flightAltitudeTextBox.Text = flightAltitude.Offset.GetValue<string>();
+                    }
                 });
             });
         }
