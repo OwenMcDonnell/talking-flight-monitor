@@ -104,6 +104,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         private void clearSearchButton_Click(object sender, RoutedEventArgs e)
         {
             treeHelper.LoadTreeViewStateFromDisk(panelsTreeView, fileName);
+            searchTextBox.Clear();
             treeHelper.SelectFirstTreeViewItem(panelsTreeView);
             panelsTreeView.Focus();
             isSearchResultsDisplayed = false; // No longer showing search results.
@@ -190,7 +191,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
             treeHelper.ResetTreeView(panelsTreeView, originalTreeViewItems);
-            treeHelper.SelectFirstTreeViewItem(panelsTreeView);
+                        treeHelper.SelectFirstTreeViewItem(panelsTreeView);
             panelsTreeView.UpdateLayout();
             panelsTreeView.Focus();
             isSearchResultsDisplayed = false; //Search results are no longer displayed.
