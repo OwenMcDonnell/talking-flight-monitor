@@ -223,5 +223,101 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
             #endregion
                                 }
 
+        private void airSourceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PMDG737Aircraft.AirSourceSelector(airSourceComboBox.SelectedIndex);
+        }
+
+        private void leftPackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PMDG737Aircraft.LeftPackSelector(leftPackComboBox.SelectedIndex);
+        }
+
+        private void rightPackComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PMDG737Aircraft.RightPackSelector(rightPackComboBox.SelectedIndex);
+        }
+
+        private void leftBleedToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(leftBleedSwitch.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.LeftBleedOff();
+            }
+            else
+            {
+                PMDG737Aircraft.LeftBleedOn();
+            }
+        }
+
+        private void rightBleedToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(rightBleedSwitch.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.RightBleedOff();
+            }
+            else
+            {
+                PMDG737Aircraft.RightBleedOn();
+            }
+        }
+
+        private void apuBleedToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(apuBleedSwitch.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.APUBleedOff();
+            }
+            else
+            {
+                PMDG737Aircraft.APUBleedOn();
+            }
+        }
+
+        private void leftRecircToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(leftRecircFanSwitch.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.LeftRecircFanOff();
+            }
+            else
+            {
+                PMDG737Aircraft.LeftRecircFanOn();
+            }
+        }
+
+        private void rightRecircToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(rightRecircFanSwitch.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.RightRecircFanOff();
+            }
+            else
+            {
+                PMDG737Aircraft.RightRecircFanOn();
+            }
+        }
+
+        private void trimToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(airTrimSwitch.CurrentState.Value == "on")
+            {
+                PMDG737Aircraft.AirTrimOff();
+            }
+            else
+            {
+                PMDG737Aircraft.AirTrimOn();
+            }
+        }
+
+        private void outFlowComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PMDG737Aircraft.OutflowValveSelector(outFlowComboBox.SelectedIndex);
+        }
+
+        private void isolationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PMDG737Aircraft.IsolationValveSelector(isolationComboBox.SelectedIndex);
+        }
     }
 }

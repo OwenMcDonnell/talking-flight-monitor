@@ -50,7 +50,8 @@
                               AutomationProperties.AcceleratorKey="ALT+S"
                               AutomationProperties.AccessKey="ALT+S"
                               AutomationProperties.Name="Air source"
-                              AutomationProperties.AutomationId="AirSourceComboBox">
+                              AutomationProperties.AutomationId="AirSourceComboBox"
+                              SelectionChanged="airSourceComboBox_SelectionChanged">
                         <ComboBoxItem x:Name="scantComboBoxItem" Content="scant"/>
                         <ComboBoxItem x:Name="sfwdComboBoxItem" Content="sfwd"/>
                         <ComboBoxItem x:Name="saftComboBoxItem" Content="saft"/>
@@ -93,7 +94,7 @@
                               AutomationProperties.AccessKey="ALT+L"
                               AutomationProperties.Name="Left pack"
                               AutomationProperties.AutomationId="LeftPackComboBox"
-                              >
+                              SelectionChanged="leftPackComboBox_SelectionChanged">
                         <ComboBoxItem x:Name="leftOffComboBoxItem" Content="off"/>
                         <ComboBoxItem x:Name="leftAutoComboBoxItem" Content="auto"/>
                         <ComboBoxItem x:Name="leftHighComboBoxItem" Content="high"/>
@@ -115,7 +116,7 @@
                               AutomationProperties.AccessKey="ALT+R"
                               AutomationProperties.Name="Right pack"
                               AutomationProperties.AutomationId="RightPackComboBox"
-                              >
+                              SelectionChanged="rightPackComboBox_SelectionChanged">
                         <ComboBoxItem x:Name="rightOffComboBoxItem" Content="off"/>
                         <ComboBoxItem x:Name="rightAutoComboBoxItem" Content="auto"/>
                         <ComboBoxItem x:Name="rightHighComboBoxItem" Content="high"/>
@@ -138,7 +139,7 @@
                                   AutomationProperties.AccessKey="ALT+L"
                                   AutomationProperties.Name="Left bleed"
 AutomationProperties.AutomationId="LeftBleedToggleButton"
-                                  />
+                                  Click="leftBleedToggleButton_Click"/>
 
                     <ToggleButton x:Name="rightBleedToggleButton"
                                   HorizontalAlignment="Center"
@@ -149,7 +150,7 @@ AutomationProperties.AutomationId="LeftBleedToggleButton"
                                   AutomationProperties.AccessKey="ALT+R"
                                   AutomationProperties.Name="Right bleed"
 AutomationProperties.AutomationId="RightBleedToggleButton"
-                                  />
+                                  Click="rightBleedToggleButton_Click"/>
 
                     <ToggleButton x:Name="apuBleedToggleButton"
                                   HorizontalAlignment="Center"
@@ -160,7 +161,7 @@ AutomationProperties.AutomationId="RightBleedToggleButton"
                                   AutomationProperties.AccessKey="ALT+A"
                                   AutomationProperties.Name="APU bleed"
 AutomationProperties.AutomationId="ApuBleedToggleButton"
-                                  />
+                                  Click="apuBleedToggleButton_Click"/>
                 </StackPanel>
             </TabItem>
             
@@ -179,7 +180,7 @@ AutomationProperties.AutomationId="ApuBleedToggleButton"
                                   AutomationProperties.AccessKey="ALT+L"
                                   AutomationProperties.Name="Left recirc fan"
 AutomationProperties.AutomationId="LeftRecircToggleButton"
-                                  />
+                                  Click="leftRecircToggleButton_Click"/>
 
                     <ToggleButton x:Name="rightRecircToggleButton"
                                   HorizontalAlignment="Center"
@@ -190,7 +191,7 @@ AutomationProperties.AutomationId="LeftRecircToggleButton"
                                   AutomationProperties.AccessKey="ALT+R"
                                   AutomationProperties.Name="Right recirc fan"
 AutomationProperties.AutomationId="RightRecircToggleButton"
-                                  />
+                                  Click="rightRecircToggleButton_Click"/>
                 </StackPanel>
             </TabItem>
         
@@ -209,7 +210,7 @@ AutomationProperties.AutomationId="RightRecircToggleButton"
                                   AutomationProperties.AccessKey="ALT+T"
                                   AutomationProperties.Name="Air trim"
 AutomationProperties.AutomationId="TrimToggleButton"
-                                  />
+                                  Click="trimToggleButton_Click"/>
                 </StackPanel>
             </TabItem>
         
@@ -244,7 +245,7 @@ AutomationProperties.AutomationId="TrimToggleButton"
                               AutomationProperties.AccessKey="ALT+O"
                               AutomationProperties.Name="Outflow valve"
                               AutomationProperties.AutomationId="OutflowComboBox"
-                              >
+                              SelectionChanged="outFlowComboBox_SelectionChanged">
                         <ComboBoxItem x:Name="outflowOpenComboBoxItem" Content="open"/>
                         <ComboBoxItem x:Name="outflowNeutralComboBoxItem" Content="neutral"/>
                         <ComboBoxItem x:Name="outflowClosedComboBoxItem" Content="closed"/>
@@ -266,7 +267,7 @@ AutomationProperties.AutomationId="TrimToggleButton"
                               AutomationProperties.AccessKey="ALT+I"
                               AutomationProperties.Name="Isolation valve"
                               AutomationProperties.AutomationId="IsolationComboBox"
-                              >
+                              SelectionChanged="isolationComboBox_SelectionChanged">
                         <ComboBoxItem x:Name="isolationClosedComboBoxItem" Content="closed"/>
                         <ComboBoxItem x:Name="isolationAutoComboBoxItem" Content="auto"/>
                         <ComboBoxItem x:Name="isolationOpenComboBoxItem" Content="open"/>
