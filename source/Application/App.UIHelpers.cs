@@ -47,6 +47,16 @@ namespace tfm
 
 public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
 
+        public void FocusWindow(System.Windows.Window targetWindow, System.Windows.Controls.Control targetControl)
+        {
+            targetWindow.Topmost = true;
+            targetWindow.ShowDialog();
+            targetWindow.Activate();
+            targetControl.Focus();
+            System.Windows.Input.Keyboard.Focus(targetControl);
+            targetWindow.BringIntoView();
+        }
+
                 public void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
         {
             string name = alternateName == null ? toggle.Name : alternateName;

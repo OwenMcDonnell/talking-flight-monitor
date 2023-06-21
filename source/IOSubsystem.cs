@@ -2230,7 +2230,7 @@ else                    if (PMDG777Detected)
                     break;
 
                 case "ap_PMDG_CDU":
-                    if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737"))
+                    if (PMDG737Detected)
                     {
                         var is737CDUOpen = false;
                         foreach (System.Windows.Window w in App.Current.Windows)
@@ -2250,7 +2250,7 @@ else                    if (PMDG777Detected)
                         else
                         {
                             tfm.PMDG.PMDG_737.Forms.CduDialog cdu = new PMDG.PMDG_737.Forms.CduDialog();
-                            cdu.ShowDialog();
+                            App.UI.FocusWindow(cdu, cdu.cduDisplay);
                             is737CDUOpen = true;
                             break;
                         } // End what to do if FMC isn't open.
@@ -2334,13 +2334,8 @@ else                    if (PMDG777Detected)
                         else
                         {
                             tfm.PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog cockpitPanels = new PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog();
-                            cockpitPanels.Topmost = true;                                                        
-                            cockpitPanels.Show();
-                            cockpitPanels.Activate();
-                            cockpitPanels.panelsTreeView.Focus();
-                            System.Windows.Input.Keyboard.Focus(cockpitPanels.panelsTreeView);
-                            cockpitPanels.BringIntoView();
-                        }
+                            App.UI.FocusWindow(cockpitPanels, cockpitPanels.panelsTreeView);
+                                                    }
                                             }
                     else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747"))
                     {
@@ -2471,8 +2466,18 @@ else                    if (PMDG777Detected)
                     App.Current.Shutdown();
                     break;
                 case "destination_runway":
-                    DestinationForm df = new DestinationForm();
-                    df.Show();
+                    
+foreach(var w in App.Current.Windows)
+                    {
+                        if(w.GetType().Name == "DestinationRunwayWindow")
+                        {
+                            Output(isGauge: false, output: "The destination runway dialog is already open!");
+                            return;
+                        }
+                    }
+
+                    Flight_planning.DestinationRunwayWindow dr = new Flight_planning.DestinationRunwayWindow();
+                    dr.ShowDialog();
                     break;
                 case "get_speedbreak":
 
