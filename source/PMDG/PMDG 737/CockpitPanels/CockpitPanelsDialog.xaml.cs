@@ -63,6 +63,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
             panelMappings["exteriorLights"] = new UserControlInfo { control = new OverheadExteriorLights(), Keywords = new[] { "Overhead", "exterior lights", "landing", "runway", "turn off", "taxi", "logo", "anti-collision", "position", "wing", "wheel well", "strobe" } };
             panelMappings["pressurization"] = new UserControlInfo { control = new OverheadPressurization(), Keywords = new[] { "Overhead", "pressurization", "flight altitude", "landing altitude", "pressurization mode" } };
             panelMappings["airSystems"] = new UserControlInfo { control = new OverheadAirSystems(), Keywords = new[] { "Overhead", "air systems", "temp source", "pack", "zone" } };
+            panelMappings["antiIce"] = new UserControlInfo { control = new OverheadAntiIce(), Keywords = new[] { "Overhead", "anti-ice", "window heat", "probe heat", "wing anti-ice", "engine anti-ice", "overheat" } };
         }
               
                 private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
