@@ -82,10 +82,12 @@ namespace tfm
                 Tolk.Output("Debug mode");
                 Tolk.PreferSAPI(false);
             }
-            if (tfm.Properties.Settings.Default.GeonamesUsername == "")
+            
+            ///todo: Determine if warning the user about geoname is needed.
+/*if(tfm.Properties.Settings.Default.GeonamesUsername == "")
             {
                 System.Windows.MessageBox.Show("Geonames username has not been configured. Flight following features will not function.\nGo to the General section in settings to add your Geonames user name\n", "error", MessageBoxButton.OK);
-            }
+            }*/
             // show the first run dialog
             if (tfm.Properties.Settings.Default.ShowFirstRunDialog)
             {
@@ -105,7 +107,8 @@ namespace tfm
                 SoundPlayer sound = new SoundPlayer(soundFile);
                 sound.Play();
             }
-        }
+
+                    }
         
         // This method is called every 1 second by the connection timer.
         private void TimerConnection_Tick(object sender, ElapsedEventArgs e)
@@ -135,15 +138,16 @@ namespace tfm
                 TFMDatabase.Initialize();
                 // load airport database
                 inst.Speak("loading airport database");
+                utility.LoadAirportsDatabase();
                 //dbLoadWorker.RunWorkerAsync();
 
-                utility.LoadAirportsDatabase();
-                // write version info to the debug log
+                                // write version info to the debug log
                 logger.Debug($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
                 logger.Debug($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
                 logger.Debug($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
                 logger.Debug($"SQLite version: {TFMDatabase.Version}");
 
+                App.Utilities.LoadDestination();
             }
             catch (Exception ex)
             {

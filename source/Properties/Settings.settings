@@ -149,5 +149,14 @@
     <Setting Name="FontSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">12</Value>
     </Setting>
+    <Setting Name="DestinationRunway" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DestinationAirport" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SaveDestination" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

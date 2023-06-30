@@ -306,8 +306,7 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
                 logger.Debug("SimBrief support not loaded");
                 Output(isGauge: false, output: "SimBrief support not loaded.");
             }
-           
-        }
+                    }
 
         private void RunTest(object sender, HotkeyEventArgs e)
         {
@@ -2477,7 +2476,7 @@ foreach(var w in App.Current.Windows)
                     }
 
                     Flight_planning.DestinationRunwayWindow dr = new Flight_planning.DestinationRunwayWindow();
-                    dr.ShowDialog();
+                                        App.UI.FocusWindow(dr, dr.airportTextBox);
                     break;
                 case "get_speedbreak":
 
