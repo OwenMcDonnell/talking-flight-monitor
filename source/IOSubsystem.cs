@@ -2436,10 +2436,18 @@ else                    if (PMDG777Detected)
                     }
                     break;
                 case "JumpToRunway":
+                    foreach(System.Windows.Window w in App.Current.Windows)
+                    {
+                        if(w.GetType().Name == "RunwaysDialog")
+                        {
+                            Output(isGauge: false, output: "The jump to runway dialog is already open!");
+                            return;
+                        }
+                    }
+                    tfm.JumpTo.RunwaysDialog rd = new JumpTo.RunwaysDialog();
+                    App.UI.FocusWindow(rd, rd.airportIcaoTextBox);
 
-                    JumpTo.RunwaysForm runwaysForm = new JumpTo.RunwaysForm();
-                    runwaysForm.ShowDialog();
-                    break;
+                                        break;
                 case "JumpToGate":
 
                     tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
