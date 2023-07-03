@@ -326,5 +326,8 @@
     <Setting Name="ShowSimBriefFlightPlan" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+Shift+B</Value>
     </Setting>
+    <Setting Name="DestinationRunwayInfo" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">N</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

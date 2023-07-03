@@ -140,9 +140,9 @@ namespace tfm.Flight_planning
             ilsDetails.AppendLine($"Identifier: {selectedRunway.ILSInfo.ID}");
             ilsDetails.AppendLine($"Frequency: {selectedRunway.ILSInfo.Frequency}");
             ilsDetails.AppendLine($"Course: {selectedRunway.ILSInfo.Heading}");
-            ilsDetails.AppendLine($"GS: angle: {selectedRunway.ILSInfo.Slope}");
-                      ilsDetails.AppendLine($"Identifier: {selectedRunway.ID}");
-            runwayDetailsTextBox.Text = ilsDetails.ToString();
+            ilsDetails.AppendLine($"GS angle: {selectedRunway.ILSInfo.Slope}");
+                        ilsDetails.AppendLine($"Landing pattern: {selectedRunway.PatternInfo.DirectionLanding}/{selectedRunway.PatternInfo.AltitudeFeet}");
+                                               runwayDetailsTextBox.Text = ilsDetails.ToString();
                     }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)

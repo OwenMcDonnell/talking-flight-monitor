@@ -2359,6 +2359,9 @@ else                    if (PMDG777Detected)
         {
             switch (Name)
             {
+                case "DestinationRunwayInfo":
+                    OnDestinationRunway();
+                    break;
                 case "ShowSimBriefFlightPlan":
 
                     var isSimBriefPlanOpen = false;
@@ -5281,6 +5284,26 @@ else if(currentLocation.Airport == null)
         {
             System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
         } // ReportIssue
+
+        public void OnDestinationRunway()
+        {
+            if(FlightPlan.DestinationRunway != null)
+            {
+               FlightPlan.DestinationRunway.Airport.SetReferenceLocation(AirportComponents.Runways);
+                var ID = FlightPlan.DestinationRunway.ID.ToString();
+                var course = Math.Round(FlightPlan.DestinationRunway.ILSInfo.Heading, 0);
+                var threshholdDistanceNauticalMiles = Math.Round(FlightPlan.DestinationRunway.ThresholdLocation.DistanceFromInNauticalMiles(new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value)), 0);
+                var threshholdDistanceFeet = Math.Round(FlightPlan.DestinationRunway.ThresholdLocation.DistanceFromInFeet(new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value)), 0);
+                var bearingTo = Math.Round(FlightPlan.DestinationRunway.ThresholdLocation.BearingTo(new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value)), 0);
+                var distance = threshholdDistanceNauticalMiles <= 1 ? threshholdDistanceFeet : threshholdDistanceNauticalMiles;
+                var distanceSuffix = threshholdDistanceNauticalMiles <= 1 ? "FT" : "NM";
+                Output(isGauge: false, output: $"RWY: {ID}. CRS: {course} degrees. Bearing {bearingTo} degrees. Thd: {distance}{distanceSuffix}.");
+            }
+            else
+            {
+                Output(isGauge: false, output: "No destination runway assigned.");
+            }
+        }
 
             } // End IOSubsystem class
 } // End TFM namespace.
