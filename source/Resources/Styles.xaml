@@ -15,8 +15,10 @@
     <Style TargetType="ComboBox" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="ComboBoxItem" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="DataGridCell" BasedOn="{StaticResource BaseStyle}"/>
     <Style TargetType="ToggleButton">
-        <Style.Triggers>
+                <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="Green" />
                 <Setter Property="Foreground" Value="White" />

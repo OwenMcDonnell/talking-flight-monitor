@@ -19,7 +19,7 @@ namespace tfm.Flight_planning
     public partial class DestinationRunwayWindow : Window
     {
 
-        FsAirport airport = new FsAirport();
+        FsAirport airport;
 
         public DestinationRunwayWindow()
         {
@@ -131,18 +131,22 @@ namespace tfm.Flight_planning
         {
 
             // Get the current runway from the destination airport in the flight plan.
-            var selectedComboBoxItem = runwayComboBox.SelectedItem as ComboBoxItem;
-            var selectedRunway = selectedComboBoxItem.Tag as FsRunway;
+            if (runwayComboBox.SelectedItem != null)
+            {
 
-            // Populate the ILS details textbox with the selected runway information.
-            StringBuilder ilsDetails = new StringBuilder();
-            ilsDetails.AppendLine($"Name: {selectedRunway.ILSInfo.Name}");
-            ilsDetails.AppendLine($"Identifier: {selectedRunway.ILSInfo.ID}");
-            ilsDetails.AppendLine($"Frequency: {selectedRunway.ILSInfo.Frequency}");
-            ilsDetails.AppendLine($"Course: {selectedRunway.ILSInfo.Heading}");
-            ilsDetails.AppendLine($"GS angle: {selectedRunway.ILSInfo.Slope}");
-                        ilsDetails.AppendLine($"Landing pattern: {selectedRunway.PatternInfo.DirectionLanding}/{selectedRunway.PatternInfo.AltitudeFeet}");
-                                               runwayDetailsTextBox.Text = ilsDetails.ToString();
+                var selectedComboBoxItem = runwayComboBox.SelectedItem as ComboBoxItem;
+                var selectedRunway = selectedComboBoxItem.Tag as FsRunway;
+
+                // Populate the ILS details textbox with the selected runway information.
+                StringBuilder ilsDetails = new StringBuilder();
+                ilsDetails.AppendLine($"Name: {selectedRunway.ILSInfo.Name}");
+                ilsDetails.AppendLine($"Identifier: {selectedRunway.ILSInfo.ID}");
+                ilsDetails.AppendLine($"Frequency: {selectedRunway.ILSInfo.Frequency}");
+                ilsDetails.AppendLine($"Course: {selectedRunway.ILSInfo.Heading}");
+                ilsDetails.AppendLine($"GS angle: {selectedRunway.ILSInfo.Slope}");
+                ilsDetails.AppendLine($"Landing pattern: {selectedRunway.PatternInfo.DirectionLanding}/{selectedRunway.PatternInfo.AltitudeFeet}");
+                runwayDetailsTextBox.Text = ilsDetails.ToString();
+            }
                     }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)

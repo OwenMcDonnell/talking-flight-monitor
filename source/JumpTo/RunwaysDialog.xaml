@@ -20,19 +20,20 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal"
                     Grid.Column="0"
                     Grid.Row="0"
-                    Margin="5, 5, 5, 5"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch">
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="5, 5, 5, 5">
             <Label x:Name="airportCodeLabel"
                    Content="Airport ICAO"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Margin="80, 10, 10, 10"
+                   Margin="10, 10, 10, 10"
                    AutomationProperties.Name="Airport ICAO label"
                    AutomationProperties.AutomationId="AirportIcaoLabel"
                    Target="{Binding ElementName=airportIcaoTextBox}"/>
@@ -40,7 +41,7 @@
                      Width="80"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
-                     Margin="10, 10, 80, 10"
+                     Margin="10, 10, 10, 10"
                      AutomationProperties.AcceleratorKey="ALT+A"
                      AutomationProperties.AccessKey="ALT+A"
                      AutomationProperties.Name="Airport ICAO"
