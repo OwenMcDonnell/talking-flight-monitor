@@ -45,9 +45,11 @@
                      AutomationProperties.AccessKey="ALT+A"
                      AutomationProperties.Name="Airport ICAO"
                      AutomationProperties.AutomationId="AirportIcaoTextBox"
+                     KeyDown="airportIcaoTextBox_KeyDown"
                      />
         </StackPanel>
         <DataGrid x:Name="runwaysDataGrid"
+                  AutoGenerateColumns="True"
               Grid.Row="1"
               Grid.Column="0"
               HorizontalAlignment="Stretch"
@@ -56,7 +58,8 @@
               AutomationProperties.AcceleratorKey="ALT+R"
               AutomationProperties.AccessKey="ALT+R"
               AutomationProperties.Name="Runways"
-              AutomationProperties.AutomationId="RunwaysDataGrid">
+              AutomationProperties.AutomationId="RunwaysDataGrid"
+PreviewKeyDown="runwaysDataGrid_PreviewKeyDown"                  >
             
         </DataGrid>
     </Grid>
