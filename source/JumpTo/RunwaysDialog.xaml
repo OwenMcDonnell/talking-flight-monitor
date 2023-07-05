@@ -49,9 +49,8 @@
                      KeyDown="airportIcaoTextBox_KeyDown"
                      />
         </StackPanel>
-        <DataGrid x:Name="runwaysDataGrid"
-                  AutoGenerateColumns="True"
-              Grid.Row="1"
+        <ListView x:Name="runwaysDataGrid"
+                                Grid.Row="1"
               Grid.Column="0"
               HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
@@ -61,7 +60,17 @@
               AutomationProperties.Name="Runways"
               AutomationProperties.AutomationId="RunwaysDataGrid"
 PreviewKeyDown="runwaysDataGrid_PreviewKeyDown"                  >
-            
-        </DataGrid>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Heading" DisplayMemberBinding="{Binding Heading}"/>
+                    <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Length}"/>
+                    <GridViewColumn Header="Width" DisplayMemberBinding="{Binding Width}"/>
+                    <GridViewColumn Header="In Use" DisplayMemberBinding="{Binding InUse}"/>
+                    <GridViewColumn Header="Can takeoff" DisplayMemberBinding="{Binding CanTakeoff}"/>
+                    <GridViewColumn Header="Can land" DisplayMemberBinding="{Binding CanLand}"/>
+                </GridView>
+            </ListView.View>
+</ListView>
     </Grid>
 </Window>

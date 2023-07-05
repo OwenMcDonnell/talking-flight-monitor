@@ -78,6 +78,14 @@ KeyDown="airportIcaoTextBox_KeyDown"                                          />
                 </ContextMenu>
 
             </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Bype}"/>
+                    <GridViewColumn Header="In use" DisplayMemberBinding="{Binding InUse}"/>
+                    <GridViewColumn Header="Radius (feet)" DisplayMemberBinding="{Binding RadiusFeet}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
     </Grid>
 

@@ -19,7 +19,7 @@ namespace tfm.Properties
 
         public override string ToString()
         {
-            return string.Empty;
+            return $"ID: {ID}, Heading: {Heading}, Length: {Length}, Width: {Width}, In use: {InUse}, Can takeoff: {CanTakeoff}, Can land: {CanLand}.";
         }
     }
 }
