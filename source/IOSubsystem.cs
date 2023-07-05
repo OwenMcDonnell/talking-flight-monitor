@@ -2453,9 +2453,18 @@ else                    if (PMDG777Detected)
                                         break;
                 case "JumpToGate":
 
-                    tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
-                    gatesForm.ShowDialog();
-                    break;
+                    foreach(System.Windows.Window w in App.Current.Windows)
+                    {
+                        if(w.GetType().Name == "GatesDialog")
+                        {
+                            Output(isGauge: false, output: "The jump to gates dialog is already open!");
+                            return;
+                        }
+                    }
+
+                    tfm.JumpTo.GatesDialog g = new JumpTo.GatesDialog();
+                    App.UI.FocusWindow(g, g.airportIcaoTextBox);
+                                        break;
                     
 
                 case "toggle_help_mode":
