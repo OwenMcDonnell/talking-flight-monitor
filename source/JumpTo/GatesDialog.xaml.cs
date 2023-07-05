@@ -56,7 +56,9 @@ Type = App.Utilities.GetGateType(gate),
                     }
 
                     GatesListView.ItemsSource = gatesData;
-                    Tolk.Output($"{gatesData.Count} gates loaded.");
+                    GatesListView.SelectedIndex = 0;
+                    Keyboard.Focus(GatesListView);
+                                        Tolk.Output($"{gatesData.Count} gates loaded.");
                 }
                 else
                 {

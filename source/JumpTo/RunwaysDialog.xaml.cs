@@ -59,7 +59,8 @@ namespace tfm.JumpTo
                         runwayDataGridRows.Add(row);
                                             } // loop
                     runwaysDataGrid.ItemsSource = runwayDataGridRows;
-                    Tolk.Output($"{airport.Runways.Count()} runways loaded.");
+                                        Tolk.Output($"{airport.Runways.Count()} runways loaded.");
+                    Keyboard.Focus(runwaysDataGrid);
                 } // airport not null
                 else
                 {
@@ -79,11 +80,7 @@ namespace tfm.JumpTo
                     airport.LoadComponents(AirportComponents.Runways);
                     var runway = airport.Runways[runwayData.ID.ToString()];
                                         runway.MoveAircraftHere(false);
-                    e.Handled = true;
-                    Dispatcher.BeginInvoke(new Action(() =>
-                    {
-                        Keyboard.Focus(airportIcaoTextBox);
-                    }));
+                    this.Close();                   
                 }
             }
         }
