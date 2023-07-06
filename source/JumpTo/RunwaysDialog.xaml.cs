@@ -40,7 +40,8 @@ namespace tfm.JumpTo
                 if (airport != null)
                 {
                     airport.LoadComponents(AirportComponents.Runways);
-                    runwaysDataGrid.Items.Clear();
+                    runwaysDataGrid.ItemsSource = null;
+                    runwayDataGridRows.Clear();
 
                     foreach (FsRunway runway in airport.Runways)
                     {
