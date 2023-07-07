@@ -3462,7 +3462,7 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
                     break;
             }
         } // CaptainMicrophoneSelector.
-
+                
         public static void EnterCDUText(int cdu, string text)
         {
             // convert the entered text to an array so we can get at each character
@@ -3584,13 +3584,9 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
                         case '.':
                             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DOT, Aircraft.ClkL);
                             break;
-
-
-                    }
+                                                                            }
                     Thread.Sleep(1000);
-
-
-                }
+                                    }
                 if (cdu == 2)
                 {
                     switch (ch)
@@ -3716,6 +3712,254 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
             }
         }
 
+        public static async  Task EnterCDUTextAsync(int cdu, string text)
+        {
+            // convert the entered text to an array so we can get at each character
+            char[] charArray = text.ToUpper().ToCharArray();
+            foreach (char ch in charArray)
+            {
+                if (cdu == 1)
+                {
+                    switch (ch)
+                    {
+                        case 'A':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_A, Aircraft.ClkL);
+                            break;
+                        case 'B':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_B, Aircraft.ClkL);
+                            break;
+                        case 'C':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_C, Aircraft.ClkL);
+                            break;
+                        case 'D':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_D, Aircraft.ClkL);
+                            break;
+                        case 'E':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_E, Aircraft.ClkL);
+                            break;
+                        case 'F':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_F, Aircraft.ClkL);
+                            break;
+                        case 'G':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_G, Aircraft.ClkL);
+                            break;
+                        case 'H':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_H, Aircraft.ClkL);
+                            break;
+                        case 'I':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_I, Aircraft.ClkL);
+                            break;
+                        case 'J':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_J, Aircraft.ClkL);
+                            break;
+                        case 'K':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_K, Aircraft.ClkL);
+                            break;
+                        case 'L':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L, Aircraft.ClkL);
+                            break;
+                        case 'M':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_M, Aircraft.ClkL);
+                            break;
+                        case 'N':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_N, Aircraft.ClkL);
+                            break;
+                        case 'O':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_O, Aircraft.ClkL);
+                            break;
+                        case 'P':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_P, Aircraft.ClkL);
+                            break;
+                        case 'Q':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_Q, Aircraft.ClkL);
+                            break;
+                        case 'R':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R, Aircraft.ClkL);
+                            break;
+                        case 'S':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_S, Aircraft.ClkL);
+                            break;
+                        case 'T':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_T, Aircraft.ClkL);
+                            break;
+                        case 'U':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_U, Aircraft.ClkL);
+                            break;
+                        case 'V':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_V, Aircraft.ClkL);
+                            break;
+                        case 'W':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_W, Aircraft.ClkL);
+                            break;
+                        case 'X':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_X, Aircraft.ClkL);
+                            break;
+                        case 'Y':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_Y, Aircraft.ClkL);
+                            break;
+                        case 'Z':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_Z, Aircraft.ClkL);
+                            break;
+                        case '1':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_1, Aircraft.ClkL);
+                            break;
+                        case '2':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_2, Aircraft.ClkL);
+                            break;
+                        case '3':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_3, Aircraft.ClkL);
+                            break;
+                        case '4':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_4, Aircraft.ClkL);
+                            break;
+                        case '5':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_5, Aircraft.ClkL);
+                            break;
+                        case '6':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_6, Aircraft.ClkL);
+                            break;
+                        case '7':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_7, Aircraft.ClkL);
+                            break;
+                        case '8':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_8, Aircraft.ClkL);
+                            break;
+                        case '9':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_9, Aircraft.ClkL);
+                            break;
+                        case '0':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_0, Aircraft.ClkL);
+                            break;
+                        case '.':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DOT, Aircraft.ClkL);
+                            break;
+                    }
+                    await Task.Delay(1000);
+                }
+                if (cdu == 2)
+                {
+                    switch (ch)
+                    {
+                        case 'A':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_A, Aircraft.ClkL);
+                            break;
+                        case 'B':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_B, Aircraft.ClkL);
+                            break;
+                        case 'C':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_C, Aircraft.ClkL);
+                            break;
+                        case 'D':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_D, Aircraft.ClkL);
+                            break;
+                        case 'E':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_E, Aircraft.ClkL);
+                            break;
+                        case 'F':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_F, Aircraft.ClkL);
+                            break;
+                        case 'G':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_G, Aircraft.ClkL);
+                            break;
+                        case 'H':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_H, Aircraft.ClkL);
+                            break;
+                        case 'I':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_I, Aircraft.ClkL);
+                            break;
+                        case 'J':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_J, Aircraft.ClkL);
+                            break;
+                        case 'K':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_K, Aircraft.ClkL);
+                            break;
+                        case 'L':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L, Aircraft.ClkL);
+                            break;
+                        case 'M':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_M, Aircraft.ClkL);
+                            break;
+                        case 'N':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_N, Aircraft.ClkL);
+                            break;
+                        case 'O':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_O, Aircraft.ClkL);
+                            break;
+                        case 'P':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_P, Aircraft.ClkL);
+                            break;
+                        case 'Q':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_Q, Aircraft.ClkL);
+                            break;
+                        case 'R':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R, Aircraft.ClkL);
+                            break;
+                        case 'S':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_S, Aircraft.ClkL);
+                            break;
+                        case 'T':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_T, Aircraft.ClkL);
+                            break;
+                        case 'U':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_U, Aircraft.ClkL);
+                            break;
+                        case 'V':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_V, Aircraft.ClkL);
+                            break;
+                        case 'W':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_W, Aircraft.ClkL);
+                            break;
+                        case 'X':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_X, Aircraft.ClkL);
+                            break;
+                        case 'Y':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_Y, Aircraft.ClkL);
+                            break;
+                        case 'Z':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_Z, Aircraft.ClkL);
+                            break;
+                        case '1':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_1, Aircraft.ClkL);
+                            break;
+                        case '2':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_2, Aircraft.ClkL);
+                            break;
+                        case '3':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_3, Aircraft.ClkL);
+                            break;
+                        case '4':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_4, Aircraft.ClkL);
+                            break;
+                        case '5':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_5, Aircraft.ClkL);
+                            break;
+                        case '6':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_6, Aircraft.ClkL);
+                            break;
+                        case '7':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_7, Aircraft.ClkL);
+                            break;
+                        case '8':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_8, Aircraft.ClkL);
+                            break;
+                        case '9':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_9, Aircraft.ClkL);
+                            break;
+                        case '0':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_0, Aircraft.ClkL);
+                            break;
+                        case '.':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_DOT, Aircraft.ClkL);
+                            break;
+
+
+                    }
+                    await Task.Delay(1000);
+
+
+                }
+            }
+        }
         public static string RefreshCDU(int CDUNumber)
         {
             PMDG_NGX_CDU_Screen cdu = null;
