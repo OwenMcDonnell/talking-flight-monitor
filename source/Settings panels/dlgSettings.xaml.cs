@@ -176,6 +176,15 @@ namespace tfm.Settings_panels
                 },
                 Keywords = new[] { "controls", "flaps", "gear", "alternate" }
             };
+            pageMappings["Forward737"] = new UserControlInfo
+            {
+                control = new ctlPMDG737Verbosity
+                {
+                    DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward", PanelSection: "Main")
+                },
+        Keywords = new[] {"Forward", "MCP", "737", "738", "739", "736", "disengage", "MCP", "red", "amber", "gear", "flaps"},
+            };
+                
             //pageMappings["NavigationDisplays"] = new UserControlInfo { control = new NavigationDisplaysPage();
             //pageMappings["Fuel737"] = new UserControlInfo { control = new Fuel737Page();
             //pageMappings["Electrical737"] = new UserControlInfo { control = new Electrical737Page();
@@ -232,6 +241,7 @@ namespace tfm.Settings_panels
             DialogResult = true;
             Properties.Settings.Default.Save();
             Properties.Weather.Default.Save();
+            Properties.pmdg737_offsets.Default.Save();
         }
 
         private void tvCategories_Loaded(object sender, RoutedEventArgs e)
