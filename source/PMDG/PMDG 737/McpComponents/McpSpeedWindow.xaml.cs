@@ -396,7 +396,7 @@ namespace tfm.PMDG.PMDG_737.McpComponents
 private void ArmSpeedBrake(object sender, ExecutedRoutedEventArgs e)
         {
             PMDG737Aircraft.SpeedBrakeArm();
-            Tolk.Output("Speed brake armed.");
+                Tolk.Output("Speed brake armed.");
         }
 
 private void FltSpeedBrake(object sender, ExecutedRoutedEventArgs e)

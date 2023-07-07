@@ -317,9 +317,6 @@
     <Setting Name="CloudTracking" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+O</Value>
     </Setting>
-    <Setting Name="LookAroundMode" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">F2</Value>
-    </Setting>
     <Setting Name="ap_Aircraft_Flows" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ctrl+F</Value>
     </Setting>
@@ -328,6 +325,27 @@
     </Setting>
     <Setting Name="DestinationRunwayInfo" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">N</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeDecrease" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F1</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeIncrease" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F2</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeOff" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F3</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeArm" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F4</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeHalf" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F5</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeFlight" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F6</Value>
+    </Setting>
+    <Setting Name="SpeedBrakeFull" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F7</Value>
     </Setting>
   </Settings>
 </SettingsFile>

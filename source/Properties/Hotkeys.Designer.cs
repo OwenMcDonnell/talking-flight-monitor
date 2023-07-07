@@ -1282,18 +1282,6 @@ namespace tfm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F2")]
-        public global::System.Windows.Forms.Keys LookAroundMode {
-            get {
-                return ((global::System.Windows.Forms.Keys)(this["LookAroundMode"]));
-            }
-            set {
-                this["LookAroundMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+F")]
         public global::System.Windows.Forms.Keys ap_Aircraft_Flows {
             get {
@@ -1325,6 +1313,90 @@ namespace tfm.Properties {
             }
             set {
                 this["DestinationRunwayInfo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F1")]
+        public global::System.Windows.Forms.Keys SpeedBrakeDecrease {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeDecrease"]));
+            }
+            set {
+                this["SpeedBrakeDecrease"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F2")]
+        public global::System.Windows.Forms.Keys SpeedBrakeIncrease {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeIncrease"]));
+            }
+            set {
+                this["SpeedBrakeIncrease"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F3")]
+        public global::System.Windows.Forms.Keys SpeedBrakeOff {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeOff"]));
+            }
+            set {
+                this["SpeedBrakeOff"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F4")]
+        public global::System.Windows.Forms.Keys SpeedBrakeArm {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeArm"]));
+            }
+            set {
+                this["SpeedBrakeArm"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F5")]
+        public global::System.Windows.Forms.Keys SpeedBrakeHalf {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeHalf"]));
+            }
+            set {
+                this["SpeedBrakeHalf"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F6")]
+        public global::System.Windows.Forms.Keys SpeedBrakeFlight {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeFlight"]));
+            }
+            set {
+                this["SpeedBrakeFlight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F7")]
+        public global::System.Windows.Forms.Keys SpeedBrakeFull {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["SpeedBrakeFull"]));
+            }
+            set {
+                this["SpeedBrakeFull"] = value;
             }
         }
     }

@@ -2359,6 +2359,42 @@ else                    if (PMDG777Detected)
         {
             switch (Name)
             {
+
+                case "SpeedBrakeDecrease":
+                    PMDG737Aircraft.SpeedBrakeDecrease();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
+                case "SpeedBrakeIncrease":
+                    PMDG737Aircraft.SpeedBrakeIncrease();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
+                case "SpeedBrakeArm":
+                    PMDG737Aircraft.SpeedBrakeArm();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
+                case "SpeedBrakeOff":
+                    PMDG737Aircraft.SpeedBrakeOff();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
+                case "SpeedBrakeFull":
+                    PMDG737Aircraft.SpeedBrakeFull();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
+                case "SpeedBrakeFlight":
+                    PMDG737Aircraft.SpeedBrakeFlight();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
+                case "SpeedBrakeHalf":
+                    PMDG737Aircraft.SpeedBrakeHalf();
+                    AnnounceCurrentSpeedBrake();
+                    break;
+
                 case "DestinationRunwayInfo":
                     OnDestinationRunway();
                     break;
@@ -5314,5 +5350,30 @@ else if(currentLocation.Airport == null)
             }
         }
 
-            } // End IOSubsystem class
+        public void AnnounceCurrentSpeedBrake()
+        {
+            Thread.Sleep(250);
+            switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
+            {
+                case 0:
+                    Tolk.Output("Speed brake off.");
+                    break;
+                case 100:
+                    Tolk.Output("Speed brake armed.");
+                    break;
+                case 250:
+                    Tolk.Output("Speed brake 50%.");
+                    break;
+                case 272:
+                    Tolk.Output("Speed brake FLT.");
+                    break;
+                case 400:
+                    Tolk.Output("Speed brake 100%.");
+                    break;
+                default:
+                    Tolk.Output($"Speed brake {PMDG737Aircraft.CurrentSpeedBrakePosition}.");
+                    break;
+            }
+        }
+    } // End IOSubsystem class
 } // End TFM namespace.
