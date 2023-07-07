@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -176,9 +177,32 @@ namespace tfm.Settings_panels
                 },
                 Keywords = new[] { "controls", "flaps", "gear", "alternate" }
             };
-            //pageMappings["NavigationDisplays"] = new UserControlInfo { control = new NavigationDisplaysPage();
-            //pageMappings["Fuel737"] = new UserControlInfo { control = new Fuel737Page();
-            //pageMappings["Electrical737"] = new UserControlInfo { control = new Electrical737Page();
+            pageMappings["Fuel737"] = new UserControlInfo
+            {
+                control = new ctlPMDG737Verbosity
+                {
+                    DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Fuel")
+                },
+                Keywords = new[] {"fuel", "forward", "center", "aft", "pump", "crossfeed", "pressure" }
+            };
+
+            pageMappings["NavigationDisplays"] = new UserControlInfo
+            {
+            control = new ctlPMDG737Verbosity
+            {
+                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Navigation/Displays")
+            },
+                Keywords = new[] {"navigation", "display", "IRS", "FMC", "VHF", "selector" }
+            };
+            pageMappings["Electrical737"] = new UserControlInfo
+            {
+                control = new ctlPMDG737Verbosity
+                {
+                    DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Electrical")
+                },
+                Keywords = new[] {"battery", "generator", "bus", "standby" }
+            };
+
             //pageMappings["APU"] = new UserControlInfo { control = new APUPage();
             //pageMappings["Wipers"] = new UserControlInfo { control = new WipersPage();
             //pageMappings["AntiIce"] = new UserControlInfo { control = new AntiIcePage();
