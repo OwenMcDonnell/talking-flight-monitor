@@ -60,6 +60,10 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
             panelMappings["pseu"] = new UserControlInfo { control = new OverheadPseu(), Keywords = new[] { "Overhead", "Maintenance", "PSEU", "warnings" } };
             panelMappings["servicePhone"] = new UserControlInfo { control = new OverheadServicePhone(), Keywords = new[] { "Overhead", "PA", "intercom", "call" } };
             panelMappings["engines"] = new UserControlInfo { control = new OverheadEngines(), Keywords = new[] { "Overhead", "engines", "APU starter", "ignition", "fuel start switch", "engine start switch", "idle", "cutoff", "grd", "ground", "continuous", "flt", "flight", "engine #1", "engine #2", "left engine", "right engine" } };
+            panelMappings["exteriorLights"] = new UserControlInfo { control = new OverheadExteriorLights(), Keywords = new[] { "Overhead", "exterior lights", "landing", "runway", "turn off", "taxi", "logo", "anti-collision", "position", "wing", "wheel well", "strobe" } };
+            panelMappings["pressurization"] = new UserControlInfo { control = new OverheadPressurization(), Keywords = new[] { "Overhead", "pressurization", "flight altitude", "landing altitude", "pressurization mode" } };
+            panelMappings["airSystems"] = new UserControlInfo { control = new OverheadAirSystems(), Keywords = new[] { "Overhead", "air systems", "temp source", "pack", "zone" } };
+            panelMappings["antiIce"] = new UserControlInfo { control = new OverheadAntiIce(), Keywords = new[] { "Overhead", "anti-ice", "window heat", "probe heat", "wing anti-ice", "engine anti-ice", "overheat" } };
         }
               
                 private void panelsTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -101,6 +105,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         private void clearSearchButton_Click(object sender, RoutedEventArgs e)
         {
             treeHelper.LoadTreeViewStateFromDisk(panelsTreeView, fileName);
+            searchTextBox.Clear();
             treeHelper.SelectFirstTreeViewItem(panelsTreeView);
             panelsTreeView.Focus();
             isSearchResultsDisplayed = false; // No longer showing search results.
@@ -187,7 +192,7 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
             treeHelper.ResetTreeView(panelsTreeView, originalTreeViewItems);
-            treeHelper.SelectFirstTreeViewItem(panelsTreeView);
+                        treeHelper.SelectFirstTreeViewItem(panelsTreeView);
             panelsTreeView.UpdateLayout();
             panelsTreeView.Focus();
             isSearchResultsDisplayed = false; //Search results are no longer displayed.

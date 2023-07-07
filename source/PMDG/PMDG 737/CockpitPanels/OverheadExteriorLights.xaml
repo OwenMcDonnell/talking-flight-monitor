@@ -5,8 +5,239 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
-</UserControl>
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <TabControl x:Name="exteriorLightsTabControl"
+                Margin="10, 10, 10, 10"
+                AutomationProperties.Name="Exterior lights"
+                AutomationProperties.AutomationId="ExteriorLightsTabControl">
+        
+        <!--Retractable landing lights-->
+        <TabItem x:Name="retractableLandingTabItem"
+                 Header="Retractable"
+                 AutomationProperties.Name="Retractable landing"
+                 AutomationProperties.AutomationId="RetractableLandingTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="leftRetractableLabel"
+                       Content="Left"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Margin="10, 5, 5, 5"
+                       AutomationProperties.Name="Left label"
+                       AutomationProperties.AutomationId="LeftRetractableLabel"
+                       Target="{Binding ElementName=leftRetractableComboBox}"/>
+                <ComboBox x:Name="leftRetractableComboBox"
+                          Grid.Column="1"
+                          Grid.Row="0"
+                          Margin="5, 5, 5, 5"
+                          AutomationProperties.AcceleratorKey="ALT+L"
+                          AutomationProperties.AccessKey="ALT+L"
+                          AutomationProperties.Name="Left retractable"
+                          AutomationProperties.AutomationId="LeftRetractableComboBox"
+                          SelectionChanged="leftRetractableComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="leftRetractComboBoxItem" Content="retract"/>
+                    <ComboBoxItem x:Name="leftExtendComboBoxItem" Content="extend"/>
+                    <ComboBoxItem x:Name="leftOnComboBoxItem" Content="on"/>
+                </ComboBox>
+
+                <Label x:Name="rightRetractableLabel"
+                       Content="Right"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       Margin="10, 5, 5, 5"
+                       AutomationProperties.Name="Right label"
+                       AutomationProperties.AutomationId="RightRetractableLabel"
+                       Target="{Binding ElementName=rightRetractableComboBox}"/>
+                <ComboBox x:Name="rightRetractableComboBox"
+                          Grid.Column="1"
+                          Grid.Row="1"
+                          Margin="5, 5, 5, 5"
+                          AutomationProperties.AcceleratorKey="ALT+R"
+                          AutomationProperties.AccessKey="ALT+R"
+                          AutomationProperties.Name="Right retractable"
+                          AutomationProperties.AutomationId="RightRetractableComboBox"
+                          SelectionChanged="rightRetractableComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="rightRetractComboBoxItem" Content="retract"/>
+                    <ComboBoxItem x:Name="rightExtendComboBoxItem" Content="extend"/>
+                    <ComboBoxItem x:Name="rightOnComboBoxItem" Content="on"/>
+                </ComboBox>
+            </Grid>
+        </TabItem>
+        
+        <!--Fixed landing lights-->
+        <TabItem x:Name="fixedLandingTabItem"
+                 Header="Fixed"
+                 AutomationProperties.Name="Fixed landing"
+                 AutomationProperties.AutomationId="FixedLandingTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="leftFixedToggleButton"
+                              Content="Left fixed"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+L"
+                              AutomationProperties.AccessKey="ALT+L"
+                              AutomationProperties.Name="Left fixed"
+                              AutomationProperties.AutomationId="LeftFixedToggleButton"
+                              Click="leftFixedToggleButton_Click"/>
+
+                <ToggleButton x:Name="rightFixedToggleButton"
+                              Content="Right fixed"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+R"
+                              AutomationProperties.AccessKey="ALT+R"
+                              AutomationProperties.Name="Right fixed"
+                              AutomationProperties.AutomationId="RightFixedToggleButton"
+                              Click="rightFixedToggleButton_Click"/>
+
+            </Grid>
+        </TabItem>
+
+        <!--Runway turnoff lights-->
+        <TabItem x:Name="runwayTurnOffTabItem"
+                 Header="Rwy turnn off"
+                 AutomationProperties.Name="Runway turnoff"
+                 AutomationProperties.AutomationId="RunwayTurnOffTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="leftTurnOffToggleButton"
+                              Content="Left turn off"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+L"
+                              AutomationProperties.AccessKey="ALT+L"
+                              AutomationProperties.Name="Left turn off"
+                              AutomationProperties.AutomationId="LeftTurnOffToggleButton"
+Click="leftTurnOffToggleButton_Click"                              />
+
+                <ToggleButton x:Name="rightTurnOffToggleButton"
+                              Content="Right turn off"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+R"
+                              AutomationProperties.AccessKey="ALT+R"
+                              AutomationProperties.Name="Right turn off"
+                              AutomationProperties.AutomationId="RightTurnOffToggleButton"
+                              Click="rightTurnOffToggleButton_Click"/>
+
+            </Grid>
+        </TabItem>
+
+        <!--Exterior safety lights-->
+        <TabItem x:Name="safetyTabItem"
+                 Header="Safety"
+                 AutomationProperties.Name="Exterior safety"
+                 AutomationProperties.AutomationId="ExteriorSafetyTabItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="taxiToggleButton"
+                              Content="Taxi"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+T"
+                              AutomationProperties.AccessKey="ALT+T"
+                              AutomationProperties.Name="Taxi"
+                              AutomationProperties.AutomationId="TaxiToggleButton"
+                              Click="taxiToggleButton_Click"/>
+
+                <ToggleButton x:Name="logoToggleButton"
+                              Content="Logo"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+G"
+                              AutomationProperties.AccessKey="ALT+G"
+                              AutomationProperties.Name="Logo"
+                              AutomationProperties.AutomationId="LogoToggleButton"
+                              Click="logoToggleButton_Click"/>
+
+                <ToggleButton x:Name="antiCollisionToggleButton"
+                              Content="Anti-collision"
+                              Grid.Column="2"
+                              Grid.Row="0"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+A"
+                              AutomationProperties.AccessKey="ALT+A"
+                              AutomationProperties.Name="Anti-collision"
+                              AutomationProperties.AutomationId="AntiCollisionToggleButton"
+                              Click="antiCollisionToggleButton_Click"/>
+
+                <ToggleButton x:Name="wingToggleButton"
+                              Content="Wing"
+                              Grid.Column="0"
+                              Grid.Row="1"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+W"
+                              AutomationProperties.AccessKey="ALT+W"
+                              AutomationProperties.Name="Wing"
+                              AutomationProperties.AutomationId="WingToggleButton"
+                              Click="wingToggleButton_Click"/>
+
+                <ToggleButton x:Name="wheelWellToggleButton"
+                              Content="Wheel well"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+H"
+                              AutomationProperties.AccessKey="ALT+H"
+                              AutomationProperties.Name="Wheel well"
+                              AutomationProperties.AutomationId="WheelWellToggleButton"
+                              Click="wheelWellToggleButton_Click"/>
+
+                <Button x:Name="positionButton"
+                              Content="Position"
+                              Grid.Column="2"
+                              Grid.Row="1"
+                              Margin="5, 5, 5, 5"
+                              AutomationProperties.AcceleratorKey="ALT+P"
+                              AutomationProperties.AccessKey="ALT+P"
+                              AutomationProperties.Name="Position"
+                              AutomationProperties.AutomationId="PositionButton"
+                              Click="positionButton_Click"/>
+
+            </Grid>
+        </TabItem>
+
+    </TabControl>
+    </UserControl>

@@ -306,8 +306,7 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
                 logger.Debug("SimBrief support not loaded");
                 Output(isGauge: false, output: "SimBrief support not loaded.");
             }
-           
-        }
+                    }
 
         private void RunTest(object sender, HotkeyEventArgs e)
         {
@@ -2230,7 +2229,7 @@ else                    if (PMDG777Detected)
                     break;
 
                 case "ap_PMDG_CDU":
-                    if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737"))
+                    if (PMDG737Detected)
                     {
                         var is737CDUOpen = false;
                         foreach (System.Windows.Window w in App.Current.Windows)
@@ -2250,7 +2249,7 @@ else                    if (PMDG777Detected)
                         else
                         {
                             tfm.PMDG.PMDG_737.Forms.CduDialog cdu = new PMDG.PMDG_737.Forms.CduDialog();
-                            cdu.ShowDialog();
+                            App.UI.FocusWindow(cdu, cdu.cduDisplay);
                             is737CDUOpen = true;
                             break;
                         } // End what to do if FMC isn't open.
@@ -2334,8 +2333,8 @@ else                    if (PMDG777Detected)
                         else
                         {
                             tfm.PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog cockpitPanels = new PMDG.PMDG_737.CockpitPanels.CockpitPanelsDialog();
-                            cockpitPanels.Show();
-                        }
+                            App.UI.FocusWindow(cockpitPanels, cockpitPanels.panelsTreeView);
+                                                    }
                                             }
                     else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747"))
                     {
@@ -2360,6 +2359,9 @@ else                    if (PMDG777Detected)
         {
             switch (Name)
             {
+                case "DestinationRunwayInfo":
+                    OnDestinationRunway();
+                    break;
                 case "ShowSimBriefFlightPlan":
 
                     var isSimBriefPlanOpen = false;
@@ -2437,15 +2439,32 @@ else                    if (PMDG777Detected)
                     }
                     break;
                 case "JumpToRunway":
+                    foreach(System.Windows.Window w in App.Current.Windows)
+                    {
+                        if(w.GetType().Name == "RunwaysDialog")
+                        {
+                            Output(isGauge: false, output: "The jump to runway dialog is already open!");
+                            return;
+                        }
+                    }
+                    tfm.JumpTo.RunwaysDialog rd = new JumpTo.RunwaysDialog();
+                    App.UI.FocusWindow(rd, rd.airportIcaoTextBox);
 
-                    JumpTo.RunwaysForm runwaysForm = new JumpTo.RunwaysForm();
-                    runwaysForm.ShowDialog();
-                    break;
+                                        break;
                 case "JumpToGate":
 
-                    tfm.JumpTo.GatesForm gatesForm = new JumpTo.GatesForm();
-                    gatesForm.ShowDialog();
-                    break;
+                    foreach(System.Windows.Window w in App.Current.Windows)
+                    {
+                        if(w.GetType().Name == "GatesDialog")
+                        {
+                            Output(isGauge: false, output: "The jump to gates dialog is already open!");
+                            return;
+                        }
+                    }
+
+                    tfm.JumpTo.GatesDialog g = new JumpTo.GatesDialog();
+                    App.UI.FocusWindow(g, g.airportIcaoTextBox);
+                                        break;
                     
 
                 case "toggle_help_mode":
@@ -2466,8 +2485,18 @@ else                    if (PMDG777Detected)
                     App.Current.Shutdown();
                     break;
                 case "destination_runway":
-                    DestinationForm df = new DestinationForm();
-                    df.Show();
+                    
+foreach(var w in App.Current.Windows)
+                    {
+                        if(w.GetType().Name == "DestinationRunwayWindow")
+                        {
+                            Output(isGauge: false, output: "The destination runway dialog is already open!");
+                            return;
+                        }
+                    }
+
+                    Flight_planning.DestinationRunwayWindow dr = new Flight_planning.DestinationRunwayWindow();
+                                        App.UI.FocusWindow(dr, dr.airportTextBox);
                     break;
                 case "get_speedbreak":
 
@@ -5264,6 +5293,26 @@ else if(currentLocation.Airport == null)
         {
             System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
         } // ReportIssue
+
+        public void OnDestinationRunway()
+        {
+            if(FlightPlan.DestinationRunway != null)
+            {
+               FlightPlan.DestinationRunway.Airport.SetReferenceLocation(AirportComponents.Runways);
+                var ID = FlightPlan.DestinationRunway.ID.ToString();
+                var course = Math.Round(FlightPlan.DestinationRunway.ILSInfo.Heading, 0);
+                var threshholdDistanceNauticalMiles = Math.Round(FlightPlan.DestinationRunway.ThresholdLocation.DistanceFromInNauticalMiles(new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value)), 0);
+                var threshholdDistanceFeet = Math.Round(FlightPlan.DestinationRunway.ThresholdLocation.DistanceFromInFeet(new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value)), 0);
+                var bearingTo = Math.Round(FlightPlan.DestinationRunway.ThresholdLocation.BearingTo(new FsLatLonPoint(Aircraft.aircraftLat.Value, Aircraft.aircraftLon.Value)), 0);
+                var distance = threshholdDistanceNauticalMiles <= 1 ? threshholdDistanceFeet : threshholdDistanceNauticalMiles;
+                var distanceSuffix = threshholdDistanceNauticalMiles <= 1 ? "FT" : "NM";
+                Output(isGauge: false, output: $"RWY: {ID}. CRS: {course} degrees. Bearing {bearingTo} degrees. Thd: {distance}{distanceSuffix}.");
+            }
+            else
+            {
+                Output(isGauge: false, output: "No destination runway assigned.");
+            }
+        }
 
             } // End IOSubsystem class
 } // End TFM namespace.

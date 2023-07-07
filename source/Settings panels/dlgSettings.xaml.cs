@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -177,32 +176,18 @@ namespace tfm.Settings_panels
                 },
                 Keywords = new[] { "controls", "flaps", "gear", "alternate" }
             };
-            pageMappings["Fuel737"] = new UserControlInfo
+            pageMappings["Forward737"] = new UserControlInfo
             {
                 control = new ctlPMDG737Verbosity
                 {
-                    DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Fuel")
+                    DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward", PanelSection: "Main")
                 },
-                Keywords = new[] {"fuel", "forward", "center", "aft", "pump", "crossfeed", "pressure" }
+        Keywords = new[] {"Forward", "MCP", "737", "738", "739", "736", "disengage", "MCP", "red", "amber", "gear", "flaps"},
             };
-
-            pageMappings["NavigationDisplays"] = new UserControlInfo
-            {
-            control = new ctlPMDG737Verbosity
-            {
-                DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Navigation/Displays")
-            },
-                Keywords = new[] {"navigation", "display", "IRS", "FMC", "VHF", "selector" }
-            };
-            pageMappings["Electrical737"] = new UserControlInfo
-            {
-                control = new ctlPMDG737Verbosity
-                {
-                    DataContext = new ctlPMDG737VerbosityViewModel(PanelName: "Forward Overhead", PanelSection: "Electrical")
-                },
-                Keywords = new[] {"battery", "generator", "bus", "standby" }
-            };
-
+                
+            //pageMappings["NavigationDisplays"] = new UserControlInfo { control = new NavigationDisplaysPage();
+            //pageMappings["Fuel737"] = new UserControlInfo { control = new Fuel737Page();
+            //pageMappings["Electrical737"] = new UserControlInfo { control = new Electrical737Page();
             //pageMappings["APU"] = new UserControlInfo { control = new APUPage();
             //pageMappings["Wipers"] = new UserControlInfo { control = new WipersPage();
             //pageMappings["AntiIce"] = new UserControlInfo { control = new AntiIcePage();
@@ -256,6 +241,7 @@ namespace tfm.Settings_panels
             DialogResult = true;
             Properties.Settings.Default.Save();
             Properties.Weather.Default.Save();
+            Properties.pmdg737_offsets.Default.Save();
         }
 
         private void tvCategories_Loaded(object sender, RoutedEventArgs e)

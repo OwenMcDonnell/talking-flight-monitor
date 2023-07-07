@@ -1,0 +1,92 @@
+﻿<Window x:Class="tfm.JumpTo.GatesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfm.JumpTo"
+        mc:Ignorable="d"
+        Title="Jump to gate" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="5, 5, 5, 5">
+            <Label x:Name="airportCodeLabel"
+                   Content="Airport ICAO"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="10, 10, 10, 10"
+                   AutomationProperties.Name="Airport ICAO label"
+                   AutomationProperties.AutomationId="AirportIcaoLabel"
+                   Target="{Binding ElementName=airportIcaoTextBox}"/>
+            <TextBox x:Name="airportIcaoTextBox"
+                     Width="80"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Margin="10, 10, 10, 10"
+                     AutomationProperties.AcceleratorKey="ALT+A"
+                     AutomationProperties.AccessKey="ALT+A"
+                     AutomationProperties.Name="Airport ICAO"
+                     AutomationProperties.AutomationId="AirportIcaoTextBox"
+KeyDown="airportIcaoTextBox_KeyDown"                                          />
+        </StackPanel>
+        <ListView x:Name="GatesListView"
+              Grid.Row="1"
+              Grid.Column="0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Margin="10, 10, 10, 10"
+              AutomationProperties.AcceleratorKey="ALT+G"
+              AutomationProperties.AccessKey="ALT+G"
+              AutomationProperties.Name="Gates"
+              AutomationProperties.AutomationId="GatesListView"
+                  PreviewKeyDown="GatesListView_PreviewKeyDown">
+            <ListView.ContextMenu>
+                <ContextMenu AutomationProperties.Name="Filter gates">
+                    <MenuItem Header="_Ramps">
+                        <MenuItem x:Name="allRampsMenuItem" Header="_All" Click="allRampsMenuItem_Click"/>
+                        <MenuItem x:Name="allGAMenuItem" Header="_All GA" Click="allGAMenuItem_Click"/>
+                        <MenuItem x:Name="gaSmallMenuItem" Header="GA _small" Click="gaSmallMenuItem_Click"/>
+                        <MenuItem x:Name="gaMediumMenuItem" Header="GA _medium" Click="gaMediumMenuItem_Click"/>
+                        <MenuItem x:Name="gaLargeMenuItem" Header="GA _large" Click="gaLargeMenuItem_Click"/>
+                        <MenuItem x:Name="cargoMenuItem" Header="_Cargo" Click="cargoMenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="_Gates">
+                        <MenuItem x:Name="allGatesMenuItem" Header="_All" Click="allGatesMenuItem_Click"/>
+                        <MenuItem x:Name="smallGatesMenuItem" Header="_Small" Click="smallGatesMenuItem_Click"/>
+                        <MenuItem x:Name="mediumGatesMenuItem" Header="_Medium" Click="mediumGatesMenuItem_Click"/>
+                        <MenuItem x:Name="heavyGatesMenuItem" Header="_Heavy" Click="heavyGatesMenuItem_Click"/>
+                    </MenuItem>
+                </ContextMenu>
+
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Bype}"/>
+                    <GridViewColumn Header="In use" DisplayMemberBinding="{Binding InUse}"/>
+                    <GridViewColumn Header="Radius (feet)" DisplayMemberBinding="{Binding RadiusFeet}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+
+</Window>

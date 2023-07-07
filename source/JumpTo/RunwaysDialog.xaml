@@ -1,0 +1,76 @@
+﻿<Window x:Class="tfm.JumpTo.RunwaysDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfm.JumpTo"
+        mc:Ignorable="d"
+        Title="Jump to runway" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="5, 5, 5, 5">
+            <Label x:Name="airportCodeLabel"
+                   Content="Airport ICAO"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="10, 10, 10, 10"
+                   AutomationProperties.Name="Airport ICAO label"
+                   AutomationProperties.AutomationId="AirportIcaoLabel"
+                   Target="{Binding ElementName=airportIcaoTextBox}"/>
+            <TextBox x:Name="airportIcaoTextBox"
+                     Width="80"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Margin="10, 10, 10, 10"
+                     AutomationProperties.AcceleratorKey="ALT+A"
+                     AutomationProperties.AccessKey="ALT+A"
+                     AutomationProperties.Name="Airport ICAO"
+                     AutomationProperties.AutomationId="AirportIcaoTextBox"
+                     KeyDown="airportIcaoTextBox_KeyDown"
+                     />
+        </StackPanel>
+        <ListView x:Name="runwaysDataGrid"
+                                Grid.Row="1"
+              Grid.Column="0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Margin="10, 10, 10, 10"
+              AutomationProperties.AcceleratorKey="ALT+R"
+              AutomationProperties.AccessKey="ALT+R"
+              AutomationProperties.Name="Runways"
+              AutomationProperties.AutomationId="RunwaysDataGrid"
+PreviewKeyDown="runwaysDataGrid_PreviewKeyDown"                  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Heading" DisplayMemberBinding="{Binding Heading}"/>
+                    <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Length}"/>
+                    <GridViewColumn Header="Width" DisplayMemberBinding="{Binding Width}"/>
+                    <GridViewColumn Header="In Use" DisplayMemberBinding="{Binding InUse}"/>
+                    <GridViewColumn Header="Can takeoff" DisplayMemberBinding="{Binding CanTakeoff}"/>
+                    <GridViewColumn Header="Can land" DisplayMemberBinding="{Binding CanLand}"/>
+                </GridView>
+            </ListView.View>
+</ListView>
+    </Grid>
+</Window>
