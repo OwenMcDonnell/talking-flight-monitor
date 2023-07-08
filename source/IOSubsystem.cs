@@ -2234,7 +2234,7 @@ else                    if (PMDG777Detected)
                         var is737CDUOpen = false;
                         foreach (System.Windows.Window w in App.Current.Windows)
                         {
-                            if (w is tfm.PMDG.PMDG_737.Forms.CduDialog)
+                            if (w is tfm.PMDG.PMDG_737.Forms.Cdu1Dialog)
                             {
                                 is737CDUOpen = true;
                                 break;
@@ -2248,7 +2248,7 @@ else                    if (PMDG777Detected)
                         } // End what to do when CDU is already open.
                         else
                         {
-                            tfm.PMDG.PMDG_737.Forms.CduDialog cdu = new PMDG.PMDG_737.Forms.CduDialog();
+                            tfm.PMDG.PMDG_737.Forms.Cdu1Dialog cdu = new PMDG.PMDG_737.Forms.Cdu1Dialog();
                             App.UI.FocusWindow(cdu, cdu.cduDisplay);
                             is737CDUOpen = true;
                             break;

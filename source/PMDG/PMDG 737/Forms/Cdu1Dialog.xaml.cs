@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 
 namespace tfm.PMDG.PMDG_737.Forms
 {
-        public partial class CduDialog : Window
+        public partial class Cdu1Dialog : Window
     {
 
         private CancellationTokenSource cduTimerCancellationTokenSource;
@@ -26,7 +26,7 @@ namespace tfm.PMDG.PMDG_737.Forms
         private string oldCDUScreen;
         private string oldScreenTitle;
 
-        public CduDialog()
+        public Cdu1Dialog()
         {
             InitializeComponent();
             RefreshCDU();
@@ -473,11 +473,12 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
             if(e.Key == Key.Enter)
             {
                 var requestedCDU = 1;
+                var scratchpadText = ScratchpadTextBox.Text;
                 ScratchpadTextBox.Clear();
-                await              PMDG737Aircraft.EnterCDUTextAsync(requestedCDU, ScratchpadTextBox.Text);
+await                                PMDG737Aircraft.EnterCDUTextAsync(requestedCDU, ScratchpadTextBox.Text);
                 if(requestedCDU == 1)
                 {
-                    var inst = new IOSubsystem(false);
+                                        var inst = new IOSubsystem(false);
                     inst.Output(isGauge: false, output: "CDU ready.", useSAPI: true);
                 }
                             }
