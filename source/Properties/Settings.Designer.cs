@@ -646,5 +646,41 @@ namespace tfm.Properties {
                 this["SaveDestination"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AnnounceCDU1Ready {
+            get {
+                return ((bool)(this["AnnounceCDU1Ready"]));
+            }
+            set {
+                this["AnnounceCDU1Ready"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AnnounceCDU2Ready {
+            get {
+                return ((bool)(this["AnnounceCDU2Ready"]));
+            }
+            set {
+                this["AnnounceCDU2Ready"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AnnounceCDU3Ready {
+            get {
+                return ((bool)(this["AnnounceCDU3Ready"]));
+            }
+            set {
+                this["AnnounceCDU3Ready"] = value;
+            }
+        }
     }
 }

@@ -65,6 +65,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="PMDG\PMDG 737\Forms\Cdu2Dialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Properties\Hotkeys.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>

@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 
 namespace tfm.PMDG.PMDG_737.Forms
 {
-        public partial class Cdu1Dialog : Window
+        public partial class Cdu2Dialog : Window
     {
 
         private CancellationTokenSource cduTimerCancellationTokenSource;
@@ -26,7 +26,7 @@ namespace tfm.PMDG.PMDG_737.Forms
         private string oldCDUScreen;
         private string oldScreenTitle;
 
-        public Cdu1Dialog()
+        public Cdu2Dialog()
         {
             InitializeComponent();
             RefreshCDU();
@@ -104,12 +104,12 @@ namespace tfm.PMDG.PMDG_737.Forms
             cduDisplay.Clear();
 
             Thread.Sleep(500);
-            string displayText = PMDG737Aircraft.RefreshCDU(0);
+            string displayText = PMDG737Aircraft.RefreshCDU(1);
 
             // Set the title of the window if the CDU is powered.
-            if (PMDG737Aircraft.cdu0.Powered)
+            if (PMDG737Aircraft.cdu1.Powered)
             {
-                this.Title = PMDG737Aircraft.cdu0.Rows[0].ToString().Trim();
+                this.Title = PMDG737Aircraft.cdu1.Rows[0].ToString().Trim();
                                 cduDisplay.Text = displayText;
                 cduDisplay.CaretIndex = Math.Min(currentCaretPosition, displayText.Length);
             }
@@ -260,84 +260,84 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
 
         private void ActivateLsk1Left(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L1, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L1, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk2Left(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L2, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L2, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk3Left(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L3, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L3, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk4Left(object sender, ExecutedRoutedEventArgs executed)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L4, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L4, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk5Left(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L5, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L5, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk6Left(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_L6, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_L6, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk1Right(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R1, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R1, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void ActivateLsk2Right(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R2, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R2, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk3Right(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R3, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R3, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk4Right(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R4, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R4, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk5Right(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R5, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R5, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
         
         private void ActivateLsk6Right(object sender, ExecutedRoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_R6, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_R6, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
@@ -347,111 +347,111 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
         #region "Control events"
         private void initRefButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_INIT_REF, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_INIT_REF, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
                                         private void rteButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_RTE, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_RTE, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void clbButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_CLB, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_CLB, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void crzButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_CRZ, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_CRZ, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void desButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DES, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_DES, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
                 private void legsButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_LEGS, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_LEGS, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void depArButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DEP_ARR, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_DEP_ARR, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void holdButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_HOLD, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_HOLD, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void progButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_PROG, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_PROG, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void n1LimitButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_N1_LIMIT, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_N1_LIMIT, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void fixButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_FIX, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_FIX, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void prevButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_PREV_PAGE, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_PREV_PAGE, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_NEXT_PAGE, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_NEXT_PAGE, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void menuButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_MENU, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_MENU, Aircraft.ClkL);
             RefreshCDU();
             AnnounceScreenTitle();
         }
 
         private void execButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_EXEC, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_EXEC, Aircraft.ClkL);
             RefreshCDU();
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_CLR, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_CLR, Aircraft.ClkL);
             ScratchpadTextBox.Clear();
             Tolk.Output("Scratchpad cleared.");
             RefreshCDU();
@@ -464,7 +464,7 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DEL, Aircraft.ClkL);
+            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_R_DEL, Aircraft.ClkL);
             RefreshCDU();
         }
 
@@ -472,14 +472,14 @@ private void ActivatePreviousPage(object sender, ExecutedRoutedEventArgs e)
         {
             if(e.Key == Key.Enter)
             {
-                var requestedCDU = 1;
+                var requestedCDU = 2;
                 var scratchpadText = ScratchpadTextBox.Text;
                 ScratchpadTextBox.Clear();
 await                                PMDG737Aircraft.EnterCDUTextAsync(requestedCDU, scratchpadText);
-                if(Properties.Settings.Default.AnnounceCDU1Ready)                
+                if(Properties.Settings.Default.AnnounceCDU2Ready)                
                 {
                                         var inst = new IOSubsystem(false);
-                    inst.Output(isGauge: false, output: "CDU 1 ready.", useSAPI: true);
+                    inst.Output(isGauge: false, output: "CDU 2 ready.", useSAPI: true);
                 }
                             }
         }

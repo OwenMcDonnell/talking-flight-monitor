@@ -347,5 +347,8 @@
     <Setting Name="SpeedBrakeFull" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">F7</Value>
     </Setting>
+    <Setting Name="ap_PMDG_CDU2" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+Shift+C</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

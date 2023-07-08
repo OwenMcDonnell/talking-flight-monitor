@@ -2228,6 +2228,36 @@ else                    if (PMDG777Detected)
                     ap.ShowDialog();
                     break;
 
+                case "ap_PMDG_CDU2":
+                    if (PMDG737Detected)
+                    {
+                        var is737CDUOpen = false;
+                        foreach (System.Windows.Window w in App.Current.Windows)
+                        {
+                            if (w is tfm.PMDG.PMDG_737.Forms.Cdu2Dialog)
+                            {
+                                is737CDUOpen = true;
+                                break;
+                            } // End the form is valid.
+                        } // End foreach
+
+                        if (is737CDUOpen)
+                        {
+                            Output(isGauge: false, output: "The FMC window is already open!");
+                            break;
+                        } // End what to do when CDU is already open.
+                        else
+                        {
+                            tfm.PMDG.PMDG_737.Forms.Cdu2Dialog cdu = new PMDG.PMDG_737.Forms.Cdu2Dialog();
+                            App.UI.FocusWindow(cdu, cdu.cduDisplay);
+                            is737CDUOpen = true;
+                            break;
+                        } // End what to do if FMC isn't open.
+                        is737CDUOpen = false;
+                        break;
+                    } // End checking for PMDG 737
+
+                    break;
                 case "ap_PMDG_CDU":
                     if (PMDG737Detected)
                     {

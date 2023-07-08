@@ -1,0 +1,71 @@
+﻿<Window x:Class="tfm.PMDG.PMDG_737.Forms.Cdu2Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.Forms"
+        xmlns:converters="clr-namespace:tfm.Converters"
+        mc:Ignorable="d"
+        Title="PMDG 737 CDU" Height="600" Width="800" AutomationProperties.IsDialog="True" SizeToContent="Width" Closing="Window_Closing">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.focusCDUDisplay}" Executed="FocusCDUDisplay"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.focusScratchpad}" Executed="FocusScratchpadExecuted"/>
+                <CommandBinding Command="{x:Static local:CDUKeyCommands.initRefPage}" Executed="ActivateInitRefPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.rtePage}" Executed="ActivateRtePage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.clbPage}" Executed="ActivateClbPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.crzPage}" Executed="ActivateCrzPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.legsPage}" Executed="ActivateLegsPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.desPage}" Executed="ActivateDesPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.depArPage}" Executed="ActivateDepArPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.holdPage}" Executed="ActivateHoldPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.progPage}" Executed="ActivateProgPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.n1Page}" Executed="ActivateN1Page"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.fixPage}" Executed="ActivateFixPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.previousPage}" Executed="ActivatePreviousPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.nextPage}" Executed="ActivateNextPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.menuPage}" Executed="ActivateMenuPage"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.executeCDUAction}" Executed="ExecuteCDUAction"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.clearScratchpad}" Executed="ClearScratchpad"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.refreshCDU}" Executed="RefreshCDUAction"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.deleteCDUAction}" Executed="DeleteAction"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.focusLineSelectMode}" Executed="FocusLineSelectMode"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.changeLineSelectKeys}" Executed="ChangeLineSelectKeys"/>
+        <CommandBinding Command="{x:Static local:CDUKeyCommands.commandBindingHelp}" Executed="ActivateKeyCommandHelp"/>
+    </Window.CommandBindings>
+                    
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+                   </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="cduDisplay" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutomationProperties.Name="FMC display" AutomationProperties.AccessKey="ALT+HOME" AutomationProperties.AcceleratorKey="ALT+HOME" AcceptsReturn="True" TextWrapping="Wrap" Focusable="True" IsReadOnlyCaretVisible="True"/>
+        <StackPanel Name="cduToolbar" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <AutomationProperties.Name>FMC toolbar</AutomationProperties.Name>
+            <AutomationProperties.AutomationId>FMCToolbar</AutomationProperties.AutomationId>
+                            <Button x:Name="initRefButton" Content="INIT-REF" AutomationProperties.Name="INIT-REF" AutomationProperties.AutomationId="INIT-REFButton" AutomationProperties.AccessKey="alt+i" AutomationProperties.AcceleratorKey="ALT+I" HorizontalAlignment="Center" Click="initRefButton_Click"/>
+            <Button x:Name="rteButton" Content="RTE" AutomationProperties.Name="Route" AutomationProperties.AutomationId="RTEButton" AutomationProperties.AccessKey="ALT+T" AutomationProperties.AcceleratorKey="ALT+T" HorizontalAlignment="Center" Click="rteButton_Click"/>
+            <Button x:Name="clbButton" Content="CLB" AutomationProperties.Name="Climb" AutomationProperties.AutomationId="CLBButton" AutomationProperties.AccessKey="ALT+B" AutomationProperties.AcceleratorKey="ALT+B" HorizontalAlignment="Center" Click="clbButton_Click"/>
+            <Button x:Name="crzButton" Content="CRZ" AutomationProperties.Name="Cruise" AutomationProperties.AutomationId="CRZButton" AutomationProperties.AccessKey="ALT+Z" AutomationProperties.AcceleratorKey="ALT+Z" HorizontalAlignment="Center" Click="crzButton_Click"/>
+            <Button x:Name="desButton" Content="DES" AutomationProperties.Name="Descent" AutomationProperties.AutomationId="DESButton" AutomationProperties.AccessKey="ALT+D" AutomationProperties.AcceleratorKey="ALT+D" HorizontalAlignment="Center" Click="desButton_Click"/>
+            <Button x:Name="legsButton" Content="LEGS" AutomationProperties.Name="LEGS" AutomationProperties.AutomationId="LEGSButton" AutomationProperties.AccessKey="ALT+G" AutomationProperties.AcceleratorKey="ALT+G" HorizontalAlignment="Center" Click="legsButton_Click"/>
+            <Button x:Name="depArButton" Content="DEP-AR" AutomationProperties.Name="Departure/arrival" AutomationProperties.AutomationId="DEP-ARButton" AutomationProperties.AccessKey="ALT+A" AutomationProperties.AcceleratorKey="ALT+A" HorizontalAlignment="Center" Click="depArButton_Click"/>
+            <Button x:Name="holdButton" Content="HOLD" AutomationProperties.Name="HOLD" AutomationProperties.AutomationId="HOLDButton" AutomationProperties.AccessKey="ALT+H" AutomationProperties.AcceleratorKey="ALT+H" HorizontalAlignment="Center" Click="holdButton_Click"/>
+            <Button x:Name="progButton" Content="PROG" AutomationProperties.Name="Progress" AutomationProperties.AutomationId="PROGButton" AutomationProperties.AccessKey="ALT+P" AutomationProperties.AcceleratorKey="ALT+P" HorizontalAlignment="Center" Click="progButton_Click"/>
+            <Button x:Name="n1LimitButton" Content="N1" AutomationProperties.Name="N1 limit" AutomationProperties.AutomationId="N1Button" AutomationProperties.AccessKey="ALT+N" AutomationProperties.AcceleratorKey="ALT+N" HorizontalAlignment="Center" Click="n1LimitButton_Click"/>
+            <Button x:Name="fixButton" Content="FIX" AutomationProperties.Name="FIX" AutomationProperties.AutomationId="FIXButton" AutomationProperties.AccessKey="ALT+F" AutomationProperties.AcceleratorKey="ALT+F" HorizontalAlignment="Center" Click="fixButton_Click"/>
+                        <Button x:Name="menuButton" Content="MENU" AutomationProperties.Name="MENU" AutomationProperties.AutomationId="MENUButton" AutomationProperties.AccessKey="ALT+M" AutomationProperties.AcceleratorKey="ALT+M" HorizontalAlignment="Center" Click="menuButton_Click"/>
+                                    <Button x:Name="execButton" Content="EXEC" AutomationProperties.Name="Execute" AutomationProperties.AutomationId="EXECButton" AutomationProperties.AccessKey="ALT+E" AutomationProperties.AcceleratorKey="ALT+E" HorizontalAlignment="Center" Click="execButton_Click"/>
+            <Button x:Name="prevButton" Content="PREV" AutomationProperties.Name="Previous page" AutomationProperties.AutomationId="PREVButton" AutomationProperties.AccessKey="ALT+UP arrow" AutomationProperties.AcceleratorKey="ALT+UP arrow" HorizontalAlignment="Center" Click="prevButton_Click"/>
+            <TextBox x:Name="ScratchpadTextBox" AutomationProperties.Name="Scratchpad" AutomationProperties.AutomationId="ScratchpadTextBox" AutomationProperties.AccessKey="ALT+S" AutomationProperties.AcceleratorKey="ALT+S" Width="150" HorizontalAlignment="Center" KeyDown="ScratchpadTextBox_KeyDown" GotKeyboardFocus="ScratchpadTextBox_GotKeyboardFocus"/>
+            <TextBox x:Name="lineSelectModeTextBox" AutomationProperties.Name="Line select mode" AutomationProperties.AutomationId="LineSelectModeTextBox" AutomationProperties.AccessKey="ALT+L" AutomationProperties.AcceleratorKey="ALT+L" HorizontalAlignment="Center" IsReadOnly="True" IsReadOnlyCaretVisible="True" Width="auto"/>
+            <Button x:Name="nextButton" Content="NEXT" AutomationProperties.Name="Next page" AutomationProperties.AutomationId="NEXTButton" AutomationProperties.AccessKey="ALT+DOWN arrow" AutomationProperties.AcceleratorKey="ALT+DOWN arrow" HorizontalAlignment="Center" Click="nextButton_Click"/>
+            <Button x:Name="clearButton" Content="CLEAR" AutomationProperties.Name="Clear scratchpad" AutomationProperties.AutomationId="CLEARButton" AutomationProperties.AccessKey="ALT+C" AutomationProperties.AcceleratorKey="ALT+C" HorizontalAlignment="Center" Click="clearButton_Click"/>
+            <Button x:Name="refreshButton" Content="REFRESH" AutomationProperties.Name="REFRESH" AutomationProperties.AutomationId="REFRESHButton" AutomationProperties.AccessKey="ALT+R" AutomationProperties.AcceleratorKey="ALT+R" HorizontalAlignment="Center" Click="refreshButton_Click"/>
+            <Button x:Name="deleteButton" Content="DELETE" AutomationProperties.Name="DELETE" AutomationProperties.AutomationId="DELETEButton" AutomationProperties.AccessKey="ALT+X" AutomationProperties.AcceleratorKey="ALT+X" HorizontalAlignment="Center" Click="deleteButton_Click"/>
+                                    </StackPanel>
+    </Grid> 
+</Window>

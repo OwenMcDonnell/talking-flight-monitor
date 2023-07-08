@@ -1399,5 +1399,17 @@ namespace tfm.Properties {
                 this["SpeedBrakeFull"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Shift+C")]
+        public global::System.Windows.Forms.Keys ap_PMDG_CDU2 {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ap_PMDG_CDU2"]));
+            }
+            set {
+                this["ap_PMDG_CDU2"] = value;
+            }
+        }
     }
 }

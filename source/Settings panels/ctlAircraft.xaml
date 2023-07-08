@@ -26,5 +26,8 @@
         <CheckBox Content="Read autopilot instrument changes" IsChecked="{s:SettingBinding ReadAutopilot}" />
         <CheckBox Content="Read glide slope altitude" IsChecked="{s:SettingBinding ReadGSAltitude}"/>
         <CheckBox Content="Read localiser heading" IsChecked="{s:SettingBinding ReadLocaliserHeadingOffsets}"/>
+        <CheckBox Content="Announce when CDU #1 is ready for input" IsChecked="{s:SettingBinding AnnounceCDU1Ready}"/>
+        <CheckBox Content="Announce when CDU #2 is ready for input" IsChecked="{s:SettingBinding AnnounceCDU2Ready}"/>
+        <CheckBox Content="Announce when CDU #3 is ready for input" IsChecked="{s:SettingBinding AnnounceCDU3Ready}"/>
     </WrapPanel>
 </UserControl>
