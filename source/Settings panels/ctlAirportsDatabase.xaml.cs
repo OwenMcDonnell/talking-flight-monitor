@@ -1,4 +1,4 @@
-﻿
+﻿using System.IO;
 using FSUIPC;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+//using System.Windows.Shapes;
 using UserControl = System.Windows.Controls.UserControl;
 namespace tfm.Settings_panels
 {
@@ -25,7 +25,7 @@ namespace tfm.Settings_panels
     {
         private bool P3DLoaded;
         private bool MSFSLoaded;
-
+        string databasePath;
         public ctlAirportsDatabase()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace tfm.Settings_panels
         private void btnBrowseMSFS_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.SelectedPath = txtMSFS.Text;
+          txtMSFS.Text = dlg.SelectedPath;
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -64,21 +64,21 @@ namespace tfm.Settings_panels
             }
             try
             {
-                if (P3DLoaded)
+                if (App.Utilities.IsP3DLoaded)
                 {
                     strMakeRunwaysPath = txtP3D.Text;
-                }
-                else if (MSFSLoaded)
+                                   }
+                else if (App.Utilities.isMSFSLoaded)
                 {
                     strMakeRunwaysPath = txtMSFS.Text;
-                }
+                                   }
                 FSUIPCConnection.AirportsDatabase.MakeRunwaysFolder = strMakeRunwaysPath;
+                FSUIPCConnection.AirportsDatabase.DatabaseFolder = App.Utilities.airportsDatabaseFolder;
                 if (FSUIPCConnection.AirportsDatabase.MakeRunwaysFilesExist)
                 {
                     await FSUIPCConnection.AirportsDatabase.RebuildDatabaseAsync();
-                    System.Windows.MessageBox.Show($"Done loading from {FSUIPCConnection.AirportsDatabase.MakeRunwaysFolder}");
-                    utility.LoadAirportsDatabase(strMakeRunwaysPath);
-
+                                        utility.LoadAirportsDatabase(strMakeRunwaysPath);
+                    System.Windows.MessageBox.Show($"Loaded airports database from {FSUIPCConnection.AirportsDatabase.DatabaseFolder}");
                 }
                 else 
                 {
@@ -89,9 +89,8 @@ namespace tfm.Settings_panels
             }
             catch (Exception x)
             {
-                System.Windows.MessageBox.Show($"An error occured. Check that the MakeRunways files are in the specified folder.\n{x.Message}");
-
-            }
+                System.Windows.MessageBox.Show("An error occured. Check that the MakeRunways files are in the specified folder.");
+                            }
             
 
 

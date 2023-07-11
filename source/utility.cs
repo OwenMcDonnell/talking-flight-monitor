@@ -88,8 +88,8 @@ namespace tfm
             if (FSUIPCConnection.IsOpen)
             {
                 AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
-
-                if(FSUIPCConnection.FSUIPCVersion.Major <= 6)
+                database.DatabaseFolder = App.Utilities.airportsDatabaseFolder;
+                if (FSUIPCConnection.FSUIPCVersion.Major <= 6)
                 {
                     if (MakeRunwaysPath != null)
                     {
@@ -115,9 +115,10 @@ namespace tfm
 
                 if (database.DatabaseFilesExist)
                 {
+                    
                     database.Load();
-                    Tolk.Output("Airports database loaded.");
-                }
+                    Tolk.Output($"Airports database loaded. Total {database.Airports.Count} airports.");
+                                    }
                 else
                 {
                     Tolk.Output("Database failed to load. see the log for more details.");

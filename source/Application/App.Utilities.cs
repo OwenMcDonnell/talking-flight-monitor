@@ -1,4 +1,5 @@
 ﻿using FSUIPC;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,38 @@ namespace tfm
 
     public class Utilities
     {
+
+        /* Check to see if P3D is loaded. Basing it on FSUIPC version
+         * since it is more reliable than simulator name or version.*/
+        public bool IsP3DLoaded { get => FSUIPCConnection.FSUIPCVersion.Major <= 6 ? true : false; }
+
+        // Same for MSFS. See above.
+        public bool isMSFSLoaded { get => FSUIPCConnection.FSUIPCVersion.Major >= 7 ? true : false; }
+        
+        // Location of the binary files for the airports database.
+        public string airportsDatabaseFolder
+        {
+            get
+            {
+                string databasePath = string.Empty;
+                var tfmFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Talking flight monitor");
+
+                // Geneerate the P3D database location.
+                if (IsP3DLoaded)
+                {
+                    databasePath = Path.Combine(tfmFolder, "P3D airports");
+                }
+
+                // Generate the MSFS database location.
+                else if (isMSFSLoaded)
+                {
+                    databasePath = Path.Combine(tfmFolder, "MSFS airports");
+                }
+
+                return databasePath;
+                            }
+        }
+
         public void LoadDestination()
         {
             if (tfm.Properties.Settings.Default.SaveDestination)

@@ -17,7 +17,7 @@
 
     <StackPanel Orientation="Vertical" Width="Auto" Height="Auto">
         <StackPanel Orientation="Horizontal" Width="Auto" Height="Auto">
-            <Label Content="P3d databased path:" Name="lblp3d"/>
+            <Label Content="Make runways output for P3D" Name="lblp3d"/>
             <TextBox Name="txtP3D"
                      Width="Auto" Height="Auto"
                      Text="{s:SettingBinding P3DAirportsDatabasePath}"
@@ -29,7 +29,7 @@
 
         </StackPanel>
         <StackPanel Orientation="Horizontal" Width="Auto" Height="Auto">
-            <Label Content="MSFS databased path:" Name="lblMSFS"/>
+            <Label Content="Make runways output for MSFS" Name="lblMSFS"/>
             <TextBox Name="txtMSFS"
                      Width="Auto" Height="Auto"
                      Text="{s:SettingBinding MSFSAirportsDatabasePath}"
