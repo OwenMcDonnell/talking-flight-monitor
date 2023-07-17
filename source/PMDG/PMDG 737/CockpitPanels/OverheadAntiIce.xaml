@@ -185,8 +185,78 @@ AutomationProperties.AccessKey="ALT+4"
                              Header="Window heat"
                              AutomationProperties.Name="Window heat"
                              AutomationProperties.AutomationId="WindowHeatIndicatorsTabItem">
-                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!--Indicator: Left side window heat-->
+                            <Label x:Name="leftSideWindowHeatLabel"
+       Grid.Column="0"
+       Grid.Row="0"
+       Content="Left side window heat"
+      AutomationProperties.Name="Left side window heat"
+       AutomationProperties.AutomationId="LeftSideWindowHeatLabel"
+       Target="{Binding ElementName=leftSideWindowHeatTextBox}"/>
+                            <TextBox x:Name="leftSideWindowHeatTextBox"
+         Grid.Column="1"
+         Grid.Row="0"
+         Margin="5, 5, 5, 5"
+         AutomationProperties.AutomationId="LeftSideWindowHeatTextBox"/>
+
+                            <!--Indicator: Left forward window heat-->
+                            <Label x:Name="leftForwardWindowHeatLabel"
+ Grid.Column="2"
+ Grid.Row="0"
+ Content="Left forward window heat"
+AutomationProperties.Name="Left forward window heat"
+ AutomationProperties.AutomationId="LeftForwardWindowHeatLabel"
+ Target="{Binding ElementName=leftForwardWindowHeatTextBox}"/>
+                            <TextBox x:Name="leftForwardWindowHeatTextBox"
+   Grid.Column="3"
+   Grid.Row="0"
+   Margin="5, 5, 5, 5"
+   AutomationProperties.AutomationId="LeftForwardWindowHeatTextBox"/>
+
+                            <!--Indicator: Right side window heat-->
+                            <Label x:Name="rightSideWindowHeatLabel"
+ Grid.Column="0"
+ Grid.Row="1"
+ Content="Right side window heat"
+AutomationProperties.Name="Right side window heat"
+ AutomationProperties.AutomationId="RightSideWindowHeatLabel"
+ Target="{Binding ElementName=rightSideWindowHeatTextBox}"/>
+                            <TextBox x:Name="rightSideWindowHeatTextBox"
+   Grid.Column="1"
+   Grid.Row="1"
+   Margin="5, 5, 5, 5"
+   AutomationProperties.AutomationId="RightSideWindowHeatTextBox"/>
+
+                            <!--Indicator: Right forward window heat-->
+                            <Label x:Name="rightForwardWindowHeatLabel"
+ Grid.Column="2"
+ Grid.Row="1"
+ Content="Right forward window heat"
+AutomationProperties.Name="Right forward window heat"
+ AutomationProperties.AutomationId="RightForwardWindowHeatLabel"
+ Target="{Binding ElementName=rightForwardWindowHeatTextBox}"/>
+                            <TextBox x:Name="rightForwardWindowHeatTextBox"
+   Grid.Column="3"
+   Grid.Row="1"
+   Margin="5, 5, 5, 5"
+   AutomationProperties.AutomationId="RightForwardWindowHeatTextBox"/>
+
+                        </Grid>                        
                     </TabItem>
+                
+                
                 </TabControl>
             </TabItem>
         </TabControl>
