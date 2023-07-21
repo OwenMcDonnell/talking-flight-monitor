@@ -1,52 +1,51 @@
-﻿using TrayIcon = System.Windows.Forms.NotifyIcon;
-using ContextMenu = System.Windows.Forms.ContextMenuStrip;
-using MenuItem = System.Windows.Forms.ToolStripMenuItem;
-using NHotkey;
-using NHotkey.WindowsForms;
-using DavyKager;
+﻿using DavyKager;
+
 using FSUIPC;
+
 using NLog;
-using NLog.Config;
-using System;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Linq;
 using System.Media;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+
+using ContextMenu = System.Windows.Forms.ContextMenuStrip;
+using MenuItem = System.Windows.Forms.ToolStripMenuItem;
+using TrayIcon = System.Windows.Forms.NotifyIcon;
 
 
 
 
 namespace tfm
 {
-        public partial class App : System.Windows.Application
+    public partial class App : System.Windows.Application
     {
-        // get a logger object for this class
+
+
+        // Private fields
+        #region "Private fields"
+        // UI elements.
+        TrayIcon icon;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        // set up timers
+
+        // Timers.
         System.Timers.Timer TimerMain = new(500);
         System.Timers.Timer TimerConnection = new(1000);
         System.Timers.Timer TimerLowPriority = new(1000);
 
-        // Create a counter for the connection timer.
-        private int connectionCounter = 0;
         private readonly IOSubsystem inst = new IOSubsystem();
-        
+        #endregion
+
+        // Startup event.
+        #region "Startup"
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             LoadTrayIcon();
             //RegisterTFMGlobalCommands();
+
+            // Debug mode.
+            #region "Debug mode"
             if (e.Args.Length == 1)
             {
                 if (e.Args[0] == "/debug")
@@ -55,8 +54,10 @@ namespace tfm
                     Tolk.Output("debug mode active");
                 }
             }
-            
-            // Upgrade settings if needed
+            #endregion
+
+            // Upgrade settings.
+            #region "Upgrade settings"
             if (tfm.Properties.Settings.Default.SettingsRequiresUpgrade)
             {
                 tfm.Properties.Settings.Default.Upgrade();
@@ -72,34 +73,28 @@ namespace tfm
                 tfm.Properties.pmdg737_offsets.Default.Save();
                 tfm.Properties.pmdg747_offsets.Default.Save();
                 tfm.Properties.Weather.Default.Save();
-                // System.Windows.Application.Restart();
-                
+
             }
-            // speak a debug message via SAPI if debug mode is turned on
-            if (utility.DebugEnabled)
-            {
-                Tolk.PreferSAPI(true);
-                Tolk.Output("Debug mode");
-                Tolk.PreferSAPI(false);
-            }
-            
-            ///todo: Determine if warning the user about geoname is needed.
-/*if(tfm.Properties.Settings.Default.GeonamesUsername == "")
-            {
-                System.Windows.MessageBox.Show("Geonames username has not been configured. Flight following features will not function.\nGo to the General section in settings to add your Geonames user name\n", "error", MessageBoxButton.OK);
-            }*/
-            // show the first run dialog
+            #endregion
+
+            // Show first run help dialog
+            #region "First run"
             if (tfm.Properties.Settings.Default.ShowFirstRunDialog)
             {
                 firstRunHelp firstRun = new firstRunHelp();
                 firstRun.Show();
             }
+            #endregion
 
             // Start the connection timer to look for a flight sim
+            #region "Connection timer"
             TimerConnection.Elapsed += TimerConnection_Tick;
             this.TimerConnection.AutoReset = true;
             this.TimerConnection.Start();
+            #endregion
 
+            //Play startup sound.
+            #region "Startup sound"
             if (tfm.Properties.Settings.Default.PlayStartupSound)
             {
                 var executable = Assembly.GetExecutingAssembly().Location;
@@ -107,65 +102,76 @@ namespace tfm
                 SoundPlayer sound = new SoundPlayer(soundFile);
                 sound.Play();
             }
+            #endregion
+        }
+        #endregion
 
-                    }
-        
-        // This method is called every 1 second by the connection timer.
+        // Connection timer's elapsed event.
+        #region "Connection timer elapsed event"
         private void TimerConnection_Tick(object sender, ElapsedEventArgs e)
         {
-
-            // The connection counter prevents excessive instances of an error
-            // from appearing in the log.
-            connectionCounter++;
 
             // Try to open the connection
             try
             {
                 FSUIPCConnection.Open();
 
-                // If there was no problem, stop this timer and start the main timer
+                // Stop trying to connect
+                #region "Timers"
                 this.TimerConnection.Stop();
-                
-                // this.SetCommandKeyMenuText();
                 this.TimerMain.Elapsed += TimerMain_Tick;
                 this.TimerMain.AutoReset = true;
-                // Initialize aircraft offsets
-                Aircraft.InitOffsets();
-                this.TimerMain.Start();
                 this.TimerLowPriority.Elapsed += TimerLowPriority_Tick;
                 this.TimerLowPriority.AutoReset = true;
+                #endregion
+
+                // Load offsets.
+                Aircraft.InitOffsets();
+
+                // Start interacting with the simulator.
+                #region "Start timers"
+                this.TimerMain.Start();
                 this.TimerLowPriority.Start();
+
+                icon.Text = $" - Connected to {FSUIPCConnection.FlightSimVersionConnected}";
+                #endregion
+
+                // Load TFM's database.
                 TFMDatabase.Initialize();
+
                 // load airport database
+                #region "Airports database"
                 inst.Speak("loading airport database");
                 utility.LoadAirportsDatabase();
-                //dbLoadWorker.RunWorkerAsync();
+                #endregion
 
-                                // write version info to the debug log
-                logger.Debug($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
-                logger.Debug($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
-                logger.Debug($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
-                logger.Debug($"SQLite version: {TFMDatabase.Version}");
+                // Get TFM's version number.
+                #region "TFM's version"
+                Assembly assembly = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
+                Version tfmVersion = assembly.GetName().Version;
+                #endregion
 
-                App.Utilities.LoadDestination();
+                // Log version numbers.
+                #region "Logging version numbers"
+                logger.Info("-------------------- Version numbers --------------------");
+                logger.Info($"Windows version: {Environment.OSVersion.Version}");
+                logger.Info($"TFM version: {tfmVersion}");
+                logger.Info($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
+                logger.Info($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
+                logger.Info($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
+                logger.Info($"SQLite version: {TFMDatabase.Version}");
+                logger.Info("---------------------------------------------------------");
+                #endregion
+
+                // Load the destination runway.
+                    App.Utilities.LoadDestination();
             }
             catch (Exception ex)
             {
-                if (connectionCounter <= 5)
-                {
-                    logger.Debug($"Connection failed [attempt #{connectionCounter}]: {ex.Message}: {ex.Source}:{ex.StackTrace}");
-                    //logger.Debug($"Inner exception {ex.InnerException.Message}");
-                }
-                else if (connectionCounter == 35)
-                {
-                    Tolk.Output("Connection timed out. See the TFM log for more details. Please restart TFM to continue.");
-                    logger.Debug("Connection timeout: The simulator or fsuipc are not running. Make sure they are running before starting TFM.");
-                    this.TimerConnection.Stop();
-                    // Command keys menu item is not needed when FSUIPC is not running.
-                    // commandKeysMenuItem.Visible = false;
-                }
+                icon.Text = " - Waiting for connection...";
             }
         }
+        #endregion
 
         // This method runs 10 times per second (every 100ms). This is set on the timerMain properties.
         private void TimerMain_Tick(object sender, ElapsedEventArgs e)
@@ -327,7 +333,7 @@ AboutMenuItem,
             };
 
             // The tray icon.
-            TrayIcon icon = new TrayIcon
+icon = new TrayIcon
             {
                 Text = "Talking flight monitor",
                 Icon = new Icon("Properties/TFM_icon.ico"),

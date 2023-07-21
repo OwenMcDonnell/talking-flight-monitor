@@ -133,5 +133,35 @@ namespace tfm
 
             return gateType;
         }
+
+        public static double CalculateInterceptTurn(double bearing)
+        {
+            double heading = App.instrumentPanel.Heading;
+
+            double interceptTurn;
+
+            if (bearing >= 0 && bearing <= 180)
+            {
+                interceptTurn = bearing - heading;
+            }
+            else if (bearing > 180 && bearing <= 360)
+            {
+                if (heading < 180)
+                {
+                    interceptTurn = bearing - heading;
+                }
+                else
+                {
+                    interceptTurn = bearing - (heading - 360);
+                }
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Invalid bearing value. Bearing must be between 0 and 360.");
+            }
+
+            return interceptTurn;
+        }
+
     }
 }
