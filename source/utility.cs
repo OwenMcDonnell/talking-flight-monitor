@@ -1,5 +1,8 @@
 ﻿using DavyKager;
 using FSUIPC;
+
+using NLog;
+using NLog.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +14,7 @@ namespace tfm
 {
     public static class utility
     {
-
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public static InstrumentPanel InstrumentPanel { get => new InstrumentPanel(); }
         // public static TFMMainForm TFMMainForm { get; internal set; } 
         public static FsWeather CurrentWeather { get; internal set; }
@@ -118,10 +121,12 @@ namespace tfm
                     
                     database.Load();
                     Tolk.Output($"Airports database loaded. Total {database.Airports.Count} airports.");
-                                    }
+                    logger.Info($"Airports database loaded. Total {database.Airports.Count} airports.");
+                }
                 else
                 {
                     Tolk.Output("Database failed to load. see the log for more details.");
+                    logger.Debug("Airports database failed to load.");
                 }
                                                                                                             } // open connection.
         } // LoadAirportsDatabase

@@ -123,22 +123,26 @@ namespace tfm
                 this.TimerMain.AutoReset = true;
                 this.TimerLowPriority.Elapsed += TimerLowPriority_Tick;
                 this.TimerLowPriority.AutoReset = true;
+                logger.Info("Connection to FSUIPC open.");
                 #endregion
 
                 // Load offsets.
+                #region "Load offsets"
                 Aircraft.InitOffsets();
+                logger.Info("Loading offsets...");
+                #endregion
 
                 // Start interacting with the simulator.
                 #region "Start timers"
                 this.TimerMain.Start();
                 this.TimerLowPriority.Start();
-
+                logger.Info("Monitoring aircraft systems and simulator environment...");
                 icon.Text = $" - Connected to {FSUIPCConnection.FlightSimVersionConnected}";
                 #endregion
 
                 // Load TFM's database.
                 TFMDatabase.Initialize();
-
+                                
                 // load airport database
                 #region "Airports database"
                 inst.Speak("loading airport database");

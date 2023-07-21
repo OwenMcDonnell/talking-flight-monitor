@@ -1,4 +1,6 @@
 ﻿using FSUIPC;
+using NLog;
+using NLog.Config;
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,7 @@ namespace tfm
 
         /* Check to see if P3D is loaded. Basing it on FSUIPC version
          * since it is more reliable than simulator name or version.*/
+        private Logger Logger = LogManager.GetCurrentClassLogger();
         public bool IsP3DLoaded { get => FSUIPCConnection.FSUIPCVersion.Major <= 6 ? true : false; }
 
         // Same for MSFS. See above.
