@@ -24,6 +24,28 @@ namespace tfm
     public class Utilities
     {
 
+        /* Check to see if PMDG aircraft are loaded.
+         * Basing the results on contents found in the aircraft name instead of the
+         * model. If there is a more reliable way, it would be great.
+         * NOTE: The ability to use other liveries is unreliable because of the
+         * detection method is purely based on contents found in a string.*/
+
+        public bool isPMDG737Loaded
+        {
+            get => Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737");
+        }
+
+        public bool isPMDG747Loaded
+        {
+            get => Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747");
+        }
+
+        public bool isPMDG777Loaded
+        {
+            get => Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("777");
+        }
+
+
         /* Check to see if P3D is loaded. Basing it on FSUIPC version
          * since it is more reliable than simulator name or version.*/
         private Logger Logger = LogManager.GetCurrentClassLogger();

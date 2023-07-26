@@ -149,13 +149,16 @@ namespace tfm
                 utility.LoadAirportsDatabase();
                 #endregion
 
+                // Load the destination runway.
+                App.Utilities.LoadDestination();
+
                 // Get TFM's version number.
                 #region "TFM's version"
                 Assembly assembly = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
                 Version tfmVersion = assembly.GetName().Version;
                 #endregion
 
-                // Log version numbers.
+                              // Log version numbers.
                 #region "Logging version numbers"
                 logger.Info("-------------------- Version numbers --------------------");
                 logger.Info($"Windows version: {Environment.OSVersion.Version}");
@@ -166,10 +169,7 @@ namespace tfm
                 logger.Info($"SQLite version: {TFMDatabase.Version}");
                 logger.Info("---------------------------------------------------------");
                 #endregion
-
-                // Load the destination runway.
-                    App.Utilities.LoadDestination();
-            }
+                                            }
             catch (Exception ex)
             {
                 icon.Text = " - Waiting for connection...";
@@ -177,28 +177,36 @@ namespace tfm
         }
         #endregion
 
-        // This method runs 10 times per second (every 100ms). This is set on the timerMain properties.
+        // Main timer loop.
+        #region "Main timer"
         private void TimerMain_Tick(object sender, ElapsedEventArgs e)
         {
             // stop the timer so we don't tick again while this method is running
             TimerMain.Stop();
             // Call process() to read/write data to/from FSUIPC
-            // We do this in a Try/Catch block incase something goes wrong
-            try
+                        try
             {
                 FSUIPCConnection.Process();
-                inst.MonitorN1Limit();
-                if (Aircraft.AircraftName.Value.Contains("PMDG"))
+
+                // Process PMDG data.
+                #region "PMDG data"
+                if (App.Utilities.isPMDG737Loaded || App.Utilities.isPMDG747Loaded || App.Utilities.isPMDG777Loaded)
                 {
                     Aircraft.pmdg737.RefreshData();
                     Aircraft.pmdg747.RefreshData();
                     Aircraft.pmdg777.RefreshData();
                 }
+                #endregion
+
+
+                ///todo: Figure out a better way to mute TFM.
+                #region "Mute TFM"
                 if (tfm.Properties.Settings.Default.AutomaticAnnouncements)
                 {
                     inst.ReadAircraftState();
                 }
-
+                #endregion
+                /*
                 if (!inst.PostTakeOffChecklist())
                 {
                     inst.PostTakeOffChecklist();
@@ -217,7 +225,7 @@ namespace tfm
                     {
                         inst.Output(isGauge: false, output: "Out of cloud.");
                     }
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -231,7 +239,7 @@ namespace tfm
             // we're finished this tick, so restart the timer
             TimerMain.Start();
         }
-
+        #endregion
         // second 200 MS timer for lower priority instruments, or instruments that don't work well on 100 MS
         private void TimerLowPriority_Tick(object sender, ElapsedEventArgs e)
         {
