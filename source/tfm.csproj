@@ -40,16 +40,16 @@
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="BingMapsSDSToolkit" Version="1.0.5" />
     <PackageReference Include="FSUIPCClientDLL" Version="3.3.6" />
-    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.29.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.5" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.31.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.10" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NGeoNames" Version="1.5.1" />
     <PackageReference Include="NHotkey" Version="2.1.1" />
     <PackageReference Include="NHotkey.WindowsForms" Version="2.1.1" />
-    <PackageReference Include="NLog" Version="5.2.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
+    <PackageReference Include="NLog" Version="5.2.3" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
     <PackageReference Include="System.Speech" Version="7.0.0" />
     <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
   </ItemGroup>
