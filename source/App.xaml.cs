@@ -229,10 +229,9 @@ namespace tfm
             }
             catch (Exception ex)
             {
-                // An error occured. Tell the user and stop this timer.
-                this.TimerMain.Stop();
+                                this.TimerMain.Stop();
                 logger.Debug($"High priority instruments failed to read: {ex.Message}: {ex.StackTrace}");
-                // Update the connection status
+
                 // start the connection timer
                 this.TimerConnection.Start();
             }
@@ -240,6 +239,7 @@ namespace tfm
             TimerMain.Start();
         }
         #endregion
+        
         // second 200 MS timer for lower priority instruments, or instruments that don't work well on 100 MS
         private void TimerLowPriority_Tick(object sender, ElapsedEventArgs e)
         {
