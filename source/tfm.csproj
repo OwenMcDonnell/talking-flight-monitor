@@ -21,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="data\cities1000.txt" />
+    <None Remove="data\e_dfd_2205.s3db" />
     <None Remove="sounds\100.wav" />
   </ItemGroup>
 
@@ -29,6 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="data\cities1000.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\e_dfd_2205.s3db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TFMMainForm.resx" />
   </ItemGroup>
 
@@ -104,9 +112,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="data\cities1000.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
