@@ -1,4 +1,5 @@
-﻿using DavyKager;
+﻿using tfm.Properties.Data.Navigraph;
+using DavyKager;
 
 using FSUIPC;
 
@@ -57,8 +58,13 @@ namespace tfm
             #endregion
 
 
-            // Initialize Navigraph database.
-            App.Navigraph.Initialize();
+            // Install default Navigraph database if required.
+            #region
+            using(var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
+            {
+                _dbContext.InstallDefaultDatabase();
+            }
+            #endregion
 
             // Upgrade settings.
             #region "Upgrade settings"
@@ -162,7 +168,7 @@ namespace tfm
                 Version tfmVersion = assembly.GetName().Version;
                 #endregion
 
-                              // Log version numbers.
+                                // Log version numbers.
                 #region "Logging version numbers"
                 logger.Info("-------------------- Version numbers --------------------");
                 logger.Info($"Windows version: {Environment.OSVersion.Version}");
@@ -170,7 +176,27 @@ namespace tfm
                 logger.Info($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
                 logger.Info($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
                 logger.Info($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
-                logger.Info($"Navigraph version {App.Navigraph.Version}");
+                try
+                {
+                    using (var _dbContext = new NavigraphContext())
+                    {
+                        var _navigraphHeader = _dbContext.navigraphHeaders.FirstOrDefault();
+
+                        if (_navigraphHeader != null)
+                        {
+                            logger.Info($"Navigraph version {_navigraphHeader.CurrentAirac}");
+                        }
+                        else
+                        {
+                            logger.Warn("No Navigraph header found.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error($"An error occurred: {ex}");
+                }
+
                 logger.Info($"SQLite version: {TFMDatabase.Version}");
                 logger.Info("---------------------------------------------------------");
                 #endregion
