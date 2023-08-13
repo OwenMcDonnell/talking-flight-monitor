@@ -56,6 +56,10 @@ namespace tfm
             }
             #endregion
 
+
+            // Initialize Navigraph database.
+            App.Navigraph.Initialize();
+
             // Upgrade settings.
             #region "Upgrade settings"
             if (tfm.Properties.Settings.Default.SettingsRequiresUpgrade)
@@ -166,6 +170,7 @@ namespace tfm
                 logger.Info($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
                 logger.Info($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
                 logger.Info($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
+                logger.Info($"Navigraph version {App.Navigraph.Version}");
                 logger.Info($"SQLite version: {TFMDatabase.Version}");
                 logger.Info("---------------------------------------------------------");
                 #endregion
