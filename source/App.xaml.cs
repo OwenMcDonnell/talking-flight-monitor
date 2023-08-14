@@ -181,10 +181,9 @@ namespace tfm
                     using (var _dbContext = new NavigraphContext())
                     {
                         var _navigraphHeader = _dbContext.navigraphHeaders.FirstOrDefault();
-
-                        if (_navigraphHeader != null)
+                                                if (_navigraphHeader != null)
                         {
-                            logger.Info($"Navigraph version {_navigraphHeader.CurrentAirac}");
+                            logger.Info($"Navigraph version {_navigraphHeader.CurrentAirac} Rev {_navigraphHeader.Revision}");
                         }
                         else
                         {

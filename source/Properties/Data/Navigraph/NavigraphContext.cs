@@ -23,9 +23,11 @@ namespace tfm.Properties.Data.Navigraph
         private string _connectionString = string.Empty;
 
         #endregion
+        
         // Table sets
         #region
         public DbSet<NavigraphHeader> navigraphHeaders { get; set; }
+        public DbSet<VhfNavaid> vhfNavaids { get; set; }
         #endregion
         
         

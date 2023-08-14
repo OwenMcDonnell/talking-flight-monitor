@@ -311,9 +311,8 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
         private void RunTest(object sender, HotkeyEventArgs e)
         {
             e.Handled = true;
-            Preflight737 pf = new Preflight737();
-
-        }
+//            Preflight737 pf = new Preflight737();
+                   }
 
 
 
