@@ -31,6 +31,7 @@ namespace tfm.Properties.Data.Navigraph
         public DbSet<EnrouteNDB> enrouteNDBs { get; set; }
         public DbSet<TerminalNDB> terminalNDBs { get; set; }
         public DbSet<EnrouteWaypoint> enrouteWaypoints { get; set; }
+        public DbSet<TerminalWaypoint> terminalWaypoints { get; set; }
         #endregion
         
         
