@@ -315,7 +315,7 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
                    
         using(var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
             {
-                Output(isGauge: false, output: _dbContext.enrouteNDBs.Count().ToString());
+                Output(isGauge: false, output: _dbContext.terminalNDBs.Count().ToString());
             }
         }
 
