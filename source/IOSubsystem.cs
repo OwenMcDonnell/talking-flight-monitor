@@ -311,11 +311,19 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
         private void RunTest(object sender, HotkeyEventArgs e)
         {
             e.Handled = true;
-//            Preflight737 pf = new Preflight737();
-                   
-        using(var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
+            //            Preflight737 pf = new Preflight737();
+
+            try
             {
-                Output(isGauge: false, output: _dbContext.terminalWaypoints.Count().ToString());
+
+                using (var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
+                {
+                    Output(isGauge: false, output: _dbContext.enrouteAirways.Count().ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+                Output(isGauge: false, output: ex.Message);
             }
         }
 
