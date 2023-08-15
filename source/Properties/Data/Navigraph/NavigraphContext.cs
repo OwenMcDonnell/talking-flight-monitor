@@ -28,6 +28,7 @@ namespace tfm.Properties.Data.Navigraph
         #region
         public DbSet<NavigraphHeader> navigraphHeaders { get; set; }
         public DbSet<VhfNavaid> vhfNavaids { get; set; }
+        public DbSet<EnrouteNDB> enrouteNDBs { get; set; }
         #endregion
         
         

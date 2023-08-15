@@ -272,7 +272,7 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
             var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
             HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
             HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            //HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
+            HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
 
             runwayGuidanceEnabled = false;
 
@@ -312,7 +312,12 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
         {
             e.Handled = true;
 //            Preflight737 pf = new Preflight737();
-                   }
+                   
+        using(var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
+            {
+                Output(isGauge: false, output: _dbContext.enrouteNDBs.Count().ToString());
+            }
+        }
 
 
 
