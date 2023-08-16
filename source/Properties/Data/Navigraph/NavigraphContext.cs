@@ -35,6 +35,7 @@ namespace tfm.Properties.Data.Navigraph
         public DbSet<Holding> holdings { get; set; }
         public DbSet<EnrouteAirway> enrouteAirways { get; set; }
         public DbSet<Airport> airports { get; set; }
+        public DbSet<Runway> runways { get; set; }
         #endregion
         
         
