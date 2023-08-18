@@ -40,7 +40,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Airport> Airports { get; set; }
     public virtual DbSet<AirportCommunication> AirportCommunications { get; set; }
     public virtual DbSet<AirportMSA> AirportMSAs { get; set; }
-    public virtual DbSet<TblControlledAirspace> TblControlledAirspaces { get; set; }
+    public virtual DbSet<ControlledAirspace> ControlledAirspaces { get; set; }
     public virtual DbSet<TblCruisingTable> TblCruisingTables { get; set; }
     public virtual DbSet<TblEnrouteAirway> TblEnrouteAirways { get; set; }
     public virtual DbSet<TblEnrouteAirwayRestriction> TblEnrouteAirwayRestrictions { get; set; }
@@ -233,7 +233,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("sector_bearing_5");
         });
 
-        modelBuilder.Entity<TblControlledAirspace>(entity =>
+        modelBuilder.Entity<ControlledAirspace>(entity =>
         {
             entity
                 .HasNoKey()
