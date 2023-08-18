@@ -1,11 +1,30 @@
-﻿using System;
+﻿using NLog;
+using System.IO;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
 namespace tfm.Properties.Data.Navdata;
 
 public partial class EDfdContext : DbContext
 {
+
+    // Private fields.
+    #region
+    private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+    private string _databaseFile = "e_dfd.s3db";
+    private string _databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"tfm\Navdata\");
+    private string _targetDatabase = string.Empty;
+    private string _sourceDatabase = string.Empty;
+    private string _connectionString = string.Empty;
+    #endregion
+
+    // Constructors.
+    #region
     public EDfdContext()
     {
     }
@@ -14,66 +33,46 @@ public partial class EDfdContext : DbContext
         : base(options)
     {
     }
-
+    #endregion
+    
+    // Table sets
+    #region
     public virtual DbSet<TblAirport> TblAirports { get; set; }
-
     public virtual DbSet<TblAirportCommunication> TblAirportCommunications { get; set; }
-
     public virtual DbSet<TblAirportMsa> TblAirportMsas { get; set; }
-
     public virtual DbSet<TblControlledAirspace> TblControlledAirspaces { get; set; }
-
     public virtual DbSet<TblCruisingTable> TblCruisingTables { get; set; }
-
     public virtual DbSet<TblEnrouteAirway> TblEnrouteAirways { get; set; }
-
     public virtual DbSet<TblEnrouteAirwayRestriction> TblEnrouteAirwayRestrictions { get; set; }
-
     public virtual DbSet<TblEnrouteCommunication> TblEnrouteCommunications { get; set; }
-
     public virtual DbSet<TblEnrouteNdbnavaid> TblEnrouteNdbnavaids { get; set; }
-
     public virtual DbSet<TblEnrouteWaypoint> TblEnrouteWaypoints { get; set; }
-
     public virtual DbSet<TblFirUir> TblFirUirs { get; set; }
-
     public virtual DbSet<TblGate> TblGates { get; set; }
-
     public virtual DbSet<TblGl> TblGls { get; set; }
-
     public virtual DbSet<TblGridMora> TblGridMoras { get; set; }
-
     public virtual DbSet<TblHeader> TblHeaders { get; set; }
-
     public virtual DbSet<TblHolding> TblHoldings { get; set; }
-
     public virtual DbSet<TblIap> TblIaps { get; set; }
-
     public virtual DbSet<TblLocalizerMarker> TblLocalizerMarkers { get; set; }
-
     public virtual DbSet<TblLocalizersGlideslope> TblLocalizersGlideslopes { get; set; }
-
     public virtual DbSet<TblPathpoint> TblPathpoints { get; set; }
-
     public virtual DbSet<TblRestrictiveAirspace> TblRestrictiveAirspaces { get; set; }
-
     public virtual DbSet<TblRunway> TblRunways { get; set; }
-
     public virtual DbSet<TblSid> TblSids { get; set; }
-
     public virtual DbSet<TblStar> TblStars { get; set; }
-
     public virtual DbSet<TblTerminalNdbnavaid> TblTerminalNdbnavaids { get; set; }
-
     public virtual DbSet<TblTerminalWaypoint> TblTerminalWaypoints { get; set; }
-
     public virtual DbSet<TblVhfnavaid> TblVhfnavaids { get; set; }
-
+    #endregion
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("DataSource=C:\\Users\\a_bor\\AppData\\Local\\tfm\\Navdata\\e_dfd.s3db");
+    {
+        _targetDatabase = Path.Combine(_databasePath, _databaseFile);
+        optionsBuilder.UseSqlite($"Data Source = {_targetDatabase}");
+            }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblAirport>(entity =>
         {
@@ -1786,4 +1785,34 @@ public partial class EDfdContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public void InstallDefaultDatabase()
+    {
+        _sourceDatabase = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"data\e_dfd_2205.s3db");
+        _targetDatabase = Path.Combine(_databasePath, _databaseFile);
+        // Install default database if needed.
+        #region
+        if (!Directory.Exists(_databasePath))
+        {
+            _logger.Warn("Navigraph database folder does not exist... Creating it.");
+            Directory.CreateDirectory(_databasePath);
+        }
+
+        if (!File.Exists(_targetDatabase))
+        {
+            try
+            {
+                File.Copy(_sourceDatabase, _targetDatabase);
+                _logger.Info("Default Navigraph database installed.");
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"Failed to install default database: {ex.Message}");
+            }
+        }
+        #endregion
+
+
+    } //InstallDefaultDatabase.
+
 }

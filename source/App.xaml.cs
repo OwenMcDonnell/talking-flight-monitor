@@ -1,4 +1,5 @@
-﻿using tfm.Properties.Data.Navigraph;
+﻿using tfm.Properties.Data.Navdata;
+using tfm.Properties.Data.Navigraph;
 using DavyKager;
 
 using FSUIPC;
@@ -168,20 +169,20 @@ namespace tfm
                 Version tfmVersion = assembly.GetName().Version;
                 #endregion
 
-                                // Log version numbers.
+                // Log version numbers.
                 #region "Logging version numbers"
-                logger.Info("-------------------- Version numbers --------------------");
-                logger.Info($"Windows version: {Environment.OSVersion.Version}");
-                logger.Info($"TFM version: {tfmVersion}");
-                logger.Info($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
-                logger.Info($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
-                logger.Info($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
                 try
                 {
-                    using (var _dbContext = new NavigraphContext())
+                    logger.Info("-------------------- Version numbers --------------------");
+                    logger.Info($"Windows version: {Environment.OSVersion.Version}");
+                    logger.Info($"TFM version: {tfmVersion}");
+                    logger.Info($"simulator version: {FSUIPCConnection.FlightSimVersionConnected}");
+                    logger.Info($"FSUIPC version: {FSUIPCConnection.FSUIPCVersion}");
+                    logger.Info($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
+                    using (var _dbContext = new EDfdContext())
                     {
-                        var _navigraphHeader = _dbContext.navigraphHeaders.FirstOrDefault();
-                                                if (_navigraphHeader != null)
+                        var _navigraphHeader = _dbContext.TblHeaders.FirstOrDefault();
+                        if (_navigraphHeader != null)
                         {
                             logger.Info($"Navigraph version {_navigraphHeader.CurrentAirac} Rev {_navigraphHeader.Revision}");
                         }
@@ -190,15 +191,14 @@ namespace tfm
                             logger.Warn("No Navigraph header found.");
                         }
                     }
-                }
-                catch (Exception ex)
+                                            logger.Info($"SQLite version: {TFMDatabase.Version}");
+                    logger.Info("---------------------------------------------------------");
+                                        }
+                catch(Exception x)
                 {
-                    logger.Error($"An error occurred: {ex}");
+                    logger.Error($"{x.Message}\r\n{x.StackTrace}");
                 }
-
-                logger.Info($"SQLite version: {TFMDatabase.Version}");
-                logger.Info("---------------------------------------------------------");
-                #endregion
+                                #endregion
                                             }
             catch (Exception ex)
             {
