@@ -38,8 +38,8 @@ public partial class EDfdContext : DbContext
     // Table sets
     #region
     public virtual DbSet<Airport> Airports { get; set; }
-    public virtual DbSet<TblAirportCommunication> TblAirportCommunications { get; set; }
-    public virtual DbSet<TblAirportMsa> TblAirportMsas { get; set; }
+    public virtual DbSet<AirportCommunication> AirportCommunications { get; set; }
+    public virtual DbSet<AirportMSA> AirportMSAs { get; set; }
     public virtual DbSet<TblControlledAirspace> TblControlledAirspaces { get; set; }
     public virtual DbSet<TblCruisingTable> TblCruisingTables { get; set; }
     public virtual DbSet<TblEnrouteAirway> TblEnrouteAirways { get; set; }
@@ -130,7 +130,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("transition_level");
         });
 
-        modelBuilder.Entity<TblAirportCommunication>(entity =>
+        modelBuilder.Entity<AirportCommunication>(entity =>
         {
             entity
                 .HasNoKey()
@@ -168,7 +168,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("service_indicator");
         });
 
-        modelBuilder.Entity<TblAirportMsa>(entity =>
+        modelBuilder.Entity<AirportMSA>(entity =>
         {
             entity
                 .HasNoKey()

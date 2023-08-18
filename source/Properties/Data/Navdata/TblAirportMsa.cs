@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblAirportMsa
+public partial class AirportMSA
 {
     public string? AreaCode { get; set; }
 
@@ -35,7 +35,7 @@ public partial class TblAirportMsa
 
     public long? SectorAltitude3 { get; set; }
 
-    public long? SectorBearing4 { get; set; }
+    public long? SectorBearing4  { get; set; }
 
     public long? SectorAltitude4 { get; set; }
 

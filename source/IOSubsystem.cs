@@ -318,8 +318,8 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
 
                 using (var _dbContext = new tfm.Properties.Data.Navdata.EDfdContext())
                 {
-                    var _airport = _dbContext.Airports.Where(x => x.AirportName != null).First() as tfm.Properties.Data.Navdata.Airport;
-                    Output(isGauge: false, output: _airport.AirportName);
+                    var _MSA = _dbContext.AirportMSAs.Where(x => x.MsaCenter != null).First() as tfm.Properties.Data.Navdata.AirportMSA;
+                    Output(isGauge: false, output: _MSA.MsaCenter);
                 }
             }
             catch(Exception ex)
