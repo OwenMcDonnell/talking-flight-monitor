@@ -316,9 +316,10 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
             try
             {
 
-                using (var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
+                using (var _dbContext = new tfm.Properties.Data.Navdata.EDfdContext())
                 {
-                    Output(isGauge: false, output: _dbContext.iLSComponents.Count().ToString());
+                    var _airport = _dbContext.Airports.Where(x => x.AirportName != null).First() as tfm.Properties.Data.Navdata.Airport;
+                    Output(isGauge: false, output: _airport.AirportName);
                 }
             }
             catch(Exception ex)

@@ -37,7 +37,7 @@ public partial class EDfdContext : DbContext
     
     // Table sets
     #region
-    public virtual DbSet<TblAirport> TblAirports { get; set; }
+    public virtual DbSet<Airport> Airports { get; set; }
     public virtual DbSet<TblAirportCommunication> TblAirportCommunications { get; set; }
     public virtual DbSet<TblAirportMsa> TblAirportMsas { get; set; }
     public virtual DbSet<TblControlledAirspace> TblControlledAirspaces { get; set; }
@@ -51,7 +51,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<TblGate> TblGates { get; set; }
     public virtual DbSet<TblGl> TblGls { get; set; }
     public virtual DbSet<TblGridMora> TblGridMoras { get; set; }
-    public virtual DbSet<TblHeader> TblHeaders { get; set; }
+    public virtual DbSet<Header> Headers { get; set; }
     public virtual DbSet<TblHolding> TblHoldings { get; set; }
     public virtual DbSet<TblIap> TblIaps { get; set; }
     public virtual DbSet<TblLocalizerMarker> TblLocalizerMarkers { get; set; }
@@ -74,7 +74,7 @@ public partial class EDfdContext : DbContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TblAirport>(entity =>
+        modelBuilder.Entity<Airport>(entity =>
         {
             entity
                 .HasNoKey()
@@ -894,7 +894,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("starting_longitude");
         });
 
-        modelBuilder.Entity<TblHeader>(entity =>
+        modelBuilder.Entity<Header>(entity =>
         {
             entity
                 .HasNoKey()

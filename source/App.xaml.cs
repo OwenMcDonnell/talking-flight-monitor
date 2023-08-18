@@ -181,7 +181,7 @@ namespace tfm
                     logger.Info($"FSUIPC .net DLL version: {FSUIPCConnection.DLLVersion}");
                     using (var _dbContext = new EDfdContext())
                     {
-                        var _navigraphHeader = _dbContext.TblHeaders.FirstOrDefault();
+                        var _navigraphHeader = _dbContext.Headers.FirstOrDefault();
                         if (_navigraphHeader != null)
                         {
                             logger.Info($"Navigraph version {_navigraphHeader.CurrentAirac} Rev {_navigraphHeader.Revision}");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblHeader
+public partial class Header
 {
     public string Version { get; set; } = null!;
 
