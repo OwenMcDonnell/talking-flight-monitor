@@ -44,7 +44,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<CruisingTable> CruisingTables{ get; set; }
     public virtual DbSet<EnrouteAirway> EnrouteAirways { get; set; }
     public virtual DbSet<EnrouteAirwayRestriction> EnrouteAirwayRestrictions{ get; set; }
-    public virtual DbSet<TblEnrouteCommunication> TblEnrouteCommunications { get; set; }
+    public virtual DbSet<EnrouteCommunication> EnrouteCommunications { get; set; }
     public virtual DbSet<EnrouteNDBNavaid> EnrouteNDBNavaids { get; set; }
     public virtual DbSet<TblEnrouteWaypoint> TblEnrouteWaypoints { get; set; }
     public virtual DbSet<TblFirUir> TblFirUirs { get; set; }
@@ -520,7 +520,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("units_of_altitude");
         });
 
-        modelBuilder.Entity<TblEnrouteCommunication>(entity =>
+        modelBuilder.Entity<EnrouteCommunication>(entity =>
         {
             entity
                 .HasNoKey()
