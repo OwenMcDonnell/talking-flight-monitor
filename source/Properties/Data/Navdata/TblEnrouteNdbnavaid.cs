@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblEnrouteNdbnavaid
+public partial class EnrouteNDBNavaid
 {
     public string? AreaCode { get; set; }
 
