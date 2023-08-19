@@ -43,7 +43,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<ControlledAirspace> ControlledAirspaces { get; set; }
     public virtual DbSet<CruisingTable> CruisingTables{ get; set; }
     public virtual DbSet<EnrouteAirway> EnrouteAirways { get; set; }
-    public virtual DbSet<TblEnrouteAirwayRestriction> TblEnrouteAirwayRestrictions { get; set; }
+    public virtual DbSet<EnrouteAirwayRestriction> EnrouteAirwayRestrictions{ get; set; }
     public virtual DbSet<TblEnrouteCommunication> TblEnrouteCommunications { get; set; }
     public virtual DbSet<TblEnrouteNdbnavaid> TblEnrouteNdbnavaids { get; set; }
     public virtual DbSet<TblEnrouteWaypoint> TblEnrouteWaypoints { get; set; }
@@ -428,7 +428,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("waypoint_longitude");
         });
 
-        modelBuilder.Entity<TblEnrouteAirwayRestriction>(entity =>
+        modelBuilder.Entity<EnrouteAirwayRestriction>(entity =>
         {
             entity
                 .HasNoKey()
