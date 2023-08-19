@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblCruisingTable
+public partial class CruisingTable
 {
     public string? CruiseTableIdentifier { get; set; }
 

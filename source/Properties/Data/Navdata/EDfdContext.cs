@@ -41,8 +41,8 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<AirportCommunication> AirportCommunications { get; set; }
     public virtual DbSet<AirportMSA> AirportMSAs { get; set; }
     public virtual DbSet<ControlledAirspace> ControlledAirspaces { get; set; }
-    public virtual DbSet<TblCruisingTable> TblCruisingTables { get; set; }
-    public virtual DbSet<TblEnrouteAirway> TblEnrouteAirways { get; set; }
+    public virtual DbSet<CruisingTable> CruisingTables{ get; set; }
+    public virtual DbSet<EnrouteAirway> EnrouteAirways { get; set; }
     public virtual DbSet<TblEnrouteAirwayRestriction> TblEnrouteAirwayRestrictions { get; set; }
     public virtual DbSet<TblEnrouteCommunication> TblEnrouteCommunications { get; set; }
     public virtual DbSet<TblEnrouteNdbnavaid> TblEnrouteNdbnavaids { get; set; }
@@ -304,7 +304,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("upper_limit");
         });
 
-        modelBuilder.Entity<TblCruisingTable>(entity =>
+        modelBuilder.Entity<CruisingTable>(entity =>
         {
             entity
                 .HasNoKey()
@@ -363,7 +363,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("vertical_separation4");
         });
 
-        modelBuilder.Entity<TblEnrouteAirway>(entity =>
+        modelBuilder.Entity<EnrouteAirway>(entity =>
         {
             entity
                 .HasNoKey()
