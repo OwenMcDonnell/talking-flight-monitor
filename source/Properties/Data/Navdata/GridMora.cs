@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblGridMora
+public partial class GridMora
 {
     public long? StartingLatitude { get; set; }
 
