@@ -46,7 +46,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<EnrouteAirwayRestriction> EnrouteAirwayRestrictions{ get; set; }
     public virtual DbSet<EnrouteCommunication> EnrouteCommunications { get; set; }
     public virtual DbSet<EnrouteNDBNavaid> EnrouteNDBNavaids { get; set; }
-    public virtual DbSet<TblEnrouteWaypoint> TblEnrouteWaypoints { get; set; }
+    public virtual DbSet<EnrouteWaypoint> EnrouteWaypoints { get; set; }
     public virtual DbSet<TblFirUir> TblFirUirs { get; set; }
     public virtual DbSet<TblGate> TblGates { get; set; }
     public virtual DbSet<TblGl> TblGls { get; set; }
@@ -599,7 +599,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("range");
         });
 
-        modelBuilder.Entity<TblEnrouteWaypoint>(entity =>
+        modelBuilder.Entity<EnrouteWaypoint>(entity =>
         {
             entity
                 .HasNoKey()

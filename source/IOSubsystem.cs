@@ -318,8 +318,8 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
 
                 using (var _dbContext = new tfm.Properties.Data.Navdata.EDfdContext())
                 {
-                    var _enrouteNDB = _dbContext.EnrouteNDBNavaids.Where(x => x.NdbIdentifier != null).First() as tfm.Properties.Data.Navdata.EnrouteNDBNavaid;
-                    Output(isGauge: false, output: _enrouteNDB.NdbIdentifier);
+                    var _enrouteWaypoint = _dbContext.EnrouteWaypoints.Where(x => x.WaypointIdentifier != null).First() as tfm.Properties.Data.Navdata.EnrouteWaypoint;
+                    Output(isGauge: false, output: _enrouteWaypoint.WaypointIdentifier);
                 }
             }
             catch(Exception ex)
