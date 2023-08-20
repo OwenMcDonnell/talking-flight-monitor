@@ -47,7 +47,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<EnrouteCommunication> EnrouteCommunications { get; set; }
     public virtual DbSet<EnrouteNDBNavaid> EnrouteNDBNavaids { get; set; }
     public virtual DbSet<EnrouteWaypoint> EnrouteWaypoints { get; set; }
-    public virtual DbSet<TblFirUir> TblFirUirs { get; set; }
+    public virtual DbSet<FirUir> FirUirs{ get; set; }
     public virtual DbSet<TblGate> TblGates { get; set; }
     public virtual DbSet<TblGl> TblGls { get; set; }
     public virtual DbSet<TblGridMora> TblGridMoras { get; set; }
@@ -634,7 +634,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("waypoint_usage");
         });
 
-        modelBuilder.Entity<TblFirUir>(entity =>
+        modelBuilder.Entity<FirUir>(entity =>
         {
             entity
                 .HasNoKey()
