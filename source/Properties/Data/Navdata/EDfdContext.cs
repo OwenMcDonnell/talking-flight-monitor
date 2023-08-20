@@ -49,7 +49,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<EnrouteWaypoint> EnrouteWaypoints { get; set; }
     public virtual DbSet<FirUir> FirUirs{ get; set; }
     public virtual DbSet<Gate> Gates { get; set; }
-    public virtual DbSet<TblGl> TblGls { get; set; }
+    public virtual DbSet<Gl> Gls { get; set; }
     public virtual DbSet<TblGridMora> TblGridMoras { get; set; }
     public virtual DbSet<Header> Headers { get; set; }
     public virtual DbSet<TblHolding> TblHoldings { get; set; }
@@ -734,7 +734,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("name");
         });
 
-        modelBuilder.Entity<TblGl>(entity =>
+        modelBuilder.Entity<Gl>(entity =>
         {
             entity
                 .HasNoKey()
