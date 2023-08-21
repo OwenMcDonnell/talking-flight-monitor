@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-
+// test comment.
 namespace tfm.Properties.Data.Navdata;
 
 public partial class EDfdContext : DbContext
