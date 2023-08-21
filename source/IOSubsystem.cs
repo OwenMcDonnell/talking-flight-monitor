@@ -318,8 +318,8 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
 
                 using (var _dbContext = new tfm.Properties.Data.Navdata.EDfdContext())
                 {
-                    var _gl = _dbContext.Gls.Where(x => x.RunwayIdentifier != null).First() as tfm.Properties.Data.Navdata.Gl;
-                    Output(isGauge: false, output: _gl.GlsStationIdent);
+                    var _holding = _dbContext.Holdings.Where(x => x.HoldingName != null).First() as tfm.Properties.Data.Navdata.Holding;
+                    Output(isGauge: false, output: _holding.HoldingName);
                 }
             }
             catch(Exception ex)

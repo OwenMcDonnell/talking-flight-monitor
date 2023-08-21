@@ -52,7 +52,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Gl> Gls { get; set; }
     public virtual DbSet<GridMora> GridMoras { get; set; }
     public virtual DbSet<Header> Headers { get; set; }
-    public virtual DbSet<TblHolding> TblHoldings { get; set; }
+    public virtual DbSet<Holding> Holdings { get; set; }
     public virtual DbSet<TblIap> TblIaps { get; set; }
     public virtual DbSet<TblLocalizerMarker> TblLocalizerMarkers { get; set; }
     public virtual DbSet<TblLocalizersGlideslope> TblLocalizersGlideslopes { get; set; }
@@ -929,7 +929,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("version");
         });
 
-        modelBuilder.Entity<TblHolding>(entity =>
+        modelBuilder.Entity<Holding>(entity =>
         {
             entity
                 .HasNoKey()
