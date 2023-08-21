@@ -318,8 +318,8 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
 
                 using (var _dbContext = new tfm.Properties.Data.Navdata.EDfdContext())
                 {
-                    var _holding = _dbContext.Holdings.Where(x => x.HoldingName != null).First() as tfm.Properties.Data.Navdata.Holding;
-                    Output(isGauge: false, output: _holding.HoldingName);
+                    var _iap = _dbContext.Iaps.Where(x => x.AirportIdentifier != null).First() as tfm.Properties.Data.Navdata.Iap;
+                    Output(isGauge: false, output: _iap.AirportIdentifier);
                 }
             }
             catch(Exception ex)
