@@ -153,12 +153,15 @@ namespace tfm
 
                 // Load TFM's database.
                 TFMDatabase.Initialize();
-                                
+
                 // load airport database
                 #region "Airports database"
-                inst.Speak("loading airport database");
-                utility.LoadAirportsDatabase();
-                #endregion
+                if (tfm.Properties.Settings.Default.MSFSAirportsDatabasePath != null || tfm.Properties.Settings.Default.P3DAirportsDatabasePath != null)
+                {
+                    inst.Speak("loading airport database");
+                    utility.LoadAirportsDatabase();
+                }
+                    #endregion
 
                 // Load the destination runway.
                 App.Utilities.LoadDestination();
