@@ -57,7 +57,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<LocalizerMarker> LocalizerMarkers { get; set; }
     public virtual DbSet<LocalizersGlideslope> LocalizersGlideslopes { get; set; }
     public virtual DbSet<Pathpoint> Pathpoints { get; set; }
-    public virtual DbSet<TblRestrictiveAirspace> TblRestrictiveAirspaces { get; set; }
+    public virtual DbSet<RestrictiveAirspace> RestrictiveAirspaces { get; set; }
     public virtual DbSet<TblRunway> TblRunways { get; set; }
     public virtual DbSet<TblSid> TblSids { get; set; }
     public virtual DbSet<TblStar> TblStars { get; set; }
@@ -1278,7 +1278,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("val");
         });
 
-        modelBuilder.Entity<TblRestrictiveAirspace>(entity =>
+        modelBuilder.Entity<RestrictiveAirspace>(entity =>
         {
             entity
                 .HasNoKey()
