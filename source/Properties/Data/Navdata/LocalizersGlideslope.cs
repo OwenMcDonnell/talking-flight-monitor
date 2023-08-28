@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblLocalizersGlideslope
+public partial class LocalizersGlideslope
 {
     public string? AreaCode { get; set; }
 

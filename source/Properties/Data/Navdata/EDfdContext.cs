@@ -55,7 +55,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Holding> Holdings { get; set; }
     public virtual DbSet<Iap> Iaps { get; set; }
     public virtual DbSet<LocalizerMarker> LocalizerMarkers { get; set; }
-    public virtual DbSet<TblLocalizersGlideslope> TblLocalizersGlideslopes { get; set; }
+    public virtual DbSet<LocalizersGlideslope> LocalizersGlideslopes { get; set; }
     public virtual DbSet<TblPathpoint> TblPathpoints { get; set; }
     public virtual DbSet<TblRestrictiveAirspace> TblRestrictiveAirspaces { get; set; }
     public virtual DbSet<TblRunway> TblRunways { get; set; }
@@ -1139,7 +1139,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("runway_identifier");
         });
 
-        modelBuilder.Entity<TblLocalizersGlideslope>(entity =>
+        modelBuilder.Entity<LocalizersGlideslope>(entity =>
         {
             entity
                 .HasNoKey()
