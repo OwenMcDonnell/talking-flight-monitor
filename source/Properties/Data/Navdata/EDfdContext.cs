@@ -59,7 +59,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Pathpoint> Pathpoints { get; set; }
     public virtual DbSet<RestrictiveAirspace> RestrictiveAirspaces { get; set; }
     public virtual DbSet<Runway> Runways { get; set; }
-    public virtual DbSet<TblSid> TblSids { get; set; }
+    public virtual DbSet<Sid> Sids { get; set; }
     public virtual DbSet<TblStar> TblStars { get; set; }
     public virtual DbSet<TblTerminalNdbnavaid> TblTerminalNdbnavaids { get; set; }
     public virtual DbSet<TblTerminalWaypoint> TblTerminalWaypoints { get; set; }
@@ -1405,7 +1405,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("threshold_crossing_height");
         });
 
-        modelBuilder.Entity<TblSid>(entity =>
+        modelBuilder.Entity<Sid>(entity =>
         {
             entity
                 .HasNoKey()
