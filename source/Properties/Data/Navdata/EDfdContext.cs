@@ -60,8 +60,8 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<RestrictiveAirspace> RestrictiveAirspaces { get; set; }
     public virtual DbSet<Runway> Runways { get; set; }
     public virtual DbSet<Sid> Sids { get; set; }
-    public virtual DbSet<TblStar> TblStars { get; set; }
-    public virtual DbSet<TblTerminalNdbnavaid> TblTerminalNdbnavaids { get; set; }
+    public virtual DbSet<Star> Stars { get; set; }
+    public virtual DbSet<TerminalNdbnavaid> TerminalNdbnavaids { get; set; }
     public virtual DbSet<TblTerminalWaypoint> TblTerminalWaypoints { get; set; }
     public virtual DbSet<TblVhfnavaid> TblVhfnavaids { get; set; }
     #endregion
@@ -1524,7 +1524,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("waypoint_longitude");
         });
 
-        modelBuilder.Entity<TblStar>(entity =>
+        modelBuilder.Entity<Star>(entity =>
         {
             entity
                 .HasNoKey()
@@ -1643,7 +1643,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("waypoint_longitude");
         });
 
-        modelBuilder.Entity<TblTerminalNdbnavaid>(entity =>
+        modelBuilder.Entity<TerminalNdbnavaid>(entity =>
         {
             entity
                 .HasNoKey()
