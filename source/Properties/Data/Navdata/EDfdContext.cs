@@ -58,7 +58,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<LocalizersGlideslope> LocalizersGlideslopes { get; set; }
     public virtual DbSet<Pathpoint> Pathpoints { get; set; }
     public virtual DbSet<RestrictiveAirspace> RestrictiveAirspaces { get; set; }
-    public virtual DbSet<TblRunway> TblRunways { get; set; }
+    public virtual DbSet<Runway> Runways { get; set; }
     public virtual DbSet<TblSid> TblSids { get; set; }
     public virtual DbSet<TblStar> TblStars { get; set; }
     public virtual DbSet<TblTerminalNdbnavaid> TblTerminalNdbnavaids { get; set; }
@@ -1343,7 +1343,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("upper_limit");
         });
 
-        modelBuilder.Entity<TblRunway>(entity =>
+        modelBuilder.Entity<Runway>(entity =>
         {
             entity
                 .HasNoKey()
