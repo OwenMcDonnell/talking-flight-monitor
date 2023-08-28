@@ -56,7 +56,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Iap> Iaps { get; set; }
     public virtual DbSet<LocalizerMarker> LocalizerMarkers { get; set; }
     public virtual DbSet<LocalizersGlideslope> LocalizersGlideslopes { get; set; }
-    public virtual DbSet<TblPathpoint> TblPathpoints { get; set; }
+    public virtual DbSet<Pathpoint> Pathpoints { get; set; }
     public virtual DbSet<TblRestrictiveAirspace> TblRestrictiveAirspaces { get; set; }
     public virtual DbSet<TblRunway> TblRunways { get; set; }
     public virtual DbSet<TblSid> TblSids { get; set; }
@@ -1198,7 +1198,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("station_declination");
         });
 
-        modelBuilder.Entity<TblPathpoint>(entity =>
+        modelBuilder.Entity<Pathpoint>(entity =>
         {
             entity
                 .HasNoKey()

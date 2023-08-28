@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblPathpoint
+public partial class Pathpoint
 {
     public string? AreaCode { get; set; }
 
