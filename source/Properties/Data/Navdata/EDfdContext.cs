@@ -63,7 +63,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Star> Stars { get; set; }
     public virtual DbSet<TerminalNdbnavaid> TerminalNdbnavaids { get; set; }
     public virtual DbSet<TerminalWaypoint> TerminalWaypoints { get; set; }
-    public virtual DbSet<TblVhfnavaid> TblVhfnavaids { get; set; }
+    public virtual DbSet<Vhfnavaid> Vhfnavaids { get; set; }
     #endregion
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -1719,7 +1719,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("waypoint_type");
         });
 
-        modelBuilder.Entity<TblVhfnavaid>(entity =>
+        modelBuilder.Entity<Vhfnavaid>(entity =>
         {
             entity
                 .HasNoKey()
