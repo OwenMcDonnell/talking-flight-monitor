@@ -62,7 +62,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Sid> Sids { get; set; }
     public virtual DbSet<Star> Stars { get; set; }
     public virtual DbSet<TerminalNdbnavaid> TerminalNdbnavaids { get; set; }
-    public virtual DbSet<TblTerminalWaypoint> TblTerminalWaypoints { get; set; }
+    public virtual DbSet<TerminalWaypoint> TerminalWaypoints { get; set; }
     public virtual DbSet<TblVhfnavaid> TblVhfnavaids { get; set; }
     #endregion
     
@@ -1684,7 +1684,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("range");
         });
 
-        modelBuilder.Entity<TblTerminalWaypoint>(entity =>
+        modelBuilder.Entity<TerminalWaypoint>(entity =>
         {
             entity
                 .HasNoKey()
