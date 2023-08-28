@@ -54,7 +54,7 @@ public partial class EDfdContext : DbContext
     public virtual DbSet<Header> Headers { get; set; }
     public virtual DbSet<Holding> Holdings { get; set; }
     public virtual DbSet<Iap> Iaps { get; set; }
-    public virtual DbSet<TblLocalizerMarker> TblLocalizerMarkers { get; set; }
+    public virtual DbSet<LocalizerMarker> LocalizerMarkers { get; set; }
     public virtual DbSet<TblLocalizersGlideslope> TblLocalizersGlideslopes { get; set; }
     public virtual DbSet<TblPathpoint> TblPathpoints { get; set; }
     public virtual DbSet<TblRestrictiveAirspace> TblRestrictiveAirspaces { get; set; }
@@ -1101,7 +1101,7 @@ public partial class EDfdContext : DbContext
                 .HasColumnName("waypoint_longitude");
         });
 
-        modelBuilder.Entity<TblLocalizerMarker>(entity =>
+        modelBuilder.Entity<LocalizerMarker>(entity =>
         {
             entity
                 .HasNoKey()

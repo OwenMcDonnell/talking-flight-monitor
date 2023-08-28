@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tfm.Properties.Data.Navdata;
 
-public partial class TblLocalizerMarker
+public partial class LocalizerMarker
 {
     public string AreaCode { get; set; } = null!;
 
