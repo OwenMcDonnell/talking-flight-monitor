@@ -239,27 +239,7 @@ namespace tfm
                     inst.ReadAircraftState();
                 }
                 #endregion
-                /*
-                if (!inst.PostTakeOffChecklist())
-                {
-                    inst.PostTakeOffChecklist();
-                }
-
-                if (Aircraft.inCloud.Value > 0)
-                {
-                    if (Aircraft.inCloud.ValueChanged)
-                    {
-                        inst.Output(isGauge: false, output: "In cloud.");
-                    }
-                }
-                else
-                {
-                    if (Aircraft.inCloud.ValueChanged)
-                    {
-                        inst.Output(isGauge: false, output: "Out of cloud.");
-                    }
-                }*/
-            }
+                           }
             catch (Exception ex)
             {
                                 this.TimerMain.Stop();
@@ -272,8 +252,9 @@ namespace tfm
             TimerMain.Start();
         }
         #endregion
-        
+
         // second 200 MS timer for lower priority instruments, or instruments that don't work well on 100 MS
+        #region
         private void TimerLowPriority_Tick(object sender, ElapsedEventArgs e)
         {
             // stop the timer so we don't tick again on another thread
@@ -281,10 +262,14 @@ namespace tfm
             try
             {
                 FSUIPCConnection.Process("LowPriority");
+
+                // TODO: Figure out a better way of muting TFM.
+                #region
                 if (tfm.Properties.Settings.Default.AutomaticAnnouncements)
                 {
                     inst.ReadLowPriorityInstruments();
                 }
+                #endregion
 
             }
             catch (Exception ex)
@@ -298,8 +283,9 @@ namespace tfm
             }
             TimerLowPriority.Start();
         }
-
-private void LoadTrayIcon()
+        #endregion
+        
+        private void LoadTrayIcon()
         {
 
             // Load the system tray icon and assign all of the context menu items to it.
