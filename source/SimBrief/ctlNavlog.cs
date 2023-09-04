@@ -169,7 +169,7 @@ namespace tfm.SimBrief
             if (navlogListView.SelectedItems.Count > 0)
             {
                 var selectedWaypoint = (Fix)navlogListView.SelectedItems[0].Tag;
-                foreach (Form f in Application.OpenForms)
+                foreach (Form f in System.Windows.Forms.Application.OpenForms)
                 {
                     if (f is SimBrief.Forms.WaypointMoreDetails)
                     {

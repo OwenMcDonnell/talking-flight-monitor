@@ -2303,7 +2303,7 @@ else                    if (PMDG777Detected)
                     else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747"))
                     {
                         var is747CDUOpen = false;
-                        foreach (Form form in Application.OpenForms)
+                        foreach (Form form in System.Windows.Forms.Application.OpenForms)
                         {
                             if (form is _747CDU)
                             {
@@ -2330,7 +2330,7 @@ else                    if (PMDG777Detected)
                     else if (Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("777"))
                     {
                         var is777CDUOpen = false;
-                        foreach (Form form in Application.OpenForms)
+                        foreach (Form form in System.Windows.Forms.Application.OpenForms)
                         {
                             if (form is _777CDU)
                             {
@@ -2445,7 +2445,7 @@ else                    if (PMDG777Detected)
                 case "ShowSimBriefFlightPlan":
 
                     var isSimBriefPlanOpen = false;
-                    foreach(Form sb in Application.OpenForms)
+                    foreach(Form sb in System.Windows.Forms.Application.OpenForms)
                     {
                         if(sb is SimBrief.SimBriefForm)
                         {

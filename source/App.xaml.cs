@@ -1,4 +1,5 @@
-﻿using tfm.Properties.Data.Navdata;
+﻿using tfm;
+using tfm.Properties.Data.Navdata;
 using tfm.Properties.Data.Navigraph;
 using DavyKager;
 
@@ -25,21 +26,7 @@ namespace tfm
     {
 
 
-        // Private fields
-        #region "Private fields"
-        // UI elements.
-        TrayIcon icon;
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-
-        // Timers.
-        System.Timers.Timer TimerMain = new(500);
-        System.Timers.Timer TimerConnection = new(1000);
-        System.Timers.Timer TimerLowPriority = new(1000);
-
-        private readonly IOSubsystem inst = new IOSubsystem();
-        #endregion
-
-        // Startup event.
+                // Startup event.
         #region "Startup"
         private void Application_Startup(object sender, StartupEventArgs e)
         {
