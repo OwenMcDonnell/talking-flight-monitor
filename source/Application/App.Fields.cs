@@ -233,5 +233,59 @@ namespace tfm
         private bool PMDGInitializing;
         private bool FirstOfficerCountDown;
 
+        /* Check to see if PMDG aircraft are loaded.
+         * Basing the results on contents found in the aircraft name instead of the
+         * model. If there is a more reliable way, it would be great.
+         * NOTE: The ability to use other liveries is unreliable because of the
+         * detection method is purely based on contents found in a string.*/
+
+        public bool isPMDG737Loaded
+        {
+            get => Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("737");
+        }
+
+        public bool isPMDG747Loaded
+        {
+            get => Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("747");
+        }
+
+        public bool isPMDG777Loaded
+        {
+            get => Aircraft.AircraftName.Value.Contains("PMDG") && Aircraft.AircraftName.Value.Contains("777");
+        }
+
+
+        /* Check to see if P3D is loaded. Basing it on FSUIPC version
+         * since it is more reliable than simulator name or version.*/
+        public bool IsP3DLoaded { get => FSUIPCConnection.FSUIPCVersion.Major <= 6 ? true : false; }
+
+        // Same for MSFS. See above.
+        public bool isMSFSLoaded { get => FSUIPCConnection.FSUIPCVersion.Major >= 7 ? true : false; }
+
+        // Location of the binary files for the airports database.
+        public string airportsDatabaseFolder
+        {
+            get
+            {
+                string databasePath = string.Empty;
+                var tfmFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Talking flight monitor");
+
+                // Geneerate the P3D database location.
+                if (IsP3DLoaded)
+                {
+                    databasePath = Path.Combine(tfmFolder, "P3D airports");
+                }
+
+                // Generate the MSFS database location.
+                else if (isMSFSLoaded)
+                {
+                    databasePath = Path.Combine(tfmFolder, "MSFS airports");
+                }
+
+                return databasePath;
+            }
+        }
+
+        public static InstrumentPanel instrumentPanel { get => new InstrumentPanel(); }
     }
 }
