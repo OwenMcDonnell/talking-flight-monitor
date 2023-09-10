@@ -64,20 +64,20 @@ namespace tfm.Settings_panels
             }
             try
             {
-                if (App.Utilities.IsP3DLoaded)
+                if (App.IsP3DLoaded)
                 {
                     strMakeRunwaysPath = txtP3D.Text;
                                    }
-                else if (App.Utilities.isMSFSLoaded)
+                else if (App.isMSFSLoaded)
                 {
                     strMakeRunwaysPath = txtMSFS.Text;
                                    }
                 FSUIPCConnection.AirportsDatabase.MakeRunwaysFolder = strMakeRunwaysPath;
-                FSUIPCConnection.AirportsDatabase.DatabaseFolder = App.Utilities.airportsDatabaseFolder;
+                FSUIPCConnection.AirportsDatabase.DatabaseFolder = App.AirportsDatabaseFolder;
                 if (FSUIPCConnection.AirportsDatabase.MakeRunwaysFilesExist)
                 {
                     await FSUIPCConnection.AirportsDatabase.RebuildDatabaseAsync();
-                                        utility.LoadAirportsDatabase(strMakeRunwaysPath);
+                                        App.LoadAirportsDatabase(strMakeRunwaysPath);
                     System.Windows.MessageBox.Show($"Loaded airports database from {FSUIPCConnection.AirportsDatabase.DatabaseFolder}");
                 }
                 else 

@@ -30,10 +30,10 @@ namespace tfm.PMDG.PMDG_737.CockpitPanels.ControlStand
 private void TransponderTimerTick(Object Sender, System.Timers.ElapsedEventArgs elapsedEventArgs)
         {
 
-            if(utility.InstrumentPanel.Transponder != oldTransponder)
+            if(App.instrumentPanel.Transponder != oldTransponder)
             {
-                transponderCodeTextBox.Text = utility.InstrumentPanel.Transponder.ToString();
-                oldTransponder = utility.InstrumentPanel.Transponder;
+                transponderCodeTextBox.Text = App.instrumentPanel.Transponder.ToString();
+                oldTransponder = App.instrumentPanel.Transponder;
             }
 
 foreach(PanelObject control in PMDG737Aircraft.PanelControls)
@@ -84,7 +84,7 @@ foreach(PanelObject control in PMDG737Aircraft.PanelControls)
             transponderTimer.Elapsed += new System.Timers.ElapsedEventHandler(TransponderTimerTick);
             transponderTimer.Start();
             
-                        transponderCodeTextBox.Text = utility.InstrumentPanel.Transponder.ToString();
+                        transponderCodeTextBox.Text = App.instrumentPanel.Transponder.ToString();
 
             foreach (PanelObject control in PMDG737Aircraft.PanelControls)
             {

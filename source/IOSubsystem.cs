@@ -49,7 +49,7 @@ namespace tfm
     /// </summary>
     public class IOSubsystem
     {
-
+        
         // PMDG MCP components managers.
 private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PMDG737MCPComponentsManager();
         // get a logger object for this class
@@ -1072,9 +1072,9 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
         {
             if (FSUIPCConnection.IsOpen)
             {
-                utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
-                utility.CurrentWeather.Name = "Weather auto refresh";
-                utility.WeatherLastUpdated = elapsedEventArgs.SignalTime;
+                App.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+                App.CurrentWeather.Name = "Weather auto refresh";
+                App.WeatherLastUpdated = elapsedEventArgs.SignalTime;
             }
 
                                 }
@@ -1099,7 +1099,7 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
             {
                 if (Properties.Settings.Default.ReadGSAltitude)
                 {
-                    var gsHeight = utility.CalculateAngleHeight(FlightPlan.DestinationRunway.DistanceFeet, FlightPlan.DestinationRunway.ILSInfo.Slope);
+                    var gsHeight = App.CalculateAngleHeight(FlightPlan.DestinationRunway.DistanceFeet, FlightPlan.DestinationRunway.ILSInfo.Slope);
                                         var relativeGsHeight = Autopilot.AglAltitude - gsHeight;
                     relativeGsHeight = Math.Round(relativeGsHeight, 0);
 
@@ -1191,7 +1191,7 @@ private        PMDG737MCPComponentsManager _PMDG737MCPComponentsManager = new PM
                 {
                     
                                         double heading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
-                    var headingOffset = utility.ReadHeadingOffset(Autopilot.Heading, heading);
+                    var headingOffset = App.ReadHeadingOffset(Autopilot.Heading, heading);
                     headingOffset = Math.Round(headingOffset, 0);
                     if (headingOffset < 0)
                     {
@@ -1734,7 +1734,7 @@ else              if (PMDG777Detected)
         private void commandMode(object sender, HotkeyEventArgs e)
         {
             // Check to see if we are connected to the sim.
-            if (FSUIPCConnection.IsOpen || utility.DebugEnabled || helpModeEnabled)
+            if (FSUIPCConnection.IsOpen || App.DebugEnabled || helpModeEnabled)
             {
                 // remove the left bracket autopilot command
                 HotkeyManager.Current.Remove("ap_Command_Key");
@@ -1780,7 +1780,7 @@ else              if (PMDG777Detected)
             // unregister the right bracket command key so it isn't pressed by accident
             HotkeyManager.Current.Remove("Command_Key");
             // Check to see if we are connected to the sim
-            if (FSUIPCConnection.IsOpen || utility.DebugEnabled)
+            if (FSUIPCConnection.IsOpen || App.DebugEnabled)
             {
                 // play the command sound
                 // AudioPlaybackEngine.Instance.PlaySound(cmdSound);
@@ -5419,5 +5419,6 @@ else if(currentLocation.Airport == null)
                     break;
             }
         }
+        
     } // End IOSubsystem class
 } // End TFM namespace.

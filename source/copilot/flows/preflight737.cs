@@ -156,7 +156,7 @@ namespace tfm.copilot
         {
             if (Properties.Settings.Default.FlowMuteSpeech)
             {
-                utility.flgMuteFlows = true;
+                App.flgMuteFlows= true;
             }
             frmPMDG737Flows.FlowStatusMessage = "running fire tests.";
             Tolk.Output("Running fire tests.");
@@ -193,7 +193,7 @@ namespace tfm.copilot
             Thread.Sleep(1000);
             frmPMDG737Flows.FlowStatusMessage = "Fire tests completed.";
             Tolk.Output("Fire test completed.");
-            utility.flgMuteFlows = false;
+            App.flgMuteFlows = false;
 
 
 

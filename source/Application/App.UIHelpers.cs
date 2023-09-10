@@ -13,7 +13,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
 using TreeView = System.Windows.Controls.TreeView;
 using System.Windows.Markup;
-using tfm.Properties;
+
 using System.Windows.Media;
 using System.Windows;
 using System.IO;
@@ -29,17 +29,76 @@ using System.Reflection.Metadata;
 using System.Security.AccessControl;
 using System.Windows.Documents;
 using System.Xml;
-using Newtonsoft.Json;
+using tfm.Settings_panels;
+using tfm.Keyboard_manager;
 
 namespace tfm
 {
     public partial class App : System.Windows.Application
     {
-        public static  UIHelpers UI
+        public static UIHelpers UI { get => new UIHelpers(); }
+
+            private void DisplayApplicationSettings()
         {
-            get => new UIHelpers();
+            /// TODO: IoSubsystem: Remove avionics tab from settings.
+            /// TODO: IoSubSystem: Make displaying settings reusable code in the global scope.
+            /// 
+            // frmSettings settings = new frmSettings();
+            dlgSettings settings = new();
+
+            settings.ShowDialog();
+            /*            if (settings.DialogResult == DialogResult.OK)
+                        {
+                            Properties.Settings.Default.Save();
+                            Properties.pmdg737_offsets.Default.Save();
+                            Properties.pmdg747_offsets.Default.Save();
+                            Properties.Weather.Default.Save();
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.Reload();
+                            Properties.pmdg737_offsets.Default.Reload();
+                            Properties.pmdg747_offsets.Default.Reload();
+                            Properties.Weather.Default.Reload();
+                        }
+            */
+        } // DisplayApplicationSettings.
+
+        private void DisplayKeyboardManager()
+        {
+            frmKeyboardManager keyboardManager = new frmKeyboardManager();
+            keyboardManager.ShowDialog();
+            if (keyboardManager.DialogResult == DialogResult.OK)
+            {
+                tfm.Properties.Hotkeys.Default.Save();
+            }
+            if (keyboardManager.DialogResult == DialogResult.Cancel)
+            {
+                tfm.Properties.Hotkeys.Default.Reload();
+            }
+
         }
-    }
+
+        private void DisplayA2AManager()
+        {
+            Output(isGauge: false, output: "A2A manager not yet supported.");
+        } // DisplayA2AManager.
+
+        private void DisplayAircraftProfiles()
+        {
+            Output(isGauge: false, output: "Aircraft profiles not yet supported.");
+        } // AircraftProfiles
+
+        public static void DisplayWebsite()
+        {
+            System.Diagnostics.Process.Start("www.talkingflightmonitor.com");
+        } // DisplayWebsite
+
+        public static void ReportIssue()
+        {
+            System.Diagnostics.Process.Start("https://github.com/jfayre/talking-flight-monitor-net/issues");
+        } // ReportIssue
+        }
 
     public class UIHelpers
     {
@@ -54,7 +113,7 @@ public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
             targetControl.Focus();
             System.Windows.Input.Keyboard.Focus(targetControl);
         }
-        public void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string alternateName = null, bool reverse = false)
+        public void BuildToggleButton(ToggleButton control, SingleStateToggle toggle, string? alternateName = null, bool reverse = false)
         {
             string name = alternateName == null ? toggle.Name : alternateName;
             control.Content = $"{name}";
@@ -63,14 +122,14 @@ public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
             AutomationProperties.SetName(control, $"{name}");
         }
 
-        public void BuildButton(System.Windows.Controls.Button control, SingleStateToggle toggle, string alternateName = null)
+        public void BuildButton(System.Windows.Controls.Button control, SingleStateToggle toggle, string? alternateName = null)
         {
             string name = alternateName == null ? toggle.Name : alternateName;
             control.Content = $"{name} {toggle.CurrentState.Value}";
                                     AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
         }
 
-        public void BuildIndicatorTextBox(System.Windows.Controls.TextBox control, SingleStateToggle toggle, string alternateName = null)
+        public void BuildIndicatorTextBox(System.Windows.Controls.TextBox control, SingleStateToggle toggle, string? alternateName = null)
         {
             string name = alternateName == null ? toggle.Name : alternateName;
             control.Text = toggle.CurrentState.Value;

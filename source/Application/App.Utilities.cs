@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using NAudio.Wave;
 using NHotkey.WindowsForms;
 using tfm.Properties;
+using NAudio.Wave.SampleProviders;
+using DavyKager;
 
 namespace tfm
 {
@@ -31,7 +33,7 @@ namespace tfm
             }
         }
 
-        public string GetGateType(FsGate gate)
+        public static string GetGateType(FsGate gate)
         {
 
             string gateType = string.Empty;
@@ -125,7 +127,7 @@ namespace tfm
             return interceptTurn;
         }
 
-        ()
+        public void SetupAudio()
         {
             driverOut = new WaveOutEvent() { DesiredLatency = 50 };
 
@@ -140,9 +142,9 @@ namespace tfm
 
 public void SetupFlightFollowing()
 {
-    flightFollowingTimer = new System.Timers.Timer(TimeSpan.FromMinutes(double.Parse(Properties.Settings.Default.FlightFollowingTimeInterval)).TotalMilliseconds);
+    flightFollowingTimer = new System.Timers.Timer(TimeSpan.FromMinutes(double.Parse(tfm.Properties.Settings.Default.FlightFollowingTimeInterval)).TotalMilliseconds);
     flightFollowingTimer.Elapsed += onFlightFollowingTimerTick;
-    if (Properties.Settings.Default.FlightFollowing)
+    if (tfm.Properties.Settings.Default.FlightFollowing)
     {
         flightFollowingTimer.AutoReset = true;
         flightFollowingTimer.Enabled = true;
@@ -180,13 +182,146 @@ public void ResetHotkeys()
     }
     if (CommandKeyEnabled)
     {
-        HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)Properties.Hotkeys.Default.Command_Key, commandMode);
-        HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
+                HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
+        HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
     }
 }
 
+        private void ReadToggle(Offset instrument, bool toggleStateOn, string name, string OnMsg = "on", string OffMsg = "off", bool SAPI = false)
+        {
+            if (instrument.ValueChanged)
+            {
+                if (toggleStateOn)
+                {
+                    Output(isGauge: false, useSAPI: SAPI, output: $"{name} {OnMsg}");
+                }
+                else
+                {
+                    Output(isGauge: false, useSAPI: SAPI, output: $"{name} {OffMsg}");
+                }
+            }
+        }
+
+        public void AnnounceCurrentSpeedBrake()
+        {
+            Thread.Sleep(250);
+            switch (PMDG737Aircraft.CurrentSpeedBrakePosition)
+            {
+                case 0:
+                    Tolk.Output("Speed brake off.");
+                    break;
+                case 100:
+                    Tolk.Output("Speed brake armed.");
+                    break;
+                case 250:
+                    Tolk.Output("Speed brake 50%.");
+                    break;
+                case 272:
+                    Tolk.Output("Speed brake FLT.");
+                    break;
+                case 400:
+                    Tolk.Output("Speed brake 100%.");
+                    break;
+                default:
+                    Tolk.Output($"Speed brake {PMDG737Aircraft.CurrentSpeedBrakePosition}.");
+                    break;
+            }
+        }
+
+        public static double ReadHeadingOffset(double current, double target)
+        {
+            double left = current - target;
+            double right = target - current;
+            if (left < 0) left += 360;
+            if (right < 0) right += 360;
+            return left < right ? -left : right;
+        }
+
+        public static double CalculateAngleHeight(double distanceFeet, double slopeAngle)
+        {
+            var radians = slopeAngle * (Math.PI / 180);
+            var height = distanceFeet * Math.Tan(radians);
+            return height;
+        }
+
+        public static async void LoadAirportsDatabase(string MakeRunwaysPath = "")
+        {
+
+            if (FSUIPCConnection.IsOpen)
+            {
+                AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
+                database.DatabaseFolder = App.AirportsDatabaseFolder;
+                if (FSUIPCConnection.FSUIPCVersion.Major <= 6)
+                {
+                    if (MakeRunwaysPath != "")
+                    {
+                        database.MakeRunwaysFolder = MakeRunwaysPath;
+                    }
+                    else
+                    {
+                        database.MakeRunwaysFolder = tfm.Properties.Settings.Default.P3DAirportsDatabasePath;
+                    }
+                }
+                else
+                {
+                    if (MakeRunwaysPath != "")
+                    {
+                        database.MakeRunwaysFolder = MakeRunwaysPath;
+                    }
+                    else
+                    {
+                        database.MakeRunwaysFolder = tfm.Properties.Settings.Default.MSFSAirportsDatabasePath;
+                    }
+
+                }
+
+                if (database.DatabaseFilesExist)
+                {
+
+                    database.Load();
+                    Tolk.Output($"Airports database loaded. Total {database.Airports.Count} airports.");
+                    logger.Info($"Airports database loaded. Total {database.Airports.Count} airports.");
+                }
+                else
+                {
+                    Tolk.Output("Database failed to load. see the log for more details.");
+                    logger.Debug("Airports database failed to load.");
+                }
+            } // open connection.
+        } // LoadAirportsDatabase
+
+
+        public static string AddSpacesToMixedCaseStringAndLowercaseFirstChar(string mixedCaseString)
+        {
+            string result = "";
+            bool isFirstCharOfWord = true;
+            for (int i = 0; i < mixedCaseString.Length; i++)
+            {
+                char currentChar = mixedCaseString[i];
+                if (currentChar == '_')
+                {
+                    result += " "; // replace underscore with a space
+                    isFirstCharOfWord = true;
+                }
+                else if (i > 0 && char.IsUpper(currentChar))
+                {
+                    if (!isFirstCharOfWord)
+                    {
+                        result += " ";
+                    }
+                    result += char.ToLower(currentChar);
+                    isFirstCharOfWord = false;
+                }
+                else
+                {
+                    result += isFirstCharOfWord ? char.ToUpper(currentChar) : currentChar;
+                    isFirstCharOfWord = false;
+                }
+            }
+            return result;
+        }
 
 
 
     }
-        }
+}

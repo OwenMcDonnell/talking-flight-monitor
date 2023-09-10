@@ -3381,7 +3381,7 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
         public static void SetTransponder(string code)
         {
             int.TryParse(code, out int transponderCode);
-            utility.InstrumentPanel.Transponder = transponderCode;
+            App.instrumentPanel.Transponder = transponderCode;
         } // SetTransponder
 
         public static void TransponderSource()

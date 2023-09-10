@@ -52,7 +52,7 @@ namespace tfm.SimBrief.Forms
                 {
                     propertyValue =(float)Math.Round((double)propertyValue, 2);
                 }
-                waypointDetailsTextBox.Text += $"{utility.AddSpacesToMixedCaseStringAndLowercaseFirstChar(property.Name)}: {propertyValue}\r\n";
+                waypointDetailsTextBox.Text += $"{App.AddSpacesToMixedCaseStringAndLowercaseFirstChar(property.Name)}: {propertyValue}\r\n";
             }
 
         }

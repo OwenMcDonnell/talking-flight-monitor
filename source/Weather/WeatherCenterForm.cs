@@ -70,12 +70,12 @@ namespace tfm.Weather
 
         private void WeatherCenterForm_Load(object sender, EventArgs e)
         {
-            if(utility.CurrentWeather == null)
+            if(App.CurrentWeather == null)
             {
-                utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
-                utility.WeatherLastUpdated = DateTime.Now;
+                App.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+                App.WeatherLastUpdated = DateTime.Now;
             }
-            this.AccessibleName = $"{utility.CurrentWeather.Name} last refresh {utility.WeatherLastUpdated}";
+            this.AccessibleName = $"{App.CurrentWeather.Name} last refresh {App.WeatherLastUpdated}";
         }
     }
 }

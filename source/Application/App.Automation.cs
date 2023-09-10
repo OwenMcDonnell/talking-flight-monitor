@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Timers;
 
 using tfm.PMDG.PanelObjects;
-
 namespace tfm
 {
     public partial class App: System.Windows.Application
@@ -23,11 +22,11 @@ namespace tfm
             readWaypointFlag = true;
         }
 
-        private void onFlightFollowingTimerTick(object sender, ElapsedEventArgs e)
+        private void onFlightFollowingTimerTick(object? sender, ElapsedEventArgs e)
         {
             // this just reads the flight following info, same as the hotkey
 
-            if (Properties.Settings.Default.GeonamesUsername == "") return;
+            if (tfm.Properties.Settings.Default.GeonamesUsername == "") return;
             OnCityKey();
         }
 
@@ -101,10 +100,10 @@ namespace tfm
                 ReadToggle(Aircraft.FuelPump, Aircraft.FuelPump.Value > 0, "Fuel pump", "active", "off");
 
                 ReadLandingGear();
-                if (Properties.Settings.Default.ReadAutopilot) ReadAutopilotInstruments();
-                if (Properties.Settings.Default.ReadGroundSpeed) ReadGroundSpeed();
+                if (tfm.Properties.Settings.Default.ReadAutopilot) ReadAutopilotInstruments();
+                if (tfm.Properties.Settings.Default.ReadGroundSpeed) ReadGroundSpeed();
                 readAutopilotAltitude();
-                if (Properties.Settings.Default.AltitudeAnnouncements) ReadAltitudeAnnouncement();
+                if (tfm.Properties.Settings.Default.AltitudeAnnouncements) ReadAltitudeAnnouncement();
 
                 ReadTransponder();
                 ReadRadios();
@@ -115,7 +114,7 @@ namespace tfm
                 NextWaypoint();
                 ReadLights();
                 ReadDoors();
-                if (Properties.Settings.Default.ReadILS) ReadILSInfo();
+                if (tfm.Properties.Settings.Default.ReadILS) ReadILSInfo();
                 ReadSimulationRate(TriggeredByKey: false);
                 readAPU();
                 readOnGround();
@@ -152,6 +151,7 @@ namespace tfm
                         if (control.Offset.ValueChanged)
                         {
                             Output(isGauge: false, output: control.ToString());
+#pragma warning restore CS8604 // Possible null reference argument.
                         }
                     }
 
@@ -254,7 +254,7 @@ namespace tfm
             ReadToggle(Aircraft.Eng2FuelValve, Aircraft.Eng2FuelValve.Value > 0, "number 2 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng3FuelValve, Aircraft.Eng3FuelValve.Value > 0, "number 3 fuel valve", "open", "closed");
             ReadToggle(Aircraft.Eng4FuelValve, Aircraft.Eng4FuelValve.Value > 0, "number 4 fuel valve", "open", "closed");
-            if (Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
+            if (tfm.Properties.Settings.Default.ReadSimconnectMessages) ReadSimConnectMessages();
             ReadFlaps();
         }
 
@@ -333,7 +333,7 @@ namespace tfm
                     }
                 }
             }
-            if (Properties.Settings.Default.ReadGPWS == true)
+            if (tfm.Properties.Settings.Default.ReadGPWS == true)
             {
                 try
                 {
@@ -449,7 +449,7 @@ namespace tfm
         private void ReadAutoBrake()
         {
 
-            string AbState = null;
+            string AbState = string.Empty;
             if (Aircraft.AutoBrake.ValueChanged)
             {
                 switch (Aircraft.AutoBrake.Value)
@@ -501,7 +501,7 @@ namespace tfm
                 Output(gaugeName, gaugeValue, isGauge);
 
             }
-            if (Properties.Settings.Default.ReadNavRadios == true)
+            if (tfm.Properties.Settings.Default.ReadNavRadios == true)
             {
                 if (Aircraft.Nav1Freq.ValueChanged)
                 {
@@ -580,7 +580,7 @@ namespace tfm
             // read when aircraft lights change
             if (Aircraft.Lights.ValueChanged)
             {
-                string state = null;
+                string state = String.Empty;
                 // loop through each bit and announce which values have changed.
                 FsBitArray lightBits = Aircraft.Lights.Value;
                 for (int i = 0; i < lightBits.Changed.Length; i++)
@@ -625,11 +625,11 @@ namespace tfm
         private void ReadILSInfo()
         {
             double vspeed = (double)Aircraft.VerticalSpeed.Value * 3.28084d * -1;
-            if (Properties.Settings.Default.ReadILS && Aircraft.OnGround.Value == 0 && vspeed < 200)
+            if (tfm.Properties.Settings.Default.ReadILS && Aircraft.OnGround.Value == 0 && vspeed < 200)
             {
                 if (Aircraft.Nav1GS.Value == 1 && gsDetected == false)
                 {
-                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                     {
                         Output(isGauge: false, useSAPI: true, output: "glide slope is alive. ");
                     }
@@ -642,7 +642,7 @@ namespace tfm
                 }
                 if (Aircraft.Nav1Flags.Value[7] && hasLocaliser == false)
                 {
-                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                     {
                         Output(isGauge: false, useSAPI: true, output: "nav 1 has localiser.");
                     }
@@ -661,7 +661,7 @@ namespace tfm
                     double magHeading = hdgTrue - magvar;
                     double rwyHeading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
 
-                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                     {
                         Output(isGauge: false, useSAPI: true, output: "Localiser is alive. Runway heading" + rwyHeading.ToString("F0"));
                     }
@@ -678,7 +678,7 @@ namespace tfm
                 if (Aircraft.Nav1Flags.Value[6] && hasGlideSlope == false)
                 {
 
-                    if (Properties.Settings.Default.SapiILSAnnouncements)
+                    if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                     {
                         Output(isGauge: false, useSAPI: true, output: "nav 1 has glide slope. ");
                     }
@@ -705,9 +705,9 @@ namespace tfm
         {
             if (FSUIPCConnection.IsOpen)
             {
-                utility.CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
-                utility.CurrentWeather.Name = "Weather auto refresh";
-                utility.WeatherLastUpdated = elapsedEventArgs.SignalTime;
+                CurrentWeather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
+                CurrentWeather.Name = "Weather auto refresh";
+                WeatherLastUpdated = elapsedEventArgs.SignalTime;
             }
 
         }
@@ -730,9 +730,9 @@ namespace tfm
             // only read ils when approach mode is on
             if (Aircraft.ApApproachHold.Value == 1 || Aircraft.pmdg737.MCP_annunAPP.Value == 1 || Aircraft.pmdg747.MCP_annunAPP.Value == 1 || Aircraft.pmdg777.MCP_annunAPP.Value == 1)
             {
-                if (Properties.Settings.Default.ReadGSAltitude)
+                if (tfm.Properties.Settings.Default.ReadGSAltitude)
                 {
-                    var gsHeight = utility.CalculateAngleHeight(FlightPlan.DestinationRunway.DistanceFeet, FlightPlan.DestinationRunway.ILSInfo.Slope);
+                    var gsHeight = CalculateAngleHeight(FlightPlan.DestinationRunway.DistanceFeet, FlightPlan.DestinationRunway.ILSInfo.Slope);
                     var relativeGsHeight = Autopilot.AglAltitude - gsHeight;
                     relativeGsHeight = Math.Round(relativeGsHeight, 0);
 
@@ -742,7 +742,7 @@ namespace tfm
                         var gaugeValue = $"{relativeGsHeight} down.";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -758,7 +758,7 @@ namespace tfm
                         var gaugeValue = $"{Math.Abs(relativeGsHeight)} up";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -773,7 +773,7 @@ namespace tfm
                         var gaugeValue = "Centered.";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -793,7 +793,7 @@ namespace tfm
                         var gaugeValue = $"up {strPercent} percent. ";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -810,7 +810,7 @@ namespace tfm
                         var gaugeValue = $"down {strPercent} percent. ";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -820,11 +820,11 @@ namespace tfm
                         }
                     }
                 }
-                if (Properties.Settings.Default.ReadLocaliserHeadingOffsets)
+                if (tfm.Properties.Settings.Default.ReadLocaliserHeadingOffsets)
                 {
 
                     double heading = (double)Aircraft.Nav1LocaliserInverseRunwayHeading.Value * 360d / 65536d + 180d - magvar;
-                    var headingOffset = utility.ReadHeadingOffset(Autopilot.Heading, heading);
+                    var headingOffset = ReadHeadingOffset(Autopilot.Heading, heading);
                     headingOffset = Math.Round(headingOffset, 0);
                     if (headingOffset < 0)
                     {
@@ -832,7 +832,7 @@ namespace tfm
                         var isGauge = true;
                         var gaugeValue = $"Left {Math.Abs(headingOffset)}";
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -848,7 +848,7 @@ namespace tfm
                         var isGauge = true;
                         var gaugeValue = $"Right {headingOffset}";
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -863,7 +863,7 @@ namespace tfm
                         var gaugeName = "Localiser";
                         var isGauge = true;
                         var gaugeValue = "Centered.";
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -885,7 +885,7 @@ namespace tfm
                         var gaugeValue = $"{strPercent} percent right. ";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -903,7 +903,7 @@ namespace tfm
                         var gaugeValue = $"{strPercent} percent left. ";
                         var isGauge = true;
 
-                        if (Properties.Settings.Default.SapiILSAnnouncements)
+                        if (tfm.Properties.Settings.Default.SapiILSAnnouncements)
                         {
                             Output(gaugeName, gaugeValue, isGauge, useSAPI: true, textOutput: false);
                         }
@@ -1312,7 +1312,7 @@ namespace tfm
 
             if (inCloudAscending == true && wasInCloudAscending == false)
             {
-                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                if (tfm.Properties.Weather.Default.CloudLayers_UseSAPI)
                 {
                     Output(isGauge: false, useSAPI: true, output: "In cloud.");
                 }
@@ -1324,7 +1324,7 @@ namespace tfm
             }
             else if (inCloudAscending == false && wasInCloudAscending == true)
             {
-                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                if (tfm.Properties.Weather.Default.CloudLayers_UseSAPI)
                 {
                     Output(isGauge: false, useSAPI: true, output: "Out of cloud.");
                 }
@@ -1344,7 +1344,7 @@ namespace tfm
 
             if (inCloudDescending == true && wasInCloudDescending == false)
             {
-                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                if (tfm.Properties.Weather.Default.CloudLayers_UseSAPI)
                 {
                     Output(isGauge: false, useSAPI: true, output: "In cloud.");
                 }
@@ -1356,7 +1356,7 @@ namespace tfm
             }
             else if (inCloudDescending == false && wasInCloudDescending == true)
             {
-                if (Properties.Weather.Default.CloudLayers_UseSAPI)
+                if (tfm.Properties.Weather.Default.CloudLayers_UseSAPI)
                 {
                     Output(isGauge: false, useSAPI: true, output: "Out of cloud.");
                 }
@@ -1380,7 +1380,7 @@ namespace tfm
             }
         }
 
-        private void OnRunwayGuidanceTickEvent(Object source, ElapsedEventArgs e)
+        private void OnRunwayGuidanceTickEvent(Object? source, ElapsedEventArgs e)
         {
             pulse = new OffsetSampleProvider(pan)
             {
@@ -1408,9 +1408,9 @@ namespace tfm
             }
                    }
 
-        private void OnAttitudeModeTickEvent(Object source, ElapsedEventArgs e)
+        private void OnAttitudeModeTickEvent(Object? source, ElapsedEventArgs e)
         {
-            string attitudeModeSelect = Properties.Settings.Default.AttitudeAnnouncementMode;
+            string attitudeModeSelect = tfm.Properties.Settings.Default.AttitudeAnnouncementMode;
 
 
             // pan = new PanningSampleProvider(bankSineProvider);
@@ -1546,7 +1546,61 @@ namespace tfm
 
         }
 
+        private void ReadPMDG737Toggles()
+        {
+            foreach (PanelObject toggle in PMDG737Aircraft.PanelControls)
+            {
+                // Only ones marked to speak are announced.
+                if (toggle.shouldSpeak == true)
+                {
+                    if (toggle.Offset.ValueChanged)
+                    {
+                        Output(isGauge: false, output: toggle.ToString());
+                    }
+                }
+            }
 
+
+        } // End ReadPMDG737Toggles.
+
+        private void ReadPMDG747Toggles()
+        {
+
+            foreach (PanelObject toggle in PMDG747Aircraft.PanelControls)
+            {
+                if (toggle.shouldSpeak == true)
+                {
+                    if (toggle.Offset.ValueChanged)
+                    {
+                        Output(isGauge: false, output: toggle.ToString());
+                    }
+                }
+            }
+            // Overhead Maintenance
+            // Electrical
+            ReadToggle(Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0], Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[0].Value > 0, "Gen. #1 field", "Off", "On");
+            ReadToggle(Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[1], Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[1].Value > 0, "Gen. #2 field", "Off", "On");
+            ReadToggle(Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[2], Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[2].Value > 0, "Gen. #3 field", "Off", "On");
+            ReadToggle(Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[3], Aircraft.pmdg747.ELEC_annunGen_FIELD_OFF[3].Value > 0, "Gen. #4 field", "Off", "On");
+            ReadToggle(Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[0], Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[0].Value > 0, "APU #1 field", "Off", "On");
+            ReadToggle(Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[1], Aircraft.pmdg747.ELEC_annunAPU_FIELD_OFF[1].Value > 0, "APU #2 field", "Off", "On");
+            ReadToggle(Aircraft.pmdg747.ELEC_annunSplitSystemBreaker_OPEN, Aircraft.pmdg747.ELEC_annunSplitSystemBreaker_OPEN.Value > 0, "Split system breaker", "Open", "Closed");
+
+            // Flight controls.
+            ReadToggle(Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[0], Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[0].Value > 0, "Tail hyd. #1 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[1], Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[1].Value > 0, "Tail hyd. #2 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[2], Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[2].Value > 0, "Tail hyd. #3 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[3], Aircraft.pmdg747.FCTL_annunTailHydVALVE_CLOSED[3].Value > 0, "Tail hyd. #4 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[0], Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[0].Value > 0, "Wing hyd. #1 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[1], Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[1].Value > 0, "Wing hyd. #2 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[2], Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[2].Value > 0, "Wing hyd. #3 valve", "Closed", "Opened");
+            ReadToggle(Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[3], Aircraft.pmdg747.FCTL_annunWingHydVALVE_CLOSED[3].Value > 0, "Wing hyd. #4 valve", "Closed", "Opened");
+
+            // Overhead panels
+            // IRS.
+
+
+        } // End ReadPMDG747Toggles
 
     }
 }

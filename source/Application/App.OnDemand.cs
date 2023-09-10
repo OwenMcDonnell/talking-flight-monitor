@@ -773,29 +773,29 @@ namespace tfm
 
         private void onToggleFlapsAnnouncementKey()
         {
-            if (Properties.Settings.Default.ReadFlaps)
+            if (tfm.Properties.Settings.Default.ReadFlaps)
             {
-                Properties.Settings.Default.ReadFlaps = false;
+                tfm.Properties.Settings.Default.ReadFlaps = false;
                 Output(isGauge: false, output: "flaps announcement disabled. ");
             }
             else
             {
-                Properties.Settings.Default.ReadFlaps = true;
+                tfm.Properties.Settings.Default.ReadFlaps = true;
                 Output(isGauge: false, output: "Flaps announcement enabled. ");
             }
         }
 
         private void onToggleILSKey()
         {
-            if (Properties.Settings.Default.ReadILS == true)
+            if (tfm.Properties.Settings.Default.ReadILS == true)
             {
-                Properties.Settings.Default.ReadILS = false;
+                tfm.Properties.Settings.Default.ReadILS = false;
                 ilsTimer.Enabled = false;
                 Output(isGauge: false, output: "Read ILS disabled");
             }
             else
             {
-                Properties.Settings.Default.ReadILS = true;
+                tfm.Properties.Settings.Default.ReadILS = true;
                 Output(isGauge: false, output: "Read ILS enabled");
 
             }
@@ -803,14 +803,14 @@ namespace tfm
 
         private void onGPWSKey()
         {
-            if (Properties.Settings.Default.ReadGPWS == false)
+            if (tfm.Properties.Settings.Default.ReadGPWS == false)
             {
-                Properties.Settings.Default.ReadGPWS = true;
+                tfm.Properties.Settings.Default.ReadGPWS = true;
                 Output(isGauge: false, output: "GPWS enabled");
             }
             else
             {
-                Properties.Settings.Default.ReadGPWS = false;
+                tfm.Properties.Settings.Default.ReadGPWS = false;
                 Output(isGauge: false, output: "GPWS disabled");
             }
         }
@@ -822,14 +822,14 @@ namespace tfm
 
         private void onAutopilotKey()
         {
-            if (Properties.Settings.Default.ReadAutopilot)
+            if (tfm.Properties.Settings.Default.ReadAutopilot)
             {
-                Properties.Settings.Default.ReadAutopilot = false;
+                tfm.Properties.Settings.Default.ReadAutopilot = false;
                 Output(isGauge: false, output: "read autopilot instruments disabled");
             }
             else
             {
-                Properties.Settings.Default.ReadAutopilot = true;
+                tfm.Properties.Settings.Default.ReadAutopilot = true;
                 Output(isGauge: false, output: "Read autopilot instruments enabled. ");
             }
         }
@@ -997,7 +997,7 @@ namespace tfm
 
         private void OnWaypointKey()
         {
-            if (Properties.Settings.Default.IsSimBriefEnabled && Properties.Settings.Default.IsSimBriefUserIDValid)
+            if (tfm.Properties.Settings.Default.IsSimBriefEnabled && tfm.Properties.Settings.Default.IsSimBriefUserIDValid)
             {
                 ReadSimBriefWaypoint();
             }
@@ -1041,13 +1041,13 @@ namespace tfm
             double lon = Aircraft.aircraftLon.Value.DecimalDegrees;
             // double lat = -48.876667;
             // double lon = -123.393333;
-            if (Properties.Settings.Default.GeonamesUsername == "")
+            if (tfm.Properties.Settings.Default.GeonamesUsername == "")
             {
                 Output(isGauge: false, output: "geonames username not configured");
                 return;
             }
-            var geonamesUser = Properties.Settings.Default.GeonamesUsername;
-            if (Properties.Settings.Default.FlightFollowingOffline)
+            var geonamesUser = tfm.Properties.Settings.Default.GeonamesUsername;
+            if (tfm.Properties.Settings.Default.FlightFollowingOffline)
             {
                 var pos = r.CreateFromLatLong(lat, lon);
                 var results = r.NearestNeighbourSearch(pos, 1);
@@ -1184,7 +1184,7 @@ namespace tfm
             var gaugeName = "Outside temperature";
             var isGauge = true;
             string gaugeValue;
-            if (Properties.Settings.Default.UseMetric)
+            if (tfm.Properties.Settings.Default.UseMetric)
             {
                 gaugeValue = tempC.ToString("F0");
             }
@@ -1275,7 +1275,7 @@ namespace tfm
         {
             double N1 = 0;
             double N2 = 0;
-            bool metric = Properties.Settings.Default.UseMetric;
+            bool metric = tfm.Properties.Settings.Default.UseMetric;
             string output = null;
             // check engine type. 0 - piston, 1- jet
             if (Aircraft.EngineType.Value == 0)
@@ -1299,7 +1299,7 @@ namespace tfm
                             egt = Math.Round(egt - 459.67);
                         }
                         cht = Aircraft.Engine1CHT.Value;
-                        if (Properties.Settings.Default.UseMetric == true)
+                        if (tfm.Properties.Settings.Default.UseMetric == true)
                         {
                             cht = Math.Round((cht - 32) * 5 / 9);
                             units = "C";
@@ -1327,7 +1327,7 @@ namespace tfm
                             egt = Math.Round(egt - 459.67);
                         }
                         cht = Aircraft.Engine2CHT.Value;
-                        if (Properties.Settings.Default.UseMetric == true)
+                        if (tfm.Properties.Settings.Default.UseMetric == true)
                         {
                             cht = Math.Round((cht - 32) * 5 / 9);
                             units = "C";
@@ -1355,7 +1355,7 @@ namespace tfm
                             egt = Math.Round(egt - 459.67);
                         }
                         cht = Aircraft.Engine3CHT.Value;
-                        if (Properties.Settings.Default.UseMetric == true)
+                        if (tfm.Properties.Settings.Default.UseMetric == true)
                         {
                             cht = Math.Round((cht - 32) * 5 / 9);
                             units = "C";
@@ -1383,7 +1383,7 @@ namespace tfm
                             egt = Math.Round(egt - 459.67);
                         }
                         cht = Aircraft.Engine4CHT.Value;
-                        if (Properties.Settings.Default.UseMetric == true)
+                        if (tfm.Properties.Settings.Default.UseMetric == true)
                         {
                             cht = Math.Round((cht - 32) * 5 / 9);
                             units = "C";
@@ -1462,7 +1462,7 @@ namespace tfm
             }
             else
             {
-                if (string.IsNullOrEmpty(Properties.Settings.Default.bingMapsAPIKey))
+                if (string.IsNullOrEmpty(tfm.Properties.Settings.Default.bingMapsAPIKey))
                 {
                     Output(isGauge: false, output: "Please set the Bing Maps API key in settings before using the where am I feature.");
                     return;
@@ -1496,21 +1496,21 @@ namespace tfm
                     GetEntityMetadata = true,
                     Coordinate = new BingMapsSDSToolkit.GeodataLocation(latitude, longitude)
                 };
-                var cityResponse = await GeodataManager.GetBoundary(cityRequest, Properties.Settings.Default.bingMapsAPIKey);
-                var stateResponse = await GeodataManager.GetBoundary(stateRequest, Properties.Settings.Default.bingMapsAPIKey);
-                var countryResponse = await GeodataManager.GetBoundary(countryRequest, Properties.Settings.Default.bingMapsAPIKey);
+                var cityResponse = await GeodataManager.GetBoundary(cityRequest, tfm.Properties.Settings.Default.bingMapsAPIKey);
+                var stateResponse = await GeodataManager.GetBoundary(stateRequest, tfm.Properties.Settings.Default.bingMapsAPIKey);
+                var countryResponse = await GeodataManager.GetBoundary(countryRequest, tfm.Properties.Settings.Default.bingMapsAPIKey);
 
                 // Check for existence of a country. If none present, most likely we are in a body of water.
                 if (countryResponse == null)
                 {
-                    if (string.IsNullOrWhiteSpace(Properties.Settings.Default.GeonamesUsername))
+                    if (string.IsNullOrWhiteSpace(tfm.Properties.Settings.Default.GeonamesUsername))
                     {
                         Output(isGauge: false, output: "You must have a Geonames username to use this feature.");
                         return;
                     }
                     try
                     {
-                        var xmlOcean = XElement.Load($"http://api.geonames.org/ocean?lat={latitude}&lng={longitude}&username={Properties.Settings.Default.GeonamesUsername}");
+                        var xmlOcean = XElement.Load($"http://api.geonames.org/ocean?lat={latitude}&lng={longitude}&username={tfm.Properties.Settings.Default.GeonamesUsername}");
                         var ocean = xmlOcean.Descendants("ocean").Select(g => new
                         {
                             Name = g.Element("name").Value
@@ -1531,7 +1531,7 @@ namespace tfm
                 {
                     Output(isGauge: false, output: $"{cityResponse[0].Name.EntityName} {stateResponse[0].Name.EntityName}, {countryResponse[0].Name.EntityName}");
                 }
-                var xmlTimezone = XElement.Load($"http://api.geonames.org/timezone?lat={latitude}&lng={longitude}&username={Properties.Settings.Default.GeonamesUsername}&radius=50");
+                var xmlTimezone = XElement.Load($"http://api.geonames.org/timezone?lat={latitude}&lng={longitude}&username={tfm.Properties.Settings.Default.GeonamesUsername}&radius=50");
                 var timezone = xmlTimezone.Descendants("timezone").Select(g => new
                 {
                     Name = g.Element("timezoneId").Value

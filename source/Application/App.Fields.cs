@@ -9,6 +9,7 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,14 @@ namespace tfm
         // Private fields
         #region "Private fields"
         // UI elements.
-        TrayIcon icon;
+        TrayIcon? icon;
 
         // Timers.
         System.Timers.Timer TimerMain = new(500);
         System.Timers.Timer TimerConnection = new(1000);
         System.Timers.Timer TimerLowPriority = new(1000);
 
-        private readonly IOSubsystem inst = new IOSubsystem();
-        #endregion
+                #endregion
 
 
         // PMDG MCP components managers.
@@ -41,9 +41,9 @@ namespace tfm
         public static System.Speech.Synthesis.SpeechSynthesizer synth = new System.Speech.Synthesis.SpeechSynthesizer();
 
         private readonly OutputHistory history = new OutputHistory();
-        public PMDGPanelUpdateEvent pmdg;
+        public PMDGPanelUpdateEvent? pmdg;
 
-        private SineWaveProvider pitchSineProvider;
+        private SineWaveProvider? pitchSineProvider;
 
 
         // load command help resources
@@ -51,11 +51,11 @@ namespace tfm
         private ResourceManager rm = new ResourceManager(typeof(commandHelp));
 
         // timers
-        private static System.Timers.Timer RunwayGuidanceTimer;
+        private static System.Timers.Timer? RunwayGuidanceTimer;
         private static readonly System.Timers.Timer GroundSpeedTimer = new System.Timers.Timer(3000); // 3 seconds;
         private static readonly System.Timers.Timer WarningsTimer = new System.Timers.Timer(5000); // 5 seconds;
-        private static System.Timers.Timer AttitudeTimer;
-        private static System.Timers.Timer flightFollowingTimer;
+        private static System.Timers.Timer? AttitudeTimer;
+        private static System.Timers.Timer? flightFollowingTimer;
         private static readonly System.Timers.Timer ilsTimer = new System.Timers.Timer(TimeSpan.FromSeconds(double.Parse(tfm.Properties.Settings.Default.ILSAnnouncementTimeInterval)).TotalMilliseconds);
         private static readonly System.Timers.Timer waypointTransitionTimer = new System.Timers.Timer(5000);
         private static readonly System.Timers.Timer weatherTimer = new System.Timers.Timer(TimeSpan.FromMinutes(tfm.Properties.Weather.Default.weather_refresh_rate).TotalMilliseconds);
@@ -65,22 +65,22 @@ namespace tfm
         private double HdgLeft;
 
         // Audio objects
-        private static IWavePlayer driverOut;
-        private static SignalGenerator wg;
+        private static IWavePlayer? driverOut;
+        private static SignalGenerator? wg;
         // private static readonly SignalGenerator BankWG;
-        private static PanningSampleProvider pan;
-        private static OffsetSampleProvider pulse;
-        private static MixingSampleProvider mixer;
+        private static PanningSampleProvider? pan;
+        private static OffsetSampleProvider? pulse;
+        private static MixingSampleProvider? mixer;
 
         // initialize sound objects
-        private static WaveFileReader cmdSound;
-        private static WaveFileReader apCmdSound;
-        private static WaveFileReader tickSound;
+        private static WaveFileReader? cmdSound;
+        private static WaveFileReader? apCmdSound;
+        private static WaveFileReader? tickSound;
 
         // list to store registered hotkey identifiers
         readonly List<string> hotkeys = new List<string>();
         readonly List<string> autopilotHotkeys = new List<string>();
-        FsFuelTanksCollection FuelTanks = null;
+        FsFuelTanksCollection? FuelTanks = null;
 
         // list to store fuel tanks present on the aircraft
         readonly List<FsFuelTank> ActiveTanks = new List<FsFuelTank>();
@@ -193,7 +193,7 @@ namespace tfm
         public ReverseGeoCode<ExtendedGeoName> r = new ReverseGeoCode<ExtendedGeoName>(GeoFileReader.ReadExtendedGeoNames(@".\data\cities1000.txt"));
         private readonly int OldSpoilersValue;
         private double RunwayGuidanceTrackedHeading;
-        private string OldSimConnectMessage;
+        private string? OldSimConnectMessage;
         private readonly double apHeading;
         private bool AttitudeBankRightPlaying;
         private bool readNavRadios;
@@ -216,7 +216,7 @@ namespace tfm
 
         private int attitudeModeSelect;
         private double oldPitch;
-        private string oldTimezone;
+        private string? oldTimezone;
         private bool gsDetected;
         private bool hasLocaliser;
         private bool hasGlideSlope;
@@ -226,7 +226,7 @@ namespace tfm
         private bool apuShuttingDown;
         private bool apuOff = true;
         private bool fuelManagerActive;
-        WaveFileReader gpwsSound;
+        WaveFileReader? gpwsSound;
         public bool PMDG737Detected;
         private bool PMDG747Detected;
         public bool PMDG777Detected;
@@ -257,13 +257,13 @@ namespace tfm
 
         /* Check to see if P3D is loaded. Basing it on FSUIPC version
          * since it is more reliable than simulator name or version.*/
-        public bool IsP3DLoaded { get => FSUIPCConnection.FSUIPCVersion.Major <= 6 ? true : false; }
-
+        public static bool IsP3DLoaded { get => FSUIPCConnection.FSUIPCVersion.Major <= 6 ? true : false; }
+        
         // Same for MSFS. See above.
-        public bool isMSFSLoaded { get => FSUIPCConnection.FSUIPCVersion.Major >= 7 ? true : false; }
+        public static bool isMSFSLoaded { get => FSUIPCConnection.FSUIPCVersion.Major >= 7 ? true : false; }
 
         // Location of the binary files for the airports database.
-        public string airportsDatabaseFolder
+        public static string AirportsDatabaseFolder
         {
             get
             {
@@ -287,5 +287,10 @@ namespace tfm
         }
 
         public static InstrumentPanel instrumentPanel { get => new InstrumentPanel(); }
+        public static FsWeather CurrentWeather { get; internal set; }
+        public static DateTime WeatherLastUpdated { get; internal set; }
+        public static bool DebugEnabled { get; internal set; }
+        public static bool flgMuteFlows { get; internal set; }
+
     }
 }

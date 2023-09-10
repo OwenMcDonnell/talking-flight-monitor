@@ -16,9 +16,7 @@ using System.Windows;
 using ContextMenu = System.Windows.Forms.ContextMenuStrip;
 using MenuItem = System.Windows.Forms.ToolStripMenuItem;
 using TrayIcon = System.Windows.Forms.NotifyIcon;
-
-
-
+using NHotkey.WindowsForms;
 
 namespace tfm
 {
@@ -39,7 +37,7 @@ namespace tfm
             {
                 if (e.Args[0] == "/debug")
                 {
-                    utility.DebugEnabled = true;
+                    DebugEnabled = true;
                     Tolk.Output("debug mode active");
                 }
             }
@@ -101,6 +99,57 @@ namespace tfm
                 sound.Play();
             }
             #endregion
+
+            Logger.Debug("initializing screen reader driver");
+            Tolk.TrySAPI(true);
+            Tolk.Load();
+            if (tfm.Properties.Settings.Default.SpeechSystem == "Azure")
+            {
+                // disabling Azure speech for now since we're trying to debug issues. If speech is set to azure, we force it to screen reader.
+                // SetupAzureSpeech();
+                tfm.Properties.Settings.Default.SpeechSystem = "ScreenReader";
+            }
+
+            // Initialize audio output
+            SetupAudio();
+            var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
+            HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
+            HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
+            //HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
+
+            runwayGuidanceEnabled = false;
+
+
+            // hook up events for timers
+            GroundSpeedTimer.Elapsed += onGroundSpeedTimerTick;
+            ilsTimer.Elapsed += onILSTimerTick;
+            waypointTransitionTimer.Elapsed += onWaypointTransitionTimerTick;
+            weatherTimer.Elapsed += OnWeatherRefreshTimerTick;
+            weatherTimer.Start();
+            cloudTrackingTimer.Elapsed += CloudTrackingTimerTick;
+            WarningsTimer.Elapsed += WarningsTimer_Tick;
+            // start the flight following timer if it is enabled in settings
+            SetupFlightFollowing();
+            // populate the dictionary for the altitude callout flags
+            for (int i = 1000; i < 65000; i += 1000)
+            {
+                altitudeCalloutFlags.Add(i, false);
+            }
+            pmdg = new PMDGPanelUpdateEvent();
+
+            // Setup SimBrief support.
+            if (tfm.Properties.Settings.Default.IsSimBriefUserIDValid)
+            {
+                logger.Debug("Starting SimBrief support.");
+                Output(isGauge: false, output: "Starting SimBrief support.");
+                FlightPlan.LoadFromXML();
+            }
+            else
+            {
+                logger.Debug("SimBrief support not loaded");
+                Output(isGauge: false, output: "SimBrief support not loaded.");
+            }
+
         }
         #endregion
 
@@ -145,13 +194,13 @@ namespace tfm
                 #region "Airports database"
                 if (tfm.Properties.Settings.Default.MSFSAirportsDatabasePath != null || tfm.Properties.Settings.Default.P3DAirportsDatabasePath != null)
                 {
-                    inst.Speak("loading airport database");
-                    utility.LoadAirportsDatabase();
+                    Speak("loading airport database");
+                    LoadAirportsDatabase();
                 }
-                    #endregion
+                #endregion
 
                 // Load the destination runway.
-                App.Utilities.LoadDestination();
+                LoadDestination();
 
                 // Get TFM's version number.
                 #region "TFM's version"
@@ -210,7 +259,7 @@ namespace tfm
 
                 // Process PMDG data.
                 #region "PMDG data"
-                if (App.Utilities.isPMDG737Loaded || App.Utilities.isPMDG747Loaded || App.Utilities.isPMDG777Loaded)
+                if (isPMDG737Loaded || isPMDG747Loaded || isPMDG777Loaded)
                 {
                     Aircraft.pmdg737.RefreshData();
                     Aircraft.pmdg747.RefreshData();
@@ -223,7 +272,7 @@ namespace tfm
                 #region "Mute TFM"
                 if (tfm.Properties.Settings.Default.AutomaticAnnouncements)
                 {
-                    inst.ReadAircraftState();
+                    ReadAircraftState();
                 }
                 #endregion
                            }
@@ -254,7 +303,7 @@ namespace tfm
                 #region
                 if (tfm.Properties.Settings.Default.AutomaticAnnouncements)
                 {
-                    inst.ReadLowPriorityInstruments();
+                    ReadLowPriorityInstruments();
                 }
                 #endregion
 

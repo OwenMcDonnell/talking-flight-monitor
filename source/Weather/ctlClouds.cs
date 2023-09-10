@@ -29,13 +29,13 @@ namespace tfm.Weather
         {
             Tolk.Load();
             FsWeather weather = null;
-            if(utility.CurrentWeather == null)
+            if(App.CurrentWeather == null)
             {
                 weather = FSUIPCConnection.WeatherServices.GetWeatherAtAircraft();
             }
             else
             {
-                weather = utility.CurrentWeather;
+                weather = App.CurrentWeather;
             }
             
             var layerNumber = 0;

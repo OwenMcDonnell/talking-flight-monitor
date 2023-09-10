@@ -85,13 +85,13 @@ namespace tfm
             return height;
         }
 
-                public static async void LoadAirportsDatabase(string MakeRunwaysPath = null)
+                public static async void LoadAirportsDatabase(string MakeRunwaysPath? = null)
         {
 
             if (FSUIPCConnection.IsOpen)
             {
                 AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
-                database.DatabaseFolder = App.Utilities.airportsDatabaseFolder;
+                database.DatabaseFolder = App.AirportsDatabaseFolder;
                 if (FSUIPCConnection.FSUIPCVersion.Major <= 6)
                 {
                     if (MakeRunwaysPath != null)

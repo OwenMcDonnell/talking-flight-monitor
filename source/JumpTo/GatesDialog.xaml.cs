@@ -48,7 +48,7 @@ namespace tfm.JumpTo
                         GatesDataGridRow row = new GatesDataGridRow()
                         {
                             ID = gate.ID.ToString(),
-Type = App.Utilities.GetGateType(gate),
+Type = App.GetGateType(gate),
                                                         RadiusFeet = Math.Round(gate.RadiusFeet, 2),
                             InUse = gate.IsAIPlaneAtGate == true || gate.IsPlayerAtGate == true? "yes" : "No",
                         };

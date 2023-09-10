@@ -261,13 +261,13 @@ namespace tfm
             } // end generic output
         } // end output method
 
-        public async void Speak(string output, bool useSAPI = false, bool interruptSpeech = false)
+        public void Speak(string output, bool useSAPI = false, bool interruptSpeech = false)
         {
             if (tfm.Properties.Settings.Default.SpeechSystem == "SAPI" || useSAPI == true)
             {
                 if (interruptSpeech == true) synth.SpeakAsyncCancelAll();
                 synth.Rate = tfm.Properties.Settings.Default.SAPISpeechRate;
-                synth.SpeakAsync(output);
+              synth.SpeakAsync(output);
                 return;
             }
             if (tfm.Properties.Settings.Default.SpeechSystem == "ScreenReader")

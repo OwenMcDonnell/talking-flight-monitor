@@ -11,9 +11,18 @@
     <RootNamespace>tfm</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;8604;8600;8602;8981</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;8604;8600;8602;8981</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="TFMMainForm.cs" />
     <Compile Remove="TFMMainForm.Designer.cs" />
+    <Compile Remove="utility.cs" />
   </ItemGroup>
 
   <ItemGroup>
