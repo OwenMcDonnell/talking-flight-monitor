@@ -29,8 +29,7 @@ namespace tfm
         private void Application_Startup(object sender, StartupEventArgs e)
         {
                        LoadTrayIcon();
-            //RegisterTFMGlobalCommands();
-
+            RegisterTFMGlobalCommands();
             // Debug mode.
             #region "Debug mode"
             if (e.Args.Length == 1)
@@ -38,7 +37,7 @@ namespace tfm
                 if (e.Args[0] == "/debug")
                 {
                     DebugEnabled = true;
-                    Tolk.Output("debug mode active");
+                    Output(isGauge: false, output: "Debug mode active.");
                 }
             }
             #endregion
@@ -112,12 +111,17 @@ namespace tfm
 
             // Initialize audio output
             SetupAudio();
-            var version = typeof(IOSubsystem).Assembly.GetName().Version.Build;
-            HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
-            HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-            //HotkeyManager.Current.AddOrReplace("test", Keys.Q, RunTest);
 
-            runwayGuidanceEnabled = false;
+            // Enable or disable key commands.
+//            RegisterTFMGlobalCommands();
+            if (FSUIPCConnection.IsOpen)
+            {
+                TFMKeysEnabled = true;
+                                HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
+                HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
+                            }
+                                    
+                        runwayGuidanceEnabled = false;
 
 
             // hook up events for timers

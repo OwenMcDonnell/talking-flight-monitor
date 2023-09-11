@@ -33,12 +33,15 @@ namespace tfm
             {
                 Tolk.Output("TFM keys enabled.");
                 // Register TFM key commands.
-            }
+                HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
+                HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
+                            }
             else
             {
                 Tolk.Output("TFM keys disabled.");
-
                 // Unregister TFM key commands.
+                HotkeyManager.Current.Remove("Command_Key");
+                HotkeyManager.Current.Remove("ap_Command_Key");
             }
         }
 
@@ -49,7 +52,7 @@ namespace tfm
 
         private void RegisterTFMGlobalCommands()
         {
-            HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.T | Keys.Control | Keys.Alt, OnTFMKeysActivation);
+            HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.T| Keys.Control| Keys.Alt, OnTFMKeysActivation);
             HotkeyManager.Current.AddOrReplace("TFMQuitCommand", Keys.X | Keys.Control | Keys.Shift, OnTFMQuit);
         }
 
@@ -124,7 +127,7 @@ namespace tfm
                         {
                             HotkeyManager.Current.AddOrReplace(s.Name, (Keys)tfm.Properties.Hotkeys.Default[s.Name], onAutopilotKeyPressed);
                         }
-                        catch (NHotkey.HotkeyAlreadyRegisteredException ex)
+                                               catch (NHotkey.HotkeyAlreadyRegisteredException ex)
                         {
                             logger.Debug($"Cannot register {s.Name}. Probably duplicated key.");
                             Output(isGauge: false, output: $"hotkey error in {s.Name}");
@@ -178,7 +181,7 @@ namespace tfm
 
             switch (Name)
             {
-                case "ap_Aircraft_Flows":
+                                                              case "ap_Aircraft_Flows":
                     frmPMDG737Flows frmFlows = new frmPMDG737Flows();
                     frmFlows.ShowDialog();
                     break;
