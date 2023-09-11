@@ -386,7 +386,7 @@ namespace tfm
             ContextMenu TFMContextMenu = new ContextMenu
             {
                 Name = "TFMContextMenu",
-                AccessibleName = "TFM context menu",
+                AccessibleName = "Talking flight monitor",
                 Items =
                 {
 SettingsMenuItem,
@@ -398,7 +398,7 @@ WebsiteMenuItem,
 AboutMenuItem,
                 }
             };
-
+            TFMContextMenu.Opened += TalkingFlightMonitorMenu_Open;
             // The tray icon.
 icon = new TrayIcon
             {
@@ -409,19 +409,22 @@ icon = new TrayIcon
             };
         }
 
+
+        // Context menu events.
+        #region
         private void SettingsMenuItem_Click(object? sender, EventArgs e)
         {
-
+            DisplayApplicationSettings();
         }
 
         private void KeyboardManagerMenuItem_Click(object? sender, EventArgs e)
         {
-
+            Output(isGauge: false, output: "The keyboard manager is not yet implemented!");
         }
 
         private void RestartMenuItem_Click(object? sender, EventArgs e)
         {
-            
+            Restart();
         }
 
         private void ShutdownMenuItem_Click(object? sender, EventArgs e)
@@ -431,17 +434,26 @@ icon = new TrayIcon
 
         private void IssueTrackerMenuItem_Click(object? sender, EventArgs e)
         {
-
+            OpenUrl("https://github.com/jfayre/talking-flight-monitor-net/issues");
         }
 
         private void WebsiteMenuItem_Click(object? sender, EventArgs e)
         {
-
+            OpenUrl("http://www.talkingflightmonitor.com");
         }
 
         private void AboutMenuItem_Click(object? sender, EventArgs e)
         {
-
+            Output(isGauge: false, output: "The about box is not yet implemented!");
         }
+
+        private void TalkingFlightMonitorMenu_Open(object? sender, EventArgs e)
+        {
+if(sender is ContextMenu menu && menu.Items.Count > 0)
+            {
+                menu.Focus();
+            }
+        }
+        #endregion
     }
 }

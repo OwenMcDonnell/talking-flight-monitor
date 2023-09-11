@@ -883,9 +883,7 @@ namespace tfm
                     DisplayKeyboardManager();
                     break;
                 case "ApplicationRestart":
-                    string appPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-                    System.Diagnostics.Process.Start(appPath);
-                    App.Current.Shutdown();
+                    Restart();                    
                     break;
                 case "destination_runway":
 

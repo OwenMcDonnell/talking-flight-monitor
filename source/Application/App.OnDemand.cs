@@ -1672,6 +1672,12 @@ namespace tfm
             }
         }
 
+private void Restart()
+        {
+            string appPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            System.Diagnostics.Process.Start(appPath);
+            App.Current.Shutdown();
 
+        }
     }
 }

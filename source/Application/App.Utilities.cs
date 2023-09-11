@@ -12,6 +12,7 @@ using NHotkey.WindowsForms;
 using tfm.Properties;
 using NAudio.Wave.SampleProviders;
 using DavyKager;
+using System.Diagnostics;
 
 namespace tfm
 {
@@ -321,7 +322,20 @@ public void ResetHotkeys()
             return result;
         }
 
+        private void OpenUrl(string url)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
+            catch
+            {
+                // An error occurred trying to open the URL in a browser.
+                // This could be due to no browser being installed, etc.
+                Output(isGauge: false, output: "Failed to open website.");
+            }
+        }
+    
 
-
-    }
+}
 }

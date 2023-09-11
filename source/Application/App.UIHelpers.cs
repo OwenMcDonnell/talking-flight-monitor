@@ -40,29 +40,9 @@ namespace tfm
 
             private void DisplayApplicationSettings()
         {
-            /// TODO: IoSubsystem: Remove avionics tab from settings.
-            /// TODO: IoSubSystem: Make displaying settings reusable code in the global scope.
-            /// 
-            // frmSettings settings = new frmSettings();
-            dlgSettings settings = new();
-
-            settings.ShowDialog();
-            /*            if (settings.DialogResult == DialogResult.OK)
-                        {
-                            Properties.Settings.Default.Save();
-                            Properties.pmdg737_offsets.Default.Save();
-                            Properties.pmdg747_offsets.Default.Save();
-                            Properties.Weather.Default.Save();
-                        }
-                        else
-                        {
-                            Properties.Settings.Default.Reload();
-                            Properties.pmdg737_offsets.Default.Reload();
-                            Properties.pmdg747_offsets.Default.Reload();
-                            Properties.Weather.Default.Reload();
-                        }
-            */
-        } // DisplayApplicationSettings.
+            dlgSettings s = new();
+            UI.FocusWindow(s, s.tvCategories);
+                    } // DisplayApplicationSettings.
 
         private void DisplayKeyboardManager()
         {
