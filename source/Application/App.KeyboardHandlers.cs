@@ -52,7 +52,7 @@ namespace tfm
 
         private void RegisterTFMGlobalCommands()
         {
-            HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.T| Keys.Control| Keys.Alt, OnTFMKeysActivation);
+            HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.OemPeriod | Keys.Shift| Keys.Alt, OnTFMKeysActivation);
             HotkeyManager.Current.AddOrReplace("TFMQuitCommand", Keys.X | Keys.Control | Keys.Shift, OnTFMQuit);
         }
 
