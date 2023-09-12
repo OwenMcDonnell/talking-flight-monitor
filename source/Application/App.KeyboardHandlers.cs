@@ -47,13 +47,15 @@ namespace tfm
 
         private void OnTFMQuit(object? Sender, HotkeyEventArgs e)
         {
+            Output(isGauge: false, useSAPI: true, output: "TFM is shutting down.");
+            Thread.Sleep(10);
             App.Current.Shutdown();
         }
 
         private void RegisterTFMGlobalCommands()
         {
             HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.OemPeriod | Keys.Shift| Keys.Alt, OnTFMKeysActivation);
-            HotkeyManager.Current.AddOrReplace("TFMQuitCommand", Keys.X | Keys.Control | Keys.Shift, OnTFMQuit);
+                        HotkeyManager.Current.AddOrReplace("TFMQuitCommand", Keys.Q | Keys.Control | Keys.Shift, OnTFMQuit);
         }
 
         private void commandMode(object? sender, HotkeyEventArgs e)
@@ -83,22 +85,16 @@ namespace tfm
                     catch (NHotkey.HotkeyAlreadyRegisteredException ex)
                     {
                         logger.Debug($"Cannot register {s.Name}. Probably duplicated key. {ex.Message}");
-                        Output(isGauge: false, output: $"hotkey error in {s.Name}");
+                        Output(isGauge: false, output: $"{s.DefaultValue} already registered.");
                     }
 
                 }
-
-
-
-
-            }
+                            }
             else
             {
-                Tolk.Output("not connected to simulator");
-
-            }
-
-        }
+                Output(isGauge: false, output: "Working offline.");
+                            }
+                    }
 
         private void autopilotCommandMode(object? sender, HotkeyEventArgs e)
         {
@@ -130,7 +126,7 @@ namespace tfm
                                                catch (NHotkey.HotkeyAlreadyRegisteredException ex)
                         {
                             logger.Debug($"Cannot register {s.Name}. Probably duplicated key.");
-                            Output(isGauge: false, output: $"hotkey error in {s.Name}");
+                            Output(isGauge: false, output: $"{s.DefaultValue} already registered.");
 
                         }
                     }
@@ -141,12 +137,11 @@ namespace tfm
             }
             else
             {
-                Tolk.Output("not connected to simulator. ");
-
-            }
-
-        }
-
+                HotkeyManager.Current.AddOrReplace("Command_Key", Keys.Oem6, commandMode);
+                Output(isGauge: false, output: "Working offline.");
+                            }
+                    }
+                
         private void onAutopilotKeyPressed(object? sender, HotkeyEventArgs e)
         {
 

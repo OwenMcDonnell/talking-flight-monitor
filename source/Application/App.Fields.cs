@@ -268,29 +268,52 @@ namespace tfm
             get
             {
                 string databasePath = string.Empty;
-                var tfmFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Talking flight monitor");
+                var baseLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm/Airports database");
 
                 // Geneerate the P3D database location.
                 if (IsP3DLoaded)
                 {
-                    databasePath = Path.Combine(tfmFolder, "P3D airports");
+                    databasePath = Path.Combine(baseLocation, "P3D airports");
                 }
 
                 // Generate the MSFS database location.
                 else if (isMSFSLoaded)
                 {
-                    databasePath = Path.Combine(tfmFolder, "MSFS airports");
+                    databasePath = Path.Combine(baseLocation, "MSFS airports");
                 }
 
                 return databasePath;
             }
         }
 
+        public static string MakeRunwaysOutputFolder
+        {
+            get
+            {
+                string databasePath = string.Empty;
+                var baseLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm/Make runways");
+
+                // Geneerate the P3D database location.
+                if (IsP3DLoaded)
+                {
+                    databasePath = Path.Combine(baseLocation, "P3D airports");
+                }
+
+                // Generate the MSFS database location.
+                else if (isMSFSLoaded)
+                {
+                    databasePath = Path.Combine(baseLocation, "MSFS airports");
+                }
+
+                return databasePath;
+            }
+                    }
+
         public static InstrumentPanel instrumentPanel { get => new InstrumentPanel(); }
         public static FsWeather CurrentWeather { get; internal set; }
         public static DateTime WeatherLastUpdated { get; internal set; }
         public static bool DebugEnabled { get; internal set; }
         public static bool flgMuteFlows { get; internal set; }
-
+        private bool announcedOfflineState = false;
     }
 }

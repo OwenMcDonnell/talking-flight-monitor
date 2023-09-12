@@ -77,7 +77,7 @@ namespace tfm.Settings_panels
                 if (FSUIPCConnection.AirportsDatabase.MakeRunwaysFilesExist)
                 {
                     await FSUIPCConnection.AirportsDatabase.RebuildDatabaseAsync();
-                                        App.LoadAirportsDatabase(strMakeRunwaysPath);
+                                        App.LoadAirportsDatabase();
                     System.Windows.MessageBox.Show($"Loaded airports database from {FSUIPCConnection.AirportsDatabase.DatabaseFolder}");
                 }
                 else 

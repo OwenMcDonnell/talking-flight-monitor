@@ -245,50 +245,32 @@ public void ResetHotkeys()
             return height;
         }
 
-        public static async void LoadAirportsDatabase(string MakeRunwaysPath = "")
+        public static  void LoadAirportsDatabase()
         {
 
             if (FSUIPCConnection.IsOpen)
             {
                 AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
-                database.DatabaseFolder = App.AirportsDatabaseFolder;
-                if (FSUIPCConnection.FSUIPCVersion.Major <= 6)
-                {
-                    if (MakeRunwaysPath != "")
-                    {
-                        database.MakeRunwaysFolder = MakeRunwaysPath;
-                    }
-                    else
-                    {
-                        database.MakeRunwaysFolder = tfm.Properties.Settings.Default.P3DAirportsDatabasePath;
-                    }
-                }
-                else
-                {
-                    if (MakeRunwaysPath != "")
-                    {
-                        database.MakeRunwaysFolder = MakeRunwaysPath;
-                    }
-                    else
-                    {
-                        database.MakeRunwaysFolder = tfm.Properties.Settings.Default.MSFSAirportsDatabasePath;
-                    }
-
-                }
+                database.DatabaseFolder = AirportsDatabaseFolder;
+                database.MakeRunwaysFolder = MakeRunwaysOutputFolder;
 
                 if (database.DatabaseFilesExist)
                 {
 
                     database.Load();
-                    Tolk.Output($"Airports database loaded. Total {database.Airports.Count} airports.");
+Tolk.Output($"Loaded {database.Airports.Count} airports.");
                     logger.Info($"Airports database loaded. Total {database.Airports.Count} airports.");
                 }
                 else
                 {
-                    Tolk.Output("Database failed to load. see the log for more details.");
+                    Tolk.Output("Airports database not found.");
                     logger.Debug("Airports database failed to load.");
                 }
             } // open connection.
+            else
+            {
+                Tolk.Output("Simulator not found. Unable to load airports database.");
+            }
         } // LoadAirportsDatabase
 
 

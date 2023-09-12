@@ -30,6 +30,13 @@ namespace tfm
         {
                        LoadTrayIcon();
             RegisterTFMGlobalCommands();
+
+            // Load tolk.
+            #region
+            Tolk.Load();
+            logger.Info("Loading screen reader driver.");
+            #endregion
+            
             // Debug mode.
             #region "Debug mode"
             if (e.Args.Length == 1)
@@ -37,13 +44,12 @@ namespace tfm
                 if (e.Args[0] == "/debug")
                 {
                     DebugEnabled = true;
-                    Output(isGauge: false, output: "Debug mode active.");
+                    Output(isGauge: false, useSAPI: true, output: "Debug mode active.");
                 }
             }
             #endregion
 
-
-            // Install default Navigraph database if required.
+                        // Install default Navigraph database if required.
             #region
             using(var _dbContext = new tfm.Properties.Data.Navigraph.NavigraphContext())
             {
@@ -99,10 +105,7 @@ namespace tfm
             }
             #endregion
 
-            Logger.Debug("initializing screen reader driver");
-            Tolk.TrySAPI(true);
-            Tolk.Load();
-            if (tfm.Properties.Settings.Default.SpeechSystem == "Azure")
+                                    if (tfm.Properties.Settings.Default.SpeechSystem == "Azure")
             {
                 // disabling Azure speech for now since we're trying to debug issues. If speech is set to azure, we force it to screen reader.
                 // SetupAzureSpeech();
@@ -111,50 +114,7 @@ namespace tfm
 
             // Initialize audio output
             SetupAudio();
-
-            // Enable or disable key commands.
-//            RegisterTFMGlobalCommands();
-            if (FSUIPCConnection.IsOpen)
-            {
-                TFMKeysEnabled = true;
-                                HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
-                HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-                            }
-                                    
-                        runwayGuidanceEnabled = false;
-
-
-            // hook up events for timers
-            GroundSpeedTimer.Elapsed += onGroundSpeedTimerTick;
-            ilsTimer.Elapsed += onILSTimerTick;
-            waypointTransitionTimer.Elapsed += onWaypointTransitionTimerTick;
-            weatherTimer.Elapsed += OnWeatherRefreshTimerTick;
-            weatherTimer.Start();
-            cloudTrackingTimer.Elapsed += CloudTrackingTimerTick;
-            WarningsTimer.Elapsed += WarningsTimer_Tick;
-            // start the flight following timer if it is enabled in settings
-            SetupFlightFollowing();
-            // populate the dictionary for the altitude callout flags
-            for (int i = 1000; i < 65000; i += 1000)
-            {
-                altitudeCalloutFlags.Add(i, false);
-            }
-            pmdg = new PMDGPanelUpdateEvent();
-
-            // Setup SimBrief support.
-            if (tfm.Properties.Settings.Default.IsSimBriefUserIDValid)
-            {
-                logger.Debug("Starting SimBrief support.");
-                Output(isGauge: false, output: "Starting SimBrief support.");
-                FlightPlan.LoadFromXML();
-            }
-            else
-            {
-                logger.Debug("SimBrief support not loaded");
-                Output(isGauge: false, output: "SimBrief support not loaded.");
-            }
-
-        }
+                                }
         #endregion
 
         // Connection timer's elapsed event.
@@ -189,19 +149,47 @@ namespace tfm
                 this.TimerLowPriority.Start();
                 logger.Info("Monitoring aircraft systems and simulator environment...");
                 icon.Text = $" - Connected to {FSUIPCConnection.FlightSimVersionConnected}";
-                #endregion
+                                                                                        runwayGuidanceEnabled = false;
 
-                // Load TFM's database.
+
+                    // hook up events for timers
+                    GroundSpeedTimer.Elapsed += onGroundSpeedTimerTick;
+                    ilsTimer.Elapsed += onILSTimerTick;
+                    waypointTransitionTimer.Elapsed += onWaypointTransitionTimerTick;
+                    weatherTimer.Elapsed += OnWeatherRefreshTimerTick;
+                    weatherTimer.Start();
+                    cloudTrackingTimer.Elapsed += CloudTrackingTimerTick;
+                    WarningsTimer.Elapsed += WarningsTimer_Tick;
+                    // start the flight following timer if it is enabled in settings
+                    SetupFlightFollowing();
+                    // populate the dictionary for the altitude callout flags
+                    for (int i = 1000; i < 65000; i += 1000)
+                    {
+                        altitudeCalloutFlags.Add(i, false);
+                    }
+                    pmdg = new PMDGPanelUpdateEvent();
+
+                    // Setup SimBrief support.
+                    if (tfm.Properties.Settings.Default.IsSimBriefUserIDValid)
+                    {
+                        logger.Debug("Starting SimBrief support.");
+                        Output(isGauge: false, output: "Starting SimBrief support.");
+                        FlightPlan.LoadFromXML();
+                    }
+                    else
+                    {
+                        logger.Debug("SimBrief support not loaded");
+                        Output(isGauge: false, output: "SimBrief support not loaded.");
+                }
+                #endregion
+                
+                    // Load TFM's database.
                 TFMDatabase.Initialize();
 
                 // load airport database
                 #region "Airports database"
-                if (tfm.Properties.Settings.Default.MSFSAirportsDatabasePath != null || tfm.Properties.Settings.Default.P3DAirportsDatabasePath != null)
-                {
-                    Speak("loading airport database");
-                    LoadAirportsDatabase();
-                }
-                #endregion
+                LoadAirportsDatabase();
+                                #endregion
 
                 // Load the destination runway.
                 LoadDestination();
@@ -241,11 +229,18 @@ namespace tfm
                 {
                     logger.Error($"{x.Message}\r\n{x.StackTrace}");
                 }
-                                #endregion
+                #endregion
+
+                announcedOfflineState = false;
                                             }
             catch (Exception ex)
             {
                 icon.Text = " - Waiting for connection...";
+                if (announcedOfflineState == false)
+                {
+                    Output(isGauge: false, useSAPI: true, output: "Working offline.");
+                }
+                announcedOfflineState = true;
             }
         }
         #endregion
