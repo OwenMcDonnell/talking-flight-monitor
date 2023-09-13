@@ -42,7 +42,7 @@ namespace tfm
         {
             dlgSettings s = new();
             UI.FocusWindow(s, s.tvCategories);
-                    } // DisplayApplicationSettings.
+                   } // DisplayApplicationSettings.
 
         private void DisplayKeyboardManager()
         {

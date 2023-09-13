@@ -153,8 +153,9 @@
         </Grid>
 
         <StackPanel Grid.Column="2" Orientation="Vertical">
-            <Button Name="btnOk" IsDefault="False" Click="btnOk_Click">Ok</Button>
-            <Button Name="btnCancel" IsCancel="True">Cancel</Button>
+            <Button Name="btnCancel" IsCancel="True" Content="_Cancel" Click="btnCancel_Click"/>
+            <Button Name="btnOk" IsDefault="True" Click="btnOk_Click" Content="_Ok"/>
+            
 
         </StackPanel>
     </StackPanel>

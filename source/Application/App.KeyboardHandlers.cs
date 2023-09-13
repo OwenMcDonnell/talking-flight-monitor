@@ -63,7 +63,7 @@ namespace tfm
         private void OnDisplayTFMSettings(object? sender, HotkeyEventArgs e)
         {
             DisplayApplicationSettings();
-        }
+                }
 
         private void RegisterTFMGlobalCommands()
         {

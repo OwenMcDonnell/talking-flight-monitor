@@ -238,10 +238,11 @@ namespace tfm.Settings_panels
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            Properties.Settings.Default.Save();
+                        Properties.Settings.Default.Save();
             Properties.Weather.Default.Save();
             Properties.pmdg737_offsets.Default.Save();
+            Properties.pmdg747_offsets.Default.Save();
+            Close();
         }
 
         private void tvCategories_Loaded(object sender, RoutedEventArgs e)
@@ -268,6 +269,11 @@ namespace tfm.Settings_panels
                 tvCategories.Focus();
             }
 
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
