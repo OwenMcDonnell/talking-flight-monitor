@@ -60,11 +60,17 @@ namespace tfm
             Restart();
         }
 
+        private void OnDisplayTFMSettings(object? sender, HotkeyEventArgs e)
+        {
+            DisplayApplicationSettings();
+        }
+
         private void RegisterTFMGlobalCommands()
         {
             HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.OemPeriod | Keys.Shift| Keys.Alt, OnTFMKeysActivation);
             HotkeyManager.Current.AddOrReplace("application_quit", (Keys)tfm.Properties.Hotkeys.Default.application_quit, OnTFMQuit);
             HotkeyManager.Current.AddOrReplace("ApplicationRestart", (Keys)tfm.Properties.Hotkeys.Default.ApplicationRestart, OnTFMRestart);
+            HotkeyManager.Current.AddOrReplace("application_settings", (Keys)tfm.Properties.Hotkeys.Default.application_settings, OnDisplayTFMSettings);
                     }
 
         private void commandMode(object? sender, HotkeyEventArgs e)
@@ -999,12 +1005,7 @@ namespace tfm
                 case "A2A_manager":
                     DisplayA2AManager();
                     break;
-                case "application_settings":
-
-                    DisplayApplicationSettings();
-                    break;
-
-                case "LocalTime":
+                                case "LocalTime":
                     ReadSimulatorTime();
                     break;
                 case "distanceToDescent":
