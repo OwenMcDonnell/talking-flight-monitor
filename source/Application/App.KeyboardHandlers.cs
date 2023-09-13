@@ -45,18 +45,27 @@ namespace tfm
             }
         }
 
-        private void OnTFMQuit(object? Sender, HotkeyEventArgs e)
+                        private void OnTFMQuit(object? Sender, HotkeyEventArgs e)
         {
             Output(isGauge: false, useSAPI: true, output: "TFM is shutting down.");
-            Thread.Sleep(10);
+            Thread.Sleep(1500);
             App.Current.Shutdown();
+        }
+
+
+        private void OnTFMRestart(object? sender, HotkeyEventArgs e)
+        {
+            Output(isGauge: false, useSAPI: true, output: "TFM is restarting.");
+            Thread.Sleep(1500);
+            Restart();
         }
 
         private void RegisterTFMGlobalCommands()
         {
             HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.OemPeriod | Keys.Shift| Keys.Alt, OnTFMKeysActivation);
-                        HotkeyManager.Current.AddOrReplace("TFMQuitCommand", Keys.Q | Keys.Control | Keys.Shift, OnTFMQuit);
-        }
+            HotkeyManager.Current.AddOrReplace("application_quit", (Keys)tfm.Properties.Hotkeys.Default.application_quit, OnTFMQuit);
+            HotkeyManager.Current.AddOrReplace("ApplicationRestart", (Keys)tfm.Properties.Hotkeys.Default.ApplicationRestart, OnTFMRestart);
+                    }
 
         private void commandMode(object? sender, HotkeyEventArgs e)
         {
@@ -137,6 +146,7 @@ namespace tfm
             }
             else
             {
+                // Enable command key when offline. This prevents accidental keypresses of unavailable features when offline.
                 HotkeyManager.Current.AddOrReplace("Command_Key", Keys.Oem6, commandMode);
                 Output(isGauge: false, output: "Working offline.");
                             }
@@ -880,10 +890,7 @@ namespace tfm
                 case "keyboard_manager":
                     DisplayKeyboardManager();
                     break;
-                case "ApplicationRestart":
-                    Restart();                    
-                    break;
-                case "destination_runway":
+                               case "destination_runway":
 
                     foreach (var w in App.Current.Windows)
                     {
@@ -1007,12 +1014,7 @@ namespace tfm
                     frmAutopilot frmAutopilot = new frmAutopilot("n1Monitor");
                     frmAutopilot.ShowDialog();
                     break;
-                case "application_quit":
-                    Tolk.Output("TFM is shutting down...");
-                    App.Current.Shutdown();
-                    break;
-
-                case "get_spoilers":
+                                case "get_spoilers":
                     onSpoilersKey();
                     break;
 

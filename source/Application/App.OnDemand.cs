@@ -1674,10 +1674,20 @@ namespace tfm
 
 private void Restart()
         {
-            string appPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-            System.Diagnostics.Process.Start(appPath);
-            App.Current.Shutdown();
+            /*string appPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            System.Diagnostics.Process.Start(appPath);*/
 
+
+            // Assuming _timer is your DispatcherTimer
+            if (TimerConnection.Enabled)
+            {
+                TimerConnection.Stop();
+            }
+            TimerConnection= null;
+
+            string appPath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(appPath) { UseShellExecute = true });
+            App.Current.Shutdown();
         }
     }
 }
