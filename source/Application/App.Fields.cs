@@ -18,7 +18,7 @@ using tfm.PMDG.PMDG_737.McpComponents;
 
 namespace tfm
 {
-    public partial class App: System.Windows.Application
+    public partial class App : System.Windows.Application
     {
         // Private fields
         #region "Private fields"
@@ -30,7 +30,7 @@ namespace tfm
         System.Timers.Timer TimerConnection = new(1000);
         System.Timers.Timer TimerLowPriority = new(1000);
 
-                #endregion
+        #endregion
 
 
         // PMDG MCP components managers.
@@ -258,56 +258,17 @@ namespace tfm
         /* Check to see if P3D is loaded. Basing it on FSUIPC version
          * since it is more reliable than simulator name or version.*/
         public static bool IsP3DLoaded { get => FSUIPCConnection.FSUIPCVersion.Major <= 6 ? true : false; }
-        
+
         // Same for MSFS. See above.
         public static bool isMSFSLoaded { get => FSUIPCConnection.FSUIPCVersion.Major >= 7 ? true : false; }
 
         // Location of the binary files for the airports database.
-        public static string AirportsDatabaseFolder
-        {
-            get
-            {
-                string databasePath = string.Empty;
-                var baseLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm/Airports database");
+        public static string p3dAirportsDatabaseFolder { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm\\Airports database\\P3D5"); }
+public static string msfsAirportsDatabaseFolder { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm\\Airports database\\MSFS"); }
 
-                // Geneerate the P3D database location.
-                if (IsP3DLoaded)
-                {
-                    databasePath = Path.Combine(baseLocation, "P3D airports");
-                }
-
-                // Generate the MSFS database location.
-                else if (isMSFSLoaded)
-                {
-                    databasePath = Path.Combine(baseLocation, "MSFS airports");
-                }
-
-                return databasePath;
-            }
-        }
-
-        public static string MakeRunwaysOutputFolder
-        {
-            get
-            {
-                string databasePath = string.Empty;
-                var baseLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm/Make runways");
-
-                // Geneerate the P3D database location.
-                if (IsP3DLoaded)
-                {
-                    databasePath = Path.Combine(baseLocation, "P3D airports");
-                }
-
-                // Generate the MSFS database location.
-                else if (isMSFSLoaded)
-                {
-                    databasePath = Path.Combine(baseLocation, "MSFS airports");
-                }
-
-                return databasePath;
-            }
-                    }
+        // MakeRunways output path.
+        public static string p3dMakeRunwaysOutputPath { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm\\Make runways\\P3D5"); }
+        public static string msfsMakeRunwaysOutputPath { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tfm\\Make runways\\MSFS"); }
 
         public static InstrumentPanel instrumentPanel { get => new InstrumentPanel(); }
         public static FsWeather CurrentWeather { get; internal set; }

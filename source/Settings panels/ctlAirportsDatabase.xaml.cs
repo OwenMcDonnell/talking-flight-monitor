@@ -73,7 +73,7 @@ namespace tfm.Settings_panels
                     strMakeRunwaysPath = txtMSFS.Text;
                                    }
                 FSUIPCConnection.AirportsDatabase.MakeRunwaysFolder = strMakeRunwaysPath;
-                FSUIPCConnection.AirportsDatabase.DatabaseFolder = App.AirportsDatabaseFolder;
+                FSUIPCConnection.AirportsDatabase.DatabaseFolder = App.p3dAirportsDatabaseFolder;
                 if (FSUIPCConnection.AirportsDatabase.MakeRunwaysFilesExist)
                 {
                     await FSUIPCConnection.AirportsDatabase.RebuildDatabaseAsync();

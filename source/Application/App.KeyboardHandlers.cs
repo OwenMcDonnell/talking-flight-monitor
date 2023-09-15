@@ -31,17 +31,19 @@ namespace tfm
 
             if (TFMKeysEnabled)
             {
-                Tolk.Output("TFM keys enabled.");
+                Output(isGauge: false, output: "TFM keyboard enabled.");
                 // Register TFM key commands.
                 HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
                 HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
+                HotkeyManager.Current.AddOrReplace("BuildAirportsDatabase", Keys.A, OnBuildAirportsDatabase);
                             }
             else
             {
-                Tolk.Output("TFM keys disabled.");
+                Output(isGauge: false, output: "TFM keyboard disabled.");
                 // Unregister TFM key commands.
                 HotkeyManager.Current.Remove("Command_Key");
                 HotkeyManager.Current.Remove("ap_Command_Key");
+                HotkeyManager.Current.Remove("BuildAirportsDatabase");
             }
         }
 
@@ -65,10 +67,15 @@ namespace tfm
             DisplayApplicationSettings();
                 }
 
+        public void OnBuildAirportsDatabase(object? sender, HotkeyEventArgs e)
+        {
+            tfm.Properties.Data.AirportsDatabase.Simulator s = new();
+            UI.FocusWindow(s, s.simulatorComboBox);
+        }
         private void RegisterTFMGlobalCommands()
         {
-            HotkeyManager.Current.AddOrReplace("TFMGlobalToggle", Keys.OemPeriod | Keys.Shift| Keys.Alt, OnTFMKeysActivation);
-            HotkeyManager.Current.AddOrReplace("application_quit", (Keys)tfm.Properties.Hotkeys.Default.application_quit, OnTFMQuit);
+            HotkeyManager.Current.AddOrReplace("TFMGlobalKeys", Keys.OemPeriod | Keys.Alt | Keys.Shift, OnTFMKeysActivation);
+                                                HotkeyManager.Current.AddOrReplace("application_quit", (Keys)tfm.Properties.Hotkeys.Default.application_quit, OnTFMQuit);
             HotkeyManager.Current.AddOrReplace("ApplicationRestart", (Keys)tfm.Properties.Hotkeys.Default.ApplicationRestart, OnTFMRestart);
             HotkeyManager.Current.AddOrReplace("application_settings", (Keys)tfm.Properties.Hotkeys.Default.application_settings, OnDisplayTFMSettings);
                     }
@@ -99,9 +106,8 @@ namespace tfm
                     }
                     catch (NHotkey.HotkeyAlreadyRegisteredException ex)
                     {
-                        logger.Debug($"Cannot register {s.Name}. Probably duplicated key. {ex.Message}");
-                        Output(isGauge: false, output: $"{s.DefaultValue} already registered.");
-                    }
+                        // Do nothing if a key is registered again.
+                                                                    }
 
                 }
                             }
@@ -114,8 +120,8 @@ namespace tfm
         private void autopilotCommandMode(object? sender, HotkeyEventArgs e)
         {
             // unregister the right bracket command key so it isn't pressed by accident
-            HotkeyManager.Current.Remove("Command_Key");
-            // Check to see if we are connected to the sim
+            //HotkeyManager.Current.Remove("Command_Key");
+                                    // Check to see if we are connected to the sim
             if (FSUIPCConnection.IsOpen || DebugEnabled)
             {
                 // play the command sound
@@ -131,6 +137,7 @@ namespace tfm
                 foreach (SettingsProperty s in tfm.Properties.Hotkeys.Default.Properties)
                 {
                     if (s.Name == "Autopilot_Command_Key") continue;
+                    if (s.Name == "Command_Key") continue;
                     if (s.Name.StartsWith("ap_") || s.Name == "toggle_help_mode")
                     {
                         autopilotHotkeys.Add(s.Name);
@@ -140,10 +147,9 @@ namespace tfm
                         }
                                                catch (NHotkey.HotkeyAlreadyRegisteredException ex)
                         {
-                            logger.Debug($"Cannot register {s.Name}. Probably duplicated key.");
-                            Output(isGauge: false, output: $"{s.DefaultValue} already registered.");
 
-                        }
+                            // Do nothing if we try to register a key already in the system.
+                                                                                }
                     }
 
                 }
@@ -153,7 +159,7 @@ namespace tfm
             else
             {
                 // Enable command key when offline. This prevents accidental keypresses of unavailable features when offline.
-                HotkeyManager.Current.AddOrReplace("Command_Key", Keys.Oem6, commandMode);
+//                                HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
                 Output(isGauge: false, output: "Working offline.");
                             }
                     }

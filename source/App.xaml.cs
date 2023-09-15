@@ -91,6 +91,7 @@ namespace tfm
             #region "Connection timer"
             TimerConnection.Elapsed += TimerConnection_Tick;
             this.TimerConnection.AutoReset = true;
+            this.TimerConnection.Interval = 500;
             this.TimerConnection.Start();
             #endregion
 
@@ -125,15 +126,18 @@ namespace tfm
             // Try to open the connection
             try
             {
-                FSUIPCConnection.Open();
+                                   FSUIPCConnection.Open();
 
-                // Stop trying to connect
+
+                                                // Stop trying to connect
                 #region "Timers"
                 this.TimerConnection.Stop();
                 this.TimerMain.Elapsed += TimerMain_Tick;
                 this.TimerMain.AutoReset = true;
+                this.TimerMain.Start();
                 this.TimerLowPriority.Elapsed += TimerLowPriority_Tick;
                 this.TimerLowPriority.AutoReset = true;
+                this.TimerLowPriority.Start();
                 logger.Info("Connection to FSUIPC open.");
                 #endregion
 
@@ -233,7 +237,7 @@ namespace tfm
 
                 announcedOfflineState = false;
                                             }
-            catch (Exception ex)
+            catch 
             {
                 icon.Text = " - Waiting for connection...";
                 if (announcedOfflineState == false)

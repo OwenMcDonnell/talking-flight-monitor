@@ -250,9 +250,18 @@ public void ResetHotkeys()
 
             if (FSUIPCConnection.IsOpen)
             {
+                FSUIPCConnection.AirportsDatabase.Clear();
                 AirportsDatabase database = FSUIPCConnection.AirportsDatabase;
-                database.DatabaseFolder = AirportsDatabaseFolder;
-                database.MakeRunwaysFolder = MakeRunwaysOutputFolder;
+                if (IsP3DLoaded)
+                {
+                    database.DatabaseFolder = p3dAirportsDatabaseFolder;
+                    database.MakeRunwaysFolder = p3dMakeRunwaysOutputPath;
+                }
+                else if (isMSFSLoaded)
+                {
+                    database.DatabaseFolder = msfsAirportsDatabaseFolder;
+                    database.MakeRunwaysFolder = msfsMakeRunwaysOutputPath;
+                                    }
 
                 if (database.DatabaseFilesExist)
                 {
@@ -318,6 +327,164 @@ Tolk.Output($"Loaded {database.Airports.Count} airports.");
             }
         }
     
+        public static async void RunMakeRunways(string simulator) 
+        {
+            try
+            {
 
+                string fileName = "MakeRwys.exe";
+                string sourceFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "MakeRwys", fileName);
+                // Make runways for MSFS.
+                #region
+                if (simulator == "MSFS")
+                {
+                    string target = Path.Combine(msfsMakeRunwaysOutputPath, fileName);
+                    // Create the make runways output folder.
+                    #region
+                    if (!Directory.Exists(msfsMakeRunwaysOutputPath))
+                    {
+                        Directory.CreateDirectory(msfsMakeRunwaysOutputPath);
+                    }
+                    else
+                    {
+                        Directory.Delete(msfsMakeRunwaysOutputPath, true);
+                        Directory.CreateDirectory(msfsMakeRunwaysOutputPath);
+                    }
+                    #endregion
+                    
+                    File.Copy(sourceFile, target, true);
+                    ProcessStartInfo startInfo = new ProcessStartInfo(target)
+                    {
+                        UseShellExecute = true,
+                        Verb = "runas",
+                    };
+                    Process makeRunways = Process.Start(startInfo);
+                    makeRunways.WaitForExitAsync();
+                    BuildAirportsDatabaseAsync(simulator);
+                }
+                #endregion
+                // Make runways for P3D.
+                #region
+                else if (simulator == "P3D")
+                {
+                    string p3dTarget = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, fileName);
+                    File.Copy(sourceFile, p3dTarget, true);
+
+                    // Create the make runways output folder.
+                    #region
+                    if (!Directory.Exists(p3dMakeRunwaysOutputPath))
+                    {
+                        Directory.CreateDirectory(p3dMakeRunwaysOutputPath);
+                    }
+                    else
+                    {
+                        Directory.Delete(p3dMakeRunwaysOutputPath, true);
+                        Directory.CreateDirectory(p3dMakeRunwaysOutputPath);
+                    }
+                    #endregion
+                    
+                    ProcessStartInfo startInfo = new ProcessStartInfo(p3dTarget)
+                    {
+                        WorkingDirectory = tfm.Properties.Settings.Default.P3DInstallPath,
+                        UseShellExecute = true,
+                        Verb = "runas",
+                    };
+                    Process makeRunways = Process.Start(startInfo);
+                    makeRunways.WaitForExit();
+
+                    // Copy all the make runways output.
+                    #region
+                    string airports_fsm = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "airports.fsm");
+                    string f4_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "f4.csv");
+                    string f4x_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "f4x.csv");
+                    string f5_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "f5.csv");
+                    string f5x_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "f5x.csv");
+                    string fstarrc_rws = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "FstarRC.rws");
+                    string g5_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "g5.csv");
+                    string helipads_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "helipads.csv");
+                    string r4_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "r4.csv");
+                    string r5_bin = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "r5.bin");
+                    string r5_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "r5.csv");
+                    string runways_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "runways.csv");
+                    string runways_xml = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "runways.xml");
+                    string scenery_list_txt = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "SceneryList.txt");
+                    string t5_bin = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "t5.bin");
+                    string t5_csv = Path.Combine(tfm.Properties.Settings.Default.P3DInstallPath, "t5.csv");
+
+                    if (File.Exists(airports_fsm)) File.Copy(airports_fsm, Path.Combine(p3dMakeRunwaysOutputPath, "airports.fsm"), true);
+                    if (File.Exists(f4_csv)) File.Copy(f4_csv, Path.Combine(p3dMakeRunwaysOutputPath, "f4.csv"), true);
+                    if (File.Exists(f4x_csv)) File.Copy(f4x_csv, Path.Combine(p3dMakeRunwaysOutputPath, "f4x.csv"), true);
+                    if (File.Exists(f5_csv)) File.Copy(f5_csv, Path.Combine(p3dMakeRunwaysOutputPath, "f5.csv"), true);
+                    if (File.Exists(f5x_csv)) File.Copy(f5x_csv, Path.Combine(p3dMakeRunwaysOutputPath, "f5x.csv"), true);
+                    if (File.Exists(fstarrc_rws)) File.Copy(fstarrc_rws, Path.Combine(p3dMakeRunwaysOutputPath, "FstarRC.rws"), true);
+                    if (File.Exists(g5_csv)) File.Copy(g5_csv, Path.Combine(p3dMakeRunwaysOutputPath, "g5.csv"), true);
+                    if (File.Exists(helipads_csv)) File.Copy(helipads_csv, Path.Combine(p3dMakeRunwaysOutputPath, "helipads.csv"), true);
+                    if (File.Exists(r4_csv)) File.Copy(r4_csv, Path.Combine(p3dMakeRunwaysOutputPath, "r4.csv"), true);
+                    if (File.Exists(r5_bin)) File.Copy(r5_bin, Path.Combine(p3dMakeRunwaysOutputPath, "r5.bin"), true);
+                    if (File.Exists(r5_csv)) File.Copy(r5_csv, Path.Combine(p3dMakeRunwaysOutputPath, "r5.csv"), true);
+                    if (File.Exists(runways_csv)) File.Copy(runways_csv, Path.Combine(p3dMakeRunwaysOutputPath, "runways.csv"), true);
+                    if (File.Exists(runways_xml)) File.Copy(runways_xml, Path.Combine(p3dMakeRunwaysOutputPath, "runways.xml"), true);
+                    if (File.Exists(scenery_list_txt)) File.Copy(scenery_list_txt, Path.Combine(p3dMakeRunwaysOutputPath, "SceneryList.txt"), true);
+                    if (File.Exists(t5_bin)) File.Copy(t5_bin, Path.Combine(p3dMakeRunwaysOutputPath, "t5.bin"), true);
+                    if (File.Exists(t5_csv)) File.Copy(t5_csv, Path.Combine(p3dMakeRunwaysOutputPath, "t5.csv"), true);
+                    #endregion
+                    BuildAirportsDatabaseAsync(simulator);
+                }
+                #endregion
+            }
+            catch (FileNotFoundException ex)
+            {
+                System.Windows.MessageBox.Show($"Cannot continue. {ex.Message}");
+                logger.Error($"{ex.FileName}[{ex.Source}]:{ex.Message}");
+            }
+            catch(UnauthorizedAccessException ex)
+            {
+                System.Windows.MessageBox.Show("Access denied. Run TFM as an administrator and try again.");
+                logger.Error(ex.Message);
+            }
+        }
+
+        public static async void BuildAirportsDatabaseAsync(string simulator)
+        {
+
+            // In case a simulator is running, clear the database before rebuilding.
+            if (FSUIPCConnection.IsOpen)
+            {
+                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
+                {
+                    FSUIPCConnection.AirportsDatabase.Clear();
+                }
+            }
+
+            try
+            {
+                var db = FSUIPCConnection.AirportsDatabase;
+                if (simulator == "MSFS")
+                {
+                                        db.MakeRunwaysFolder = msfsMakeRunwaysOutputPath;
+                    db.DatabaseFolder = msfsAirportsDatabaseFolder;
+                }
+
+                if(simulator == "P3D")
+                {
+                    db.DatabaseFolder = p3dAirportsDatabaseFolder;
+                    db.MakeRunwaysFolder = p3dMakeRunwaysOutputPath;
+                }
+
+                if (db.MakeRunwaysFilesExist)
+                {
+                    await db.RebuildDatabaseAsync();
+                    db.Load();
+                    System.Windows.MessageBox.Show($"{simulator} airports build successfully. Total {db.Airports.Count}");
+                    logger.Info($"{simulator} airports build successfully. Total {db.Airports.Count}");
+                }
+            }
+            catch(FSUIPCException x)
+            {
+                System.Windows.MessageBox.Show($"{x.Message}");
+            }
+            
+                        }
 }
 }
+

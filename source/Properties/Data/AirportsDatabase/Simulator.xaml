@@ -1,0 +1,41 @@
+﻿<Window x:Class="tfm.Properties.Data.AirportsDatabase.Simulator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:s="clr-namespace:tfm.Properties"
+        xmlns:converters="clr-namespace:tfm.Converters"
+        xmlns:local="clr-namespace:tfm.Properties.Data.AirportsDatabase"
+        mc:Ignorable="d"
+        Title="Simulator" SizeToContent="WidthAndHeight" AutomationProperties.IsDialog="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:StringIsNotEmptyAndItemSelectedConverter x:Key="StringIsNotEmptyAndItemSelectedConverter"/>
+            <converters:StringIsNotEmptyConverter x:Key="StringIsNotEmptyConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Label Name="simulatorLabel" Content="_Simulator" Margin="5, 5, 5, 5" AutomationProperties.Name="SimulatorLabel" AutomationProperties.AutomationId="SimulatorLabel" Target="{Binding ElementName=simulatorComboBox}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <ComboBox x:Name="simulatorComboBox" Margin="5, 5, 5, 5" AutomationProperties.Name="Choose a simulator" AutomationProperties.AutomationId="SimulatorComboBox" HorizontalAlignment="Center" VerticalContentAlignment="Center">
+            <ComboBoxItem Name="msfsComboBoxItem" Content="MS_FS" IsSelected="True"/>
+            <ComboBoxItem Name="p3dComboBoxItem" Content="_P3D5"/>
+    </ComboBox>
+        <Label Name="p3dInstallPathLabel" Content="P3D _install path" Margin="15, 5, 5, 5" AutomationProperties.Name="P3D install path label" AutomationProperties.AutomationId="P3DInstallPathLabel" Target="{Binding ElementName=p3dInstallPathTextBox}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=p3dComboBoxItem, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TextBox x:Name="p3dInstallPathTextBox" Text="{Binding Source={x:Static s:Settings.Default}, Path=P3DInstallPath, Mode=TwoWay}" Margin="5, 5, 5, 5" IsReadOnly="True" IsReadOnlyCaretVisible="True" AutomationProperties.Name="P3D install path" AutomationProperties.AutomationId="P3DInstallPathTextBox" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=p3dComboBoxItem, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Button x:Name="p3dBrowseButton" Margin="5, 5, 15, 5" Content="_Browse..." AutomationProperties.Name="Browse for P3D install folder" AutomationProperties.AutomationId="BrowsP3DButton" IsDefault="False" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ElementName=p3dComboBoxItem, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" Click="p3dBrowseButton_Click"/>
+        <Button x:Name="okButton" Margin="15, 5, 5, 5" Content="_Ok" AutomationProperties.Name="Ok" AutomationProperties.AutomationId="OkButton" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Center" Click="okButton_Click">
+            <Button.IsEnabled>
+                <MultiBinding Converter="{StaticResource StringIsNotEmptyAndItemSelectedConverter}">
+                    <Binding ElementName="p3dInstallPathTextBox" Path="Text"/>
+                    <Binding ElementName="p3dComboBoxItem" Path="IsSelected"/>
+                </MultiBinding>
+            </Button.IsEnabled>
+        </Button>
+    <Button x:Name="cancelButton" Margin="15, 5, 15, 5" Content="_Cancel" AutomationProperties.Name="Cancel" AutomationProperties.AutomationId="CancelButton" IsCancel="True" HorizontalAlignment="Center" VerticalAlignment="Center" Click="cancelButton_Click"/>
+    </StackPanel>
+</Window>

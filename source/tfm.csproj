@@ -9,6 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>tfm.App</StartupObject>
     <RootNamespace>tfm</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -64,7 +65,7 @@
   <ItemGroup>
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="BingMapsSDSToolkit" Version="1.0.5" />
-    <PackageReference Include="FSUIPCClientDLL" Version="3.3.6" />
+    <PackageReference Include="FSUIPCClientDLL" Version="3.3.7" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.31.0" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
@@ -135,6 +136,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="data\MakeRwys\MakeRwys.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
