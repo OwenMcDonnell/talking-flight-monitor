@@ -65,7 +65,7 @@
   <ItemGroup>
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="BingMapsSDSToolkit" Version="1.0.5" />
-    <PackageReference Include="FSUIPCClientDLL" Version="3.3.7" />
+    <PackageReference Include="FSUIPCClientDLL" Version="3.3.8-Beta" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.31.0" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />

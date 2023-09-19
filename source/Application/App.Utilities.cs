@@ -326,12 +326,12 @@ Tolk.Output($"Loaded {database.Airports.Count} airports.");
                 Output(isGauge: false, output: "Failed to open website.");
             }
         }
-    
-        public static async void RunMakeRunways(string simulator) 
+
+        public static async void RunMakeRunways(string simulator)
         {
             try
             {
-
+                List<string> makeRwysOutputFiles = new() {"airports.fsm", "f4.csv", "f4x.csv", "f5.csv", "f5x.csv", "FstarRC.rws", "g5.csv", "helipads.csv", "r4.csv", "r5.bin", "r5.csv", "runways.csv", "runways.xml", "SceneryList.txt", "t5.gin", "t5.csv"};
                 string fileName = "MakeRwys.exe";
                 string sourceFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "MakeRwys", fileName);
                 // Make runways for MSFS.
@@ -339,28 +339,36 @@ Tolk.Output($"Loaded {database.Airports.Count} airports.");
                 if (simulator == "MSFS")
                 {
                     string target = Path.Combine(msfsMakeRunwaysOutputPath, fileName);
+                    
                     // Create the make runways output folder.
                     #region
                     if (!Directory.Exists(msfsMakeRunwaysOutputPath))
                     {
                         Directory.CreateDirectory(msfsMakeRunwaysOutputPath);
+                        logger.Debug("Creating MSFS make runways output folder.");
                     }
                     else
                     {
                         Directory.Delete(msfsMakeRunwaysOutputPath, true);
+                        logger.Debug("Deleting existing MSFS make runways output folder.");
                         Directory.CreateDirectory(msfsMakeRunwaysOutputPath);
+                        logger.Debug("Creating MSFS make runways output folder.");
                     }
                     #endregion
                     
                     File.Copy(sourceFile, target, true);
-                    ProcessStartInfo startInfo = new ProcessStartInfo(target)
+                    logger.Debug($"Copying {sourceFile} to {target}.");
+                    logger.Debug("Waiting for make runways to finish.");
+                                       ProcessStartInfo startInfo = new ProcessStartInfo(target)
                     {
                         UseShellExecute = true,
                         Verb = "runas",
+                        WorkingDirectory = msfsMakeRunwaysOutputPath,
                     };
                     Process makeRunways = Process.Start(startInfo);
-                    makeRunways.WaitForExitAsync();
-                    BuildAirportsDatabaseAsync(simulator);
+
+                                        makeRunways.WaitForExit();
+                    Task.Run(() => BuildAirportsDatabaseAsync(simulator));
                 }
                 #endregion
                 // Make runways for P3D.
@@ -428,7 +436,7 @@ Tolk.Output($"Loaded {database.Airports.Count} airports.");
                     if (File.Exists(t5_bin)) File.Copy(t5_bin, Path.Combine(p3dMakeRunwaysOutputPath, "t5.bin"), true);
                     if (File.Exists(t5_csv)) File.Copy(t5_csv, Path.Combine(p3dMakeRunwaysOutputPath, "t5.csv"), true);
                     #endregion
-                    BuildAirportsDatabaseAsync(simulator);
+                    Task.Run(() => BuildAirportsDatabaseAsync(simulator));
                 }
                 #endregion
             }
@@ -447,25 +455,25 @@ Tolk.Output($"Loaded {database.Airports.Count} airports.");
         public static async void BuildAirportsDatabaseAsync(string simulator)
         {
 
-            // In case a simulator is running, clear the database before rebuilding.
-            if (FSUIPCConnection.IsOpen)
-            {
-                if (FSUIPCConnection.AirportsDatabase.IsLoaded)
+                            if (FSUIPCConnection.AirportsDatabase.IsLoaded)
                 {
                     FSUIPCConnection.AirportsDatabase.Clear();
+                logger.Debug("Clearing existing database.");
                 }
-            }
 
             try
             {
                 var db = FSUIPCConnection.AirportsDatabase;
+                logger.Debug("Getting a copy of the current airports database.");
                 if (simulator == "MSFS")
                 {
                                         db.MakeRunwaysFolder = msfsMakeRunwaysOutputPath;
+                    logger.Debug($"Assigned MSFS make runways output folder: {msfsMakeRunwaysOutputPath}.");
                     db.DatabaseFolder = msfsAirportsDatabaseFolder;
+                    logger.Debug($"Assigned MSFS airports database folder: {db.DatabaseFolder}");
                 }
 
-                if(simulator == "P3D")
+              if(simulator == "P3D")
                 {
                     db.DatabaseFolder = p3dAirportsDatabaseFolder;
                     db.MakeRunwaysFolder = p3dMakeRunwaysOutputPath;
@@ -473,13 +481,15 @@ Tolk.Output($"Loaded {database.Airports.Count} airports.");
 
                 if (db.MakeRunwaysFilesExist)
                 {
-                    await db.RebuildDatabaseAsync();
-                    db.Load();
-                    System.Windows.MessageBox.Show($"{simulator} airports build successfully. Total {db.Airports.Count}");
+                    Progress<string> progress = new Progress<string>();
+                    progress.ProgressChanged += (o, s) => logger.Info(s);
+                    await db.RebuildDatabaseAsync(progress);
+                                        db.Load();
+                                        System.Windows.MessageBox.Show($"{simulator} airports build successfully. Total {db.Airports.Count}");
                     logger.Info($"{simulator} airports build successfully. Total {db.Airports.Count}");
                 }
             }
-            catch(FSUIPCException x)
+            catch(Exception x)
             {
                 System.Windows.MessageBox.Show($"{x.Message}");
             }

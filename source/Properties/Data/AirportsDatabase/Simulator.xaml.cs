@@ -24,17 +24,17 @@ namespace tfm.Properties.Data.AirportsDatabase
             InitializeComponent();
         }
 
-        private void okButton_Click(object sender, RoutedEventArgs e)
+        private async  void okButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = simulatorComboBox.SelectedItem as ComboBoxItem;
             
             if(selectedItem.Name == "p3dComboBoxItem")
             {
-                App.RunMakeRunways("P3D");
+                Task.Run(() => App.RunMakeRunways("P3D"));
             }
             else if(selectedItem.Name == "msfsComboBoxItem")
             {
-                App.RunMakeRunways("MSFS");
+                Task.Run(() => App.RunMakeRunways("MSFS"));
             }
             Close();            
         }
