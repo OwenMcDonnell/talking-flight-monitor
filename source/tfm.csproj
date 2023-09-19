@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
@@ -11,25 +10,20 @@
     <RootNamespace>tfm</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;8604;8600;8602;8981</NoWarn>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;8604;8600;8602;8981</NoWarn>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="TFMMainForm.cs" />
     <Compile Remove="TFMMainForm.Designer.cs" />
     <Compile Remove="utility.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Remove="TFMMainForm.resx" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="data\.gitattributes" />
     <None Remove="data\cities1000.txt" />
@@ -37,11 +31,9 @@
     <None Remove="data\MakeRwys\LorbySceneryExport.exe" />
     <None Remove="sounds\100.wav" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="TFMMainForm.Designer.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="data\.gitattributes">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -57,45 +49,37 @@
     </Content>
     <Content Include="TFMMainForm.resx" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="TFMMainForm.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="BingMapsSDSToolkit" Version="1.0.5" />
     <PackageReference Include="FSUIPCClientDLL" Version="3.3.8-Beta" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.31.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="NAudio" Version="2.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NGeoNames" Version="1.5.1" />
     <PackageReference Include="NHotkey" Version="2.1.1" />
     <PackageReference Include="NHotkey.WindowsForms" Version="2.1.1" />
     <PackageReference Include="NLog" Version="5.2.3" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
-    <PackageReference Include="System.Speech" Version="7.0.0" />
     <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.0-rc.1.23419.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-rc.1.23419.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-rc.1.23419.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0-rc.1.23419.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-rc.1.23419.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Speech" Version="8.0.0-rc.1.23419.4" />
   </ItemGroup>
-
   <ItemGroup>
     <Page Include="App.xaml" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="TolkDotNet">
-      <HintPath>..\..\GetAudioDuration\GetAudioDuration\TolkDotNet.dll</HintPath>
+      <HintPath>TolkDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="PMDG\PMDG 737\Forms\Cdu2Dialog.xaml.cs">
       <SubType>Code</SubType>
@@ -134,7 +118,6 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="data\MakeRwys\MakeRwys.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -230,7 +213,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Page Update="Resources\Styles.xaml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -239,5 +221,4 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-
 </Project>
