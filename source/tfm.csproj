@@ -55,22 +55,25 @@
   <ItemGroup>
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="BingMapsSDSToolkit" Version="1.0.5" />
-    <PackageReference Include="FSUIPCClientDLL" Version="3.3.8-Beta" />
-    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.31.0" />
-    <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="FSUIPCClientDLL" Version="3.3.8" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.33.0" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="NGeoNames" Version="1.5.1" />
     <PackageReference Include="NHotkey" Version="2.1.1" />
     <PackageReference Include="NHotkey.WindowsForms" Version="2.1.1" />
-    <PackageReference Include="NLog" Version="5.2.3" />
+    <PackageReference Include="NLog" Version="5.2.7" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
     <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.0-rc.1.23419.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-rc.1.23419.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-rc.1.23419.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0-rc.1.23419.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-rc.1.23419.4" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.Speech" Version="8.0.0-rc.1.23419.4" />
+    <PackageReference Include="System.Speech" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="App.xaml" />

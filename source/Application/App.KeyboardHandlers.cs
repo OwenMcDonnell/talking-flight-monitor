@@ -35,7 +35,7 @@ namespace tfm
                 // Register TFM key commands.
                 HotkeyManager.Current.AddOrReplace("Command_Key", (Keys)tfm.Properties.Hotkeys.Default.Command_Key, commandMode);
                 HotkeyManager.Current.AddOrReplace("ap_Command_Key", (Keys)tfm.Properties.Hotkeys.Default.ap_Command_Key, autopilotCommandMode);
-                HotkeyManager.Current.AddOrReplace("BuildAirportsDatabase", Keys.A, OnBuildAirportsDatabase);
+                HotkeyManager.Current.AddOrReplace("BuildAirportsDatabase", Keys.A | Keys.Control, OnBuildAirportsDatabase);
                             }
             else
             {
