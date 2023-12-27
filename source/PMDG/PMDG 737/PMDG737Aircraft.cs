@@ -3833,6 +3833,9 @@ new SingleStateToggle {Name = "Overhead comm receiver", PanelName = "AUDIO", Pan
                         case '.':
                             FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_DOT, Aircraft.ClkL);
                             break;
+                        case '/':
+                            FSUIPCConnection.SendControlToFS(PMDG_737_NGX_Control.EVT_CDU_L_SLASH, Aircraft.ClkL);
+                            break;
                     }
                     await Task.Delay(1000);
                 }
