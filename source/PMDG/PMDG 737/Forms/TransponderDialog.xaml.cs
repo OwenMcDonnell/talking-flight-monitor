@@ -60,7 +60,11 @@ namespace tfm.PMDG.PMDG_737.Forms
                     App.UI.BuildButton(sourceButton, sourceSwitch, "Source");
                     App.UI.BuildButton(altSourceButton, alternateSourceSwitch, "Alternate source");
                     App.UI.BuildButton(modeButton, modeSelector, "Mode");
-                    transponderCodeTextBox.Text = App.instrumentPanel.Transponder.ToString();
+                    if (Aircraft.Transponder.ValueChanged)
+                    {
+                        transponderCodeTextBox.Text = App.instrumentPanel.Transponder.ToString();
+                    }
+                    
                     failLightTextBox.Text = failIndicator.CurrentState.Value;
                 });
             });
