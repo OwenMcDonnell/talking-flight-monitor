@@ -1,0 +1,74 @@
+﻿### Talking flight monitor 23.1 preview
+
+#### Notes on the preview
+
+It has been over a year since the last preview build. In that time, we have redesigned TFM from the ground up. The previous platform we used had accessibility problems and was out-of-date. Since moving to a newer version of Dotnet (8.0) and a newer user interface library, TFM has become a more stable, accessible, and feature ritch system to use. Going forward, it will take less time to implement features. For example, it takes a third the time to put a PMDG 737 panel together. While using the preview, keep the following in mind.
+
+* TFM is completely different than previous builds. See section below.
+* There may be bugs and incomplete features.
+* There is no tech support for the preview.
+* Report bugs in the issue queue on GitHub.
+* The what's new section (below) will be more detailed in future previews.
+
+#### What's new?
+
+It is impossible to name everything new with the initial 2nd gen preview. However, here are some highlights.
+
+##### General
+
+* Toggle buttons are used for on/off style controls.
+* Ability to change font size in user interface settings.
+* On/off style buttons turn green when in the 'on' position and return to normal in the 'off' position.
+* Keyboard help in most dialogs. Press F1 to use, except PMDG FMCs. Instead, press Control+Shift+F1 to use.
+* New keyboard mode. Turn it on to perform a TFM command, turn it off when you require full use of the keyboard. Press ALT+Shift+. (period) to toggle.
+* Mute TFM command. Press ] (right bracket), then Shift+M to use.
+
+##### PMDG 737 support
+    
+* New panels
+    * Search for controls in the panels.
+    * Reorder panels according to your preference.
+    * Panels aren't cluttered.
+* New MCP boxes
+* New FMC
+    * More reliable and faster refresh rate (10 seconds).
+    * Keyboard position is accurately retained during a screen refresh.
+    * Line select key identifier. Press ALT+L to access.
+    * Switch line select modes without accessing settings. Inside the FMC, press Control+L to use.
+    * New keyboard commands.
+    * A new way to type in the scratchpad. Put keyboard focus on the scratchpad (ALT+S), type the content, then press ENTER to submit it to the aircraft.
+    * TFM now indicates when it is finished typing into the aircraft FMC. For example, "CDU 1 ready".
+    * TFM announces page titles when changing to a new FMC page.
+* 'Destination runway' has been expanded to include localizer-only runways and the ability to save the current destination runway in the event of a TFM crash, shutdown, or restart.
+* Ability to check destination runway information on the fly. Press ] (right bracket), then N to access.
+
+##### Airports database
+
+* Renamed to scenery builder.
+* No longer requires downloading lorby or make runways.
+* Access by turning the TFM keyboard on (see above), then pressing Control+A.
+* No longer requires a simulator to be running.
+* Choose between P3D and MSFS.
+* TFM handles all file operations during the build process.
+
+##### Navigraph support (MSFS only)
+
+* TFM installs the 2005 cycle by default.
+* Requires the use of Navigraph HUB 1.2.4 or later.
+
+##### File locations
+
+In the spirit of making backups easier for TFM users, all TFM data is stored in the user's %localappdata%\tfm folder. This includes the airports database, make runways output files, the installed Navigraph cycle, and TFM settings. Going forward, all TFM content will be stored in this location. To make a backup of your TFM content, just copy the %localappdata%\tfm folder to a new location for safe keeping.
+
+#### Known issues
+
+* The TFM keyboard doesn't turn off automatically when displaying a dialog. Make sure you turn it off (see above) before typing.
+* The command keys are embedded in the TFM keyboard. Turn it on before issuing command key sequences.
+* The old airports database category is still in the settings dialog. It is safe to ignore until it is removed.
+* The Control+A command for scenery builder is a conflict with select all in Windows. This will be fixed in a later build.
+* Shutdown and restart commands are not included. Access them through the tray icon's context menu.
+* PMDG 737 MCP boxes will sometimes crash. This will be fixed in a later build.
+* The conformation message box is difficult to find when the scenery builder finishes. This will be fixed in a later build.
+* Not all settings are present. We will add them as we issue more previews.
+* Not all PMDG 737 panels are done. We will add more as we issue more previews.
+* Some people are having problems jumping to runways at KCVG, KATL, and KIAH. This is not a TFM problem and likely an MSFS problem.
