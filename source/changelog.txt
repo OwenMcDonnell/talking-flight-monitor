@@ -1,4 +1,4 @@
-﻿### Talking flight monitor 23.1 preview
+﻿### Talking flight monitor 24.1 preview
 
 #### Notes on the preview
 
