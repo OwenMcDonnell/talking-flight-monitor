@@ -105,18 +105,18 @@ public TreeViewSerializer TreeViewHelper { get => new TreeViewSerializer(); }
         public void BuildButton(System.Windows.Controls.Button control, SingleStateToggle toggle, string? alternateName = null)
         {
             string name = alternateName == null ? toggle.Name : alternateName;
-            control.Content = $"{name} {toggle.CurrentState.Value}";
+            control.Content= $"{name} {toggle.CurrentState.Value}";
                                     AutomationProperties.SetName(control, $"{name} {toggle.CurrentState.Value}");
         }
 
-        public void BuildIndicatorTextBox(System.Windows.Controls.TextBox control, SingleStateToggle toggle, string? alternateName = null)
+        public void BuildIndicatorTextBox(System.Windows.Controls.TextBox control, SingleStateToggle toggle, string alternateName = "")
         {
-            string name = alternateName == null ? toggle.Name : alternateName;
+            string name = string.IsNullOrEmpty(alternateName) ? toggle.Name : alternateName;
             control.Text = toggle.CurrentState.Value;
             control.IsReadOnly = true;
             control.IsReadOnlyCaretVisible = true;
             control.Focusable = true;
-            AutomationProperties.SetName(control, $"{name}");
+            AutomationProperties.SetName(control, name);
 
         }
 
