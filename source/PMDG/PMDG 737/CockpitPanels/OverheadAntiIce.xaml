@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:tfm.PMDG.PMDG_737.CockpitPanels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -175,89 +175,478 @@ AutomationProperties.AccessKey="ALT+4"
                      Header="Indicators"
                      AutomationProperties.Name="Indicators"
                      AutomationProperties.AutomationId="IndicatorsTabItem">
+                                   <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                                            
+                        <!--Window heat-->
+                    <GroupBox Header="Window heat"
+                                      Margin=" 5, 5, 5, 5"
+                                      Grid.Column="0"
+                                      Grid.Row="0"
+                                      AutomationProperties.Name="Window heat"
+                                      AutomationProperties.AutomationId="WindowHeatGroupBox">
 
-                <TabControl x:Name="indicatorsTabControl"
-                            AutomationProperties.Name="Indicators"
-                            AutomationProperties.AutomationId="Indicators">
-                    
-                    <!--Window heat-->
-                    <TabItem x:Name="windowHeatIndicatorsTabItem"
-                             Header="Window heat"
-                             AutomationProperties.Name="Window heat"
-                             AutomationProperties.AutomationId="WindowHeatIndicatorsTabItem">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             
-                            <!--Indicator: Left side window heat-->
-                            <Label x:Name="leftSideWindowHeatLabel"
+                            <!--Left side window heat-->
+                            <Label Name="leftSideWindowHeatLabel"
        Grid.Column="0"
        Grid.Row="0"
        Content="Left side window heat"
-      AutomationProperties.Name="Left side window heat"
+       Margin="5, 5, 5, 5"
+       AutomationProperties.Name="Left side window heat"
        AutomationProperties.AutomationId="LeftSideWindowHeatLabel"
        Target="{Binding ElementName=leftSideWindowHeatTextBox}"/>
                             <TextBox x:Name="leftSideWindowHeatTextBox"
-         Grid.Column="1"
-         Grid.Row="0"
-         Margin="5, 5, 5, 5"
-         AutomationProperties.AutomationId="LeftSideWindowHeatTextBox"/>
-
-                            <!--Indicator: Left forward window heat-->
-                            <Label x:Name="leftForwardWindowHeatLabel"
- Grid.Column="2"
- Grid.Row="0"
- Content="Left forward window heat"
-AutomationProperties.Name="Left forward window heat"
- AutomationProperties.AutomationId="LeftForwardWindowHeatLabel"
- Target="{Binding ElementName=leftForwardWindowHeatTextBox}"/>
+                                     Margin="5, 5, 5, 5"
+                                     Grid.Column="1"
+                                     Grid.Row="0"
+                                     AutomationProperties.AutomationId="LeftSideWindowHeatTextBox"/>
+                            
+                            <!--Left forward window heat-->
+                            <Label Name="leftForwardWindowHeatLabel"
+       Grid.Column="0"
+       Grid.Row="1"
+       Content="Left forward window heat"
+       Margin="5, 5, 5, 5"
+       AutomationProperties.Name="Left forward window heat"
+       AutomationProperties.AutomationId="LeftForwardWindowHeatLabel"
+       Target="{Binding ElementName=leftForwardWindowHeatTextBox}"/>
                             <TextBox x:Name="leftForwardWindowHeatTextBox"
-   Grid.Column="3"
-   Grid.Row="0"
-   Margin="5, 5, 5, 5"
-   AutomationProperties.AutomationId="LeftForwardWindowHeatTextBox"/>
-
-                            <!--Indicator: Right side window heat-->
-                            <Label x:Name="rightSideWindowHeatLabel"
- Grid.Column="0"
- Grid.Row="1"
- Content="Right side window heat"
-AutomationProperties.Name="Right side window heat"
- AutomationProperties.AutomationId="RightSideWindowHeatLabel"
- Target="{Binding ElementName=rightSideWindowHeatTextBox}"/>
-                            <TextBox x:Name="rightSideWindowHeatTextBox"
-   Grid.Column="1"
-   Grid.Row="1"
-   Margin="5, 5, 5, 5"
-   AutomationProperties.AutomationId="RightSideWindowHeatTextBox"/>
-
-                            <!--Indicator: Right forward window heat-->
-                            <Label x:Name="rightForwardWindowHeatLabel"
- Grid.Column="2"
- Grid.Row="1"
- Content="Right forward window heat"
-AutomationProperties.Name="Right forward window heat"
- AutomationProperties.AutomationId="RightForwardWindowHeatLabel"
- Target="{Binding ElementName=rightForwardWindowHeatTextBox}"/>
+                                     Margin="5, 5, 5, 5"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                   AutomationProperties.AutomationId="LeftForwardHeatTextBox"/>
+                            
+                            <!--Right forward window heat-->
+                            <Label Name="rightForwardWindowHeatLabel"
+       Grid.Column="0"
+       Grid.Row="2"
+       Content="Right forward window heat"
+       Margin="5, 5, 5, 5"
+       AutomationProperties.Name="Right forward window heat"
+       AutomationProperties.AutomationId="RightForwardWindowHeatLabel"
+       Target="{Binding ElementName=rightForwardWindowHeatTextBox}"/>
                             <TextBox x:Name="rightForwardWindowHeatTextBox"
-   Grid.Column="3"
-   Grid.Row="1"
-   Margin="5, 5, 5, 5"
-   AutomationProperties.AutomationId="RightForwardWindowHeatTextBox"/>
+                                     Margin="5, 5, 5, 5"
+                                     Grid.Column="1"
+                                     Grid.Row="2"
+                                                                          AutomationProperties.AutomationId="RightForwardHeatTextBox"/>
+                                
+                            <!--Right side window heat-->
+                            <Label Name="rightSideWindowHeatLabel"
+       Grid.Column="0"
+       Grid.Row="3"
+       Content="Right side window heat"
+       Margin="5, 5, 5, 5"
+       AutomationProperties.Name="Right side window heat"
+       AutomationProperties.AutomationId="RightSideWindowHeatLabel"
+       Target="{Binding ElementName=rightSideWindowHeatTextBox}"/>
+                            <TextBox x:Name="rightSideWindowHeatTextBox"
+                                     Margin="5, 5, 5, 5"
+                                     Grid.Column="1"
+                                     Grid.Row="3"
+                                                                          AutomationProperties.AutomationId="RightSideWindowHeatTextBox"/>
+                        </Grid>
+                    </GroupBox>
+                            
+                            <!--Window overheat-->
+                    <GroupBox Header="Window overheat"
+                               Margin=" 5, 5, 5, 5"
+                               Grid.Column="1"
+                               Grid.Row="0"
+                               AutomationProperties.Name="Window overheat"
+                               AutomationProperties.AutomationId="WindowOverheatGroupBox">
 
-                        </Grid>                        
-                    </TabItem>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Left side window overheat-->
+                            <Label Name="leftSideWindowOverheatLabel"
+Grid.Column="0"
+Grid.Row="0"
+Content="Left side window overheat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Left side window overheat"
+AutomationProperties.AutomationId="LeftSideWindowOverheatLabel"
+Target="{Binding ElementName=leftSideWindowOverheatTextBox}"/>
+                            <TextBox x:Name="leftSideWindowOverheatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AutomationId="LeftSideWindowOverheatTextBox"/>
+
+                            <!--Left forward window heat-->
+                            <Label Name="leftForwardWindowOverheatLabel"
+Grid.Column="0"
+Grid.Row="1"
+Content="Left forward window overheat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Left forward window overheat"
+AutomationProperties.AutomationId="LeftForwardWindowOverheatLabel"
+Target="{Binding ElementName=leftForwardWindowOverheatTextBox}"/>
+                            <TextBox x:Name="leftForwardWindowOverheatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                            AutomationProperties.AutomationId="LeftForwardOverheatTextBox"/>
+
+                            <!--Right forward window heat-->
+                            <Label Name="rightForwardWindowOverheatLabel"
+Grid.Column="0"
+Grid.Row="2"
+Content="Right forward window overheat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Right forward window overheat"
+AutomationProperties.AutomationId="RightForwardWindowOverheatLabel"
+Target="{Binding ElementName=rightForwardWindowOverheatTextBox}"/>
+                            <TextBox x:Name="rightForwardWindowOverheatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                                                                   AutomationProperties.AutomationId="RightForwardOverheatTextBox"/>
+
+                            <!--Right side window heat-->
+                            <Label Name="rightSideWindowOverheatLabel"
+Grid.Column="0"
+Grid.Row="3"
+Content="Right side window overheat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Right side window overheat"
+AutomationProperties.AutomationId="RightSideWindowOverheatLabel"
+Target="{Binding ElementName=rightSideWindowOverheatTextBox}"/>
+                            <TextBox x:Name="rightSideWindowOverheatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="3"
+                                                                   AutomationProperties.AutomationId="RightSideWindowOverheatTextBox"/>
+                        </Grid>
+                    </GroupBox>
+                                   
+                                   <!--Captain's heat-->
+                    <GroupBox Header="Captain's heat"
+                               Margin=" 5, 5, 5, 5"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               AutomationProperties.Name="Captain's heat"
+                               AutomationProperties.AutomationId="CaptainHeatGroupBox">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Pitot heat-->
+                            <Label Name="captainPitotHeatLabel"
+Grid.Column="0"
+Grid.Row="0"
+Content="Pitot heat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Captain's pitot heat"
+AutomationProperties.AutomationId="CaptainPitotHeatLabel"
+Target="{Binding ElementName=captainPitotHeatTextBox}"/>
+                            <TextBox x:Name="captainPitotHeatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AutomationId="CaptainPitotHeatTextBox"/>
+
+                            <!--Elevator pitot heat-->
+                            <Label Name="captainElevatorPitotHeatLabel"
+Grid.Column="0"
+Grid.Row="1"
+Content="Elevator pitot heat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Elevator pitot heat"
+AutomationProperties.AutomationId="CaptainElevatorPitotHeatLabel"
+Target="{Binding ElementName=captainElevatorPitotHeatTextBox}"/>
+                            <TextBox x:Name="captainElevatorPitotHeatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                            AutomationProperties.AutomationId="CaptainElevatorPitotHeatTextBox"/>
+
+                            <!--Alpha vane-->
+                            <Label Name="captainAlphaVaneLabel"
+Grid.Column="0"
+Grid.Row="2"
+Content="Alpha vane"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Captain's alpha vane"
+AutomationProperties.AutomationId="CaptainAlphaVaneLabel"
+Target="{Binding ElementName=captainAlphaVaneTextBox}"/>
+                            <TextBox x:Name="captainAlphaVaneTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                                                                   AutomationProperties.AutomationId="CaptainAlphaVaneTextBox"/>
+
+                            <!--Temp probe-->
+                            <Label Name="tempProbeLabel"
+Grid.Column="0"
+Grid.Row="3"
+Content="Temp probe"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Temp probe"
+AutomationProperties.AutomationId="TempProbeLabel"
+Target="{Binding ElementName=tempProbeTextBox}"/>
+                            <TextBox x:Name="TempProbeTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="3"
+                                                                   AutomationProperties.AutomationId="TempProbeTextBox"/>
+                        </Grid>
+                    </GroupBox>
+                                   
+                                   <!--First officer's heat-->
+                    <GroupBox Header="First officer's heat"
+                               Margin=" 5, 5, 5, 5"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                               AutomationProperties.Name="First officer's heat"
+                               AutomationProperties.AutomationId="FirstOfficerHeatGroupBox">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Pitot heat-->
+                            <Label Name="firstOfficerPitotHeatLabel"
+Grid.Column="0"
+Grid.Row="0"
+Content="Pitot heat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="First officer's pitot heat"
+AutomationProperties.AutomationId="FirstOfficerPitotHeatLabel"
+Target="{Binding ElementName=firstOfficerPitotHeatTextBox}"/>
+                            <TextBox x:Name="firstOfficerPitotHeatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AutomationId="FirstOfficerPitotHeatTextBox"/>
+
+                            <!--Elevator pitot heat-->
+                            <Label Name="firstOfficerElevatorPitotHeatLabel"
+Grid.Column="0"
+Grid.Row="1"
+Content="Elevator pitot heat"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Elevator pitot heat"
+AutomationProperties.AutomationId="FirstOfficerElevatorPitotHeatLabel"
+Target="{Binding ElementName=firstOfficerElevatorPitotHeatTextBox}"/>
+                            <TextBox x:Name="firstOfficerElevatorPitotHeatTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                            AutomationProperties.AutomationId="FirstOfficerElevatorPitotHeatTextBox"/>
+
+                            <!--Alpha vane-->
+                            <Label Name="firstOfficerAlphaVaneLabel"
+Grid.Column="0"
+Grid.Row="2"
+Content="Alpha vane"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="First officer's alpha vane"
+AutomationProperties.AutomationId="FirstOfficerAlphaVaneLabel"
+Target="{Binding ElementName=firstOfficerAlphaVaneTextBox}"/>
+                            <TextBox x:Name="firstOfficerAlphaVaneTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                                                                   AutomationProperties.AutomationId="FirstOfficerAlphaVaneTextBox"/>
+
+                            <!--aux pitot-->
+                            <Label Name="auxPitotLabel"
+Grid.Column="0"
+Grid.Row="3"
+Content="Aux pitot"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Aux pitot"
+AutomationProperties.AutomationId="AuxPitotLabel"
+Target="{Binding ElementName=auxPitotTextBox}"/>
+                            <TextBox x:Name="auxPitotTextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="3"
+                                                                   AutomationProperties.AutomationId="auxPitotTextBox"/>
+                        </Grid>
+                    </GroupBox>
+                                   
+                                   <!--Valves-->
+                    <GroupBox Header="Valves"
+                               Margin=" 5, 5, 5, 5"
+                               Grid.Column="0"
+                               Grid.Row="2"
+                              VerticalAlignment="Center"
+                               AutomationProperties.Name="Valves"
+                               AutomationProperties.AutomationId="ValvesGroupBox">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                                                                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Valve #1-->
+                            <Label Name="valve1Label"
+Grid.Column="0"
+Grid.Row="0"
+Content="Valve #1"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Valve #1"
+AutomationProperties.AutomationId="Valve1Label"
+Target="{Binding ElementName=valve1TextBox}"/>
+                            <TextBox x:Name="valve1TextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AutomationId="Valve1TextBox"/>
+
+                            <!--Valve #2-->
+                            <Label Name="valve2Label"
+Grid.Column="0"
+Grid.Row="1"
+Content="Valve #2"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Valve #2"
+AutomationProperties.AutomationId="Valve2Label"
+Target="{Binding ElementName=valve2TextBox}"/>
+                            <TextBox x:Name="valve2TextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                            AutomationProperties.AutomationId="Valve2TextBox"/>
+                        </Grid>
+                    </GroupBox>
                 
-                
-                </TabControl>
+                              <!--Cowls-->
+                    <GroupBox Header="Cowls"
+                               Margin=" 5, 5, 5, 5"
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               AutomationProperties.Name="Cowls"
+                               AutomationProperties.AutomationId="CowlsGroupBox">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Anti-ice #1-->
+                            <Label Name="antiIceCowl1Label"
+Grid.Column="0"
+Grid.Row="0"
+Content="Anti-ice #1"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Anti-ice #1"
+AutomationProperties.AutomationId="AntiIceCowl1Label"
+Target="{Binding ElementName=antiIceCowl1TextBox}"/>
+                            <TextBox x:Name="antiIceCowl1TextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              AutomationProperties.AutomationId="AntiIceCowl1TextBox"/>
+
+                            <!--Anti-ice #2-->
+                            <Label Name="antiIceCowl2Label"
+Grid.Column="0"
+Grid.Row="1"
+Content="Anti-ice #2"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Anti-ice #2"
+AutomationProperties.AutomationId="AntiIceCowl2Label"
+Target="{Binding ElementName=antiIceCowl2TextBox}"/>
+                            <TextBox x:Name="antiIceCowl2TextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                            AutomationProperties.AutomationId="AntiIceCowl2TextBox"/>
+
+                            <!--Valve #1-->
+                            <Label Name="cowlValve1Label"
+Grid.Column="0"
+Grid.Row="2"
+Content="Valve #1"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Valve #1"
+AutomationProperties.AutomationId="CowlValve1Label"
+Target="{Binding ElementName=cowlValve1TextBox}"/>
+                            <TextBox x:Name="cowlValve1TextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                                                                   AutomationProperties.AutomationId="CowlValve1TextBox"/>
+
+                            <!--Valve #2-->
+                            <Label Name="cowlValve2Label"
+Grid.Column="0"
+Grid.Row="3"
+Content="Valve #2"
+Margin="5, 5, 5, 5"
+AutomationProperties.Name="Valve #2"
+AutomationProperties.AutomationId="CowlValve2Label"
+Target="{Binding ElementName=cowlValve2TextBox}"/>
+                            <TextBox x:Name="cowlValve2TextBox"
+                              Margin="5, 5, 5, 5"
+                              Grid.Column="1"
+                              Grid.Row="3"
+                                                                   AutomationProperties.AutomationId="CowlValve2TextBox"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
