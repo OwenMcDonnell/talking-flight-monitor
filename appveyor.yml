@@ -1,4 +1,5 @@
 version: 0.{build}
+image: Visual Studio 2022
 nuget:
   project_feed: true
 configuration: Debug
