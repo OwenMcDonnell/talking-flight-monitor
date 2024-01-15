@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Talking Flight Monitor Preview"
-; #define MyAppVersion "24.1.7"
+; #define MyAppVersion "24.1"
 #define MyAppPublisher "Talking Flight Monitor"
 #define MyAppURL "http://www.talkingflightmonitor.com"
 #define MyAppExeName "tfm.exe"
@@ -49,7 +49,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\source\bin\Debug\*"; Excludes: "tfm-preview.iss"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "..\source\bin\Debug\net8.0\*"; Excludes: "tfm-preview.iss"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
