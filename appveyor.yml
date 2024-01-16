@@ -86,7 +86,7 @@ for:
       $date = get-date
       $year = $date.year
       $month = $date.month
-      update-appveyor -version "$year.$month.$env:APPVEYOR_BUILD_NUMBER"
+      Update-AppveyorBuild -version "$year.$month.$env:APPVEYOR_BUILD_NUMBER"
   before_build:
   - cmd: nuget restore source\tfm.sln
   build:
