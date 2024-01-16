@@ -1,4 +1,4 @@
-﻿### Talking flight monitor 24.1.11 preview
+﻿### Talking flight monitor 2024.1preview
 
 #### Notes on the preview
 
