@@ -100,13 +100,12 @@ for:
 
   deploy_script:
    - ps: |
-      if ($env:APPVEYOR_REPO_TAG -eq "true") {
       
       $token = $env:gh_token
-      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
-      $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
+      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-preview-$env:APPVEYOR_BUILD_VERSION.EXE"
+      $releaseName = "preview-$env:APPVEYOR_BUILD_VERSION"
       $repo = 'talking-flight-monitor/talking-flight-monitor'
-      $tag = $env:appveyor_repo_tag_name
+      $tag = $env:APPVEYOR_BUILD_VERSION
       $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
 
       $headers = @{
