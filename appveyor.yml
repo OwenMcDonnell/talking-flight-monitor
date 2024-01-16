@@ -94,8 +94,8 @@ for:
     verbosity: minimal
   after_build:
   - ps: |
-      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=preview- installer\tfm-preview.iss
-      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=preview-$ENV:APPVEYOR_BUILD_VERSION installer\tfm-preview.iss
+      appveyor PushArtifact installer\tfm-$ENV:APPVEYOR_BUILD_VERSION.EXE
       
 
   deploy_script:
