@@ -49,7 +49,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\source\bin\Debug\net8.0\*"; Excludes: "tfm-preview.iss"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "..\source\bin\Debug\net8.0-windows\*"; Excludes: "tfm-preview.iss"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
