@@ -1,4 +1,5 @@
 version: 0.{build}
+image: Visual Studio 2022
 nuget:
   project_feed: true
 configuration: Debug
@@ -18,22 +19,17 @@ for:
     project: source\tfm.sln
     verbosity: minimal
   after_build:
-  - ps: |
-      if ($env:APPVEYOR_REPO_TAG -eq "true") {
-      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm-release.iss
-      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
-      } else {
-      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=test-$env:APPVEYOR_BUILD_NUMBER installer\tfm.iss
-      appveyor PushArtifact installer\tfm-test-$env:APPVEYOR_BUILD_NUMBER.EXE
-      }
-      
+  - ps: >-
+      makensis /DVERSION=$env:APPVEYOR_REPO_TAG_NAME /DOUTFILE=tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.exe installer\tfm.nsi
+
+      appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE
 
   deploy_script:
    - ps: |
       if ($env:APPVEYOR_REPO_TAG -eq "true") {
       
       $token = $env:gh_token
-      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
+      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
       $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
       $repo = 'talking-flight-monitor/talking-flight-monitor'
       $tag = $env:appveyor_repo_tag_name
@@ -74,8 +70,6 @@ for:
         $host.SetShouldExit(1)
       }
       }
-
-
 -
   branches:
     only:
@@ -151,5 +145,9 @@ notifications:
   subject: TFM build
   on_build_success: true
   on_build_failure: true
+
+
+
+
 
 
