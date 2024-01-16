@@ -1,9 +1,16 @@
-version: 0.{build}
+version: 2024.1.{build}
 image: Visual Studio 2022
 nuget:
   project_feed: true
 configuration: Debug
-
+dotnet_csproj:
+  patch: true
+  file: 'source\tfm.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  
 environment:
   gh_token:
     secure: b8rJBxvFWGz190qF78baVdA0auIIkdU2Sg1tpOfJRtb7h3GVSdG5VtFIqtGLaDkg
@@ -74,6 +81,12 @@ for:
   branches:
     only:
       - preview
+  init:
+  - ps: |
+    $date = get-date
+    $year = $date.year
+    $month = $date.month
+    update-appveyor -version "$year.$month.$env:APPVEYOR_BUILD_NUMBER"
   before_build:
   - cmd: nuget restore source\tfm.sln
   build:
@@ -81,13 +94,8 @@ for:
     verbosity: minimal
   after_build:
   - ps: |
-      if ($env:APPVEYOR_REPO_TAG -eq "true") {
-      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=$env:APPVEYOR_REPO_TAG_NAME installer\tfm-preview.iss
+      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=preview- installer\tfm-preview.iss
       appveyor PushArtifact installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE
-      } else {
-      . "C:\Program Files (x86)\Inno Setup 6\iscc" /DMyAppVersion=test-$env:APPVEYOR_BUILD_NUMBER installer\tfm.iss
-      appveyor PushArtifact installer\tfm-test-$env:APPVEYOR_BUILD_NUMBER.EXE
-      }
       
 
   deploy_script:
