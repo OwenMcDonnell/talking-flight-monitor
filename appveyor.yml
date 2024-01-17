@@ -6,8 +6,7 @@ configuration: Debug
 
 environment:
   gh_token:
-    secure: b8rJBxvFWGz190qF78baVdA0auIIkdU2Sg1tpOfJRtb7h3GVSdG5VtFIqtGLaDkg
-
+    secure: yzu3L7WZBBQJLK1cYDJ2kcs1uP0eaEJaB8Mg2fH9YZoZWxJVKYdhBxvw7gVPVwpb
 for:
 -
   branches:
@@ -31,7 +30,7 @@ for:
       $token = $env:gh_token
       $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME-setup.EXE"
       $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
-      $repo = 'talking-flight-monitor/talking-flight-monitor'
+      $repo = 'OwenMcDonnell/talking-flight-monitor'
       $tag = $env:appveyor_repo_tag_name
       $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
 
@@ -95,9 +94,9 @@ for:
       if ($env:APPVEYOR_REPO_TAG -eq "true") {
       
       $token = $env:gh_token
-      $uploadFilePath = "c:\projects\talking-flight-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
+      $uploadFilePath = "c:\projects\-monitor\installer\tfm-$env:APPVEYOR_REPO_TAG_NAME.EXE"
       $releaseName = "v$env:APPVEYOR_REPO_TAG_NAME"
-      $repo = 'talking-flight-monitor/talking-flight-monitor'
+      $repo = 'OwenMcDonnell/-monitor'
       $tag = $env:appveyor_repo_tag_name
       $description = [STRING](Get-Content c:\projects\talking-flight-monitor\source\changelog.txt -raw)
 
@@ -138,13 +137,6 @@ for:
       }
 
 
-notifications:
-- provider: Email
-  to:
-  - jfayre@gmail.com
-  subject: TFM build
-  on_build_success: true
-  on_build_failure: true
 
 
 
